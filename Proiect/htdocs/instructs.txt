@@ -1,0 +1,9 @@
+command prompt -> C:/Apache24/bin
+               -> httpd.exe
+il las deschis;
+
+http://localhost:8181/k.php 
+si
+http://localhost:8181/k1.php
+
+drop la tabela noua si apoi o refac
