@@ -17,5 +17,6 @@ Aplicația de admitere a Facultății de Informatică, Iași realizată pentru p
 * Dorneanu Adrian
 * Dragoman Andreas
 * Grama Dragoș-Ioan
+* Pintilie Andrei
 
 Le mulțumim și celorlalți membri ai grupei care au ajutat la crearea proiectului!
