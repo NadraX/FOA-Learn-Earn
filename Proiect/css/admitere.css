@@ -71,7 +71,7 @@ a {
 
 .font_a {
     color: #538cc6;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 30px;
@@ -123,6 +123,12 @@ a {
 .buton1 {
     float: right;
     position: relative;
-    right: 0px;
+    right: 40px;
+	bottom:20px;
+}
+.buton2 {
+    float: right;
+    position: relative;
+    right: -20px;
 	bottom:20px;
 }
