@@ -5,18 +5,19 @@ Aplicația de admitere a Facultății de Informatică, Iași realizată pentru p
 
 #### Membrii ehipă:
 ##### Administrare:
-* Vulpescu Radu-Cristian
+* Vulpescu Radu-Cristian [GitHub](https://github.com/NadraX)
 ##### Front-end:
-* Balan Andreea-Bianca
-* Giurgilă Andreea
-* Stavarache Simona
-* Ursachi Anca-Ioana
+* Balan Andreea-Bianca [GitHub](https://github.com/Andreea-Balan)
+* Giurgilă Andreea [GitHub](https://github.com/GAndreea)
+* Stavarache Simona [GitHub](https://github.com/SimonaStavarache)
+* Ursachi Anca-Ioana [GitHub](https://github.com/ancai0ana)
 ##### Back-end
-* Cimpoeșu Răzvan-Adrian
-* Corfu Alexandru
-* Dorneanu Adrian
-* Dragoman Andreas
-* Grama Dragoș-Ioan
-* Pintilie Andrei
+* Cimpoeșu Răzvan-Adrian [GitHub](https://github.com/deR4Fa)
+* Corfu Alexandru [GitHub](https://github.com/tothewest)
+* Dorneanu Adrian [GitHub](https://github.com/AdrianDorneanu)
+* Dragoman Andreas [GitHub](https://github.com/andreasdragoman)
+* Grama Dragoș-Ioan [GitHub](https://github.com/Dragobloody)
+* Moroșanu George-Cosmin [GitHub](https://github.com/GeoMoro)
+* Pintilie Andrei [GitHub](https://github.com/AndreiPi)
 
 Le mulțumim și celorlalți membri ai grupei care au ajutat la crearea proiectului!
