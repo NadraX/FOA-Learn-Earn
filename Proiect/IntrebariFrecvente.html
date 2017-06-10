@@ -23,11 +23,61 @@
     <script type="text/javascript" src="js/bar.js"></script>
 
     <style>
+
         .background {
             background-image: url('imagini/oameni.png');
             background-repeat: no-repeat;
-            min-height: 500px;
+            background-size: contain;
+            background-position: center;
         }
+
+        .myButton {
+            -moz-box-shadow: 3px 4px 0px 0px #1564ad;
+            -webkit-box-shadow: 3px 4px 0px 0px #1564ad;
+            box-shadow: 3px 4px 0px 0px #1564ad;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5));
+            background: -moz-linear-gradient(top, #79bbff 5%, #378de5 100%);
+            background: -webkit-linear-gradient(top, #79bbff 5%, #378de5 100%);
+            background: -o-linear-gradient(top, #79bbff 5%, #378de5 100%);
+            background: -ms-linear-gradient(top, #79bbff 5%, #378de5 100%);
+            background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5',GradientType=0);
+            background-color: #79bbff;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            border: 1px solid #337bc4;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: Arial;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 12px 44px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #528ecc;
+            width: 200px
+        }
+
+        .myButton:hover {
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff));
+            background: -moz-linear-gradient(top, #378de5 5%, #79bbff 100%);
+            background: -webkit-linear-gradient(top, #378de5 5%, #79bbff 100%);
+            background: -o-linear-gradient(top, #378de5 5%, #79bbff 100%);
+            background: -ms-linear-gradient(top, #378de5 5%, #79bbff 100%);
+            background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff',GradientType=0);
+            background-color: #378de5;
+        }
+
+        .myButton:active {
+            position: relative;
+            top: 1px;
+        }
+
+
+
+
     </style>
 </head>
 <body >
@@ -50,162 +100,409 @@
         <img id="scroll" class="sigla" src="imagini/sigla2-Copy.png" alt="sigla" />
       </a>
   </div >
-  
-  <div class="mic" style="background-color:white; height:80px; width:100%;; z-index:90;">
-    <a href="#menu" id="toggle"><span></span></a>
-   <div id="menu">
-      <ul class="tog1">
-        <li class="tog2"><a href="DespreFII.html">Despre FII</a></li>  
-        <li class="tog2"><a href="paginaAdmitere.html">Admitere</a></li>
-        <li class="tog2"><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
-		<li class="tog2"><a href="contact.html">Contact</a></li>
-      </ul>
-    </div> 
-  </div>
     
-    <div class="background" style="margin-top:85px;">
-        
-
-        <div class="container" style="max-width:60%">
-
-            <h1 style="text-align:center; color:#3488CB">&#206;ntreb&#259;ri frecvente</h1>
-
-            <div class=" col-lg-offset-1">
-                <br />
-                <h3> <img src="imagini/question1.png" width="50" height="40" alt="lab1" align="middle"> Procesul aplicarii </h3>
-
-                <p> <img src="imagini/question0.png" width="25" height="25" data-toggle="collapse" data-target="#demo0"> Care sunt actelel necesare pentru înscriere?</p>
-
-                <div id="demo0" class="collapse">
-                    <p>
-                        Fişa de înscriere;
-                    </p>
-                    <p>
-                        Trei fotografii tip buletin de identitate;
-                    </p>
-                    <p>
-                        Diploma de bacalaureat sau echivalentă cu aceasta, recunoscută de Ministerul Educației (candidaţii care au promovat examenul de bacalaureat în sesiunea iunie-iulie 2016 pot prezenta la înscriere, în locul diplomei de bacalaureat, adeverinţa eliberată de liceu, în care se menţionează atât media generală cât şi notele obţinute la probele susţinute şi notele la disciplinele care se iau în calcul la stabilirea mediei); dacă un candidat nu depune la o specializare diploma în original, va depune şi o adeverinţă de la facultatea unde are actele în original.
-                    </p>  
-                    <p>
-                        Certificat de naştere, în copie legalizată;
-                    </p>   
-                    <p>
-                        Buletin/carte de identitate, în copie;
-                    </p>
-                    <p>
-                        Certificat de căsătorie, în copie legalizată(dacă este cazul);
-                    </p>
-                    <p>
-                        Adeverinţă medicală tip;
-                    </p>
-                    <p>
-                        Chitanţă care dovedeşte plata taxei de înscriere sau actele necesare pentru scutirea de plata taxei;
-                    </p>
-                    <p>
-                        Dosar plic.
-                    </p>
-                </div>
-
-
-                <p> <img src="imagini/question0.png" width="25" height="25" data-toggle="collapse" data-target="#demo1"> Care sunt cele mai importante informații pe care trebuie să le dețin înainte de înscriere?</p>
-
-                <div id="demo1" class="collapse">
-                    <p>
-                        Un candidat poate beneficia o singură dată de un loc subvenţionat de la buget.
-                        Candidaţii absolvenţi ai unei facultăţi de stat pot fi admişi numai pe locurile cu taxă.
-                        Candidaţii care au urmat o altă facultate au obligaţia să declare acest lucru, precum şi perioada în care au studiat.
-                    </p>
-                    <p>
-                        Secretariatul facultăţii primeşte dosarele întocmite de candidaţi, personal, efectuează înscrierea si eliberează legitimaţiile
-                        de concurs numai dacă, după verificarea fiecărui dosar, se constata că dosarele cuprind toate actele solicitate şi cererile-tip
-                        de înscriere sunt completate corect.La examenul de admitere susținut scris sau oral nu există probe eliminatorii.
-                    </p>
-                    <p>
-                        Contestațiile se depun la secretariat, în termen de 48 de ore de la afişarea rezultatelor.
-                        Rezultatele la contestaţii se afişează în termen de trei zile de la expirarea termenului de depunere a contestaţiilor.
-                    </p>
-</div>
-
-
-                <p> <img src="imagini/question0.png" width="25" height="25" data-toggle="collapse" data-target="#demo2"> De ce acte am nevoie când mă prezint la examenul de admitere în cazul în care susțin un examen scris?</p>
-                <div id="demo2" class="collapse">
-                    <p>
-                        Accesul candidaţilor în sala de concurs este permis cu maximum o oră înainte de începerea probei.
-                    </p>
-                    <p>
-                        La intrarea candidaţilor în sală, personalul de supraveghere verifică identitatea acestora, pe baza buletinului de identitate şi a tabelului nominal cu candidaţii repartizaţi în sala respectivă.
-                    </p>
-                    <p>
-                        Actele personale rămân pe masa candidatului pe toată durata desfăşurării probei respective, pentru control.
-                        Candidaţii care nu au asupra lor toate actele necesare nu sunt primiţi în sala de examen.
-                    </p>
-</div>
-
-
-                <p> <img src="imagini/question0.png" width="25" height="25" data-toggle="collapse" data-target="#demo3"> Cum se desfășoară un examen scris? </p>
-                <div id="demo3" class="collapse">
-                    <p>
-                        Responsabilul de sală consemnează prezenţa sau absenţa candidaţilor pe tabelul nominal şi îmmânează fiecărui candidat câte o coală-tip, indicându-le să completeze citeţ numărul legitimaţiei, numele şi prenumele, precum şi prenumele tatălui, pe colţul ce urmează să fie lipit, precum şi celelalte rubrici (facultatea, domeniul, disciplina la care se dă lucrarea).
-                        Colţul se va lipi numai în momentul predării lucrării finale.
-                    </p>  
-                    <p>
-                        Pentru elaborarea ciornelor, candidaţii vor primi coli de hârtie distincte, pe care va fi aplicată, în prealabil, ştampila facultăţii. Din momentul deschiderii plicului cu subiecte, nici un candidat nu mai poate intra în sală şi nici un candidat nu mai poate părăsi sala, decât dacă predă lucrarea scrisă şi semnează de predarea acesteia.
-                    </p>  
-                </div>
-
-                <h3> <img src="imagini/question2.png" width="50" height="50" alt="lab1" align="middle"> Date importante </h3>
-                <p> <img src="imagini/question0.png" width="25" height="25" data-toggle="collapse" data-target="#demo4"> Care este prima zi în care putem aplica?</p>
-                <div id="demo4" class="collapse">
-                    Perioada de înscriere este: 17-21 Iulie.
-                </div>
-                <p> <img src="imagini/question0.png" width="25" height="25" data-toggle="collapse" data-target="#demo5"> Când vom afla rezultatele de la admitere? </p>
-                <div id="demo5" class="collapse">
-                    Perioada de anunţare a rezultatelor este: 24-26 Iulie.
-                </div>
-                <h3> <img src="imagini/question3.png" alt="lab1" align="middle"> Taxe </h3>
-
-
-                <p> <img src="imagini/question0.png" width="25" height="25" data-toggle="collapse" data-target="#demo6"> Cât este taxa de inscriere? </p>
-                <div id="demo6" class="collapse">
-                    <p>
-                        Taxele sunt:
-
-                    <p>
-                        200 lei pentru un domeniu de studiu
-                    </p>
-                    <p>
-                        300 lei pentru înscrierea la două domenii de studiu
-                    </p>
-                </div>
-
-                <p> <img src="imagini/question0.png" width="25" height="25" data-toggle="collapse" data-target="#demo7"> Care sunt criterii de departajare a candidaților cu aceeași medie? </p>
-                <div id="demo7" class="collapse">
-                    <p>
-                        Criterii de departajare a candidaților cu aceeași medie:
-                    </p>
-                    <p>
-                        1. Media de admitere netrunchiată;
-                    </p>
-                    <p>
-                        2. Nota la testul scris;
-                    </p>
-                    <p>
-                        3. Nota de la bacalaureat la Matematică sau Informatică – cea care intră în calculul mediei de admitere.
-                    </p>
-                </div>
-
+        <div class="mic" style="background-color:white; height:80px; width:100%;; z-index:90;">
+            <a href="#menu" id="toggle"><span></span></a>
+            <div id="menu">
+                <ul class="tog1">
+                    <li class="tog2"><a href="DespreFII.html">Despre FII</a></li>
+                    <li class="tog2"><a href="paginaAdmitere.html">Admitere</a></li>
+                    <li class="tog2"><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
+                    <li class="tog2"><a href="contact.html">Contact</a></li>
+                </ul>
             </div>
+        </div>
+
+    <div class="background">
+
+        <a href="#" onclick="document.getElementById('generale').style.display='block';document.getElementById('preadmitere').style.display='none'; document.getElementById('licenta').style.display='none'; document.getElementById('master').style.display='none'">; <h1 style="text-align:center; color:#3488CB">&#206;ntreb&#259;ri frecvente</h1></a>
+        <center>
+            <a href="#" onclick="document.getElementById('preadmitere').style.display='block';document.getElementById('generale').style.display='none'; document.getElementById('licenta').style.display='none'; document.getElementById('master').style.display='none'" ; class="myButton">Preadmitere</a>
+            <a href="#" onclick="document.getElementById('licenta').style.display='block';document.getElementById('generale').style.display='none'; document.getElementById('preadmitere').style.display='none'; document.getElementById('master').style.display='none'" ; class="myButton">Licența</a>
+            <a href="#" onclick="document.getElementById('master').style.display='block';document.getElementById('generale').style.display='none'; document.getElementById('preadmitere').style.display='none'; document.getElementById('licenta').style.display='none'" ; class="myButton">Master</a>
+
+
+        </center>
+
+        <div id="generale">
+            <div class="container" style="max-width:60%">
+
+                <div class=" col-lg-offset-1">
+                    <br />
+                    <h3> <img src="imagini/question1.png" width="50" height="40" alt="lab1" align="middle"> Procesul aplicarii </h3>
+
+                   
+
+                    <p data-toggle="collapse" data-target="#demo1"> <img src="imagini/question0.png" width="25" height="25"> Care sunt cele mai importante informații pe care trebuie să le dețin înainte de înscriere?</p>
+
+                    <div id="demo1" class="collapse">
+                        <textarea disabled rows="7" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                            Un candidat poate beneficia o singură dată de un loc subvenţionat de la buget.
+                            Candidaţii absolvenţi ai unei facultăţi de stat pot fi admişi numai pe locurile cu taxă.
+                            Candidaţii care au urmat o altă facultate au obligaţia să declare acest lucru, precum şi perioada în care au studiat.
+                        
+                            Secretariatul facultăţii primeşte dosarele întocmite de candidaţi, personal, efectuează înscrierea si eliberează legitimaţiile
+                            de concurs numai dacă, după verificarea fiecărui dosar, se constata că dosarele cuprind toate actele solicitate şi cererile-tip
+                            de înscriere sunt completate corect.La examenul de admitere susținut scris sau oral nu există probe eliminatorii.
+                        
+                            Contestațiile se depun la secretariat, în termen de 48 de ore de la afişarea rezultatelor.
+                            Rezultatele la contestaţii se afişează în termen de trei zile de la expirarea termenului de depunere a contestaţiilor.
+                        </textarea>
+                    </div>
+
+
+                    <p data-toggle="collapse" data-target="#demo3"> <img src="imagini/question0.png" width="25" height="25"> Cum se desfășoară un examen scris? </p>
+                    <div id="demo3" class="collapse">
+                        <textarea disabled rows="7" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                            Responsabilul de sală consemnează prezenţa sau absenţa candidaţilor pe tabelul nominal şi îmmânează fiecărui candidat  
+                            câte o coală-tip,indicându-le să completeze citeţ numărul legitimaţiei, numele şi prenumele, precum şi prenumele tatălui, 
+                            pe colţul ce urmează să fie lipit, precum şi celelalte rubrici (facultatea, domeniul, disciplina la care se dă lucrarea).
+                           
+                            Colţul se va lipi numai în momentul predării lucrării finale.  
+             
+                            Pentru elaborarea ciornelor, candidaţii vor primi coli de hârtie distincte, pe care va fi aplicată, în prealabil, ştampila facultăţii.
+                            Din momentul deschiderii plicului cu subiecte, nici un candidat nu mai poate intra în sală şi nici un candidat nu mai poate părăsi  
+                            sala decât dacă predă lucrarea scrisă şi semnează de predarea acesteia.
+                        </textarea>
+                    </div>
+
+                    <p data-toggle="collapse" data-target="#demo2"> <img src="imagini/question0.png" width="25" height="25"> De ce acte am nevoie când mă prezint la examenul de admitere în cazul în care susțin un examen scris?</p>
+                    <div id="demo2" class="collapse">
+                        <textarea disabled rows="7" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                            Accesul candidaţilor în sala de concurs este permis cu maximum o oră înainte de începerea probei.
+
+                            La intrarea candidaţilor în sală, personalul de supraveghere verifică identitatea acestora, pe baza buletinului 
+                            de identitate şi a tabelului nominal cu candidaţii repartizaţi în sala respectivă.
+                      
+                            Actele personale rămân pe masa candidatului pe toată durata desfăşurării probei respective, pentru control.
+                            Candidaţii care nu au asupra lor toate actele necesare nu sunt primiţi în sala de examen.
+                        </textarea>
+                    </div>
+
+
+                   
+
+                    <h3> <img src="imagini/question2.png" width="50" height="50" alt="lab1" align="middle"> Date importante </h3>
+                    <p data-toggle="collapse" data-target="#demo4"> <img src="imagini/question0.png" width="25" height="25"> Care este prima zi în care putem aplica pentru examenul de licenţă?</p>
+                    <div id="demo4" class="collapse">
+                        <textarea disabled rows="3" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                        Perioada de înscriere la examenul de licenţă este: 17-21 Iulie.
+                        </textarea>
+                    </div>
+                    <p data-toggle="collapse" data-target="#demo5"> <img src="imagini/question0.png" width="25" height="25"> Când vom afla rezultatele de la admiterea la master? </p>
+                    <div id="demo5" class="collapse">
+                        <textarea disabled rows="3" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                        Selecţia candidaţilor şi afişarea rezultatelor va fi in perioada: 24-26 iulie
+                       </textarea>
+                    </div>
+                    <h3> <img src="imagini/question3.png" alt="lab1" align="middle"> Taxe </h3>
+
+
+                    <p data-toggle="collapse" data-target="#demo6"> <img src="imagini/question0.png" width="25" height="25"> Cât este taxa de înscriere? </p>
+                    <div id="demo6" class="collapse">
+                        <textarea disabled rows="3" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                        Taxa de înscriere la concursul elevilor: 100 RON
+                        Taxă de înscriere la licenţa: 300 RON
+                        Taxă de înscriere la master: 300 RON
+
+                    </textarea>
+
+                    </div>
+
+                    <p data-toggle="collapse" data-target="#demo7"> <img src="imagini/question0.png" width="25" height="25"> Cât este taxa de şcolarizare? </p>
+                    <div id="demo7" class="collapse">
+                        <textarea disabled rows="3" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                        Taxă de şcolarizare licenţa: 3600 RON
+                        Taxă de şcolarizare master: 3900 RON
+
+                    </textarea>
+
+                    </div>
+
+                   
+
+
+                    </div>
+
+                </div>
             </div>
-            <br /><br /><br />
+        <!--</div>-->
+
+        <div id="preadmitere" class="collapse">
+            <div class="container" style="max-width:60%">
+
+                <div class=" col-lg-offset-1">
+                    <br />
+                    <h3> <img src="imagini/question1.png" width="50" height="40" alt="lab1" align="middle"> Preadmitere </h3>
+
+                    <p data-toggle="collapse" data-target="#demo00"> <img src="imagini/question0.png" width="25" height="25">În ce va consta concursul de preadmitere? </p>
+
+                    <div id="demo00" class="collapse">
+                        <textarea disabled rows="4" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                    
+                        Concursul va consta dintr-un test scris la disciplina Informatică sau Matematică, la alegere.
+                        Materia este aceeaşi ca la concursul de admitere.
+                        Testul va fi susţinut în acelaşi timp cu proba scrisă din cadrul concursului de admitere şi va fi identic în conţinut cu aceasta.
+                        
+                      </textarea>
+                    </div>
 
 
-            <h1 style="text-align:center; color:#3488CB"> Ai  întreb&#259ri?</h1>
-            <h4 style="text-align:center; color:#3488CB">Lasă-ne un mesaj si vei primi răspuns în scurt timp!</h4> <br />
+                    <p data-toggle="collapse" data-target="#demo11"> <img src="imagini/question0.png" width="25" height="25"> Care sunt taxele percepute?</p>
 
-            <div class="container" style="max-width:50%">
+                    <div id="demo11" class="collapse">
+                        <textarea disabled rows="4" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                        Taxa de înscriere la concursul elevilor: 100 RON
+                        Pentru participanţii care se vor înscrie la o ediţie viitoare a concursului de admitere şi vor face uz de nota obţinută acum, 
+                        fără a susţine din nou testul scris, suma de mai sus va fi scăzută din taxa de înscriere la concursul de admitere.
+                        </textarea>
+                    </div>
 
 
-                <form action="mail_handler.php"  action="DespreFII.html" method="post">
+                    <p data-toggle="collapse" data-target="#demo22"> <img src="imagini/question0.png" width="25" height="25">Care sunt actele necesare pentru înscriere?</p>
+                    <div id="demo22" class="collapse">
+                        <textarea disabled rows="4" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                         Actele necesare pentru înscrierea la concursul de preadmitere sunt:
+                         fişa de înscriere
+                         adeverinţă eliberată de liceu, care atestă calitatea de elev
+                         copie după cartea de identitate, care atestă domiciliul în România
+                         certificatul de căsătorie sau documentul care atestă schimbarea numelui, în copie legalizată (dacă este cazul)
+                         chitanţă care dovedeşte plata taxei de înscriere la concursul elevilor
+                         dosar plic
+                        </textarea>
+                    </div>
+
+
+                    <p data-toggle="collapse" data-target="#demo33"> <img src="imagini/question0.png" width="25" height="25"> Cum se va echivala nota de la concurs? </p>
+                    <div id="demo33" class="collapse">
+                        <textarea disabled rows="4" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                        Rezultatele obţinute la concurs de către elevi vor putea fi echivalate cu proba scrisă din cadrul concursurilor de admitere
+                        din anii următori; fiecare candidat va putea face uz de această posibilitate de echivalare într-o singură sesiune de admitere.
+
+                        De asemenea, elevii care se vor clasa pe unul dintre primele 10 locuri la oricare dintre cele două discipline (Matematică, 
+                        respectiv Informatică)  pe listele generale, care includ toţi participanţii (atât de la concursul elevilor, cât şi de la 
+                        concursul de admitere), vor fi declaraţi automat admişi în sesiunea de admitere 2017, cu media 10, fără susţinerea unui nou 
+                        test scris.
+                        </textarea>
+                    </div>
+
+                   
+
+                </div>
+            </div>
+        </div>
+        <div id="licenta" class="collapse">
+            <div class="container" style="max-width:60%">
+
+                <div class=" col-lg-offset-1">
+                    <br />
+                    <h3> <img src="imagini/question1.png" alt="lab1" align="middle"> Licenţă </h3>
+
+                    <p data-toggle="collapse" data-target="#demo000"> <img src="imagini/question0.png" width="25" height="25"> Care sunt actelel necesare pentru înscriere?</p>
+
+                    <div id="demo000" class="collapse">
+                        <textarea disabled rows="7" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                    
+                    Fişa de înscriere;
+                    Trei fotografii tip buletin de identitate;
+                    
+                    Diploma de bacalaureat sau echivalentă cu aceasta, recunoscută de Ministerul Educației (candidaţii care au promovat examenul 
+                    de bacalaureat în sesiunea iunie-iulie 2016 pot prezenta la înscriere, în locul diplomei de bacalaureat, adeverinţa eliberată
+                    de liceu, în care se menţionează atât media generală cât şi notele obţinute la probele susţinute şi notele la disciplinele care 
+                    se iau în calcul la stabilirea mediei); dacă un candidat nu depune la o specializare diploma în original, va depune şi o 
+                    adeverinţă de la facultatea unde are actele în original.
+                    
+                    Certificat de naştere, în copie legalizată;
+                    Buletin/carte de identitate, în copie;
+                    Certificat de căsătorie, în copie legalizată(dacă este cazul);
+                    Adeverinţă medicală tip;
+                    Chitanţă care dovedeşte plata taxei de înscriere sau actele necesare pentru scutirea de plata taxei;
+                    Dosar plic.
+                        
+                      </textarea>
+                    </div>
+
+
+                    <p data-toggle="collapse" data-target="#demo111"> <img src="imagini/question0.png" width="25" height="25"> Există condiţii speciale pentru programul in limba engleză?</p>
+
+                    <div id="demo111" class="collapse">
+                        <textarea disabled rows="3" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                        Pentru programul în limba engleză se va susţine suplimentar un interviu în limba engleză (probă eliminatorie), notat cu admis/respins.
+                        </textarea>
+                    </div>
+
+
+                    <p data-toggle="collapse" data-target="#demo222"> <img src="imagini/question0.png" width="25" height="25"> De ce acte am nevoie la examenul de admitere în cazul în care susțin un examen scris?</p>
+                    <div id="demo222" class="collapse">
+                        <textarea disabled rows="4" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                            Accesul candidaţilor în sala de concurs este permis cu maximum o oră înainte de începerea probei.
+
+                            La intrarea candidaţilor în sală, personalul de supraveghere verifică identitatea acestora, pe baza buletinului 
+                            de identitate şi a tabelului nominal cu candidaţii repartizaţi în sala respectivă.
+                      
+                            Actele personale rămân pe masa candidatului pe toată durata desfăşurării probei respective, pentru control.
+                            Candidaţii care nu au asupra lor toate actele necesare nu sunt primiţi în sala de examen.
+                        </textarea>
+                    </div>
+
+
+                    <p data-toggle="collapse" data-target="#demo333"> <img src="imagini/question0.png" width="25" height="25"> Cum se calculează media de admitere? </p>
+                    <div id="demo333" class="collapse">
+                        <textarea disabled rows="7" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+50% - nota obţinută la testul scris
+25% - maximul dintre nota de la Informatică sau Matematică obţinută la Bacalaureat şi nota la testul scris
+25% - media generală obţinută la Bacalaureat
+
+Participanţii la ediţiile anterioare ale concursului elevilor de liceu pot solicita
+înlocuirea notei la testul scris cu nota obţinută la concursul elevilor de liceu.
+În cazul participanţilor la ediţiile anterioare ale concursului elevilor de liceu
+care doresc să le fie luată în considerare nota obţinută atunci, dar decid şi să susţină testul 
+scris la concursul de admitere din acest an, se va considera cea mai mare dintre cele două note.
+
+Orice candidat se poate înscrie la concursul de admitere, indiferent de probele susţinute la Bacalaureat;
+în cazul în care candidatul nu a susţinut nici o probă la Informatică sau Matematică la Bacalaureat, 
+la al doilea punct de mai sus se va considera automat nota la testul scris.
+Nota obţinută la Informatică sau Matematică la Bacalaureat este luată în considerare indiferent de profilul 
+la care a fost susţinută (nu doar la profilul real).
+
+În caz de egalitate a mediilor generale între doi sau mai mulţi candidaţi, criteriile de departajare sunt 
+următoarele (în ordinea descrescătoare a priorităţii):
+media de admitere, netrunchiată
+nota obţinută la testul scris
+nota de la Informatică sau Matematică obţinută la Bacalaureat
+                        </textarea>
+                    </div>
+
+                    
+                    <p data-toggle="collapse" data-target="#demo444"> <img src="imagini/question0.png" width="25" height="25"> Care este prima zi în care putem aplica?</p>
+                    <div id="demo444" class="collapse">
+                        <textarea disabled rows="3" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                        Perioada de înscriere este: 17-21 Iulie.
+                        </textarea>
+                    </div>
+                    <p data-toggle="collapse" data-target="#demo555"> <img src="imagini/question0.png" width="25" height="25"> Când vom afla rezultatele de la admitere? </p>
+                    <div id="demo555" class="collapse">
+                        <textarea disabled rows="3" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                        Perioada de anunţare a rezultatelor este: 24-26 Iulie.
+                       </textarea>
+                    </div>
+                
+
+
+                    <p data-toggle="collapse" data-target="#demo666"> <img src="imagini/question0.png" width="25" height="25"> Cât este taxa de inscriere? </p>
+                    <div id="demo666" class="collapse">
+                        <textarea disabled rows="3" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                         Taxele sunt:
+                         200 lei pentru un domeniu de studiu
+                         300 lei pentru înscrierea la două domenii de studiu
+</textarea>
+
+                    </div>
+
+                    <p data-toggle="collapse" data-target="#demo777"> <img src="imagini/question0.png" width="25" height="25"> Care sunt criterii de departajare a candidaților cu aceeași medie? </p>
+                    <div id="demo777" class="collapse">
+                        <textarea disabled rows="3" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                            Criterii de departajare a candidaților cu aceeași medie:
+                            1. Media de admitere netrunchiată;
+                            2. Nota la testul scris;  
+                            3. Nota de la bacalaureat la Matematică sau Informatică – cea care intră în calculul mediei de admitere.
+</textarea>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="master" class="collapse">
+            <div class="container" style="max-width:60%">
+
+                <div class=" col-lg-offset-1">
+                    <br />
+                    <h3> <img src="imagini/question1.png" width="50" height="40" alt="lab1" align="middle"> Master </h3>
+
+                    <p data-toggle="collapse" data-target="#demo0000"> <img src="imagini/question0.png" width="25" height="25">Care sunt domeniile de cercetare pe care facultatea de oferă?</p>
+
+                    <div id="demo0000" class="collapse">
+                        <textarea disabled rows="4" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                       Oferta noastră cuprinde atât master profesional cât si de cercetare.
+                       Master profesional în limba engleză, studii la zi:
+                       Ingineria sistemelor software
+                       Lingvistică computaţională
+                       Optimizare computaţională
+                       Securitatea informaţiei
+                       Sisteme distribuite
+                      
+                       Master de cercetare în limba engleză, studii la zi:
+                       Studii avansate în informatică
+                        
+                      </textarea>
+                    </div>
+
+
+                    <p data-toggle="collapse" data-target="#demo1111"> <img src="imagini/question0.png" width="25" height="25"> Cum se calculează  media de admitere?</p>
+
+                    <div id="demo1111" class="collapse">
+                        <textarea disabled rows="4" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                         Media de admitere se calculează astfel: 
+                         60% media examenului de licenţă
+                         40% nota la interviu (în limba de predare a programului)
+                        </textarea>
+                    </div>
+
+
+                    <p data-toggle="collapse" data-target="#demo2222"> <img src="imagini/question0.png" width="25" height="25"> Este nevoie de diplomă de bacalaureat pentru înscrierea  la master? </p>
+                    <div id="demo2222" class="collapse">
+                        <textarea disabled rows="4" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                        Da, atat diploma de bacalaureat cat si diploma de licentă sunt necesare.
+                        Mai exact, lista cu actele necesare este urmatoare:
+                        fişa de înscriere tip;
+
+                        diploma de bacalaureat şi diploma de licenţă (sau echivalentul ei), originale 
+                        sau copii legalizate însoţite de dovada că originalele sunt depuse la altă facultate;
+ 
+                        foaia matricolă din facultate - nivel licenţă (cu media ECTS); aceasta nu este necesară   
+                        în cazul în care media ECTS de nivel licenţă apare în documentele de la punctul anterior;
+                        în cazul candidaţilor care sunt deja studenţi/absolvenţi/exmatriculaţi la studii de master:
+                        adeverinţă din care să rezulte numărul de semestre urmate la buget/taxă, precum și numărul 
+                        de semestre în care a beneficiat de bursă, dacă este cazul;
+
+                        certificatul de naştere, în copie legalizată;
+                        copie simplă carte de identitate;
+                        două fotografii tip buletin; 
+                        chitanţa ce dovedeşte plata taxei de înscriere;
+                        adeverinţă medicală tip;
+                        adeverinţă din care să rezulte calitatea de masterand (pentru masteranzii care urmează o a doua specializare);
+                        certificatul de căsătorie sau documentul care atestă schimbarea numelui, în copie legalizată (dacă este cazul);
+                        dosar plic.
+
+                        </textarea>
+                    </div>
+
+                    <p data-toggle="collapse" data-target="#demo3333"> <img src="imagini/question0.png" width="25" height="25">Câte locuri finanţate de la buget sunt?</p>
+                    <div id="demo3333" class="collapse">
+                        <textarea disabled rows="4" cols="120" style="font-family:Times New Roman;color:#003399;font-size: 13px;">
+                        Numărul locurilor finanţate de la buget este de 100;
+                        </textarea>
+                    </div>
+
+
+                
+
+
+
+                </div>
+            </div>
+        </div>
+        <br /><br /><br />
+
+
+        <h1 style="text-align:center; color:#3488CB"> Ai  întreb&#259ri?</h1>
+        <h4 style="text-align:center; color:#3488CB">Lasă-ne un mesaj si vei primi răspuns în scurt timp!</h4> <br />
+
+        <div class="container" style="max-width:50%">
+
+
+            <form action="mail_handler.php" action="DespreFII.html" method="post">
 
                 <div class="row ">
                     <div class="col-sm-6 form-group">
@@ -223,60 +520,14 @@
                         <a href="DespreFII.html"><input class="btn btn-default pull-right" type="submit" name="submit" value="Submit"></a>
                     </div>
                 </div>
-                
-              </form>
-            </div>
 
-
-
-            <div class="container">
-
-                <div id="myCarousel" class="carousel slide " data-ride="carousel" style="width:1100px;">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                    </ol>
-
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <img src="imagini/laborator1.jpg" alt="laborator1" style="width:100%;">
-                        </div>
-
-                        <div class="item">
-                            <img src="imagini/laborator2.jpg" alt="laborator2" style="width:100%;">
-                        </div>
-
-
-
-                        <div class="item">
-                            <img src="imagini/laborator4.jpg" alt="laborator4" style="width:100%;">
-                        </div>
-
-                        <div class="item">
-                            <img src="imagini/laborator5.jpg" alt="labolator5" style="width:100%;">
-                        </div>
-
-                        <div class="item">
-                            <img src="imagini/laborator6.jpg" alt="labolator6" style="width:100%;">
-                        </div>
-
-                    </div>
-
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
+            </form>
         </div>
+
+
+
+
+    </div>
 		
 		<footer class="footer-distributed">
 
