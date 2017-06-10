@@ -182,7 +182,7 @@
     </div>
 </div>
 
-</br></br>
+<br/><br/>
 <?php
 
     if ( isset($_GET['success']) && $_GET['success'] == 1 )
@@ -615,18 +615,18 @@
         <h3 class="headernou2">Contact</h3>
         <div>
             <i class="fa fa-map-marker" id="bloc1"></i>
-            <div id="bloc2"><p>&nbsp&nbspStrada General Henri Mathias Barthelot 16</p>
+            <div id="bloc2"><p>&nbsp;&nbsp;Strada General Henri Mathias Barthelot 16</p>
                 <p>Iasi, Rom&#226;nia</p></div>
         </div>
 
         <div>
             <i class="fa fa-phone"></i>
-            <p>&nbsp&nbsp0232 201 102</p>
+            <p>&nbsp;&nbsp;0232 201 102</p>
         </div>
 
         <div>
             <i class="fa fa-envelope"></i>
-            <p class="footer-links"><a href="secretariat AT info.uaic.ro">&nbsp&nbspsecretariat AT info.uaic.ro</a></p>
+            <p class="footer-links"><a href="secretariat AT info.uaic.ro">&nbsp;&nbsp;secretariat AT info.uaic.ro</a></p>
         </div>
 
     </div>
@@ -635,16 +635,16 @@
         <h3 class="headernou">Linkuri</h3>
         <div class="footer-links">
             <img class="footer_img grayscale" src="imagini/fii.png" alt="fii "  id="bloc1"/>
-            <a href="https://www.info.uaic.ro/bin/Main/"><p id="bloc2" class="footer-links"> &nbsp&nbspFacultatea de informatic&#259; Iasi<p></a>
+            <a href="https://www.info.uaic.ro/bin/Main/"><p id="bloc2" class="footer-links"> &nbsp;&nbsp;Facultatea de informatic&#259; Iasi<p></a>
         </div>
         <div class="footer-links">
             <img class="footer_img grayscale" src="imagini/logo.png" alt="uaic" id="bloc1" />
-            <a href="http://www.uaic.ro/"><p id="bloc2" > &nbsp&nbspUAIC<p></a>
+            <a href="http://www.uaic.ro/"><p id="bloc2" > &nbsp;&nbsp;UAIC<p></a>
         </div>
 
         <div class="footer-links">
             <img class="footer_img grayscale" src="imagini/facebook-icon.png" alt="fb" id="bloc1" >
-            <a href="https://www.facebook.com/FacultateaDeInformaticaUAICIasi/?fref=ts"><p id="bloc2"> &nbsp&nbspFacebook-ul faculta&#355;ii de informatic&#259;<p></a>
+            <a href="https://www.facebook.com/FacultateaDeInformaticaUAICIasi/?fref=ts"><p id="bloc2"> &nbsp;&nbsp;Facebook-ul faculta&#355;ii de informatic&#259;<p></a>
         </div>
 
 
@@ -656,7 +656,7 @@
 
 
     <hr class="hr_footer">
-    <p class="hr_text">&copy; 2017 Grupa B3 Facultatea de Informatic&#259; Iasi</p>
+        <p class="hr_text">&copy; 2017 Grupa B3 Facultatea de Informatic&#259; Iasi</p>
     </hr>
 </footer>
 </html>
