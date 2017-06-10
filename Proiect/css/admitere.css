@@ -116,3 +116,13 @@ a {
     color: #0052cc;
     font-style: italic;
 }
+ td>a {
+    color: #29a3a3;
+    font-style: italic;
+}
+.buton1 {
+    float: right;
+    position: relative;
+    right: 0px;
+	bottom:20px;
+}
