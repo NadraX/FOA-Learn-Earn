@@ -572,3 +572,8 @@ li.tog2 a:hover, li.tog2 a:focus {
 .container{
     background: #fff;
 }
+
+.btn{
+    background: #3488CB;
+    color: #fff;
+}
