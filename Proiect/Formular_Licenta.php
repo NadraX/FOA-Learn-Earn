@@ -81,7 +81,7 @@
         }
     </style>
 
-    <style type="text/css" id="form-designer-style">
+<style type="text/css" id="form-designer-style">
         /* Injected CSS Code */
     /*PREFERENCES STYLE*/
         .form-all {
@@ -368,13 +368,13 @@
     .checkboxgroup label {
         display:block !important;
     }
-    </style>
+</style>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/buttons/form-submit-button-steel.css?3.3.292"/>
     
     <title>Admitere licen&#355;&#259;</title>
 </head>
-<body>
+<body style="overflow-x:hidden;">
   <div class="mare collapse navbar-collapse navbar nav-group nav-group--consistent">
       <div class="nav navbar-nav bar2">
         <ul style="widht:100%; height:40px; background-color:#3488CB;"></ul>
@@ -419,11 +419,11 @@
 											Admitere licen&#355;&#259;
 										</h1>
 										<div id="subHeader_34" class="form-subHeader">
-										
+										  <br>
 											<p>V&#259; rug&#259;m completa&#355;i toate c&#226;mpurile de mai jos.</p>
-											<p>Pentru completarea notelor se acceptă valori cu virgulă (ex: 9,54)</p>
-											<p>În câmpul "Notă la Matematică sau Informatică" se va pune nota de la Bacalaureat cea mai mare dintre cele doua</p>
-											<p>La uploadarea diplomei şi a certificatului se va încărca un singur pdf: prima pagină certificatul de nastere, a doua pagină diploma de bacalaureat</p>
+											<p>Pentru orice nelămuriri ne puteţi contacta la adresele furnizate în secţiunea "Contact"</p>
+                      <p>Mult Succes!</p>
+                      <br>
 										</div>
 									</div>
 								</div>
@@ -505,7 +505,7 @@
 																																						else		
 																																							echo $v_Chitanta;		
 																																					?>" />		
-                        </span>		                        </span>
+                        </span>
 												<span style="color:red">		
 										<?php		
 											if(isset($_POST['Submit'])) {		
@@ -540,7 +540,7 @@
                         <td>
                           <br>
                           <label class="form-label form-label-left form-label-auto" 
-                          style="color: gray; font-size:medium; width:25%; display:inline-block"> Sunteţi scutit de această taxă?  </label>                        
+                          style="color: gray; font-size:medium; width:45%; display:inline-block"> Sunteţi scutit de această taxă?  </label>                        
                           <span style="width:40%">
                             <input type="radio" name="group1" id="checkbox11" class="css-checkbox" value="1" <?php
 																												if($v_Radio1 == '')		
@@ -574,7 +574,7 @@
 										?>		
 									</span>		
                           <span id="motiv-scutire" class="form-sub-label-container" style="vertical-align:top; width: 49%; margin-right: 5px;">
-                              <label class="form-sub-label"  id="sublabel_last" style="min-height:13px;"> Dacă da, motivul scutirii <span class="info-box">!<span class="info-box__content">Sunteți scutit de taxa de admitere în cazuri precum "copil de cadru de didactic"</span></span></label>
+                              <label class="form-sub-label"  id="sublabel_last" style="min-height:13px;"> Dacă da, motivul scutirii <span class="info-box">?<span class="info-box__content">Sunteți scutit de taxa de admitere în cazuri precum "copil de cadru de didactic"</span></span></label>
                               <input type="text" name="Licenta_Motiv_Scutire_taxa" class="form-textbox last_1" size="15" placeholder="ex: Fiu de cadru didactic" data-component="last" value="<?php
 																																						if($v_Scutire == '')
 																																							echo '';
@@ -614,11 +614,11 @@
                 <div  class="form-input jf-required cid_1">
 									<div class="general_name" data-wrapper-react="true">
                     <span id="num2" class="form-sub-label-container" style="vertical-align:top;">
-                      <label class="form-sub-label sublabel_first" style="min-height:13px;"> Numele de familie la naştere <span class="info-box">!<span class="info-box__content">Numele de familie din certificatul de naştere</span></span> </label>
+                      <label class="form-sub-label sublabel_first" style="min-height:13px;"> Numele de familie la naştere <span class="info-box">?<span class="info-box__content">Numele de familie din certificatul de naştere</span></span> </label>
                       <input type="text" name="Licenta_Numele_De_Familie_La_nastere" class="form-textbox first_1" size="10" placeholder="ex: Ionescu" value="<?php echo $_POST["Licenta_Numele_De_Familie_La_nastere"];?>" data-component="first" />
                     </span>
 										<span id="num" class="form-sub-label-container" style="vertical-align:top;"> 
-                      <label class="form-sub-label sublabel_first" style="min-height:13px;"> Numele de familie actual<span class="info-box">!<span class="info-box__content">Numele dupa căsătorie, înfiere, 
+                      <label class="form-sub-label sublabel_first" style="min-height:13px;"> Numele de familie actual<span class="info-box">?<span class="info-box__content">Numele dupa căsătorie, înfiere, 
                         modificare la cerere conform actului doveditor daca este cazul</span></span> 
                       </label> 
 											<input type="text" name="Licenta_Numele_De_Familie" class="form-textbox first_1" size="10" placeholder="ex: Ionescu" data-component="first" value="<?php 
@@ -1032,7 +1032,7 @@
 										</span>
 										<span  class="form-sub-label-container" style="vertical-align:top; width:9%;padding:0;margin:0;">
                       <label class="form-sub-label sublabel_first"  style="min-height:13px;"> Numar Buletin </label>
-											<input type="text"  name="Licenta_Numar_Buletin" class="form-textbox first_1" size="20" placeholder="ex: 123456" data-component="first" value="<?php 
+											<input type="number"  name="Licenta_Numar_Buletin" class="form-textbox first_1" size="20" placeholder="ex: 123456" data-component="first" value="<?php 
 																																																if($v_Licenta_Numar_Buletin == '') 
 																																																	echo '';
 																																																else
@@ -1049,7 +1049,7 @@
 												?>
 											</span>
 										</span>
-										<span  class="form-sub-label-container" style="vertical-align:top; width:10%;padding:0;margin:0;">
+										<span  class="form-sub-label-container" style="vertical-align:top; width:9%;padding:0;margin:0;">
                       <label class="form-sub-label sublabel_first"  style="min-height:13px;"> Eliberat de </label>
 											<input type="text"  name="Licenta_Buletin_Eliberat_De" class="form-textbox first_1" size="20" placeholder="ex: SPCLEP IA&#350;I" data-component="first"  value="<?php 
 																																																				if($v_Licenta_Buletin_Eliberat_De == '') 
@@ -1180,7 +1180,7 @@
                       <div data-wrapper-react="true">
                         <span class="form-sub-label-container" style="vertical-align:top; ">
                           <label class="form-sub-label"  style="min-height:13px;">Data Expirare</label>
-                          <select style="height:40px;" name="Licenta_Buletin_Luna"  class="form-dropdown" data-component="birthdate-month">
+                          <select style="height:40px;" name="Master_Buletin_Luna"  class="form-dropdown" data-component="birthdate-month">
                               <option value="January" <?php
                                             if($v_Master_luna=="January")
                                               echo 'selected';
@@ -1257,7 +1257,7 @@
                           </select>
                         </span>
                         <span class="form-sub-label-container" style="vertical-align:bottom;">
-                          <select style="height:40px;" name="Licenta_Buletin_Ziua"  class="form-dropdown" data-component="birthdate-day">
+                          <select style="height:40px;" name="Master_Buletin_Ziua"  class="form-dropdown" data-component="birthdate-day">
                             <?php
                             for($i=1;$i<=31;$i++)
                             {
@@ -1270,7 +1270,7 @@
                           </select>
                         </span>
                         <span class="form-sub-label-container" style="vertical-align:bottom;">
-                          <select style="height:40px;" name="Licenta_Buletin_An"  class="form-dropdown" data-component="birthdate-year">
+                          <select style="height:40px;" name="Master_Buletin_An"  class="form-dropdown" data-component="birthdate-year">
                           <?php
                             for($i=2017;$i>=1920;$i--)
                             {
@@ -1531,6 +1531,7 @@
                 </div>
                 <div data-wrapper-react="true" style="width:50%; display:inline-block;">
                     <span class="form-sub-label-container" style="vertical-align:top; width:100%" >
+                      <label class="form-sub-label" for="input_6_phone"  style="min-height:13px;"> Num&#259;r de telefon </label>
                       <input type="tel" id="input_6_phone" name="Licenta_Telefon" class="form-textbox" size="20" placeholder="ex: 0751404400"  data-component="phone"  style="width:100%; height:40px" value="<?php 
                                                                                                                     if($v_Licenta_Telefon == '') 
                                                                                                                       echo '';
@@ -1548,11 +1549,11 @@
                           }
                         ?>
                       </span>
-                      <label class="form-sub-label" for="input_6_phone"  style="min-height:13px;"> Num&#259;r de telefon </label>
                     </span>
                 </div>
                 <div data-wrapper-react="true" style="width:49%; display:inline-block;">
                     <span class="form-sub-label-container" style="vertical-align:top; width:100%">
+                     <label class="form-sub-label" for="input_6_phone"  style="min-height:13px;"> E-mail </label>
                       <input type="email" id="input_9" name="Licenta_Email" class="form-textbox validate[Email]" size="30" placeholder="ex: adresamea@yahoo.com" data-component="email" style="width:100%;height:40px" value="<?php 
                                                                                                                             if($v_Licenta_Email == '') 
                                                                                                                               echo '';
@@ -1570,7 +1571,6 @@
                           }
                         ?>
                       </span>
-                      <label class="form-sub-label" for="input_6_phone"  style="min-height:13px;"> E-mail </label>
                     </span>
                 </div>
                 <br>
@@ -8011,7 +8011,7 @@
                           </span>
                           <span class="form-sub-label-container" style="vertical-align:top; width:25%">
                             <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Anul absolvirii </label>
-                            <input type="number"  name="Licenta_An_Liceu" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" />
+                            <input type="number"  name="Licenta_An_Liceu" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2016" data-component="city" />
 
                           </span>
                           <span class="form-sub-label-container" style="vertical-align:top; width:25%">
@@ -8036,18 +8036,18 @@
                     <tbody>
                       <tr>
                         <td>
-                          <span class="form-sub-label-container" style="vertical-align:top; width:25%; display:inline-block" >
+                          <span class="form-sub-label-container" style="vertical-align:top; width:20%; display:inline-block" >
                             <label class="form-sub-label" style="min-height:13px;"> Seria diplomei de Bacalaureat </label>
-                            <input type="text"  name="Licenta_Serie_DiplomaBAC" class="form-textbox form-address-city first_1" size="21" placeholder="ex: Mate - Info" data-component="city" />
+                            <input type="text"  name="Licenta_Serie_DiplomaBAC" class="form-textbox form-address-city first_1" size="21" placeholder="ex: A" data-component="city" />
                           </span>
                           <span class="form-sub-label-container" style="vertical-align:top; width:14%">
                             <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Numarul dimplomei </label>
-                            <input type="number"  name="Licenta_Nr_DiplomaBAC" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" />
+                            <input type="number"  name="Licenta_Nr_DiplomaBAC" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2742987" data-component="city" />
 
                           </span>
-                          <span class="form-sub-label-container" style="vertical-align:top; width:22%">
+                          <span class="form-sub-label-container" style="vertical-align:top; width:27%">
                             <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Emisă de </label>
-                            <input type="text"  name="Licenta_Emitere_DiplomaBAC" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" />
+                            <input type="text"  name="Licenta_Emitere_DiplomaBAC" class="form-textbox form-address-city first_1" size="21" placeholder="ex: " data-component="city" />
 
                           </span>
                           <span>
@@ -8103,7 +8103,7 @@
                           </span>
                           <span class="form-sub-label-container" style="vertical-align:top; width:15%">
                             <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Numarul Foaie Matricolă </label>
-                            <input type="number"  name="Licenta_Nr_FoaieMatricola" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" />
+                            <input type="number"  name="Licenta_Nr_FoaieMatricola" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 461596" data-component="city" />
 
                           </span>
                         </td>
@@ -8122,11 +8122,11 @@
                         <td>
                           <span class="form-sub-label-container" style="vertical-align:top; width:50%; display:inline-block" >
                             <label class="form-sub-label" style="min-height:13px;"> Nr. actului de de recunoaştere/echivalare (eliberat de DPIRP/CNRED) </label>
-                            <input type="number"  name="Licenta_Nr_ActRecunoastere" class="form-textbox form-address-city first_1" size="21" placeholder="ex: Mate - Info" data-component="city" />
+                            <input type="number"  name="Licenta_Nr_ActRecunoastere" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 529845" data-component="city" />
                           </span>
                           <span class="form-sub-label-container" style="vertical-align:top; width:15%">
                             <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Seria </label>
-                            <input type="text"  name="Licenta_Serie_ActRecunoastere" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" />
+                            <input type="text"  name="Licenta_Serie_ActRecunoastere" class="form-textbox form-address-city first_1" size="21" placeholder="ex: B" data-component="city" />
                           </span>
                           
                           <span>
@@ -8233,12 +8233,12 @@
                             </span>
                             <span class="form-sub-label-container" style="vertical-align:top; width:35%">
                               <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Program de studii/specializare </label>
-                              <input type="number"  name="Licenta_Specializare" class="form-textbox form-address-city first_1" size="21" placeholder="" data-component="city" />
+                              <input type="text"  name="Licenta_Specializare" class="form-textbox form-address-city first_1" size="21" placeholder="" data-component="city" />
 
                             </span>
                             <span class="form-sub-label-container" style="vertical-align:top; width:12%">
                               <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> An </label>
-                              <input type="number"  name="Licenta_An_Facultate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" />
+                              <input type="number"  name="Licenta_An_Facultate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2016" data-component="city" />
 
                             </span>
                             <span class="form-sub-label-container" style="vertical-align:top; width:15%">
@@ -8371,7 +8371,7 @@
                             </span>
                             <span class="form-sub-label-container" style="vertical-align:top; width:12%">
                               <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Titlu obţinut </label>
-                              <input type="text"  name="Licenta_AbsolventLicenta_An_Facultate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" />
+                              <input type="text"  name="Licenta_AbsolventLicenta_An_Facultate" class="form-textbox form-address-city first_1" size="21" placeholder="" data-component="city" />
 
                             </span>
                             <span class="form-sub-label-container" style="vertical-align:top; width:15%">
@@ -8386,7 +8386,7 @@
                             </span>
                             <span class="form-sub-label-container" style="vertical-align:top; width:12%">
                               <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Ani Studii </label>
-                              <input type="text"  name="Licenta_AbsolventLicenta_Durata_Studii" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4"  />
+                              <input type="text"  name="Licenta_AbsolventLicenta_Durata_Studii" class="form-textbox form-address-city first_1" size="21" placeholder=""  />
 
                             </span>
                           </td>
@@ -8666,7 +8666,7 @@
 
                 </div>
                 <br>
-								<div  class="form-input jf-required cid_1" >
+								<div  class="form-input jf-required cid_1" style="padding-bottom: 5%">
                     <br>
 										<div data-wrapper-react="true" class="mg">
 											<span class="form-sub-label-container" style="vertical-align:top; width:100%" >
@@ -8732,7 +8732,7 @@
 										<div data-wrapper-react="true" class="mg">
 											<span class="form-sub-label-container gen" style="vertical-align:top;">
                         <label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Doresc s&#259; dau admitere la obiectul</label>
-												<select class="form-dropdown form-address-country middle_1" name="Licenta_Obiect_Test_Ales"  data-component="country">
+												<select class="form-dropdown form-address-country gen" name="Licenta_Obiect_Test_Ales"  data-component="country">
                           <option value="Alege optiune"></option> 
 													<option value="Matematica"<?php
 																					if($v_Licenta_Obiect=="Matematica")
@@ -8966,7 +8966,9 @@
 
                         <li>diploma de bacalaureat sau echivalentă cu aceasta, recunoscută de M.E.N.</li>
 
-                        <li>candidaţii care au promovat examenul de bacalaureat în sesiunea iunie-iulie 2016 pot prezenta la înscriere, în locul diplomei de bacalaureat, adeverinţa eliberată <br> de liceu, în care se menţionează atât media generală, cât şi notele obţinute la probele susţinute şi notele la disciplinele care se iau în calcul la stabilirea mediei</li>
+                        <li>candidaţii care au promovat examenul de bacalaureat în sesiunea iunie-iulie 2016 pot prezenta la înscriere, în locul diplomei de bacalaureat, <br>
+                          adeverinţa eliberată de liceu, în care se menţionează atât media generală, cât şi notele obţinute la probele susţinute şi notele la disciplinele <br>
+                           care se iau în calcul la stabilirea mediei</li>
 
                         <li>dacă un candidat nu depune la o specializare diploma în original, va depune şi o adeverinţă de la facultatea unde are actele în original</li>
 
@@ -8982,7 +8984,7 @@
                         <li>dosar plic</li>
                         </ul>
 
-                        <p>Candidaţii cetăţeni români cu domiciliul în România, dar cu studii efectuate în străinătate (inclusiv Republica Moldova) vor prezenta la înscriere diploma de bacalaureat <br>
+                        <p>Candidaţii cetăţeni români cu domiciliul în România, dar cu studii efectuate în străinătate (inclusiv Republica Moldova) vor prezenta la înscriere <br> diploma  de bacalaureat 
                           echivalată de către Ministerul Educaţiei Naţionale
                         (CNRED).</p>
 
@@ -8996,10 +8998,11 @@
 
                             <li>adeverinţă de la facultatea urmată, care să ateste numărul de semestre finanţate de la buget de care au beneficiat
 
-                            <li>Întrucât candidaţii au dreptul de a se prezenta concomitent la două sau mai multe domenii, în vederea admiterii în învăţământul superior, dosarul cu actele originale <br>
-                              se depune la prima opţiune. Înscrierea pentru celelalte domenii se face pe baza documentelor mai sus menţionate, prezentate în copie (pentru domeniile din Universitatea <br>
-                              „Alexandru Ioan Cuza” Iaşi) sau în copie legalizată (pentru domeniile altor instituţii în afara Universităţii „Alexandru Ioan Cuza” Iaşi), la care se adaugă o adeverinţă <br>
-                               de înscriere de la facultatea unde s-a depus dosarul cu actele originale. Indiferent dacă Facultatea de Informatică reprezintă sau nu prima opţiune, testul scris este <br>
+                            <li>Întrucât candidaţii au dreptul de a se prezenta concomitent la două sau mai multe domenii, în vederea admiterii în învăţământul superior, <br>
+                              dosarul cu actele originale se depune la prima opţiune. Înscrierea pentru celelalte domenii se face pe baza documentelor mai sus menţionate, <br> 
+                              prezentate în copie (pentru domeniile din Universitatea „Alexandru Ioan Cuza” Iaşi) sau în copie legalizată (pentru domeniile altor instituţii <br> 
+                              în afara Universităţii „Alexandru Ioan Cuza” Iaşi), la care se adaugă o adeverinţă de înscriere de la facultatea unde s-a depus dosarul cu actele <br>
+                              originale. Indiferent dacă Facultatea de Informatică reprezintă sau nu prima opţiune, testul scris este <br>
                                obligatoriu pentru toţi candidaţii.</li>
                             
                         </ul>
@@ -9023,7 +9026,7 @@
                     <label for="Site_Admitere" class="css-label2">Site-ul dedicat admiterii (admitere.uaic.ro) </label></li>
                   <li><input type="checkbox" name="Site_Facultate" class="css-checkbox" value="" id="Site_Facultate" />
                     <label for="Site_Facultate" class="css-label2">Site-ul Faculăţii</label></li>
-                  <li><input type="checkbox" name="Brosura_Admitere" class="css-checkbox" value="" id="Borsura_Admitere" />
+                  <li><input type="checkbox" name="Brosura_Admitere" class="css-checkbox" value="" id="Brosura_Admitere" />
                     <label for="Brosura_Admitere" class="css-label2">Broşură sau pliant despre admitere</label></li>
                   <li><input type="checkbox" name="FB_Univ" class="css-checkbox" value="" id="FB_Univ" />
                     <label for="FB_Univ" class="css-label2">Pagina de Facebook a Universităţii</label></li>
@@ -9228,19 +9231,19 @@
 
 
               <li class="form-line" data-type="control_cazare" id="id_13">
-                <label class="form-label form-label-left form-label-auto" style="color: #3488CB; font-size:large"> VIII. Declar pe propria răspundere, cunoscând consecinţele administrative şi juridice ale declaraţiilor inexacte/ false, că datele furnizate în această fişă sunt conforme cu realitatea şi că am luat cunoştinţă prevederile metodologiei de admitere.
-                <br><br>IX. Datele declarate de Dumneavoastră sunt prelucrate de Universitatea „Alexandru Ioan Cuza” din Iaşi, în conformitate cu prevederile Legii 677/2001, privind protecţia persoanelor cu privire la prelucrarea datelor cu caracter personal şi libera circulaţie a acestor date, modificată şi completată. </label>                
+                <label class="form-label form-label-left form-label-auto" style="color: #3488CB; font-size:large"> IX. Declar pe propria răspundere, cunoscând consecinţele administrative şi juridice ale declaraţiilor inexacte/ false, că datele furnizate în această fişă sunt conforme cu realitatea şi că am luat cunoştinţă prevederile metodologiei de admitere.
+                <br><br>X. Datele declarate de Dumneavoastră sunt prelucrate de Universitatea „Alexandru Ioan Cuza” din Iaşi, în conformitate cu prevederile Legii 677/2001, privind protecţia persoanelor cu privire la prelucrarea datelor cu caracter personal şi libera circulaţie a acestor date, modificată şi completată. </label>                
                 <br>                
               </li>
           
               
-              <li>
+              <li class="form-line" >
 									<div data-wrapper-react="true">
 										<span class="form-sub-label-container" style="vertical-align:top;">
-											<label class="form-label form-label-left form-label-auto" id="label_9" for="input_9" style="color: #3488CB; font-size:large">VIII. Uploadare diplome, certificate (format pdf)</label>
+											<label class="form-label form-label-left form-label-auto" id="label_9" for="input_9" style="color: #3488CB; font-size:large">XI. Uploadare diplome, certificate (format pdf)</label>
 											<object data="YourFile.pdf" type="application/x-pdf" title="SamplePdf" width="500" height="320" style="font-size:30px" >
-										   
-                                                <input type="file" name="fileToUpload" id="fileToUpload">
+										  <img src="imagini/upload.png" style="height:50px; width:50px; display:inline-block" alt="upload" />
+                        <input type="file" name="fileToUpload" id="fileToUpload" style="display:inline-block;">
 												<?php
                                                     if(isset($_POST["fileToUpload"])) {
                                                         
