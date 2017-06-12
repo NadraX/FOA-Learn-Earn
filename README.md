@@ -22,4 +22,4 @@ Aplicația de admitere a Facultății de Informatică, Iași realizată pentru p
 
 Le mulțumim și celorlalți membri ai grupei care au ajutat la crearea proiectului!
 
-![Banner](http://imgur.com/r5HjrYC)
+![Banner](http://i.imgur.com/r5HjrYC.jpg)
