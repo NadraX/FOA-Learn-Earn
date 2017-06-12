@@ -583,7 +583,27 @@
                     </tbody>
 
                 </table>
-            </div>
+                </div>
+
+                <!--modificat pe 10.06.2017 -->
+                
+                <div class="col-md-3">
+                <button class="btn" type="button" name="Formulare nevalidate" value="" >
+                    Formulare nevalidate
+                </button>
+                </div>
+
+                <div class="col-md-3">
+                <button class="btn" type="button" name="Formulare validate" value="" >
+                    Formulare validate
+                </button>
+                </div>
+
+                <div class="col-md-3">
+                <button class="btn" type="button" name="Formulare respinse" value="" >
+                    Formulare respinse
+                </button>
+                </div>
 
 
 
