@@ -21,3 +21,5 @@ Aplicația de admitere a Facultății de Informatică, Iași realizată pentru p
 * Pintilie Andrei [GitHub](https://github.com/AndreiPi)
 
 Le mulțumim și celorlalți membri ai grupei care au ajutat la crearea proiectului!
+
+![Banner](http://imgur.com/r5HjrYC)
