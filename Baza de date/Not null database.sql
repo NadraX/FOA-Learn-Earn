@@ -289,11 +289,11 @@ CREATE TABLE Date_preg_anterioara_master (
     in_curs_tara_master varchar2(35)  NULL,
     in_curs_localitate_master varchar2(35)  NULL,
     in_curs_judet_master varchar2(35)  NULL,
-    in_curs_denumire_institutie_master varchar2(35)  NULL,
-    in_curs_denumire_facultate_master varchar2(35)  NULL,
-    in_curs_denumire_domeniu_master varchar2(35)  NULL,
+    in_curs_denum_instit_master varchar2(35)  NULL,
+    in_curs_denum_facultate_master varchar2(35)  NULL,
+    in_curs_denum_domeniu_master varchar2(35)  NULL,
     in_curs_specializare_master varchar2(35)  NULL,
-    in_curs_forma_invatamant_master varchar2(5)  NULL,
+    in_curs_forma_invat_master varchar2(5)  NULL,
     in_curs_an_master number(1,0)  NULL,
     in_curs_nr_sem_buget_master number(2,0)  NULL,
     in_curs_nr_sem_bursa_master number(2,0)  NULL,
@@ -369,12 +369,12 @@ CREATE TABLE Informatii_documente_master (
     formular_id integer  NOT NULL,
     diploma_bac_original number(1,0)  NOT NULL,
     diploma_bac_copie number(1,0)  NOT NULL,
-    document_echiv_preuniv_original number(1,0)  NOT NULL,
-    document_echiv_preuniv_copie number(1,0)  NOT NULL,
+    doc_echiv_preuniv_original number(1,0)  NOT NULL,
+    doc_echiv_preuniv_copie number(1,0)  NOT NULL,
     diploma_licenta_original number(1,0)  NOT NULL,
     diploma_licenta_copie number(1,0)  NOT NULL,
-    diploma_echiv_licenta_original number(1,0)  NOT NULL,
-    diploma_echiv_licenta_copie number(1,0)  NOT NULL,
+    dipl_echiv_licenta_original number(1,0)  NOT NULL,
+    dipl_echiv_licenta_copie number(1,0)  NOT NULL,
     particip_altundeva number(1,0)  NOT NULL
 ) ;
 
@@ -410,7 +410,7 @@ ALTER TABLE Cerinte_licenta ADD CONSTRAINT Cerinte_Formular
     REFERENCES Formular_licenta (id);
 
 -- Reference: Cerinte_facultate_master_Formular_master (table: Cerinte_master)
-ALTER TABLE Cerinte_master ADD CONSTRAINT Cerinte_facultate_master_Formular_master
+ALTER TABLE Cerinte_master ADD CONSTRAINT Cerinte_fac_master_Formular
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
@@ -425,12 +425,12 @@ ALTER TABLE Chestionar_master ADD CONSTRAINT Chestionar_Formular_master
     REFERENCES Formular_master (id);
 
 -- Reference: Copy_of_Date_personale_Formular (table: Date_personale_master)
-ALTER TABLE Date_personale_master ADD CONSTRAINT Copy_of_Date_personale_Formular
+ALTER TABLE Date_personale_master ADD CONSTRAINT Copy_of_Date_pers_Formular
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
 -- Reference: Copy_of_Date_preg_anterioara_Formular (table: Date_preg_anterioara_master)
-ALTER TABLE Date_preg_anterioara_master ADD CONSTRAINT Copy_of_Date_preg_anterioara_Formular
+ALTER TABLE Date_preg_anterioara_master ADD CONSTRAINT Copy_of_Date_preg_ant_Formular
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
@@ -440,7 +440,7 @@ ALTER TABLE Date_personale_licenta ADD CONSTRAINT Date_personale_Formular
     REFERENCES Formular_licenta (id);
 
 -- Reference: Date_personale_preadmitere_Formular_preadmitere (table: Date_personale_preadmitere)
-ALTER TABLE Date_personale_preadmitere ADD CONSTRAINT Date_personale_preadmitere_Formular_preadmitere
+ALTER TABLE Date_personale_preadmitere ADD CONSTRAINT Date_pers_preadmit_Formular
     FOREIGN KEY (Formular_preadmitere_id)
     REFERENCES Formular_preadmitere (id);
 
@@ -455,7 +455,7 @@ ALTER TABLE Informatii_documente_licenta ADD CONSTRAINT Informatii_documente_For
     REFERENCES Formular_licenta (id);
 
 -- Reference: Informatii_documente_Formular_master (table: Informatii_documente_master)
-ALTER TABLE Informatii_documente_master ADD CONSTRAINT Informatii_documente_Formular_master
+ALTER TABLE Informatii_documente_master ADD CONSTRAINT Info_doc_Formular_master
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
@@ -465,7 +465,7 @@ ALTER TABLE Optiuni_licenta ADD CONSTRAINT Optiuni_Formular
     REFERENCES Formular_licenta (id);
 
 -- Reference: Ordine_preferinte_Formular_master (table: Ordine_preferinte_master)
-ALTER TABLE Ordine_preferinte_master ADD CONSTRAINT Ordine_preferinte_Formular_master
+ALTER TABLE Ordine_preferinte_master ADD CONSTRAINT Ordine_pref_Formular_master
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
