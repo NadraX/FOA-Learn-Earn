@@ -302,7 +302,6 @@ CREATE TABLE Date_preg_anterioara_master (
     absolvent_judet varchar2(35)  NULL,
     absolvent_denumire_instit varchar2(35)  NULL,
     absolvent_denumire_facult varchar2(35)  NULL,
-    absolvent_facultate varchar2(35)  NULL,
     absolvent_domeniu varchar2(35)  NULL,
     absolvent_specializare varchar2(35)  NULL,
     absolvent_forma_invat varchar2(5)  NULL,
