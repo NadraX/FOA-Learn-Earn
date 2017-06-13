@@ -393,7 +393,7 @@
 
 		  </div>      
 
-		  <a href="https://www.info.uaic.ro/bin/Main/" >
+		  <a href="DespreFII.html" >
 
 			<img id="no-scroll" class="sigla" src="imagini/sigla2.png" alt="sigla" />
 
