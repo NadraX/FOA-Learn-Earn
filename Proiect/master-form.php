@@ -549,7 +549,6 @@
 			                    <tbody>
 			                      <tr>
 			                         <span id="chitanta" class="form-sub-label-container" style="vertical-align:top; width: 80%; margin-right: 5px;">
-                                  <label class="form-sub-label sublabel_first" style="min-height:13px;"> Chitanța   nr. </label>
 			                            <input type="number"  name="Master_Chitanta_nr" class="form-textbox first_1" placeholder="ex:2643" size="10" data-component="first" value="<?php 
 																																												if($v_Chitanta == '')		
 																																													echo '';		
@@ -557,45 +556,46 @@
 																																													echo $v_Chitanta;		
 																																											?>" />
 										
-              										<span style="color:red">		
-              											<?php		
-              												if(isset($_POST['Submit'])) {		
-              												$v_Chitanta = $_POST["Master_Chitanta_nr"];		
-              												$vChitanta = validChitanta($v_Chitanta);		
-              												if($vChitanta==0)		
-              													echo "C&#226;mp invalid!";		
-              												}		
-              											?>		
-              										</span>
+										<span style="color:red">		
+											<?php		
+												if(isset($_POST['Submit'])) {		
+												$v_Chitanta = $_POST["Master_Chitanta_nr"];		
+												$vChitanta = validChitanta($v_Chitanta);		
+												if($vChitanta==0)		
+													echo "C&#226;mp invalid!";		
+												}		
+											?>		
+										</span>
 										
+			                            <label class="form-sub-label sublabel_first" style="min-height:13px;"> Chitanța   nr. </label>
 			                        </span>
 			                        <span id="suma" class="form-sub-label-container" style="vertical-align:top; width: 18%; margin-right: 5px;">
-                                <label class="form-sub-label"  style="min-height:13px;"> Suma achitată (RON) </label>
-										            <input type="number" name="Master_Suma_Taxa" class="form-textbox middle_1" placeholder="ex: 250" size="10" data-component="middle" value="<?php
+										<input type="number" name="Master_Suma_Taxa" class="form-textbox middle_1" placeholder="ex: 250" size="10" data-component="middle" value="<?php
 																																																if($v_Suma_Taxa == '')		
 																																																	echo '';		
 																																																else		
 																																																	echo $v_Suma_Taxa;		
 																																															?>" />
 
-              										<span style="color:red">		
-              											<?php		
-              												if(isset($_POST['Submit'])) {		
-              												$v_Suma_Taxa = $_POST["Master_Suma_Taxa"];		
-              												$vsuma = validSuma($v_Suma_Taxa);		
-              												if($vsuma==0)		
-              													echo "C&#226;mp invalid!";		
-              												}		
-              											?>		
-              										</span>
+										<span style="color:red">		
+											<?php		
+												if(isset($_POST['Submit'])) {		
+												$v_Suma_Taxa = $_POST["Master_Suma_Taxa"];		
+												$vsuma = validSuma($v_Suma_Taxa);		
+												if($vsuma==0)		
+													echo "C&#226;mp invalid!";		
+												}		
+											?>		
+										</span>
 										
+										<label class="form-sub-label"  style="min-height:13px;"> Suma achitată (RON) </label>
 			                        </span>
 			                      </tr>
 			                      <tr>
 			                        <td>
 			                          <br>
 			                          <label class="form-label form-label-left form-label-auto" 
-			                          style="color: gray; font-size:medium; width:45%; display:inline-block"> Sunteţi scutit de această taxă?  </label>                        
+			                          style="color: gray; font-size:medium; width:25%; display:inline-block"> Sunteţi scutit de această taxă?  </label>                        
 			                          <span style="width:40%">
 			                            <input type="radio" name="group1" id="checkbox11" class="css-checkbox" value="1" <?php
 																															if($v_Radio1 == '')		
@@ -629,7 +629,6 @@
 										</span>
 			                          </span>
 			                          <span id="motiv-scutire" class="form-sub-label-container" style="vertical-align:top; width: 49%; margin-right: 5px;">
-                                    <label class="form-sub-label"  id="sublabel_last" style="min-height:13px;"> Dacă da, motivul scutirii <span class="info-box">?<span class="info-box__content">Sunteți scutit de taxa de admitere în cazuri precum "copil de cadru de didactic"</span></span> </label>
 			                              <input type="text" name="Master_Motiv_Scutire_taxa" class="form-textbox last_1" size="15" placeholder="ex: Fiu de Parlamentar"  data-component="last"  value="<?php 
 																																																			if($v_Scutire == '')		
 																																																				echo '';		
@@ -646,6 +645,7 @@
 													}		
 												?>		
 											</span>
+			                              <label class="form-sub-label"  id="sublabel_last" style="min-height:13px;"> Dacă da, motivul scutirii <span class="info-box">!<span class="info-box__content">Sunteți scutit de taxa de admitere în cazuri precum "copil de cadru de didactic"</span></span> </label>
 			                          </span>
 			                        </td>
 			                      </tr>
@@ -1683,7 +1683,6 @@
 				                </div>
 				                <div data-wrapper-react="true" style="width:50%; display:inline-block;">
 				                    <span class="form-sub-label-container" style="vertical-align:top; width:100%" >
-                              <label class="form-sub-label" for="input_6_phone"  style="min-height:13px;"> Num&#259;r de telefon </label>
 				                      <input type="tel" id="input_6_phone" name="Master_Telefon" class="form-textbox" size="20" placeholder="ex: 0751404400"  data-component="phone"  style="width:100%; height:40px" value="<?php 
 				                                                                                                                    if($v_Licenta_Telefon == '') 
 				                                                                                                                      echo '';
@@ -1701,11 +1700,11 @@
 				                          }
 				                        ?>
 				                      </span>
+				                      <label class="form-sub-label" for="input_6_phone"  style="min-height:13px;"> Num&#259;r de telefon </label>
 				                    </span>
 				                </div>
 				                <div data-wrapper-react="true" style="width:49%; display:inline-block;">
 				                    <span class="form-sub-label-container" style="vertical-align:top; width:100%">
-                              <label class="form-sub-label" for="input_6_phone"  style="min-height:13px;"> E-mail </label>
 				                      <input type="email" id="input_9" name="Master_Email" class="form-textbox validate[Email]" size="30" placeholder="ex: adresamea@yahoo.com" data-component="email" style="width:100%;height:40px" value="<?php 
 				                                                                                                                            if($v_Licenta_Email == '') 
 				                                                                                                                              echo '';
@@ -1723,6 +1722,7 @@
 				                          }
 				                        ?>
 				                      </span>
+				                      <label class="form-sub-label" for="input_6_phone"  style="min-height:13px;"> E-mail </label>
 				                    </span>
 				                </div>
 				                <br>
@@ -1797,7 +1797,6 @@
 				                        </td>
 				                      </tr>
 				                      <tr>
-<<<<<<< HEAD
 				                        <td>
 				                          <br>
 				                          <span class="form-sub-label-container" style="vertical-align:top; width:30%">
@@ -1844,28 +1843,6 @@
 				                        </span>
 				                        </td>
 				                      </tr>
-=======
-                                <td>
-                                  <label class="form-label form-label-left form-label-auto" 
-                                  style="color: gray; font-size:medium; width:100%; display:inline-block"> Stare socială specială: </label>                        
-                                  <ul class="checkbox-grid">
-                                    <br>
-                                    <li><input type="checkbox" name="Nicio_Opt" class="css-checkbox" value="" id="Nicio_Opt" />
-                                      <label for="Nicio_Opt" class="css-label2">Nicio Opţiune </label></li>
-                                    <li><input type="checkbox" name="Orfan_1" class="css-checkbox" value="" id="Orfan_1" />
-                                      <label for="Orfan_1" class="css-label2">Orfan de un părinte</label></li>
-                                    <li><input type="checkbox" name="Orfan_2" class="css-checkbox" value="" id="Orfan_2" />
-                                      <label for="Orfan_2" class="css-label2">Orfan de ambii părinţi</label></li>
-                                    <li><input type="checkbox" name="Casa_Copii" class="css-checkbox" value="" id="Casa_Copii" />
-                                      <label for="Casa_Copii" class="css-label2">Provenit din case de copii</label></li>
-                                    <li><input type="checkbox" name="Plasament_Familial" class="css-checkbox" value="" id="Plasament_Familial" />
-                                      <label for="Plasament_Familial" class="css-label2">Provenit din plasament familial</label></li>
-                                    <li><input type="checkbox" name="Familie_Monoparentala" class="css-checkbox" value="" id="Familie_Monoparentala" />
-                                      <label for="Familie_Monoparentala" class="css-label2">Provenit din familie monoparentală</label></li>
-                                  </ul>
-                                </td>
-                              </tr>
->>>>>>> master
 				                    </tbody>
 				                  </table>
 				                </div>
@@ -9478,8 +9455,7 @@
                   <li><input type="checkbox" name="Presa" class="css-checkbox" value="" id="Presa" />
                     <label for="Presa" class="css-label2">Presă</label></li>
                   <li><input type="checkbox" name="Alte_Surse" class="css-checkbox" value="" id="Alte_Surse" />
-                    <label for="Alte_Surse" class="css-label2">Alte Surse</label>
-                    <input type="text" id="AlteSurse" placeholder="vă rugăm specificaţi" style="height:40px; width:40%; margin-left:20px;" /></li>
+                    <label for="Alte_Surse" class="css-label2">Alte Surse</label></li>
                 </ul>
 
                 <label class="form-label  form-label-auto" 
@@ -12611,23 +12587,3 @@
     }
   }
   ?>
-                  <li><input type="radio" name="Master_Diploma_BAC" class="css-checkbox" value="" id="Master_Diploma_BAC_Original" />
-                    <label for="Master_Diploma_BAC_Original" class="css-label">Diploma de Bacalaureat în original</label></li>
-                  <li><input type="radio" name="Master_Diploma_BAC" class="css-checkbox" value="" id="Master_Diploma_BAC_Copie" />
-                    <label for="Master_Diploma_BAC_Copie" class="css-label">Diploma de Bacalaureat copie legalizată</label></li>
-                  <br /> <br />
-                  <li><input type="radio" name="Master_Echivalare_Studii_Preuniversitare" class="css-checkbox" value="" id="Master_Echivalare_Studii_Preuniversitare_Original" />
-                    <label for="Master_Echivalare_Studii_Preuniversitare_Original" class="css-label">Document echivalare studii preuniversitare - original</label></li>
-                  
-                  <li><input type="radio" name="Master_Echivalare_Studii_Preuniversitare" class="css-checkbox" value="" id="Master_Echivalare_Studii_Preuniversitare_Copie" />
-                    <label for="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-label">Document echivalare studii preuniversitare - copie legalizată</label></li>
-                  <br /> <br />
-                  <li><input type="radio" name="Master_Diploma_Licenta" class="css-checkbox" value="" id="Master_Diploma_Licenta_Original" />
-                    <label for="Master_Diploma_Licenta_Original" class="css-label">Diplomă de licenţă - original</label></li>
-                  <li><input type="radio" name="Master_Diploma_Licenta" class="css-checkbox" value="" id="Master_Diploma_Licenta_Copie" />
-                    <label for="Master_Diploma_Licenta_Copie" class="css-label">Diplomă de licenţă - copie legalizată</label></li> 
-                  <br /> <br />
-                  <li><input type="radio" name="Master_Echivalare_Studii_Licenta" class="css-checkbox" value="" id="Master_Echivalare_Studii_Licenta_Original" />
-                    <label for="Master_Echivalare_Studii_Licenta_Original" class="css-label">Document echivalare studii licenţă - original</label></li>
-                  <li><input type="radio" name="Master_Echivalare_Studii_Licenta" class="css-checkbox" value="" id="Master_Echivalare_Studii_Licenta_Copie" />
-                    <label for="Master_Echivalare_Studii_Licenta_Copie" class="css-label">Document echivalare studii licenţă - copie legalizată</label></li>
