@@ -132,3 +132,27 @@ a {
     right: -20px;
 	bottom:20px;
 }
+.floating-box1 {
+    display: inline-block;   
+   
+}
+.font_move {
+   position: relative;
+    top: 15px; 
+    left: 10px;
+	
+}
+.block_move {
+   position: relative;
+    top: 12px; 	
+}
+
+.block_move1 {
+   position: relative;
+    top: 24px; 	
+}
+.block_move2 {
+   position: relative;
+    top: 36px; 	
+}
+
