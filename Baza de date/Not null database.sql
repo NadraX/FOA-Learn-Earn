@@ -78,11 +78,11 @@ CREATE TABLE Date_personale_licenta (
     tara_nasterii varchar2(35)  NOT NULL,
     judetul_nasterii varchar2(35)  NOT NULL,
     localitatea_nasterii varchar2(35)  NOT NULL,
-    cetatenia char(6)  NOT NULL,
+    cetatenia char(8)  NOT NULL,
     nationalitate varchar2(35)  NOT NULL,
     etnie varchar2(35)  NOT NULL,
     limba_materna varchar2(35)  NOT NULL,
-    stare_civila varchar2(12)  NULL,
+    stare_civila varchar2(25)  NULL,
     serie_ci char(2)  NOT NULL,
     numar_ci number(6,0)  NOT NULL,
     eliberat_de varchar2(35)  NOT NULL,
@@ -93,11 +93,12 @@ CREATE TABLE Date_personale_licenta (
     judet_domiciliu varchar2(35)  NOT NULL,
     localitate_domiciliu varchar2(35)  NOT NULL,
     strada varchar2(70)  NOT NULL,
-    numar number(10,0)  NOT NULL,
+    numar varchar2(10)  NOT NULL,
     bloc varchar2(10)  NOT NULL,
     scara varchar2(10)  NOT NULL,
     etaj number(3,0)  NOT NULL,
     apartament number(5,0)  NOT NULL,
+	cod_postal number(6,0) NOT NULL,
     telefon number(15,0)  NOT NULL,
     email varchar2(70)  NOT NULL,
     solicita_cazare_studii number(1,0)  NOT NULL,
@@ -125,11 +126,11 @@ CREATE TABLE Date_personale_master (
     tara_nasterii varchar2(35)  NOT NULL,
     judetul_nasterii varchar2(35)  NOT NULL,
     localitatea_nasterii varchar2(35)  NOT NULL,
-    cetatenia char(6)  NOT NULL,
+    cetatenia char(8)  NOT NULL,
     nationalitate varchar2(35)  NOT NULL,
     etnie varchar2(35)  NOT NULL,
     limba_materna varchar2(35)  NOT NULL,
-    stare_civila varchar2(12)  NULL,
+    stare_civila varchar2(25)  NULL,
     serie_ci char(2)  NOT NULL,
     numar_ci number(6,0)  NOT NULL,
     eliberat_de varchar2(35)  NOT NULL,
@@ -145,10 +146,10 @@ CREATE TABLE Date_personale_master (
     scara varchar2(10)  NOT NULL,
     etaj number(3,0)  NOT NULL,
     apartament number(5,0)  NOT NULL,
+	cod_postal number(6,0) NOT NULL,
     telefon number(15,0)  NOT NULL,
     email varchar2(70)  NOT NULL,
     solicita_cazare_studii number(1,0)  NOT NULL,
-    solicita_cazare_admitere number(1,0)  NOT NULL,
     orfan_de_ambii_parinti number(1,0)  NOT NULL,
     orfan_de_un_parinte number(1,0)  NOT NULL,
     provenit_case_de_copii number(1,0)  NOT NULL,
@@ -159,7 +160,7 @@ CREATE TABLE Date_personale_master (
 
 -- Table: Date_personale_preadmitere
 CREATE TABLE Date_personale_preadmitere (
-    Formular_preadmitere_id integer  NOT NULL,
+    Formular_id integer  NOT NULL,
     nume_familie_nastere varchar2(35)  NOT NULL,
     initialele_tatalui_mamei varchar2(15)  NOT NULL,
     nume_familie_actual varchar2(35)  NOT NULL,
@@ -172,7 +173,7 @@ CREATE TABLE Date_personale_preadmitere (
     tara_nasterii varchar2(35)  NOT NULL,
     judetul_nasterii varchar2(35)  NOT NULL,
     localitatea_nasterii varchar2(35)  NOT NULL,
-    cetatenia char(6)  NOT NULL,
+    cetatenia char(8)  NOT NULL,
     nationalitate varchar2(35)  NOT NULL,
     etnie varchar2(35)  NOT NULL,
     limba_materna varchar2(35)  NOT NULL,
@@ -181,7 +182,7 @@ CREATE TABLE Date_personale_preadmitere (
     eliberat_de varchar2(35)  NOT NULL,
     data_eliberarii date  NOT NULL,
     data_expirarii date  NOT NULL,
-    institutie_liceu varchar2(35)  NOT NULL,
+    institutie_liceu varchar2(70)  NOT NULL,
     tara_liceu varchar2(35)  NOT NULL,
     localitate_liceu varchar2(35)  NOT NULL,
     judet_liceu varchar2(35)  NOT NULL
@@ -203,7 +204,6 @@ CREATE TABLE Date_preg_anterioara_licenta (
     emisa_de_liceu varchar2(100)  NOT NULL,
     data_emiterii_diploma date  NOT NULL,
     nr_foii_matricole number(10,0)  NOT NULL,
-    act_rec_echiv varchar2(10)  NULL,
     nr_act_rec_echiv varchar2(10)  NULL,
     serie_act_rec_echiv varchar2(10)  NULL,
     data_rec_echiv date  NULL,
@@ -260,7 +260,6 @@ CREATE TABLE Date_preg_anterioara_master (
     emisa_de_liceu varchar2(100)  NOT NULL,
     data_emiterii_diploma date  NOT NULL,
     nr_foii_matricole number(10,0)  NOT NULL,
-    act_rec_echiv varchar2(10)  NULL,
     nr_act_rec_echiv varchar2(10)  NULL,
     serie_act_rec_echiv varchar2(10)  NULL,
     data_rec_echiv date  NULL,
@@ -303,7 +302,6 @@ CREATE TABLE Date_preg_anterioara_master (
     absolvent_judet varchar2(35)  NULL,
     absolvent_denumire_instit varchar2(35)  NULL,
     absolvent_denumire_facult varchar2(35)  NULL,
-    absolvent_facultate varchar2(35)  NULL,
     absolvent_domeniu varchar2(35)  NULL,
     absolvent_specializare varchar2(35)  NULL,
     absolvent_forma_invat varchar2(5)  NULL,
@@ -322,33 +320,35 @@ CREATE TABLE Date_preg_anterioara_master (
 -- Table: Formular_licenta
 CREATE TABLE Formular_licenta (
     id integer  NOT NULL,
-    tip_formular varchar2(12)  NOT NULL,
     nr_chitanta varchar2(70)  NOT NULL,
     suma integer  NOT NULL,
     scutit number(1,0)  NOT NULL,
     motiv_scutire varchar2(250)  NULL,
+	data_crearii TIMESTAMP	NOT NULL,
+	data_ultimei_modificari TIMESTAMP NULL,
     CONSTRAINT Formular_licenta_pk PRIMARY KEY (id)
 ) ;
 
 -- Table: Formular_master
 CREATE TABLE Formular_master (
     id integer  NOT NULL,
-    tip_formular varchar2(12)  NOT NULL,
     nr_chitanta varchar2(70)  NOT NULL,
     suma integer  NOT NULL,
     scutit number(1,0)  NOT NULL,
     motiv_scutire varchar2(250)  NULL,
+	data_crearii TIMESTAMP	NOT NULL,
+	data_ultimei_modificari TIMESTAMP NULL,
     CONSTRAINT Formular_master_pk PRIMARY KEY (id)
 ) ;
 
 -- Table: Formular_preadmitere
 CREATE TABLE Formular_preadmitere (
     id integer  NOT NULL,
-    tip_formular varchar2(12)  NOT NULL,
     nr_chitanta varchar2(70)  NOT NULL,
     suma integer  NOT NULL,
-    scutit number(1,0)  NOT NULL,
-    motiv_scutire varchar2(250)  NULL,
+    optiune_test_scris varchar2(20)  NOT NULL,
+	data_crearii TIMESTAMP	NOT NULL,
+	data_ultimei_modificari TIMESTAMP NULL,
     CONSTRAINT Formular_preadmitere_pk PRIMARY KEY (id)
 ) ;
 
@@ -361,7 +361,13 @@ CREATE TABLE Informatii_documente_licenta (
     diploma_olimpiada number(1,0)  NOT NULL,
     diploma_bac_copie number(1,0)  NOT NULL,
     diploma_echiv_studii_copie number(1,0)  NOT NULL,
-    participa_altundeva number(1,0)  NOT NULL
+    participa_altundeva number(1,0)  NOT NULL,
+	universitate1 varchar2(70)  NULL,
+    facultate1 varchar2(70)  NULL,
+    universitate2 varchar2(70)  NULL,
+    facultate2 varchar2(70)  NULL,
+    universitate3 varchar2(70)  NULL,
+    facultate3 varchar2(70)  NULL
 ) ;
 
 -- Table: Informatii_documente_master
@@ -375,7 +381,13 @@ CREATE TABLE Informatii_documente_master (
     diploma_licenta_copie number(1,0)  NOT NULL,
     dipl_echiv_licenta_original number(1,0)  NOT NULL,
     dipl_echiv_licenta_copie number(1,0)  NOT NULL,
-    particip_altundeva number(1,0)  NOT NULL
+    particip_altundeva number(1,0)  NOT NULL,
+	universitate1 varchar2(70)  NULL,
+    facultate1 varchar2(70)  NULL,
+    universitate2 varchar2(70)  NULL,
+    facultate2 varchar2(70)  NULL,
+    universitate3 varchar2(70)  NULL,
+    facultate3 varchar2(70)  NULL
 ) ;
 
 -- Table: Optiuni_licenta
@@ -383,24 +395,24 @@ CREATE TABLE Optiuni_licenta (
     formular_id integer  NOT NULL,
     in_romana number(1,0)  NOT NULL,
     in_engleza number(1,0)  NOT NULL,
-    stare_taxa number(1,0)  NOT NULL
+    stare_taxa varchar2(20)  NOT NULL
 ) ;
 
 -- Table: Ordine_preferinte_master
 CREATE TABLE Ordine_preferinte_master (
     formular_id integer  NOT NULL,
-    ingin_sis_soft_buget number(2,0)  NOT NULL,
-    lingv_computat_buget number(2,0)  NOT NULL,
-    optim_comput_buget number(2,0)  NOT NULL,
-    sec_info_buget number(2,0)  NOT NULL,
-    sis_distrib_buget number(2,0)  NOT NULL,
-    ingin_sis_soft_taxa number(2,0)  NOT NULL,
-    lingv_computat_taxa number(2,0)  NOT NULL,
-    optim_comput_taxa number(2,0)  NOT NULL,
-    sec_info_taxa number(2,0)  NOT NULL,
-    sis_distrib_taxa number(2,0)  NOT NULL,
-    stud_avans_info_taxa number(2,0)  NOT NULL,
-    optiune_admitere_taxa varchar2(5)  NOT NULL
+    preferinta_1 varchar2(50)  NOT NULL,
+    preferinta_2 varchar2(50)  NOT NULL,
+    preferinta_3 varchar2(50)  NOT NULL,
+    preferinta_4 varchar2(50)  NOT NULL,
+    preferinta_5 varchar2(50)  NOT NULL,
+    preferinta_6 varchar2(50)  NOT NULL,
+    preferinta_7 varchar2(50)  NOT NULL,
+    preferinta_8 varchar2(50)  NOT NULL,
+    preferinta_9 varchar2(50)  NOT NULL,
+    preferinta_10 varchar2(50)  NOT NULL,
+    preferinta_11 varchar2(50)  NOT NULL,
+    optiune_admitere_taxa varchar2(20)  NOT NULL
 ) ;
 
 -- foreign keys
@@ -410,7 +422,7 @@ ALTER TABLE Cerinte_licenta ADD CONSTRAINT Cerinte_Formular
     REFERENCES Formular_licenta (id);
 
 -- Reference: Cerinte_facultate_master_Formular_master (table: Cerinte_master)
-ALTER TABLE Cerinte_master ADD CONSTRAINT Cerinte_fac_master_Formular
+ALTER TABLE Cerinte_master ADD CONSTRAINT Ceri_faaster_Formular
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
@@ -425,12 +437,12 @@ ALTER TABLE Chestionar_master ADD CONSTRAINT Chestionar_Formular_master
     REFERENCES Formular_master (id);
 
 -- Reference: Copy_of_Date_personale_Formular (table: Date_personale_master)
-ALTER TABLE Date_personale_master ADD CONSTRAINT Copy_of_Date_pers_Formular
+ALTER TABLE Date_personale_master ADD CONSTRAINT Cof_Dapers_Formular
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
 -- Reference: Copy_of_Date_preg_anterioara_Formular (table: Date_preg_anterioara_master)
-ALTER TABLE Date_preg_anterioara_master ADD CONSTRAINT Copy_of_Date_preg_ant_Formular
+ALTER TABLE Date_preg_anterioara_master ADD CONSTRAINT Copy_ateeg_anrmular
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
@@ -440,22 +452,22 @@ ALTER TABLE Date_personale_licenta ADD CONSTRAINT Date_personale_Formular
     REFERENCES Formular_licenta (id);
 
 -- Reference: Date_personale_preadmitere_Formular_preadmitere (table: Date_personale_preadmitere)
-ALTER TABLE Date_personale_preadmitere ADD CONSTRAINT Date_pers_preadmit_Formular
-    FOREIGN KEY (Formular_preadmitere_id)
+ALTER TABLE Date_personale_preadmitere ADD CONSTRAINT Date_pers_pdmit_Fular
+    FOREIGN KEY (Formular_id)
     REFERENCES Formular_preadmitere (id);
 
 -- Reference: Date_preg_anterioara_Formular (table: Date_preg_anterioara_licenta)
-ALTER TABLE Date_preg_anterioara_licenta ADD CONSTRAINT Date_preg_anterioara_Formular
+ALTER TABLE Date_preg_anterioara_licenta ADD CONSTRAINT Date_prg_ana_Formular
     FOREIGN KEY (formular_id)
     REFERENCES Formular_licenta (id);
 
 -- Reference: Informatii_documente_Formular (table: Informatii_documente_licenta)
-ALTER TABLE Informatii_documente_licenta ADD CONSTRAINT Informatii_documente_Formular
+ALTER TABLE Informatii_documente_licenta ADD CONSTRAINT Infotdumente_Fomular
     FOREIGN KEY (formular_id)
     REFERENCES Formular_licenta (id);
 
 -- Reference: Informatii_documente_Formular_master (table: Informatii_documente_master)
-ALTER TABLE Informatii_documente_master ADD CONSTRAINT Info_doc_Formular_master
+ALTER TABLE Informatii_documente_master ADD CONSTRAINT Info_doc_Fular_master
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
@@ -465,7 +477,7 @@ ALTER TABLE Optiuni_licenta ADD CONSTRAINT Optiuni_Formular
     REFERENCES Formular_licenta (id);
 
 -- Reference: Ordine_preferinte_Formular_master (table: Ordine_preferinte_master)
-ALTER TABLE Ordine_preferinte_master ADD CONSTRAINT Ordine_pref_Formular_master
+ALTER TABLE Ordine_preferinte_master ADD CONSTRAINT Ordinpref_Formu_master
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
