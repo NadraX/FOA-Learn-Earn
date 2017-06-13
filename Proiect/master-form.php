@@ -1797,6 +1797,7 @@
 				                        </td>
 				                      </tr>
 				                      <tr>
+<<<<<<< HEAD
 				                        <td>
 				                          <br>
 				                          <span class="form-sub-label-container" style="vertical-align:top; width:30%">
@@ -1843,6 +1844,28 @@
 				                        </span>
 				                        </td>
 				                      </tr>
+=======
+                                <td>
+                                  <label class="form-label form-label-left form-label-auto" 
+                                  style="color: gray; font-size:medium; width:100%; display:inline-block"> Stare socială specială: </label>                        
+                                  <ul class="checkbox-grid">
+                                    <br>
+                                    <li><input type="checkbox" name="Nicio_Opt" class="css-checkbox" value="" id="Nicio_Opt" />
+                                      <label for="Nicio_Opt" class="css-label2">Nicio Opţiune </label></li>
+                                    <li><input type="checkbox" name="Orfan_1" class="css-checkbox" value="" id="Orfan_1" />
+                                      <label for="Orfan_1" class="css-label2">Orfan de un părinte</label></li>
+                                    <li><input type="checkbox" name="Orfan_2" class="css-checkbox" value="" id="Orfan_2" />
+                                      <label for="Orfan_2" class="css-label2">Orfan de ambii părinţi</label></li>
+                                    <li><input type="checkbox" name="Casa_Copii" class="css-checkbox" value="" id="Casa_Copii" />
+                                      <label for="Casa_Copii" class="css-label2">Provenit din case de copii</label></li>
+                                    <li><input type="checkbox" name="Plasament_Familial" class="css-checkbox" value="" id="Plasament_Familial" />
+                                      <label for="Plasament_Familial" class="css-label2">Provenit din plasament familial</label></li>
+                                    <li><input type="checkbox" name="Familie_Monoparentala" class="css-checkbox" value="" id="Familie_Monoparentala" />
+                                      <label for="Familie_Monoparentala" class="css-label2">Provenit din familie monoparentală</label></li>
+                                  </ul>
+                                </td>
+                              </tr>
+>>>>>>> master
 				                    </tbody>
 				                  </table>
 				                </div>
@@ -9302,26 +9325,22 @@
                 <br>
                 <ul class="checkbox-grid">
                   <br>
-                  <li><input type="radio" name="Master_Diploma_BAC" class="css-checkbox" value="" id="Master_Diploma_BAC_Original" />
-                    <label for="Master_Diploma_BAC_Original" class="css-label">Diploma de Bacalaureat în original</label></li>
-                  <li><input type="radio" name="Master_Diploma_BAC" class="css-checkbox" value="" id="Master_Diploma_BAC_Copie" />
-                    <label for="Master_Diploma_BAC_Copie" class="css-label">Diploma de Bacalaureat copie legalizată</label></li>
-                  <br /> <br />
-                  <li><input type="radio" name="Master_Echivalare_Studii_Preuniversitare" class="css-checkbox" value="" id="Master_Echivalare_Studii_Preuniversitare_Original" />
-                    <label for="Master_Echivalare_Studii_Preuniversitare_Original" class="css-label">Document echivalare studii preuniversitare - original</label></li>
-                  
-                  <li><input type="radio" name="Master_Echivalare_Studii_Preuniversitare" class="css-checkbox" value="" id="Master_Echivalare_Studii_Preuniversitare_Copie" />
-                    <label for="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-label">Document echivalare studii preuniversitare - copie legalizată</label></li>
-                  <br /> <br />
-                  <li><input type="radio" name="Master_Diploma_Licenta" class="css-checkbox" value="" id="Master_Diploma_Licenta_Original" />
-                    <label for="Master_Diploma_Licenta_Original" class="css-label">Diplomă de licenţă - original</label></li>
-                  <li><input type="radio" name="Master_Diploma_Licenta" class="css-checkbox" value="" id="Master_Diploma_Licenta_Copie" />
-                    <label for="Master_Diploma_Licenta_Copie" class="css-label">Diplomă de licenţă - copie legalizată</label></li> 
-                  <br /> <br />
-                  <li><input type="radio" name="Master_Echivalare_Studii_Licenta" class="css-checkbox" value="" id="Master_Echivalare_Studii_Licenta_Original" />
-                    <label for="Master_Echivalare_Studii_Licenta_Original" class="css-label">Document echivalare studii licenţă - original</label></li>
-                  <li><input type="radio" name="Master_Echivalare_Studii_Licenta" class="css-checkbox" value="" id="Master_Echivalare_Studii_Licenta_Copie" />
-                    <label for="Master_Echivalare_Studii_Licenta_Copie" class="css-label">Document echivalare studii licenţă - copie legalizată</label></li>
+                  <li><input type="checkbox" name="Master_Diploma_BAC_Original" class="css-checkbox" value="1" id="Master_Diploma_BAC_Original" />
+                    <label for="Master_Diploma_BAC_Original" class="css-label2">Diploma de Bacalaureat în original</label></li>
+                  <li><input type="checkbox" name="Master_Diploma_BAC_Copie" class="css-checkbox" value="1" id="Master_Diploma_BAC_Copie" />
+                    <label for="Master_Diploma_BAC_Copie" class="css-label2">Diploma de Bacalaureat copie legalizată</label></li>
+                  <li><input type="checkbox" name="Master_Echivalare_Studii_Preuniversitare_Original" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Original" />
+                    <label for="Master_Echivalare_Studii_Preuniversitare_Original" class="css-label2">Document echivalare studii preuniversitare - original</label></li>
+                  <li><input type="checkbox" name="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Copie" />
+                    <label for="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-label2">Document echivalare studii preuniversitare - copie legalizată</label></li>
+                  <li><input type="checkbox" name="Master_Diploma_Licenta_Original" class="css-checkbox" value="1" id="Master_Diploma_Licenta_Original" />
+                    <label for="Master_Diploma_Licenta_Original" class="css-label2">Diplomă de licenţă - original</label></li>
+                  <li><input type="checkbox" name="Master_Diploma_Licenta_Copie" class="css-checkbox" value="1" id="Master_Diploma_Licenta_Copie" />
+                    <label for="Master_Diploma_Licenta_Copie" class="css-label2">Diplomă de licenţă - copie legalizată</label></li> 
+                  <li><input type="checkbox" name="Master_Echivalare_Studii_Licenta_Original" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Licenta_Original" />
+                    <label for="Master_Echivalare_Studii_Licenta_Original" class="css-label2">Document echivalare studii licenţă - original</label></li>
+                  <li><input type="checkbox" name="Master_Echivalare_Studii_Licenta_Copie" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Licenta_Copie" />
+                    <label for="Master_Echivalare_Studii_Licenta_Copie" class="css-label2">Document echivalare studii licenţă - copie legalizată</label></li>
                 </ul>
                 <div  class="form-input jf-required cid_1" style:"display:inline-block">
                     <br>
@@ -12592,3 +12611,23 @@
     }
   }
   ?>
+                  <li><input type="radio" name="Master_Diploma_BAC" class="css-checkbox" value="" id="Master_Diploma_BAC_Original" />
+                    <label for="Master_Diploma_BAC_Original" class="css-label">Diploma de Bacalaureat în original</label></li>
+                  <li><input type="radio" name="Master_Diploma_BAC" class="css-checkbox" value="" id="Master_Diploma_BAC_Copie" />
+                    <label for="Master_Diploma_BAC_Copie" class="css-label">Diploma de Bacalaureat copie legalizată</label></li>
+                  <br /> <br />
+                  <li><input type="radio" name="Master_Echivalare_Studii_Preuniversitare" class="css-checkbox" value="" id="Master_Echivalare_Studii_Preuniversitare_Original" />
+                    <label for="Master_Echivalare_Studii_Preuniversitare_Original" class="css-label">Document echivalare studii preuniversitare - original</label></li>
+                  
+                  <li><input type="radio" name="Master_Echivalare_Studii_Preuniversitare" class="css-checkbox" value="" id="Master_Echivalare_Studii_Preuniversitare_Copie" />
+                    <label for="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-label">Document echivalare studii preuniversitare - copie legalizată</label></li>
+                  <br /> <br />
+                  <li><input type="radio" name="Master_Diploma_Licenta" class="css-checkbox" value="" id="Master_Diploma_Licenta_Original" />
+                    <label for="Master_Diploma_Licenta_Original" class="css-label">Diplomă de licenţă - original</label></li>
+                  <li><input type="radio" name="Master_Diploma_Licenta" class="css-checkbox" value="" id="Master_Diploma_Licenta_Copie" />
+                    <label for="Master_Diploma_Licenta_Copie" class="css-label">Diplomă de licenţă - copie legalizată</label></li> 
+                  <br /> <br />
+                  <li><input type="radio" name="Master_Echivalare_Studii_Licenta" class="css-checkbox" value="" id="Master_Echivalare_Studii_Licenta_Original" />
+                    <label for="Master_Echivalare_Studii_Licenta_Original" class="css-label">Document echivalare studii licenţă - original</label></li>
+                  <li><input type="radio" name="Master_Echivalare_Studii_Licenta" class="css-checkbox" value="" id="Master_Echivalare_Studii_Licenta_Copie" />
+                    <label for="Master_Echivalare_Studii_Licenta_Copie" class="css-label">Document echivalare studii licenţă - copie legalizată</label></li>
