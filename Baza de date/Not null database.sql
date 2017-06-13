@@ -31,6 +31,7 @@ CREATE TABLE Chestionar_licenta (
     prieteni number(1,0)  NOT NULL,
     sapatamana_portilor number(1,0)  NOT NULL,
     prezentare_in_liceu number(1,0)  NOT NULL,
+	profesori number(1,0) NOT NULL,
     presa number(1,0)  NOT NULL,
     alte_surse varchar2(35)  NULL,
     prestigiu number(1,0)  NOT NULL,
