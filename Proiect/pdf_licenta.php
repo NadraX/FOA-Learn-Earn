@@ -630,7 +630,7 @@ function Footer()
 	 $pdf->SetFont('Times','B',9);
 	 $pdf->Cell(15);
 
-	 $pdf->MultiCell(60, 6, '670000', 1, 1);
+	 $pdf->MultiCell(60, 6, ''.$cod_postal, 1, 1);
 	 $pdf->SetXY($x + 85, $y);
 	 $pdf->MultiCell(70, 6,''.$tara_domiciliu,1,  1);
     
