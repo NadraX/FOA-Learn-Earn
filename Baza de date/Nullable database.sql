@@ -82,7 +82,7 @@ CREATE TABLE Date_personale_licenta (
     nationalitate varchar2(35)  NULL,
     etnie varchar2(35)  NULL,
     limba_materna varchar2(35)  NULL,
-    stare_civila varchar2(12)  NULL,
+    stare_civila varchar2(25)  NULL,
     serie_ci char(2)  NULL,
     numar_ci number(6,0)  NULL,
     eliberat_de varchar2(35)  NULL,
