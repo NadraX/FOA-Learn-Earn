@@ -1,5 +1,6 @@
 
 <?php
+/*
 class Validare
 {
 /*
@@ -14,7 +15,7 @@ function validareLiceu($p_liceu){
         else{
             return true;
         }
-}*/
+}
 
 function validareExStareSpeciala($p_speciala){
      if(!$p_speciala){
@@ -117,7 +118,7 @@ function validBuletinDataEliberarii($p_data)
     }
     return true;
 }
-*/
+
 function validBuletinEliberatDe($p_eliberat_de)
 {
     if (!$p_eliberat_de)
@@ -228,7 +229,7 @@ function an_bisect($year)
         return false;
     }
     return true;
-}*/
+}
 function validEmail($p_email)
 {
     if(filter_var($p_email, FILTER_VALIDATE_EMAIL))
@@ -279,7 +280,7 @@ function validNume($p_nume)
         return false;
     }
     return true;
-}*/
+}
     function validNume($p_nume)
     {
         if(!$p_nume)
@@ -429,7 +430,7 @@ function check_nationalitate($nationalitate) {
         return false;
     }
     return true;
-} */
+} 
 function validTipBuletin($p_tip)
 {
     if(!ctype_alpha(str_replace('.','',str_replace(' ', '', $p_tip))))
@@ -670,6 +671,7 @@ function validarePremiulObtinut($input){
         else return 0;
     }
 }  // finalul initial
+*/
 function validareTipAplicare($tip_aplicare)
 {
     if(strlen($tip_aplicare)<5 || strlen($tip_aplicare)>30)

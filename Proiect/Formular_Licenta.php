@@ -81,7 +81,7 @@
         }
     </style>
 
-<style type="text/css" id="form-designer-style">
+	<style type="text/css" id="form-designer-style">
         /* Injected CSS Code */
     /*PREFERENCES STYLE*/
         .form-all {
@@ -281,8 +281,8 @@
             left: calc(100% + 5px);
             bottom: 100%;
             padding: 10px;
-            background-color: #2d80bf;
-            color: white;
+            background-color: #F0F8FF;
+            color: black;
             font-size: 12px;
             border-radius: 5px;
         }
@@ -368,45 +368,45 @@
     .checkboxgroup label {
         display:block !important;
     }
-</style>
+	</style>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/buttons/form-submit-button-steel.css?3.3.292"/>
     
     <title>Admitere licen&#355;&#259;</title>
-</head>
-<body style="overflow-x:hidden;">
-  <div class="mare collapse navbar-collapse navbar nav-group nav-group--consistent">
-      <div class="nav navbar-nav bar2">
-        <ul style="widht:100%; height:40px; background-color:#3488CB;"></ul>
-        <ul class="left-menu">
-            <li class="lung"><a href="DespreFII.html">Despre FII</a></li>
-            <li class="scurt"><a href="DespreFII.html">FII</a></li>
-			<li><a href="paginaAdmitere.html">Admitere</a></li>
-            </ul>
-        <ul class="right-menu">
-              <li><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
-			  <li><a href="contact.html" >Contact</a></li>
-        </ul>
-      </div>      
-      <a href="https://www.info.uaic.ro/bin/Main/" >
-        <img id="no-scroll" class="sigla" src="imagini/sigla2.png" alt="sigla" />
-        <img id="scroll" class="sigla" src="imagini/sigla2-Copy.png" alt="sigla" />
-      </a>
-  </div>
+	</head>
+	<body style="overflow-x:hidden;">
+		<div class="mare collapse navbar-collapse navbar nav-group nav-group--consistent">
+			<div class="nav navbar-nav bar2">
+				<ul style="widht:100%; height:40px; background-color:#3488CB;"></ul>
+				<ul class="left-menu">
+					<li class="lung"><a href="DespreFII.html">Despre FII</a></li>
+					<li class="scurt"><a href="DespreFII.html">FII</a></li>
+					<li><a href="paginaAdmitere.html">Admitere</a></li>
+				</ul>
+				<ul class="right-menu">
+					<li><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
+					<li><a href="contact.html" >Contact</a></li>
+				</ul>
+			</div>      
+			<a href="https://www.info.uaic.ro/bin/Main/" >
+				<img id="no-scroll" class="sigla" src="imagini/sigla2.png" alt="sigla" />
+				<img id="scroll" class="sigla" src="imagini/sigla2-Copy.png" alt="sigla" />
+			</a>
+		</div>
   
-  <div class="mic" style="background-color:white; height:80px; width:100%;; z-index:90;">
-    <a href="#menu" id="toggle"><span></span></a>
-   <div id="menu">
-      <ul class="tog1">
-        <li class="tog2"><a href="DespreFII.html">Despre FII</a></li>  
-        <li class="tog2"><a href="paginaAdmitere.html">Admitere</a></li>
-        <li class="tog2"><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
-		<li class="tog2"><a href="contact.html">Contact</a></li>
-      </ul>
-    </div> 
-  </div> 
-  </br>
-  <div class="container formular2" style="width:100%">
+		<div class="mic" style="background-color:white; height:80px; width:100%;; z-index:90;">
+		<a href="#menu" id="toggle"><span></span></a>
+			<div id="menu">
+				<ul class="tog1">
+					<li class="tog2"><a href="DespreFII.html">Despre FII</a></li>  
+					<li class="tog2"><a href="paginaAdmitere.html">Admitere</a></li>
+					<li class="tog2"><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
+					<li class="tog2"><a href="contact.html">Contact</a></li>
+				</ul>
+			</div> 
+		</div> 
+		<br>
+		<div class="container formular2" style="width:100%">
 			<form  style="width:90%" action="" method='post' enctype="multipart/form-data">
 				<input type="hidden" name="formID" value="71274520949360" />
 				<div class="">
@@ -419,11 +419,11 @@
 											Admitere licen&#355;&#259;
 										</h1>
 										<div id="subHeader_34" class="form-subHeader">
-										  <br>
+											<br>
 											<p>V&#259; rug&#259;m completa&#355;i toate c&#226;mpurile de mai jos.</p>
 											<p>Pentru orice nelămuriri ne puteţi contacta la adresele furnizate în secţiunea "Contact"</p>
-                      <p>Mult Succes!</p>
-                      <br>
+											<p>Mult Succes!</p>
+											<br>
 										</div>
 									</div>
 								</div>
@@ -439,7 +439,9 @@
 							include "validClass.php";
 							error_reporting(0);
                             ini_set('display_errors', 0);
-							$v_Numele_De_Familie=$_POST["Licenta_Numele_De_Familie_La_nastere"];
+							$v_Numele_De_Familie_La_Nastere=$_POST["Licenta_Numele_De_Familie_La_Nastere"];
+								$vNumele_De_Familie_La_Nastere = validNume($v_Numele_De_Familie_La_Nastere);
+							$v_Numele_De_Familie_Actual = $_POST["Licenta_Numele_De_Familie_Actual"];
 							$v_Licenta_Initiala_Tata = $_POST["Licenta_Initiala_Tata"];
 							$v_Licenta_Email = $_POST["Licenta_Email"];
 							$v_Licenta_Telefon = $_POST["Licenta_Telefon"];
@@ -489,7 +491,7 @@
 							$v_Judet = $_POST["Licenta_Judet"];		
 							$v_Liceu = $_POST["Licenta_Liceu"];
 						?>						
-					<ul>
+						<ul>
               <li class="form-line" data-type="control_taxa" id="id_12">
                 <br>
                 <label class="form-label form-label-left form-label-auto" style="color: #3488CB; font-size:larger"> I. Taxă de înscriere  </label>
@@ -505,17 +507,21 @@
 																																						else		
 																																							echo $v_Chitanta;		
 																																					?>" />		
-                        </span>
+                        
 												<span style="color:red">		
 										<?php		
 											if(isset($_POST['Submit'])) {		
 											$v_Chitanta = $_POST["Licenta_Chitanta_nr"];		
 											$vChitanta = validChitanta($v_Chitanta);		
-											if($vChitanta==0)		
-												echo "C&#226;mp invalid!";		
+											if($v_Chitanta=='')
+												echo "C&#226;mp necompletat!";
+											else
+												if($vChitanta==0)
+													echo "C&#226;mp invalid!";
 											}		
 										?>		
-									</span>		
+									</span>	
+							</span>									
                         <span id="suma" class="form-sub-label-container" style="vertical-align:top; width: 18%; margin-right: 5px;">	
                           <label class="form-sub-label"  style="min-height:13px;"> Suma achitată (RON) </label> 	                       
                           <input type="number" name="Licenta_Suma_Taxa" class="form-textbox middle_1" size="10" placeholder="ex: 250" data-component="middle" value="<?php 
@@ -524,23 +530,28 @@
 																																					else		
 																																						echo $v_Suma_Taxa;		
 																																				?>" />		
-						  </span>
+						 
 												<span style="color:red">		
 										<?php		
 											if(isset($_POST['Submit'])) {		
 											$v_Suma_Taxa = $_POST["Licenta_Suma_Taxa"];		
-											$vsuma = validSuma($v_Suma_Taxa);		
-											if($vsuma==0)		
-												echo "C&#226;mp invalid!";		
+											$vsuma = validSuma($v_Suma_Taxa);
+											if($v_Suma_Taxa=='')
+												echo "C&#226;mp necompletat!";
+											else
+												if($vsuma==0)		
+													echo "C&#226;mp invalid!";		
 											}		
 										?>		
 									</span>	
+								 </span>
                       </tr>
                       <tr>
                         <td>
                           <br>
                           <label class="form-label form-label-left form-label-auto" 
-                          style="color: gray; font-size:medium; width:45%; display:inline-block"> Sunteţi scutit de această taxă?  </label>                        
+                          style="color: gray; font-size:medium; width:45%; display:inline-block"> Sunteţi scutit de această taxă?  </label>     
+                   
                           <span style="width:40%">
                             <input type="radio" name="group1" id="checkbox11" class="css-checkbox" value="1" <?php
 																												if($v_Radio1 == '')		
@@ -563,18 +574,38 @@
 																												?> />
                             <label for="checkbox13" class="css-label" style="margin-right:50px;">Nu</label>
                           </span>
-							<span style="color:red">
+						  <span style="color:red">
 										<?php		
 											if(isset($_POST['Submit'])) {		
 											$v_Radio1 = $_POST["group1"];		
 											$vradio1 = validRadio($v_Radio1);		
 											if($vradio1==0)		
-												echo "C&#226;mp invalid!";		
+												echo "Nu ați ales o opțiune!";		
 											}		
 										?>		
-									</span>		
+							</span>	
+								
                           <span id="motiv-scutire" class="form-sub-label-container" style="vertical-align:top; width: 49%; margin-right: 5px;">
-                              <label class="form-sub-label"  id="sublabel_last" style="min-height:13px;"> Dacă da, motivul scutirii <span class="info-box">?<span class="info-box__content">Sunteți scutit de taxa de admitere în cazuri precum "copil de cadru de didactic"</span></span></label>
+                              <label class="form-sub-label"  id="sublabel_last" style="min-height:13px;"> Dacă da, motivul scutirii 
+																																	<span class="info-box" <?php	
+																																						if($v_Scutire!='') 
+																																							if($vscutire==0) 
+																																								echo 'style="background-color : red;"';
+																																					?>> 
+																																<?php
+																																	if($v_Scutire!='')
+																																		if($vscutire==0) 
+																																			echo "!"; 
+																																		else 
+																																			echo "?"; 
+																																	else 
+																																		echo "?";
+																																?> 
+																																<span class="info-box__content">
+																																	Sunteți scutit de taxa de admitere în cazuri precum "copil de cadru de didactic" <?php if($vscutire==0) echo "<a style=\"color:red\">*Campul contine caractere non-alfabetice!</a>"; ?> 
+																																</span>
+																															</span>
+																											</label>
                               <input type="text" name="Licenta_Motiv_Scutire_taxa" class="form-textbox last_1" size="15" placeholder="ex: Fiu de cadru didactic" data-component="last" value="<?php
 																																						if($v_Scutire == '')
 																																							echo '';
@@ -614,26 +645,82 @@
                 <div  class="form-input jf-required cid_1">
 									<div class="general_name" data-wrapper-react="true">
                     <span id="num2" class="form-sub-label-container" style="vertical-align:top;">
-                      <label class="form-sub-label sublabel_first" style="min-height:13px;"> Numele de familie la naştere <span class="info-box">?<span class="info-box__content">Numele de familie din certificatul de naştere</span></span> </label>
-                      <input type="text" name="Licenta_Numele_De_Familie_La_nastere" class="form-textbox first_1" size="10" placeholder="ex: Ionescu" value="<?php echo $_POST["Licenta_Numele_De_Familie_La_nastere"];?>" data-component="first" />
+                      <label class="form-sub-label sublabel_first" style="min-height:13px;"> Numele de familie la naştere 
+																															<span class="info-box" <?php	
+																																						if($v_Numele_De_Familie_La_Nastere!='') 
+																																							if($vNumele_De_Familie_La_Nastere==0) 
+																																								echo 'style="background-color : red;"';
+																																					?>> 
+																																<?php
+																																	if($v_Numele_De_Familie_La_Nastere!='')
+																																		if($vNumele_De_Familie_La_Nastere==0) 
+																																			echo "!"; 
+																																		else 
+																																			echo "?"; 
+																																	else 
+																																		echo "?";
+																																?> 
+																																<span class="info-box__content">
+																																	Numele de familie din certificatul de naştere. <?php if($vNumele_De_Familie_La_Nastere==0) echo "<a style=\"color:red\">*Campul contine caractere non-alfabetice!</a>"; ?> 
+																																</span>
+																															</span>
+					</label>
+                      <input type="text" name="Licenta_Numele_De_Familie_La_Nastere" class="form-textbox first_1" size="10" placeholder="ex: Ionescu" value="<?php 
+																																									if($v_Numele_De_Familie_La_Nastere == '') 
+																																										echo '';
+																																									else
+																																										echo $v_Numele_De_Familie_La_Nastere;
+																																							?>" data-component="first" />
+					  <span style="color:red">
+							<?php
+								if(isset($_POST['Submit'])) {
+									$v_Numele_De_Familie_La_Nastere=$_POST["Licenta_Numele_De_Familie_La_Nastere"];
+									$vNumele_De_Familie_La_Nastere = validNume($v_Numele_De_Familie_La_Nastere);
+									if($v_Numele_De_Familie_La_Nastere=='')
+										echo "C&#226;mp necompletat!";
+									else
+										if($vNumele_De_Familie_La_Nastere==0)
+											echo "C&#226;mp invalid!";
+								}
+							?>
+						</span>
                     </span>
 										<span id="num" class="form-sub-label-container" style="vertical-align:top;"> 
-                      <label class="form-sub-label sublabel_first" style="min-height:13px;"> Numele de familie actual<span class="info-box">?<span class="info-box__content">Numele dupa căsătorie, înfiere, 
-                        modificare la cerere conform actului doveditor daca este cazul</span></span> 
+                      <label class="form-sub-label sublabel_first" style="min-height:13px;"> Numele de familie actual 	<span class="info-box" <?php	
+																																						if($v_Numele_De_Familie_Actual!='') 
+																																							if($vNumele_De_Familie_Actual==0) 
+																																								echo 'style="background-color : red;"';
+																																					?>> 
+																																<?php
+																																	if($v_Numele_De_Familie_Actual!='')
+																																		if($vNumele_De_Familie_Actual==0) 
+																																			echo "!"; 
+																																		else 
+																																			echo "?"; 
+																																	else 
+																																		echo "?";
+																																?> 
+																																<span class="info-box__content">
+																																Numele dupa căsătorie, înfiere, modificare la cerere conform actului doveditor daca este cazul. <?php if($vNumele_De_Familie_Actual==0) echo "<a style=\"color:red\">*Campul contine caractere non-alfabetice!</a>"; ?> 
+																																</span>
+																															</span>
                       </label> 
-											<input type="text" name="Licenta_Numele_De_Familie" class="form-textbox first_1" size="10" placeholder="ex: Ionescu" data-component="first" value="<?php 
-																																																	if($v_Numele_De_Familie == '') 
+											<input type="text" name="Licenta_Numele_De_Familie_Actual" class="form-textbox first_1" size="10" placeholder="ex: Ionescu" data-component="first" value="<?php 
+																																																	if($v_Numele_De_Familie_Actual == '') 
 																																																		echo '';
 																																																	else
-																																																		echo $v_Numele_De_Familie;
+																																																		echo $v_Numele_De_Familie_Actual;
 																																																?>" />
 											<span style="color:red">
 												<?php
 													if(isset($_POST['Submit'])) {
-														$v_Numele_De_Familie = $_POST["Licenta_Numele_De_Familie"];
-														$vNumele_De_Familie = validNume($v_Numele_De_Familie);
-														if($vNumele_De_Familie==0)
-															echo "C&#226;mp invalid!";
+														$v_Numele_De_Familie_Actual = $_POST["Licenta_Numele_De_Familie_Actual"];
+														$vNumele_De_Familie_Actual = validNume($v_Numele_De_Familie_Actual);
+														if($v_Numele_De_Familie_Actual=='')
+															echo "C&#226;mp necompletat!";
+														else
+															if($vNumele_De_Familie_Actual==0)
+																echo "C&#226;mp invalid!";
 													}
 												?>
 											</span>
@@ -654,8 +741,11 @@
 													if(isset($_POST['Submit'])) {
 														$v_Licenta_Initiala_Tata = $_POST["Licenta_Initiala_Tata"];
 														$vLicenta_Initiala_Tata = validInitialaTata($v_Licenta_Initiala_Tata);
-														if($vLicenta_Initiala_Tata==0)
-															echo "C&#226;mp invalid!";
+														if($v_Licenta_Initiala_Tata=='')
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Initiala_Tata==0)
+																echo "C&#226;mp invalid!";
 														}
 												?>
 											</span>
@@ -674,8 +764,11 @@
 													if(isset($_POST['Submit'])) {
 														$v_Licenta_Prenumele = $_POST["Licenta_Prenumele"];
 														$vLicenta_Prenumele = validPremume($v_Licenta_Prenumele);
-														if($vLicenta_Prenumele==0)
-															echo "C&#226;mp invalid!";
+														if($v_Licenta_Prenumele=='')
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Prenumele==0)
+																echo "C&#226;mp invalid!";
 														}
 												?>
 											</span>
@@ -699,8 +792,12 @@
 														$v_Licenta_Prenume_Mama = $_POST["Licenta_Prenume_Mama"];
                                                         
 														$vLicenta_PrenumeMama = validPremume($v_Licenta_Prenume_Mama);
-														if($vLicenta_PrenumeMama==0)
-															echo "C&#226;mp invalid!";
+														
+														if($v_Licenta_Prenume_Mama=='')
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_PrenumeMama==0)
+																echo "C&#226;mp invalid!";
 													}
 												?>
 											</span>
@@ -719,8 +816,11 @@
 														$v_Licenta_Prenume_Tata = $_POST["Licenta_Prenume_Tata"];
                                                        
 														$vLicenta_PrenumeTata = validPremume($v_Licenta_Prenume_Tata);
-														if($vLicenta_PrenumeTata==0)
-															echo "C&#226;mp invalid!";
+														if($v_Licenta_Prenume_Tata=='')
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_PrenumeTata==0)
+																echo "C&#226;mp invalid!";
 													}
 												?>
 											</span>
@@ -775,7 +875,7 @@
                   <div data-wrapper-react="true">
                     <span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
                       <label class="form-sub-label sublabel_first"  style="min-height:13px;"> Ţara în care v-aţi născut </label>
-                      <input type="text" name="Licenta_Tara_Nastere" value="Romana" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;nia" data-component="middle"  />
+                      <input type="text" name="Licenta_Tara_Nastere" value="" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;nia" data-component="middle"  />
                     </span>
                     <span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
                       <label class="form-sub-label sublabel_first"  style="min-height:13px;"> Judeţul în care v-aţi născut</label>
@@ -938,8 +1038,11 @@
 													if(isset($_POST['Submit'])) {
 														$v_Licenta_Etnie = $_POST["Licenta_Etnie"];
 														$vLicenta_Etnie = validNume($v_Licenta_Etnie);
-														if($vLicenta_Etnie==0)
-															echo "C&#226;mp invalid!";
+														if($v_Licenta_Etnie=='')
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Etnie==0)
+																echo "C&#226;mp invalid!";
 													}
 												?>
 											</span>
@@ -958,8 +1061,11 @@
 													if(isset($_POST['Submit'])) {
 														$v_Licenta_Limba_Materna = $_POST["Licenta_Limba_Materna"];
 														$vLicenta_Limba_Materna = validNume($v_Licenta_Limba_Materna);
-														if($vLicenta_Limba_Materna==0)
-															echo "C&#226;mp invalid!";
+														if($v_Licenta_Limba_Materna=='')
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Limba_Materna==0)
+																echo "C&#226;mp invalid!";
 													}
 												?>
 											</span>
@@ -973,7 +1079,25 @@
 								<div  class="form-input jf-required cid_1">
 									<div data-wrapper-react="true">
 										<span id="CNP" class="form-sub-label-container" style="vertical-align:top; padding:0; margin:0">
-                      <label class="form-sub-label sublabel_first"  style="min-height:13px;"> CNP<span class="info-box">?<span class="info-box__content">Codul Numeric Personal cum se găsește în buletin</span></span> </label>
+                      <label class="form-sub-label sublabel_first"  style="min-height:13px;"> CNP <span class="info-box" <?php	
+																															if($v_Licenta_CNP!='') 
+																																if($vLicenta_CNP==0) 
+																															echo 'style="background-color : red;"';
+																															?>> 
+																															<?php
+																																	if($v_Licenta_CNP!='')
+																																		if($vLicenta_CNP==0) 
+																																			echo "!"; 
+																																		else 
+																																			echo "?"; 
+																																	else 
+																																		echo "?";
+																																?> 
+																																<span class="info-box__content">
+																																Codul Numeric Personal cum se găsește în buletin. <?php if($vLicenta_CNP==0) echo "<a style=\"color:red\">*Insuficiente caractere!</a>"; ?> 
+																																</span>
+																															</span>
+                      </label>
 											<input type="text"  name="Licenta_CNP" class="form-textbox first_1" size="20" placeholder="ex: 1960917404400" data-component="first" value="<?php 
 																																															if($v_Licenta_CNP == '') 
 																																																echo '';
@@ -985,8 +1109,11 @@
 													if(isset($_POST['Submit'])) {
 														$v_Licenta_CNP = $_POST["Licenta_CNP"];
 														$vLicenta_CNP = validCNP($v_Licenta_CNP);
-														if($vLicenta_CNP==0)
-															echo "C&#226;mp invalid!";
+														if($v_Licenta_CNP=='')
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_CNP==0)
+																echo "C&#226;mp invalid!";
 													}
 												?>
 											</span>
@@ -1004,8 +1131,11 @@
 													if(isset($_POST['Submit'])) { 
 														$v_Licenta_Tip_Buletin = $_POST["Licenta_Tip_Buletin"];  // V
 														$vLicenta_Tip_Buletin = validTipBuletin($v_Licenta_Tip_Buletin);
-														if($vLicenta_Tip_Buletin==0)
-															echo "C&#226;mp invalid!";
+														if($v_Licenta_Tip_Buletin=='')
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Tip_Buletin==0)
+																echo "C&#226;mp invalid!";
 													}
 												?>
 											</span>
@@ -1024,8 +1154,11 @@
 													if(isset($_POST['Submit'])) {
 														$v_Licenta_Serie_Buletin = $_POST["Licenta_Serie_Buletin"];  // V
 														$vLicenta_Serie_Buletin = validSerieBuletin($v_Licenta_Serie_Buletin);
-														if($vLicenta_Serie_Buletin==0)
-															echo "C&#226;mp invalid!";
+														if($v_Licenta_Serie_Buletin=='')
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Serie_Buletin==0)
+																echo "C&#226;mp invalid!";
 													}
 												?>
 											</span>
@@ -1043,8 +1176,11 @@
 													if(isset($_POST['Submit'])) {
 														$v_Licenta_Numar_Buletin = $_POST["Licenta_Numar_Buletin"];  // V
 														$vLicenta_Numar_Buletin = validNumarBuletin($v_Licenta_Numar_Buletin);
-														if($vLicenta_Numar_Buletin==0)
-															echo "C&#226;mp invalid!";
+														if($v_Licenta_Numar_Buletin=='')
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Numar_Buletin==0)
+																echo "C&#226;mp invalid!";
 													}
 												?>
 											</span>
@@ -1062,8 +1198,11 @@
 													if(isset($_POST['Submit'])) {
 														$v_Licenta_Buletin_Eliberat_De = $_POST["Licenta_Buletin_Eliberat_De"];  // V
 														$vLicenta_Buletin_Eliberat_De = validEliberareBuletin($v_Licenta_Buletin_Eliberat_De);
-														if($vLicenta_Buletin_Eliberat_De==0)
-															echo "C&#226;mp invalid!";
+														if($v_Licenta_Buletin_Eliberat_De=='')
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Buletin_Eliberat_De==0)
+																echo "C&#226;mp invalid!";
 													}
 												?>
 											</span>
@@ -1338,10 +1477,13 @@
                             <span style="color:red">
                               <?php 
                                 if(isset($_POST['Submit'])) {
-                                  $v_Licenta_Strada = $_POST["Licenta_Strada"];  // V
-                                  $vLicenta_Strada = validareStrada($v_Licenta_Strada);
-                                  if($vLicenta_Strada==0)
-                                    echo "C&#226;mp invalid!";
+									$v_Licenta_Strada = $_POST["Licenta_Strada"];  // V
+									$vLicenta_Strada = validareStrada($v_Licenta_Strada);
+									if($v_Licenta_Strada=='')
+										echo "C&#226;mp necompletat!";
+									else
+										if($vLicenta_Strada==0)
+											echo "C&#226;mp invalid!";
                                 }
                               ?>
                             </span>
@@ -1359,8 +1501,11 @@
                                 if(isset($_POST['Submit'])) {
                                   $v_Licenta_Numar = $_POST["Licenta_Numar"];  // V
                                   $vLicenta_Numar = validareNumar($v_Licenta_Numar);
-                                  if($vLicenta_Numar==0)
-                                    echo "C&#226;mp invalid!";
+								  if($v_Licenta_Numar=='')
+										echo "C&#226;mp necompletat!";
+									else
+										if($vLicenta_Numar==0)
+											echo "C&#226;mp invalid!";
                                 }
                               ?>
                             </span>
@@ -1378,8 +1523,11 @@
                                 if(isset($_POST['Submit'])) {
                                   $v_Licenta_Bloc = $_POST["Licenta_Bloc"];  // V
                                   $vLicenta_Bloc = validareBloc($v_Licenta_Bloc);
-                                  if($vLicenta_Bloc==0)
-                                    echo "C&#226;mp invalid!";
+								  if($v_Licenta_Bloc=='')
+										echo "C&#226;mp necompletat!";
+									else
+										if($vLicenta_Bloc==0)
+											echo "C&#226;mp invalid!";
                                 }
                               ?>
                             </span>
@@ -1395,10 +1543,13 @@
                             <span style="color:red">
                               <?php 
                                 if(isset($_POST['Submit'])) {
-                                  $v_Licenta_Scara = $_POST["Licenta_Scara"];  // V
-                                  $vLicenta_Scara = validareBloc($v_Licenta_Scara);
-                                  if($vLicenta_Scara==0)
-                                    echo "C&#226;mp invalid!";
+									$v_Licenta_Scara = $_POST["Licenta_Scara"];  // V
+									$vLicenta_Scara = validareBloc($v_Licenta_Scara);
+									if($v_Licenta_Scara=='')
+										echo "C&#226;mp necompletat!";
+									else
+										if($vLicenta_Scara==0)
+											echo "C&#226;mp invalid!";
                                 }
                               ?>
                             </span>
@@ -1416,8 +1567,11 @@
                                 if(isset($_POST['Submit'])) {
                                   $v_Licenta_Etaj = $_POST["Licenta_Etaj"];  // V
                                   $vLicenta_Etaj = validareEtaj($v_Licenta_Etaj);
-                                  if($vLicenta_Etaj==0)
-                                    echo "C&#226;mp invalid!";
+								  if($v_Licenta_Scara=='')
+										echo "C&#226;mp necompletat!";
+									else
+										if($v_Licenta_Etaj==0)
+											echo "C&#226;mp invalid!";
                                 }
                               ?>
                             </span>
@@ -1435,8 +1589,11 @@
                                 if(isset($_POST['Submit'])) {
                                   $v_Licenta_Apartament = $_POST["Licenta_Apartament"];  // V
                                   $vLicenta_Apartament = validareNumar($v_Licenta_Apartament);
-                                  if($vLicenta_Apartament==0)
-                                    echo "C&#226;mp invalid!";
+								   if($v_Licenta_Apartament=='')
+										echo "C&#226;mp necompletat!";
+									else
+									  if($vLicenta_Apartament==0)
+										echo "C&#226;mp invalid!";
                                 }
                               ?>
                             </span>
@@ -1455,12 +1612,15 @@
                                                                                                                 echo $v_Licenta_Localitate;
                                                                                                             ?>" />
                             <span style="color:red">
-                              <?php 
+                              <?php
                                 if(isset($_POST['Submit'])) {
                                   $v_Licenta_Localitate = $_POST["Licenta_Localitate"];  // V
                                   $vLicenta_Localitate = validPremume($v_Licenta_Localitate);
-                                  if($vLicenta_Localitate==0)
-                                    echo "C&#226;mp invalid!";
+								  if($v_Licenta_Localitate=='')
+										echo "C&#226;mp necompletat!";
+									else
+									  if($vLicenta_Localitate==0)
+										echo "C&#226;mp invalid!";
                                 }
                               ?>
                             </span>
@@ -1493,8 +1653,11 @@
                                 if(isset($_POST['Submit'])) {
                                   $v_Licenta_Cod_Postal = $_POST["Licenta_Cod_Postal"];  // V
                                   $vLicenta_Cod_Postal = validareCodPostal($v_Licenta_Cod_Postal);
-                                  if($vLicenta_Cod_Postal==0)
-                                    echo "C&#226;mp invalid!";
+								  if($v_Licenta_Cod_Postal=='')
+										echo "C&#226;mp necompletat!";
+									else
+									  if($vLicenta_Cod_Postal==0)
+										echo "C&#226;mp invalid!";
                                 }
                               ?>
                             </span>
@@ -1544,8 +1707,11 @@
                           if(isset($_POST['Submit'])) {
                             $v_Licenta_Telefon = $_POST["Licenta_Telefon"];  // V
                             $vLicenta_Telefon = validTelefon($v_Licenta_Telefon);
-                            if($vLicenta_Telefon==0)
-                              echo "C&#226;mp invalid!";
+							if($v_Licenta_Telefon=='')
+								echo "C&#226;mp necompletat!";
+							else
+								if($vLicenta_Telefon==0)
+									echo "C&#226;mp invalid!";
                           }
                         ?>
                       </span>
@@ -1566,8 +1732,11 @@
                           if(isset($_POST['Submit'])) {
                             $v_Licenta_Email = $_POST["Licenta_Email"];  // V
                             $vLicenta_Email = validEmail($v_Licenta_Email);
-                            if($vLicenta_Email==0)
-                              echo "C&#226;mp invalid!";
+							if($v_Licenta_Email=='')
+								echo "C&#226;mp necompletat!";
+							else
+								if($vLicenta_Email==0)
+								  echo "C&#226;mp invalid!";
                           }
                         ?>
                       </span>
