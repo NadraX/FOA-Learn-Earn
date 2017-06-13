@@ -549,7 +549,6 @@
 			                    <tbody>
 			                      <tr>
 			                         <span id="chitanta" class="form-sub-label-container" style="vertical-align:top; width: 80%; margin-right: 5px;">
-                                  <label class="form-sub-label sublabel_first" style="min-height:13px;"> Chitanța   nr. </label>
 			                            <input type="number"  name="Master_Chitanta_nr" class="form-textbox first_1" placeholder="ex:2643" size="10" data-component="first" value="<?php 
 																																												if($v_Chitanta == '')		
 																																													echo '';		
@@ -557,45 +556,46 @@
 																																													echo $v_Chitanta;		
 																																											?>" />
 										
-              										<span style="color:red">		
-              											<?php		
-              												if(isset($_POST['Submit'])) {		
-              												$v_Chitanta = $_POST["Master_Chitanta_nr"];		
-              												$vChitanta = validChitanta($v_Chitanta);		
-              												if($vChitanta==0)		
-              													echo "C&#226;mp invalid!";		
-              												}		
-              											?>		
-              										</span>
+										<span style="color:red">		
+											<?php		
+												if(isset($_POST['Submit'])) {		
+												$v_Chitanta = $_POST["Master_Chitanta_nr"];		
+												$vChitanta = validChitanta($v_Chitanta);		
+												if($vChitanta==0)		
+													echo "C&#226;mp invalid!";		
+												}		
+											?>		
+										</span>
 										
+			                            <label class="form-sub-label sublabel_first" style="min-height:13px;"> Chitanța   nr. </label>
 			                        </span>
 			                        <span id="suma" class="form-sub-label-container" style="vertical-align:top; width: 18%; margin-right: 5px;">
-                                <label class="form-sub-label"  style="min-height:13px;"> Suma achitată (RON) </label>
-										            <input type="number" name="Master_Suma_Taxa" class="form-textbox middle_1" placeholder="ex: 250" size="10" data-component="middle" value="<?php
+										<input type="number" name="Master_Suma_Taxa" class="form-textbox middle_1" placeholder="ex: 250" size="10" data-component="middle" value="<?php
 																																																if($v_Suma_Taxa == '')		
 																																																	echo '';		
 																																																else		
 																																																	echo $v_Suma_Taxa;		
 																																															?>" />
 
-              										<span style="color:red">		
-              											<?php		
-              												if(isset($_POST['Submit'])) {		
-              												$v_Suma_Taxa = $_POST["Master_Suma_Taxa"];		
-              												$vsuma = validSuma($v_Suma_Taxa);		
-              												if($vsuma==0)		
-              													echo "C&#226;mp invalid!";		
-              												}		
-              											?>		
-              										</span>
+										<span style="color:red">		
+											<?php		
+												if(isset($_POST['Submit'])) {		
+												$v_Suma_Taxa = $_POST["Master_Suma_Taxa"];		
+												$vsuma = validSuma($v_Suma_Taxa);		
+												if($vsuma==0)		
+													echo "C&#226;mp invalid!";		
+												}		
+											?>		
+										</span>
 										
+										<label class="form-sub-label"  style="min-height:13px;"> Suma achitată (RON) </label>
 			                        </span>
 			                      </tr>
 			                      <tr>
 			                        <td>
 			                          <br>
 			                          <label class="form-label form-label-left form-label-auto" 
-			                          style="color: gray; font-size:medium; width:45%; display:inline-block"> Sunteţi scutit de această taxă?  </label>                        
+			                          style="color: gray; font-size:medium; width:25%; display:inline-block"> Sunteţi scutit de această taxă?  </label>                        
 			                          <span style="width:40%">
 			                            <input type="radio" name="group1" id="checkbox11" class="css-checkbox" value="1" <?php
 																															if($v_Radio1 == '')		
@@ -607,7 +607,7 @@
 																																	echo '';		
 																															?> />
 			                            <label for="checkbox11" class="css-label" style="margin-right:100px">Da</label>
-			                            <input type="radio" name="group1" id="checkbox13" class="css-checkbox" value="2" <?php
+			                            <input type="radio" name="group1" id="checkbox13" class="css-checkbox" value="0" <?php
 																															if($v_Radio1 == '')		
 																																echo '';		
 																															else		
@@ -629,7 +629,6 @@
 										</span>
 			                          </span>
 			                          <span id="motiv-scutire" class="form-sub-label-container" style="vertical-align:top; width: 49%; margin-right: 5px;">
-                                    <label class="form-sub-label"  id="sublabel_last" style="min-height:13px;"> Dacă da, motivul scutirii <span class="info-box">?<span class="info-box__content">Sunteți scutit de taxa de admitere în cazuri precum "copil de cadru de didactic"</span></span> </label>
 			                              <input type="text" name="Master_Motiv_Scutire_taxa" class="form-textbox last_1" size="15" placeholder="ex: Fiu de Parlamentar"  data-component="last"  value="<?php 
 																																																			if($v_Scutire == '')		
 																																																				echo '';		
@@ -646,6 +645,7 @@
 													}		
 												?>		
 											</span>
+			                              <label class="form-sub-label"  id="sublabel_last" style="min-height:13px;"> Dacă da, motivul scutirii <span class="info-box">!<span class="info-box__content">Sunteți scutit de taxa de admitere în cazuri precum "copil de cadru de didactic"</span></span> </label>
 			                          </span>
 			                        </td>
 			                      </tr>
@@ -1452,7 +1452,7 @@
 				                          style="color: gray; font-size:medium; width:25%; display:inline-block"> Domiciliu stabil: </label>
 				                        
 				                          <span style="width:75%">
-				                            <input type="radio" name="group3" id="checkbox1" class="css-checkbox" value="1" <?php
+				                            <input type="radio" name="group3" id="checkbox1" class="css-checkbox" value="Rural" <?php
 				                                                        if($v_Radio3 == '')
 				                                                          echo '';
 				                                                        else
@@ -1462,7 +1462,7 @@
 				                                                            echo '';
 				                                                        ?> />
 				                            <label for="checkbox1" class="css-label" style="margin-right:100px">Rural</label>
-				                            <input type="radio" name="group3" id="checkbox2" class="css-checkbox" value="2" <?php
+				                            <input type="radio" name="group3" id="checkbox2" class="css-checkbox" value="Urban" <?php
 				                                                        if($v_Radio3 == '')
 				                                                          echo '';
 				                                                        else
@@ -1683,7 +1683,6 @@
 				                </div>
 				                <div data-wrapper-react="true" style="width:50%; display:inline-block;">
 				                    <span class="form-sub-label-container" style="vertical-align:top; width:100%" >
-                              <label class="form-sub-label" for="input_6_phone"  style="min-height:13px;"> Num&#259;r de telefon </label>
 				                      <input type="tel" id="input_6_phone" name="Master_Telefon" class="form-textbox" size="20" placeholder="ex: 0751404400"  data-component="phone"  style="width:100%; height:40px" value="<?php 
 				                                                                                                                    if($v_Licenta_Telefon == '') 
 				                                                                                                                      echo '';
@@ -1701,11 +1700,11 @@
 				                          }
 				                        ?>
 				                      </span>
+				                      <label class="form-sub-label" for="input_6_phone"  style="min-height:13px;"> Num&#259;r de telefon </label>
 				                    </span>
 				                </div>
 				                <div data-wrapper-react="true" style="width:49%; display:inline-block;">
 				                    <span class="form-sub-label-container" style="vertical-align:top; width:100%">
-                              <label class="form-sub-label" for="input_6_phone"  style="min-height:13px;"> E-mail </label>
 				                      <input type="email" id="input_9" name="Master_Email" class="form-textbox validate[Email]" size="30" placeholder="ex: adresamea@yahoo.com" data-component="email" style="width:100%;height:40px" value="<?php 
 				                                                                                                                            if($v_Licenta_Email == '') 
 				                                                                                                                              echo '';
@@ -1723,6 +1722,7 @@
 				                          }
 				                        ?>
 				                      </span>
+				                      <label class="form-sub-label" for="input_6_phone"  style="min-height:13px;"> E-mail </label>
 				                    </span>
 				                </div>
 				                <br>
@@ -1747,11 +1747,11 @@
 				                                                            echo '';
 				                                                        ?> />
 				                            <label for="checkbox3" class="css-label" style="margin-right:100px">Da</label>
-				                            <input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="2" <?php
+				                            <input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="0" <?php
 				                                                        if($v_Radio5 == '')
 				                                                          echo '';
 				                                                        else
-				                                                          if($v_Radio5==2)
+				                                                          if($v_Radio5==0)
 				                                                            echo 'checked="checked"';
 				                                                          else
 				                                                            echo '';
@@ -1783,7 +1783,7 @@
 				                                                                  echo '';
 				                                                              ?> />   
 				                                <label for="checkbox7" class="css-label" style="margin-right:100px">Da</label>
-				                                <input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="2" <?php
+				                                <input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="0" <?php
 				                                                              if($v_Radio4 == '')
 				                                                                echo '';
 				                                                              else
@@ -1797,26 +1797,52 @@
 				                        </td>
 				                      </tr>
 				                      <tr>
-                                <td>
-                                  <label class="form-label form-label-left form-label-auto" 
-                                  style="color: gray; font-size:medium; width:100%; display:inline-block"> Stare socială specială: </label>                        
-                                  <ul class="checkbox-grid">
-                                    <br>
-                                    <li><input type="checkbox" name="Nicio_Opt" class="css-checkbox" value="" id="Nicio_Opt" />
-                                      <label for="Nicio_Opt" class="css-label2">Nicio Opţiune </label></li>
-                                    <li><input type="checkbox" name="Orfan_1" class="css-checkbox" value="" id="Orfan_1" />
-                                      <label for="Orfan_1" class="css-label2">Orfan de un părinte</label></li>
-                                    <li><input type="checkbox" name="Orfan_2" class="css-checkbox" value="" id="Orfan_2" />
-                                      <label for="Orfan_2" class="css-label2">Orfan de ambii părinţi</label></li>
-                                    <li><input type="checkbox" name="Casa_Copii" class="css-checkbox" value="" id="Casa_Copii" />
-                                      <label for="Casa_Copii" class="css-label2">Provenit din case de copii</label></li>
-                                    <li><input type="checkbox" name="Plasament_Familial" class="css-checkbox" value="" id="Plasament_Familial" />
-                                      <label for="Plasament_Familial" class="css-label2">Provenit din plasament familial</label></li>
-                                    <li><input type="checkbox" name="Familie_Monoparentala" class="css-checkbox" value="" id="Familie_Monoparentala" />
-                                      <label for="Familie_Monoparentala" class="css-label2">Provenit din familie monoparentală</label></li>
-                                  </ul>
-                                </td>
-                              </tr>
+				                        <td>
+				                          <br>
+				                          <span class="form-sub-label-container" style="vertical-align:top; width:30%">
+				                          <select class="form-dropdown form-address-country gen" name="Licenta_Stare_speciala"  data-component="country">
+				                            <option value="1"<?php
+				                                          if($v_Stare_Speciala=="0")
+				                                            echo 'selected';
+				                                          else
+				                                            echo '';
+				                                        ?>>Nicio opţiune</option>
+				                                    <option value="2"<?php
+				                                          if($v_Stare_Speciala=="1")    
+				                                            echo 'selected';    
+				                                          else    
+				                                            echo '';    
+				                                        ?>>Orfan de un părinte</option>   
+				                                    <option value="3"<?php    
+				                                          if($v_Stare_Speciala=="2")    
+				                                            echo 'selected';    
+				                                          else    
+				                                            echo '';    
+				                                        ?>>Orfan de ambii părinți</option>    
+				                                    <option value="4"<?php    
+				                                          if($v_Stare_Speciala=="3")    
+				                                            echo 'selected';    
+				                                          else    
+				                                            echo '';    
+				                                        ?>>Provenit din case de copii</option>      
+				                                    <option value="5"<?php    
+				                                          if($v_Stare_Speciala=="4")    
+				                                            echo 'selected';    
+				                                          else    
+				                                            echo '';    
+				                                        ?>>Provenit din plasament familial</option>   
+				                                    <option value="6"<?php    
+				                                          if($v_Stare_Speciala=="5")    
+				                                            echo 'selected';    
+				                                          else    
+				                                            echo '';    
+				                                        ?>>Provenit din familie monoparentală</option>    
+				                                  </select>
+				                          </select>
+				                          <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Stare socială specială </label>
+				                        </span>
+				                        </td>
+				                      </tr>
 				                    </tbody>
 				                  </table>
 				                </div>
@@ -8584,7 +8610,7 @@
                           <span style="width:55%">
                               <input type="radio" onClick="AltaUniv();" name="group25" id="daAltaFacultate" class="css-checkbox" value="1" />   
                               <label for="daAltaFacultate" class="css-label" style="margin-right:100px">Da</label>
-                              <input type="radio" onClick="AltaUniv()" name="group25" id="nuAltaFacultate" class="css-checkbox" value="2"/>
+                              <input type="radio" onClick="AltaUniv()" name="group25" id="nuAltaFacultate" class="css-checkbox" value="0"/>
                               <label for="nuAltaFacultate" class="css-label">Nu</label>
                           </span>
 
@@ -9084,7 +9110,7 @@
 
 										<div class="col-md-12 mrg-t10" >
                       <br>
-											<input name="IngineriaSistemelorSoftwareTaxa" style="width: 40px; height:30px;" type="number" value="<?php
+											<input name="IngineriaSistemelorSoftwareTaxa" style="width: 40px; height:30px;" type="number" value="1"<?php
 																																					if($Preferinte[1] == '') 		
 																																						echo '';		
 																																					else		
@@ -9096,7 +9122,7 @@
 
 										<div class="col-md-12 mrg-t10" > 
                       <br>
-											<input name="SistemeDistribuiteTaxa" style="width: 40px; height:30px;" type="number" value="<?php
+											<input name="SistemeDistribuiteTaxa" style="width: 40px; height:30px;" type="number" value="2"<?php
 																																			if($Preferinte[2] == '') 		
 																																				echo '';		
 																																			else		
@@ -9108,7 +9134,7 @@
 
 										<div class="col-md-12 mrg-t10">
                       <br>
-											<input name="SecuritateaInformatieiTaxa" style="width: 40px; height:30px;" type="number" value="<?php 
+											<input name="SecuritateaInformatieiTaxa" style="width: 40px; height:30px;" type="number" value="3"<?php 
 																																				if($Preferinte[3] == '') 		
 																																					echo '';		
 																																				else		
@@ -9120,7 +9146,7 @@
 
 										<div class="col-md-12 mrg-t10" >
                       <br>
-											<input name="OptimizareaComputationalaTaxa" style="width: 40px; height:30px;" type="number" value="<?php
+											<input name="OptimizareaComputationalaTaxa" style="width: 40px; height:30px;" type="number" value="4"<?php
 																																					if($Preferinte[4] == '') 		
 																																						echo '';		
 																																					else		
@@ -9136,7 +9162,7 @@
 
 										<div class="col-md-12 mrg-t10" >
                       <br>
-											<input name="LingvistivaComputationalaTaxa" style="width: 40px; height:30px;" type="number" value="<?php
+											<input name="LingvistivaComputationalaTaxa" style="width: 40px; height:30px;" type="number" value="5"<?php
 																																					if($Preferinte[5] == '') 		
 																																						echo '';		
 																																					else		
@@ -9148,7 +9174,7 @@
 
 										<div class="col-md-12 mrg-t10" >
                       <br>
-											<input name="StudiiAvansateInInformaticaTaxa" style="width: 40px; height:30px;" type="number" value="<?php
+											<input name="StudiiAvansateInInformaticaTaxa" style="width: 40px; height:30px;" type="number" value="6"<?php
 																																					if($Preferinte[6] == '') 		
 																																						echo '';		
 																																					else		
@@ -9160,7 +9186,7 @@
 
 										<div class="col-md-12 mrg-t10" >
                       <br>
-											<input name="IngineriaSoftwareBuget" style="width: 40px; height:30px;" type="number" value="<?php
+											<input name="IngineriaSoftwareBuget" style="width: 40px; height:30px;" type="number" value="7"<?php
 																																					if($Preferinte[7] == '') 		
 																																						echo '';		
 																																					else		
@@ -9172,7 +9198,7 @@
 
 										<div class="col-md-12 mrg-t10" >
                       <br>
-											<input name="SistemeDistribuiteBuget" style="width: 40px; height:30px;" type="number" value="<?php
+											<input name="SistemeDistribuiteBuget" style="width: 40px; height:30px;" type="number" value="8"<?php
 																																					if($Preferinte[8] == '') 		
 																																						echo '';		
 																																					else		
@@ -9188,7 +9214,7 @@
 
 										<div class="col-md-12 mrg-t10">
                       <br>
-											<input name="SecuritateaInformatieiBuget" style="width: 40px; height:30px;" type="number" value="<?php
+											<input name="SecuritateaInformatieiBuget" style="width: 40px; height:30px;" type="number" value="9"<?php
 																																					if($Preferinte[9] == '') 		
 																																						echo '';		
 																																					else		
@@ -9200,7 +9226,7 @@
 
 										<div class="col-md-12 mrg-t10">
                       <br>
-											<input name="OptimizareaComputationalaBuget" style="width: 40px; height:30px;" type="number" value="<?php
+											<input name="OptimizareaComputationalaBuget" style="width: 40px; height:30px;" type="number" value="10"<?php
 																																					if($Preferinte[10] == '') 		
 																																						echo '';		
 																																					else		
@@ -9212,7 +9238,7 @@
 
 										<div class="col-md-12 mrg-t10" >
                       <br>
-											<input name="LingvisticaComputationalaBuget" style="width: 40px; height:30px;" type="number" value="<?php
+											<input name="LingvisticaComputationalaBuget" style="width: 40px; height:30px;" type="number" value="11"<?php
 																																					if($Preferinte[11] == '') 		
 																																						echo '';		
 																																					else		
@@ -9255,11 +9281,11 @@
                              </label>
                           
                         <span style="width:50%;">
-                            <input type="radio"  name="group26" id="daTaxa" class="css-checkbox" value="1" />   
+                            <input type="radio"  name="group26" id="daTaxa" class="css-checkbox" value="Cu taxa" />   
                             <label for="daTaxa" class="css-label" style="margin-right:100px">Da</label>
-                            <input type="radio" name="group26" id="nuTaxa" class="css-checkbox"  value="2"/>
+                            <input type="radio" name="group26" id="nuTaxa" class="css-checkbox"  value="Fara taxa"/>
                             <label for="nuTaxa" class="css-label" style="margin-right: 50px;">Nu</label>
-                            <input type="radio" name="group26" id="numaiTaxa" class="css-checkbox" value="3"/>
+                            <input type="radio" name="group26" id="numaiTaxa" class="css-checkbox" value="Doar taxa"/>
                             <label for="numaiTaxa" class="css-label">Numai cu Taxă</label>
                         </span>
 
@@ -9276,26 +9302,22 @@
                 <br>
                 <ul class="checkbox-grid">
                   <br>
-                  <li><input type="radio" name="Master_Diploma_BAC" class="css-checkbox" value="" id="Master_Diploma_BAC_Original" />
-                    <label for="Master_Diploma_BAC_Original" class="css-label">Diploma de Bacalaureat în original</label></li>
-                  <li><input type="radio" name="Master_Diploma_BAC" class="css-checkbox" value="" id="Master_Diploma_BAC_Copie" />
-                    <label for="Master_Diploma_BAC_Copie" class="css-label">Diploma de Bacalaureat copie legalizată</label></li>
-                  <br /> <br />
-                  <li><input type="radio" name="Master_Echivalare_Studii_Preuniversitare" class="css-checkbox" value="" id="Master_Echivalare_Studii_Preuniversitare_Original" />
-                    <label for="Master_Echivalare_Studii_Preuniversitare_Original" class="css-label">Document echivalare studii preuniversitare - original</label></li>
-                  
-                  <li><input type="radio" name="Master_Echivalare_Studii_Preuniversitare" class="css-checkbox" value="" id="Master_Echivalare_Studii_Preuniversitare_Copie" />
-                    <label for="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-label">Document echivalare studii preuniversitare - copie legalizată</label></li>
-                  <br /> <br />
-                  <li><input type="radio" name="Master_Diploma_Licenta" class="css-checkbox" value="" id="Master_Diploma_Licenta_Original" />
-                    <label for="Master_Diploma_Licenta_Original" class="css-label">Diplomă de licenţă - original</label></li>
-                  <li><input type="radio" name="Master_Diploma_Licenta" class="css-checkbox" value="" id="Master_Diploma_Licenta_Copie" />
-                    <label for="Master_Diploma_Licenta_Copie" class="css-label">Diplomă de licenţă - copie legalizată</label></li> 
-                  <br /> <br />
-                  <li><input type="radio" name="Master_Echivalare_Studii_Licenta" class="css-checkbox" value="" id="Master_Echivalare_Studii_Licenta_Original" />
-                    <label for="Master_Echivalare_Studii_Licenta_Original" class="css-label">Document echivalare studii licenţă - original</label></li>
-                  <li><input type="radio" name="Master_Echivalare_Studii_Licenta" class="css-checkbox" value="" id="Master_Echivalare_Studii_Licenta_Copie" />
-                    <label for="Master_Echivalare_Studii_Licenta_Copie" class="css-label">Document echivalare studii licenţă - copie legalizată</label></li>
+                  <li><input type="checkbox" name="Master_Diploma_BAC_Original" class="css-checkbox" value="1" id="Master_Diploma_BAC_Original" />
+                    <label for="Master_Diploma_BAC_Original" class="css-label2">Diploma de Bacalaureat în original</label></li>
+                  <li><input type="checkbox" name="Master_Diploma_BAC_Copie" class="css-checkbox" value="1" id="Master_Diploma_BAC_Copie" />
+                    <label for="Master_Diploma_BAC_Copie" class="css-label2">Diploma de Bacalaureat copie legalizată</label></li>
+                  <li><input type="checkbox" name="Master_Echivalare_Studii_Preuniversitare_Original" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Original" />
+                    <label for="Master_Echivalare_Studii_Preuniversitare_Original" class="css-label2">Document echivalare studii preuniversitare - original</label></li>
+                  <li><input type="checkbox" name="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Copie" />
+                    <label for="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-label2">Document echivalare studii preuniversitare - copie legalizată</label></li>
+                  <li><input type="checkbox" name="Master_Diploma_Licenta_Original" class="css-checkbox" value="1" id="Master_Diploma_Licenta_Original" />
+                    <label for="Master_Diploma_Licenta_Original" class="css-label2">Diplomă de licenţă - original</label></li>
+                  <li><input type="checkbox" name="Master_Diploma_Licenta_Copie" class="css-checkbox" value="1" id="Master_Diploma_Licenta_Copie" />
+                    <label for="Master_Diploma_Licenta_Copie" class="css-label2">Diplomă de licenţă - copie legalizată</label></li> 
+                  <li><input type="checkbox" name="Master_Echivalare_Studii_Licenta_Original" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Licenta_Original" />
+                    <label for="Master_Echivalare_Studii_Licenta_Original" class="css-label2">Document echivalare studii licenţă - original</label></li>
+                  <li><input type="checkbox" name="Master_Echivalare_Studii_Licenta_Copie" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Licenta_Copie" />
+                    <label for="Master_Echivalare_Studii_Licenta_Copie" class="css-label2">Document echivalare studii licenţă - copie legalizată</label></li>
                 </ul>
                 <div  class="form-input jf-required cid_1" style:"display:inline-block">
                     <br>
@@ -9307,7 +9329,7 @@
                         <span style="width:50%;">
                             <input type="radio"  onClick="AlteConcursuri()" name="group27" id="daAltConcurs" class="css-checkbox" value="1" />   
                             <label for="daAltConcurs"  class="css-label" style="margin-right:100px">Da</label>
-                            <input type="radio" onClick="AlteConcursuri()" name="group27" id="nuAltConcurs" class="css-checkbox"  value="2"/>
+                            <input type="radio" onClick="AlteConcursuri()" name="group27" id="nuAltConcurs" class="css-checkbox"  value="0"/>
                             <label for="nuAltConcurs" class="css-label" style="margin-right: 50px;">Nu</label>
                             
                         </span>
@@ -9425,22 +9447,15 @@
                   <li><input type="checkbox" name="Site_Facultate" class="css-checkbox" value="" id="Site_Facultate" />
                     <label for="Site_Facultate" class="css-label2">Site-ul Faculăţii</label></li>
                   <li><input type="checkbox" name="Brosura_Admitere" class="css-checkbox" value="" id="Brosura_Admitere" />
-                    <label for="Brosura_Admitere" class="css-label2">Broşură sau pliant despre admitere</label></li>
-                  <li><input type="checkbox" name="FB_Univ" class="css-checkbox" value="" id="FB_Univ" />
                     <label for="FB_Univ" class="css-label2">Pagina de Facebook a Universităţii</label></li>
                   <li><input type="checkbox" name="Prieteni_Rude" class="css-checkbox" value="" id="Prieteni_Rude" />
                     <label for="Prieteni_Rude" class="css-label2">Prieteni, Cunoştinţe, Rude</label></li>
-                  <li><input type="checkbox" name="Porti_Deschise_UAIC" class="css-checkbox" value="" id="Porti_Deschise_UAIC" />
-                    <label for="Porti_Deschise_UAIC" class="css-label2">Săptămâna porţilor deschise UAIC</label></li> 
-                  <li><input type="checkbox" name="Prezentare_Liceu" class="css-checkbox" value="" id="Prezentare_Liceu" />
-                    <label for="Prezentare_Liceu" class="css-label2">La o prezentare în liceu</label></li>
                   <li><input type="checkbox" name="Profesori_Liceu" class="css-checkbox" value="" id="Profesori_Liceu" />
-                    <label for="Profesori_Liceu" class="css-label2">Profesorii de liceu</label></li>
+                    <label for="Profesori_Liceu" class="css-label2">Profesorii de facultate</label></li>
                   <li><input type="checkbox" name="Presa" class="css-checkbox" value="" id="Presa" />
                     <label for="Presa" class="css-label2">Presă</label></li>
                   <li><input type="checkbox" name="Alte_Surse" class="css-checkbox" value="" id="Alte_Surse" />
-                    <label for="Alte_Surse" class="css-label2">Alte Surse</label>
-                    <input type="text" id="AlteSurse" placeholder="vă rugăm specificaţi" style="height:40px; width:40%; margin-left:20px;" /></li>
+                    <label for="Alte_Surse" class="css-label2">Alte Surse</label></li>
                 </ul>
 
                 <label class="form-label  form-label-auto" 
@@ -9456,17 +9471,17 @@
                              </label>
                           
                         <span style="width:70%;">
-                          <input type="radio" name="group28" id="1_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group28" id="1_0" class="css-checkbox" value="0" />   
                           <label for="1_0" class="css-label" style="margin-right:50px">0</label>
                           <input type="radio" name="group28" id="1_1" class="css-checkbox" value="1" />   
                           <label for="1_1" class="css-label" style="margin-right:50px">1</label>
                           <input type="radio"  name="group28" id="1_2" class="css-checkbox" value="2"/>
                           <label for="1_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group28" id="1_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group28" id="1_3" class="css-checkbox" value="3" />   
                           <label for="1_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group28" id="1_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group28" id="1_4" class="css-checkbox" value="4"/>
                           <label for="1_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group28" id="1_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group28" id="1_5" class="css-checkbox" value="5"/>
                           <label for="1_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -9478,17 +9493,17 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group29" id="2_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group29" id="2_0" class="css-checkbox" value="0" />   
                           <label for="2_0" class="css-label" style="margin-right:50px">0</label>
                           <input type="radio" name="group29" id="2_1" class="css-checkbox" value="1" />   
                           <label for="2_1" class="css-label" style="margin-right:50px">1</label>
                           <input type="radio"  name="group29" id="2_2" class="css-checkbox" value="2"/>
                           <label for="2_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group29" id="2_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group29" id="2_3" class="css-checkbox" value="3" />   
                           <label for="2_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group29" id="2_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group29" id="2_4" class="css-checkbox" value="4"/>
                           <label for="2_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group29" id="2_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group29" id="2_5" class="css-checkbox" value="5"/>
                           <label for="2_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -9500,17 +9515,17 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group30" id="3_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group30" id="3_0" class="css-checkbox" value="0" />   
                           <label for="3_0" class="css-label" style="margin-right:50px">0</label>
                           <input type="radio" name="group30" id="3_1" class="css-checkbox" value="1" />   
                           <label for="3_1" class="css-label" style="margin-right:50px">1</label>
                           <input type="radio"  name="group30" id="3_2" class="css-checkbox" value="2"/>
                           <label for="3_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group30" id="3_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group30" id="3_3" class="css-checkbox" value="3" />   
                           <label for="3_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group30" id="3_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group30" id="3_4" class="css-checkbox" value="4"/>
                           <label for="3_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group30" id="3_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group30" id="3_5" class="css-checkbox" value="5"/>
                           <label for="3_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -9522,17 +9537,17 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group31" id="4_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group31" id="4_0" class="css-checkbox" value="0" />   
                           <label for="4_0" class="css-label" style="margin-right:50px">0</label>
                           <input type="radio" name="group31" id="4_1" class="css-checkbox" value="1" />   
                           <label for="4_1" class="css-label" style="margin-right:50px">1</label>
                           <input type="radio"  name="group31" id="4_2" class="css-checkbox" value="2"/>
                           <label for="4_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group31" id="4_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group31" id="4_3" class="css-checkbox" value="3" />   
                           <label for="4_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group31" id="4_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group31" id="4_4" class="css-checkbox" value="4"/>
                           <label for="4_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group31" id="4_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group31" id="4_5" class="css-checkbox" value="5/>
                           <label for="4_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -9544,17 +9559,17 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group32" id="5_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group32" id="5_0" class="css-checkbox" value="0" />   
                           <label for="5_0" class="css-label" style="margin-right:50px">0</label>
                           <input type="radio" name="group32" id="5_1" class="css-checkbox" value="1" />   
                           <label for="5_1" class="css-label" style="margin-right:50px">1</label>
                           <input type="radio"  name="group32" id="5_2" class="css-checkbox" value="2"/>
                           <label for="5_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group32" id="5_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group32" id="5_3" class="css-checkbox" value="3" />   
                           <label for="5_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group32" id="5_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group32" id="5_4" class="css-checkbox" value="4"/>
                           <label for="5_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group32" id="5_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group32" id="5_5" class="css-checkbox" value="5"/>
                           <label for="5_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -9566,17 +9581,17 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group33" id="6_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group33" id="6_0" class="css-checkbox" value="0" />   
                           <label for="6_0" class="css-label" style="margin-right:50px">0</label>
                           <input type="radio" name="group33" id="6_1" class="css-checkbox" value="1" />   
                           <label for="6_1" class="css-label" style="margin-right:50px">1</label>
                           <input type="radio"  name="group33" id="6_2" class="css-checkbox" value="2"/>
                           <label for="6_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group33" id="6_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group33" id="6_3" class="css-checkbox" value="3" />   
                           <label for="6_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group33" id="6_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group33" id="6_4" class="css-checkbox" value="4"/>
                           <label for="6_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group33" id="6_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group33" id="6_5" class="css-checkbox" value="5"/>
                           <label for="6_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -9588,17 +9603,17 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group34" id="7_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group34" id="7_0" class="css-checkbox" value="0" />   
                           <label for="7_0" class="css-label" style="margin-right:50px">0</label>
                           <input type="radio" name="group34" id="7_1" class="css-checkbox" value="1" />   
                           <label for="7_1" class="css-label" style="margin-right:50px">1</label>
                           <input type="radio"  name="group34" id="7_2" class="css-checkbox" value="2"/>
                           <label for="7_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group34" id="7_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group34" id="7_3" class="css-checkbox" value="3" />   
                           <label for="7_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group34" id="7_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group34" id="7_4" class="css-checkbox" value="4"/>
                           <label for="7_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group34" id="7_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group34" id="7_5" class="css-checkbox" value="5"/>
                           <label for="7_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -9610,17 +9625,17 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group35" id="8_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group35" id="8_0" class="css-checkbox" value="0" />   
                           <label for="8_0" class="css-label" style="margin-right:50px">0</label>
                           <input type="radio" name="group35" id="8_1" class="css-checkbox" value="1" />   
                           <label for="8_1" class="css-label" style="margin-right:50px">1</label>
                           <input type="radio"  name="group35" id="8_2" class="css-checkbox" value="2"/>
                           <label for="8_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group35" id="8_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group35" id="8_3" class="css-checkbox" value="3" />   
                           <label for="8_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group35" id="8_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group35" id="8_4" class="css-checkbox" value="4"/>
                           <label for="8_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group35" id="8_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group35" id="8_5" class="css-checkbox" value="5"/>
                           <label for="8_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -9821,2522 +9836,2754 @@
       echo "Connection failed. Please try again";
     else {
 
-    $v_Numele_De_Familie=$_POST["Master_Numele_De_Familie"];
-    $v_Licenta_Initiala_Tata = $_POST["Master_Initiala_Tata"];
-    $v_Licenta_Email = $_POST["Master_Email"];
-    $v_Licenta_Telefon = $_POST["Master_Telefon"];
-    $v_Licenta_Cod_Postal = $_POST["Master_Cod_Postal"];
-    $v_Licenta_Localitate = $_POST["Master_Localitate"];
-    $v_Licenta_Apartament = $_POST["Master_Apartament"];
-    $v_Licenta_Etaj = $_POST["Master_Etaj"];
-    $v_Licenta_Scara = $_POST["Master_Scara"];
-    $v_Licenta_Bloc = $_POST["Master_Bloc"];
-    $v_Licenta_Numar = $_POST["Master_Numar"];
-    $v_Licenta_Strada = $_POST["Master_Strada"];
-    $v_Licenta_Nota_MI = $_POST["Master_Nota_Licenta"];
-    $v_Licenta_Medie_BAC = $_POST["Master_Medie_BAC"];
-    $v_Licenta_Buletin_Eliberat_De = $_POST["Master_Eliberat_De"];
-    $v_Licenta_Numar_Buletin = $_POST["Master_Numar_Buletin"];
-    $v_Licenta_Serie_Buletin = $_POST["Master_Serie_Buletin"];
-    $v_Licenta_Tip_Buletin = $_POST["Master_Tip_Buletin"];
-    $v_Licenta_CNP = $_POST["Master_CNP"];
-    $v_Licenta_Prenumele = $_POST["Master_Prenumele"];
-    $v_Licenta_Prenume_Mama = $_POST["Master_Prenume_Mama"];
-    $v_Licenta_Prenume_Tata = $_POST["Master_Prenume_Tata"];
-    $v_Licenta_Nationalitate = $_POST["Master_Nationalitate"];
-    $v_Licenta_Etnie = $_POST["Master_Etnie"];
-    $v_Licenta_Limba_Materna = $_POST["Master_Limba_Materna"];
-    $v_Licenta_Stare_Civila = $_POST["Master_Stare_Civila"];
-	$v_Licenta_Sex = $_POST['Master_Sex'];
-	$v_cetatenie = 'romana';
-	$v_data_nastere_luna = $_POST['Master_Nastere_Luna'];
-    $v_data_nastere_zi = $_POST['Master_Nastere_Zi'];
-    $v_data_nastere_an = $_POST['Master_Nastere_An'];
-    $v_buletin_zi = $_POST['Master_Buletin_Ziua'];
-    $v_buletin_an = $_POST['Master_Buletin_An'];
-    $v_buletin_luna = $_POST['Master_Buletin_Luna'];
-	$v_Licenta_Tara = $_POST['Licenta_Tara'];
-    $v_Licenta_Localitate = $_POST['Master_Localitate'];
-	$v_Licenta_Judet = $_POST['Master_Judet'];
-	$v_facultate = 'facultate';
-	$v_preferinta1 = $_POST['IngineriaSistemelorSoftwareTaxa'];
-	$v_preferinta2 = $_POST['SistemeDistribuiteTaxa'];
-	$v_preferinta3 = $_POST['SecuritateaInformatieiTaxa'];
-	$v_preferinta4 = $_POST['OptimizareaComputationalaTaxa'];
-	$v_preferinta5 = $_POST['LingvistivaComputationalaTaxa'];
-	$v_preferinta6 = $_POST['StudiiAvansateInInformaticaTaxa'];
-	$v_preferinta7 = $_POST['IngineriaSoftwareBuget'];
-	$v_preferinta8 = $_POST['SistemeDistribuiteBuget'];
-	$v_preferinta9 = $_POST['SecuritateaInformatieiBuget'];
-	$v_preferinta10 = $_POST['OptimizareaComputationalaBuget'];
-	$v_preferinta11 = $_POST['LingvisticaComputationalaBuget'];
+        $v_Numele_De_Familie_La_Nastere = $_POST["Master_Numele_De_Familie_La_nastere"];
+        $v_Numele_De_Familie_Actual = $_POST["Master_Numele_De_Familie"];
+        $v_Licenta_Initiala_Tata = $_POST["Master_Initiala_Tata"];
+        $v_Licenta_Email = $_POST["Master_Email"];
+        $v_Licenta_Telefon = $_POST["Master_Telefon"];
+        $v_Licenta_Cod_Postal = $_POST["Master_Cod_Postal"];
+        $v_Licenta_Localitate = $_POST["Master_Localitate"];
+        $v_Licenta_Apartament = $_POST["Master_Apartament"];
+        $v_Licenta_Etaj = $_POST["Master_Etaj"];
+        $v_Licenta_Scara = $_POST["Master_Scara"];
+        $v_Licenta_Bloc = $_POST["Master_Bloc"];
+        $v_Licenta_Numar = $_POST["Master_Numar"];
+        $v_Licenta_Strada = $_POST["Master_Strada"];
+        $v_Licenta_Nota_MI = $_POST["Master_Nota_Licenta"];
+        $v_Licenta_Medie_BAC = $_POST["Master_Medie_BAC"];
+        $v_Licenta_Buletin_Eliberat_De = $_POST["Master_Eliberat_De"];
+        $v_Licenta_Numar_Buletin = $_POST["Master_Numar_Buletin"];
+        $v_Licenta_Serie_Buletin = $_POST["Master_Serie_Buletin"];
+        $v_Licenta_Tip_Buletin = $_POST["Master_Tip_Buletin"];
+        $v_Licenta_CNP = $_POST["Master_CNP"];
+        $v_Licenta_Prenumele = $_POST["Master_Prenumele"];
+        $v_Licenta_Prenume_Mama = $_POST["Master_Prenume_Mama"];
+        $v_Licenta_Prenume_Tata = $_POST["Master_Prenume_Tata"];
+        $v_Licenta_Nationalitate = $_POST["Master_Nationalitate"];
+        $v_Licenta_Etnie = $_POST["Master_Etnie"];
+        $v_Licenta_Limba_Materna = $_POST["Master_Limba_Materna"];
+        $v_Licenta_Stare_Civila = $_POST["Master_Stare_Civila"];
+        $v_Licenta_Sex = $_POST['Master_Sex'];
+        $v_cetatenie = 'romana';
+        $v_data_nastere_luna = $_POST['Master_Nastere_Luna'];
+        $v_data_nastere_zi = $_POST['Master_Nastere_Zi'];
+        $v_data_nastere_an = $_POST['Master_Nastere_An'];
+        $v_buletin_zi = $_POST['Master_Buletin_Ziua'];
+        $v_buletin_an = $_POST['Master_Buletin_An'];
+        $v_buletin_luna = $_POST['Master_Buletin_Luna'];
+        $v_Licenta_Tara = $_POST['Master_Tara'];
+        $v_Licenta_Localitate = $_POST['Master_Localitate'];
+        $v_Licenta_Judet = $_POST['Master_Judet'];
+        $v_facultate = 'facultate';
+        $v_preferinta1 = $_POST['IngineriaSistemelorSoftwareTaxa'];
+        $v_preferinta2 = $_POST['SistemeDistribuiteTaxa'];
+        $v_preferinta3 = $_POST['SecuritateaInformatieiTaxa'];
+        $v_preferinta4 = $_POST['OptimizareaComputationalaTaxa'];
+        $v_preferinta5 = $_POST['LingvistivaComputationalaTaxa'];
+        $v_preferinta6 = $_POST['StudiiAvansateInInformaticaTaxa'];
+        $v_preferinta7 = $_POST['IngineriaSoftwareBuget'];
+        $v_preferinta8 = $_POST['SistemeDistribuiteBuget'];
+        $v_preferinta9 = $_POST['SecuritateaInformatieiBuget'];
+        $v_preferinta10 = $_POST['OptimizareaComputationalaBuget'];
+        $v_preferinta11 = $_POST['LingvisticaComputationalaBuget'];
+        $v_formular = 'master';
 
-	$statement = oci_parse($connection, "select max(id) as COUNT from date_personale_candidat");
-			oci_execute($statement);
-			
-	 while (oci_fetch($statement)) {
-    	$numaratoare1=oci_result($statement, "COUNT") + 1;
-	 }
+        $statement = oci_parse($connection, "SELECT max(formular_id) AS COUNT FROM CERINTE_MASTER");
+        oci_execute($statement);
 
-	 $statement_2_numaratoare = oci_parse($connection, "select max(id) as COUNT from institutie");
-			oci_execute($statement_2_numaratoare);
-			
-	 while (oci_fetch($statement_2_numaratoare)) {
-    	$numaratoare2=oci_result($statement_2_numaratoare, "COUNT") + 1;
-	}
+        while (oci_fetch($statement)) {
+            $numaratoare1 = oci_result($statement, "COUNT") + 1;
+        }
 
-	$statement_3_numaratoare = oci_parse($connection, "select max(id) as COUNT from date_medie_concurs");
-			oci_execute($statement_3_numaratoare);
-			
-	 while (oci_fetch($statement_3_numaratoare)) {
-    	$numaratoare3=oci_result($statement_3_numaratoare, "COUNT") + 1;
-	}
+        $statement = oci_parse($connection, "SELECT max(id) AS COUNT FROM formular_master");
+        oci_execute($statement);
 
-	$statement_4_numaratoare = oci_parse($connection, "select max(id) as COUNT from preferinte_master");
-			oci_execute($statement_4_numaratoare);
-			
-	 while (oci_fetch($statement_4_numaratoare)) {
-    	$numaratoare4=oci_result($statement_4_numaratoare, "COUNT") + 1;
-	}
+        while (oci_fetch($statement)) {
+            $numaratoare2 = oci_result($statement, "COUNT") + 1;
+        }
 
-	$statement_5_numaratoare = oci_parse($connection, "select max(id) as COUNT from formular");
-			oci_execute($statement_5_numaratoare);
-			
-	 while (oci_fetch($statement_5_numaratoare)) {
-    	$numaratoare5=oci_result($statement_5_numaratoare, "COUNT") + 1;
-	}
+        $statement = oci_parse($connection, "SELECT max(formular_id) AS COUNT FROM DATE_PERSONALE_MASTER");
+        oci_execute($statement);
 
-	$statement_6_numaratoare = oci_parse($connection, "select max(id) as COUNT from detalii_aplicare");
-			oci_execute($statement_6_numaratoare);
-			
-	 while (oci_fetch($statement_6_numaratoare)) {
-    	$numaratoare6=oci_result($statement_6_numaratoare, "COUNT") + 1;
-	}
+        while (oci_fetch($statement)) {
+            $numaratoare = oci_result($statement, "COUNT") + 1;
+        }
 
-      if($vNumele_De_Familie != 0 and $vLicenta_Initiala_Tata != 0 and $vLicenta_Email != 0 and $vLicenta_Telefon != 0 and $vLicenta_Cod_Postal != 0 and $vLicenta_Localitate != 0 and $vLicenta_Apartament != 0 and $vLicenta_Etaj != 0 and $vLicenta_Scara != 0 and $vLicenta_Bloc != 0 and $vLicenta_Numar != 0 and $vLicenta_Strada != 0 and $vLicenta_Nota_MI != 0 and $vLicenta_Medie_BAC != 0 and $vLicenta_Buletin_Eliberat_De != 0 and $vLicenta_Numar_Buletin != 0 and $vLicenta_Serie_Buletin != 0 and $vLicenta_Tip_Buletin != 0 and $vLicenta_CNP != 0 and $vLicenta_Prenumele != 0 and $vLicenta_PrenumeMama !=0 and $vLicenta_PrenumeTata !=0){
-          
-          ini_set('display_errors', 1); 
+        $statement = oci_parse($connection, "SELECT max(formular_id) AS COUNT FROM ORDINE_PREFERINTE_MASTER");
+        oci_execute($statement);
+
+        while (oci_fetch($statement)) {
+            $numaratoare3 = oci_result($statement, "COUNT") + 1;
+        }
+
+        $statement = oci_parse($connection, "SELECT max(formular_id) AS COUNT FROM informatii_documente_master");
+        oci_execute($statement);
+
+        while (oci_fetch($statement)) {
+            $numaratoare4 = oci_result($statement, "COUNT") + 1;
+        }
+
+        $statement = oci_parse($connection, "SELECT max(formular_id) as COUNT from date_preg_anterioara_master");
+        oci_execute($statement);
+
+        while(oci_fetch($statement)){
+          $numaratoare5 = oci_result($statement, "COUNT") + 1;
+        }
+
+        $statement = oci_parse($connection, "SELECT max(formular_id) as COUNT from chestionar_master");
+        oci_execute($statement);
+
+        while(oci_fetch($statement)){
+          $numaratoare6 = oci_result($statement, "COUNT") + 1;
+        }        
+
+        ini_set('display_errors', 1);
+        error_reporting(E_ALL);
+
+           $statement = oci_parse($connection, "INSERT INTO formular_master VALUES (
+          :id, 
+          :tip_formular, 
+          :nr_chitanta, 
+          :suma, 
+          :scutit, 
+          :motiv_scutire)");
+
+        oci_bind_by_name($statement, ':id', $numaratoare2);
+        oci_bind_by_name($statement, ':tip_formular', $v_formular);
+        oci_bind_by_name($statement, ':nr_chitanta', $_POST["Master_Chitanta_nr"]);
+        oci_bind_by_name($statement, ':suma', $_POST["Master_Suma_Taxa"]);
+        oci_bind_by_name($statement, ':scutit', $_POST["group1"]);
+        oci_bind_by_name($statement, ':motiv_scutire', $_POST["Master_Motiv_Scutire_taxa"]);
+
+        if (!$statement) {
+            ini_set('display_errors', 1);
             error_reporting(E_ALL);
+        }
 
-			 $statement1 = oci_parse($connection, "insert into date_personale_candidat (id, cnp, nume, nume_actual, prenume, initiala_tata, sex, starecivila, cetatenie, prenume_mama, prenume_tata, telefon, email, data_nasterii, nationalitate, etnie, limba_materna, tip_buletin, serie_buletin, numar_buletin, buletin_eliberat_de, buletin_data_eliberarii, tara, judet, localitate, domiciliu_stabil, strada, numar_domiciliu, bloc_domiciliu, etaj_domiciliu, scara_domiciliu, apartament_domiciliu, cod_postal_domiciliu)  values (
-            :id,
-            :CNP,
-            :nume,
-            :nume_actual,
-            :prenume,
-            :initialaTata, 
-            :sex,
-            :stareCivila,
-            :cetatenie,
-            :prenumeMama,
-            :prenumeTata,
-            :telefon,
-            :email,
-            to_date(:zi||'-'||:luna||'-'||:an, 'dd-mm-yyyy'),
-            'romana',
-            :etnie,
-            :limbaMaterna,
-            :tipBuletin,
-            :serieBuletin,
-            :numarBuletin,
-            :eliberatDe, 
-            to_date(:bZi||'-'||:lZi||'-'||:aZi, 'dd-mm-yyyy'),
-            :tara,
-            :judet,
-            :localitate,
-            :domiciliu_stabil,
-            :strada,
-            :numar_domiciliu,
-            :bloc_domiciliu,
-            :etaj_domiciliu,
-            :scara_domiciliu,
-            :apartament_domiciliu,
-            :cod_postal_domiciliu)");
+        $result = oci_execute($statement);
 
-            oci_bind_by_name($statement1, ':id', $numaratoare1);
-            oci_bind_by_name($statement1, ':nume', $_POST['Master_Numele_De_Familie_La_nastere']);
-            oci_bind_by_name($statement1, ':nume_actual', $_POST['Master_Numele_De_Familie']);
-            oci_bind_by_name($statement1, ':CNP', $v_Licenta_CNP);
-            oci_bind_by_name($statement1, ':prenume', $v_Licenta_Prenumele);
-            oci_bind_by_name($statement1, ':initialaTata', $v_Licenta_Initiala_Tata);
-            oci_bind_by_name($statement1, ':sex', $v_Licenta_Sex);
-            oci_bind_by_name($statement1, ':stareCivila', $v_Licenta_Stare_Civila);
-            oci_bind_by_name($statement1, ':cetatenie', $v_cetatenie);
-            oci_bind_by_name($statement1, ':prenumeMama', $v_Licenta_Prenume_Mama);
-            oci_bind_by_name($statement1, ':prenumeTata', $v_Licenta_Prenume_Tata);
-            oci_bind_by_name($statement1, ':telefon', $v_Licenta_Telefon);
-            oci_bind_by_name($statement1,':email', $v_Licenta_Email);
+        if (!$result) {
+            ini_set('display_errors', 1);
+            error_reporting(E_ALL);
+        }
 
-            oci_bind_by_name($statement1, ':zi', $v_data_nastere_zi);
-            oci_bind_by_name($statement1, ':luna', $v_data_nastere_luna);
-            oci_bind_by_name($statement1, ':an', $v_data_nastere_an);
+        $statement = oci_parse($connection, "INSERT INTO cerinte_master VALUES (:id, :medie_licenta, :medie_admitere)");
 
-            oci_bind_by_name($statement1, ':etnie', $v_Licenta_Etnie);
-            oci_bind_by_name($statement1, ':limbaMaterna', $v_Licenta_Limba_Materna);
-            oci_bind_by_name($statement1, ':tipBuletin', $v_Licenta_Tip_Buletin);
-            oci_bind_by_name($statement1, ':serieBuletin', $v_Licenta_Serie_Buletin);
-            oci_bind_by_name($statement1, ':numarBuletin', $v_Licenta_Numar_Buletin);
-            oci_bind_by_name($statement1, ':eliberatDe', $v_Licenta_Buletin_Eliberat_De);
+        oci_bind_by_name($statement, ':id', $numaratoare1);
+        oci_bind_by_name($statement, ':medie_licenta', $_POST["Master_Nota_Licenta"]);
+        oci_bind_by_name($statement, ':medie_admitere', $_POST["Master_Medie_Admitere"]);
 
-            oci_bind_by_name($statement1, ':bZi' ,$v_buletin_zi);
-            oci_bind_by_name($statement1, ':lZi' ,$v_buletin_luna);
-            oci_bind_by_name($statement1, ':aZi' ,$v_buletin_an);
+        if (!$statement) {
+            ini_set('display_errors', 1);
+            error_reporting(E_ALL);
+        }
 
-            oci_bind_by_name($statement1, ':tara', $v_Licenta_Tara);
-            oci_bind_by_name($statement1, ':judet', $v_Licenta_Judet);
-            oci_bind_by_name($statement1, ':localitate', $v_Licenta_Localitate);
-            oci_bind_by_name($statement1, ':domiciliu_stabil', $_POST['group3']);
-            oci_bind_by_name($statement1, ':strada', $v_Licenta_Strada);
-            oci_bind_by_name($statement1, ':numar_domiciliu', $v_Licenta_Numar);
-            oci_bind_by_name($statement1, ':bloc_domiciliu', $v_Licenta_Bloc);
-            oci_bind_by_name($statement1, ':etaj_domiciliu', $v_Licenta_Etaj);
-			oci_bind_by_name($statement1, ':scara_domiciliu', $v_Licenta_Scara);
-            oci_bind_by_name($statement1, ':apartament_domiciliu', $v_Licenta_Apartament);
-            oci_bind_by_name($statement1, ':cod_postal_domiciliu', $v_Licenta_Cod_Postal);
+        $result = oci_execute($statement);
 
-          
-            if(!$statement1){
+        if (!$result) {
+            ini_set('display_errors', 1);
+            error_reporting(E_ALL);
+        }
+
+        $statement = oci_parse($connection, "INSERT INTO date_personale_master values (
+          :id,
+          :nume_nastere,
+          :initiale,
+          :nume_actual,
+          :prenume,
+          :prenume_tata,
+          :prenume_mama,
+          :CNP,
+          :sex,
+          to_date(:zi||'-'||:luna||'-'||:an, 'dd-mm-yyyy'),
+          :tara_nastere,
+          :judet_nastere,
+          :localitate_nastere,
+          :cetatenie,
+          :nationalitate,
+          :etnie,
+          :limba_materna,
+          :stare_civila,
+          :serie_CL,
+          :numar_CL,
+          :eliberat_de,
+           to_date(:bZi||'-'||:lZi||'-'||:aZi, 'dd-mm-yyyy'),
+           to_date(:eZi||'-'||:elZi||'-'||:eaZi, 'dd-mm-yyyy'),
+           :mediu_domiciliu,
+           :tara_domiciliu,
+           :judet_domiciliu,
+           :localitate_domiciliu,
+           :strada,
+           :numar,
+           :bloc,
+           :scara,
+           :etaj,
+           :apartament,
+           :telefon,
+           :email,
+           :solicitare_cazare,
+           0,
+           :orfan_ambii,
+           :orfan_unul,
+           :case_de_copii,
+           :plasament_familial,
+           :fam_mono,
+           :dizabilitati)       
+          ");                          //44
+
+            oci_bind_by_name($statement, ':id', $numaratoare);
+            oci_bind_by_name($statement, ':nume_nastere', $_POST['Master_Numele_De_Familie_La_nastere']);
+            oci_bind_by_name($statement, ':initiale', $v_Licenta_Initiala_Tata);
+            oci_bind_by_name($statement, ':nume_actual', $_POST['Master_Numele_De_Familie']);
+            oci_bind_by_name($statement, ':prenume', $v_Licenta_Prenumele); 
+            oci_bind_by_name($statement, ':prenume_tata', $v_Licenta_Prenume_Tata);
+            oci_bind_by_name($statement, ':prenume_mama', $v_Licenta_Prenume_Mama);          
+            oci_bind_by_name($statement, ':CNP', $v_Licenta_CNP);
+            oci_bind_by_name($statement, ':sex', $v_Licenta_Sex);
+
+            oci_bind_by_name($statement, ':zi', $v_data_nastere_zi);
+            oci_bind_by_name($statement, ':luna', $v_data_nastere_luna);
+            oci_bind_by_name($statement, ':an', $v_data_nastere_an);
+
+            oci_bind_by_name($statement, ':tara_nastere', $_POST['Master_Tara_Nastere']);
+            oci_bind_by_name($statement, ':judet_nastere', $_POST['Master_Judet_Nastere']);
+            oci_bind_by_name($statement, ':localitate_nastere', $_POST['Master_Localitate_Nastere']);
+            oci_bind_by_name($statement, ':cetatenie', $v_cetatenie);
+            oci_bind_by_name($statement, ':nationalitate', $_POST['Master_Nationalitate']);
+            oci_bind_by_name($statement, ':etnie', $_POST['Master_Etnie']);
+            oci_bind_by_name($statement, ':limba_materna', $_POST['Master_Limba_Materna']);
+            oci_bind_by_name($statement, ':stare_civila', $_POST['Master_Stare_Civila']);
+            oci_bind_by_name($statement, ':serie_CL', $v_Licenta_Serie_Buletin);
+            oci_bind_by_name($statement, ':numar_CL', $v_Licenta_Numar_Buletin);
+            oci_bind_by_name($statement, ':eliberat_de', $v_Licenta_Buletin_Eliberat_De);
+
+            oci_bind_by_name($statement, ':bZi' ,$v_buletin_zi);
+            oci_bind_by_name($statement, ':lZi' ,$v_buletin_luna);
+            oci_bind_by_name($statement, ':aZi' ,$v_buletin_an);
+            oci_bind_by_name($statement, ':eZi' ,$v_buletin_zi);
+            oci_bind_by_name($statement, ':elZi' ,$v_buletin_luna);
+            oci_bind_by_name($statement, ':eaZi' ,$v_buletin_an);                           
+
+            oci_bind_by_name($statement, ':mediu_domiciliu', $_POST['group3']);
+            oci_bind_by_name($statement, ':tara_domiciliu', $_POST['Master_Tara']);
+            oci_bind_by_name($statement, ':judet_domiciliu', $v_Licenta_Judet);
+            oci_bind_by_name($statement, ':localitate_domiciliu', $v_Licenta_Localitate);
+            oci_bind_by_name($statement, ':strada', $v_Licenta_Strada);
+            oci_bind_by_name($statement, ':numar', $v_Licenta_Numar);
+            oci_bind_by_name($statement, ':bloc', $v_Licenta_Bloc);
+            oci_bind_by_name($statement, ':scara', $v_Licenta_Scara);            
+            oci_bind_by_name($statement, ':etaj', $v_Licenta_Etaj);
+            oci_bind_by_name($statement, ':apartament', $v_Licenta_Apartament);
+            oci_bind_by_name($statement, ':telefon', $v_Licenta_Telefon);
+            oci_bind_by_name($statement, ':email', $v_Licenta_Email);    
+            oci_bind_by_name($statement, ':solicitare_cazare', $_POST['group5']);                   
+
+            oci_bind_by_name($statement, ':orfan_ambii', $_POST['Licenta_Stare_speciala']);
+            oci_bind_by_name($statement, ':orfan_unul', $_POST['Licenta_Stare_speciala']);
+            oci_bind_by_name($statement, ':case_de_copii', $_POST['Licenta_Stare_speciala']);            
+            oci_bind_by_name($statement, ':plasament_familial', $_POST['Licenta_Stare_speciala']);
+            oci_bind_by_name($statement, ':fam_mono', $_POST['Licenta_Stare_speciala']);
+            oci_bind_by_name($statement, ':dizabilitati', $_POST['group4']);
+
+            if(!$statement){
               ini_set('display_errors', 1); 
               error_reporting(E_ALL);
             }
 
-            $result1=oci_execute($statement1);
+            $result=oci_execute($statement);
 
-            if(!$result1){
+            if(!$result){
               ini_set('display_errors', 1); 
               error_reporting(E_ALL); 
-              }	
-
-			$statement2 = oci_parse($connection, "insert into institutie (id, tip_institutie, tara, judet, localitate, nume_institutie) values (
-				:id,
-				:nume,
-				:tara,
-				:judet,
-				:localitate,
-				:nume_institutie)");
-
-			oci_bind_by_name($statement2, ':id', $numaratoare2);
-			oci_bind_by_name($statement2, ':nume', $v_facultate);
-			oci_bind_by_name($statement2, ':tara', $v_Licenta_Tara);
-			oci_bind_by_name($statement2, ':judet', $v_Licenta_Judet);
-			oci_bind_by_name($statement2, ':localitate', $v_Licenta_Localitate);
-			oci_bind_by_name($statement2, ':nume_institutie', $_POST['Master_Liceu']);
-
-			if (!$statement2) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-			}
-
-			$result2= oci_execute($statement2);
-
-			if(!$result2){
-				$e = oci_error($statement2);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-			}
-
-			$statement3 = oci_parse($connection, "insert into date_medie_concurs (id, medie_bac, nota_proba_alegere) values (
-				:id,
-				:medie_bac,
-				0)");
-
-		    oci_bind_by_name($statement3, ':id', $numaratoare3);
-			oci_bind_by_name($statement3, ':medie_bac', $v_Licenta_Medie_BAC);
-
-			if (!$statement3) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-			}
-
-			$result3= oci_execute($statement3);
-
-			if(!$result3){
-				$e = oci_error($statement3);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-			}
-
-			$v_licenta_stare_speciala = $_POST['Licenta_Stare_speciala'];
-			$v_licenta = $_POST['group4'];
-
-	    $statement5 = oci_parse($connection, "insert into detalii_aplicare values (
-	    	:id,
-	    	'master',
-	    	'nementionat',
-	    	:preferinta_limba,
-	    	1,
-	    	'nementionat',
-	    	:stare_speciala_alegere,
-	    	:stare_speciala,
-	    	0,
-	    	'nementionat',
-		0,
-	    	:cazare_studii,
-	    	:cazare_examen)
-	    	");
-
-
-	    oci_bind_by_name($statement5, ':id', $numaratoare6);
-	    oci_bind_by_name($statement5, ':preferinta_limba', $_POST['Master_Limba_Aleasa']);
-	    oci_bind_by_name($statement5, ':stare_speciala_alegere', $_POST['group4']);
-	    oci_bind_by_name($statement5, ':stare_speciala', $_POST['Licenta_Stare_speciala']);
-	    oci_bind_by_name($statement5, ':cazare_studii', $_POST['group5']);
-	    oci_bind_by_name($statement5, ':cazare_examen', $_POST['group6']);
-
-	    if (!$statement5) {
-                        $e = oci_error($connection);
-                        trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-                    }
-
-                    $result5= oci_execute($statement5);
-
-                    if(!$result5){
-                      $e = oci_error($statement5);
-                        trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-	      }
-
-
-			if($v_preferinta1 == 1){
-				$statement4 = oci_parse($connection, "insert into preferinte_master (id, preferinta_1) values (
-					:id,
-					'Ingineria sistemelor software')");
-
-				oci_bind_by_name($statement4, ':id', $numaratoare3);
-
-				if (!$statement4) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-
-				$result4= oci_execute($statement4);
+              }
+
+                
+                  if($v_preferinta1 == 1){
+                      $statement4 = oci_parse($connection, "insert into ordine_preferinte_master(formular_id, preferinta_1, optiune_admitere_taxa) values (
+                          :id,
+                          'Ingineria sistemelor software',
+                          :optiune)");
+
+                      oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement4, ':optiune', $_POST['group26']);
+
+                      if (!$statement4) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+
+                      $result4= oci_execute($statement4);
+
+                      if(!$result4){
+                          $e = oci_error($statement4);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
+
+                  else if($v_preferinta1 == 2){
+                      $statement4 = oci_parse($connection, "insert into ordine_preferinte_master (formular_id, preferinta_2, optiune_admitere_taxa) values (
+                          :id,
+                          'Ingineria sistemelor software',
+                          :optiune)");
+
+                      oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement4, ':optiune', $_POST['group26']);
+
+                      if (!$statement4) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+
+                      $result4= oci_execute($statement4);
+
+                      if(!$result4){
+                          $e = oci_error($statement4);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
+
+                  else if($v_preferinta1 == 3){
+                      $statement4 = oci_parse($connection, "insert into ordine_preferinte_master (formular_id, preferinta_3, optiune_admitere_taxa) values (
+                          :id,
+                          'Ingineria sistemelor software',
+                          :optiune)");
+
+                      oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement4, ':optiune', $_POST['group26']);
+
+                      if (!$statement4) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+
+                      $result4= oci_execute($statement4);
+
+                      if(!$result4){
+                          $e = oci_error($statement4);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
+
+                  else if($v_preferinta1 == 4){
+                      $statement4 = oci_parse($connection, "insert into ordine_preferinte_master (formular_id, preferinta_4, optiune_admitere_taxa) values (
+                          :id,
+                          'Ingineria sistemelor software',
+                          :optiune)");
+
+                      oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement4, ':optiune', $_POST['group26']);
+
+                      if (!$statement4) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+
+                      $result4= oci_execute($statement4);
+
+                      if(!$result4){
+                          $e = oci_error($statement4);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
+
+                  else if($v_preferinta1 == 5){
+                      $statement4 = oci_parse($connection, "insert into ordine_preferinte_master (formular_id, preferinta_5, optiune_admitere_taxa) values (
+                          :id,
+                          'Ingineria sistemelor software',
+                          :optiune)");
+
+                      oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement4, ':optiune', $_POST['group26']);
+
+                      if (!$statement4) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+
+                      $result4= oci_execute($statement4);
+
+                      if(!$result4){
+                          $e = oci_error($statement4);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
+
+                  else if($v_preferinta1 == 6){
+                      $statement4 = oci_parse($connection, "insert into ordine_preferinte_master (formular_id, preferinta_6, optiune_admitere_taxa) values (
+                          :id,
+                          'Ingineria sistemelor software',
+                          :optiune)");
+
+                      oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement4, ':optiune', $_POST['group26']);
+
+                      if (!$statement4) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+
+                      $result4= oci_execute($statement4);
+
+                      if(!$result4){
+                          $e = oci_error($statement4);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
+
+                  else if($v_preferinta1 == 7){
+                      $statement4 = oci_parse($connection, "insert into ordine_preferinte_master (formular_id, preferinta_7, optiune_admitere_taxa) values (
+                          :id,
+                          'Ingineria sistemelor software',
+                          :optiune)");
+
+                      oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement4, ':optiune', $_POST['group26']);
+
+                      if (!$statement4) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+
+                      $result4= oci_execute($statement4);
+
+                      if(!$result4){
+                          $e = oci_error($statement4);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
+
+                  else if($v_preferinta1 == 8){
+                      $statement4 = oci_parse($connection, "insert into ordine_preferinte_master (formular_id, preferinta_8, optiune_admitere_taxa) values (
+                          :id,
+                          'Ingineria sistemelor software',
+                          :optiune)");
+
+                      oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement4, ':optiune', $_POST['group26']);
+
+                      if (!$statement4) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+
+                      $result4= oci_execute($statement4);
+
+                      if(!$result4){
+                          $e = oci_error($statement4);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
+
+                  else if($v_preferinta1 == 9){
+                      $statement4 = oci_parse($connection, "insert into ordine_preferinte_master (formular_id, preferinta_9, optiune_admitere_taxa) values (
+                          :id,
+                          'Ingineria sistemelor software',
+                          :optiune)");
+
+                      oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement4, ':optiune', $_POST['group26']);
+
+                      if (!$statement4) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+
+                      $result4= oci_execute($statement4);
+
+                      if(!$result4){
+                          $e = oci_error($statement4);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
+
+                  else if($v_preferinta1 == 10){
+                      $statement4 = oci_parse($connection, "insert into ordine_preferinte_master (formular_id, preferinta_10, optiune_admitere_taxa) values (
+                          :id,
+                          'Ingineria sistemelor software',
+                          :optiune)");
+
+                      oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement4, ':optiune', $_POST['group26']);
+
+                      if (!$statement4) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+
+                      $result4= oci_execute($statement4);
+
+                      if(!$result4){
+                          $e = oci_error($statement4);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
+
+                  else if($v_preferinta1 == 11){
+                      $statement4 = oci_parse($connection, "insert into ordine_preferinte_master (formular_id, preferinta_11, optiune_admitere_taxa) values (
+                          :id,
+                          'Ingineria sistemelor software',
+                          :optiune)");
+
+                      oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement4, ':optiune', $_POST['group26']);
+
+                      if (!$statement4) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+
+                      $result4= oci_execute($statement4);
+
+                      if(!$result4){
+                          $e = oci_error($statement4);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
+
+                  if($v_preferinta2 == 1){
+                      $statement5 = oci_parse($connection, "update ordine_preferinte_master set preferinta_1 = 'Sisteme distribuite taxa' where formular_id = :id");
 
-				if(!$result4){
-					$e = oci_error($statement4);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      oci_bind_by_name($statement5, ':id', $numaratoare3);
+
+                      if (!$statement5) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+
+                      $result5= oci_execute($statement5);
 
-			else if($v_preferinta1 == 2){
-				$statement4 = oci_parse($connection, "insert into preferinte_master (id, preferinta_2) values (
-					:id,
-					'Ingineria sistemelor software')");
-
-				oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      if(!$result5){
+                          $e = oci_error($statement5);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
+
+                  else if($v_preferinta2 == 2){
+                      $statement5 = oci_parse($connection, "update ordine_preferinte_master set preferinta_2 = 'Sisteme distribuite taxa' where formular_id = :id");
 
-				if (!$statement4) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      oci_bind_by_name($statement5, ':id', $numaratoare3);
 
-				$result4= oci_execute($statement4);
+                      if (!$statement5) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				if(!$result4){
-					$e = oci_error($statement4);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      $result5= oci_execute($statement5);
 
-			else if($v_preferinta1 == 3){
-				$statement4 = oci_parse($connection, "insert into preferinte_master (id, preferinta_3) values (
-					:id,
-					'Ingineria sistemelor software')");
-
-				oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      if(!$result5){
+                          $e = oci_error($statement5);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-				if (!$statement4) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                  else if($v_preferinta2 == 3){
+                      $statement5 = oci_parse($connection, "update ordine_preferinte_master set preferinta_3 = 'Sisteme distribuite taxa' where formular_id = :id");
 
-				$result4= oci_execute($statement4);
+                      oci_bind_by_name($statement5, ':id', $numaratoare3);
 
-				if(!$result4){
-					$e = oci_error($statement4);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if (!$statement5) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-			else if($v_preferinta1 == 4){
-				$statement4 = oci_parse($connection, "insert into preferinte_master (id, preferinta_4) values (
-					:id,
-					'Ingineria sistemelor software')");
-
-				oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      $result5= oci_execute($statement5);
 
-				if (!$statement4) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if(!$result5){
+                          $e = oci_error($statement5);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-				$result4= oci_execute($statement4);
+                  else if($v_preferinta2 == 4){
+                      $statement5 = oci_parse($connection, "update ordine_preferinte_master set preferinta_4 = 'Sisteme distribuite taxa' where formular_id = :id");
 
-				if(!$result4){
-					$e = oci_error($statement4);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      oci_bind_by_name($statement5, ':id', $numaratoare3);
 
-			else if($v_preferinta1 == 5){
-				$statement4 = oci_parse($connection, "insert into preferinte_master (id, preferinta_5) values (
-					:id,
-					'Ingineria sistemelor software')");
-
-				oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      if (!$statement5) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				if (!$statement4) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      $result5= oci_execute($statement5);
 
-				$result4= oci_execute($statement4);
+                      if(!$result5){
+                          $e = oci_error($statement5);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-				if(!$result4){
-					$e = oci_error($statement4);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                  else if($v_preferinta2 == 5){
+                      $statement5 = oci_parse($connection, "update ordine_preferinte_master set preferinta_5 = 'Sisteme distribuite taxa' where formular_id = :id");
 
-			else if($v_preferinta1 == 6){
-				$statement4 = oci_parse($connection, "insert into preferinte_master (id, preferinta_6) values (
-					:id,
-					'Ingineria sistemelor software')");
-
-				oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement5, ':id', $numaratoare3);
 
-				if (!$statement4) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement5) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result4= oci_execute($statement4);
+                      $result5= oci_execute($statement5);
 
-				if(!$result4){
-					$e = oci_error($statement4);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result5){
+                          $e = oci_error($statement5);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta1 == 7){
-				$statement4 = oci_parse($connection, "insert into preferinte_master (id, preferinta_7) values (
-					:id,
-					'Ingineria sistemelor software')");
+                  else if($v_preferinta2 == 6){
+                      $statement5 = oci_parse($connection, "update ordine_preferinte_master set preferinta_6 = 'Sisteme distribuite taxa' where formular_id = :id");
 
-				oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement5, ':id', $numaratoare3);
 
-				if (!$statement4) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement5) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result4= oci_execute($statement4);
+                      $result5= oci_execute($statement5);
 
-				if(!$result4){
-					$e = oci_error($statement4);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result5){
+                          $e = oci_error($statement5);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta1 == 8){
-				$statement4 = oci_parse($connection, "insert into preferinte_master (id, preferinta_8) values (
-					:id,
-					'Ingineria sistemelor software')");
+                  else if($v_preferinta2 == 7){
+                      $statement5 = oci_parse($connection, "update ordine_preferinte_master set preferinta_7 = 'Sisteme distribuite taxa' where formular_id = :id");
 
-				oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement5, ':id', $numaratoare3);
 
-				if (!$statement4) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement5) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result4= oci_execute($statement4);
+                      $result5= oci_execute($statement5);
 
-				if(!$result4){
-					$e = oci_error($statement4);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result5){
+                          $e = oci_error($statement5);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta1 == 9){
-				$statement4 = oci_parse($connection, "insert into preferinte_master (id, preferinta_9) values (
-					:id,
-					'Ingineria sistemelor software')");
+                  else if($v_preferinta2 == 8){
+                      $statement5 = oci_parse($connection, "update ordine_preferinte_master set preferinta_8 = 'Sisteme distribuite taxa' where formular_id = :id");
 
-				oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement5, ':id', $numaratoare3);
 
-				if (!$statement4) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement5) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result4= oci_execute($statement4);
+                      $result5= oci_execute($statement5);
 
-				if(!$result4){
-					$e = oci_error($statement4);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result5){
+                          $e = oci_error($statement5);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta1 == 10){
-				$statement4 = oci_parse($connection, "insert into preferinte_master (id, preferinta_10) values (
-					:id,
-					'Ingineria sistemelor software')");
+                  else if($v_preferinta2 == 9){
+                      $statement5 = oci_parse($connection, "update ordine_preferinte_master set preferinta_9 = 'Sisteme distribuite taxa' where formular_id = :id");
 
-				oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement5, ':id', $numaratoare3);
 
-				if (!$statement4) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement5) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result4= oci_execute($statement4);
+                      $result5= oci_execute($statement5);
 
-				if(!$result4){
-					$e = oci_error($statement4);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result5){
+                          $e = oci_error($statement5);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta1 == 11){
-				$statement4 = oci_parse($connection, "insert into preferinte_master (id, preferinta_11) values (
-					:id,
-					'Ingineria sistemelor software')");
+                  else if($v_preferinta2 == 10){
+                      $statement5 = oci_parse($connection, "update ordine_preferinte_master set preferinta_10 = 'Sisteme distribuite taxa' where formular_id = :id");
 
-				oci_bind_by_name($statement4, ':id', $numaratoare3);
+                      oci_bind_by_name($statement5, ':id', $numaratoare3);
 
-				if (!$statement4) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement5) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result4= oci_execute($statement4);
+                      $result5= oci_execute($statement5);
 
-				if(!$result4){
-					$e = oci_error($statement4);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result5){
+                          $e = oci_error($statement5);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			if($v_preferinta2 == 1){
-				$statement5 = oci_parse($connection, "update preferinte_master set preferinta_1 = 'Sisteme distribuite taxa' where id = :id");
+                  else if($v_preferinta2 == 11){
+                      $statement5 = oci_parse($connection, "update ordine_preferinte_master set preferinta_11 = 'Sisteme distribuite taxa' where formular_id = :id");
 
-				oci_bind_by_name($statement5, ':id', $numaratoare3);
+                      oci_bind_by_name($statement5, ':id', $numaratoare3);
 
-				if (!$statement5) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement5) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result5= oci_execute($statement5);
+                      $result5= oci_execute($statement5);
 
-				if(!$result5){
-					$e = oci_error($statement5);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result5){
+                          $e = oci_error($statement5);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta2 == 2){
-				$statement5 = oci_parse($connection, "update preferinte_master set preferinta_2 = 'Sisteme distribuite taxa' where id = :id");
+                  if($v_preferinta3 == 1){
+                      $statement6 = oci_parse($connection, "update ordine_preferinte_master set preferinta_1 = 'Securitatea informatie taxa' where formular_id = :id");
 
-				oci_bind_by_name($statement5, ':id', $numaratoare3);
+                      oci_bind_by_name($statement6, ':id', $numaratoare3);
 
-				if (!$statement5) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement6) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result5= oci_execute($statement5);
+                      $result6= oci_execute($statement6);
 
-				if(!$result5){
-					$e = oci_error($statement5);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result6){
+                          $e = oci_error($statement6);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta2 == 3){
-				$statement5 = oci_parse($connection, "update preferinte_master set preferinta_3 = 'Sisteme distribuite taxa' where id = :id");
+                  else if($v_preferinta3 == 2){
+                      $statement6 = oci_parse($connection, "update ordine_preferinte_master set preferinta_2 = 'Securitatea informatie taxa' where formular_id = :id");
 
-				oci_bind_by_name($statement5, ':id', $numaratoare3);
+                      oci_bind_by_name($statement6, ':id', $numaratoare3);
 
-				if (!$statement5) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement6) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result5= oci_execute($statement5);
+                      $result6= oci_execute($statement6);
 
-				if(!$result5){
-					$e = oci_error($statement5);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result6){
+                          $e = oci_error($statement6);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta2 == 4){
-				$statement5 = oci_parse($connection, "update preferinte_master set preferinta_4 = 'Sisteme distribuite taxa' where id = :id");
+                  else if($v_preferinta3 == 3){
+                      $statement6 = oci_parse($connection, "update ordine_preferinte_master set preferinta_3 = 'Securitatea informatie taxa' where formular_id = :id");
 
-				oci_bind_by_name($statement5, ':id', $numaratoare3);
+                      oci_bind_by_name($statement6, ':id', $numaratoare3);
 
-				if (!$statement5) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement6) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result5= oci_execute($statement5);
+                      $result6= oci_execute($statement6);
 
-				if(!$result5){
-					$e = oci_error($statement5);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result6){
+                          $e = oci_error($statement6);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta2 == 5){
-				$statement5 = oci_parse($connection, "update preferinte_master set preferinta_5 = 'Sisteme distribuite taxa' where id = :id");
+                  else if($v_preferinta3 == 4){
+                      $statement6 = oci_parse($connection, "update ordine_preferinte_master set preferinta_4 = 'Securitatea informatie taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement5, ':id', $numaratoare3);
+                      oci_bind_by_name($statement6, ':id', $numaratoare3);
 
-				if (!$statement5) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement6) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result5= oci_execute($statement5);
+                      $result6= oci_execute($statement6);
 
-				if(!$result5){
-					$e = oci_error($statement5);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result6){
+                          $e = oci_error($statement6);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta2 == 6){
-				$statement5 = oci_parse($connection, "update preferinte_master set preferinta_6 = 'Sisteme distribuite taxa' where id = :id");
+                  else if($v_preferinta3 == 5){
+                      $statement6 = oci_parse($connection, "update ordine_preferinte_master set preferinta_5 = 'Securitatea informatie taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement5, ':id', $numaratoare3);
+                      oci_bind_by_name($statement6, ':id', $numaratoare3);
 
-				if (!$statement5) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement6) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result5= oci_execute($statement5);
+                      $result6= oci_execute($statement6);
 
-				if(!$result5){
-					$e = oci_error($statement5);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result6){
+                          $e = oci_error($statement6);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta2 == 7){
-				$statement5 = oci_parse($connection, "update preferinte_master set preferinta_7 = 'Sisteme distribuite taxa' where id = :id");
+                  else if($v_preferinta3 == 6){
+                      $statement6 = oci_parse($connection, "update ordine_preferinte_master set preferinta_6 = 'Securitatea informatie taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement5, ':id', $numaratoare3);
+                      oci_bind_by_name($statement6, ':id', $numaratoare3);
 
-				if (!$statement5) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement6) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result5= oci_execute($statement5);
+                      $result6= oci_execute($statement6);
 
-				if(!$result5){
-					$e = oci_error($statement5);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result6){
+                          $e = oci_error($statement6);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta2 == 8){
-				$statement5 = oci_parse($connection, "update preferinte_master set preferinta_8 = 'Sisteme distribuite taxa' where id = :id");
+                  else if($v_preferinta3 == 7){
+                      $statement6 = oci_parse($connection, "update ordine_preferinte_master set preferinta_7 = 'Securitatea informatie taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement5, ':id', $numaratoare3);
+                      oci_bind_by_name($statement6, ':id', $numaratoare3);
 
-				if (!$statement5) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement6) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result5= oci_execute($statement5);
+                      $result6= oci_execute($statement6);
 
-				if(!$result5){
-					$e = oci_error($statement5);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result6){
+                          $e = oci_error($statement6);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta2 == 9){
-				$statement5 = oci_parse($connection, "update preferinte_master set preferinta_9 = 'Sisteme distribuite taxa' where id = :id");
+                  else if($v_preferinta3 == 8){
+                      $statement6 = oci_parse($connection, "update ordine_preferinte_master set preferinta_8 = 'Securitatea informatie taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement5, ':id', $numaratoare3);
+                      oci_bind_by_name($statement6, ':id', $numaratoare3);
 
-				if (!$statement5) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement6) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result5= oci_execute($statement5);
+                      $result6= oci_execute($statement6);
 
-				if(!$result5){
-					$e = oci_error($statement5);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result6){
+                          $e = oci_error($statement6);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta2 == 10){
-				$statement5 = oci_parse($connection, "update preferinte_master set preferinta_10 = 'Sisteme distribuite taxa' where id = :id");
+                  else if($v_preferinta3 == 9){
+                      $statement6 = oci_parse($connection, "update ordine_preferinte_master set preferinta_9 = 'Securitatea informatie taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement5, ':id', $numaratoare3);
+                      oci_bind_by_name($statement6, ':id', $numaratoare3);
 
-				if (!$statement5) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement6) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result5= oci_execute($statement5);
+                      $result6= oci_execute($statement6);
 
-				if(!$result5){
-					$e = oci_error($statement5);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result6){
+                          $e = oci_error($statement6);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta2 == 11){
-				$statement5 = oci_parse($connection, "update preferinte_master set preferinta_11 = 'Sisteme distribuite taxa' where id = :id");
+                  else if($v_preferinta3 == 10){
+                      $statement6 = oci_parse($connection, "update ordine_preferinte_master set preferinta_10 = 'Securitatea informatie taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement5, ':id', $numaratoare3);
+                      oci_bind_by_name($statement6, ':id', $numaratoare3);
 
-				if (!$statement5) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement6) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result5= oci_execute($statement5);
+                      $result6= oci_execute($statement6);
 
-				if(!$result5){
-					$e = oci_error($statement5);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result6){
+                          $e = oci_error($statement6);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			if($v_preferinta3 == 1){
-				$statement6 = oci_parse($connection, "update preferinte_master set preferinta_1 = 'Securitatea informatie taxa' where id = :id");
+                  else if($v_preferinta3 == 11){
+                      $statement6 = oci_parse($connection, "update ordine_preferinte_master set preferinta_11 = 'Securitatea informatie taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement6, ':id', $numaratoare3);
+                      oci_bind_by_name($statement6, ':id', $numaratoare3);
 
-				if (!$statement6) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement6) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result6= oci_execute($statement6);
+                      $result6= oci_execute($statement6);
 
-				if(!$result6){
-					$e = oci_error($statement6);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result6){
+                          $e = oci_error($statement6);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta3 == 2){
-				$statement6 = oci_parse($connection, "update preferinte_master set preferinta_2 = 'Securitatea informatie taxa' where id = :id");
+                  if($v_preferinta4 == 1){
+                      $statement7 = oci_parse($connection, "update ordine_preferinte_master set preferinta_1 = 'Optimizare computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement6, ':id', $numaratoare3);
+                      oci_bind_by_name($statement7, ':id', $numaratoare3);
 
-				if (!$statement6) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement7) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result6= oci_execute($statement6);
+                      $result7= oci_execute($statement7);
 
-				if(!$result6){
-					$e = oci_error($statement6);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result7){
+                          $e = oci_error($statement7);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta3 == 3){
-				$statement6 = oci_parse($connection, "update preferinte_master set preferinta_3 = 'Securitatea informatie taxa' where id = :id");
+                  else if($v_preferinta4 == 2){
+                      $statement7 = oci_parse($connection, "update ordine_preferinte_master set preferinta_2 = 'Optimizare computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement6, ':id', $numaratoare3);
+                      oci_bind_by_name($statement7, ':id', $numaratoare3);
 
-				if (!$statement6) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement7) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result6= oci_execute($statement6);
+                      $result7= oci_execute($statement7);
 
-				if(!$result6){
-					$e = oci_error($statement6);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result7){
+                          $e = oci_error($statement7);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta3 == 4){
-				$statement6 = oci_parse($connection, "update preferinte_master set preferinta_4 = 'Securitatea informatie taxa' where id = :id");
+                  else if($v_preferinta4 == 3){
+                      $statement7 = oci_parse($connection, "update ordine_preferinte_master set preferinta_3 = 'Optimizare computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement6, ':id', $numaratoare3);
+                      oci_bind_by_name($statement7, ':id', $numaratoare3);
 
-				if (!$statement6) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement7) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result6= oci_execute($statement6);
+                      $result7= oci_execute($statement7);
 
-				if(!$result6){
-					$e = oci_error($statement6);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result7){
+                          $e = oci_error($statement7);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta3 == 5){
-				$statement6 = oci_parse($connection, "update preferinte_master set preferinta_5 = 'Securitatea informatie taxa' where id = :id");
+                  else if($v_preferinta4 == 4){
+                      $statement7 = oci_parse($connection, "update ordine_preferinte_master set preferinta_4 = 'Optimizare computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement6, ':id', $numaratoare3);
+                      oci_bind_by_name($statement7, ':id', $numaratoare3);
 
-				if (!$statement6) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement7) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result6= oci_execute($statement6);
+                      $result7= oci_execute($statement7);
 
-				if(!$result6){
-					$e = oci_error($statement6);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result7){
+                          $e = oci_error($statement7);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta3 == 6){
-				$statement6 = oci_parse($connection, "update preferinte_master set preferinta_6 = 'Securitatea informatie taxa' where id = :id");
+                  else if($v_preferinta4 == 5){
+                      $statement7 = oci_parse($connection, "update ordine_preferinte_master set preferinta_5 = 'Optimizare computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement6, ':id', $numaratoare3);
+                      oci_bind_by_name($statement7, ':id', $numaratoare3);
 
-				if (!$statement6) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement7) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result6= oci_execute($statement6);
+                      $result7= oci_execute($statement7);
 
-				if(!$result6){
-					$e = oci_error($statement6);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result7){
+                          $e = oci_error($statement7);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta3 == 7){
-				$statement6 = oci_parse($connection, "update preferinte_master set preferinta_7 = 'Securitatea informatie taxa' where id = :id");
+                  else if($v_preferinta4 == 6){
+                      $statement7 = oci_parse($connection, "update ordine_preferinte_master set preferinta_6 = 'Optimizare computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement6, ':id', $numaratoare3);
+                      oci_bind_by_name($statement7, ':id', $numaratoare3);
 
-				if (!$statement6) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement7) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result6= oci_execute($statement6);
+                      $result7= oci_execute($statement7);
 
-				if(!$result6){
-					$e = oci_error($statement6);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result7){
+                          $e = oci_error($statement7);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta3 == 8){
-				$statement6 = oci_parse($connection, "update preferinte_master set preferinta_8 = 'Securitatea informatie taxa' where id = :id");
+                  else if($v_preferinta4 == 7){
+                      $statement7 = oci_parse($connection, "update ordine_preferinte_master set preferinta_7 = 'Optimizare computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement6, ':id', $numaratoare3);
+                      oci_bind_by_name($statement7, ':id', $numaratoare3);
 
-				if (!$statement6) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement7) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result6= oci_execute($statement6);
+                      $result7= oci_execute($statement7);
 
-				if(!$result6){
-					$e = oci_error($statement6);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result7){
+                          $e = oci_error($statement7);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta3 == 9){
-				$statement6 = oci_parse($connection, "update preferinte_master set preferinta_9 = 'Securitatea informatie taxa' where id = :id");
+                  else if($v_preferinta4 == 8){
+                      $statement7 = oci_parse($connection, "update ordine_preferinte_master set preferinta_8 = 'Optimizare computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement6, ':id', $numaratoare3);
+                      oci_bind_by_name($statement7, ':id', $numaratoare3);
 
-				if (!$statement6) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement7) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result6= oci_execute($statement6);
+                      $result7= oci_execute($statement7);
 
-				if(!$result6){
-					$e = oci_error($statement6);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result7){
+                          $e = oci_error($statement7);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta3 == 10){
-				$statement6 = oci_parse($connection, "update preferinte_master set preferinta_10 = 'Securitatea informatie taxa' where id = :id");
+                  else if($v_preferinta4 == 9){
+                      $statement7 = oci_parse($connection, "update ordine_preferinte_master set preferinta_9 = 'Optimizare computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement6, ':id', $numaratoare3);
+                      oci_bind_by_name($statement7, ':id', $numaratoare3);
 
-				if (!$statement6) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement7) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result6= oci_execute($statement6);
+                      $result7= oci_execute($statement7);
 
-				if(!$result6){
-					$e = oci_error($statement6);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result7){
+                          $e = oci_error($statement7);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta3 == 11){
-				$statement6 = oci_parse($connection, "update preferinte_master set preferinta_11 = 'Securitatea informatie taxa' where id = :id");
+                  else if($v_preferinta4 == 10){
+                      $statement7 = oci_parse($connection, "update ordine_preferinte_master set preferinta_10 = 'Optimizare computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement6, ':id', $numaratoare3);
+                      oci_bind_by_name($statement7, ':id', $numaratoare3);
 
-				if (!$statement6) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement7) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result6= oci_execute($statement6);
+                      $result7= oci_execute($statement7);
 
-				if(!$result6){
-					$e = oci_error($statement6);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result7){
+                          $e = oci_error($statement7);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			if($v_preferinta4 == 1){
-				$statement7 = oci_parse($connection, "update preferinte_master set preferinta_1 = 'Optimizare computationala taxa' where id = :id");
+                  else if($v_preferinta4 == 11){
+                      $statement7 = oci_parse($connection, "update ordine_preferinte_master set preferinta_11 = 'Optimizare computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement7, ':id', $numaratoare3);
+                      oci_bind_by_name($statement7, ':id', $numaratoare3);
 
-				if (!$statement7) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement7) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result7= oci_execute($statement7);
+                      $result7= oci_execute($statement7);
 
-				if(!$result7){
-					$e = oci_error($statement7);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result7){
+                          $e = oci_error($statement7);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta4 == 2){
-				$statement7 = oci_parse($connection, "update preferinte_master set preferinta_2 = 'Optimizare computationala taxa' where id = :id");
+                  if($v_preferinta5 == 1){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_1 = 'Lingvistica computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement7, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement7) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result7= oci_execute($statement7);
+                      $result8= oci_execute($statement8);
 
-				if(!$result7){
-					$e = oci_error($statement7);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta4 == 3){
-				$statement7 = oci_parse($connection, "update preferinte_master set preferinta_3 = 'Optimizare computationala taxa' where id = :id");
+                  else if($v_preferinta5 == 2){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_2 = 'Lingvistica computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement7, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement7) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result7= oci_execute($statement7);
+                      $result8= oci_execute($statement8);
 
-				if(!$result7){
-					$e = oci_error($statement7);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta4 == 4){
-				$statement7 = oci_parse($connection, "update preferinte_master set preferinta_4 = 'Optimizare computationala taxa' where id = :id");
+                  else if($v_preferinta5 == 3){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_3 = 'Lingvistica computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement7, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement7) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result7= oci_execute($statement7);
+                      $result8= oci_execute($statement8);
 
-				if(!$result7){
-					$e = oci_error($statement7);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta4 == 5){
-				$statement7 = oci_parse($connection, "update preferinte_master set preferinta_5 = 'Optimizare computationala taxa' where id = :id");
+                  else if($v_preferinta5 == 4){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_4 = 'Lingvistica computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement7, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement7) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result7= oci_execute($statement7);
+                      $result8= oci_execute($statement8);
 
-				if(!$result7){
-					$e = oci_error($statement7);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta4 == 6){
-				$statement7 = oci_parse($connection, "update preferinte_master set preferinta_6 = 'Optimizare computationala taxa' where id = :id");
+                  else if($v_preferinta5 == 5){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_5 = 'Lingvistica computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement7, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement7) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result7= oci_execute($statement7);
+                      $result8= oci_execute($statement8);
 
-				if(!$result7){
-					$e = oci_error($statement7);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta4 == 7){
-				$statement7 = oci_parse($connection, "update preferinte_master set preferinta_7 = 'Optimizare computationala taxa' where id = :id");
+                  else if($v_preferinta5 == 6){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_6 = 'Lingvistica computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement7, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement7) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result7= oci_execute($statement7);
+                      $result8= oci_execute($statement8);
 
-				if(!$result7){
-					$e = oci_error($statement7);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta4 == 8){
-				$statement7 = oci_parse($connection, "update preferinte_master set preferinta_8 = 'Optimizare computationala taxa' where id = :id");
+                  else if($v_preferinta5 == 7){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_7 = 'Lingvistica computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement7, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement7) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result7= oci_execute($statement7);
+                      $result8= oci_execute($statement8);
 
-				if(!$result7){
-					$e = oci_error($statement7);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta4 == 9){
-				$statement7 = oci_parse($connection, "update preferinte_master set preferinta_9 = 'Optimizare computationala taxa' where id = :id");
+                  else if($v_preferinta5 == 8){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_8 = 'Lingvistica computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement7, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement7) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result7= oci_execute($statement7);
+                      $result8= oci_execute($statement8);
 
-				if(!$result7){
-					$e = oci_error($statement7);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta4 == 10){
-				$statement7 = oci_parse($connection, "update preferinte_master set preferinta_10 = 'Optimizare computationala taxa' where id = :id");
+                  else if($v_preferinta5 == 9){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_9 = 'Lingvistica computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement7, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement7) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result7= oci_execute($statement7);
+                      $result8= oci_execute($statement8);
 
-				if(!$result7){
-					$e = oci_error($statement7);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta4 == 11){
-				$statement7 = oci_parse($connection, "update preferinte_master set preferinta_11 = 'Optimizare computationala taxa' where id = :id");
+                  else if($v_preferinta5 == 10){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_10 = 'Lingvistica computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement7, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement7) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result7= oci_execute($statement7);
+                      $result8= oci_execute($statement8);
 
-				if(!$result7){
-					$e = oci_error($statement7);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			if($v_preferinta5 == 1){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_1 = 'Lingvistica computationala taxa' where id = :id");
+                  else if($v_preferinta5 == 11){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_11 = 'Lingvistica computationala taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta5 == 2){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_2 = 'Lingvistica computationala taxa' where id = :id");
+                  if($v_preferinta6 == 1){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_1 = 'Studii avansate in informatica taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta5 == 3){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_3 = 'Lingvistica computationala taxa' where id = :id");
+                  else if($v_preferinta6 == 2){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_2 = 'Studii avansate in informatica taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta5 == 4){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_4 = 'Lingvistica computationala taxa' where id = :id");
+                  else if($v_preferinta6 == 3){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_3 = 'Studii avansate in informatica taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta5 == 5){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_5 = 'Lingvistica computationala taxa' where id = :id");
+                  else if($v_preferinta6 == 4){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_4 = 'Studii avansate in informatica taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta5 == 6){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_6 = 'Lingvistica computationala taxa' where id = :id");
+                  else if($v_preferinta6 == 5){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_5 = 'Studii avansate in informatica taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta5 == 7){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_7 = 'Lingvistica computationala taxa' where id = :id");
+                  else if($v_preferinta6 == 6){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_6 = 'Studii avansate in informatica taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta5 == 8){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_8 = 'Lingvistica computationala taxa' where id = :id");
+                  else if($v_preferinta6 == 7){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_7 = 'Studii avansate in informatica taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta5 == 9){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_9 = 'Lingvistica computationala taxa' where id = :id");
+                  else if($v_preferinta6 == 8){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_8 = 'Studii avansate in informatica taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta5 == 10){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_10 = 'Lingvistica computationala taxa' where id = :id");
+                  else if($v_preferinta6 == 9){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_9 = 'Studii avansate in informatica taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta5 == 11){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_11 = 'Lingvistica computationala taxa' where id = :id");
+                  else if($v_preferinta6 == 10){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_10 = 'Studii avansate in informatica taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			if($v_preferinta6 == 1){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_1 = 'Studii avansate in informatica taxa' where id = :id");
+                  else if($v_preferinta6 == 11){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_11 = 'Studii avansate in informatica taxa' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta6 == 2){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_2 = 'Studii avansate in informatica taxa' where id = :id");
+                  if($v_preferinta7 == 1){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_1 = 'Ingineria sistemelor software buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta6 == 3){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_3 = 'Studii avansate in informatica taxa' where id = :id");
+                  else if($v_preferinta7 == 2){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_2 = 'Ingineria sistemelor software buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta6 == 4){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_4 = 'Studii avansate in informatica taxa' where id = :id");
+                  else if($v_preferinta7 == 3){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_3 = 'Ingineria sistemelor software buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta6 == 5){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_5 = 'Studii avansate in informatica taxa' where id = :id");
+                  else if($v_preferinta7 == 4){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_4 = 'Ingineria sistemelor software buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta6 == 6){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_6 = 'Studii avansate in informatica taxa' where id = :id");
+                  else if($v_preferinta7 == 5){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_5 = 'Ingineria sistemelor software buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta6 == 7){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_7 = 'Studii avansate in informatica taxa' where id = :id");
+                  else if($v_preferinta7 == 6){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_6 = 'Ingineria sistemelor software buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta6 == 8){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_8 = 'Studii avansate in informatica taxa' where id = :id");
+                  else if($v_preferinta7 == 7){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_7 = 'Ingineria sistemelor software buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta6 == 9){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_9 = 'Studii avansate in informatica taxa' where id = :id");
+                  else if($v_preferinta7 == 8){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_8 = 'Ingineria sistemelor software buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta6 == 10){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_10 = 'Studii avansate in informatica taxa' where id = :id");
+                  else if($v_preferinta7 == 9){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_9 = 'Ingineria sistemelor software buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta6 == 11){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_11 = 'Studii avansate in informatica taxa' where id = :id");
+                  else if($v_preferinta7 == 10){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_10 = 'Ingineria sistemelor software buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			if($v_preferinta7 == 1){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_1 = 'Ingineria sistemelor software buget' where id = :id");
+                  else if($v_preferinta7 == 11){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_11 = 'Ingineria sistemelor software buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta7 == 2){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_2 = 'Ingineria sistemelor software buget' where id = :id");
+                  if($v_preferinta8 == 1){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_1 = 'Sisteme distribuite buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta7 == 3){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_3 = 'Ingineria sistemelor software buget' where id = :id");
+                  else if($v_preferinta8 == 2){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_2 = 'Sisteme distribuite buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta7 == 4){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_4 = 'Ingineria sistemelor software buget' where id = :id");
+                  else if($v_preferinta8 == 3){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_3 = 'Sisteme distribuite buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta7 == 5){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_5 = 'Ingineria sistemelor software buget' where id = :id");
+                  else if($v_preferinta8 == 4){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_4 = 'Sisteme distribuite buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta7 == 6){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_6 = 'Ingineria sistemelor software buget' where id = :id");
+                  else if($v_preferinta8 == 5){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_5 = 'Sisteme distribuite buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta7 == 7){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_7 = 'Ingineria sistemelor software buget' where id = :id");
+                  else if($v_preferinta8 == 6){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_6 = 'Sisteme distribuite buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta7 == 8){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_8 = 'Ingineria sistemelor software buget' where id = :id");
+                  else if($v_preferinta8 == 7){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_7 = 'Sisteme distribuite buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta7 == 9){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_9 = 'Ingineria sistemelor software buget' where id = :id");
+                  else if($v_preferinta8 == 8){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_8 = 'Sisteme distribuite buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta7 == 10){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_10 = 'Ingineria sistemelor software buget' where id = :id");
+                  else if($v_preferinta8 == 9){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_9 = 'Sisteme distribuite buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta7 == 11){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_11 = 'Ingineria sistemelor software buget' where id = :id");
+                  else if($v_preferinta8 == 10){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_10 = 'Sisteme distribuite buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			if($v_preferinta8 == 1){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_1 = 'Sisteme distribuite buget' where id = :id");
+                  else if($v_preferinta8 == 11){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_11 = 'Sisteme distribuite buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta8 == 2){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_2 = 'Sisteme distribuite buget' where id = :id");
+                  if($v_preferinta9 == 1){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_1 = 'Securitatea informatiei buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta8 == 3){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_3 = 'Sisteme distribuite buget' where id = :id");
+                  else if($v_preferinta9 == 2){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_2 = 'Securitatea informatiei buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta8 == 4){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_4 = 'Sisteme distribuite buget' where id = :id");
+                  else if($v_preferinta9 == 3){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_3 = 'Securitatea informatiei buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta8 == 5){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_5 = 'Sisteme distribuite buget' where id = :id");
+                  else if($v_preferinta9 == 4){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_4 = 'Securitatea informatiei buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta8 == 6){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_6 = 'Sisteme distribuite buget' where id = :id");
+                  else if($v_preferinta9 == 5){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_5 = 'Securitatea informatiei buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta8 == 7){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_7 = 'Sisteme distribuite buget' where id = :id");
+                  else if($v_preferinta9 == 6){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_6 = 'Securitatea informatiei buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta8 == 8){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_8 = 'Sisteme distribuite buget' where id = :id");
+                  else if($v_preferinta9 == 7){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_7 = 'Securitatea informatiei buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta8 == 9){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_9 = 'Sisteme distribuite buget' where id = :id");
+                  else if($v_preferinta9 == 8){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_8 = 'Securitatea informatiei buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta8 == 10){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_10 = 'Sisteme distribuite buget' where id = :id");
+                  else if($v_preferinta9 == 9){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_9 = 'Securitatea informatiei buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta8 == 11){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_11 = 'Sisteme distribuite buget' where id = :id");
+                  else if($v_preferinta9 == 10){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_10 = 'Securitatea informatiei buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			if($v_preferinta9 == 1){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_1 = 'Securitatea informatiei buget' where id = :id");
+                  else if($v_preferinta9 == 11){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_11 = 'Securitatea informatiei buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta9 == 2){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_2 = 'Securitatea informatiei buget' where id = :id");
+                  if($v_preferinta10 == 1){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_1 = 'Optimizare computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta9 == 3){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_3 = 'Securitatea informatiei buget' where id = :id");
+                  else if($v_preferinta10 == 2){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_2 = 'Optimizare computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta9 == 4){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_4 = 'Securitatea informatiei buget' where id = :id");
+                  else if($v_preferinta10 == 3){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_3 = 'Optimizare computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta9 == 5){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_5 = 'Securitatea informatiei buget' where id = :id");
+                  else if($v_preferinta10 == 4){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_4 = 'Optimizare computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta9 == 6){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_6 = 'Securitatea informatiei buget' where id = :id");
+                  else if($v_preferinta10 == 5){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_5 = 'Optimizare computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta9 == 7){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_7 = 'Securitatea informatiei buget' where id = :id");
+                  else if($v_preferinta10 == 6){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_6 = 'Optimizare computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta9 == 8){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_8 = 'Securitatea informatiei buget' where id = :id");
+                  else if($v_preferinta10 == 7){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_7 = 'Optimizare computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta9 == 9){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_9 = 'Securitatea informatiei buget' where id = :id");
+                  else if($v_preferinta10 == 8){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_8 = 'Optimizare computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta9 == 10){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_10 = 'Securitatea informatiei buget' where id = :id");
+                  else if($v_preferinta10 == 9){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_9 = 'Optimizare computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta9 == 11){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_11 = 'Securitatea informatiei buget' where id = :id");
+                  else if($v_preferinta10 == 10){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_10 = 'Optimizare computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			if($v_preferinta10 == 1){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_1 = 'Optimizare computationala buget' where id = :id");
+                  else if($v_preferinta10 == 11){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_11 = 'Optimizare computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta10 == 2){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_2 = 'Optimizare computationala buget' where id = :id");
+                  if($v_preferinta11 == 1){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_1 = 'Lingvistica computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta10 == 3){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_3 = 'Optimizare computationala buget' where id = :id");
+                  else if($v_preferinta11 == 2){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_2 = 'Lingvistica computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta10 == 4){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_4 = 'Optimizare computationala buget' where id = :id");
+                  else if($v_preferinta11 == 3){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_3 = 'Lingvistica computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta10 == 5){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_5 = 'Optimizare computationala buget' where id = :id");
+                  else if($v_preferinta11 == 4){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_4 = 'Lingvistica computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta10 == 6){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_6 = 'Optimizare computationala buget' where id = :id");
+                  else if($v_preferinta11 == 5){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_5 = 'Lingvistica computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta10 == 7){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_7 = 'Optimizare computationala buget' where id = :id");
+                  else if($v_preferinta11 == 6){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_6 = 'Lingvistica computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta10 == 8){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_8 = 'Optimizare computationala buget' where id = :id");
+                  else if($v_preferinta11 == 7){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_7 = 'Lingvistica computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta10 == 9){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_9 = 'Optimizare computationala buget' where id = :id");
+                  else if($v_preferinta11 == 8){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_8 = 'Lingvistica computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta10 == 10){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_10 = 'Optimizare computationala buget' where id = :id");
+                  else if($v_preferinta11 == 9){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_9 = 'Lingvistica computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta10 == 11){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_11 = 'Optimizare computationala buget' where id = :id");
+                  else if($v_preferinta11 == 10){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_10 = 'Lingvistica computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			if($v_preferinta11 == 1){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_1 = 'Lingvistica computationala buget' where id = :id");
+                  else if($v_preferinta11 == 11){
+                      $statement8 = oci_parse($connection, "update ordine_preferinte_master set preferinta_11 = 'Lingvistica computationala buget' where formular_id  = :id");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+                      oci_bind_by_name($statement8, ':id', $numaratoare3);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+                      if (!$statement8) {
+                      $e = oci_error($connection);
+                      trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
 
-				$result8= oci_execute($statement8);
+                      $result8= oci_execute($statement8);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+                      if(!$result8){
+                          $e = oci_error($statement8);
+                          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+                      }
+                  }
 
-			else if($v_preferinta11 == 2){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_2 = 'Lingvistica computationala buget' where id = :id");
+        $statement = oci_parse($connection, "INSERT INTO informatii_documente_master VALUES (
+          :id, 
+          :diploma_bac_original,
+          :diploma_bac_copie,
+          :doc_echiv_original,
+          :doc_echiv_copie,
+          :diploma_licenta_original,
+          :diploma_licenta_copie,
+          :dipl_echiv_original,
+          :dipl_echiv_copie,
+          :particip_altundeva)");
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+        oci_bind_by_name($statement, ':id', $numaratoare4);
+        oci_bind_by_name($statement, ':diploma_bac_original', $_POST['Master_Diploma_BAC_Original']);
+        oci_bind_by_name($statement, ':diploma_bac_copie', $_POST['Master_Diploma_BAC_Copie']);
+        oci_bind_by_name($statement, ':doc_echiv_original', $_POST['Master_Echivalare_Studii_Preuniversitare_Original']);
+        oci_bind_by_name($statement, ':doc_echiv_copie', $_POST['Master_Echivalare_Studii_Preuniversitare_Copie']);
+        oci_bind_by_name($statement, ':diploma_licenta_original', $_POST['Master_Diploma_Licenta_Original']);
+        oci_bind_by_name($statement, ':diploma_licenta_copie', $_POST['Master_Diploma_Licenta_Copie']);
+        oci_bind_by_name($statement, ':dipl_echiv_original', $_POST['Master_Echivalare_Studii_Licenta_Original']);
+        oci_bind_by_name($statement, ':dipl_echiv_copie', $_POST['Master_Echivalare_Studii_Licenta_Copie']);
+        oci_bind_by_name($statement, ':particip_altundeva', $_POST['group27']);
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+        if (!$statement) {
+            ini_set('display_errors', 1);
+            error_reporting(E_ALL);
+        }
 
-				$result8= oci_execute($statement8);
+        $result = oci_execute($statement);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+        if (!$result) {
+            ini_set('display_errors', 1);
+            error_reporting(E_ALL);
+        }
 
-			else if($v_preferinta11 == 3){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_3 = 'Lingvistica computationala buget' where id = :id");
+        $v_emisaZi = $_POST['Licenta_Diploma_Ziua'];
+        $v_emisaLuna = $_POST['Licenta_Diploma_Luna'];
+        $v_emisaAn = $_POST['Licenta_Diploma_An'];
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+        $statement = oci_parse($connection, "INSERT into date_preg_anterioara_master values (
+          :id,
+          :liceu,
+          :tara_liceu,
+          :localitate_liceu,
+          :judet_liceu,
+          :profil,
+          :durata_studii,
+          :an_absolvire,
+          :forma_invatamant,
+          :serie_dipl,
+          :nr_dipl,
+          :emisa_de,
+          to_date(:dZi||'-'||:dLuna||'-'||:dAn, 'dd-mm-yyyy'),
+          :nr_foi,
+          :act_rec_echiv,
+          :serie_act,
+          to_date(:actZi||'-'||:actLuna||'-'||:actAn, 'dd-mm-yyyy'), 
+          :tara_fac, 
+          :localitate_fac,  
+          :judet_fac,
+          :denumire_institutie,  
+          :denumire_fac,   
+          :denumire_domeniu,
+          :specializare,
+          :titlu_obtinut,
+          :forma_invatamant2,
+          :nr_sem_buget,
+          :nr_sem_bursa,
+          :durata_studii,
+          :diploma_licenta_serie,
+          :diploma_licenta_nr,
+          :dipl_emisa_de,
+          to_date(:diZi||'-'||:diLuna||'-'||:diAn, 'dd-mm-yyyy'),
+          :nr_foi_dipl,
+          :act_rec_master,
+          :act_rec_master_serie,
+          to_date(:strainZi||'-'||:strainLuna||'-'||:strainAn, 'dd-mm-yyyy'),
+          :student_alta_fac,
+          :den_inst_superior,
+          :tara_altafac,
+          :localitate_altafac,
+          :judet_altafac,
+          :den_inst_superior2,
+          :facultate_altafac,
+          :dom_studii,
+          :dom_specializare,
+          :dom_forma_invat,
+          :dom_an,
+          :dom_sem_fin,
+          :dom_sem_bursa,
+          2000,
+          :abs_tara,
+          :abs_local,
+          :abs_judet,
+          :abs_den_inst,
+          :abs_den_fac,
+          :abs_dom,
+          :abs_spec,
+          :abs_forma,
+          :abs_sem_buget,
+          :abs_sem_bursa,
+          :abs_dipl_serie,
+          :abs_dipl_nr,
+          :abs_dipl_emisa_de,
+           to_date(:absZi||'-'||:absLuna||'-'||:absAn, 'dd-mm-yyyy'),
+           :abs_nr_foi,
+           :abs_act_rec_nr,
+           :abs_act_rec_serie,
+           to_date(:absRecZi||'-'||:absRecLuna||'-'||:absRecAn, 'dd-mm-yyyy'))");
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+        oci_bind_by_name($statement, ':id', $numaratoare5);
+        oci_bind_by_name($statement, ':liceu', $_POST['Master_Liceu']);
+        oci_bind_by_name($statement, ':tara_liceu', $_POST['Licenta_Tara']);
+        oci_bind_by_name($statement, ':localitate_liceu', $_POST['Licenta_Localitate']);
+        oci_bind_by_name($statement, ':judet_liceu', $_POST['Licenta_Judet']);       
+        oci_bind_by_name($statement, ':profil', $_POST['Licenta_Profil_Liceu']);
+        oci_bind_by_name($statement, ':durata_studii', $_POST['Licenta_Durata_Liceu']);
+        oci_bind_by_name($statement, ':an_absolvire', $_POST['Licenta_An_Liceu']);
+        oci_bind_by_name($statement, ':forma_invatamant', $_POST['Licenta_FormaInvatamant_Liceu']);
+        oci_bind_by_name($statement, ':serie_dipl', $_POST['Licenta_Serie_DiplomaBAC']);
+        oci_bind_by_name($statement, ':nr_dipl', $_POST['Licenta_Nr_DiplomaBAC']);
+        oci_bind_by_name($statement, ':emisa_de', $_POST['Licenta_Emitere_DiplomaBAC']);
 
-				$result8= oci_execute($statement8);
+        oci_bind_by_name($statement, ':dZi', $v_emisaZi);
+        oci_bind_by_name($statement, ':dLuna', $v_emisaLuna);
+        oci_bind_by_name($statement, ':dAn', $v_emisaAn); 
+        
+        oci_bind_by_name($statement, ':nr_foi', $_POST['Licenta_Nr_FoaieMatricola']);
+        oci_bind_by_name($statement, ':act_rec_echiv', $_POST['Licenta_Nr_ActRecunoastere']);
+        oci_bind_by_name($statement, ':serie_act', $_POST['Licenta_Serie_ActRecunoastere']);
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+        oci_bind_by_name($statement, ':actZi', $_POST['Licenta_ActEchivalare_Ziua']);
+        oci_bind_by_name($statement, ':actLuna', $_POST['Licenta_ActEchivalare_Luna']);
+        oci_bind_by_name($statement, ':actAn', $_POST['Licenta_ActEchivalare_An']);   
+        
+        oci_bind_by_name($statement, ':tara_fac', $_POST['Master_Tara_AltaFacultate']);
+        oci_bind_by_name($statement, ':localitate_fac', $_POST['Master_AbsolventLicenta_Localitate_AltaFacultate']);  
+        oci_bind_by_name($statement, ':judet_fac', $_POST['Master_Judet_AltaFacultate']);
+        oci_bind_by_name($statement, ':denumire_institutie', $_POST['Master_AbsolventLicenta_Univ']);
+        oci_bind_by_name($statement, ':denumire_fac', $_POST['Master_AbsolventLicenta_Facultate']);     
+        oci_bind_by_name($statement, ':denumire_domeniu', $_POST['Master_AbsolventLicenta_Domeniu_Licenta']);    
+        oci_bind_by_name($statement, ':specializare', $_POST['Master_AbsolventLicenta_Specializare']);
+        oci_bind_by_name($statement, ':titlu_obtinut', $_POST['Master_AbsolventLicenta_An_Facultate']);
+        oci_bind_by_name($statement, ':forma_invatamant2', $_POST['Master_AbsolventLicenta_FormaInvatamant']);
+        oci_bind_by_name($statement, ':nr_sem_buget', $_POST['Master_AbsolventLicenta_Semestre_Finantate']);
+        oci_bind_by_name($statement, ':nr_sem_bursa', $_POST['Master_AbsolventLicenta_Semestre_Bursa']);
+        oci_bind_by_name($statement, ':durata_studii', $_POST['Master_AbsolventLicenta_Durata_Studii']);
+        oci_bind_by_name($statement, ':diploma_licenta_serie', $_POST['Master_Serie_DiplomaLicenta']);     
+        oci_bind_by_name($statement, ':diploma_licenta_nr', $_POST['Master_Nr_DiplomaLicenta']);       
+        oci_bind_by_name($statement, ':dipl_emisa_de', $_POST['Master_Emitere_DiplomaLicenta']); 
 
-			else if($v_preferinta11 == 4){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_4 = 'Lingvistica computationala buget' where id = :id");
+        oci_bind_by_name($statement, ':diZi', $_POST['Master_DiplomaLicenta_Ziua']);
+        oci_bind_by_name($statement, ':diLuna', $_POST['Master_DiplomaLicenta_Luna']);
+        oci_bind_by_name($statement, ':diAn', $_POST['Master_DiplomaLicenta_An']);
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+        oci_bind_by_name($statement, ':nr_foi_dipl', $_POST['Master_AbsolventLicenta_Nr_FoaieMatricola']); 
+        oci_bind_by_name($statement, ':act_rec_master', $_POST['Master_AbsolventLicenta_Nr_ActRecunoastere']); 
+        oci_bind_by_name($statement, ':act_rec_master_serie', $_POST['Master_AbsolventLicenta_Serie_ActRecunoastere']);       
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+        oci_bind_by_name($statement, ':strainZi', $_POST['Master_AbsolventLicenta_ActEchivalare_Ziua']);
+        oci_bind_by_name($statement, ':strainLuna', $_POST['Master_AbsolventLicenta_ActEchivalare_Luna']);  
+        oci_bind_by_name($statement, ':strainAn', $_POST['Master_AbsolventLicenta_ActEchivalare_An']);    
 
-				$result8= oci_execute($statement8);
+        oci_bind_by_name($statement, ':student_alta_fac', $_POST['group25']);
+        oci_bind_by_name($statement, ':den_inst_superior', $_POST['Master_AbsolventLicenta_Univ']);
+        oci_bind_by_name($statement, ':tara_altafac', $_POST['Master_Tara_AltaFacultate']);
+        oci_bind_by_name($statement, ':judet_altafac', $_POST['Master_Judet_AltaFacultate']);
+        oci_bind_by_name($statement, ':localitate_altafac', $_POST['Master_Localitate_AltaFacultate']);        
+        oci_bind_by_name($statement, ':den_inst_superior2', $_POST['Master_AbsolventMaster_Univ']);    
+        oci_bind_by_name($statement, ':facultate_altafac', $_POST['Master_AltaFacultate']);    
+        oci_bind_by_name($statement, ':dom_studii', $_POST['Master_Domeniu_Studii']); 
+        oci_bind_by_name($statement, ':dom_specializare', $_POST['Master_Specializare']); 
+        oci_bind_by_name($statement, ':dom_forma_invat', $_POST['Master_FormaInvatamant_AltaUniv']);          
+        oci_bind_by_name($statement, ':dom_an' ,$_POST['Master_An_Facultate']);
+        oci_bind_by_name($statement, ':dom_sem_fin' ,$_POST['Master_AbsolventMaster_Semestre_Finantate']);
+        oci_bind_by_name($statement, ':dom_sem_bursa' ,$_POST['Master_AbsolventMaster_Semestre_Bursa']);       
 
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
+       oci_bind_by_name($statement, ':abs_tara' ,$_POST['Master_AbsolventMaster_Tara_AltaFacultate']);  
+       oci_bind_by_name($statement, ':abs_local' ,$_POST['Master_AbsolventMaster_Localitate_AltaFacultate']); 
+       oci_bind_by_name($statement, ':abs_judet' ,$_POST['Master_AbsolventMaster_Judet_AltaFacultate']);    
+       oci_bind_by_name($statement, ':abs_den_inst', $_POST['Master_AbsolventMaster_Univ']);   
+       oci_bind_by_name($statement, ':abs_den_fac', $_POST['Master_AbsolventMaster_Facultate']);        
+       oci_bind_by_name($statement, ':abs_dom', $_POST['Master_AbsolventMaster_Domeniu_Licenta']);  
+       oci_bind_by_name($statement, ':abs_spec', $_POST['Master_AbsolventMaster_Specializare']);              
+       oci_bind_by_name($statement, ':abs_forma', $_POST['Master_AbsolventMaster_FormaInvatamant']);
+       oci_bind_by_name($statement, ':abs_sem_buget', $_POST['Master_AbsolventMaster_Semestre_Finantate']);
+       oci_bind_by_name($statement, ':abs_sem_bursa', $_POST['Master_AbsolventMaster_Semestre_Bursa']); 
 
-			else if($v_preferinta11 == 5){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_5 = 'Lingvistica computationala buget' where id = :id");
+       oci_bind_by_name($statement, ':abs_dipl_serie', $_POST['Master_Serie_DiplomaMaster']); 
+       oci_bind_by_name($statement, ':abs_dipl_nr', $_POST['Master_Nr_DiplomaMaster']); 
+       oci_bind_by_name($statement, ':abs_dipl_emisa_de', $_POST['Master_Emitere_DiplomaMaster']);   
 
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
+       oci_bind_by_name($statement, ':absZi', $_POST['Master_DiplomaMaster_Ziua']);
+       oci_bind_by_name($statement, ':absLuna', $_POST['Master_DiplomaMaster_Luna']);
+       oci_bind_by_name($statement, ':absAn', $_POST['Master_DiplomaMaster_An']);   
 
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
+       oci_bind_by_name($statement, ':abs_nr_foi', $_POST['Master_DiplomaMaster_Nr_FoaieMatricola']);
+       oci_bind_by_name($statement, ':abs_act_rec_nr', $_POST['Master_DiplomaMaster_Nr_ActRecunoastere']); 
+       oci_bind_by_name($statement, ':abs_act_rec_serie', $_POST['Master_DiplomaMaster_Serie_ActRecunoastere']); 
 
-				$result8= oci_execute($statement8);
-
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
-
-			else if($v_preferinta11 == 6){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_6 = 'Lingvistica computationala buget' where id = :id");
-
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
-
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-
-				$result8= oci_execute($statement8);
-
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
-
-			else if($v_preferinta11 == 7){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_7 = 'Lingvistica computationala buget' where id = :id");
-
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
-
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-
-				$result8= oci_execute($statement8);
-
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
-
-			else if($v_preferinta11 == 8){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_8 = 'Lingvistica computationala buget' where id = :id");
-
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
-
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-
-				$result8= oci_execute($statement8);
-
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
-
-			else if($v_preferinta11 == 9){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_9 = 'Lingvistica computationala buget' where id = :id");
-
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
-
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-
-				$result8= oci_execute($statement8);
-
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
-
-			else if($v_preferinta11 == 10){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_10 = 'Lingvistica computationala buget' where id = :id");
-
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
-
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-
-				$result8= oci_execute($statement8);
-
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
-
-			else if($v_preferinta11 == 11){
-				$statement8 = oci_parse($connection, "update preferinte_master set preferinta_11 = 'Lingvistica computationala buget' where id = :id");
-
-				oci_bind_by_name($statement8, ':id', $numaratoare3);
-
-				if (!$statement8) {
-    			$e = oci_error($connection);
-    			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-
-				$result8= oci_execute($statement8);
-
-				if(!$result8){
-					$e = oci_error($statement8);
-    				trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-			}
-
-			$statement10 = oci_parse($connection, "insert into formular (id, detaliiaplicare_id, datemedieconcurs_id,  date_personale_candidat_id, preferinte_master_id, data_ultimei_modificari, data_compozitiei, validat, persoana_ultima_modificare, creation_date, last_update_date, serie_chitanta, suma_achitata) values (
-                        :id,
-                        :id2,
-                        :id3,
-                        :id4,
-                        :id5,
-                        current_timestamp,
-                        current_timestamp,
-                        0,
-                        :nume||' '||:prenume,
-                        current_timestamp,
-                        current_timestamp,
-                        :serie,
-                        :suma)
-                        ");
-
-					oci_bind_by_name($statement10, ':id', $numaratoare5);
-					oci_bind_by_name($statement10, ':id2', $numaratoare5);
-					oci_bind_by_name($statement10, ':id3', $numaratoare5);
-					oci_bind_by_name($statement10, ':id4', $numaratoare5);
-					oci_bind_by_name($statement10, ':id5', $numaratoare5);
-					oci_bind_by_name($statement10, ':nume', $_POST['Master_Numele_De_Familie']);
-					oci_bind_by_name($statement10, ':prenume', $_POST['Master_Prenumele']);
-					oci_bind_by_name($statement10, ':serie', $_POST['Master_Chitanta_nr']);
-					oci_bind_by_name($statement10, ':suma', $_POST['Master_Suma_Taxa']);			
-
-                   if (!$statement10) {
-                        $e = oci_error($connection);
-                        trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-                    }
-
-                    $result10= oci_execute($statement10);
-
-                    if(!$result10){
-                      $e = oci_error($statement10);
-                        trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-					}
-                    else
-                    {
-                        echo '<script>window.location.href = "Validare_Formular.php";</script>';
-                    }
-          
+       oci_bind_by_name($statement, ':absRecZi', $_POST['Master_DiplomaMaster_ActEchivalare_Ziua']);
+       oci_bind_by_name($statement, ':absRecLuna', $_POST['Master_DiplomaMaster_ActEchivalare_Luna']);
+       oci_bind_by_name($statement, ':absRecAn', $_POST['Master_DiplomaMaster_ActEchivalare_An']);   
+      
+       if (!$statement) {
+          ini_set('display_errors', 1);
+          error_reporting(E_ALL);
       }
+
+      $result = oci_execute($statement);
+
+      if (!$result) {
+          ini_set('display_errors', 1);
+          error_reporting(E_ALL);
+      }
+
+      $statement = oci_parse($connection, "INSERT into chestionar_master values (
+        :id,
+        :site_adm,
+        :site_fac,
+        :FBPage,
+        :prieteni,
+        :profesori,
+        :presa,
+        :alte_surse,
+        :prestigiu,
+        :calitate,
+        :sfat_persoane,
+        :statut,
+        :colegii,
+        :materii,
+        :informatii_univ,
+        :apropierea)
+        ");
+      oci_bind_by_name($statement, ':id', $numaratoare6);
+      oci_bind_by_name($statement, ':site_adm', $_POST['Site_Admitere']);
+      oci_bind_by_name($statement, ':site_fac', $_POST['Site_Facultate']);
+      oci_bind_by_name($statement, ':FBPage', $_POST['Brosura_Admitere']);  
+      oci_bind_by_name($statement, ':prieteni', $_POST['Prieteni_Rude']);   
+      oci_bind_by_name($statement, ':profesori', $_POST['Profesori_Liceu']);         
+      oci_bind_by_name($statement, ':presa', $_POST['Presa']);      
+      oci_bind_by_name($statement, ':alte_surse', $_POST['Alte_Surse']);
+
+      oci_bind_by_name($statement, ':prestigiu', $_POST['group28']);  
+      oci_bind_by_name($statement, ':calitate', $_POST['group29']);
+      oci_bind_by_name($statement, ':sfat_persoane', $_POST['group30']);  
+      oci_bind_by_name($statement, ':statut', $_POST['group31']);  
+      oci_bind_by_name($statement, ':colegii', $_POST['group32']);  
+      oci_bind_by_name($statement, ':materii', $_POST['group33']);  
+      oci_bind_by_name($statement, ':informatii_univ', $_POST['group34']);  
+      oci_bind_by_name($statement, ':apropierea', $_POST['group35']);   
+
+       if (!$statement) {
+          ini_set('display_errors', 1);
+          error_reporting(E_ALL);
+      }
+
+      $result = oci_execute($statement);
+
+      if (!$result) {
+          ini_set('display_errors', 1);
+          error_reporting(E_ALL);
+      }
+
     }
   }
   ?>
