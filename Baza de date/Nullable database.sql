@@ -31,6 +31,7 @@ CREATE TABLE Chestionar_licenta (
     prieteni number(1,0)  NULL,
     sapatamana_portilor number(1,0)  NULL,
     prezentare_in_liceu number(1,0)  NULL,
+	profesori number(1,0) NULL,
     presa number(1,0)  NULL,
     alte_surse varchar2(35)  NULL,
     prestigiu number(1,0)  NULL,
@@ -326,6 +327,7 @@ CREATE TABLE Formular_licenta (
     motiv_scutire varchar2(250)  NULL,
 	data_crearii TIMESTAMP	NULL,
 	data_ultimei_modificari TIMESTAMP NULL,
+	stare number(1,0)	 NULL,
 	stare number(1,0)	 NULL,
     CONSTRAINT Formular_licenta_pk PRIMARY KEY (id)
 ) ;
