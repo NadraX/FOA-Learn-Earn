@@ -155,4 +155,18 @@ a {
    position: relative;
     top: 36px; 	
 }
-
+.h_move {
+   position: relative;
+    bottom: 15px; 	
+}
+.floating_div {
+    float: right;
+	position: relative;
+	 bottom: 30px; 	
+}
+.floating_div1 {
+    float: right;
+	position: relative;
+	 bottom: 20px; 	
+	 right:25px;
+}
