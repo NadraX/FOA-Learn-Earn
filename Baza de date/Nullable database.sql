@@ -150,7 +150,6 @@ CREATE TABLE Date_personale_master (
     telefon number(15,0)  NULL,
     email varchar2(70)  NULL,
     solicita_cazare_studii number(1,0)  NULL,
-    solicita_cazare_admitere number(1,0)  NULL,
     orfan_de_ambii_parinti number(1,0)  NULL,
     orfan_de_un_parinte number(1,0)  NULL,
     provenit_case_de_copii number(1,0)  NULL,
