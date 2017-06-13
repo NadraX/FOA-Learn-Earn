@@ -390,24 +390,24 @@ CREATE TABLE Optiuni_licenta (
     formular_id integer  NOT NULL,
     in_romana number(1,0)  NULL,
     in_engleza number(1,0)  NULL,
-    stare_taxa number(1,0)  NULL
+    stare_taxa varchar2(20)  NULL
 ) ;
 
 -- Table: Ordine_preferinte_master
 CREATE TABLE Ordine_preferinte_master (
     formular_id integer  NOT NULL,
-    ingin_sis_soft_buget number(2,0)  NULL,
-    lingv_computat_buget number(2,0)  NULL,
-    optim_comput_buget number(2,0)  NULL,
-    sec_info_buget number(2,0)  NULL,
-    sis_distrib_buget number(2,0)  NULL,
-    ingin_sis_soft_taxa number(2,0)  NULL,
-    lingv_computat_taxa number(2,0)  NULL,
-    optim_comput_taxa number(2,0)  NULL,
-    sec_info_taxa number(2,0)  NULL,
-    sis_distrib_taxa number(2,0)  NULL,
-    stud_avans_info_taxa number(2,0)  NULL,
-    optiune_admitere_taxa varchar2(5)  NULL
+    preferinta_1 varchar2(50)	NULL,
+    preferinta_2 varchar2(50)   NULL,
+    preferinta_3 varchar2(50)   NULL,
+    preferinta_4 varchar2(50)   NULL,
+    preferinta_5 varchar2(50)   NULL,
+    preferinta_6 varchar2(50)   NULL,
+    preferinta_7 varchar2(50)   NULL,
+    preferinta_8 varchar2(50)   NULL,
+    preferinta_9 varchar2(50)   NULL,
+    preferinta_10 varchar2(50)   NULL,
+    preferinta_11 varchar2(50)   NULL,
+    optiune_admitere_taxa varchar2(20)  NULL
 ) ;
 
 -- foreign keys

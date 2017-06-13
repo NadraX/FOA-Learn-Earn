@@ -335,7 +335,6 @@ CREATE TABLE Formular_master (
     suma integer  NOT NULL,
     scutit number(1,0)  NOT NULL,
     motiv_scutire varchar2(250)  NULL,
-	optiune_test_scris varchar2(20)  NOT NULL,
     CONSTRAINT Formular_master_pk PRIMARY KEY (id)
 ) ;
 
@@ -344,8 +343,7 @@ CREATE TABLE Formular_preadmitere (
     id integer  NOT NULL,
     nr_chitanta varchar2(70)  NOT NULL,
     suma integer  NOT NULL,
-    scutit number(1,0)  NOT NULL,
-    motiv_scutire varchar2(250)  NULL,
+    optiune_test_scris varchar2(20)  NOT NULL
     CONSTRAINT Formular_preadmitere_pk PRIMARY KEY (id)
 ) ;
 
@@ -392,24 +390,24 @@ CREATE TABLE Optiuni_licenta (
     formular_id integer  NOT NULL,
     in_romana number(1,0)  NOT NULL,
     in_engleza number(1,0)  NOT NULL,
-    stare_taxa number(1,0)  NOT NULL
+    stare_taxa varchar2(20)  NOT NULL
 ) ;
 
 -- Table: Ordine_preferinte_master
 CREATE TABLE Ordine_preferinte_master (
     formular_id integer  NOT NULL,
-    ingin_sis_soft_buget number(2,0)  NOT NULL,
-    lingv_computat_buget number(2,0)  NOT NULL,
-    optim_comput_buget number(2,0)  NOT NULL,
-    sec_info_buget number(2,0)  NOT NULL,
-    sis_distrib_buget number(2,0)  NOT NULL,
-    ingin_sis_soft_taxa number(2,0)  NOT NULL,
-    lingv_computat_taxa number(2,0)  NOT NULL,
-    optim_comput_taxa number(2,0)  NOT NULL,
-    sec_info_taxa number(2,0)  NOT NULL,
-    sis_distrib_taxa number(2,0)  NOT NULL,
-    stud_avans_info_taxa number(2,0)  NOT NULL,
-    optiune_admitere_taxa varchar2(5)  NOT NULL
+    preferinta_1 varchar2(50)  NOT NULL,
+    preferinta_2 varchar2(50)  NOT NULL,
+    preferinta_3 varchar2(50)  NOT NULL,
+    preferinta_4 varchar2(50)  NOT NULL,
+    preferinta_5 varchar2(50)  NOT NULL,
+    preferinta_6 varchar2(50)  NOT NULL,
+    preferinta_7 varchar2(50)  NOT NULL,
+    preferinta_8 varchar2(50)  NOT NULL,
+    preferinta_9 varchar2(50)  NOT NULL,
+    preferinta_10 varchar2(50)  NOT NULL,
+    preferinta_11 varchar2(50)  NOT NULL,
+    optiune_admitere_taxa varchar2(20)  NOT NULL
 ) ;
 
 -- foreign keys
