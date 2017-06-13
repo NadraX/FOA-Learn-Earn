@@ -1,6 +1,8 @@
 
 <?php
 header('Content-type: text/plain; charset=utf-8');
+include 'adminMainPage.php';
+                    
  if(isset($_POST['Submit'])) {
 require('FPDF/fpdf.php');
 class PDF extends FPDF
@@ -8,7 +10,14 @@ class PDF extends FPDF
 
 function Header()
 {
-    $data = '15/15/2017';
+    $id_formular=$_POST['id_formular'];
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $s = oci_parse($c, " BEGIN  SELECT nr_chitanta, suma INTO :nr_chitanta, :suma FROM Formular_preadmitere WHERE id='$id_formular'; END; ");
+    oci_bind_by_name($s, ":nr_chitanta", $nr_chitanta, 100);
+    oci_bind_by_name($s, ":suma", $suma, 100);
+    oci_execute($s);
+    oci_close($c);
+    
     $this->Ln(-4);
     $this->Image('imagini/fii.png',12,12,20);
     $this->SetFont('Arial','B',9);
@@ -21,7 +30,7 @@ function Header()
 	$this->Cell(65);
 	$this->SetFont('Arial','B',12);
 	$this->Cell(50, 20, 'FISA DE INSCRIERE - PRE-ADMITERE SESIUNEA', 0, 0, 'C');
-	$this->Cell(27);
+	$this->Cell(32.5);
 	$this->SetFont('Arial','BU',12);
 	$this->Cell(10, 20, 'IULIE 2017', 0, 0, 'C');
 	
@@ -31,16 +40,16 @@ function Header()
 	$this->Cell(10, 20, 'Dosar nr. ', 0, 0, 'C');
 	
 	$this->Cell(7.5);
-	$this->SetFont('Arial','BU',10);
-	$this->Cell(5, 20, '21012', 0, 0, 'C');
+	$this->SetFont('Arial','B',10);
+	$this->Cell(5, 20, '..............', 0, 0, 'C');
 	
 	$this->Cell(7.5);
 	$this->SetFont('Arial','B',10);
 	$this->Cell(5, 20, 'Data', 0, 0, 'C');
 	
 	$this->Cell(11);
-	$this->SetFont('Arial','BU',10);
-	$this->Cell(5, 20, '16/16/2016', 0, 0, 'C');
+	$this->SetFont('Arial','B',10);
+	$this->Cell(5, 20, '.......................', 0, 0, 'C');
 	
 	$this->Ln(16);
 	$this->Cell(40);
@@ -51,9 +60,9 @@ function Header()
 	$this->MultiCell(40, 10, 'Taxa de inscriere', 1, 1);
 	$this->SetXY($x + 40, $y);
 	$this->SetFont('Arial','',10);
-	$this->MultiCell(40, 10,'Chitanta nr. ',1,  1);
+	$this->MultiCell(40, 10,'Chitanta nr. '.$nr_chitanta,1,  1);
 	$this->SetXY($x + 80, $y);	
-	$this->MultiCell(40, 10,'Suma ',1,  1);
+	$this->MultiCell(40, 10,'Suma: '.$suma,1,  1);
 
 }
 
@@ -65,95 +74,49 @@ function Footer()
     $this->Cell(0,10,'Pagina '.$this->PageNo().'/{nb}',0,0,'C');
 }
 }
-
-  if(isset($_POST['Submit'])){      
-            
-            $v_Numele_De_Familie = $_POST["Licenta_Numele_De_Familie"];
-        
-            $v_Licenta_Initiala_Tata = $_POST["Licenta_Initiala_Tata"];
-            
-            $v_Licenta_Prenumele = $_POST["Licenta_Prenumele"];
-            
-            $v_Licenta_Prenume_Mama = $_POST["Licenta_Prenume_Mama"];
-        
-            $v_Licenta_Prenume_Tata = $_POST["Licenta_Prenume_Tata"];
-        
-            $v_Licenta_Nationalitate = $_POST["Licenta_Nationalitate"];
-        
-            $v_Licenta_Etnie = $_POST["Licenta_Etnie"];
-        
-            $v_Licenta_Limba_Materna = $_POST["Licenta_Limba_Materna"];
-        
-            $v_Licenta_CNP = $_POST["Licenta_CNP"];
-        
-            $v_Licenta_Tip_Buletin = $_POST["Licenta_Tip_Buletin"];  // V
-        
-            $v_Licenta_Serie_Buletin = $_POST["Licenta_Serie_Buletin"];  // V
-        
-            $v_Licenta_Serie_Buletin = $_POST["Licenta_Numar_Buletin"];  // V
-        
-            $v_Licenta_Buletin_Eliberat_De = $_POST["Licenta_Buletin_Eliberat_De"];  // V
-        
-            $v_Licenta_Medie_BAC = $_POST["Licenta_Medie_BAC"];
-        
-            $v_Licenta_Nota_MI = $_POST["Licenta_Nota_MI"];  // V
-        
-            $v_Licenta_Strada = $_POST["Licenta_Strada"];  // V
-	
-	        $v_Licenta_Numar = $_POST["Licenta_Numar"];
-	
-            $v_Licenta_Bloc = $_POST["Licenta_Bloc"];
-	
-            $v_Licenta_Scara = $_POST["Licenta_Scara"];
-						
-			$v_Licenta_Etaj = $_POST["Licenta_Etaj"];
-						
-			$v_Licenta_Apartament = $_POST["Licenta_Apartament"];
-						
-			$v_Licenta_Localitate = $_POST["Licenta_Localitate"];  // V
-						
-			$v_Licenta_Cod_Postal = $_POST["Licenta_Cod_Postal"];
-						
-			$v_Licenta_Tara = $_POST["Licenta_Tara"];  // V
-
-			$v_Licenta_Judet = $_POST["Licenta_Judet"]; // V
-        
-            $v_Licenta_Telefon = $_POST["Licenta_Telefon"];  // V
-        
-        
-            $v_Licenta_Email = $_POST["Licenta_Email"];  // V
-        
-            $v_sex = $_POST["Licenta_Sex"];
-      
-            $v_stare_civila = $_POST["Licenta_Stare_Civila"]; 
-      
-            $v_cetatenie = 'romana';
-      
-            $v_data_nastere_luna = $_POST['Licenta_Nastere_Luna'];
-      
-            $v_data_nastere_zi = $_POST['Licenta_Nastere_Zi'];
-      
-            $v_data_nastere_an = $_POST['Licenta_Nastere_An'];
-      
-            $v_numar_buletin = $_POST['Licenta_Numar_Buletin'];
-      
-            $v_buletin_zi = $_POST['Licenta_Buletin_Ziua'];
-      
-            $v_buletin_an = $_POST['Licenta_Buletin_An'];
-      
-            $v_buletin_luna = $_POST['Licenta_Buletin_Luna'];
-      
-            $v_Licenta_Serie_Buletin = $_POST['Licenta_Serie_Buletin'];
-        
-            $v_Licenta_Medie_BAC = $_POST["Licenta_Medie_BAC"];
-      
-            $v_Licenta_Nota_MI = $_POST["Licenta_Nota_MI"];  // V
-        
-            $v_Licenta_Obiect_Ales =  $_POST["Licenta_Obiect_Test_Ales"]; 
-      
-            $v_Licenta_Preferinte =  $_POST["Licenta_Limba_Aleasa"];  
-      
-            $v_Licenta_Liceu =  $_POST["Licenta_Liceu"]; 
+                
+      $id_formular=$_POST['id_formular'];
+    
+      $c = oci_connect("ADMITERE", "ADMITERE", "localhost/xe");
+      $s = oci_parse($c, " BEGIN  SELECT dpc.nume_familie_nastere, dpc.initialele_tatalui_mamei, dpc.nume_familie_actual, dpc.prenume_candidat, dpc.prenume_tata,
+                                  dpc.prenume_mama, dpc.cnp, dpc.sex, dpc.data_nasterii, dpc.tara_nasterii, dpc.judetul_nasterii, dpc.localitatea_nasterii,
+                                  dpc.cetatenia, dpc.nationalitate, dpc.etnie, dpc.limba_materna, dpc.serie_ci, dpc.numar_ci, dpc.eliberat_de, dpc.data_eliberarii,
+                                  dpc.data_expirarii, dpc.institutie_liceu, dpc.tara_liceu, dpc.localitate_liceu, dpc.judet_liceu, f.optiune_test_scris INTO :nume_familie_nastere,
+                                  :initialele_tatalui_mamei, :nume_familie_actual, :prenume_candidat, :prenume_tata, :prenume_mama, :cnp, :sex, :data_nasterii,
+                                  :tara_nasterii, :judetul_nasterii, :localitatea_nasterii, :cetatenia, :nationalitate, :etnie, :limba_materna, :serie_ci, :numar_ci,
+                                  :eliberat_de, :data_eliberarii, :data_expirarii, :institutie_liceu, :tara_liceu, :localitate_liceu, :judet_liceu, :optiune_test_scris FROM Date_personale_preadmitere dpc
+                                                 JOIN Formular_preadmitere f ON f.id=dpc.Formular_id
+                                                 WHERE f.id='$id_formular'; end; ");
+     
+      oci_bind_by_name($s, ":nume_familie_nastere", $nume_familie_nastere, 100);
+      oci_bind_by_name($s, ":initialele_tatalui_mamei", $initialele_tatalui_mamei, 100);
+      oci_bind_by_name($s, ":nume_familie_actual", $nume_familie_actual, 100);
+      oci_bind_by_name($s, ":prenume_candidat", $prenume_candidat, 100);
+      oci_bind_by_name($s, ":prenume_tata", $prenume_tata, 100);
+      oci_bind_by_name($s, ":prenume_mama", $prenume_mama, 100);
+      oci_bind_by_name($s, ":cnp", $cnp, 100);
+      oci_bind_by_name($s, ":sex", $sex, 100);
+      oci_bind_by_name($s, ":data_nasterii", $data_nasterii, 100);
+      oci_bind_by_name($s, ":tara_nasterii", $tara_nasterii, 100);
+      oci_bind_by_name($s, ":judetul_nasterii", $judetul_nasterii, 100);
+      oci_bind_by_name($s, ":localitatea_nasterii", $localitatea_nasterii, 100);
+      oci_bind_by_name($s, ":cetatenia", $cetatenia, 100);
+      oci_bind_by_name($s, ":nationalitate", $nationalitate, 100);
+      oci_bind_by_name($s, ":etnie", $etnie, 100);
+      oci_bind_by_name($s, ":limba_materna", $limba_materna, 100);
+      oci_bind_by_name($s, ":serie_ci", $serie_ci, 100);
+      oci_bind_by_name($s, ":numar_ci", $numar_ci, 100);
+      oci_bind_by_name($s, ":eliberat_de", $eliberat_de, 100);
+      oci_bind_by_name($s, ":data_eliberarii", $data_eliberarii, 100);
+      oci_bind_by_name($s, ":data_expirarii", $data_expirarii, 100);
+      oci_bind_by_name($s, ":institutie_liceu", $institutie_liceu, 100);
+      oci_bind_by_name($s, ":tara_liceu", $tara_liceu, 100);
+      oci_bind_by_name($s, ":localitate_liceu", $localitate_liceu, 100);
+      oci_bind_by_name($s, ":judet_liceu", $judet_liceu, 100);
+      oci_bind_by_name($s, ":optiune_test_scris", $optiune_test_scris, 100);
+     
+      oci_execute($s);
+      oci_close($c);
         
 	  $pdf = new PDF('P', 'mm', 'A4' );
 	  $pdf->AliasNbPages();
@@ -165,11 +128,11 @@ function Footer()
 	  $pdf->SetFont('Times','B',11);
 	  $pdf->Cell(10);
 
-	  $pdf->Cell(0,0,'I. INFORMATII GENERALE',0,1);
+	  $pdf->Cell(0,0,'I. INFORMATII GENERALE '.$id_formular,0,1);
 	  $pdf->SetLineWidth(0);
 	  $pdf->Line(20, 77, 210-20, 77);
 
-	  $pdf->Ln(3);
+	  $pdf->Ln(2);
 
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
@@ -188,18 +151,18 @@ function Footer()
 	  $pdf->SetFont('Times','B',9);
 
 	  $pdf->Cell(10);
-	  $pdf->MultiCell(120, 6, ''.$v_Numele_De_Familie, 1, 1);
+	  $pdf->MultiCell(120, 6, ''.$nume_familie_nastere, 1, 1);
 	  $pdf->SetXY($x + 150, $y);
-	  $pdf->MultiCell(10, 6,''.$v_Licenta_Initiala_Tata,1,  1);
+	  $pdf->MultiCell(10, 6,''.$initialele_tatalui_mamei,1,  1);
 
-	  $pdf->Ln(3);
+	  $pdf->Ln(1);
 	  $pdf->SetFont('Times','BI',10);
 	  $pdf->Cell(0,10,'3. Numele de familie actual (dupa casatorie, infiere, modificare la cerere conform actului doveditor, daca este cazul)',0,0,'C');
 	  
 	  $pdf->Ln(7);
 	  $pdf->Cell(10);
 	  $pdf->SetFont('Times','B',9);
-	  $pdf->Cell(170,6,'Bla Bla',1,0,'L');
+	  $pdf->Cell(170,6,''.$nume_familie_actual,1,0,'L');
 	  
 	  $pdf->Ln(5);
 	  $pdf->Cell(9);
@@ -209,9 +172,9 @@ function Footer()
 	  $pdf->Ln(7);
 	  $pdf->Cell(10);
 	  $pdf->SetFont('Times','B',9);
-	  $pdf->Cell(170,6,'Bla Bla',1,0,'L');
+	  $pdf->Cell(170,6,''.$prenume_candidat,1,0,'L');
 	  
-	  $pdf->Ln(10);
+	  $pdf->Ln(9);
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
@@ -223,13 +186,13 @@ function Footer()
 	  $pdf->MultiCell(12, 12,'Mama',1,  1);
 	  $pdf->SetXY($x + 82, $y);
 	  $pdf->SetFont('Times','B',9);
-	  $pdf->MultiCell(43, 12,'Bla Bla',1,  1);
+	  $pdf->MultiCell(43, 12,''.$prenume_mama,1,  1);
 	  $pdf->SetXY($x + 125, $y);
 	  $pdf->SetFont('Times','BI',10);
 	  $pdf->MultiCell(12, 12,'Tata',1,  1);
 	  $pdf->SetXY($x + 137, $y);
 	  $pdf->SetFont('Times','B',9);
-	  $pdf->MultiCell(43, 12,'bla Bla',1,  1);
+	  $pdf->MultiCell(43, 12,''.$prenume_tata,1,  1);
 
 	  $pdf->Ln(4);
 
@@ -242,28 +205,22 @@ function Footer()
 	  $pdf->MultiCell(13, 6, '6. CNP', 1, 1);
 	  $pdf->SetXY($x + 23, $y);
 	  $pdf->SetFont('Times','B',9);
-	  $pdf->MultiCell(90, 6,'BDADA',1,  1);
+	  $pdf->MultiCell(90, 6,''.$cnp,1,  1);
 	  $pdf->SetXY($x + 150, $y);
 	  $pdf->SetFont('Times','BI',10);
 	  $pdf->MultiCell(15, 6, '7. Sexul', 1, 1);
 	  $pdf->SetXY($x + 165, $y);
 	  $pdf->SetFont('Times','B',9);
-	  $pdf->MultiCell(15, 6,'M',1,  1);
+	  $pdf->MultiCell(15, 6,''.$sex,1,  1);
 
 	  $pdf->SetFont('Times','BI',10);
 	  $pdf->Cell(0,10,'8. Data nasterii (zz/ll/aaa)',0,0,'C');
 	  
 	  $pdf->Ln(7);
-	  $x = $pdf->GetX();
-	  $y = $pdf->GetY();
 
 	  $pdf->SetFont('Times','B',9);
-	  $pdf->Cell(50);
-	  $pdf->MultiCell(30, 6,''.$v_buletin_zi,1,  1);
-	  $pdf->SetXY($x + 80, $y);
-	  $pdf->MultiCell(30, 6,''.$v_buletin_luna,1,  1);
-	  $pdf->SetXY($x + 110, $y);
-	  $pdf->MultiCell(30, 6,''.$v_buletin_an,1,  1);
+	  $pdf->Cell(75);
+	  $pdf->Cell(40,6,''.$data_nasterii,1,0,'C');
 	  
 	  $pdf->Ln(6);
 	  $pdf->SetFont('Times','BI',10);
@@ -288,13 +245,13 @@ function Footer()
 	  $pdf->SetFont('Times','B',9);
 
 	  $pdf->Cell(12);
-	  $pdf->MultiCell(55, 6, 'Tara', 1, 1);
+	  $pdf->MultiCell(55, 6, ''.$tara_nasterii, 1, 1);
 	  $pdf->SetXY($x + 67, $y);
-	  $pdf->MultiCell(55, 6,'Judetul',1,  1);
+	  $pdf->MultiCell(55, 6,''.$judetul_nasterii,1,  1);
 	  $pdf->SetXY($x + 122, $y);
-	  $pdf->MultiCell(55, 6,'Localitatea',1,  1);
+	  $pdf->MultiCell(55, 6,''.$localitatea_nasterii,1,  1);
 
-	  $pdf->Ln(7);
+	  $pdf->Ln(5);
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
@@ -315,30 +272,22 @@ function Footer()
 	  $pdf->SetFont('Times','B',9);
 
 	  $pdf->Cell(15);
-	  $pdf->MultiCell(40, 6, 'Cetatenia (tara)', 1, 1);
+	  $pdf->MultiCell(40, 6, ''.$cetatenia, 1, 1);
 	  $pdf->SetXY($x + 55, $y);
-	  $pdf->MultiCell(40, 6,'Nationalitatea',1,  1);
+	  $pdf->MultiCell(40, 6,''.$nationalitate,1,  1);
 	  $pdf->SetXY($x + 95, $y);
-	  $pdf->MultiCell(40, 6,'Etnia',1,  1);
+	  $pdf->MultiCell(40, 6,''.$etnie,1,  1);
 	  $pdf->SetXY($x + 135, $y);
-	  $pdf->MultiCell(40, 6,'Limba materna',1,  1);
+	  $pdf->MultiCell(40, 6,''.$limba_materna,1,  1);
 	  
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'10. Starea civila',0,0,'C');
-	  
-	  $pdf->Ln(7);
-	  $pdf->Cell(69.5);
-	  $pdf->SetFont('Times','B',9);
-	  $pdf->Cell(50,6,'Bla Bla',1,0,'C');
-	  
-	  $pdf->Ln(7);
+	  $pdf->Ln(2);
 	  $pdf->SetFont('Times','BI',10);
 	  $pdf->Cell(0,10,'11. Actul de identitate/Documentul de calatorie',0,0,'C'); 
 	  
 	  $pdf->Ln(7);
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
-	  $pdf->SetFont('Times','BI',11);
+	  $pdf->SetFont('Times','BI',10);
 
 	  $pdf->Cell(12);
 	  $pdf->MultiCell(55, 6, 'Tip', 1, 1);
@@ -353,235 +302,88 @@ function Footer()
 	  $pdf->SetFont('Times','B',9);
 
 	  $pdf->Cell(12);
-	  $pdf->MultiCell(55, 6, ''.$v_Licenta_Tip_Buletin, 1, 1);
+	  $pdf->MultiCell(55, 6, 'CI', 1, 1);
 	  $pdf->SetXY($x + 67, $y);
-	  $pdf->MultiCell(55, 6,''.$v_Licenta_Serie_Buletin,1,  1);
+	  $pdf->MultiCell(55, 6,''.$serie_ci,1,  1);
 	  $pdf->SetXY($x + 122, $y);
-	  $pdf->MultiCell(55, 6,''.$v_numar_buletin,1,  1);
+	  $pdf->MultiCell(55, 6,''.$numar_ci,1,  1);
 
-	  $pdf->Ln(7);
+	  $pdf->Ln(5);
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
-	  $pdf->SetFont('Times','BI',11);
+	  $pdf->SetFont('Times','BI',10);
 
-	  $pdf->Cell(15);
+	  $pdf->Cell(23);
 	  $pdf->MultiCell(70, 6, 'Eliberat de', 1, 1);
-	  $pdf->SetXY($x + 85, $y);
-	  $pdf->MultiCell(30, 6,'Ziua',1,  1);
-	  $pdf->SetXY($x + 115, $y);
-	  $pdf->MultiCell(30, 6,'Luna',1,  1);
-	  $pdf->SetXY($x + 145, $y);
-	  $pdf->MultiCell(30, 6,'Anul',1,  1);
+	  $pdf->SetXY($x + 93, $y);
+	  $pdf->MultiCell(40, 6,'Data eliberarii',1,  1);
+	  $pdf->SetXY($x + 133, $y);
+	  $pdf->MultiCell(40, 6,'Data expirarii',1,  1);
 
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
 	  $pdf->SetFont('Times','B',9);
 
-	  $pdf->Cell(15);
-	  $pdf->MultiCell(70, 6, ''.$v_Licenta_Buletin_Eliberat_De, 1, 1);
-	  $pdf->SetXY($x + 85, $y);
-	  $pdf->MultiCell(30, 6,''.$v_buletin_zi,1,  1);
-	  $pdf->SetXY($x + 115, $y);
-	  $pdf->MultiCell(30, 6,''.$v_buletin_luna,1,  1);
-	  $pdf->SetXY($x + 145, $y);
-	  $pdf->MultiCell(30, 6,''.$v_buletin_an,1,  1);
+	  $pdf->Cell(23);
+	  $pdf->MultiCell(70, 6, ''.$eliberat_de, 1, 1);
+	  $pdf->SetXY($x + 93, $y);
+	  $pdf->MultiCell(40, 6,''.$data_eliberarii,1,  1);
+	  $pdf->SetXY($x + 133, $y);
+	  $pdf->MultiCell(40, 6,''.$data_expirarii,1,  1);
 
-	  $pdf->SetLineWidth(0.5);
-	  $pdf->Line(10, 270, 210-10, 270);
-	  $pdf->SetLineWidth(0);
-	  
-	  $pdf->AddPage();
-	  $pdf->Ln(7);
-	  $pdf->SetLineWidth(0.5);
-	  $pdf->Line(10, 72, 210-10, 72);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'12. Domiciliul stabil',0,0,'C'); 
+      $pdf->Ln(2);
+	 $pdf->SetFont('Times','BI',10);
+	 $pdf->Cell(0,10,'Studiile pre-universitare unde sunteti inmatriculat',0,0,'C');
+
+     $pdf->Ln(8.5); 
+     $x = $pdf->GetX();
+	 $y = $pdf->GetY();
+
+	 $pdf->SetFont('Times','BI',10);
+	 $pdf->Cell(12);
+	 $pdf->MultiCell(78, 6, 'Institutia', 1, 1);
+	 $pdf->SetXY($x + 90, $y);
+	 $pdf->MultiCell(25, 6,'Tara',1,  1); 
+     $pdf->SetXY($x + 115, $y);
+	 $pdf->MultiCell(35, 6,'Localitate',1,  1); 
+     $pdf->SetXY($x + 150, $y);
+	 $pdf->MultiCell(25, 6,'Judetul',1,  1);
       
-	  $pdf->SetLineWidth(0);
-	  $pdf->Ln(8);
-	  $x = $pdf->GetX();
-	  $y = $pdf->GetY();
-
-	  $pdf->SetFont('Times','BI',10);
-
-	  $pdf->Cell(15);
-	  $pdf->MultiCell(60, 6, '1. Strada', 0, 1);
-	  $pdf->SetXY($x + 120, $y);
-	  $pdf->MultiCell(95, 6,'2. Numarul',0,  1);
-
-	  $pdf->Ln(-0.5);
-
-	  $x = $pdf->GetX();
-	  $y = $pdf->GetY();
-
-	  $pdf->SetFont('Times','B',9);
-
-	  $pdf->Cell(15);
-
-	  $pdf->MultiCell(95, 6, ''.$v_Licenta_Strada, 1, 1);
-	  $pdf->SetXY($x + 120, $y);
-	  $pdf->MultiCell(60, 6,''.$v_Licenta_Numar,1,  1);
-	  
-	  $pdf->Ln(1.5);
-
-	  $x = $pdf->GetX();
-	  $y = $pdf->GetY();
-
-	  $pdf->SetFont('Times','BI',10);
-
-	  $pdf->Cell(15);
-   	  $pdf->MultiCell(45, 6, 'Bloc', 0, 1);
-	  $pdf->SetXY($x + 100, $y);
-	  $pdf->MultiCell(35, 6,'Scara',0,  1);
-	  $pdf->SetXY($x + 125, $y);
-	  $pdf->MultiCell(35, 6,'Etaj',0,  1);
-	  $pdf->SetXY($x + 150, $y);
-	  $pdf->MultiCell(35, 6,'Apartament',0,  1);
-
-	 $pdf->Ln(-0.5);
-
-	 $x = $pdf->GetX();
-	 $y = $pdf->GetY();
-
-	 $pdf->SetFont('Times','B',9);
-
-	 $pdf->Cell(15);
-
-	 $pdf->MultiCell(65, 6, ''.$v_Licenta_Bloc, 1, 1);
-	 $pdf->SetXY($x + 100, $y);
-	 $pdf->MultiCell(25, 6,''.$v_Licenta_Scara,1,  1);
-	 $pdf->SetXY($x + 125, $y);
-	 $pdf->MultiCell(25, 6,''.$v_Licenta_Etaj,1,  1);
-	 $pdf->SetXY($x + 150, $y);
-	 $pdf->MultiCell(25, 6,''.$v_Licenta_Apartament,1,  1);
-
-
-	 $pdf->Ln(1.5);
-
-	 $x = $pdf->GetX();
-	 $y = $pdf->GetY();
-
-	 $pdf->SetFont('Times','BI',10);
-
-	 $pdf->Cell(15);
-	 $pdf->MultiCell(85, 6, 'Localitate', 0, 1);
-	 $pdf->SetXY($x + 110, $y);
-	 $pdf->MultiCell(95, 6,'Judet',0,  1);
-
-	 $pdf->Ln(-0.5);
-
-	 $x = $pdf->GetX();
-	 $y = $pdf->GetY();
-
-	 $pdf->SetFont('Times','B',9);
-
-	 $pdf->Cell(15);
-
-	 $pdf->MultiCell(60, 6, ''.$v_Licenta_Localitate, 1, 1);
-	 $pdf->SetXY($x + 105, $y);
-	 $pdf->MultiCell(60, 6,''.$v_Licenta_Judet,1,  1);
-
-	 $pdf->Ln(1.5);
-
-	 $x = $pdf->GetX();
-	 $y = $pdf->GetY();
-
-	 $pdf->SetFont('Times','BI',10);
-
-	 $pdf->Cell(15);
-	 $pdf->MultiCell(85, 6, 'Cod postal', 0, 1);
-	 $pdf->SetXY($x + 85, $y);
-	 $pdf->MultiCell(95, 6,'Tara',0,  1);
-
-	 $pdf->Ln(-0.5);
-
-	 $x = $pdf->GetX();
-	 $y = $pdf->GetY();
-
-	 $pdf->SetFont('Times','B',9);
-	 $pdf->Cell(15);
-
-	 $pdf->MultiCell(60, 6, ''.$v_Licenta_Cod_Postal, 1, 1);
-	 $pdf->SetXY($x + 85, $y);
-	 $pdf->MultiCell(70, 6,''.$v_Licenta_Tara,1,  1);
-    
-	 $pdf->Ln(1.5);
-
-	 $x = $pdf->GetX();
-	 $y = $pdf->GetY();
-
-	 $pdf->SetFont('Times','BI',10);
-	 $pdf->Cell(15);
-	 $pdf->MultiCell(50, 6, 'Nr. telefon', 0, 1);
-	 $pdf->SetXY($x + 85, $y);
-	 $pdf->MultiCell(105, 6,'E-mail',0,  1);
       
-	 $pdf->Ln(-0.5);
+     $x = $pdf->GetX();
+     $y = $pdf->GetY();
 
-	 $x = $pdf->GetX();
-	 $y = $pdf->GetY();
-
-	 $pdf->SetFont('Times','B',9);
-
-	 $pdf->Cell(15);
-
+     $pdf->SetFont('Times','B',9);
+	 $pdf->Cell(12);
+	 $pdf->MultiCell(78, 6, ''.$institutie_liceu, 1, 1);
+	 $pdf->SetXY($x + 90, $y);
+	 $pdf->MultiCell(25, 6,''.$tara_liceu,1,  1); 
+     $pdf->SetXY($x + 115, $y);
+	 $pdf->MultiCell(35, 6,''.$localitate_liceu,1,  1); 
+     $pdf->SetXY($x + 150, $y);
+	 $pdf->MultiCell(25, 6,''.$judet_liceu,1,  1);
+      
+     // Optiunea pt testul scris 
+     
+     $pdf->Ln(3);
+	 $pdf->SetFont('Times','BI',10);
+	 $pdf->Cell(0,10,'Optiunea pentru testul scris: (Matematica, Informatica (Pascal), Informatica (C)) ',0,0,'C'); 
+     
+     $pdf->Ln(9);
+     $pdf->Cell(70);
+	 $pdf->SetFont('Times','BI',10);
+	 $pdf->Cell(50,6,''.$optiune_test_scris,1,0,'C'); 
     
-	 $pdf->MultiCell(50, 6, ''.$v_Licenta_Telefon, 1, 1);
-	 $pdf->SetXY($x + 85, $y);
-	 $pdf->MultiCell(95, 6,''.$v_Licenta_Email,1,  1);
-	 
-	 $pdf->SetLineWidth(0.5);
-	 $pdf->Line(10, 164.5, 210-10, 164.5);
-
-	 $pdf->Ln(22);
-	 $pdf->SetFont('Times','B',11);
-	 $pdf->Cell(10);
-
-	 $pdf->Cell(0,0,'II. STUDIILE PRE-UNIVERSITARE UNDE SUNTETI INMATRICULAT',0,1);
-	 $pdf->SetLineWidth(0);
-	 $pdf->Line(20, 170, 210-20, 170); 
-	 
-	 $pdf->Ln(16);
-	 $pdf->Cell(35);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(115,6,'Institutia de invatamant',1,0,'C');
-	  
-	  $pdf->Ln(6);
-	  $pdf->Cell(35);
-	  $pdf->SetFont('Times','B',9);
-	  $pdf->Cell(115,6,'Bla Bla',1,0,'C');
-	  
-	 $pdf->SetLineWidth(0.5);
-	 $pdf->Line(10, 208.5, 210-10, 208.5);
-
-	 $pdf->Ln(22);
-	 $pdf->SetFont('Times','B',11);
-	 $pdf->Cell(10);
-
-	 $pdf->Cell(0,0,'III. CERINTE LEGATE DE METODA DE EXAMINARE',0,1);
-	 $pdf->SetLineWidth(0);
-	 $pdf->Line(20, 214, 210-20, 214); 
-	 
-	  $pdf->Ln(20);
-	  
-	  $pdf->Cell(35);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(115,6,'Optiunea pentru testul scris (Matematica, Informatica (Pascal/C)',1,0,'C');
-	  
-	  $pdf->Ln(6);
-	  $pdf->Cell(35);
-	  $pdf->SetFont('Times','B',9);
-	  $pdf->Cell(115,6,'Bla Bla',1,0,'C');
-	     
-	  
-	  
+      
 	  $pdf->SetLineWidth(0.5);
-	  $pdf->Line(10, 270, 210-10, 270);
+	  $pdf->Line(10, 280, 210-10, 280);
 	  $pdf->SetLineWidth(0);
+	  
 	  $pdf->Output();
+     
             }
-         }
+         
  
 
 ?>
