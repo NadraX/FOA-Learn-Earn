@@ -417,7 +417,7 @@ ALTER TABLE Cerinte_licenta ADD CONSTRAINT Cerinte_Formular
     REFERENCES Formular_licenta (id);
 
 -- Reference: Cerinte_facultate_master_Formular_master (table: Cerinte_master)
-ALTER TABLE Cerinte_master ADD CONSTRAINT Cerinte_fac_master_Formular
+ALTER TABLE Cerinte_master ADD CONSTRAINT Ceri_faaster_Formular
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
@@ -432,12 +432,12 @@ ALTER TABLE Chestionar_master ADD CONSTRAINT Chestionar_Formular_master
     REFERENCES Formular_master (id);
 
 -- Reference: Copy_of_Date_personale_Formular (table: Date_personale_master)
-ALTER TABLE Date_personale_master ADD CONSTRAINT Copy_of_Date_pers_Formular
+ALTER TABLE Date_personale_master ADD CONSTRAINT Cof_Dapers_Formular
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
 -- Reference: Copy_of_Date_preg_anterioara_Formular (table: Date_preg_anterioara_master)
-ALTER TABLE Date_preg_anterioara_master ADD CONSTRAINT Copy_of_Date_preg_ant_Formular
+ALTER TABLE Date_preg_anterioara_master ADD CONSTRAINT Copy_ateeg_anrmular
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
@@ -447,22 +447,22 @@ ALTER TABLE Date_personale_licenta ADD CONSTRAINT Date_personale_Formular
     REFERENCES Formular_licenta (id);
 
 -- Reference: Date_personale_preadmitere_Formular_preadmitere (table: Date_personale_preadmitere)
-ALTER TABLE Date_personale_preadmitere ADD CONSTRAINT Date_pers_preadmit_Formular
-    FOREIGN KEY (Formular_preadmitere_id)
+ALTER TABLE Date_personale_preadmitere ADD CONSTRAINT Date_pers_pdmit_Fular
+    FOREIGN KEY (Formular_id)
     REFERENCES Formular_preadmitere (id);
 
 -- Reference: Date_preg_anterioara_Formular (table: Date_preg_anterioara_licenta)
-ALTER TABLE Date_preg_anterioara_licenta ADD CONSTRAINT Date_preg_anterioara_Formular
+ALTER TABLE Date_preg_anterioara_licenta ADD CONSTRAINT Date_prg_ana_Formular
     FOREIGN KEY (formular_id)
     REFERENCES Formular_licenta (id);
 
 -- Reference: Informatii_documente_Formular (table: Informatii_documente_licenta)
-ALTER TABLE Informatii_documente_licenta ADD CONSTRAINT Informatii_documente_Formular
+ALTER TABLE Informatii_documente_licenta ADD CONSTRAINT Infotdumente_Fomular
     FOREIGN KEY (formular_id)
     REFERENCES Formular_licenta (id);
 
 -- Reference: Informatii_documente_Formular_master (table: Informatii_documente_master)
-ALTER TABLE Informatii_documente_master ADD CONSTRAINT Info_doc_Formular_master
+ALTER TABLE Informatii_documente_master ADD CONSTRAINT Info_doc_Fular_master
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 
@@ -472,7 +472,7 @@ ALTER TABLE Optiuni_licenta ADD CONSTRAINT Optiuni_Formular
     REFERENCES Formular_licenta (id);
 
 -- Reference: Ordine_preferinte_Formular_master (table: Ordine_preferinte_master)
-ALTER TABLE Ordine_preferinte_master ADD CONSTRAINT Ordine_pref_Formular_master
+ALTER TABLE Ordine_preferinte_master ADD CONSTRAINT Ordinpref_Formu_master
     FOREIGN KEY (formular_id)
     REFERENCES Formular_master (id);
 

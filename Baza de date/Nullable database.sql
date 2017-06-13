@@ -448,7 +448,7 @@ ALTER TABLE Date_personale_licenta ADD CONSTRAINT Date_personale_Formular
 
 -- Reference: Date_personale_preadmitere_Formular_preadmitere (table: Date_personale_preadmitere)
 ALTER TABLE Date_personale_preadmitere ADD CONSTRAINT Date_pers_preadmit_Formular
-    FOREIGN KEY (Formular_preadmitere_id)
+    FOREIGN KEY (Formular_id)
     REFERENCES Formular_preadmitere (id);
 
 -- Reference: Date_preg_anterioara_Formular (table: Date_preg_anterioara_licenta)
