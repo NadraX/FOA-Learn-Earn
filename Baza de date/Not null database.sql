@@ -358,10 +358,10 @@ CREATE TABLE Formular_preadmitere (
 -- Table: Informatii_documente_licenta
 CREATE TABLE Informatii_documente_licenta (
     formular_id integer  NOT NULL,
-    diploma_bac_original number(1,0)  NOT NULL,
-    adeverinta_original number(1,0)  NOT NULL,
-    document_echiv_studii_original number(1,0)  NOT NULL,
-    diploma_olimpiada number(1,0)  NOT NULL,
+    diploma_bac_original number(1,0)  NULL,
+    adeverinta_original number(1,0)  NULL,
+    document_echiv_studii_original number(1,0)	NULL,
+    diploma_olimpiada number(1,0)  NULL,
     participa_altundeva number(1,0)  NOT NULL,
 	universitate1 varchar2(70)  NULL,
     facultate1 varchar2(70)  NULL,
