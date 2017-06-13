@@ -362,7 +362,6 @@ CREATE TABLE Informatii_documente_licenta (
     adeverinta_original number(1,0)  NULL,
     document_echiv_studii_original number(1,0)  NULL,
     diploma_olimpiada number(1,0)  NULL,
-    diploma_bac_copie number(1,0)  NULL,
     diploma_echiv_studii_copie number(1,0)  NULL,
     participa_altundeva number(1,0)  NULL,
 	universitate1 varchar2(70)  NULL,

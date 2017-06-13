@@ -449,7 +449,9 @@
 								$vLicenta_Email = validEmail($v_Licenta_Email);
 							$v_Liceul_Absolvit = $_POST["Liceu_Absolvit"];
 							$v_Licenta_Telefon = $_POST["Licenta_Telefon"];
+								$vLicenta_Telefon = validTelefon($v_Licenta_Telefon);
 							$v_Licenta_Cod_Postal = $_POST["Licenta_Cod_Postal"];
+								$vLicenta_Cod_Postal = validareCodPostal($v_Licenta_Cod_Postal);
 							$v_Licenta_Localitate = $_POST["Licenta_Localitate"];
 							$v_Licenta_Apartament = $_POST["Licenta_Apartament"];
 							$v_Licenta_Etaj = $_POST["Licenta_Etaj"];
@@ -483,12 +485,15 @@
 							$v_Master_an = $_POST["Licenta_Buletin_An"];		
 							$v_Master_zi = $_POST["Licenta_Buletin_Ziua"];		
 							$v_Master_limba = $_POST["Licenta_Limba_Aleasa"];		
-							$v_Radio2 = $_POST["group2"];		
-							$v_Radio3 = $_POST["group3"];		
+							$v_Radio2 = $_POST["group2"];
+								$vradio2 = validRadio($v_Radio2);
 							$v_Tara = $_POST["Licenta_Tara"];		
-							$v_Radio5 = $_POST["group5"];		
-							$v_Radio6 = $_POST["group6"];		
-							$v_Radio4 = $_POST["group4"];		
+							$v_Radio5 = $_POST["group5"];
+								$vradio5 = validRadio($v_Radio5);
+							$v_Radio6 = $_POST["group6"];
+								$vradio6 = validRadio($v_Radio6);
+							$v_Radio4 = $_POST["group4"];	
+								$vradio4 = validRadio($v_Radio4);
 							$v_Stare_Speciala = $_POST["Licenta_Stare_speciala"];		
 							$v_Master_nastere_luna = $_POST["Licenta_Nastere_Luna"];		
 							$v_Master_nastere_zi = $_POST["Licenta_Nastere_Zi"];		
@@ -497,7 +502,45 @@
 							$v_Judet = $_POST["Licenta_Judet"];		
 							$v_Liceu = $_POST["Licenta_Liceu"];
 							$v_Licenta_Localitate_Liceu = $_POST["Licenta_Localitate_Liceu"];
-						?>						
+							$v_Licenta_Tara_Nastere = $_POST["Licenta_Tara_Nastere"];
+							$v_Licenta_Cetatenie = $_POST["Licenta_Cetatenie"];
+							$v_Radio1 = $_POST["group1"];		
+								$vradio1 = validRadio($v_Radio1);
+							$v_Radio3 = $_POST["group3"];
+								$vradio3 = validRadio($v_Radio3);
+							$v_Licenta_Localitate_Nastere = $_POST["Licenta_Localitate_Nastere"];
+									$vLicenta_Localitate_Nastere = validareStrada($v_Licenta_Localitate_Nastere);
+							$v_Radio25 = $_POST["group25"];
+								$vradio25 = validRadio($v_Radio25);
+							$v_Radio24 = $_POST["group24"];
+								$vradio24 = validRadio($v_Radio24);
+							$v_Radio21 = $_POST["group21"];
+								$vradio21 = validRadio($v_Radio21);
+							$v_Radio20 = $_POST["group20"];
+								$vradio20 = validRadio($v_Radio20);
+							$v_Radio26 = $_POST["group26"];
+								$vradio26 = validRadio($v_Radio26);
+							$v_Radio27 = $_POST["group27"];
+								$vradio27 = validRadio($v_Radio27);
+							$v_Alte_Surse = $_POST["Alte_Surse"];
+								$vAlte_Surse = validScutire($v_Alte_Surse);
+							$v_Radio28 = $_POST["group28"];
+								$vradio28 = validRadio($v_Radio28);
+							$v_Radio29 = $_POST["group29"];
+								$vradio29 = validRadio($v_Radio29);
+							$v_Radio30 = $_POST["group30"];
+								$vradio30 = validRadio($v_Radio30);
+							$v_Radio31 = $_POST["group31"];
+								$vradio31 = validRadio($v_Radio31);
+							$v_Radio32 = $_POST["group32"];
+								$vradio32 = validRadio($v_Radio32);
+							$v_Radio33 = $_POST["group33"];
+								$vradio33 = validRadio($v_Radio33);
+							$v_Radio34 = $_POST["group34"];
+								$vradio34 = validRadio($v_Radio34);
+							$v_Radio35 = $_POST["group35"];
+								$vradio35 = validRadio($v_Radio35);
+						?>
 						<ul>
               <li class="form-line" data-type="control_taxa" id="id_12">
                 <br>
@@ -585,14 +628,13 @@
 						  <span style="color:red">
 										<?php		
 											if(isset($_POST['Submit'])) {		
-											$v_Radio1 = $_POST["group1"];		
-											$vradio1 = validRadio($v_Radio1);		
-											if($vradio1==0)		
-												echo "Nu ați ales o opțiune!";		
-											}		
+												$v_Radio1 = $_POST["group1"];		
+												$vradio1 = validRadio($v_Radio1);		
+												if($vradio1!==1 && $vradio1!==2)		
+														echo "Nu ați ales o opțiune!";
+											}
 										?>		
 							</span>	
-								
                           <span id="motiv-scutire" class="form-sub-label-container" style="vertical-align:top; width: 49%; margin-right: 5px;">
                               <label class="form-sub-label"  id="sublabel_last" style="min-height:13px;"> Dacă da, motivul scutirii 
 																																	<span class="info-box" <?php	
@@ -884,8 +926,26 @@
                   <div data-wrapper-react="true">
                     <span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
                       <label class="form-sub-label sublabel_first"  style="min-height:13px;"> Ţara în care v-aţi născut </label>
-                      <input type="text" name="Licenta_Tara_Nastere" value="" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;nia" data-component="middle"  />
-                    </span>
+                      <input type="text" name="Licenta_Tara_Nastere" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;nia" data-component="middle" value="<?php 
+																																																	if($v_Licenta_Tara_Nastere == '') 
+																																																		echo '';
+																																																	else
+																																																		echo $v_Licenta_Tara_Nastere;
+																																																?>" />
+						<span style="color:red">
+							<?php 
+								if(isset($_POST['Submit'])) {
+									$v_Licenta_Tara_Nastere = $_POST["Licenta_Tara_Nastere"];
+									$vLicenta_Tara_Nastere = validareStrada($v_Licenta_Tara_Nastere);
+									if($v_Licenta_Tara_Nastere=='')
+										echo "C&#226;mp necompletat!";
+									else
+										if($vLicenta_Tara_Nastere==0)
+											echo "C&#226;mp invalid!";
+								}
+							?>
+						</span>
+				   </span>
                     <span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
                       <label class="form-sub-label sublabel_first"  style="min-height:13px;"> Judeţul în care v-aţi născut</label>
                       <select class="form-dropdown form-address-country gen" name="Licenta_Judet_Nastere" >
@@ -904,8 +964,25 @@
             
                     <span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
                       <label class="form-sub-label sublabel_first"  style="min-height:13px;"> Localitatea în care v-aţi născut </label>
-                      <input type="text" name="Licenta_Localitate_Nastere"  class="form-textbox first_1" size="20" placeholder="ex: Iaşi"  data-component="first"  value="" />
-                      
+                      <input type="text" name="Licenta_Localitate_Nastere"  class="form-textbox first_1" size="20" placeholder="ex: Iaşi"  data-component="first"   value="<?php 
+																																												if($v_Licenta_Localitate_Nastere == '') 
+																																													echo '';
+																																												else
+																																													echo $v_Licenta_Localitate_Nastere;
+																																											?>" />
+						<span style="color:red">
+							<?php 
+								if(isset($_POST['Submit'])) {
+									$v_Licenta_Localitate_Nastere = $_POST["Licenta_Localitate_Nastere"];
+									$vLicenta_Localitate_Nastere = validareStrada($v_Licenta_Localitate_Nastere);
+									if($v_Licenta_Localitate_Nastere=='')
+										echo "C&#226;mp necompletat!";
+									else
+										if($vLicenta_Localitate_Nastere==0)
+											echo "C&#226;mp invalid!";
+								}
+							?>
+						</span>
                     </span>
                     <div id="cid_10" class="form-input jf-required">
                   <div data-wrapper-react="true">
@@ -1027,11 +1104,30 @@
 									<div data-wrapper-react="true">
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Naţionalitate </label>
-                      <input type="text" name="Licenta_Nationalitate" value="Romana" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="Rom&#226;n&#259;" data-component="middle" readonly />
+											<input type="text" name="Licenta_Nationalitate" value="Romana" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="Rom&#226;n&#259;" data-component="middle" readonly />
 										</span>
 						        <span class="form-sub-label-container" style="vertical-align:top; width:25%;padding:0;margin:0;">
                       <label class="form-sub-label sublabel_first"  style="min-height:13px;"> Cetăţenia (ţara) </label>
-                      <input type="text" name="Licenta_Cetatenie" value="" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;na" data-component="middle"  />
+                      <input type="text" name="Licenta_Cetatenie" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;na" data-component="middle" value="<?php 
+																																								if($v_Licenta_Cetatenie == '') 
+																																									echo '';
+																																								else
+																																									echo $v_Licenta_Cetatenie;
+																																							?>"  />
+																																							
+						<span style="color:red">
+												<?php 
+													if(isset($_POST['Submit'])) {
+														$v_Licenta_Cetatenie = $_POST["Licenta_Cetatenie"];
+														$vLicenta_Cetatenie = validCetatetnie($v_Licenta_Cetatenie);
+														if($v_Licenta_Cetatenie=='')
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Cetatenie==0)
+																echo "C&#226;mp invalid!";
+													}
+												?>
+											</span>																									
                     </span>
             
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
@@ -1469,6 +1565,17 @@
                                                         ?> />
                             <label for="checkbox2" class="css-label">Urban</label>
                           </span>
+						  <br>
+						  <span style="color:red">
+										<?php
+											if(isset($_POST['Submit'])) {
+												$v_Radio3 = $_POST["group3"];
+												$vradio3 = validRadio($v_Radio3);
+												if($vradio3!==1 && $vradio3!==2)
+														echo "Nu ați ales o opțiune!";
+											}
+										?>
+							</span>	
                         </td>
                       </tr> 
 
@@ -1782,7 +1889,19 @@
                                                             echo '';
                                                         ?> />
                             <label for="checkbox4" class="css-label">Nu</label>
-                          </span>
+							</span>
+							
+							<span style="color:red">
+								<?php
+									  if(isset($_POST['Submit'])) {
+										$v_Radio5 = $_POST["group5"];
+										$vradio5 = validRadio($v_Radio5);
+										if($vradio5!==1 && $vradio5!==2)
+											echo "Nu ați ales o opțiune!";
+										
+									  }
+								?>
+							</span>
                         </td>
                       </tr>
                       <tr>
@@ -1811,6 +1930,17 @@
                                                               ?> />
                             <label for="checkbox6" class="css-label">Nu</label>
                           </span>
+						  <span style="color:red">
+								<?php
+									  if(isset($_POST['Submit'])) {
+										$v_Radio6 = $_POST["group6"];
+										$vradio6 = validRadio($v_Radio6);
+										if($vradio6!==1 && $vradio6!==2)
+											echo "Nu ați ales o opțiune!";
+										
+									  }
+								?>
+							</span>
                         </td>
                       </tr>
                     </tbody>
@@ -1846,6 +1976,17 @@
                                                               ?> />
                                 <label for="checkbox8" class="css-label">Nu</label>
                           </span>
+						  <span style="color:red">
+								<?php
+									  if(isset($_POST['Submit'])) {
+										$v_Radio4 = $_POST["group4"];	
+										$vradio4 = validRadio($v_Radio4);
+										if($vradio4!==1 && $vradio4!==2)
+											echo "Nu ați ales o opțiune!!";
+										
+									  }
+								?>
+							</span>
                         </td>
                       </tr>
                       <tr>
@@ -8730,11 +8871,38 @@
                           style="color: gray; font-size:medium; width:45%; display:inline-block"> Sunteţi student la alta facultate/universitate?  </label>
                         
                       <span style="width:55%">
-                          <input type="radio" onClick="AltaUniv();" name="group25" id="daAltaFacultate" class="css-checkbox" value="1" />   
+                          <input type="radio" onClick="AltaUniv();" name="group25" id="daAltaFacultate" class="css-checkbox" value="1" <?php
+																												if($v_Radio25 == '')
+																													echo '';
+																												else
+																													if($v_Radio25==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="daAltaFacultate" class="css-label" style="margin-right:100px">Da</label>
-                          <input type="radio" onClick="AltaUniv()" name="group25" id="nuAltaFacultate" class="css-checkbox" value="2"/>
+                          <input type="radio" onClick="AltaUniv()" name="group25" id="nuAltaFacultate" class="css-checkbox" value="2" <?php
+																												if($v_Radio25 == '')
+																													echo '';
+																												else
+																													if($v_Radio25==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="nuAltaFacultate" class="css-label">Nu</label>
                       </span>
+					  <span style="color:red">
+								<?php
+									  if(isset($_POST['Submit'])) {
+										$v_Radio25 = $_POST["group25"];
+										$vradio25 = validRadio($v_Radio25);
+										if($vradio25!==1 && $vradio25!==2)
+											echo "Nu ați ales o opțiune!";
+										
+									  }
+								?>
+							</span>
 
                 </div>
 
@@ -8905,11 +9073,39 @@
                           style="color: gray; font-size:medium; width:45%; display:inline-block"> Sunteţi absolvent al studiilor de licenţă?  </label>
                         
                       <span style="width:55%">
-                          <input type="radio" onClick="AbsolventLicenta();" name="group24" id="daAbsolventLicenta" class="css-checkbox" value="1" />   
+                          <input type="radio" onClick="AbsolventLicenta();" name="group24" id="daAbsolventLicenta" class="css-checkbox" value="1" <?php
+																												if($v_Radio24 == '')
+																													echo '';
+																												else
+																													if($v_Radio24==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="daAbsolventLicenta" class="css-label" style="margin-right:100px">Da</label>
-                          <input type="radio" onClick="AbsolventLicenta()" name="group24" id="nuAbsolventLicenta" class="css-checkbox" value="2"/>
+                          <input type="radio" onClick="AbsolventLicenta()" name="group24" id="nuAbsolventLicenta" class="css-checkbox" value="2" <?php
+																												if($v_Radio24 == '')
+																													echo '';
+																												else
+																													if($v_Radio24==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="nuAbsolventLicenta" class="css-label">Nu</label>
                       </span>
+					   <span style="color:red">
+								<?php
+									  if(isset($_POST['Submit'])) {
+										$v_Radio24 = $_POST["group24"];
+										$vradio24 = validRadio($v_Radio24);
+										if($vradio24!==1 && $vradio24!==2)
+											echo "Nu ați ales o opțiune!";
+										
+									  }
+								?>
+							</span>
+					  
 
                 </div>
                 <div id="AbsolventLicenta" style="display:none">
@@ -9028,7 +9224,7 @@
                             </span>
                             <span class="form-sub-label-container" style="vertical-align:top; width:32%">
                               <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Jude&#355; </label>
-                              <select class="form-dropdown form-address-country gen" name="Licenta_Judet_AltaFacultate"  data-component="country">
+                              <select class="form-dropdown form-address-country gen" name="Licenta_AbsolventLicenta_Judet_AltaFacultate"  data-component="country">
                                     <?php
                                   $array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
                                   for($i=0;$i<41;$i++)
@@ -9409,6 +9605,17 @@
 																											?> />
                           <label for="checkbox12" class="css-label">Nu</label>
                       </span>
+					   <span style="color:red">
+								<?php
+									  if(isset($_POST['Submit'])) {
+										$v_Radio2 = $_POST["group2"];
+										$vradio2 = validRadio($v_Radio2);
+										if($vradio2!==1 && $vradio2!==2)
+											echo "C&#226;mp necompletat!";
+										
+									  }
+								?>
+							</span>
 
                 </div>
                 <br>
@@ -9527,11 +9734,38 @@
                           class="form-textbox form-address-city first_1" style="width:100px" placeholder="ex: 2016"  value="<?php echo $_POST["Licenta_AnPreadmitere"]; ?>"  data-component="city" />
                            şi doriţi luarea în considerare a notei la examenul din sesiunea curentă? <span class="info-box">?<span class="info-box__content">Opţiune valabilă la o singură sesiune de admitere</span></span> </label>
                       <span style="width:23%;">
-                          <input type="radio"  onClick="Preadmitere()" name="group21" id="daPreadmitere" class="css-checkbox" value="1" />   
+                          <input type="radio"  onClick="Preadmitere()" name="group21" id="daPreadmitere" class="css-checkbox" value="1" <?php
+																												if($v_Radio21 == '')
+																													echo '';
+																												else
+																													if($v_Radio21==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="daPreadmitere" class="css-label" style="margin-right:100px">Da</label>
-                          <input type="radio" onClick="Preadmitere()" name="group21" id="nuPreadmitere" class="css-checkbox" value="2"/>
+                          <input type="radio" onClick="Preadmitere()" name="group21" id="nuPreadmitere" class="css-checkbox" value="2" <?php
+																												if($v_Radio21 == '')
+																													echo '';
+																												else
+																													if($v_Radio21==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="nuPreadmitere" class="css-label">Nu</label>
                       </span>
+					  <span style="color:red">
+								<?php
+									  if(isset($_POST['Submit'])) {
+										$v_Radio21 = $_POST["group21"];
+										$vradio21 = validRadio($v_Radio21);
+										if($vradio21!==1 && $vradio21!==2)
+											echo "C&#226;mp necompletat!";
+										
+									  }
+								?>
+							</span>
 				 </div>
 					  <span style="color:red">
 								<?php 
@@ -9557,11 +9791,38 @@
                             <span class="info-box">?<span class="info-box__content">În acest caz va fi luată în considerare nota cea mai mare</span></span> </label>
                           
                         <span style="width:23%;">
-                            <input type="radio"  name="group20" id="daTest" class="css-checkbox" value="1" />   
+                            <input type="radio"  name="group20" id="daTest" class="css-checkbox" value="1" <?php
+																												if($v_Radio20 == '')
+																													echo '';
+																												else
+																													if($v_Radio20==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                             <label for="daTest" class="css-label" style="margin-right:100px">Da</label>
-                            <input type="radio" name="group20" id="nuTest" class="css-checkbox" value="2"/>
+                            <input type="radio" name="group20" id="nuTest" class="css-checkbox" value="2" <?php
+																												if($v_Radio20 == '')
+																													echo '';
+																												else
+																													if($v_Radio20==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                             <label for="nuTest" class="css-label">Nu</label>
                         </span>
+						 <span style="color:red">
+								<?php
+									  if(isset($_POST['Submit'])) {
+										$v_Radio20 = $_POST["group20"];
+										$vradio20 = validRadio($v_Radio20);
+										if($vradio20!==1 && $vradio20!==2)
+											echo "C&#226;mp necompletat!";
+										
+									  }
+								?>
+							</span>
 
                   </div>
                 </div>
@@ -9653,13 +9914,45 @@
                              </label>
                           
                         <span style="width:50%;">
-                            <input type="radio"  name="group26" id="daTaxa" class="css-checkbox" value="1" />   
+                            <input type="radio"  name="group26" id="daTaxa" class="css-checkbox" value="1" <?php
+																												if($v_Radio26 == '')
+																													echo '';
+																												else
+																													if($v_Radio26==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                             <label for="daTaxa" class="css-label" style="margin-right:100px">Da</label>
-                            <input type="radio" name="group26" id="nuTaxa" class="css-checkbox"  value="2"/>
+                            <input type="radio" name="group26" id="nuTaxa" class="css-checkbox"  value="2" <?php
+																												if($v_Radio26 == '')
+																													echo '';
+																												else
+																													if($v_Radio26==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                             <label for="nuTaxa" class="css-label" style="margin-right: 50px;">Nu</label>
-                            <input type="radio" name="group26" id="numaiTaxa" class="css-checkbox" value="3"/>
-                            <label for="numaiTaxa" class="css-label">Numai cu Taxă</label>
+                            <input type="radio" name="group26" id="numaiTaxa" class="css-checkbox" value="3" <?php
+																												
+																												if($v_Radio26==3)
+																													echo 'checked="checked"';
+																												else
+																													echo '';
+																											?>/>
+                            <label for="numaiTaxa" class="css-label" >Numai cu Taxă</label>
                         </span>
+						<span style="color:red">
+								<?php
+									  if(isset($_POST['Submit'])) {
+										$v_Radio26 = $_POST["group26"];
+										$vradio26 = validRadio($v_Radio26);
+										if($vradio26!==1 && $vradio26!==2 && $vradio26!==3)
+												echo "C&#226;mp necompletat!";
+									  }
+								?>
+							</span>
 
                   </div>
               </li>
@@ -9715,12 +10008,38 @@
                              </label>
                           
                         <span style="width:50%;">
-                            <input type="radio"  onClick="AlteConcursuri()" name="group27" id="daAltConcurs" class="css-checkbox" value="1" />   
+                            <input type="radio"  onClick="AlteConcursuri()" name="group27" id="daAltConcurs" class="css-checkbox" value="1"  <?php
+																												if($v_Radio27 == '')
+																													echo '';
+																												else
+																													if($v_Radio27==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                             <label for="daAltConcurs"  class="css-label" style="margin-right:100px">Da</label>
-                            <input type="radio" onClick="AlteConcursuri()" name="group27" id="nuAltConcurs" class="css-checkbox"  value="2"/>
+                            <input type="radio" onClick="AlteConcursuri()" name="group27" id="nuAltConcurs" class="css-checkbox"  value="2"/  <?php
+																												if($v_Radio27 == '')
+																													echo '';
+																												else
+																													if($v_Radio27==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>>
                             <label for="nuAltConcurs" class="css-label" style="margin-right: 50px;">Nu</label>
-                            
                         </span>
+						
+						<span style="color:red">
+								<?php
+									  if(isset($_POST['Submit'])) {
+										$v_Radio27 = $_POST["group27"];
+										$vradio27 = validRadio($v_Radio27);
+										if($vradio27!==1 && $vradio27!==2)
+												echo "C&#226;mp necompletat!";
+									  }
+								?>
+							</span>
 
                   </div>
                   <div id="AlteConcursuri" style="display:none">
@@ -9728,12 +10047,42 @@
                           <div class="general_name" data-wrapper-react="true">
                             <span class="form-sub-label-container" style="vertical-align:top;  height: 40px; width:50%;">
                               <label class="form-sub-label sublabel_first" style="min-height:13px;"> Denumirea instituţiei de învăţământ superior </label>
-                              <input type="text" name="Licenta_AlteConcursuri_Univ1" class="form-textbox first_1" size="10" placeholder="ex: Universitatea Gheorghe Asachi" value="" data-component="first" />
+                              <input type="text" name="Licenta_AlteConcursuri_Univ1" class="form-textbox first_1" size="10" placeholder="ex: Universitatea Gheorghe Asachi" value="<?php echo $_POST["Licenta_AlteConcursuri_Univ1"];?>" data-component="first" />
+							  <span style="color:red">		
+									<?php		
+										if(isset($_POST['Submit'])) {
+											$v_Licenta_AlteConcursuri_Univ1 = $_POST["Licenta_AlteConcursuri_Univ1"];		
+											$vLicenta_AlteConcursuri_Univ1 = validScutire($v_Licenta_AlteConcursuri_Univ1);		
+											if($vLicenta_AlteConcursuri_Univ1==0){
+												echo "C&#226;mp invalid!";
+											}
+											else
+												if(strlen($v_Licenta_AlteConcursuri_Univ1)==0) {
+													echo "C&#226;mp necompletat!";
+												}
+										}
+									?>		
+								</span>
                             </span>
                             <span class="form-sub-label-container" style="vertical-align:top; height: 40px; width:48%; "> 
                               <label class="form-sub-label sublabel_first" style="min-height:13px;"> Facultatea
                               </label> 
-                              <input type="text" name="Licenta_AlteConcursuri_Facultate1" class="form-textbox first_1" size="10" placeholder="ex: Automatică şi calculatoare" data-component="first" />                      
+                              <input type="text" name="Licenta_AlteConcursuri_Facultate1" class="form-textbox first_1" size="10" placeholder="ex: Automatică şi calculatoare" value="<?php echo $_POST["Licenta_AlteConcursuri_Facultate1"];?>" data-component="first" />       
+							  <span style="color:red">		
+									<?php		
+										if(isset($_POST['Submit'])) {
+											$v_Licenta_AlteConcursuri_Facultate1 = $_POST["Licenta_AlteConcursuri_Facultate1"];		
+											$vLicenta_AlteConcursuri_Facultate1 = validScutire($v_Licenta_AlteConcursuri_Facultate1);		
+											if($vLicenta_AlteConcursuri_Facultate1==0){
+												echo "C&#226;mp invalid!";
+											}
+											else
+												if(strlen($v_Licenta_AlteConcursuri_Facultate1)==0) {
+													echo "C&#226;mp necompletat!";
+												}
+										}
+									?>		
+								</span>
                             </span>                           
                           </div>
                           <br>  
@@ -9743,11 +10092,32 @@
                           <div class="general_name" data-wrapper-react="true">
                             <br>
                             <span class="form-sub-label-container" style="vertical-align:top;  height: 40px; width:50%;">
-                              <input type="text" name="Licenta_AlteConcursuri_Univ2" class="form-textbox first_1" size="10" placeholder="ex: Universitatea Gheorghe Asachi" value="" data-component="first" />
+                              <input type="text" name="Licenta_AlteConcursuri_Univ2" class="form-textbox first_1" size="10" placeholder="ex: Universitatea Gheorghe Asachi" value="<?php echo $_POST["Licenta_AlteConcursuri_Univ2"];?>"  data-component="first" />
+							  <span style="color:red">		
+									<?php		
+										if(isset($_POST['Submit'])) {
+											$v_Licenta_AlteConcursuri_Univ2 = $_POST["Licenta_AlteConcursuri_Univ2"];		
+											$vLicenta_AlteConcursuri_Univ2 = validScutire($v_Licenta_AlteConcursuri_Univ2);		
+											if($vLicenta_AlteConcursuri_Univ2==0){
+												echo "C&#226;mp invalid!";
+											}
+										}
+									?>		
+								</span>
                             </span>
                             <span class="form-sub-label-container" style="vertical-align:top; height: 40px; width:48%; "> 
-                             
-                              <input type="text" name="Licenta_AlteConcursuri_Facultate2" class="form-textbox first_1" size="10" placeholder="ex: Automatică şi calculatoare" data-component="first" />                      
+                              <input type="text" name="Licenta_AlteConcursuri_Facultate2" class="form-textbox first_1" size="10" placeholder="ex: Automatică şi calculatoare" value="<?php echo $_POST["Licenta_AlteConcursuri_Facultate2"];?>" data-component="first" />   
+							  <span style="color:red">		
+									<?php		
+										if(isset($_POST['Submit'])) {
+											$v_Licenta_AlteConcursuri_Facultate2 = $_POST["Licenta_AlteConcursuri_Facultate2"];		
+											$vLicenta_AlteConcursuri_Facultate2 = validScutire($v_Licenta_AlteConcursuri_Facultate2);		
+											if($vLicenta_AlteConcursuri_Facultate2==0){
+												echo "C&#226;mp invalid!";
+											}
+										}
+									?>		
+								</span>
                             </span>                           
                           </div>
                           <br>  
@@ -9756,11 +10126,33 @@
                       <div  class="form-input jf-required cid_1">
                           <div class="general_name" data-wrapper-react="true">
                             <span class="form-sub-label-container" style="vertical-align:top;  height: 40px; width:50%;">
-                              <input type="text" name="Licenta_AlteConcursuri_Univ3" class="form-textbox first_1" size="10" placeholder="ex: Universitatea Gheorghe Asachi" value="" data-component="first" />
+                              <input type="text" name="Licenta_AlteConcursuri_Univ3" class="form-textbox first_1" size="10" placeholder="ex: Universitatea Gheorghe Asachi" value="<?php echo $_POST["Licenta_AlteConcursuri_Univ3"];?>" data-component="first" />
+							  <span style="color:red">		
+									<?php		
+										if(isset($_POST['Submit'])) {
+											$v_Licenta_AlteConcursuri_Univ3 = $_POST["Licenta_AlteConcursuri_Univ3"];		
+											$vLicenta_AlteConcursuri_Univ3 = validScutire($v_Licenta_AlteConcursuri_Univ3);		
+											if($vLicenta_AlteConcursuri_Univ3==0){
+												echo "C&#226;mp invalid!";
+											}
+										}
+									?>		
+								</span>
                             </span>
                             <span class="form-sub-label-container" style="vertical-align:top; height: 40px; width:48%; "> 
                              
-                              <input type="text" name="Licenta_AlteConcursuri_Facultate3" class="form-textbox first_1" size="10" placeholder="ex: Automatică şi calculatoare" data-component="first" />                      
+                              <input type="text" name="Licenta_AlteConcursuri_Facultate3" class="form-textbox first_1" size="10" placeholder="ex: Automatică şi calculatoare" value="<?php echo $_POST["Licenta_AlteConcursuri_Facultate3"];?>" data-component="first" />   
+							  <span style="color:red">		
+									<?php		
+										if(isset($_POST['Submit'])) {
+											$v_Licenta_AlteConcursuri_Facultate3 = $_POST["Licenta_AlteConcursuri_Facultate3"];		
+											$vLicenta_AlteConcursuri_Facultate3 = validScutire($v_Licenta_AlteConcursuri_Facultate3);		
+											if($vLicenta_AlteConcursuri_Facultate3==0){
+												echo "C&#226;mp invalid!";
+											}
+										}
+									?>		
+								</span>
                             </span>                           
                           </div>
                           <br>  
@@ -9868,7 +10260,7 @@
                     <label for="Profesori_Liceu" class="css-label2">Profesorii de liceu</label></li>
                   <li><input type="checkbox" name="Presa" class="css-checkbox" value="" id="Presa" />
                     <label for="Presa" class="css-label2">Presă</label></li>
-                  <li><input type="checkbox" name="Alte_Surse" class="css-checkbox" value="" id="Alte_Surse" />
+                  <li>
                        <label style="
 									  height:25px; 
 									  display:inline-block;
@@ -9878,11 +10270,22 @@
 									  font-size:15px;
 									  color: gray;
 									  vertical-align:middle;
-									  cursor:pointer;">Alte Surse</label>
+									  cursor:pointer;">Alte surse</label>
  
-                    <input type="text" id="AlteSurse" placeholder="vă rugăm specificaţi" style="height:40px; width:40%; margin-left:20px;" /></li>
- 
+                    <input type="text" id="AlteSurse" name="Alte_Surse" placeholder="vă rugăm specificaţi" style="height:40px; width:40%; margin-left:20px;" value="<?php echo $_POST["Alte_Surse"];?>"/></li>
+					<span style="color:red">		
+									<?php		
+										if(isset($_POST['Submit'])) {
+											$v_Alte_Surse = $_POST["Alte_Surse"];
+											$vAlte_Surse = validScutire($v_Alte_Surse);
+											if($vAlte_Surse==0){
+												echo "C&#226;mp invalid!";
+											}
+										}
+									?>		
+							</span>
                   </li>
+				  
  
                 </ul>
 
@@ -9899,17 +10302,65 @@
                              </label>
                           
                         <span style="width:70%;">
-                          <input type="radio" name="group28" id="1_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group28" id="1_0" class="css-checkbox" value="0" <?php
+																												if($v_Radio28 == '')
+																													echo '';
+																												else
+																													if($v_Radio28==0)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="1_0" class="css-label" style="margin-right:50px">0</label>
-                          <input type="radio" name="group28" id="1_1" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group28" id="1_1" class="css-checkbox" value="1" <?php
+																												if($v_Radio28 == '')
+																													echo '';
+																												else
+																													if($v_Radio28==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="1_1" class="css-label" style="margin-right:50px">1</label>
-                          <input type="radio"  name="group28" id="1_2" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group28" id="1_2" class="css-checkbox" value="2" <?php
+																												if($v_Radio28 == '')
+																													echo '';
+																												else
+																													if($v_Radio28==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="1_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group28" id="1_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group28" id="1_3" class="css-checkbox" value="3" <?php
+																												if($v_Radio28 == '')
+																													echo '';
+																												else
+																													if($v_Radio28==3)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="1_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group28" id="1_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group28" id="1_4" class="css-checkbox" value="4" <?php
+																												if($v_Radio28 == '')
+																													echo '';
+																												else
+																													if($v_Radio28==4)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="1_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group28" id="1_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group28" id="1_5" class="css-checkbox" value="5" <?php
+																												if($v_Radio28 == '')
+																													echo '';
+																												else
+																													if($v_Radio28==5)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="1_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -9921,17 +10372,65 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group29" id="2_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group29" id="2_0" class="css-checkbox" value="0" <?php
+																												if($v_Radio29 == '')
+																													echo '';
+																												else
+																													if($v_Radio29==0)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="2_0" class="css-label" style="margin-right:50px">0</label>
-                          <input type="radio" name="group29" id="2_1" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group29" id="2_1" class="css-checkbox" value="1" <?php
+																												if($v_Radio29 == '')
+																													echo '';
+																												else
+																													if($v_Radio29==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="2_1" class="css-label" style="margin-right:50px">1</label>
-                          <input type="radio"  name="group29" id="2_2" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group29" id="2_2" class="css-checkbox" value="2" <?php
+																												if($v_Radio29 == '')
+																													echo '';
+																												else
+																													if($v_Radio29==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="2_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group29" id="2_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group29" id="2_3" class="css-checkbox" value="3" <?php
+																												if($v_Radio29 == '')
+																													echo '';
+																												else
+																													if($v_Radio29==3)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="2_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group29" id="2_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group29" id="2_4" class="css-checkbox" value="4" <?php
+																												if($v_Radio29 == '')
+																													echo '';
+																												else
+																													if($v_Radio29==4)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="2_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group29" id="2_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group29" id="2_5" class="css-checkbox" value="5"<?php
+																												if($v_Radio29 == '')
+																													echo '';
+																												else
+																													if($v_Radio29==5)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="2_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -9943,17 +10442,65 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group30" id="3_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group30" id="3_0" class="css-checkbox" value="0" <?php
+																												if($v_Radio30 == '')
+																													echo '';
+																												else
+																													if($v_Radio30==0)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="3_0" class="css-label" style="margin-right:50px">0</label>
-                          <input type="radio" name="group30" id="3_1" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group30" id="3_1" class="css-checkbox" value="1" <?php
+																												if($v_Radio30 == '')
+																													echo '';
+																												else
+																													if($v_Radio30==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="3_1" class="css-label" style="margin-right:50px">1</label>
-                          <input type="radio"  name="group30" id="3_2" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group30" id="3_2" class="css-checkbox" value="2" <?php
+																												if($v_Radio30 == '')
+																													echo '';
+																												else
+																													if($v_Radio30==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="3_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group30" id="3_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group30" id="3_3" class="css-checkbox" value="3" <?php
+																												if($v_Radio30 == '')
+																													echo '';
+																												else
+																													if($v_Radio30==3)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="3_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group30" id="3_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group30" id="3_4" class="css-checkbox" value="4" <?php
+																												if($v_Radio30 == '')
+																													echo '';
+																												else
+																													if($v_Radio30==4)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="3_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group30" id="3_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group30" id="3_5" class="css-checkbox" value="5" <?php
+																												if($v_Radio30 == '')
+																													echo '';
+																												else
+																													if($v_Radio30==5)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="3_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -9965,17 +10512,65 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group31" id="4_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group31" id="4_0" class="css-checkbox" value="0" <?php
+																												if($v_Radio31 == '')
+																													echo '';
+																												else
+																													if($v_Radio31==0)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="4_0" class="css-label" style="margin-right:50px">0</label>
-                          <input type="radio" name="group31" id="4_1" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group31" id="4_1" class="css-checkbox" value="1" <?php
+																												if($v_Radio31 == '')
+																													echo '';
+																												else
+																													if($v_Radio31==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="4_1" class="css-label" style="margin-right:50px">1</label>
-                          <input type="radio"  name="group31" id="4_2" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group31" id="4_2" class="css-checkbox" value="2" <?php
+																												if($v_Radio31 == '')
+																													echo '';
+																												else
+																													if($v_Radio31==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="4_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group31" id="4_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group31" id="4_3" class="css-checkbox" value="3" <?php
+																												if($v_Radio31 == '')
+																													echo '';
+																												else
+																													if($v_Radio31==3)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="4_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group31" id="4_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group31" id="4_4" class="css-checkbox" value="4" <?php
+																												if($v_Radio31 == '')
+																													echo '';
+																												else
+																													if($v_Radio31==4)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="4_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group31" id="4_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group31" id="4_5" class="css-checkbox" value="5" <?php
+																												if($v_Radio31 == '')
+																													echo '';
+																												else
+																													if($v_Radio31==5)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="4_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -9987,17 +10582,65 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group32" id="5_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group32" id="5_0" class="css-checkbox" value="0" <?php
+																												if($v_Radio32 == '')
+																													echo '';
+																												else
+																													if($v_Radio32==0)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="5_0" class="css-label" style="margin-right:50px">0</label>
-                          <input type="radio" name="group32" id="5_1" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group32" id="5_1" class="css-checkbox" value="1" <?php
+																												if($v_Radio32 == '')
+																													echo '';
+																												else
+																													if($v_Radio32==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="5_1" class="css-label" style="margin-right:50px">1</label>
-                          <input type="radio"  name="group32" id="5_2" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group32" id="5_2" class="css-checkbox" value="2" <?php
+																												if($v_Radio32 == '')
+																													echo '';
+																												else
+																													if($v_Radio32==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="5_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group32" id="5_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group32" id="5_3" class="css-checkbox" value="3" <?php
+																												if($v_Radio32 == '')
+																													echo '';
+																												else
+																													if($v_Radio32==3)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="5_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group32" id="5_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group32" id="5_4" class="css-checkbox" value="4" <?php
+																												if($v_Radio32 == '')
+																													echo '';
+																												else
+																													if($v_Radio32==4)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="5_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group32" id="5_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group32" id="5_5" class="css-checkbox" value="5" <?php
+																												if($v_Radio32 == '')
+																													echo '';
+																												else
+																													if($v_Radio32==5)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="5_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -10009,17 +10652,65 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group33" id="6_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group33" id="6_0" class="css-checkbox" value="0" <?php
+																												if($v_Radio33 == '')
+																													echo '';
+																												else
+																													if($v_Radio33==0)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="6_0" class="css-label" style="margin-right:50px">0</label>
-                          <input type="radio" name="group33" id="6_1" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group33" id="6_1" class="css-checkbox" value="1" <?php
+																												if($v_Radio33 == '')
+																													echo '';
+																												else
+																													if($v_Radio33==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="6_1" class="css-label" style="margin-right:50px">1</label>
-                          <input type="radio"  name="group33" id="6_2" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group33" id="6_2" class="css-checkbox" value="2" <?php
+																												if($v_Radio33 == '')
+																													echo '';
+																												else
+																													if($v_Radio33==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="6_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group33" id="6_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group33" id="6_3" class="css-checkbox" value="3" <?php
+																												if($v_Radio33 == '')
+																													echo '';
+																												else
+																													if($v_Radio33==3)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="6_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group33" id="6_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group33" id="6_4" class="css-checkbox" value="4" <?php
+																												if($v_Radio33 == '')
+																													echo '';
+																												else
+																													if($v_Radio33==4)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="6_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group33" id="6_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group33" id="6_5" class="css-checkbox" value="5" <?php
+																												if($v_Radio33 == '')
+																													echo '';
+																												else
+																													if($v_Radio33==5)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="6_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -10031,17 +10722,65 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group34" id="7_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group34" id="7_0" class="css-checkbox" value="0" <?php
+																												if($v_Radio34 == '')
+																													echo '';
+																												else
+																													if($v_Radio34==0)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="7_0" class="css-label" style="margin-right:50px">0</label>
-                          <input type="radio" name="group34" id="7_1" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group34" id="7_1" class="css-checkbox" value="1"<?php
+																												if($v_Radio34 == '')
+																													echo '';
+																												else
+																													if($v_Radio34==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?> />   
                           <label for="7_1" class="css-label" style="margin-right:50px">1</label>
-                          <input type="radio"  name="group34" id="7_2" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group34" id="7_2" class="css-checkbox" value="2" <?php
+																												if($v_Radio34 == '')
+																													echo '';
+																												else
+																													if($v_Radio34==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="7_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group34" id="7_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group34" id="7_3" class="css-checkbox" value="3" <?php
+																												if($v_Radio34 == '')
+																													echo '';
+																												else
+																													if($v_Radio34==3)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="7_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group34" id="7_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group34" id="7_4" class="css-checkbox" value="4" <?php
+																												if($v_Radio34 == '')
+																													echo '';
+																												else
+																													if($v_Radio34==4)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="7_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group34" id="7_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group34" id="7_5" class="css-checkbox" value="5" <?php
+																												if($v_Radio34 == '')
+																													echo '';
+																												else
+																													if($v_Radio34==5)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="7_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
@@ -10053,23 +10792,88 @@
                              </label>
                           
                         <span style="width:70%">
-                          <input type="radio" name="group35" id="8_0" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group35" id="8_0" class="css-checkbox" value="0" <?php
+																												if($v_Radio35 == '')
+																													echo '';
+																												else
+																													if($v_Radio35==0)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="8_0" class="css-label" style="margin-right:50px">0</label>
-                          <input type="radio" name="group35" id="8_1" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group35" id="8_1" class="css-checkbox" value="1" <?php
+																												if($v_Radio35 == '')
+																													echo '';
+																												else
+																													if($v_Radio35==1)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="8_1" class="css-label" style="margin-right:50px">1</label>
-                          <input type="radio"  name="group35" id="8_2" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group35" id="8_2" class="css-checkbox" value="2" <?php
+																												if($v_Radio35 == '')
+																													echo '';
+																												else
+																													if($v_Radio35==2)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="8_2" class="css-label" style="margin-right:50px">2</label>
-                          <input type="radio" name="group35" id="8_3" class="css-checkbox" value="1" />   
+                          <input type="radio" name="group35" id="8_3" class="css-checkbox" value="3" <?php
+																												if($v_Radio35 == '')
+																													echo '';
+																												else
+																													if($v_Radio35==3)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>   
                           <label for="8_3" class="css-label" style="margin-right:50px">3</label>
-                          <input type="radio"  name="group35" id="8_4" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group35" id="8_4" class="css-checkbox" value="4" <?php
+																												if($v_Radio35 == '')
+																													echo '';
+																												else
+																													if($v_Radio35==4)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="8_4" class="css-label" style="margin-right:50px">4</label>
-                          <input type="radio"  name="group35" id="8_5" class="css-checkbox" value="2"/>
+                          <input type="radio"  name="group35" id="8_5" class="css-checkbox" value="5" <?php
+																												if($v_Radio35 == '')
+																													echo '';
+																												else
+																													if($v_Radio35==5)
+																														echo 'checked="checked"';
+																													else
+																														echo '';
+																											?>/>
                           <label for="8_5" class="css-label" style="margin-right:50px">5</label>
                       </span>
 
                   </div>
                 
               </li>
+			  <span style="color:red">
+					<?php
+						if(isset($_POST['Submit'])) {
+							$v_Radio27 = $_POST["group27"];
+							$vradio27 = validRadio($v_Radio27);
+							if($vradio28!==0 && $vradio28!==1 && $vradio28!==3 && $vradio28!==4 && $vradio28!==5 || 
+							   $vradio29!==0 && $vradio29!==1 && $vradio29!==3 && $vradio29!==4 && $vradio29!==5 ||
+							   $vradio30!==0 && $vradio30!==1 && $vradio30!==3 && $vradio30!==4 && $vradio30!==5 ||
+							   $vradio31!==0 && $vradio31!==1 && $vradio31!==3 && $vradio31!==4 && $vradio31!==5 ||
+							   $vradio32!==0 && $vradio32!==1 && $vradio32!==3 && $vradio32!==4 && $vradio32!==5 ||
+							   $vradio33!==0 && $vradio33!==1 && $vradio33!==3 && $vradio33!==4 && $vradio33!==5 ||
+							   $vradio34!==0 && $vradio34!==1 && $vradio34!==3 && $vradio34!==4 && $vradio34!==5 ||
+							   $vradio35!==0 && $vradio35!==1 && $vradio35!==3 && $vradio35!==4 && $vradio35!==5)
+								echo "C&#226;mp(uri) necompletat(e)!";
+						}
+					?>
+			</span>
 
 
               <li class="form-line" data-type="control_cazare" id="id_13">
