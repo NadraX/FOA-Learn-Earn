@@ -93,7 +93,7 @@ function Footer()
         
       $id_formular=$_POST['id_formular'];
     
-      $c = oci_connect("ADMITERE", "ADMITERE", "localhost/xe");
+      $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
       $s = oci_parse($c, " BEGIN  SELECT dpc.nume_familie_nastere, dpc.initialele_tatalui_mamei, dpc.nume_familie_actual, dpc.prenume_candidat, dpc.prenume_tata,
                                   dpc.prenume_mama, dpc.cnp, dpc.sex, dpc.data_nasterii, dpc.tara_nasterii, dpc.judetul_nasterii, dpc.localitatea_nasterii,
                                   dpc.cetatenia, dpc.nationalitate, dpc.etnie, dpc.limba_materna,
