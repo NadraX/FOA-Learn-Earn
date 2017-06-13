@@ -326,6 +326,7 @@ CREATE TABLE Formular_licenta (
     motiv_scutire varchar2(250)  NULL,
 	data_crearii TIMESTAMP	NOT NULL,
 	data_ultimei_modificari TIMESTAMP NULL,
+	stare number(1,0) NOT NULL,
     CONSTRAINT Formular_licenta_pk PRIMARY KEY (id)
 ) ;
 
@@ -338,6 +339,7 @@ CREATE TABLE Formular_master (
     motiv_scutire varchar2(250)  NULL,
 	data_crearii TIMESTAMP	NOT NULL,
 	data_ultimei_modificari TIMESTAMP NULL,
+	stare number(1,0) NOT NULL,
     CONSTRAINT Formular_master_pk PRIMARY KEY (id)
 ) ;
 
@@ -349,6 +351,7 @@ CREATE TABLE Formular_preadmitere (
     optiune_test_scris varchar2(20)  NOT NULL,
 	data_crearii TIMESTAMP	NOT NULL,
 	data_ultimei_modificari TIMESTAMP NULL,
+	stare number(1,0) NOT NULL,
     CONSTRAINT Formular_preadmitere_pk PRIMARY KEY (id)
 ) ;
 
