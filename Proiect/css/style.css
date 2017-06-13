@@ -89,7 +89,7 @@ span {
 }
 
 li {
-    list-style-type: none;
+    list-style-type: circle;
 }
 
 .list-group {
@@ -190,4 +190,26 @@ hr {
     width: 60px;
     height: 60px;
     margin-right: 15px;
+}
+
+.container3{
+    width: 100%;
+    height: 140px;
+    background: url("imagini/imag-contact.jpg");
+    color: #fff;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.titlu{
+    padding-top: 40px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 35pt;
+}
+
+.container4{
+    font-size: 16pt;
+    font-family: Georgia, serif;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
