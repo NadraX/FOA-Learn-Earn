@@ -93,7 +93,7 @@ CREATE TABLE Date_personale_licenta (
     judet_domiciliu varchar2(35)  NOT NULL,
     localitate_domiciliu varchar2(35)  NOT NULL,
     strada varchar2(70)  NOT NULL,
-    numar number(10,0)  NOT NULL,
+    numar varchar2(10)  NOT NULL,
     bloc varchar2(10)  NOT NULL,
     scara varchar2(10)  NOT NULL,
     etaj number(3,0)  NOT NULL,
