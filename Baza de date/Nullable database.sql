@@ -160,7 +160,7 @@ CREATE TABLE Date_personale_master (
 
 -- Table: Date_personale_preadmitere
 CREATE TABLE Date_personale_preadmitere (
-    Formular_preadmitere_id integer  NOT NULL,
+    formular_id integer  NOT NULL,
     nume_familie_nastere varchar2(35)  NULL,
     initialele_tatalui_mamei varchar2(15)  NULL,
     nume_familie_actual varchar2(35)  NULL,
