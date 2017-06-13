@@ -1841,49 +1841,23 @@
                       </tr>
                       <tr>
                         <td>
-                          <br>
-                          <span class="form-sub-label-container" style="vertical-align:top; width:30%">
-                          <select class="form-dropdown form-address-country gen" name="Licenta_Stare_speciala"  data-component="country">
-                            <option value="1"<?php
-                                          if($v_Stare_Speciala=="1")
-                                            echo 'selected';
-                                          else
-                                            echo '';
-                                        ?>>Nicio opţiune</option>
-                                    <option value="2"<?php
-                                          if($v_Stare_Speciala=="2")    
-                                            echo 'selected';    
-                                          else    
-                                            echo '';    
-                                        ?>>Orfan de un părinte</option>   
-                                    <option value="3"<?php    
-                                          if($v_Stare_Speciala=="3")    
-                                            echo 'selected';    
-                                          else    
-                                            echo '';    
-                                        ?>>Orfan de ambii părinți</option>    
-                                    <option value="4"<?php    
-                                          if($v_Stare_Speciala=="4")    
-                                            echo 'selected';    
-                                          else    
-                                            echo '';    
-                                        ?>>Provenit din case de copii</option>      
-                                    <option value="5"<?php    
-                                          if($v_Stare_Speciala=="5")    
-                                            echo 'selected';    
-                                          else    
-                                            echo '';    
-                                        ?>>Provenit din plasament familial</option>   
-                                    <option value="6"<?php    
-                                          if($v_Stare_Speciala=="6")    
-                                            echo 'selected';    
-                                          else    
-                                            echo '';    
-                                        ?>>Provenit din familie monoparentală</option>    
-                                  </select>
-                          </select>
-                          <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Stare socială specială </label>
-                        </span>
+                          <label class="form-label form-label-left form-label-auto" 
+                          style="color: gray; font-size:medium; width:100%; display:inline-block"> Stare socială specială: </label>                        
+                          <ul class="checkbox-grid">
+                            <br>
+                            <li><input type="checkbox" name="Nicio_Opt" class="css-checkbox" value="" id="Nicio_Opt" />
+                              <label for="Nicio_Opt" class="css-label2">Nicio Opţiune </label></li>
+                            <li><input type="checkbox" name="Orfan_1" class="css-checkbox" value="" id="Orfan_1" />
+                              <label for="Orfan_1" class="css-label2">Orfan de un părinte</label></li>
+                            <li><input type="checkbox" name="Orfan_2" class="css-checkbox" value="" id="Orfan_2" />
+                              <label for="Orfan_2" class="css-label2">Orfan de ambii părinţi</label></li>
+                            <li><input type="checkbox" name="Casa_Copii" class="css-checkbox" value="" id="Casa_Copii" />
+                              <label for="Casa_Copii" class="css-label2">Provenit din case de copii</label></li>
+                            <li><input type="checkbox" name="Plasament_Familial" class="css-checkbox" value="" id="Plasament_Familial" />
+                              <label for="Plasament_Familial" class="css-label2">Provenit din plasament familial</label></li>
+                            <li><input type="checkbox" name="Familie_Monoparentala" class="css-checkbox" value="" id="Familie_Monoparentala" />
+                              <label for="Familie_Monoparentala" class="css-label2">Provenit din familie monoparentală</label></li>
+                          </ul>
                         </td>
                       </tr>
                     </tbody>
@@ -8808,7 +8782,7 @@
 
                 <div  class="form-input jf-required cid_1" >
                       <label class="form-label form-label-left form-label-auto" 
-                          style="color: gray; font-size:medium; width:45%; display:inline-block"> Solicitaţi echivalare cu diploma olimpiadă organizată MEN?  </label>
+                          style="color: gray; font-size:medium; width:45%; display:inline-block"> Solicitaţi echivalare cu diplomă olimpiadă organizată MEN?  </label>
                         
                       <span style="width:55%">
                           <input type="radio" name="group2" id="checkbox10" class="css-checkbox" value="1" <?php
@@ -9034,20 +9008,23 @@
                 <br>
                 <ul class="checkbox-grid">
                   <br>
-                  <li><input type="checkbox" name="Diploma_BAC_Original" class="css-checkbox" value="" id="Diploma_BAC_Original" />
-                    <label for="Diploma_BAC_Original" class="css-label2">Diploma de Bacalaureat în original</label></li>
-                  <li><input type="checkbox" name="Diploma_BAC_Copie" class="css-checkbox" value="" id="Diploma_BAC_Copie" />
-                    <label for="Diploma_BAC_Copie" class="css-label2">Diploma de Bacalaureat copie legalizată</label></li>
-                  <li><input type="checkbox" name="Adeverinţă_Original" class="css-checkbox" value="" id="Adeverinţă_Original" />
-                    <label for="Adeverinţă_Original" class="css-label2">Adeverinţă în original</label></li>
-                  <li><input type="checkbox" name="Adeverinţă_Copie" class="css-checkbox" value="" id="Adeverinţă_Copie" />
-                    <label for="Adeverinţă_Copie" class="css-label2">Adeverinţă copie legalizată</label></li>
-                  <li><input type="checkbox" name="Document_Echivalare_Studii_Original" class="css-checkbox" value="" id="Document_Echivalare_Studii_Original" />
-                    <label for="Document_Echivalare_Studii_Original" class="css-label2">Document echivalare studii în original</label></li>
-                  <li><input type="checkbox" name="Document_Echivalare_Studii_Copie" class="css-checkbox" value="" id="Document_Echivalare_Studii_Copie" />
-                    <label for="Document_Echivalare_Studii_Copie" class="css-label2">Document echivalare studii copie legalizată</label></li> 
-                  <li><input type="checkbox" name="Diploma_Olimpiada_Original" class="css-checkbox" value="" id="Diploma_Olimpiada_Original" />
-                    <label for="Diploma_Olimpiada_Original" class="css-label2">Diploma de Olimpiadă în original</label></li>
+                  <li><input type="radio" name="Diploma_BAC" class="css-checkbox" value="" id="Diploma_BAC_Original" />
+                    <label for="Diploma_BAC_Original" class="css-label">Diploma de Bacalaureat în original</label></li>
+                  <li><input type="radio" name="Diploma_BAC" class="css-checkbox" value="" id="Diploma_BAC_Copie" />
+                    <label for="Diploma_BAC_Copie" class="css-label">Diploma de Bacalaureat copie legalizată</label></li>
+                  <li><input type="radio" name="Adeverinţă" class="css-checkbox" value="" id="Adeverinţă_Original" />
+                    <label for="Adeverinţă_Original" class="css-label">Adeverinţă în original</label></li>
+                  <li><input type="radio" name="Adeverinţă" class="css-checkbox" value="" id="Adeverinţă_Copie" />
+                    <label for="Adeverinţă_Copie" class="css-label">Adeverinţă copie legalizată</label></li>
+                  <li><input type="radio" name="Document_Echivalare_Studii" class="css-checkbox" value="" id="Document_Echivalare_Studii_Original" />
+                    <label for="Document_Echivalare_Studii_Original" class="css-label">Document echivalare studii în original</label></li>
+                  <li><input type="radio" name="Document_Echivalare_Studii" class="css-checkbox" value="" id="Document_Echivalare_Studii_Copie" />
+                    <label for="Document_Echivalare_Studii_Copie" class="css-label">Document echivalare studii copie legalizată</label></li> 
+                  <li><input type="radio" name="Diploma_Olimpiada" class="css-checkbox" value="" id="Diploma_Olimpiada_Original" />
+                    <label for="Diploma_Olimpiada_Original" class="css-label">Diploma de Olimpiadă în original</label></li>
+                  <li><input type="radio" name="Diploma_Olimpiada" class="css-checkbox" value="" id="Diploma_Olimpiada_Scanata" />
+                    <label for="Diploma_Olimpiada_Scanata" class="css-label">Diploma de Olimpiadă (Scanată) <span class="info-box">?<span class="info-box__content">În acest caz diploma în original va trebui prezentată ulterior comisiei de admitere
+                    </span></span> </label></li>
                 </ul>
                 <div  class="form-input jf-required cid_1" style:"display:inline-block">
                     <br>
@@ -9210,7 +9187,9 @@
                   <li><input type="checkbox" name="Presa" class="css-checkbox" value="" id="Presa" />
                     <label for="Presa" class="css-label2">Presă</label></li>
                   <li><input type="checkbox" name="Alte_Surse" class="css-checkbox" value="" id="Alte_Surse" />
-                    <label for="Alte_Surse" class="css-label2">Alte Surse</label></li>
+                    <label for="Alte_Surse" class="css-label2">Alte Surse</label>
+                    <input type="text" id="AlteSurse" placeholder="vă rugăm specificaţi" style="height:40px; width:40%; margin-left:20px;" /></li>
+                  </li>
                 </ul>
 
                 <label class="form-label  form-label-auto" 
