@@ -4,7 +4,8 @@
 
     <title>Despre FII</title>
     <meta charset="utf-8">
-    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="css/animate.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
@@ -12,13 +13,8 @@
     <link rel="stylesheet" type="text/css" href="css/events.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="js/bar.js"></script>
+
     
    
 </head>
@@ -41,7 +37,7 @@
 			  <li><a href="contact.html" >Contact</a></li>
         </ul>
       </div>      
-      <a href="DespreFII.html" >
+      <a href="https://www.info.uaic.ro/bin/Main/" >
         <img id="no-scroll" class="sigla" src="imagini/sigla2.png" alt="sigla" />
         <img id="scroll" class="sigla" src="imagini/sigla2-Copy.png" alt="sigla" />
       </a>
@@ -61,35 +57,45 @@
 
     <div class="container" style="width:100%;">
 
-                <div id="myCarousel" class="carousel slide " data-ride="carousel" style="display:inline-block">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                    </ol>
-
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner" style="display:inline-block">
-                        <div class="item active">
-                            <img src="imagini/1.jpg" alt="laborator1" style="width:100%;">
-                        </div>
-
-                        <div class="item">
-                            <img src="imagini/2.jpg" alt="laborator2" style="width:100%;">
-                        </div>
-
-
-                        <div class="item">
-                            <img src="imagini/4.jpg" alt="labolator5" style="width:100%;">
-                        </div>
-
+        <div id="slideshow-sec">
+            <div id="carousel-div" class="carousel slide" data-ride="carousel" >
                        
+                        <div class="carousel-inner">
+                            <div class="item active">
 
-                    </div>
+                                <img src="imagini/1.jpg" alt="" />
+                                <div class="carousel-caption">
+                                    <h1 class="wow slideInLeft" data-wow-duration="3s" > Bun venit la FII!</h1>      
+                                     <h2 class="wow slideInRight" data-wow-duration="2s" >FII printre primii!</h2>  
+                                </div>
+                               
+                            </div>
+                            <div class="item">
+                                <img src="imagini/2.jpg" alt="" />
+                                
+                            </div>
+                            <div class="item">
+                                <img src="imagini/4.jpg" alt="" />
+                               
+                               
+                            </div>
+                        </div>
+                         <ol class="carousel-indicators">
+                            <li data-target="#carousel-div" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-div" data-slide-to="1"></li>
+                            <li data-target="#carousel-div" data-slide-to="2"></li>
+                        </ol>
+                        
+                         <a class="left carousel-control" href="#carousel-div" data-slide="prev">
+                         <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                          <a class="right carousel-control" href="#carousel-div" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                          </a>
+            </div>
+        </div>
 
-                   
-                </div>
+               
     </div>
 
     <div class="stiri">
@@ -213,7 +219,7 @@
         </div>
     </div>
     
-    <div  class="container" style="padding-top: 50px; text-align:center;">
+    <div   style="padding-top: 50px; text-align:center; padding-left:4%; padding-right:4%;">
         <h3 style="color:#3488CB;">Absolvenţii Facultăţii</h3>
         <br>
         <div  style="margin-bottom:30px;" class="row">
@@ -329,6 +335,17 @@
 				<p class="hr_text">&copy; 2017 Grupa B3 Facultatea de Informatic&#259; Iasi</p>
 			</hr>
 		</footer>
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="js/bar.js"></script>
+    
 
 </body>
 </html>
