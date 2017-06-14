@@ -27,6 +27,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
 		<link rel="stylesheet" type="text/css" href="css/style2.css" />
+		<link rel="icon" href="imagini/fii.png">
 
 	   <!-- <link rel="stylesheet" type="text/css" href="css/master-form.css" /> -->
 
