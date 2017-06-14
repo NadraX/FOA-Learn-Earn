@@ -230,13 +230,8 @@
                 
                 <form  method="post" action="pdf_master.php">
                     
-                    <?php
-                    include 'adminMainPageMaster.php';
-                    $id_formular=$_POST['id_formular'];
-                    echo '<input type="hidden" name="id_formular" value="'.$id_formular.'">';
-                    
-                    ?>
-                    
+                    <input type="hidden" name="id_formular" value="1">
+    
                     <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit">
 
                         <span  style="color:white;">Generare pdf</span>
