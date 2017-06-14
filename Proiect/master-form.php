@@ -12212,7 +12212,10 @@
           :nr_chitanta, 
           :suma, 
           :scutit, 
-          :motiv_scutire)");
+          :motiv_scutire,
+          NULL,
+          NULL,
+          0)");
 
         oci_bind_by_name($statement, ':id', $numaratoare2);
         oci_bind_by_name($statement, ':tip_formular', $v_formular);
@@ -14596,7 +14599,13 @@
           :diploma_Master_copie,
           :dipl_echiv_original,
           :dipl_echiv_copie,
-          :particip_altundeva)");
+          :particip_altundeva,
+          NULL,
+          NULL,
+          NULL,
+          NULL,
+          NULL,
+          NULL)");
 
         oci_bind_by_name($statement, ':id', $numaratoare4);
         oci_bind_by_name($statement, ':diploma_bac_original', $_POST['Master_Diploma_BAC_Original']);
