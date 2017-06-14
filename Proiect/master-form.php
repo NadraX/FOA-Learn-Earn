@@ -489,7 +489,6 @@
 							$v_Master_Cod_Postal = $_POST["Master_Cod_Postal"];
 							$v_Master_Localitate = $_POST["Master_Localitate"];
 							$v_Master_Apartament = $_POST["Master_Apartament"];
-							$v_Master_Etaj = $_POST["Master_Etaj"];
 							$v_Master_Scara = $_POST["Master_Scara"];
 							$v_Master_Bloc = $_POST["Master_Bloc"];
 							$v_Master_Numar = $_POST["Master_Numar"];
@@ -562,7 +561,7 @@
 							$v_Master_Strada = $_POST["Master_Strada"];
 							$v_Master_Nota_MI = $_POST["Master_Nota_MI"];
 							$v_Master_Medie_BAC = $_POST["Master_Medie_BAC"];
-							$v_Master_Buletin_Eliberat_De = $_POST["Master_Buletin_Eliberat_De"];
+							$v_Master_Buletin_Eliberat_De = $_POST["Master_Eliberat_De"];
 							$v_Master_Numar_Buletin = $_POST["Master_Numar_Buletin"];
 							$v_Master_Serie_Buletin = $_POST["Master_Serie_Buletin"];
 							$v_Master_Tip_Buletin = $_POST["Master_Tip_Buletin"];
@@ -827,11 +826,11 @@
 											<label class="form-sub-label"   style="min-height:13px;"> Numele de familie actual<span class="info-box">?<span class="info-box__content">Numele dupa căsătorie, înfiere, 
                         					modificare la cerere conform actului doveditor daca este cazul</span></span> </label>
 
-											<input type="text"  name="Master_Numele_De_Familie" class="form-textbox first_1" size="10" placeholder="ex: Ionescu" data-component="first"  value="<?php 
-																																																	if($v_Numele_De_Familie == '')
+											<input type="text"  name="Master_Numele_De_Familie_Actual" class="form-textbox first_1" size="10" placeholder="ex: Ionescu" data-component="first"  value="<?php 
+																																																	if($v_Master_Numele_De_Familie_Actual == '')
 																																																		echo '';
 																																																	else
-																																																		echo $v_Numele_De_Familie;
+																																																		echo $v_Master_Numele_De_Familie_Actual;
 																																																?>" />
 													  
 												<span style="color:red">
@@ -1426,7 +1425,7 @@
 												<span style="color:red">
 													<?php 
 														if(isset($_POST['Submit'])) {
-														$v_Master_Buletin_Eliberat_De = $_POST["Master_Buletin_Eliberat_De"];  // V
+														$v_Master_Buletin_Eliberat_De = $_POST["Master_Eliberat_De"];  // V
 														$vMaster_Buletin_Eliberat_De = validEliberareBuletin($v_Master_Buletin_Eliberat_De);
 														if($v_Master_Buletin_Eliberat_De=='')
 															echo "C&#226;mp necompletat!";
@@ -1699,7 +1698,7 @@
 				                          style="color: gray; font-size:medium; width:25%; display:inline-block"> Domiciliu stabil: </label>
 				                        
 				                          <span style="width:75%">
-				                            <input type="radio" name="group3" id="checkbox1" class="css-checkbox" value="Rural" <?php
+				                            <input type="radio" name="group3" id="checkbox1" class="css-checkbox" value="1" <?php
 				                                                        if($v_Radio3 == '')
 				                                                          echo '';
 				                                                        else
@@ -1709,7 +1708,7 @@
 				                                                            echo '';
 				                                                        ?> />
 				                            <label for="checkbox1" class="css-label" style="margin-right:100px">Rural</label>
-				                            <input type="radio" name="group3" id="checkbox2" class="css-checkbox" value="Urban" <?php
+				                            <input type="radio" name="group3" id="checkbox2" class="css-checkbox" value="2" <?php
 				                                                        if($v_Radio3 == '')
 				                                                          echo '';
 				                                                        else
@@ -1840,7 +1839,7 @@
 								  if($v_Master_Etaj=='')
 										echo "C&#226;mp necompletat!";
 									else
-										if($v_Master_Etaj!==0)
+										if($vMaster_Etaj!==0)
 											echo "C&#226;mp invalid!";
                                 }
 				                              ?>
@@ -2034,11 +2033,11 @@
 				                                                            echo '';
 				                                                        ?> />
 				                            <label for="checkbox3" class="css-label" style="margin-right:100px">Da</label>
-				                            <input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="0" <?php
+				                            <input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="2" <?php
 				                                                        if($v_Radio5 == '')
 				                                                          echo '';
 				                                                        else
-				                                                          if($v_Radio5==0)
+				                                                          if($v_Radio5==2)
 				                                                            echo 'checked="checked"';
 				                                                          else
 				                                                            echo '';
@@ -2081,7 +2080,7 @@
 				                                                                  echo '';
 				                                                              ?> />   
 				                                <label for="checkbox7" class="css-label" style="margin-right:100px">Da</label>
-				                                <input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="0" <?php
+				                                <input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="2" <?php
 				                                                              if($v_Radio4 == '')
 				                                                                echo '';
 				                                                              else
@@ -8515,7 +8514,7 @@
 									}
 								?>
 
-	                          </span>
+	                          </span> </span>
 	                          <span class="form-sub-label-container" style="vertical-align:top; width:25%">
 	                             <label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Formă învăţământ </label>
 	                            <select class="form-dropdown form-address-country gen" name="Master_FormaInvatamant_Liceu" data-component="country">
