@@ -209,7 +209,7 @@
 
                 </button>
 
-                <form  method="post" action="validareFormular.php">
+                <form  method="post" action="validareFormularPreAdmitere.php">
                     <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit">
 
                         <span  style="color:white;">Validare</span>
@@ -217,7 +217,7 @@
                     </button>
                 </form>
                 
-                <form  method="post" action="respingereFormular.php">
+                <form  method="post" action="respingereFormularPreAdmitere.php">
                     
                     <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit">
 
@@ -248,16 +248,7 @@
 
             <form id="DetaliiStudPreadmitere">
 
-                <div class="col-md-12" style="text-align:center;">
-                   <?php
-                   include 'adminMainPage.php';
-                    $id_formular=$_POST['id_formular'];
-                    $nume=getNume($id_formular);
-                    $prenume=getPrenume($id_formular);
-                    echo '<span name="NumeCompletStudent" class="entire-name">'.$nume.' '.$prenume.'</span>';
-                    ?>
 
-                </div>
 
 
 
@@ -283,7 +274,7 @@
                         error_reporting(E_ERROR);
 error_reporting(0);
 error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-                        $id_formular=$_POST['id_formular'];
+                        
                           echo '<label>Numele de familie (din certificatul de naștere)</label><input name="numeDeFamilie" class="form-control" value="'.getNume($id_formular).'"/>
                         
                            <label class="marg-t10">Numele de familie actual (după căsătorie, înfiere, modificare la cerere conform actului doveditor, dacă este cazul)</label><input name="numeDeFamilieActual" class="form-control" value=""/>
@@ -385,7 +376,15 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
                                 <label class="marg-t10">Localitate: </label><input name="localitate" class="form-control" value="'.getLocalitate($id_formular).'"/>
 
-                                <label>Strada, Nr, Bloc, Scara, Apartament:</label><input class="form-control" value="'.getStrada($id_formular).','.getNrStrada($id_formular).','.getNrBloc($id_formular).',A,'.getApartament($id_formular).'"/>
+                                <label>Strada:</label><input class="form-control" value="'.getStrada($id_formular).'"/>
+
+                                <label>Numarul:</label><input class="form-control" value="'.getNrStrada($id_formular).'"/>
+
+                                <label>Bloc:</label><input class="form-control" value="'.getNrBloc($id_formular).'"/>
+
+                                <label>Scara:</label><input class="form-control" value=""/>
+                                
+                                <label>Apartament:</label><input class="form-control" value="'.getApartament($id_formular).'"/>
 
                                 <label class="marg-t10">Cod Po&#351;tal:</label><input name="codPostal" class="form-control" value="'.getCodPostal($id_formular).'"/>
 

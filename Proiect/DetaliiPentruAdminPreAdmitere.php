@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -24,9 +24,9 @@
 
     <link rel="stylesheet" type="text/css" href="css/admin-style.css" />
 
-	<link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
 
-	<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 
@@ -112,7 +112,7 @@
 
             <li class="scurt"><a href="DespreFII.html">FII</a></li>
 
-			<li><a href="paginaAdmitere.html">Admitere</a></li>
+            <li><a href="paginaAdmitere.html">Admitere</a></li>
 
             </ul>
 
@@ -120,7 +120,7 @@
 
               <li><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
 
-			  <li><a href="contact.html" >Contact</a></li>
+              <li><a href="contact.html" >Contact</a></li>
 
         </ul>
 
@@ -152,7 +152,7 @@
 
         <li class="tog2"><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
 
-		<li class="tog2"><a href="contact.html">Contact</a></li>
+        <li class="tog2"><a href="contact.html">Contact</a></li>
 
       </ul>
 
@@ -209,24 +209,24 @@
 
                 </button>
 
-                <form  method="post" action="validareFormular.php">
-                    <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit">
+              
+                    <button id="Validare" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit" form="DetaliiStudPreadmitere">
 
                         <span  style="color:white;">Validare</span>
 
                     </button>
-                </form>
+           
                 
-                <form  method="post" action="respingereFormular.php">
+                
                     
-                    <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit">
+                    <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit" form="RespingereStudPreadmitere">
 
                         <span  style="color:white;">Respingere</span>
 
                     </button>
                     
                     
-                </form>
+             
                 
                 <form  method="post" action="pdf_licenta.php">
                     
@@ -244,21 +244,26 @@
 
         </div>
 
+
+
+
+
         <div class="col-md-9" style="border-left:1px solid #eee;">
 
-            <form id="DetaliiStudPreadmitere">
+
+            <form id="DetaliiStudPreadmitere" method="post" action="validareFormularPreAdmitere.php">
+
 
                 <div class="col-md-12" style="text-align:center;">
-                   <?php
-                   include 'adminMainPage.php';
+                    <?php
+                    include 'adminMainPagePreAdmitere.php';
                     $id_formular=$_POST['id_formular'];
-                    $nume=getNume($id_formular);
+                    $nume=getNumeActual($id_formular);
                     $prenume=getPrenume($id_formular);
                     echo '<span name="NumeCompletStudent" class="entire-name">'.$nume.' '.$prenume.'</span>';
                     ?>
 
                 </div>
-
 
 
                 <div class="col-md-12" style="margin-top:20px; ">
@@ -269,7 +274,7 @@
 
                             <span class="col-md-12 sub-title">
 
-                                Informa&#355;ii Generale
+                                <br>Informa&#355;ii Generale
 
                             </span>
 
@@ -278,38 +283,29 @@
 
                         <div class="col-md-12" style="font-size:17px;">
 
-                        <!--modificari 10.062017-->
                         <?php
                         error_reporting(E_ERROR);
-error_reporting(0);
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+                        error_reporting(0);
+                        error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
                         $id_formular=$_POST['id_formular'];
-                          echo '<label>Numele de familie (din certificatul de nastere)</label><input name="numeDeFamilie" class="form-control" value="'.getNume($id_formular).'"/>
+
+
+
+                        echo '<label>Numele de familie (din certificatul de naștere)</label><input name="numeDeFamilie" class="form-control" value="'.getNumeNastere($id_formular).'"/>
                         
-                           <label class="marg-t10">Numele de familie actual (dupa casatorie, infiere, modificare la cerere conform actului doveditor, daca este cazul)</label><input name="numeDeFamilieActual" class="form-control" value=""/>
+                           <label class="marg-t10">Numele de familie actual (după căsătorie, înfiere, modificare la cerere conform actului doveditor, dacă este cazul)</label><input name="numeDeFamilieActual" class="form-control" value="'.getNumeActual($id_formular).'"/>
 
                             <label class="marg-t10">Prenume:</label><input name="prenume" class="form-control" value="'.getPrenume($id_formular).'" />
 
-                            <label class="marg-t10">Prenume tata:</label><input name="prenumeTata" class="form-control" value="'.getPrenumeTata($id_formular).'"/>
+                            <label class="marg-t10">Ini&#355;iala tat&#259;lui:</label><input name="initialaTata" class="form-control" value="'.getInitialaTata($id_formular).'"/>
 
-                            <label class="marg-t10">Prenume mama:</label><input name="prenumeMama" class="form-control" value="'.getPrenumeMama($id_formular).'"/>
+                            <label class="marg-t10">Prenume tată:</label><input name="prenumeTata" class="form-control" value="'.getPrenumeTata($id_formular).'"/>
+
+                            <label class="marg-t10">Prenume mamă:</label><input name="prenumeMama" class="form-control" value="'.getPrenumeMama($id_formular).'"/>
 
                             <label class="marg-t10">Sex: </label><input name="sex" class="form-control" value="'.getSex($id_formular).'" />
 
-                            <label class="marg-t10">Cetatenie: </label><input name="cetatenie" class="form-control" value="" />
-
-                            <label class="marg-t10">Nationalitate: </label><input name="nationalitate" class="form-control" value="'.getNationalitate($id_formular).'" />
-
-                            <label class="marg-t10">Etnie: </label><input name="etnie" class="form-control" value="'.getEtnie($id_formular).'" />
-
-                            <label class="marg-t10">Limba matern&#259;: </label><input name="limbaMaterna" class="form-control" value="'.getLimbaMaterna($id_formular).'" />
-
-                          
-                            <label class="marg-t10">Num&#259;r de telefon:</label><input name="nrDeTelefon" class="form-control" value="'.getTelefon($id_formular).'"/>
-
-                            <label class="marg-t10">E-mail:</label><input name="email" class="form-control" value="'.getEmail($id_formular).'"/>
-
-                            <label class="marg-t10">Data nasterii:</label>
+                            <label class="marg-t10">Data nașterii:</label>
 
                              <div class="col-md-12" style="padding-left:0; padding-right:0;">
 
@@ -320,8 +316,38 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
                                 <input name="dataNasteriiYear" class="form-control col-md-4 wid33" value="'.getDataYear($id_formular).'"/>
 
                             <input type="hidden" name="idFormular" value="'.$id_formular.'"/>
-                            </div>';
-                           ?>
+                            </div>
+                            <br>
+                            <label class="marg-t10">Cetățenie: </label><input name="cetatenie" class="form-control" value="'.getCetatenie($id_formular).'" />
+
+                            <label class="marg-t10">Naționalitate: </label><input name="nationalitate" class="form-control" value="'.getNationalitate($id_formular).'" />
+
+                            <label class="marg-t10">Etnie: </label><input name="etnie" class="form-control" value="'.getEtnie($id_formular).'" />
+
+                            <label class="marg-t10">Limba matern&#259;: </label><input name="limbaMaterna" class="form-control" value="'.getLimbaMaterna($id_formular).'" />
+
+                                             
+
+                            
+                             
+
+                        <div class="align-center">
+
+                            <span class="col-md-12 sub-title">
+
+                                <br>Adresa studentului
+
+                            </span>
+
+                         </div>
+
+                                <label class="marg-t10">Țară: </label><input name="tara" class="form-control" value="'.getTaraNastere($id_formular).'"/>
+
+                                <label class="marg-t10">Jude&#355;:</label><input name="judet" class="form-control" value="'.getJudetNastere($id_formular).'"/>
+
+                                <label class="marg-t10">Localitate: </label><input name="localitate" class="form-control" value="'.getLocalitateNastere($id_formular).'"/>
+
+
                         </div>
 
                     </div>
@@ -332,18 +358,15 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
                             <span class="col-md-12 sub-title">
 
-                                Date pentru sus&#355;inerea testului
+                                <br>Date Card de Identitate
 
                             </span>
 
                         </div>
-                        <?php
-                        $id_formular=$_POST['id_formular'];
-                        echo '<div class="col-md-12" style="font-size:17px; margin-bottom:45px;">
-
+                            <div class="col-md-12" style="font-size:17px; margin-bottom:45px;">
+                        
                             <label>CNP:</label><input name="cnp" class="form-control" value="'.getCNP($id_formular).'" />
 
-                            <label class="marg-t10">Tip Buletin: </label><input name="tipBuletin" class="form-control" value="'.getTipBuletin($id_formular).'" />
 
                             <label class="marg-t10">Serie Buletin: </label><input name="serieBuletin" class="form-control" value="'.getSerieBuletin($id_formular).'" />
 
@@ -355,229 +378,219 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
                             <div class="col-md-12" style="padding-left:0; padding-right:0;">
 
-                                <input name="dataEliberariiDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getBuletinDay($id_formular).'"/>
+                                <input name="dataEliberariiDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getBuletinEliberareDay($id_formular).'"/>
 
-                                <input name="dataEliberariiMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getBuletinMonth($id_formular).'"/>
+                                <input name="dataEliberariiMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getBuletinEliberareMonth($id_formular).'"/>
 
-                                <input name="dataEliberariiYear" class="col-md-4 form-control wid33" value="'.getBuletinYear($id_formular).'"/>
+                                <input name="dataEliberariiYear" class="col-md-4 form-control wid33" value="'.getBuletinEliberareYear($id_formular).'"/>
 
-                            </div>
+                            </div><br>
 
                             <label class="marg-t10">Data Expir&#259;rii:</label>
 
                             <div class="col-md-12" style="padding-left:0; padding-right:0;">
 
-                                <input name="dataEliberariiDay" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+                                <input name="dataExpirariiDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getBuletinExpirareDay($id_formular).'"/>
 
-                                <input name="dataEliberariiMonth" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+                                <input name="dataExpirariiMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getBuletinExpirareMonth($id_formular).'"/>
 
-                                <input name="dataEliberariiYear" class="col-md-4 form-control wid33" value=""/>
-
+                                <input name="dataExpirariiYear" class="col-md-4 form-control wid33" value="'.getBuletinExpirareYear($id_formular).'"/>
+                                
+                                
+                                 
                             </div>
-
-                            <div class="col-md-12" style="padding-left:0;">
-
-                                <label class="marg-t10">Liceul de provenien&#355;&#259;</label><input name="liceuNume" class="form-control" value="'.getNumeLiceu($id_formular).'" />
-
-                                <label class="marg-t10">Vrea s&#259; sus&#355;in&#259; testul la: </label><input name="proba" class="form-control" value="'.getMaterieTest($id_formular).'"/>
-
-                             </div>
-
-                          </div>
 
                         <div class="align-center">
 
                             <span class="col-md-12 sub-title">
 
-                                Adresa studentului
+                                <br>Studiile pre-universitare unde sunteti inmatriculat
 
                             </span>
 
-                            </div>
+                         </div>
 
-                            <div class="col-md-12" style="font-size:17px; margin-bottom:20px;">
+                                <label class="marg-t10">Liceul de provenien&#355;&#259;</label><input name="liceuNume" class="form-control" value="'.getNumeLiceu($id_formular).'" />
 
-                                <label class="marg-t10">Tara: </label><input name="tara" class="form-control" value=""/>
+                                <label class="marg-t10">Țară: </label><input name="taraLiceu" class="form-control" value="'.getTaraLiceu($id_formular).'"/>
 
-                                <label class="marg-t10">Jude&#355;:</label><input name="judet" class="form-control" value="'.getJudet($id_formular).'"/>
+                                <label class="marg-t10">Jude&#355;:</label><input name="judetLiceu" class="form-control" value="'.getJudetLiceu($id_formular).'"/>
 
-                                <label class="marg-t10">Localitate: </label><input name="localitate" class="form-control" value="'.getLocalitate($id_formular).'"/>
+                                <label class="marg-t10">Localitate: </label><input name="localitateLiceu" class="form-control" value="'.getLocalitateLiceu($id_formular).'"/>
 
-                                <label class="marg-t10">Jude&#355;:</label><input name="judet" class="form-control" value="'.getJudet($id_formular).'"/>
+                                <label class="marg-t10">Vrea s&#259; sus&#355;in&#259; testul la: </label><input name="proba" class="form-control" value="'.getMaterieTest($id_formular).'"/>
 
-                                <label>Strada, Nr, Bloc, Scara, Apartament:</label><input class="form-control" value="'.getStrada($id_formular).','.getNrStrada($id_formular).','.getNrBloc($id_formular).',A,'.getApartament($id_formular).'"/>
+                        <div class="align-center">
 
-                                <label class="marg-t10">Cod Po&#351;tal:</label><input name="codPostal" class="form-control" value="'.getCodPostal($id_formular).'"/>
+                            <span class="col-md-12 sub-title">
 
-                                <label class="marg-t10">&#354;ara:</label><input name="tara" class="form-control" value="'.getTara($id_formular).'"/>
+                                <br>Diplome, Certificate
 
-                            </div>';
-                            ?>
-
-                    </div>
-
-                </div>
-
-
-                <div class="col-md-12" style="margin-bottom:40px;">
-
-                    <h3 style="font-weight:bold;">Diplome, certificate</h3>
-
-                    <div class="col-md-6">
-
-                    <img class="wid100" src="imagini/exemplu-diploma.jpg" />
+                            </span>
 
                         </div>
 
-                    <div class="col-md-6">
+
+
+                        <img class="wid100" src="imagini/exemplu-diploma.jpg" />
+
+                        
 
                         <img class="wid100" src="imagini/exemplu-diploma.jpg" />
 
 
+                                
+                            </div>
 
-                    </div>
+                        </div> '
+                        ?>
 
-                </div>
 
+                
             </div>
-
-            <div id="DetaliiStudAdmitereLicenta" style="display:none;"></div>
-
-            <div id="DetaliiStudAdmitereMaster" style="display:none;"></div>
 
         </div>
 
+
     </div>
+            </form>
 
-    </form>
+            <form id="RespingereStudPreadmitere" method="post" action="respingereFormularPreAdmitere.php" >
+                <?php
 
-	<footer class="footer-distributed">
+                $id_formular=$_POST['id_formular'];
+                echo ' <input type="hidden" name="idFormular" value="'.$id_formular.'"/> ';
+                ?>
 
+            </form>
 
+    <footer class="footer-distributed">
 
-			<div class="footer-left">
 
-				<h3 class="headernou2">Admitere <span> FII</span></h3>
 
-				<p class="footer-links">
+            <div class="footer-left">
 
-					<a href="DespreFII.html">Despre Fii</a>
+                <h3 class="headernou2">Admitere <span> FII</span></h3>
 
-					·
+                <p class="footer-links">
 
-					<a href="paginaAdmitere.html">Admitere</a>
+                    <a href="DespreFII.html">Despre Fii</a>
 
-					·
+                    ·
 
-					<a href="IntrebariFrecvente.html">&#206;ntrebari frecvente</a>
+                    <a href="paginaAdmitere.html">Admitere</a>
 
-					·
+                    ·
 
-					<a href="contact.html">Contact</a>	
+                    <a href="IntrebariFrecvente.html">&#206;ntrebari frecvente</a>
 
-				</p>
+                    ·
 
-			</div>
+                    <a href="contact.html">Contact</a>  
 
+                </p>
 
+            </div>
 
-			<div class="footer-center">
 
-					<h3 class="headernou2">Contact</h3>
 
-				<div>
+            <div class="footer-center">
 
-					<i class="fa fa-map-marker" id="bloc1"></i>
+                    <h3 class="headernou2">Contact</h3>
 
-					<div id="bloc2"><p>&nbsp&nbspStrada General Henri Mathias Barthelot 16</p>
+                <div>
 
-					<p>Iasi, Rom&#226;nia</p></div>
+                    <i class="fa fa-map-marker" id="bloc1"></i>
 
-				</div>
+                    <div id="bloc2"><p>&nbsp&nbspStrada General Henri Mathias Barthelot 16</p>
 
+                    <p>Iasi, Rom&#226;nia</p></div>
 
+                </div>
 
-				<div>
 
-					<i class="fa fa-phone"></i>
 
-					<p>&nbsp&nbsp0232 201 102</p>
+                <div>
 
-				</div>
+                    <i class="fa fa-phone"></i>
 
+                    <p>&nbsp&nbsp0232 201 102</p>
 
+                </div>
 
-				<div>
 
-					<i class="fa fa-envelope"></i>
 
-					<p class="footer-links"><a href="secretariat AT info.uaic.ro">&nbsp&nbspsecretariat AT info.uaic.ro</a></p>
+                <div>
 
-				</div>
+                    <i class="fa fa-envelope"></i>
 
+                    <p class="footer-links"><a href="secretariat AT info.uaic.ro">&nbsp&nbspsecretariat AT info.uaic.ro</a></p>
 
+                </div>
 
-			</div>
 
 
+            </div>
 
-			<div class="footer-right">
 
-				<h3 class="headernou">Linkuri</h3>
 
-				<div class="footer-links">
+            <div class="footer-right">
 
-					 <img class="footer_img grayscale" src="imagini/fii.png" alt="fII"  id="bloc1"/>
+                <h3 class="headernou">Linkuri</h3>
 
-					 <a href="https://www.info.uaic.ro/bin/Main/"><p id="bloc2" class="footer-links"> &nbsp&nbspFacultatea de informatic&#259; Iasi<p></a>
+                <div class="footer-links">
 
-				</div>
+                     <img class="footer_img grayscale" src="imagini/fii.png" alt="fII"  id="bloc1"/>
 
-				<div class="footer-links">
+                     <a href="https://www.info.uaic.ro/bin/Main/"><p id="bloc2" class="footer-links"> &nbsp&nbspFacultatea de informatic&#259; Iasi<p></a>
 
-					 <img class="footer_img grayscale" src="imagini/logo.png" alt="uaic" id="bloc1" />
+                </div>
 
-					 <a href="http://www.uaic.ro/"><p id="bloc2" > &nbsp&nbspUAIC<p></a>
+                <div class="footer-links">
 
-				</div>
+                     <img class="footer_img grayscale" src="imagini/logo.png" alt="uaic" id="bloc1" />
 
-				
+                     <a href="http://www.uaic.ro/"><p id="bloc2" > &nbsp&nbspUAIC<p></a>
 
-				<div class="footer-links">
+                </div>
 
-				<img class="footer_img grayscale" src="imagini/facebook-icon.png" alt="fb" id="bloc1" >
+                
 
-				<a href="https://www.facebook.com/FacultateaDeInformaticaUAICIasi/?fref=ts"><p id="bloc2"> &nbsp&nbspFacebook-ul faculta&#355;ii de informatic&#259;<p></a>
+                <div class="footer-links">
 
-				</div>
+                <img class="footer_img grayscale" src="imagini/facebook-icon.png" alt="fb" id="bloc1" >
 
-				
+                <a href="https://www.facebook.com/FacultateaDeInformaticaUAICIasi/?fref=ts"><p id="bloc2"> &nbsp&nbspFacebook-ul faculta&#355;ii de informatic&#259;<p></a>
 
-	
+                </div>
 
-				
+                
 
-			</div>
+    
 
-			
+                
 
-			<div class="footer-4"> <img class="footer_img2 grayscale" src="imagini/fii.png" alt="fii "  id="bloc1"/>
+            </div>
 
-			</div>
+            
 
+            <div class="footer-4"> <img class="footer_img2 grayscale" src="imagini/fii.png" alt="fii "  id="bloc1"/>
 
+            </div>
 
-			
 
-			<hr class="hr_footer">
 
-				<p class="hr_text">&copy; 2017 Grupa B3 Facultatea de Informatic&#259; Iasi</p>
+            
 
-			</hr>
+            <hr class="hr_footer">
 
-		</footer>
+                <p class="hr_text">&copy; 2017 Grupa B3 Facultatea de Informatic&#259; Iasi</p>
 
-		
+            </hr>
+
+        </footer>
+
+        
 
 
 
