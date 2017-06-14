@@ -12,11 +12,11 @@ Aplicația de admitere a Facultății de Informatică, Iași realizată pentru p
 * Stavarache Simona [GitHub](https://github.com/SimonaStavarache)
 * Ursachi Anca-Ioana [GitHub](https://github.com/ancai0ana)
 ##### Back-end
-* Cimpoeșu Răzvan-Adrian [GitHub](https://github.com/deR4Fa)
 * Corfu Alexandru [GitHub](https://github.com/tothewest)
 * Dorneanu Adrian [GitHub](https://github.com/AdrianDorneanu)
 * Dragoman Andreas [GitHub](https://github.com/andreasdragoman)
 * Grama Dragoș-Ioan [GitHub](https://github.com/Dragobloody)
+* Minuți Vlăduț [GitHub](https://github.com/MinutiVlad)
 * Moroșanu George-Cosmin [GitHub](https://github.com/GeoMoro)
 * Pintilie Andrei [GitHub](https://github.com/AndreiPi)
 

@@ -1,7 +1,6 @@
 
 <?php
 header('Content-type: text/plain; charset=utf-8');
-include 'adminMainPage.php';
                     
  if(isset($_POST['Submit'])) {
 require('FPDF/fpdf.php');

@@ -230,6 +230,8 @@
                 
                 <form  method="post" action="pdf_licenta.php">
                     
+                    <input type="hidden" name="id_formular" value="1">
+                    
                     <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit">
 
                         <span  style="color:white;">Generare pdf</span>
