@@ -209,7 +209,7 @@
 
                 </button>
 
-                <form  method="post" action="validareFormular.php">
+                <form  method="post" action="validareFormularPreAdmitere.php">
                     <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit">
 
                         <span  style="color:white;">Validare</span>
@@ -217,7 +217,7 @@
                     </button>
                 </form>
                 
-                <form  method="post" action="respingereFormular.php">
+                <form  method="post" action="respingereFormularPreAdmitere.php">
                     
                     <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit">
 
@@ -250,7 +250,7 @@
 
                 <div class="col-md-12" style="text-align:center;">
                    <?php
-                   include 'adminMainPage.php';
+                   include 'adminMainPagePreAdmitere.php';
                     $id_formular=$_POST['id_formular'];
                     $nume=getNume($id_formular);
                     $prenume=getPrenume($id_formular);
@@ -279,8 +279,8 @@
                         <div class="col-md-12" style="font-size:17px;">
                         <?php
                         error_reporting(E_ERROR);
-error_reporting(0);
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+                        error_reporting(0);
+                        error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
                         $id_formular=$_POST['id_formular'];
                           echo '<label>Numele de familie</label><input name="numeDeFamilie" class="form-control" value="'.getNume($id_formular).'"/>
                     

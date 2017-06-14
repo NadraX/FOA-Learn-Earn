@@ -5,6 +5,8 @@
 <html>
 <head>
 
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
@@ -232,14 +234,14 @@
 
 
 
-                    <a href="#" class="list-group-item align-left active" onclick="showTable('#PreadmitereTable', this)">
+                    <a href="#" class="list-group-item align-left active" onclick="showTable('#PreadmitereTableNevalidate', this)">
 
                         <i class="glyphicon glyphicon-list-alt marg-r5 marg-l10"></i>
 
                         <span aria-hidden=true>Formulare Preadmitere</span>
                         <?php
-                        include 'adminMainPage.php';
-                        $nr_formulare_preadmitere = nrFormulare('preadmitere');
+                        include 'adminMainPagePreAdmitere.php';
+                        $nr_formulare_preadmitere = nrFormularePreadmitere();
                         echo '<span>(';
                         echo $nr_formulare_preadmitere;
                         echo ')</span>';
@@ -249,7 +251,7 @@
 
 
 
-                    <a href="#" class="list-group-item align-left" onclick="showTable('#AdmitereLicentaTable', this)">
+                    <a href="#" class="list-group-item align-left" onclick="showTable('#AdmitereLicentaTableNevalidate', this)">
 
                         <i class="glyphicon glyphicon-list-alt marg-r5 marg-l10"></i>
 
@@ -260,7 +262,7 @@
               </span>
 
                         <?php
-                        $nr_formulare_licenta = nrFormulare('licenta');
+                        $nr_formulare_licenta = nrFormulareLicenta();
                         echo '<span>(';
                         echo $nr_formulare_licenta;
                         echo ')</span>';
@@ -270,7 +272,7 @@
 
 
 
-                    <a href="#" class="list-group-item align-left" onclick="showTable('#AdmitereMasterTable', this)">
+                    <a href="#" class="list-group-item align-left" onclick="showTable('#AdmitereMasterTableNevalidate', this)">
 
                         <i class="glyphicon glyphicon-list-alt marg-r5 marg-l10"></i>
 
@@ -281,7 +283,7 @@
               </span>
 
                         <?php
-                        $nr_formulare_master = nrFormulare('master');
+                        $nr_formulare_master = nrFormulareMaster();
                         echo '<span>(';
                         echo $nr_formulare_master;
                         echo ')</span>';
@@ -291,24 +293,6 @@
 
 
 
-                    <a href="#" class="list-group-item align-left" onclick="showTable('#IntrebariTable', this)">
-
-                        <i class="glyphicon glyphicon-blackboard marg-r5 marg-l10"></i>
-
-                        <span aria-hidden=true>
-
-                &#206;ntreb&#259;ri Primite
-
-              </span>
-
-                        <?php
-                        $nr_intrebari = nrIntrebari();
-                        echo '<span>(';
-                        echo $nr_intrebari;
-                        echo ')</span>';
-                        ?>
-
-                    </a>
 
 
 
@@ -318,8 +302,25 @@
 
             <div class="col-md-9 scroll-page">
 
-                <table id="PreadmitereTable" class="table table-hover" >
+                <table id="PreadmitereTableNevalidate" class="table table-hover" >
+                    <caption><div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare nevalidate" value="" onclick="showTable('#PreadmitereTableNevalidate', this)" >
+                                Formulare nevalidate
+                            </button>
+                        </div>
 
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare validate" value="" onclick="showTable('#PreadmitereTableValidate', this)">
+                                Formulare validate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare respinse" value="" onclick="showTable('#PreadmitereTableRespinse', this)">
+                                Formulare respinse
+                            </button>
+                        </div>
+                    </caption>
                     <thead>
 
                     <tr>
@@ -331,6 +332,109 @@
                         <th>Prenume</th>
 
                         <th>Data Aplic&#259;rii</th>
+
+                        <th>Data Ultimei Modific&#259;ri</th>
+
+                        <th>Ac&#355;iuni</th>
+
+
+                    </tr>
+
+
+
+
+                    </thead>
+
+                    <tbody>
+
+                    <?php
+
+                    set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) {
+                        // error was suppressed with the @-operator
+                        if (0 === error_reporting()) {
+                            return false;
+                        }
+
+                        throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+                    });
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+
+                    $sql="select * from  date_personale_preadmitere";
+
+                    $s = oci_parse($c, " select f.id ,dp.nume_familie_actual ,dp.prenume_candidat,
+                                                f.data_crearii,f.data_ultimei_modificari
+                                              from formular_preadmitere f join date_personale_preadmitere dp
+                                               on f.id=dp.formular_id and f.stare=0");
+
+                    oci_execute($s);
+                    $i=1;
+
+                    while (($row = oci_fetch_array($s, OCI_BOTH)) != false)
+                    {
+
+
+                        echo '<form action="DetaliiPentruAdminPreAdmitere.php" method="post">';
+                        echo '<tr>';
+                        echo ' <th scope="row">'.$i.'</th>';
+                       echo '<td>'.$row['NUME_FAMILIE_ACTUAL'].'</td>';
+
+                        echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
+                        echo '<td>'.$row['DATA_CREARII'].'</td>';
+                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        echo '<td>';
+                        echo '<input type="submit" value="Detalii" name="id_formular1" >';
+
+                        echo '</td>';
+                        echo '</tr>';
+                       echo ' <input type="hidden" name="id_formular" value='.$row['ID'].' />';
+                        echo '</form>';
+
+                        $i++;
+
+                    }
+                    oci_free_statement($s);
+                    oci_close($c);
+
+                    ?>
+
+
+                    </tbody>
+
+
+                </table>
+
+                <table id="PreadmitereTableValidate" class="table table-hover" style="display:none;">
+
+                    <thead>
+                    <caption><div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare nevalidate" value="" onclick="showTable('#PreadmitereTableNevalidate', this)" >
+                                Formulare nevalidate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare validate" value="" onclick="showTable('#PreadmitereTableValidate', this)">
+                                Formulare validate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare respinse" value="" onclick="showTable('#PreadmitereTableRespinse', this)">
+                                Formulare respinse
+                            </button>
+                        </div>
+                    </caption>
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Nume</th>
+
+                        <th>Prenume</th>
+
+                        <th>Data Aplic&#259;rii</th>
+
+                        <th>Data Ultimei Modific&#259;ri</th>
 
                         <th>Ac&#355;iuni</th>
 
@@ -350,26 +454,125 @@
                         throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
                     });
                     $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-                    /*$sql= " SELECT f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
-                                          join  date_personale_candidat dpc on f.date_personale_candidat_id=dpc.id
-                                           join  detalii_aplicare da on f.detaliiaplicare_id=da.id 
-                                           where da.tip_aplicare = 'preadmitere';";*/
-                    $sql1=" select * from liceu;";
-                    $s = oci_parse($c, " select f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
-                                          ,date_personale_candidat dpc , detalii_aplicare da  where da.tip_aplicare = 'preadmitere'
-                                           and f.date_personale_candidat_id=dpc.id
-                                           and f.detaliiaplicare_id=da.id ");
+
+                    $sql="select * from  date_personale_preadmitere";
+
+                    $s = oci_parse($c, " select f.id ,dp.nume_familie_actual ,dp.prenume_candidat,
+                                                f.data_crearii,f.data_ultimei_modificari
+                                              from formular_preadmitere f join date_personale_preadmitere dp
+                                               on f.id=dp.formular_id and f.stare=1");
+
                     oci_execute($s);
                     $i=1;
+
                     while (($row = oci_fetch_array($s, OCI_BOTH)) != false)
-                    {   echo '<form action="DetaliiPentruAdmin.php" method="post">';
+                    {
+
+
+                        echo '<form action="DetaliiPentruAdminPreAdmitere.php" method="post">';
                         echo '<tr>';
                         echo ' <th scope="row">'.$i.'</th>';
-                        echo '<td>'.$row['NUME'].'</td>';
-                        echo '<td>'.$row['PRENUME'].'</td>';
-                        echo '<td>'.$row['CREATION_DATE'].'</td>';
+                        echo '<td>'.$row['NUME_FAMILIE_ACTUAL'].'</td>';
+
+                        echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
+                        echo '<td>'.$row['DATA_CREARII'].'</td>';
+                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
-                        echo '<input type="submit" value="Detalii" name="id_formular" >';
+                        echo '<input type="submit" value="Detalii" name="id_formular1" >';
+
+                        echo '</td>';
+                        echo '</tr>';
+                        echo ' <input type="hidden" name="id_formular" value='.$row['ID'].' />';
+                        echo '</form>';
+
+                        $i++;
+
+                    }
+                    oci_free_statement($s);
+                    oci_close($c);
+                    ?>
+                    </tbody>
+
+
+
+                </table>
+
+                <table id="PreadmitereTableRespinse" class="table table-hover" style="display:none;">
+
+                    <thead>
+                    <caption><div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare nevalidate" value="" onclick="showTable('#PreadmitereTableNevalidate', this)" >
+                                Formulare nevalidate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare validate" value="" onclick="showTable('#PreadmitereTableValidate', this)">
+                                Formulare validate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare respinse" value="" onclick="showTable('#PreadmitereTableRespinse', this)">
+                                Formulare respinse
+                            </button>
+                        </div>
+                    </caption>
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Nume</th>
+
+                        <th>Prenume</th>
+
+                        <th>Data Aplic&#259;rii</th>
+
+                        <th>Data Ultimei Modific&#259;ri</th>
+
+                        <th>Ac&#355;iuni</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+                    <?php
+
+                    set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) {
+                        // error was suppressed with the @-operator
+                        if (0 === error_reporting()) {
+                            return false;
+                        }
+
+                        throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+                    });
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+
+                    $sql="select * from  date_personale_preadmitere";
+
+                    $s = oci_parse($c, " select f.id ,dp.nume_familie_actual ,dp.prenume_candidat,
+                                                f.data_crearii,f.data_ultimei_modificari
+                                              from formular_preadmitere f join date_personale_preadmitere dp
+                                               on f.id=dp.formular_id and f.stare=-1");
+
+                    oci_execute($s);
+                    $i=1;
+
+                    while (($row = oci_fetch_array($s, OCI_BOTH)) != false)
+                    {
+
+
+                        echo '<form action="DetaliiPentruAdminPreAdmitere.php" method="post">';
+                        echo '<tr>';
+                        echo ' <th scope="row">'.$i.'</th>';
+                        echo '<td>'.$row['NUME_FAMILIE_ACTUAL'].'</td>';
+
+                        echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
+                        echo '<td>'.$row['DATA_CREARII'].'</td>';
+                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        echo '<td>';
+                        echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
                         echo '</td>';
                         echo '</tr>';
@@ -385,8 +588,27 @@
                     </tbody>
 
                 </table>
-                <table id="AdmitereLicentaTable" class="table table-hover" style="display:none;">
 
+                <table id="AdmitereLicentaTableNevalidate" class="table table-hover" style="display:none;">
+
+                    <caption><div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare nevalidate" value="" onclick="showTable('#AdmitereLicentaTableNevalidate', this)" >
+                                Formulare nevalidate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare validate" value="" onclick="showTable('#AdmitereLicentaTableValidate', this)">
+                                Formulare validate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare respinse" value="" onclick="showTable('#AdmitereLicentaTableRespinse', this)">
+                                Formulare respinse
+                            </button>
+                        </div>
+                    </caption>
                     <thead>
 
                     <tr>
@@ -398,6 +620,8 @@
                         <th>Prenume</th>
 
                         <th>Data Aplic&#259;rii</th>
+
+                        <th>Data Ultimei Modific&#259;ri</th>
 
                         <th>Ac&#355;iuni</th>
 
@@ -423,106 +647,64 @@
                                            join  detalii_aplicare da on f.detaliiaplicare_id=da.id
                                            where da.tip_aplicare = 'preadmitere';";*/
                     $sql1=" select * from liceu;";
-                    $s = oci_parse($c, " select f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
-                                          ,date_personale_candidat dpc , detalii_aplicare da  where da.tip_aplicare = 'licenta'
-                                           and f.date_personale_candidat_id=dpc.id
-                                           and f.detaliiaplicare_id=da.id ");
+                    $s = oci_parse($c, " select f.id ,dp.nume_familie_actual ,dp.prenume_candidat,
+                                                f.data_crearii,f.data_ultimei_modificari
+                                              from formular_licenta f join date_personale_licenta dp
+                                               on f.id=dp.formular_id and f.stare=0");
+
                     oci_execute($s);
                     $i=1;
+
                     while (($row = oci_fetch_array($s, OCI_BOTH)) != false)
                     {
-                        echo '<form action="DetaliiPentruAdmin.php" method="post">';
+
+
+                        echo '<form action="DetaliiPentruAdminLicenta.php" method="post">';
                         echo '<tr>';
                         echo ' <th scope="row">'.$i.'</th>';
-                        echo '<td>'.$row['NUME'].'</td>';
-                        echo '<td>'.$row['PRENUME'].'</td>';
-                        echo '<td>'.$row['CREATION_DATE'].'</td>';
+                        echo '<td>'.$row['NUME_FAMILIE_ACTUAL'].'</td>';
+
+                        echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
+                        echo '<td>'.$row['DATA_CREARII'].'</td>';
+                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
-                        echo '<input type="submit" value="Detalii" name="id_formular" >';
-                        echo '</td>';
-                        echo '</tr>';
-                        echo ' <input type="hidden" name="id_formular" value='.$row['ID'].' /> ';
-                        echo '</form>';
-                        $i++;
+                        echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
-                    }
-                    oci_free_statement($s);
-                    oci_close($c);
-                    ?>
-                    </tbody>
-
-                </table>
-                <table id="AdmitereMasterTable" class="table table-hover" style="display: none;">
-
-                    <thead>
-
-                    <tr>
-
-                        <th>#</th>
-
-                        <th>Nume</th>
-
-                        <th>Prenume</th>
-
-                        <th>Data Aplic&#259;rii</th>
-
-                        <th>Ac&#355;iuni</th>
-
-                    </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                    <?php
-
-                    set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) {
-                        // error was suppressed with the @-operator
-                        if (0 === error_reporting()) {
-                            return false;
-                        }
-
-                        throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
-                    });
-                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-                    /*$sql= " SELECT f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
-                                          join  date_personale_candidat dpc on f.date_personale_candidat_id=dpc.id
-                                           join  detalii_aplicare da on f.detaliiaplicare_id=da.id
-                                           where da.tip_aplicare = 'preadmitere';";*/
-                    $sql1=" select * from liceu;";
-                    $s = oci_parse($c, " select f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
-                                          ,date_personale_candidat dpc , detalii_aplicare da  where da.tip_aplicare = 'master'
-                                           and f.date_personale_candidat_id=dpc.id
-                                           and f.detaliiaplicare_id=da.id ");
-                    oci_execute($s);
-                    $i=1;
-                    while (($row = oci_fetch_array($s, OCI_BOTH)) != false)
-                    {
-                        echo '<form action="DetaliiPentruAdmin.php" method="post">';
-                        echo '<tr>';
-                        echo ' <th scope="row">'.$i.'</th>';
-                        echo '<td>'.$row['NUME'].'</td>';
-                        echo '<td>'.$row['PRENUME'].'</td>';
-                        echo '<td>'.$row['CREATION_DATE'].'</td>';
-                        echo '<td>';
-                        echo '<input type="submit" value="Detalii" name="id_formular" >';
                         echo '</td>';
                         echo '</tr>';
                         echo ' <input type="hidden" name="id_formular" value='.$row['ID'].' />';
                         echo '</form>';
+
                         $i++;
 
                     }
                     oci_free_statement($s);
                     oci_close($c);
                     ?>
-
                     </tbody>
 
                 </table>
 
-                <table id="IntrebariTable" class="table table-hover" style="display: none;">
+                <table id="AdmitereLicentaTableValidate" class="table table-hover" style="display:none;">
 
+                    <caption><div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare nevalidate" value="" onclick="showTable('#AdmitereLicentaTableNevalidate', this)" >
+                                Formulare nevalidate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare validate" value="" onclick="showTable('#AdmitereLicentaTableValidate', this)">
+                                Formulare validate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare respinse" value="" onclick="showTable('#AdmitereLicentaTableRespinse', this)">
+                                Formulare respinse
+                            </button>
+                        </div>
+                    </caption>
                     <thead>
 
                     <tr>
@@ -533,7 +715,9 @@
 
                         <th>Prenume</th>
 
-                        <th>Categorie</th>
+                        <th>Data Aplic&#259;rii</th>
+
+                        <th>Data Ultimei Modific&#259;ri</th>
 
                         <th>Ac&#355;iuni</th>
 
@@ -542,6 +726,7 @@
                     </thead>
 
                     <tbody>
+
                     <?php
 
                     set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) {
@@ -557,24 +742,36 @@
                                           join  date_personale_candidat dpc on f.date_personale_candidat_id=dpc.id
                                            join  detalii_aplicare da on f.detaliiaplicare_id=da.id
                                            where da.tip_aplicare = 'preadmitere';";*/
+                    $sql1=" select * from liceu;";
+                    $s = oci_parse($c, " select f.id ,dp.nume_familie_actual ,dp.prenume_candidat,
+                                                f.data_crearii,f.data_ultimei_modificari
+                                              from formular_licenta f join date_personale_licenta dp
+                                               on f.id=dp.formular_id and f.stare=1");
 
-                    $s = oci_parse($c, " select i.id,u.nume,u.prenume,c.nume from intrebare i,useri u,categorie c 
-                                                where i.user_id=u.id and i.categorie_id=c.id ");
                     oci_execute($s);
                     $i=1;
+
                     while (($row = oci_fetch_array($s, OCI_BOTH)) != false)
                     {
+
+
+                        echo '<form action="DetaliiPentruAdminLicenta.php" method="post">';
                         echo '<tr>';
                         echo ' <th scope="row">'.$i.'</th>';
-                        echo '<td>'.$row[1].'</td>';
-                        echo '<td>'.$row[2].'</td>';
-                        echo '<td>'.$row[3].'</td>';
+                        echo '<td>'.$row['NUME_FAMILIE_ACTUAL'].'</td>';
+
+                        echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
+                        echo '<td>'.$row['DATA_CREARII'].'</td>';
+                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
-                        echo '<a href="#" class="actions-admin",nume="'.$row['ID'].'">R&#259;spunde</a>';
+                        echo '<input type="submit" value="Detalii" name="id_formular1" >';
+
                         echo '</td>';
                         echo '</tr>';
-                        $i++;
+                        echo ' <input type="hidden" name="id_formular" value='.$row['ID'].' />';
+                        echo '</form>';
 
+                        $i++;
 
                     }
                     oci_free_statement($s);
@@ -583,27 +780,400 @@
                     </tbody>
 
                 </table>
+
+                <table id="AdmitereLicentaTableRespinse" class="table table-hover" style="display:none;">
+
+                    <caption><div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare nevalidate" value="" onclick="showTable('#AdmitereLicentaTableNevalidate', this)" >
+                                Formulare nevalidate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare validate" value="" onclick="showTable('#AdmitereLicentaTableValidate', this)">
+                                Formulare validate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare respinse" value="" onclick="showTable('#AdmitereLicentaTableRespinse', this)">
+                                Formulare respinse
+                            </button>
+                        </div>
+                    </caption>
+                    <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Nume</th>
+
+                        <th>Prenume</th>
+
+                        <th>Data Aplic&#259;rii</th>
+
+                        <th>Data Ultimei Modific&#259;ri</th>
+
+                        <th>Ac&#355;iuni</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    <?php
+
+                    set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) {
+                        // error was suppressed with the @-operator
+                        if (0 === error_reporting()) {
+                            return false;
+                        }
+
+                        throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+                    });
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    /*$sql= " SELECT f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
+                                          join  date_personale_candidat dpc on f.date_personale_candidat_id=dpc.id
+                                           join  detalii_aplicare da on f.detaliiaplicare_id=da.id
+                                           where da.tip_aplicare = 'preadmitere';";*/
+                    $sql1=" select * from liceu;";
+                    $s = oci_parse($c, " select f.id ,dp.nume_familie_actual ,dp.prenume_candidat,
+                                                f.data_crearii,f.data_ultimei_modificari
+                                              from formular_licenta f join date_personale_licenta dp
+                                               on f.id=dp.formular_id and f.stare=-1");
+
+                    oci_execute($s);
+                    $i=1;
+
+                    while (($row = oci_fetch_array($s, OCI_BOTH)) != false)
+                    {
+
+
+                        echo '<form action="DetaliiPentruAdminLicenta.php" method="post">';
+                        echo '<tr>';
+                        echo ' <th scope="row">'.$i.'</th>';
+                        echo '<td>'.$row['NUME_FAMILIE_ACTUAL'].'</td>';
+
+                        echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
+                        echo '<td>'.$row['DATA_CREARII'].'</td>';
+                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        echo '<td>';
+                        echo '<input type="submit" value="Detalii" name="id_formular1" >';
+
+                        echo '</td>';
+                        echo '</tr>';
+                        echo ' <input type="hidden" name="id_formular" value='.$row['ID'].' />';
+                        echo '</form>';
+
+                        $i++;
+
+                    }
+                    oci_free_statement($s);
+                    oci_close($c);
+                    ?>
+                    </tbody>
+
+                </table>
+
+                <table id="AdmitereMasterTableNevalidate" class="table table-hover" style="display: none;">
+
+                    <caption><div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare nevalidate" value="" onclick="showTable('#AdmitereMasterTableNevalidate', this)" >
+                                Formulare nevalidate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare validate" value="" onclick="showTable('#AdmitereMasterTableValidate', this)">
+                                Formulare validate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare respinse" value="" onclick="showTable('#AdmitereMasterTableRespinse', this)">
+                                Formulare respinse
+                            </button>
+                        </div>
+                    </caption>
+                    <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Nume</th>
+
+                        <th>Prenume</th>
+
+                        <th>Data Aplic&#259;rii</th>
+
+                        <th>Data Ultimei Modific&#259;ri</th>
+
+                        <th>Ac&#355;iuni</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    <?php
+
+                    set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) {
+                        // error was suppressed with the @-operator
+                        if (0 === error_reporting()) {
+                            return false;
+                        }
+
+                        throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+                    });
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    /*$sql= " SELECT f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
+                                          join  date_personale_candidat dpc on f.date_personale_candidat_id=dpc.id
+                                           join  detalii_aplicare da on f.detaliiaplicare_id=da.id
+                                           where da.tip_aplicare = 'preadmitere';";*/
+                    $sql1=" select * from liceu;";
+                    $s = oci_parse($c, " select f.id ,dp.nume_familie_actual ,dp.prenume_candidat,
+                                                f.data_crearii,f.data_ultimei_modificari
+                                              from formular_master f join date_personale_master dp
+                                               on f.id=dp.formular_id and f.stare=0");
+
+                    oci_execute($s);
+                    $i=1;
+
+                    while (($row = oci_fetch_array($s, OCI_BOTH)) != false)
+                    {
+
+
+                        echo '<form action="DetaliiPentruAdminMaster.php" method="post">';
+                        echo '<tr>';
+                        echo ' <th scope="row">'.$i.'</th>';
+                        echo '<td>'.$row['NUME_FAMILIE_ACTUAL'].'</td>';
+
+                        echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
+                        echo '<td>'.$row['DATA_CREARII'].'</td>';
+                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        echo '<td>';
+                        echo '<input type="submit" value="Detalii" name="id_formular1" >';
+
+                        echo '</td>';
+                        echo '</tr>';
+                        echo ' <input type="hidden" name="id_formular" value='.$row['ID'].' />';
+                        echo '</form>';
+
+                        $i++;
+
+                    }
+                    oci_free_statement($s);
+                    oci_close($c);
+                    ?>
+
+                    </tbody>
+
+                </table>
+
+                <table id="AdmitereMasterTableValidate" class="table table-hover" style="display: none;">
+
+                    <caption><div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare nevalidate" value="" onclick="showTable('#AdmitereMasterTableNevalidate', this)" >
+                                Formulare nevalidate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare validate" value="" onclick="showTable('#AdmitereMasterTableValidate', this)">
+                                Formulare validate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare respinse" value="" onclick="showTable('#AdmitereMasterTableRespinse', this)">
+                                Formulare respinse
+                            </button>
+                        </div>
+                    </caption>
+                    <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Nume</th>
+
+                        <th>Prenume</th>
+
+                        <th>Data Aplic&#259;rii</th>
+
+                        <th>Data Ultimei Modific&#259;ri</th>
+
+                        <th>Ac&#355;iuni</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    <?php
+
+                    set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) {
+                        // error was suppressed with the @-operator
+                        if (0 === error_reporting()) {
+                            return false;
+                        }
+
+                        throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+                    });
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    /*$sql= " SELECT f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
+                                          join  date_personale_candidat dpc on f.date_personale_candidat_id=dpc.id
+                                           join  detalii_aplicare da on f.detaliiaplicare_id=da.id
+                                           where da.tip_aplicare = 'preadmitere';";*/
+                    $sql1=" select * from liceu;";
+                    $s = oci_parse($c, " select f.id ,dp.nume_familie_actual ,dp.prenume_candidat,
+                                                f.data_crearii,f.data_ultimei_modificari
+                                              from formular_master f join date_personale_master dp
+                                               on f.id=dp.formular_id and f.stare=1");
+
+                    oci_execute($s);
+                    $i=1;
+
+                    while (($row = oci_fetch_array($s, OCI_BOTH)) != false)
+                    {
+
+
+                        echo '<form action="DetaliiPentruAdminMaster.php" method="post">';
+                        echo '<tr>';
+                        echo ' <th scope="row">'.$i.'</th>';
+                        echo '<td>'.$row['NUME_FAMILIE_ACTUAL'].'</td>';
+
+                        echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
+                        echo '<td>'.$row['DATA_CREARII'].'</td>';
+                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        echo '<td>';
+                        echo '<input type="submit" value="Detalii" name="id_formular1" >';
+
+                        echo '</td>';
+                        echo '</tr>';
+                        echo ' <input type="hidden" name="id_formular" value='.$row['ID'].' />';
+                        echo '</form>';
+
+                        $i++;
+
+                    }
+                    oci_free_statement($s);
+                    oci_close($c);
+                    ?>
+
+                    </tbody>
+
+                </table>
+
+                <table id="AdmitereMasterTableRespinse" class="table table-hover" style="display: none;">
+
+                    <caption><div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare nevalidate" value="" onclick="showTable('#AdmitereMasterTableNevalidate', this)" >
+                                Formulare nevalidate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare validate" value="" onclick="showTable('#AdmitereMasterTableValidate', this)">
+                                Formulare validate
+                            </button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button class="btn" type="button" name="Formulare respinse" value="" onclick="showTable('#AdmitereMasterTableRespinse', this)">
+                                Formulare respinse
+                            </button>
+                        </div>
+                    </caption>
+                    <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Nume</th>
+
+                        <th>Prenume</th>
+
+                        <th>Data Aplic&#259;rii</th>
+
+                        <th>Data Ultimei Modific&#259;ri</th>
+
+                        <th>Ac&#355;iuni</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    <?php
+
+                    set_error_handler(function($errno, $errstr, $errfile, $errline, array $errcontext) {
+                        // error was suppressed with the @-operator
+                        if (0 === error_reporting()) {
+                            return false;
+                        }
+
+                        throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+                    });
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    /*$sql= " SELECT f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
+                                          join  date_personale_candidat dpc on f.date_personale_candidat_id=dpc.id
+                                           join  detalii_aplicare da on f.detaliiaplicare_id=da.id
+                                           where da.tip_aplicare = 'preadmitere';";*/
+                    $sql1=" select * from liceu;";
+                    $s = oci_parse($c, " select f.id ,dp.nume_familie_actual ,dp.prenume_candidat,
+                                                f.data_crearii,f.data_ultimei_modificari
+                                              from formular_master f join date_personale_master dp
+                                               on f.id=dp.formular_id and f.stare=-1");
+
+                    oci_execute($s);
+                    $i=1;
+
+                    while (($row = oci_fetch_array($s, OCI_BOTH)) != false)
+                    {
+
+
+                        echo '<form action="DetaliiPentruAdminMaster.php" method="post">';
+                        echo '<tr>';
+                        echo ' <th scope="row">'.$i.'</th>';
+                        echo '<td>'.$row['NUME_FAMILIE_ACTUAL'].'</td>';
+
+                        echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
+                        echo '<td>'.$row['DATA_CREARII'].'</td>';
+                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        echo '<td>';
+                        echo '<input type="submit" value="Detalii" name="id_formular1" >';
+
+                        echo '</td>';
+                        echo '</tr>';
+                        echo ' <input type="hidden" name="id_formular" value='.$row['ID'].' />';
+                        echo '</form>';
+
+                        $i++;
+
+                    }
+                    oci_free_statement($s);
+                    oci_close($c);
+                    ?>
+
+                    </tbody>
+
+                </table>
+
+
                 </div>
 
                 <!--modificat pe 10.06.2017 -->
                 
-                <div class="col-md-3">
-                <button class="btn" type="button" name="Formulare nevalidate" value="" >
-                    Formulare nevalidate
-                </button>
-                </div>
 
-                <div class="col-md-3">
-                <button class="btn" type="button" name="Formulare validate" value="" >
-                    Formulare validate
-                </button>
-                </div>
-
-                <div class="col-md-3">
-                <button class="btn" type="button" name="Formulare respinse" value="" >
-                    Formulare respinse
-                </button>
-                </div>
 
 
 

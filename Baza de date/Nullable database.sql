@@ -328,7 +328,6 @@ CREATE TABLE Formular_licenta (
 	data_crearii TIMESTAMP	NULL,
 	data_ultimei_modificari TIMESTAMP NULL,
 	stare number(1,0)	 NULL,
-	stare number(1,0)	 NULL,
     CONSTRAINT Formular_licenta_pk PRIMARY KEY (id)
 ) ;
 
