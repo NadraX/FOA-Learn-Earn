@@ -12208,7 +12208,6 @@
 
            $statement = oci_parse($connection, "INSERT INTO formular_master VALUES (
           :id, 
-          :tip_formular, 
           :nr_chitanta, 
           :suma, 
           :scutit, 
@@ -12218,7 +12217,6 @@
           0)");
 
         oci_bind_by_name($statement, ':id', $numaratoare2);
-        oci_bind_by_name($statement, ':tip_formular', $v_formular);
         oci_bind_by_name($statement, ':nr_chitanta', $_POST["Master_Chitanta_nr"]);
         oci_bind_by_name($statement, ':suma', $_POST["Master_Suma_Taxa"]);
         oci_bind_by_name($statement, ':scutit', $_POST["group1"]);
