@@ -228,7 +228,14 @@
                     
                 </form>
                 
-                <form  method="post" action="pdf_licenta.php">
+                <form  method="post" action="pdf_master.php">
+                    
+                    <?php
+                    include 'adminMainPageMaster.php';
+                    $id_formular=$_POST['id_formular'];
+                    echo '<input type="hidden" name="id_formular" value="'.$id_formular.'">';
+                    
+                    ?>
                     
                     <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit">
 

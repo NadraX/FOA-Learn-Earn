@@ -228,7 +228,14 @@
                     
              
                 
-                <form  method="post" action="pdf_licenta.php">
+                <form  method="post" action="pdf_preadmitere.php">
+                    
+                    <?php
+                    include 'adminMainPagePreAdmitere.php';
+                    $id_formular=$_POST['id_formular'];
+                    echo '<input type="hidden" name="id_formular" value="'.$id_formular.'">';
+                    
+                    ?>
                     
                     <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit">
 
@@ -257,7 +264,6 @@
                 <div class="col-md-12" style="text-align:center;">
                     <?php
                     include 'adminMainPagePreAdmitere.php';
-                    $id_formular=$_POST['id_formular'];
                     $nume=getNumeActual($id_formular);
                     $prenume=getPrenume($id_formular);
                     echo '<span name="NumeCompletStudent" class="entire-name">'.$nume.' '.$prenume.'</span>';
