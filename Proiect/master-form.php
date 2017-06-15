@@ -756,7 +756,7 @@
 										</span>
 			                          </span>
 			                          <span id="motiv-scutire" class="form-sub-label-container" style="vertical-align:top; width: 49%; margin-right: 5px;">
-			                              <input type="text" name="Master_Motiv_Scutire_taxa" class="form-textbox last_1" size="15" placeholder="ex: Fiu de Parlamentar"  data-component="last"  value="<?php 
+			                              <input type="text" name="Master_Motiv_Scutire_taxa" class="form-textbox last_1" size="15" placeholder="ex: Fiu de cadru didactic"  data-component="last"  value="<?php 
 																																																			if($v_Scutire == '')		
 																																																				echo '';		
 																																																			else		
