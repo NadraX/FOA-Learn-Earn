@@ -398,7 +398,7 @@
 				</ul>
 				<div class="formular2">
 					<?php
-						include "exempluLicenta.php";
+						include "validClass.php";
 						error_reporting(0);
                         ini_set('display_errors', 0);
 						$v_Numele_De_Familie=$_POST["Licenta_Numele_De_Familie"];
