@@ -418,12 +418,29 @@
 						$v_Licenta_Serie_Buletin = $_POST["Licenta_Serie_Buletin"];
 						$v_Licenta_Tip_Buletin = $_POST["Licenta_Tip_Buletin"];
 						$v_Licenta_CNP = $_POST["Licenta_CNP"];
+							$vLicenta_CNP = validCNP($v_Licenta_CNP);
 						$v_Licenta_Prenumele = $_POST["Licenta_Prenumele"];
 						$v_Licenta_Prenume_Mama = $_POST["Licenta_Prenume_Mama"];
 						$v_Licenta_Prenume_Tata = $_POST["Licenta_Prenume_Tata"];
 						$v_Licenta_Nationalitate = $_POST["Licenta_Nationalitate"];
 						$v_Licenta_Etnie = $_POST["Licenta_Etnie"];
 						$v_Licenta_Limba_Materna = $_POST["Licenta_Limba_Materna"];
+						$v_Chitanta = $_POST["Licenta_Chitanta_nr"];
+						$v_Suma_Taxa = $_POST["Licenta_Suma_Taxa"];
+						$v_Master_Sex = $_POST["Licenta_Sex"];
+						$v_Licenta_Tara_Nastere = $_POST["Licenta_Tara_Nastere"];
+						$v_Licenta_Judet_Nastere=$_POST["Licenta_Judet_Nastere"];
+						$v_Licenta_Localitate_Nastere = $_POST["Licenta_Localitate_Nastere"];
+						$v_Licenta_Nastere_Zi=$_POST["Licenta_Nastere_Zi"];
+						$v_Licenta_Cetatenie = $_POST["Licenta_Cetatenie"];
+						$v_Licenta_Buletin_Luna_Eliberarii=$_POST["Licenta_Buletin_Luna"];
+						$v_Master_Buletin_Luna_Expirare=$_POST["Master_Buletin_Luna"];
+						$v_Licenta_Tara=$_POST["Licenta_Tara"];
+						$v_Licenta_Obiect=$_POST["Licenta_Obiect_Test_Ales"];
+						$v_Numele_De_Familie_La_Nastere=$_POST["Licenta_Numele_De_Familie_La_nastere"];
+							$vNumele_De_Familie_La_Nastere = validNume($v_Numele_De_Familie_La_Nastere);
+						$v_Numele_De_Familie = $_POST["Licenta_Numele_De_Familie"];
+							$vNumele_De_Familie = validNume($v_Numele_De_Familie);
 					?>
 					<ul>
 						<li class="form-line" data-type="control_taxa" id="id_12">
@@ -442,17 +459,20 @@
 																																																else
 																																																	echo $v_Chitanta;
 																																															?>" />
+												<span style="color:red">    
+													<?php   
+														if(isset($_POST['Submit'])) {   
+															$v_Chitanta = $_POST["Licenta_Chitanta_nr"];    
+															$vChitanta = validChitanta($v_Chitanta);    
+															if($v_Chitanta=='')
+																echo "C&#226;mp necompletat!";
+															else
+																if($vChitanta==1)
+																	echo "Câmp invalid! Introdu un număr (pozitiv)!";
+														}		  
+													?>    
+												</span>   
 											</span>
-											<span style="color:red">    
-												<?php   
-													if(isset($_POST['Submit'])) {   
-														$v_Chitanta = $_POST["Licenta_Chitanta_nr"];    
-														$vChitanta = validChitanta($v_Chitanta);    
-														if($vChitanta==0)   
-															echo "C&#226;mp invalid!";    
-													}   
-												?>    
-											</span>   
 											<span id="suma" class="form-sub-label-container" style="vertical-align:top; width: 18%; margin-right: 5px;">  
 												<label class="form-sub-label"  style="min-height:13px;"> Suma achitată (RON) </label>                          
 												<input type="number" name="Licenta_Suma_Taxa" class="form-textbox middle_1" size="10" placeholder="ex: 250" data-component="middle"  value="<?php
@@ -461,17 +481,20 @@
 																																																else
 																																																	echo $v_Suma_Taxa;
 																																															?>" />
-											</span>
 											<span style="color:red">    
 												<?php   
 													if(isset($_POST['Submit'])) {   
 														$v_Suma_Taxa = $_POST["Licenta_Suma_Taxa"];   
 														$vsuma = validSuma($v_Suma_Taxa);   
-														if($vsuma==0)   
-															echo "C&#226;mp invalid!";    
+														if($v_Suma_Taxa=='')
+																echo "C&#226;mp necompletat!";
+															else
+															if($vsuma==1)
+																echo "Sumă negativă ?!";    
 														}   
 												?>    
 											</span> 
+											</span>
 										</tr>
 						  
 									</tbody>
@@ -485,12 +508,66 @@
 							<div  class="form-input jf-required cid_1">
 								<div class="general_name" data-wrapper-react="true">
 									<span id="num2" class="form-sub-label-container" style="vertical-align:top;">
-										<label class="form-sub-label sublabel_first" style="min-height:13px;"> Numele de familie la naştere <span class="info-box">?<span class="info-box__content">Numele de familie din certificatul de naştere</span></span> </label>
+										<label class="form-sub-label sublabel_first" style="min-height:13px;"> Numele de familie la naştere <span class="info-box" <?php
+																																										if($vNumele_De_Familie_La_Nastere>0 ) 
+																																											echo 'style="background-color : red;"';
+																																									?> > 
+																																				<?php
+																																					if($v_Numele_De_Familie_La_Nastere!='')
+																																						if($vNumele_De_Familie_La_Nastere!==0) 
+																																							echo "!"; 
+																																						else 
+																																							echo "?"; 
+																																					else 
+																																						echo "?";
+																																				?> 
+																																				<span class="info-box__content">
+																																					Numele de familie din certificatul de naştere
+																																				</span>
+																																			</span>
+										</label>
+										
+																															
+										
 										<input type="text" name="Licenta_Numele_De_Familie_La_nastere" class="form-textbox first_1" size="10" placeholder="ex: Ionescu" value="<?php echo $_POST["Licenta_Numele_De_Familie_La_nastere"];?>" data-component="first" />
+
+										<span style="color:red">
+											<?php
+												if(isset($_POST['Submit'])) {
+													$v_Numele_De_Familie_La_Nastere=$_POST["Licenta_Numele_De_Familie_La_nastere"];
+													$vNumele_De_Familie_La_Nastere = validNume($v_Numele_De_Familie_La_Nastere);
+													if($vNumele_De_Familie_La_Nastere==-1)
+														echo "C&#226;mp necompletat!";
+													else
+														if($vNumele_De_Familie_La_Nastere==1)
+															echo "C&#226;mpul conține caractere nepermise!";
+														else
+															if($vNumele_De_Familie_La_Nastere==2)
+																echo "C&#226;mpul trebuie sa aibe între 3 și 30 caractere!";
+												}
+											?>
+										</span>
+
 									</span>
 									<span id="num" class="form-sub-label-container" style="vertical-align:top;"> 
-										<label class="form-sub-label sublabel_first" style="min-height:13px;"> Numele de familie actual<span class="info-box">?<span class="info-box__content">Numele dupa căsătorie, înfiere, 
-											modificare la cerere conform actului doveditor daca este cazul</span></span> 
+										<label class="form-sub-label sublabel_first" style="min-height:13px;"> Numele de familie actual <span class="info-box" <?php
+																																										if($vNumele_De_Familie>0 ) 
+																																											echo 'style="background-color : red;"';
+																																									?> > 
+																																				<?php
+																																					if($v_Numele_De_Familie!='')
+																																						if($vNumele_De_Familie!==0) 
+																																							echo "!"; 
+																																						else 
+																																							echo "?"; 
+																																					else 
+																																						echo "?";
+																																				?> 
+																																				<span class="info-box__content">
+																																				Numele dupa căsătorie, înfiere, 
+																																				modificare la cerere conform actului doveditor daca este cazul
+																																			</span>
+																																		</span> 
 										</label> 
 										<input type="text" name="Licenta_Numele_De_Familie" class="form-textbox first_1" size="10" placeholder="ex: Ionescu" data-component="first"  value="<?php 
 																																																if($v_Numele_De_Familie == '') 
@@ -499,22 +576,28 @@
 																																																	echo $v_Numele_De_Familie;
 																																															?>" />
 										<span style="color:red">
-											<?php
-												if(isset($_POST['Submit'])) {
-													$v_Numele_De_Familie = $_POST["Licenta_Numele_De_Familie"];
-													$vNumele_De_Familie = validNume($v_Numele_De_Familie);
-													if($vNumele_De_Familie==0)
-													echo "C&#226;mp invalid!";
-												}
-											?>
-										</span>
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Numele_De_Familie = $_POST["Licenta_Numele_De_Familie"];
+														$vNumele_De_Familie = validNume($v_Numele_De_Familie);
+														if($vNumele_De_Familie==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vNumele_De_Familie==1)
+																echo "C&#226;mpul conține caractere nepermise!";
+															else
+																if($vNumele_De_Familie==2)
+																	echo "C&#226;mpul trebuie sa aibe între 3 și 30 caractere!";
+													}
+												?>
+											</span>
                       
 									</span>
                     
 									<span id="initiala" class="form-sub-label-container" style="vertical-align:top;">
 										<label class="form-sub-label"  style="min-height:13px;"> Ini&#355;iala (ele) tat&#259;lui/mamei </label>
 
-										<input type="text" name="Licenta_Initiala_Tata" class="form-textbox middle_1" size="10" placeholder="ex: C/C./C.D."  data-component="first"  value="<?php 
+										<input type="text" name="Licenta_Initiala_Tata" class="form-textbox middle_1" size="10" placeholder="ex: C/C./C.D./C.-D."  data-component="first"  value="<?php 
 																																																if($v_Licenta_Initiala_Tata == '') 
 																																																	echo '';
 																																																else
@@ -525,8 +608,17 @@
 												if(isset($_POST['Submit'])) {
 													$v_Licenta_Initiala_Tata = $_POST["Licenta_Initiala_Tata"];
 													$vLicenta_Initiala_Tata = validInitialaTata($v_Licenta_Initiala_Tata);
-													if($vLicenta_Initiala_Tata==0)
-													echo "C&#226;mp invalid!";
+													if($vLicenta_Initiala_Tata==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Initiala_Tata==1)
+																echo "Între 1 si 6 caractere!";
+															else
+																if($vLicenta_Initiala_Tata==2)
+																	echo "Caractere nepermise!";
+																else
+																	if($vLicenta_Initiala_Tata==3)
+																		echo "Format Incorect!";
 												}
 											?>
 										</span>
@@ -545,8 +637,14 @@
 												if(isset($_POST['Submit'])) {
 													$v_Licenta_Prenumele = $_POST["Licenta_Prenumele"];
 													$vLicenta_Prenumele = validPremume($v_Licenta_Prenumele);
-													if($vLicenta_Prenumele==0)
-														echo "C&#226;mp invalid!";
+													if($vLicenta_Prenumele==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Prenumele==1)
+																echo "C&#226;mpul conține caractere nepermise!";
+															else
+																if($vLicenta_Prenumele==2)
+																	echo "C&#226;mpul trebuie sa aibe între 3 și 30 caractere!";
 												}
 											?>
 										</span>
@@ -569,8 +667,14 @@
 												if(isset($_POST['Submit'])) {
 													$v_Licenta_Prenume_Mama = $_POST["Licenta_Prenume_Mama"];
 													$vLicenta_PrenumeMama = validPremume($v_Licenta_Prenume_Mama);
-													if($vLicenta_PrenumeMama==0)
-													echo "C&#226;mp invalid!";
+													if($vLicenta_PrenumeMama==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_PrenumeMama==1)
+																echo "C&#226;mpul conține caractere nepermise!";
+															else
+																if($vLicenta_PrenumeMama==2)
+																	echo "C&#226;mpul trebuie sa aibe între 3 și 30 caractere!";
 												}
 											?>
 										</span>
@@ -588,8 +692,14 @@
 												if(isset($_POST['Submit'])) {
 													$v_Licenta_Prenume_Tata = $_POST["Licenta_Prenume_Tata"];
 													$vLicenta_PrenumeTata = validPremume($v_Licenta_Prenume_Tata);
-													if($vLicenta_PrenumeTata==0)
-														echo "C&#226;mp invalid!";
+													if($vLicenta_PrenumeTata==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_PrenumeTata==1)
+																echo "C&#226;mpul conține caractere nepermise!";
+															else
+																if($vLicenta_PrenumeTata==2)
+																	echo "C&#226;mpul trebuie sa aibe între 3 și 30 caractere!";
 												}
 											?>
 										</span>
@@ -644,17 +754,39 @@
 								<div data-wrapper-react="true">
 									<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 										<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Ţara în care v-aţi născut </label>
-										<input type="text" name="Licenta_Tara_Nastere" value="Romana" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;nia" data-component="middle"  />
+										<input type="text" name="Licenta_Tara_Nastere" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;nia" data-component="middle" value="<?php 
+																																																													if($v_Licenta_Tara_Nastere == '') 
+																																																														echo '';
+																																																													else
+																																																														echo $v_Licenta_Tara_Nastere;
+																																																												?>" />
+											<span style="color:red">
+												<?php 
+													if(isset($_POST['Submit'])) {
+														$v_Licenta_Tara_Nastere = $_POST["Licenta_Tara_Nastere"];
+														$vLicenta_Tara_Nastere = validTara($v_Licenta_Tara_Nastere);
+														if($vLicenta_Tara_Nastere==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Tara_Nastere==2)
+																echo "C&#226;mpul conține caractere nepermise!";
+															else
+																if($vLicenta_Tara_Nastere==1)
+																	echo "C&#226;mpul trebuie sa aibe între 4 și 36 caractere!";
+													}
+												?>
+											</span>																																												 
 									</span>
 									<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 										<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Judeţul în care v-aţi născut</label>
 										<select class="form-dropdown form-address-country gen" name="Licenta_Judet_Nastere" >
 											<?php
+												$v_Licenta_Judet_Nastere=$_POST["Licenta_Judet_Nastere"];
 												$array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
 												for($i=0;$i<41;$i++)
 												{
 													echo '<option value="'.$array[$i].'" ';
-													if($v_Judet==$array[$i])
+													if($v_Licenta_Judet_Nastere==$array[$i])
 														echo 'selected';
 													echo '> '.$array[$i].' </option>';
 												}
@@ -664,7 +796,28 @@
             
 									<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 										<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Localitatea în care v-aţi născut </label>
-										<input type="text" name="Licenta_Localitate_Nastere"  class="form-textbox first_1" size="20" placeholder="ex: Iaşi"  data-component="first"  value="" />
+										<input type="text" name="Licenta_Localitate_Nastere"  class="form-textbox first_1" size="20" placeholder="ex: Iaşi"  data-component="first"  value="<?php 
+																																																if($v_Licenta_Localitate_Nastere == '') 
+																																																	echo '';
+																																																else
+																																																	echo $v_Licenta_Localitate_Nastere;
+																																															?>"/>
+										<span style="color:red">
+											<?php 
+												if(isset($_POST['Submit'])) {
+													$v_Licenta_Localitate_Nastere = $_POST["Licenta_Localitate_Nastere"];
+													$vLicenta_Localitate_Nastere = validLocalitate($v_Licenta_Localitate_Nastere);
+													if($vLicenta_Localitate_Nastere==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Localitate_Nastere==2)
+																echo "C&#226;mpul conține caractere nepermise!";
+															else
+																if($vLicenta_Localitate_Nastere==1)
+																	echo "C&#226;mpul trebuie sa aibe între 3 și 85 caractere!";
+												}
+											?>
+										</span>
 									</span>
 									<div id="cid_10" class="form-input jf-required">
 										<div data-wrapper-react="true">
@@ -747,11 +900,11 @@
 											</span>
 											<span class="form-sub-label-container" style="vertical-align:top;">
 												<select style="height:40px;" name="Licenta_Nastere_Zi" id="input_10_day" class="form-dropdown" data-component="birthdate-day">
-													
 													<?php
+														$v_Licenta_Nastere_Zi=$_POST["Licenta_Nastere_Zi"];
 														for($i=1;$i<=31;$i++) {
 															echo '<option value="'.$i.'" ';
-															if($v_Master_nastere_zi==$i)
+															if($v_Licenta_Nastere_Zi==$i)
 																echo 'selected';
 															echo '> '.$i.' </option>';
 														}
@@ -762,9 +915,10 @@
 											<span class="form-sub-label-container" style="vertical-align:top;">
 												<select style="height:40px;" name="Licenta_Nastere_An" id="input_10_year" class="form-dropdown" data-component="birthdate-year">
 													<?php
+														$v_Licenta_Nastere_An=$_POST["Licenta_Nastere_An"];
 														for($i=2017;$i>=1920;$i--) {
 															echo '<option value="'.$i.'" ';
-															if($v_Master_nastere_an==$i)
+															if($v_Licenta_Nastere_An==$i)
 																echo 'selected';
 															echo '> '.$i.' </option>';
 														}
@@ -789,7 +943,25 @@
 									
 									<span class="form-sub-label-container" style="vertical-align:top; width:25%;padding:0;margin:0;">
 										<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Cetăţenia (ţara) </label>
-										<input type="text" name="Licenta_Cetatenie" value="" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;na" data-component="middle"  />
+										<input type="text" name="Licenta_Cetatenie"  class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="obl: Rom&#226;na" data-component="middle" value="<?php 
+																																																												if($v_Licenta_Cetatenie == '') 
+																																																													echo '';
+																																																												else
+																																																													echo $v_Licenta_Cetatenie;
+																																																											?>" />
+										<span style="color:red">
+											<?php 
+												if(isset($_POST['Submit'])) {
+													$v_Licenta_Cetatenie = $_POST["Licenta_Cetatenie"];
+													$vLicenta_Cetatenie = validCetatetnie($v_Licenta_Cetatenie);
+													if($vLicenta_Cetatenie==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Cetatenie==1)
+																echo "C&#226;mp Invalid!";
+												}
+											?>
+										</span>	
 									</span>
             
 									<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
@@ -804,9 +976,12 @@
 											<?php 
 												if(isset($_POST['Submit'])) {
 													$v_Licenta_Etnie = $_POST["Licenta_Etnie"];
-													$vLicenta_Etnie = validNume($v_Licenta_Etnie);
-													if($vLicenta_Etnie==0)
-														echo "C&#226;mp invalid!";
+													$vLicenta_Etnie = validEtnie($v_Licenta_Etnie);
+													if($vLicenta_Etnie==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Etnie==1)
+																echo "Etnie inexistentă!";
 												}
 											?>
 										</span>
@@ -816,17 +991,23 @@
 										<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Limba maternă </label>
 										<input type="text" name="Licenta_Limba_Materna"  class="form-textbox first_1" size="20"  placeholder="ex: Romana" data-component="first" value="<?php 
 																																															if($v_Licenta_Limba_Materna == '') 
-																																															echo '';
+																																																echo '';
 																																															else
-																																															echo $v_Licenta_Limba_Materna;
+																																																echo $v_Licenta_Limba_Materna;
 																																														?>" />
 										<span style="color:red">
 											<?php 
 												if(isset($_POST['Submit'])) {
 													$v_Licenta_Limba_Materna = $_POST["Licenta_Limba_Materna"];
-													$vLicenta_Limba_Materna = validNume($v_Licenta_Limba_Materna);
-													if($vLicenta_Limba_Materna==0)
-														echo "C&#226;mp invalid!";
+													$vLicenta_Limba_Materna = validLimbaMaterna($v_Licenta_Limba_Materna);
+													if($vLicenta_Limba_Materna==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Limba_Materna==1)
+																echo "Între 3 și 20 caractere!";
+															else
+																if($vLicenta_Limba_Materna==2)
+																	echo "C&#226;mp Invalid!";
 												}
 											?>
 										</span>
@@ -840,7 +1021,24 @@
 							<div  class="form-input jf-required cid_1">
 								<div data-wrapper-react="true">
 									<span id="CNP" class="form-sub-label-container" style="vertical-align:top; padding:0; margin:0">
-										<label class="form-sub-label sublabel_first"  style="min-height:13px;"> CNP<span class="info-box">?<span class="info-box__content">Codul Numeric Personal cum se găsește în buletin</span></span> </label>
+										<label class="form-sub-label sublabel_first"  style="min-height:13px;"> CNP <span class="info-box" <?php
+																																				if($vLicenta_CNP>0 ) 
+																																					echo 'style="background-color : red;"';
+																																			?> > 
+																														<?php
+																															if($v_Licenta_CNP!='')
+																																if($vLicenta_CNP!==0) 
+																																	echo "!"; 
+																																else 
+																																	echo "?"; 
+																															else 
+																																echo "?";
+																														?> 
+																														<span class="info-box__content">
+																															Codul Numeric Personal cum se găsește în buletin
+																														</span>
+																													</span> 
+										</label>
 										<input type="text"  name="Licenta_CNP" class="form-textbox first_1" size="20" placeholder="ex: 1960917404400" data-component="first" value="<?php 
 																																														if($v_Licenta_CNP == '') 
 																																															echo '';
@@ -852,8 +1050,18 @@
 												if(isset($_POST['Submit'])) {
 													$v_Licenta_CNP = $_POST["Licenta_CNP"];
 													$vLicenta_CNP = validCNP($v_Licenta_CNP);
-													if($vLicenta_CNP==0)
-													echo "C&#226;mp invalid!";
+													if($vLicenta_CNP==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_CNP==1)
+																echo "Obligatoriu 13 caractere!";
+															else
+																if($vLicenta_CNP==2)
+																	echo "Trebuie început cu 1(M) sau 2(F)!";
+																else
+																	if($vLicenta_CNP==3)
+																		echo "Dată invalidă(*YYMMDD******)";
+																
 												}
 											?>
 										</span>
@@ -889,16 +1097,22 @@
 										<span style="color:red">
 											<?php 
 												if(isset($_POST['Submit'])) {
-													$v_Licenta_Serie_Buletin = $_POST["Licenta_Serie_Buletin"];  // V
+													$v_Licenta_Serie_Buletin = $_POST["Licenta_Serie_Buletin"];
 													$vLicenta_Serie_Buletin = validSerieBuletin($v_Licenta_Serie_Buletin);
-													if($vLicenta_Serie_Buletin==0)
-														echo "C&#226;mp invalid!";
+													if($vLicenta_Serie_Buletin==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Serie_Buletin==1)
+																echo "Caractere nepermise!";
+															else
+																if($vLicenta_Serie_Buletin==2)
+																	echo "Obligatoriu 2 majuscule";
 												}
 											?>
 										</span>
 									</span>
 									<span  class="form-sub-label-container" style="vertical-align:top; width:9%;padding:0;margin:0;">
-										<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Numar Buletin </label>
+										<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Număr Buletin </label>
 										<input type="number"  name="Licenta_Numar_Buletin" class="form-textbox first_1" size="20" placeholder="ex: 123456" data-component="first" value="<?php 
 																																															if($v_Licenta_Numar_Buletin == '') 
 																																																echo '';
@@ -908,10 +1122,16 @@
 											<span style="color:red">
 											<?php 
 												if(isset($_POST['Submit'])) {
-													$v_Licenta_Numar_Buletin = $_POST["Licenta_Numar_Buletin"];  // V
+													$v_Licenta_Numar_Buletin = $_POST["Licenta_Numar_Buletin"];
 													$vLicenta_Numar_Buletin = validNumarBuletin($v_Licenta_Numar_Buletin);
-													if($vLicenta_Numar_Buletin==0)
-													echo "C&#226;mp invalid!";
+													if($vLicenta_Numar_Buletin==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Numar_Buletin==1)
+																echo "Caractere nepermise!";
+															else
+																if($vLicenta_Numar_Buletin==2)
+																	echo "Obligatoriu 6 cifre";
 												}
 											?>
 										</span>
@@ -929,8 +1149,11 @@
 												if(isset($_POST['Submit'])) {
 													$v_Licenta_Buletin_Eliberat_De = $_POST["Licenta_Buletin_Eliberat_De"];  // V
 													$vLicenta_Buletin_Eliberat_De = validEliberareBuletin($v_Licenta_Buletin_Eliberat_De);
-													if($vLicenta_Buletin_Eliberat_De==0)
-													echo "C&#226;mp invalid!";
+													if($vLicenta_Buletin_Eliberat_De==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Buletin_Eliberat_De==1)
+																echo "Caractere nepermise!";
 												}
 											?>
 										</span>
@@ -941,73 +1164,73 @@
 												<label class="form-sub-label"  style="min-height:13px;">Data Eliberare</label>
 												<select style="height:40px;" name="Licenta_Buletin_Luna"  class="form-dropdown" data-component="birthdate-month">
 													<option value="January" <?php
-																				if($v_Master_luna=="January")
+																				if($v_Licenta_Buletin_Luna_Eliberarii=="January")
 																				  echo 'selected';
 																				else
 																				  echo '';
 																			  ?>>Ianuarie</option>
 													<option value="February" <?php
-																  if($v_Master_luna=="February")
+																  if($v_Licenta_Buletin_Luna_Eliberarii=="February")
 																	echo 'selected';
 																  else
 																	echo '';
 																?>> Februarie</option>    
 													<option value="March" <?php   
-																  if($v_Master_luna=="March")   
+																  if($v_Licenta_Buletin_Luna_Eliberarii=="March")   
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Martie </option>    
 													<option value="April" <?php   
-																  if($v_Master_luna=="April")   
+																  if($v_Licenta_Buletin_Luna_Eliberarii=="April")   
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Aprilie </option>   
 													<option value="May"<?php    
-																  if($v_Master_luna=="May")   
+																  if($v_Licenta_Buletin_Luna_Eliberarii=="May")   
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Mai </option>   
 													<option value="June"<?php   
-																  if($v_Master_luna=="June")    
+																  if($v_Licenta_Buletin_Luna_Eliberarii=="June")    
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Iunie </option>   
 													<option value="July"<?php   
-																  if($v_Master_luna=="July")    
+																  if($v_Licenta_Buletin_Luna_Eliberarii=="July")    
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Iulie</option>    
 													<option value="August"<?php   
-																  if($v_Master_luna=="August")    
+																  if($v_Licenta_Buletin_Luna_Eliberarii=="August")    
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> August </option>    
 													<option value="September"<?php    
-																  if($v_Master_luna=="September")   
+																  if($v_Licenta_Buletin_Luna_Eliberarii=="September")   
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Septembrie </option>    
 													<option value="October"<?php    
-																  if($v_Master_luna=="October")   
+																  if($v_Licenta_Buletin_Luna_Eliberarii=="October")   
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Octombrie </option>   
 													<option value="November"<?php   
-																  if($v_Master_luna=="November")    
+																  if($v_Licenta_Buletin_Luna_Eliberarii=="November")    
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Noiembrie</option>    
 													<option value="December"<?php   
-																  if($v_Master_luna=="December")    
+																  if($v_Licenta_Buletin_Luna_Eliberarii=="December")    
 																	echo 'selected';    
 																  else    
 																	echo '';    
@@ -1017,9 +1240,10 @@
 											<span class="form-sub-label-container" style="vertical-align:bottom;">
 												<select style="height:40px;" name="Licenta_Buletin_Ziua"  class="form-dropdown" data-component="birthdate-day">
 													<?php
+														$v_Licenta_Buletin_Ziua=$_POST["Licenta_Buletin_Ziua"];
 														for($i=1;$i<=31;$i++) {
 															echo '<option value="'.$i.'" ';
-															if($v_Master_zi==$i)
+															if($v_Licenta_Buletin_Ziua==$i)
 																echo 'selected';
 															echo '> '.$i.' </option>';
 														}
@@ -1029,9 +1253,10 @@
 											<span class="form-sub-label-container" style="vertical-align:bottom;">
 												<select style="height:40px;" name="Licenta_Buletin_An"  class="form-dropdown" data-component="birthdate-year">
 													<?php
+														$v_Licenta_Buletin_An=$_POST["Licenta_Buletin_An"];
 														for($i=2017;$i>=1920;$i--) {
 															echo '<option value="'.$i.'" ';
-															if($v_Master_an==$i)
+															if($v_Licenta_Buletin_An==$i)
 																echo 'selected';
 															echo '> '.$i.' </option>';
 														}
@@ -1046,73 +1271,73 @@
 												<label class="form-sub-label"  style="min-height:13px;">Data Expirare</label>
 												<select style="height:40px;" name="Master_Buletin_Luna"  class="form-dropdown" data-component="birthdate-month">
 													<option value="January" <?php
-																if($v_Master_luna=="January")
+																if($v_Master_Buletin_Luna_Expirare=="January")
 																  echo 'selected';
 																else
 																  echo '';
 															  ?>>Ianuarie</option>
 													<option value="February" <?php
-																  if($v_Master_luna=="February")
+																  if($v_Master_Buletin_Luna_Expirare=="February")
 																	echo 'selected';
 																  else
 																	echo '';
 																?>> Februarie</option>    
 													<option value="March" <?php   
-																  if($v_Master_luna=="March")   
+																  if($v_Master_Buletin_Luna_Expirare=="March")   
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Martie </option>    
 													<option value="April" <?php   
-																  if($v_Master_luna=="April")   
+																  if($v_Master_Buletin_Luna_Expirare=="April")   
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Aprilie </option>   
 													<option value="May"<?php    
-																  if($v_Master_luna=="May")   
+																  if($v_Master_Buletin_Luna_Expirare=="May")   
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Mai </option>   
 													<option value="June"<?php   
-																  if($v_Master_luna=="June")    
+																  if($v_Master_Buletin_Luna_Expirare=="June")    
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Iunie </option>   
 													<option value="July"<?php   
-																  if($v_Master_luna=="July")    
+																  if($v_Master_Buletin_Luna_Expirare=="July")    
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Iulie</option>    
 													<option value="August"<?php   
-																  if($v_Master_luna=="August")    
+																  if($v_Master_Buletin_Luna_Expirare=="August")    
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> August </option>    
 													<option value="September"<?php    
-																  if($v_Master_luna=="September")   
+																  if($v_Master_Buletin_Luna_Expirare=="September")   
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Septembrie </option>    
 													<option value="October"<?php    
-																  if($v_Master_luna=="October")   
+																  if($v_Master_Buletin_Luna_Expirare=="October")   
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Octombrie </option>   
 													<option value="November"<?php   
-																  if($v_Master_luna=="November")    
+																  if($v_Master_Buletin_Luna_Expirare=="November")    
 																	echo 'selected';    
 																  else    
 																	echo '';    
 																?>> Noiembrie</option>    
 													<option value="December"<?php   
-																  if($v_Master_luna=="December")    
+																  if($v_Master_Buletin_Luna_Expirare=="December")    
 																	echo 'selected';    
 																  else    
 																	echo '';    
@@ -1122,9 +1347,10 @@
 											<span class="form-sub-label-container" style="vertical-align:bottom;">
 												<select style="height:40px;" name="Master_Buletin_Ziua"  class="form-dropdown" data-component="birthdate-day">
 													<?php
+														$v_Master_Buletin_Ziua=$_POST["Master_Buletin_Ziua"];
 														for($i=1;$i<=31;$i++) {
 															echo '<option value="'.$i.'" ';
-															if($v_Master_zi==$i)
+															if($v_Master_Buletin_Ziua==$i)
 																echo 'selected';
 															echo '> '.$i.' </option>';
 														}
@@ -1134,9 +1360,10 @@
 											<span class="form-sub-label-container" style="vertical-align:bottom;">
 												<select style="height:40px;" name="Master_Buletin_An"  class="form-dropdown" data-component="birthdate-year">
 													<?php
+														$v_Master_Buletin_An=$_POST["Master_Buletin_An"];
 														for($i=2017;$i>=1920;$i--) {
 															echo '<option value="'.$i.'" ';
-															if($v_Master_an==$i)
+															if($v_Master_Buletin_An==$i)
 																echo 'selected';
 															echo '> '.$i.' </option>';
 														}
@@ -7379,6 +7606,15 @@
 								</div>
 								<br>
 							</div>
+							<span style="color:red">
+									<?php 
+										if(isset($_POST['Submit'])) {
+											$v_Liceul_Absolvit = $_POST["Master_Liceu"];
+											if($v_Liceul_Absolvit=='')
+												echo "C&#226;mp necompletat!";
+										}
+									?>
+								</span>
 							<div class="form-textboxinput jf-required cid_1">
 								<br>
 							
@@ -7388,16 +7624,38 @@
 											<td>
 												<span class="form-sub-label-container" style="vertical-align:top; width:33%; display:inline-block" >
 													<label class="form-sub-label" style="min-height:13px;"> Localitatea </label>
-													<input type="text"  name="Licenta_Localitate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: Ia&#351;i" data-component="city" />
+													<input type="text"  name="Licenta_Localitate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: Ia&#351;i" data-component="city" value="<?php 
+																																																						if($v_Licenta_Localitate == '') 
+																																																							echo '';
+																																																						else
+																																																							echo $v_Licenta_Localitate;
+																																																					?>" />
+													<span style="color:red">
+														<?php 
+															if(isset($_POST['Submit'])) {
+																$v_Licenta_Localitate = $_POST["Licenta_Localitate"];
+																$vLicenta_Localitate = validLocalitate($v_Licenta_Localitate);
+																if($vLicenta_Localitate==-1)
+																	echo "C&#226;mp necompletat!";
+																else
+																	if($vLicenta_Localitate==2)
+																		echo "C&#226;mpul conține caractere nepermise!";
+																	else
+																		if($vLicenta_Localitate==1)
+																			echo "C&#226;mpul trebuie sa aibe între 3 și 85 caractere!";
+															}
+														?>
+													</span>
 												</span>
 												<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 													<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Jude&#355; </label>
 														<select class="form-dropdown form-address-country gen" name="Licenta_Judet"  data-component="country">
 															<?php
+															$v_Licenta_Judet=$_POST["Licenta_Judet"];
 															$array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
 															for($i=0;$i<41;$i++) {
 																echo '<option value="'.$array[$i].'" ';
-																if($v_Judet==$array[$i])
+																if($v_Licenta_Judet==$array[$i])
 																	echo 'selected';
 																echo '> '.$array[$i].' </option>';
 															}
@@ -7408,9 +7666,24 @@
 												<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 													<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">&#354;ar&#259; </label>
 													<select class="form-dropdown form-address-country gen" name="Licenta_Tara" data-component="country">
-														<option value="Romania"> Rom&#226;nia </option>
-														<option value="Republica Moldova"> Republica Moldova </option>
-														<option value="Alta Optiune"> Alta op&#355;iune</option>
+														<option value="Romania" <?php
+																					if($v_Licenta_Tara=="Romania")
+																						echo 'selected';
+																					else
+																						echo '';
+																				?> > Rom&#226;nia </option>
+														<option value="Republica Moldova"  <?php
+																								if($v_Licenta_Tara=="Republica Moldova")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?> > Republica Moldova </option>
+														<option  value="Alta Optiune"   <?php
+																							if($v_Licenta_Tara=="Alta Optiune")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?> > Alta op&#355;iune</option>
 													</select>
 												</span>
 											</td>
@@ -7610,7 +7883,6 @@
           :nationalitate,
           :etnie,
           :limba_materna,
-          :stare_civila,
           :serie_CL,
           :numar_CL,
           :eliberat_de,
@@ -7642,7 +7914,6 @@
             oci_bind_by_name($statement, ':nationalitate', $_POST['Licenta_Nationalitate']);
             oci_bind_by_name($statement, ':etnie', $_POST['Licenta_Etnie']);
             oci_bind_by_name($statement, ':limba_materna', $_POST['Licenta_Limba_Materna']);
-            oci_bind_by_name($statement, ':stare_civila', $_POST['Licenta_Stare_Civila']);
             oci_bind_by_name($statement, ':serie_CL', $_POST['Licenta_Serie_Buletin']);
             oci_bind_by_name($statement, ':numar_CL', $_POST['Licenta_Numar_Buletin']);
             oci_bind_by_name($statement, ':eliberat_de', $_POST['Licenta_Buletin_Eliberat_De']);
