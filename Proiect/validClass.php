@@ -1300,17 +1300,14 @@ function validareNumar($p_numar)
 //fct buna
     function validareEtaj($p_etaj)
     {
-        if(!$p_etaj)
-            return -1;
-        
-		 if($p_etaj=='-')
-            return 0;
-		
-        if($p_etaj=='p')
+		 if($p_etaj=="-")
             return 0;
 		
         if($p_etaj == "Parter" || $p_etaj == "parter" || $p_etaj == "PARTER" || $p_etaj == "p" || $p_etaj == "P" || $p_etaj == "D" || $p_etaj == "d" || $p_etaj == "Demisol" || $p_etaj == "DEMISOL" || $p_etaj == "darter")
             return 0;
+		
+        if(!$p_etaj)
+            return -1;
 		
 		if(!ctype_alnum($p_etaj))
             return 1; //caractere interzise
@@ -1926,13 +1923,13 @@ function validareLiceu($p_liceu){
 	
 //fct buna
 function validareNrSemCuBursa($nrSem){
+	if($nrSem >=0 && $nrSem <= 16)
+		return 0; //corect
+	
 	if(!$nRSem)
 		return -1;
-    if(!ctype_digit($nrSem))
-        return 1; // caractere interzise
-    else if($nrSem <1 || $nrSem > 16)
-        return 2; //numar incorect
-    return 0;//corect
+	
+	return 1;//prea multe semestre
 }
 
 //fct buna
