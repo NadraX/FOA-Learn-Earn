@@ -486,7 +486,7 @@
 													if(isset($_POST['Submit'])) {   
 														$v_Suma_Taxa = $_POST["Licenta_Suma_Taxa"];   
 														$vsuma = validSuma($v_Suma_Taxa);   
-														if($v_Suma_Taxa=='')
+														if($vsuma==-1)
 																echo "C&#226;mp necompletat!";
 															else
 															if($vsuma==1)
@@ -1079,8 +1079,8 @@
 												if(isset($_POST['Submit'])) { 
 													$v_Licenta_Tip_Buletin = $_POST["Licenta_Tip_Buletin"];  // V
 													$vLicenta_Tip_Buletin = validTipBuletin($v_Licenta_Tip_Buletin);
-													if($vLicenta_Tip_Buletin==0)
-													echo "C&#226;mp invalid!";
+													if($vLicenta_Tip_Buletin!==0)
+														echo "C&#226;mp invalid!";
 												}
 											?>
 										</span>
@@ -1154,6 +1154,9 @@
 														else
 															if($vLicenta_Buletin_Eliberat_De==1)
 																echo "Caractere nepermise!";
+															else
+																if($vLicenta_Buletin_Eliberat_De==2)
+																echo "Minim 3 caractere!";
 												}
 											?>
 										</span>
