@@ -8559,34 +8559,34 @@
 	                        <td>
 	                          <span class="form-sub-label-container" style="vertical-align:top; width:25%; display:inline-block" >
 	                            <label class="form-sub-label" style="min-height:13px;"> Seria diplomei de Bacalaureat </label>
-	                            <input type="text"  name="Master_Serie_DiplomaBAC" class="form-textbox form-address-city first_1" size="21" placeholder="ex: Mate - Info" data-component="city" value="<?php 
-																																										if($v_Master_Serie_DiplomaBAC == '') 
-																																											echo '';
-																																										else
-																																											echo $v_Master_Serie_DiplomaBAC;
-																																									?>" data-component="city" />
-							<span style="color:red">
-								<?php 
-									if(isset($_POST['Submit'])) {
-										$v_Master_Serie_DiplomaBAC = $_POST["Master_Serie_DiplomaBAC"];
-										$vMaster_Serie_DiplomaBAC = validSerieBAC($v_Master_Serie_DiplomaBAC);
-										if($v_Master_Serie_DiplomaBAC=='')
-											echo "C&#226;mp necompletat!";
-										else
-											if($vMaster_Serie_DiplomaBAC!==0)
-												echo "C&#226;mp invalid!";
-									}
-								?>
-							</span>
+	                            <input type="text"  name="Master_Serie_DiplomaBAC" class="form-textbox form-address-city first_1" size="21" placeholder="ex: A" data-component="city" value="<?php 
+																																																			if($v_Master_Serie_DiplomaBAC == '') 
+																																																				echo '';
+																																																			else
+																																																				echo $v_Master_Serie_DiplomaBAC;
+																																																		?>" data-component="city" />
+								<span style="color:red">
+									<?php 
+										if(isset($_POST['Submit'])) {
+											$v_Master_Serie_DiplomaBAC = $_POST["Master_Serie_DiplomaBAC"];
+											$vMaster_Serie_DiplomaBAC = validSerieBAC($v_Master_Serie_DiplomaBAC);
+											if($v_Master_Serie_DiplomaBAC=='')
+												echo "C&#226;mp necompletat!";
+											else
+												if($vMaster_Serie_DiplomaBAC!==0)
+													echo "C&#226;mp invalid!";
+										}
+									?>
+								</span>
 	                          </span>
 	                          <span class="form-sub-label-container" style="vertical-align:top; width:14%">
 	                            <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Numarul dimplomei </label>
-	                            <input type="number"  name="Master_Nr_DiplomaBAC" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php 
+	                            <input type="number"  name="Master_Nr_DiplomaBAC" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2742987" data-component="city" value="<?php 
 																																										if($v_Master_Nr_DiplomaBAC == '') 
 																																											echo '';
 																																										else
 																																											echo $v_Master_Nr_DiplomaBAC;
-																																									?>" placeholder="ex: 2742987" data-component="city" />
+																																									?>"  data-component="city" />
 							<span style="color:red">
 								<?php 
 									if(isset($_POST['Submit'])) {
@@ -9298,27 +9298,28 @@
 																																										else
 																																											echo $v_Master_Serie_DiplomaMaster;
 																																									?>" data-component="city" />
-							<span style="color:red">
-								<?php 
-									if(isset($_POST['Submit'])) {
-										$v_Master_Serie_DiplomaMaster = $_POST["Master_Serie_DiplomaMaster"];
-										$vMaster_Serie_DiplomaMaster = validSerieBAC($v_Master_Serie_DiplomaMaster);
-										if($v_Master_Serie_DiplomaMaster=='')
-											echo "C&#226;mp necompletat!";
-										else
-											if($vMaster_Serie_DiplomaMaster!==0)
-												echo "C&#226;mp invalid!";
-									}
-								?>
-	                                </span>
+										<span style="color:red">
+											<?php 
+												if(isset($_POST['Submit'])) {
+													$v_Master_Serie_DiplomaMaster = $_POST["Master_Serie_DiplomaMaster"];
+													$vMaster_Serie_DiplomaMaster = validSerieBAC($v_Master_Serie_DiplomaMaster);
+													if($v_Master_Serie_DiplomaMaster=='')
+														echo "C&#226;mp necompletat!";
+													else
+														if($vMaster_Serie_DiplomaMaster!==0)
+															echo "C&#226;mp invalid!";
+												}
+											?>
+										</span>
+									</span>
 	                                <span class="form-sub-label-container" style="vertical-align:top; width:14%">
 	                                  <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Numarul dimplomei </label>
-	                                  <input type="number"  name="Master_Nr_DiplomaMaster" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php 
+	                                  <input type="number"  name="Master_Nr_DiplomaMaster" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2742987" data-component="city" value="<?php 
 																																										if($v_Master_Nr_DiplomaMaster == '') 
 																																											echo '';
 																																										else
 																																											echo $v_Master_Nr_DiplomaMaster;
-																																									?>" placeholder="ex: 2742987" data-component="city" />
+																																									?>"  data-component="city" />
 							<span style="color:red">
 								<?php 
 									if(isset($_POST['Submit'])) {
@@ -9337,12 +9338,12 @@
 	                                </span>
 	                                <span class="form-sub-label-container" style="vertical-align:top; width:22%">
 	                                  <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Emisă de </label>
-	                                  <input type="text"  name="Master_Emitere_DiplomaMaster" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php 
-																																										if($v_Master_Emitere_DiplomaMaster == '') 
-																																											echo '';
-																																										else
-																																											echo $v_Master_Emitere_DiplomaMaster;
-																																									?>" placeholder="ex: " data-component="city" />
+	                                  <input type="text"  name="Master_Emitere_DiplomaMaster" class="form-textbox form-address-city first_1" size="21" placeholder="ex: ISJ Iasi" data-component="city" value="<?php 
+																																																			if($v_Master_Emitere_DiplomaMaster == '') 
+																																																				echo '';
+																																																			else
+																																																				echo $v_Master_Emitere_DiplomaMaster;
+																																																		?>"  data-component="city" />
 							<span style="color:red">
 								<?php 
 									if(isset($_POST['Submit'])) {
