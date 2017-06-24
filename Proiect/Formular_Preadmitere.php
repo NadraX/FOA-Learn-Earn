@@ -244,8 +244,8 @@
             left: calc(100% + 5px);
             bottom: 100%;
             padding: 10px;
-            background-color: #2d80bf;
-            color: white;
+            background-color: #F0F8FF;
+            color: black;
             font-size: 12px;
             border-radius: 5px;
         }
@@ -523,6 +523,7 @@
 																																				?> 
 																																				<span class="info-box__content">
 																																					Numele de familie din certificatul de naştere
+																																					<?php if($vNumele_De_Familie_La_Nastere>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																																				</span>
 																																			</span>
 										</label>
@@ -566,6 +567,7 @@
 																																				<span class="info-box__content">
 																																				Numele dupa căsătorie, înfiere, 
 																																				modificare la cerere conform actului doveditor daca este cazul
+																																				<?php if($vNumele_De_Familie>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																																			</span>
 																																		</span> 
 										</label> 
@@ -597,7 +599,7 @@
 									<span id="initiala" class="form-sub-label-container" style="vertical-align:top;">
 										<label class="form-sub-label"  style="min-height:13px;"> Ini&#355;iala (ele) tat&#259;lui/mamei </label>
 
-										<input type="text" name="Licenta_Initiala_Tata" class="form-textbox middle_1" size="10" placeholder="ex: C/C./C.D./C.-D."  data-component="first"  value="<?php 
+										<input type="text" name="Licenta_Initiala_Tata" class="form-textbox middle_1" size="10" placeholder="ex: C./C.D."  data-component="first"  value="<?php 
 																																																if($v_Licenta_Initiala_Tata == '') 
 																																																	echo '';
 																																																else
@@ -612,7 +614,7 @@
 															echo "C&#226;mp necompletat!";
 														else
 															if($vLicenta_Initiala_Tata==1)
-																echo "Între 1 si 6 caractere!";
+																echo "Între 2 si 16 caractere!";
 															else
 																if($vLicenta_Initiala_Tata==2)
 																	echo "Caractere nepermise!";
@@ -667,9 +669,9 @@
 												if(isset($_POST['Submit'])) {
 													$v_Licenta_Prenume_Mama = $_POST["Licenta_Prenume_Mama"];
 													$vLicenta_PrenumeMama = validPremume($v_Licenta_Prenume_Mama);
-													if($vLicenta_PrenumeMama==-1)
-															echo "C&#226;mp necompletat!";
-														else
+													//if($vLicenta_PrenumeMama==-1)
+													//		echo "C&#226;mp necompletat!";
+													//	else
 															if($vLicenta_PrenumeMama==1)
 																echo "C&#226;mpul conține caractere nepermise!";
 															else
@@ -692,9 +694,9 @@
 												if(isset($_POST['Submit'])) {
 													$v_Licenta_Prenume_Tata = $_POST["Licenta_Prenume_Tata"];
 													$vLicenta_PrenumeTata = validPremume($v_Licenta_Prenume_Tata);
-													if($vLicenta_PrenumeTata==-1)
-															echo "C&#226;mp necompletat!";
-														else
+													//if($vLicenta_PrenumeTata==-1)
+													//		echo "C&#226;mp necompletat!";
+													//	else
 															if($vLicenta_PrenumeTata==1)
 																echo "C&#226;mpul conține caractere nepermise!";
 															else
@@ -1036,6 +1038,7 @@
 																														?> 
 																														<span class="info-box__content">
 																															Codul Numeric Personal cum se găsește în buletin
+																															<?php if($vLicenta_CNP>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																														</span>
 																													</span> 
 										</label>
@@ -1076,12 +1079,12 @@
 																																											  ?>"/ readonly>
 										<span style="color:red">
 											<?php
-												if(isset($_POST['Submit'])) { 
+												/*if(isset($_POST['Submit'])) { 
 													$v_Licenta_Tip_Buletin = $_POST["Licenta_Tip_Buletin"];  // V
 													$vLicenta_Tip_Buletin = validTipBuletin($v_Licenta_Tip_Buletin);
 													if($vLicenta_Tip_Buletin!==0)
 														echo "C&#226;mp invalid!";
-												}
+												}*/
 											?>
 										</span>
 									</span>

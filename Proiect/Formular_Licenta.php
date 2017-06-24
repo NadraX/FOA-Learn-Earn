@@ -661,8 +661,7 @@
                       <tr>
                         <td>
                           <br>
-                          <label class="form-label form-label-left form-label-auto" 
-                          style="color: gray; font-size:medium; width:45%; display:inline-block"> Sunteţi scutit de această taxă?  </label>     
+                          <label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Sunteţi scutit de această taxă?  </label>     
                    
                           <span style="width:40%">
                             <input type="radio" name="group1" id="checkbox11" class="css-checkbox" value="1" <?php
@@ -715,6 +714,7 @@
 																																		?> 
 																																		<span class="info-box__content">
 																																			Sunteți scutit de taxa de admitere în cazuri precum "copil de cadru de didactic"
+																																			<?php if($vscutire>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																																		</span>
 																																	</span>
 																											</label>
@@ -779,7 +779,7 @@
 																																		echo "?";
 																																?> 
 																																<span class="info-box__content">
-																																	Numele de familie din certificatul de naştere.<?php if($vNumele_De_Familie_La_Nastere>0) echo "<a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
+																																	Numele de familie din certificatul de naştere.<?php if($vNumele_De_Familie_La_Nastere>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																																</span>
 																															</span>
 					</label>
@@ -822,7 +822,8 @@
 																																		echo "?";
 																																?> 
 																																<span class="info-box__content">
-																																Numele dupa căsătorie, înfiere, modificare la cerere conform actului doveditor daca este cazul.<?php if($vNumele_De_Familie_Actual>0) echo "<a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
+																																Numele dupa căsătorie, înfiere, modificare la cerere conform actului doveditor daca este cazul.
+																																<?php if($vNumele_De_Familie_Actual>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																																</span>
 																															</span>
                       </label> 
@@ -854,7 +855,7 @@
 										<span id="initiala" class="form-sub-label-container" style="vertical-align:top;">
                       <label class="form-sub-label"  style="min-height:13px;"> Ini&#355;iala (ele) tat&#259;lui/mamei </label>
 
-											<input type="text" name="Licenta_Initiala_Tata" class="form-textbox middle_1" size="10" placeholder="ex: C/C./C.D." data-component="first" value="<?php 
+											<input type="text" name="Licenta_Initiala_Tata" class="form-textbox middle_1" size="10" placeholder="ex: C./C.D." data-component="first" value="<?php 
 																																											if($v_Licenta_Initiala_Tata == '') 
 																																												echo '';
 																																											else
@@ -869,7 +870,7 @@
 															echo "C&#226;mp necompletat!";
 														else
 															if($vLicenta_Initiala_Tata==1)
-																echo "Între 1 si 6 caractere!";
+																echo "Între 2 si 16 caractere!";
 															else
 																if($vLicenta_Initiala_Tata==2)
 																	echo "Caractere nepermise!";
@@ -926,9 +927,9 @@
                                                         
 														$vLicenta_PrenumeMama = validPremume($v_Licenta_Prenume_Mama);
 														
-														if($vLicenta_PrenumeMama==-1)
-															echo "C&#226;mp necompletat!";
-														else
+														//if($vLicenta_PrenumeMama==-1)
+														//	echo "C&#226;mp necompletat!";
+														//else
 															if($vLicenta_PrenumeMama==1)
 																echo "C&#226;mpul conține caractere nepermise!";
 															else
@@ -952,9 +953,9 @@
 														$v_Licenta_Prenume_Tata = $_POST["Licenta_Prenume_Tata"];
                                                        
 														$vLicenta_PrenumeTata = validPremume($v_Licenta_Prenume_Tata);
-														if($vLicenta_PrenumeTata==-1)
-															echo "C&#226;mp necompletat!";
-														else
+														//if($vLicenta_PrenumeTata==-1)
+														//	echo "C&#226;mp necompletat!";
+														//else
 															if($vLicenta_PrenumeTata==1)
 																echo "C&#226;mpul conține caractere nepermise!";
 															else
@@ -2137,7 +2138,8 @@
                         <td>
                           <br>
                           <span class="form-sub-label-container" style="vertical-align:top; width:30%">
-                          <select class="form-dropdown form-address-country gen" name="Licenta_Stare_speciala"  data-component="country">
+                           <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Stare socială specială </label>
+						  <select class="form-dropdown form-address-country gen" name="Licenta_Stare_speciala"  data-component="country">
                             <option value="1"<?php
                                           if($v_Stare_Speciala=="1")
                                             echo 'selected';
@@ -2174,9 +2176,8 @@
                                           else    
                                             echo '';    
                                         ?>>Provenit din familie monoparentală</option>    
-                                  </select>
                           </select>
-                          <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Stare socială specială </label>
+                         
                         </span>
 						
 						<!--  -- in <td>
@@ -9094,15 +9095,18 @@
                           <label for="nuAltaFacultate" class="css-label">Nu</label>
                       </span>
 					  <span style="color:red">
-								<?php
-									  if(isset($_POST['Submit'])) {
-										$v_Radio25 = $_POST["group25"];
-										$vradio25 = validRadio($v_Radio25);
-										if($vradio25!==1 && $vradio25!==2)
-											echo "Nu ați ales o opțiune!";
-										
-									  }
-								?>
+							<?php
+								if(isset($_POST['Submit'])) {
+									$v_Radio25 = $_POST["group25"];
+									$vradio25 = validRadio($v_Radio25);
+									if($vradio25!==1 && $vradio25!==2)
+										echo "Nu ați ales o opțiune!";
+									//else
+									//	if($vradio25==1)
+									//		if($vLicenta_AltaUniversitate!==0 || $vLicenta_AltaFacultate!==0 || $vLicenta_Domeniu_Licenta!==0 || $vLicenta_Specializare!==0 || $vLicenta_An_Facultate!==0 || $vLicenta_Semestre_Finantate!==0 || $vLicenta_Semestre_Bursa!==0 || $vLicenta_Localitate_AltaFacultate!==0)
+									//			echo "Erori în completarea câmpurilor aferente opțiunii alese!";
+								}
+							?>
 							</span>
 
                 </div>
@@ -10131,9 +10135,9 @@
 										<?php
 											if($vradio23==1){
 												$v_Licenta_AbsolventLicenta_Nr_ActRecunoastere=$_POST["Licenta_AbsolventLicenta_Nr_ActRecunoastere"];
-												if($v_Licenta_AbsolventLicenta_Nr_ActRecunoastere=='')
-														echo "C&#226;mp necompletat!";
-													else
+												//if($v_Licenta_AbsolventLicenta_Nr_ActRecunoastere=='')
+												//		echo "C&#226;mp necompletat!";
+												//	else
 														if(!ctype_digit($v_Licenta_AbsolventLicenta_Nr_ActRecunoastere))
 															echo "Caractere nepermise!";
 											}
@@ -10153,9 +10157,9 @@
 											if($vradio23==1){
 												$v_Licenta_AbsolventLicenta_Serie_ActRecunoasteree=$_POST["Licenta_AbsolventLicenta_Serie_ActRecunoastere"];
 												$vLicenta_AbsolventLicenta_Serie_ActRecunoasteree=validSerieBAC($v_Licenta_AbsolventLicenta_Serie_ActRecunoasteree);
-												if($vLicenta_AbsolventLicenta_Serie_ActRecunoasteree==-1)
-													echo "C&#226;mp necompletat!";
-												else
+												//if($vLicenta_AbsolventLicenta_Serie_ActRecunoasteree==-1)
+												//	echo "C&#226;mp necompletat!";
+												//else
 													if($vLicenta_AbsolventLicenta_Serie_ActRecunoasteree==1)
 														echo "Caractere nepermise";
 											}
@@ -10778,7 +10782,7 @@
 
                     <label for="Diploma_Olimpiada_Original" class="css-label">Diploma de Olimpiadă în original</label></li>
  
-                  <li><input type="radio" name="Diploma_Olimpiada" class="css-checkbox" value="2" id="Diploma_Olimpiada_Scanata" <?php
+              <!--    <li><input type="radio" name="Diploma_Olimpiada" class="css-checkbox" value="2" id="Diploma_Olimpiada_Scanata" <?php
 																																		if($v_Diploma_Olimpiada == '')
 																																			echo '';
 																																		else
@@ -10790,7 +10794,7 @@
  
                     <label for="Diploma_Olimpiada_Scanata" class="css-label">Diploma de Olimpiadă (Scanată) <span class="info-box">?<span class="info-box__content">În acest caz diploma în original va trebui prezentată ulterior comisiei de admitere
  
-                    </span></span> </label></li>
+                    </span></span> </label></li> -->
  
                 </ul>
                 <div  class="form-input jf-required cid_1" style:"display:inline-block">
@@ -10850,7 +10854,7 @@
 										if(isset($_POST['Submit'])) {
 											if($vradio27==1){
 												$v_Licenta_AlteConcursuri_Univ1 = $_POST["Licenta_AlteConcursuri_Univ1"];
-												$vLicenta_AlteConcursuri_Univ1 = validScutire($v_Licenta_AlteConcursuri_Univ1);		
+												$vLicenta_AlteConcursuri_Univ1 = validNume($v_Licenta_AlteConcursuri_Univ1);		
 												if(strlen($v_Licenta_AlteConcursuri_Univ1)==0) {
 														echo "C&#226;mp necompletat!";
 													}

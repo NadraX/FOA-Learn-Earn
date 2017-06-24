@@ -773,88 +773,276 @@ function validEtnie($p_etnie)
 } */
 
 //fct buna
-function validInitialaTata($p_initTata)
+	function validInitialaTata($p_initTata)
     {
         if(!$p_initTata)
             return -1;
-        if(strlen($p_initTata) > 6 || strlen($p_initTata) < 1)
+        if(strlen($p_initTata) > 14 || strlen($p_initTata) < 2)
             return 1; // lungime incorecta
 
-        $lung=strlen($p_initTata);
+		$lung=strlen($p_initTata);
+
+		if($lung%2==1)
+            return 3;//Format incorect
 
         $initialaTata=str_split($p_initTata);
 
-        if($lung==1)  // C (Costel)
+        if($lung==2)  // C. (Costel)
         {
             if(!preg_match('/^[A-Z]$/', $initialaTata[0]))
-                return 2;//caractere incorecte
-            else
-                return 0;
-        }
-        else
-        {
-            if($lung==2)  // C. (Costel) sau CI (Costel Ion)
-            {
-                if(!preg_match('/^[A-Z]$/', $initialaTata[0]))
-                    return 2;//caract incorecte
-                else if(!preg_match('/^[.A-Z]$/', $initialaTata[1]))
-                         return 2;//caractere incorecte
-                     else return 0;
+                return 2;//caract incorecte
+            else 
+				if( $initialaTata[1]!='.')
+                    return 3;//caractere incorecte
+                else
+					return 0;
             }
             else
-            {
-                if($lung==3)
-                    return 3;//lungime incorecta
-                else
-                {
-                    if($lung==4)  // C.I.(Costel Ion)
-                    {
+				if($lung==4)  // C.I.(Costel Ion)
+				{
                         if(!preg_match('/^[A-Z]$/', $initialaTata[0]))
                             return 2;//caractere incorecte
-                        else if($initialaTata[1]!='.')
-                                return 2;//caractere incorecte
-                             else if(!preg_match('/^[A-Z]$/', $initialaTata[2]))
+                        else 
+							if($initialaTata[1]!='.')
+                                return 3;//caractere incorecte
+                             else 
+								 if(!preg_match('/^[A-Z]$/', $initialaTata[2]))
                                       return 2;//caractere incorecte
-                                  else if($initialaTata[3]!='.')
-                                           return 2;//caractere incorecte
-                                       else return 0;
-                    }
-                    else // lungime 5  C.-I. (Costel-Ion)
-                      if($lung==5){
-                        if(!preg_match('/^[A-Z]$/', $initialaTata[0]))
-                            return 2;
-                        else if($initialaTata[1]!='.')
-                                return 2;
-                             else if($initialaTata[2]!='-')
-                                      return 2;
-                                  else if(!preg_match('/^[A-Z]$/', $initialaTata[3]))
-                                           return 2;
-                                       else if($initialaTata[4]!='.')
-                                                return 2;
-                                            else return 0;
-                        }
-    
-                    else
-                    
-                      if($lung==6){
-                        if(!preg_match('/^[A-Z]$/', $initialaTata[0]))
-                            return 2;
-                         else if($initialaTata[1]!='.')
-                                return 2;
-                         else if(!preg_match('/^[A-Z]$/', $initialaTata[2]))
-                                return 2;
-                         else if($initialaTata[3]!='.')
-                                return 2;
-                         else if(!preg_match('/^[A-Z]$/', $initialaTata[4]))
-                                return 2;
-                         else if($initialaTata[5]!='.')
-                                return 2;
-                        else return 0;
-                      }
-                    
+                                  else 
+									  if($initialaTata[3]!='.')
+                                           return 3;//caractere incorecte
+                                       else
+										   return 0;
                 }
-            }
-        }
+                else
+                    if($lung==6) 
+					{
+						if(!preg_match('/^[A-Z]$/', $initialaTata[0]))
+                            return 2;
+                         else 
+							 if($initialaTata[1]!='.')
+                                return 3;
+							else 
+								if(!preg_match('/^[A-Z]$/', $initialaTata[2]))
+									return 2;
+								else 
+									if($initialaTata[3]!='.')
+										return 3;
+									else
+										if(!preg_match('/^[A-Z]$/', $initialaTata[4]))
+											return 2;
+										else
+											if($initialaTata[5]!='.')
+												return 3;
+											else
+												return 0;
+                    }
+					else
+						if($lung==8) 
+						{
+							if(!preg_match('/^[A-Z]$/', $initialaTata[0]))
+								return 2;
+							 else 
+								 if($initialaTata[1]!='.')
+									return 3;
+								else 
+									if(!preg_match('/^[A-Z]$/', $initialaTata[2]))
+										return 2;
+									else 
+										if($initialaTata[3]!='.')
+											return 3;
+										else
+											if(!preg_match('/^[A-Z]$/', $initialaTata[4]))
+												return 2;
+											else
+												if($initialaTata[5]!='.')
+													return 3;
+												else
+													if(!preg_match('/^[A-Z]$/', $initialaTata[6]))
+														return 2;
+													else
+														if($initialaTata[7]!='.')
+															return 3;
+														else
+															return 0;
+						}
+						else
+							if($lung==10) 
+							{
+								if(!preg_match('/^[A-Z]$/', $initialaTata[0]))
+									return 2;
+								 else 
+									 if($initialaTata[1]!='.')
+										return 3;
+									else 
+										if(!preg_match('/^[A-Z]$/', $initialaTata[2]))
+											return 2;
+										else 
+											if($initialaTata[3]!='.')
+												return 3;
+											else
+												if(!preg_match('/^[A-Z]$/', $initialaTata[4]))
+													return 2;
+												else
+													if($initialaTata[5]!='.')
+														return 3;
+													else
+														if(!preg_match('/^[A-Z]$/', $initialaTata[6]))
+															return 2;
+														else
+															if($initialaTata[7]!='.')
+																return 3;
+															else
+																if(!preg_match('/^[A-Z]$/', $initialaTata[8]))
+																	return 2;
+																else
+																	if($initialaTata[9]!='.')
+																		return 3;
+																	else
+																		return 0;
+							}
+							else
+								if($lung==12) 
+								{
+									if(!preg_match('/^[A-Z]$/', $initialaTata[0]))
+										return 2;
+									 else 
+										 if($initialaTata[1]!='.')
+											return 3;
+										else 
+											if(!preg_match('/^[A-Z]$/', $initialaTata[2]))
+												return 2;
+											else 
+												if($initialaTata[3]!='.')
+													return 3;
+												else
+													if(!preg_match('/^[A-Z]$/', $initialaTata[4]))
+														return 2;
+													else
+														if($initialaTata[5]!='.')
+															return 3;
+														else
+															if(!preg_match('/^[A-Z]$/', $initialaTata[6]))
+																return 2;
+															else
+																if($initialaTata[7]!='.')
+																	return 3;
+																else
+																	if(!preg_match('/^[A-Z]$/', $initialaTata[8]))
+																		return 2;
+																	else
+																		if($initialaTata[9]!='.')
+																			return 3;
+																		else
+																			if(!preg_match('/^[A-Z]$/', $initialaTata[10]))
+																				return 2;
+																			else
+																				if($initialaTata[11]!='.')
+																					return 3;
+																				else
+																					return 0;
+								}
+								else
+									if($lung==14) 
+									{
+										if(!preg_match('/^[A-Z]$/', $initialaTata[0]))
+											return 2;
+										 else 
+											 if($initialaTata[1]!='.')
+												return 3;
+											else 
+												if(!preg_match('/^[A-Z]$/', $initialaTata[2]))
+													return 2;
+												else 
+													if($initialaTata[3]!='.')
+														return 3;
+													else
+														if(!preg_match('/^[A-Z]$/', $initialaTata[4]))
+															return 2;
+														else
+															if($initialaTata[5]!='.')
+																return 3;
+															else
+																if(!preg_match('/^[A-Z]$/', $initialaTata[6]))
+																	return 2;
+																else
+																	if($initialaTata[7]!='.')
+																		return 3;
+																	else
+																		if(!preg_match('/^[A-Z]$/', $initialaTata[8]))
+																			return 2;
+																		else
+																			if($initialaTata[9]!='.')
+																				return 3;
+																			else
+																				if(!preg_match('/^[A-Z]$/', $initialaTata[10]))
+																					return 2;
+																				else
+																					if($initialaTata[11]!='.')
+																						return 3;
+																					else
+																						if(!preg_match('/^[A-Z]$/', $initialaTata[12]))
+																							return 2;
+																						else
+																							if($initialaTata[13]!='.')
+																								return 3;
+																							else
+																								return 0;
+									}
+									else
+										if($lung==16) 
+										{
+											if(!preg_match('/^[A-Z]$/', $initialaTata[0]))
+												return 2;
+											 else 
+												 if($initialaTata[1]!='.')
+													return 3;
+												else 
+													if(!preg_match('/^[A-Z]$/', $initialaTata[2]))
+														return 2;
+													else 
+														if($initialaTata[3]!='.')
+															return 3;
+														else
+															if(!preg_match('/^[A-Z]$/', $initialaTata[4]))
+																return 2;
+															else
+																if($initialaTata[5]!='.')
+																	return 3;
+																else
+																	if(!preg_match('/^[A-Z]$/', $initialaTata[6]))
+																		return 2;
+																	else
+																		if($initialaTata[7]!='.')
+																			return 3;
+																		else
+																			if(!preg_match('/^[A-Z]$/', $initialaTata[8]))
+																				return 2;
+																			else
+																				if($initialaTata[9]!='.')
+																					return 3;
+																				else
+																					if(!preg_match('/^[A-Z]$/', $initialaTata[10]))
+																						return 2;
+																					else
+																						if($initialaTata[11]!='.')
+																							return 3;
+																						else
+																							if(!preg_match('/^[A-Z]$/', $initialaTata[12]))
+																								return 2;
+																							else
+																								if($initialaTata[13]!='.')
+																									return 3;
+																								else
+																									if(!preg_match('/^[A-Z]$/', $initialaTata[14]))
+																										return 2;
+																									else
+																										if($initialaTata[15]!='.')
+																											return 3;
+																										else
+																											return 0;
+										}
+
     }
     // functii copuate din clasa pentru ca nu stiu sa lucrez cu clase in php
     /*
@@ -1207,6 +1395,10 @@ function validNume($p_nume)
     {
         if(!$p_prenume)
             return -1;
+		
+		if($p_prenume=='-')
+			return 0;
+		
         if (!ctype_alpha(str_replace(' ','',str_replace('-', '', $p_prenume))))
             return 1;//caractere incorecte
         else if(strpos($p_prenume, '--') !== false)
