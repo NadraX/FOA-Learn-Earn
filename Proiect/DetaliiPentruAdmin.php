@@ -151,8 +151,6 @@
   <br/>
   <br/>
 
-  
-
     <div id="top">
 
         <div class="container">
@@ -174,8 +172,6 @@
         <hr>
 
     </div>
-
-
 
     <div class="container">
 
@@ -454,7 +450,7 @@
 
 					<div id="bloc2"><p>&nbsp;&nbsp;Strada General Henri Mathias Barthelot 16</p>
 
-					<p>Iasi, Rom&#226;nia</p></div>
+					<p>Ia&#537;i, Rom&#226;nia</p></div>
 
 				</div>
 
@@ -486,7 +482,7 @@
 
 					 <img class="footer_img grayscale" src="imagini/fii.png" alt="fII"  id="bloc1"/>
 
-					 <a href="https://www.info.uaic.ro/bin/Main/"><p id="bloc2" class="footer-links"> &nbsp;&nbsp;Facultatea de informatic&#259; Iasi<p></a>
+					 <a href="https://www.info.uaic.ro/bin/Main/"><p id="bloc2" class="footer-links"> &nbsp;&nbsp;Facultatea de informatic&#259; Ia&#537;i<p></a>
 
 				</div>
 
@@ -516,7 +512,7 @@
 
 			<hr class="hr_footer">
 
-				<p class="hr_text">&copy; 2017 Grupa B3 Facultatea de Informatic&#259; Iasi</p>
+				<p class="hr_text">&copy; 2017 Grupa B3 Facultatea de Informatic&#259; Ia&#537;i</p>
 
 			<!--</hr>-->
 
