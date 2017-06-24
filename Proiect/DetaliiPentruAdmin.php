@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 
-
-
 <html>
 
 <head>
-
-
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
@@ -31,8 +27,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 
     <script type="text/javascript">
-
-
 
     $(document).ready(function () {
 
@@ -78,8 +72,6 @@
 
     });
 
-
-
     </script>
 
     <meta charset="UTF-8">
@@ -93,8 +85,6 @@
     <meta name="viewport" content="widt=device-width, initial-scale=1">
 
     <title>Administrator</title>
-
-
 
 </head>
 
@@ -114,7 +104,7 @@
 
 			<li><a href="paginaAdmitere.html">Admitere</a></li>
 
-            </ul>
+        </ul>
 
         <ul class="right-menu">
 
@@ -134,9 +124,7 @@
 
       </a>
 
-  </div >
-
-  
+    </div>
 
   <div class="mic" style="background-color:white; height:80px; width:100%;; z-index:90;">
 
@@ -160,7 +148,8 @@
 
   </div>
 
-  </br></br>
+  <br/>
+  <br/>
 
   
 
@@ -248,157 +237,155 @@
 
             <form id="DetaliiStudPreadmitere">
 
-                <div class="col-md-12" style="text-align:center;">
-                   <?php
-                   include 'adminMainPagePreAdmitere.php';
+            <div class="col-md-12" style="text-align:center;">
+               <?php
+               include 'adminMainPagePreAdmitere.php';
+                $id_formular=$_POST['id_formular'];
+                $nume=getNume($id_formular);
+                $prenume=getPrenume($id_formular);
+                echo '<span name="NumeCompletStudent" class="entire-name">'.$nume.' '.$prenume.'</span>';
+                ?>
+
+            </div>
+
+            <div class="col-md-12" style="margin-top:20px; ">
+
+                <div class="col-md-6 ">
+
+                    <div class="align-center">
+
+                        <span class="col-md-12 sub-title">
+
+                            Informa&#355;ii Generale
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="col-md-12" style="font-size:17px;">
+                    <?php
+                    error_reporting(E_ERROR);
+                    error_reporting(0);
+                    error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
                     $id_formular=$_POST['id_formular'];
-                    $nume=getNume($id_formular);
-                    $prenume=getPrenume($id_formular);
-                    echo '<span name="NumeCompletStudent" class="entire-name">'.$nume.' '.$prenume.'</span>';
-                    ?>
+                      echo '<label>Numele de familie</label><input name="numeDeFamilie" class="form-control" value="'.getNume($id_formular).'"/>
 
-                </div>
+                       <label class="marg-t10">Ini&#355;iala tat&#259;lui:</label><input name="initialaTata" class="form-control" value="'.getInitialaTata($id_formular).'"/>
 
+                        <label class="marg-t10">Prenume:</label><input name="prenume" class="form-control" value="'.getPrenume($id_formular).'" />
 
+                        <label class="marg-t10">Prenume mama:</label><input name="prenumeMama" class="form-control" value="'.getPrenumeMama($id_formular).'"/>
 
-                <div class="col-md-12" style="margin-top:20px; ">
+                        <label class="marg-t10">Prenume tata:</label><input name="prenumeTata" class="form-control" value="'.getPrenumeTata($id_formular).'"/>
 
-                    <div class="col-md-6 ">
+                        <label class="marg-t10">Stare civil&#259;</label><input name="stareCivila" class="form-control" value="'.getStareCivila($id_formular).'"/>
 
-                        <div class="align-center">
+                        <label class="marg-t10">Sex: </label><input name="sex" class="form-control" value="'.getSex($id_formular).'" />
 
-                            <span class="col-md-12 sub-title">
+                        <label class="marg-t10">Nationalitate: </label><input name="nationalitate" class="form-control" value="'.getNationalitate($id_formular).'" />
 
-                                Informa&#355;ii Generale
+                        <label class="marg-t10">Etnie: </label><input name="etnie" class="form-control" value="'.getEtnie($id_formular).'" />
 
-                            </span>
+                        <label class="marg-t10">Limba matern&#259;: </label><input name="limbaMaterna" class="form-control" value="'.getLimbaMaterna($id_formular).'" />
 
-                        </div>
 
+                        <label class="marg-t10">Num&#259;r de telefon:</label><input name="nrDeTelefon" class="form-control" value="'.getTelefon($id_formular).'"/>
 
-                        <div class="col-md-12" style="font-size:17px;">
-                        <?php
-                        error_reporting(E_ERROR);
-                        error_reporting(0);
-                        error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-                        $id_formular=$_POST['id_formular'];
-                          echo '<label>Numele de familie</label><input name="numeDeFamilie" class="form-control" value="'.getNume($id_formular).'"/>
-                    
-                           <label class="marg-t10">Ini&#355;iala tat&#259;lui:</label><input name="initialaTata" class="form-control" value="'.getInitialaTata($id_formular).'"/>
+                        <label class="marg-t10">E-mail:</label><input name="email" class="form-control" value="'.getEmail($id_formular).'"/>
 
-                            <label class="marg-t10">Prenume:</label><input name="prenume" class="form-control" value="'.getPrenume($id_formular).'" />
+                        <label class="marg-t10">Data nastere:</label>
 
-                            <label class="marg-t10">Prenume mama:</label><input name="prenumeMama" class="form-control" value="'.getPrenumeMama($id_formular).'"/>
+                         <div class="col-md-12" style="padding-left:0; padding-right:0;">
 
-                            <label class="marg-t10">Prenume tata:</label><input name="prenumeTata" class="form-control" value="'.getPrenumeTata($id_formular).'"/>
+                            <input name="dataNasteriiDay" class="form-control col-md-4 wid33 marg-r1" value="'.getDataDay($id_formular).'"/>
 
-                            <label class="marg-t10">Stare civil&#259;</label><input name="stareCivila" class="form-control" value="'.getStareCivila($id_formular).'"/>
+                            <input name="dataNasteriiMonth"  class="form-control col-md-4 wid33 marg-r1" value="'.getDataMonth($id_formular).'"/>
 
-                            <label class="marg-t10">Sex: </label><input name="sex" class="form-control" value="'.getSex($id_formular).'" />
+                            <input name="dataNasteriiYear" class="form-control col-md-4 wid33" value="'.getDataYear($id_formular).'"/>
 
-                            <label class="marg-t10">Nationalitate: </label><input name="nationalitate" class="form-control" value="'.getNationalitate($id_formular).'" />
-
-                            <label class="marg-t10">Etnie: </label><input name="etnie" class="form-control" value="'.getEtnie($id_formular).'" />
-
-                            <label class="marg-t10">Limba matern&#259;: </label><input name="limbaMaterna" class="form-control" value="'.getLimbaMaterna($id_formular).'" />
-
-                          
-                            <label class="marg-t10">Num&#259;r de telefon:</label><input name="nrDeTelefon" class="form-control" value="'.getTelefon($id_formular).'"/>
-
-                            <label class="marg-t10">E-mail:</label><input name="email" class="form-control" value="'.getEmail($id_formular).'"/>
-
-                            <label class="marg-t10">Data nastere:</label>
-
-                             <div class="col-md-12" style="padding-left:0; padding-right:0;">
-
-                                <input name="dataNasteriiDay" class="form-control col-md-4 wid33 marg-r1" value="'.getDataDay($id_formular).'"/>
-
-                                <input name="dataNasteriiMonth"  class="form-control col-md-4 wid33 marg-r1" value="'.getDataMonth($id_formular).'"/>
-
-                                <input name="dataNasteriiYear" class="form-control col-md-4 wid33" value="'.getDataYear($id_formular).'"/>
-
-                            <input type="hidden" name="idFormular" value="'.$id_formular.'"/>
-                            </div>';
-                           ?>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-
-                        <div class="align-center">
-
-                            <span class="col-md-12 sub-title">
-
-                                Date pentru sus&#355;inerea testului
-
-                            </span>
-
-                        </div>
-                        <?php
-                        $id_formular=$_POST['id_formular'];
-                        echo '<div class="col-md-12" style="font-size:17px; margin-bottom:45px;">
-
-                            <label>CNP:</label><input name="cnp" class="form-control" value="'.getCNP($id_formular).'" />
-
-                            <label class="marg-t10">Tip Buletin: </label><input name="tipBuletin" class="form-control" value="'.getTipBuletin($id_formular).'" />
-
-                            <label class="marg-t10">Serie Buletin: </label><input name="serieBuletin" class="form-control" value="'.getSerieBuletin($id_formular).'" />
-
-                            <label class="marg-t10">Num&#259;r Buletin: </label><input name="nrBuletin" class="form-control" value="'.getNumarBuletin($id_formular).'" />
-
-                            <label class="marg-t10">Eliberat de: </label><input name="eliberatDe" class="form-control" value="'.getBuletinEliberatDe($id_formular).'" />
-
-                            <label class="marg-t10">Data Eliber&#259;rii:</label>
-
-                            <div class="col-md-12" style="padding-left:0; padding-right:0;">
-
-                                <input name="dataEliberariiDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getBuletinDay($id_formular).'"/>
-
-                                <input name="dataEliberariiMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getBuletinMonth($id_formular).'"/>
-
-                                <input name="dataEliberariiYear" class="col-md-4 form-control wid33" value="'.getBuletinYear($id_formular).'"/>
-
-                            </div>
-
-                            <div class="col-md-12" style="padding-left:0;">
-
-                                <label class="marg-t10">Liceul de provenien&#355;&#259;</label><input name="liceuNume" class="form-control" value="'.getNumeLiceu($id_formular).'" />
-
-                                <label class="marg-t10">Vrea s&#259; sus&#355;in&#259; testul la: </label><input name="proba" class="form-control" value="'.getMaterieTest($id_formular).'"/>
-
-                             </div>
-
-                          </div>
-
-                        <div class="align-center">
-
-                            <span class="col-md-12 sub-title">
-
-                                Adresa studentului
-
-                            </span>
-
-                            </div>
-
-                            <div class="col-md-12" style="font-size:17px; margin-bottom:20px;">
-
-                                <label>Strada, Nr, Bloc, Scara, Apartament:</label><input class="form-control" value="'.getStrada($id_formular).','.getNrStrada($id_formular).','.getNrBloc($id_formular).',A,'.getApartament($id_formular).'"/>
-
-                                <label class="marg-t10">Localitate: </label><input name="localitate" class="form-control" value="'.getLocalitate($id_formular).'"/>
-
-                                <label class="marg-t10">Jude&#355;:</label><input name="judet" class="form-control" value="'.getJudet($id_formular).'"/>
-
-                                <label class="marg-t10">Cod Po&#351;tal:</label><input name="codPostal" class="form-control" value="'.getCodPostal($id_formular).'"/>
-
-                                <label class="marg-t10">&#354;ara:</label><input name="tara" class="form-control" value="'.getTara($id_formular).'"/>
-
-                            </div>';
-                            ?>
-
+                        <input type="hidden" name="idFormular" value="'.$id_formular.'"/>
+                        </div>';
+                       ?>
                     </div>
 
                 </div>
+
+                <div class="col-md-6">
+
+                    <div class="align-center">
+
+                        <span class="col-md-12 sub-title">
+
+                            Date pentru sus&#355;inerea testului
+
+                        </span>
+
+                    </div>
+                    <?php
+                    $id_formular=$_POST['id_formular'];
+                    echo '<div class="col-md-12" style="font-size:17px; margin-bottom:45px;">
+
+                        <label>CNP:</label><input name="cnp" class="form-control" value="'.getCNP($id_formular).'" />
+
+                        <label class="marg-t10">Tip Buletin: </label><input name="tipBuletin" class="form-control" value="'.getTipBuletin($id_formular).'" />
+
+                        <label class="marg-t10">Serie Buletin: </label><input name="serieBuletin" class="form-control" value="'.getSerieBuletin($id_formular).'" />
+
+                        <label class="marg-t10">Num&#259;r Buletin: </label><input name="nrBuletin" class="form-control" value="'.getNumarBuletin($id_formular).'" />
+
+                        <label class="marg-t10">Eliberat de: </label><input name="eliberatDe" class="form-control" value="'.getBuletinEliberatDe($id_formular).'" />
+
+                        <label class="marg-t10">Data Eliber&#259;rii:</label>
+
+                        <div class="col-md-12" style="padding-left:0; padding-right:0;">
+
+                            <input name="dataEliberariiDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getBuletinDay($id_formular).'"/>
+
+                            <input name="dataEliberariiMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getBuletinMonth($id_formular).'"/>
+
+                            <input name="dataEliberariiYear" class="col-md-4 form-control wid33" value="'.getBuletinYear($id_formular).'"/>
+
+                        </div>
+
+                        <div class="col-md-12" style="padding-left:0;">
+
+                            <label class="marg-t10">Liceul de provenien&#355;&#259;</label><input name="liceuNume" class="form-control" value="'.getNumeLiceu($id_formular).'" />
+
+                            <label class="marg-t10">Vrea s&#259; sus&#355;in&#259; testul la: </label><input name="proba" class="form-control" value="'.getMaterieTest($id_formular).'"/>
+
+                         </div>
+
+                      </div>
+
+                    <div class="align-center">
+
+                        <span class="col-md-12 sub-title">
+
+                            Adresa studentului
+
+                        </span>
+
+                        </div>
+
+                        <div class="col-md-12" style="font-size:17px; margin-bottom:20px;">
+
+                            <label>Strada, Nr, Bloc, Scara, Apartament:</label><input class="form-control" value="'.getStrada($id_formular).','.getNrStrada($id_formular).','.getNrBloc($id_formular).',A,'.getApartament($id_formular).'"/>
+
+                            <label class="marg-t10">Localitate: </label><input name="localitate" class="form-control" value="'.getLocalitate($id_formular).'"/>
+
+                            <label class="marg-t10">Jude&#355;:</label><input name="judet" class="form-control" value="'.getJudet($id_formular).'"/>
+
+                            <label class="marg-t10">Cod Po&#351;tal:</label><input name="codPostal" class="form-control" value="'.getCodPostal($id_formular).'"/>
+
+                            <label class="marg-t10">&#354;ara:</label><input name="tara" class="form-control" value="'.getTara($id_formular).'"/>
+
+                        </div>';
+                        ?>
+
+                </div>
+
+            </div>
 
 
                 <div class="col-md-12" style="margin-bottom:40px;">
@@ -407,35 +394,31 @@
 
                     <div class="col-md-6">
 
-                    <img class="wid100" src="imagini/exemplu-diploma.jpg" />
+                        <img class="wid100" src="imagini/exemplu-diploma.jpg" />
 
-                        </div>
+                    </div>
 
                     <div class="col-md-6">
 
                         <img class="wid100" src="imagini/exemplu-diploma.jpg" />
 
-
-
                     </div>
 
                 </div>
 
-            </div>
+            
 
             <div id="DetaliiStudAdmitereLicenta" style="display:none;"></div>
 
             <div id="DetaliiStudAdmitereMaster" style="display:none;"></div>
 
+            </form>
+            
         </div>
-
+    
     </div>
 
-    </form>
-
 	<footer class="footer-distributed">
-
-
 
 			<div class="footer-left">
 
@@ -461,8 +444,6 @@
 
 			</div>
 
-
-
 			<div class="footer-center">
 
 					<h3 class="headernou2">Contact</h3>
@@ -471,33 +452,27 @@
 
 					<i class="fa fa-map-marker" id="bloc1"></i>
 
-					<div id="bloc2"><p>&nbsp&nbspStrada General Henri Mathias Barthelot 16</p>
+					<div id="bloc2"><p>&nbsp;&nbsp;Strada General Henri Mathias Barthelot 16</p>
 
 					<p>Iasi, Rom&#226;nia</p></div>
 
 				</div>
 
-
-
 				<div>
 
 					<i class="fa fa-phone"></i>
 
-					<p>&nbsp&nbsp0232 201 102</p>
+					<p>&nbsp;&nbsp;0232 201 102</p>
 
 				</div>
-
-
 
 				<div>
 
 					<i class="fa fa-envelope"></i>
 
-					<p class="footer-links"><a href="secretariat AT info.uaic.ro">&nbsp&nbspsecretariat AT info.uaic.ro</a></p>
+					<p class="footer-links"><a href="secretariat AT info.uaic.ro">&nbsp;&nbsp;secretariat AT info.uaic.ro</a></p>
 
 				</div>
-
-
 
 			</div>
 
@@ -511,7 +486,7 @@
 
 					 <img class="footer_img grayscale" src="imagini/fii.png" alt="fII"  id="bloc1"/>
 
-					 <a href="https://www.info.uaic.ro/bin/Main/"><p id="bloc2" class="footer-links"> &nbsp&nbspFacultatea de informatic&#259; Iasi<p></a>
+					 <a href="https://www.info.uaic.ro/bin/Main/"><p id="bloc2" class="footer-links"> &nbsp;&nbsp;Facultatea de informatic&#259; Iasi<p></a>
 
 				</div>
 
@@ -519,25 +494,17 @@
 
 					 <img class="footer_img grayscale" src="imagini/logo.png" alt="uaic" id="bloc1" />
 
-					 <a href="http://www.uaic.ro/"><p id="bloc2" > &nbsp&nbspUAIC<p></a>
+					 <a href="http://www.uaic.ro/"><p id="bloc2" > &nbsp;&nbsp;UAIC<p></a>
 
 				</div>
-
-				
 
 				<div class="footer-links">
 
 				<img class="footer_img grayscale" src="imagini/facebook-icon.png" alt="fb" id="bloc1" >
 
-				<a href="https://www.facebook.com/FacultateaDeInformaticaUAICIasi/?fref=ts"><p id="bloc2"> &nbsp&nbspFacebook-ul faculta&#355;ii de informatic&#259;<p></a>
+				<a href="https://www.facebook.com/FacultateaDeInformaticaUAICIasi/?fref=ts"><p id="bloc2"> &nbsp;&nbsp;Facebook-ul faculta&#355;ii de informatic&#259;<p></a>
 
 				</div>
-
-				
-
-	
-
-				
 
 			</div>
 
@@ -547,20 +514,13 @@
 
 			</div>
 
-
-
-			
-
 			<hr class="hr_footer">
 
 				<p class="hr_text">&copy; 2017 Grupa B3 Facultatea de Informatic&#259; Iasi</p>
 
-			</hr>
+			<!--</hr>-->
 
 		</footer>
-
-		
-
 
 
     <!--Modal Pentru Respingerea unui formular, de trimis e-mail-->
@@ -607,7 +567,7 @@
 
                             <input type="submit" name="submit" value="Submit" class="btn btn-primary">
 
-                    </div>
+                        </div>
 
                     </form> 
                     
@@ -623,7 +583,4 @@
 
 </html>
 
-
-
 <script src="js/page-admin.js"></script>
-
