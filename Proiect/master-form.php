@@ -355,6 +355,44 @@
     .checkboxgroup label {
         display:block !important;
     }
+    .sortable {
+			display: inline-block;
+			padding: 0;
+			width: 310px;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		
+		.sortable li {
+			list-style: none;
+			border: 1px solid #CCC;
+			background: #F6F6F6;
+			font-family: "Tahoma";
+			color: #3488CB;
+			margin: 5px;
+			padding: 5px;
+			height: 40px;
+		}
+		
+		
+		
+		li.sortable-placeholder {
+			border: 1px dashed #CCC;
+			background: none;
+		}
+
+	.optiune {
+		color: gray; 
+		font-size:medium; 
+		width:100%; 
+		display:inline-block; 
+		height:40px;
+		vertical-align:middle;
+	}
 </style>	
 
 
@@ -11340,151 +11378,63 @@
 
 								<div class="col-md-12" style="margin-top:40px; padding:0; margin-bottom:10px"> 
 
-									<label class="form-sub-label form-label" style="width:100%; float:left;color: #3488CB;font-size: large;">V. Numerota&#355;i op&#355;iunile dvs. in ordinea preferin&#355;elor:</label>
+									<label class="form-sub-label form-label" style="width:100%; float:left;color: #3488CB;font-size: large;">V. Opţiuni master</label>
 
-									<div class="col-md-4" style="padding:0;">
+									<section>
+										<h5 class="form-label  form-label-auto" 
+                            				style="color: gray; font-size:medium; width:100%; display:inline-block; padding-top:1%;">
+                            				Ordonaţi opţiunile de mai jos în ordinea preferinţelor dumneavoastră (glisaţi fiecare opţiune pe locul dorit)</h5>
+                            			<ul style="display:inline-block; width:7%; float:left;list-style-type: none;">
+                            				<li>
+                            					<label class="form-label  form-label-auto optiune" style="margin-top:14px;">1</label>
+                            				</li>
+                            				<li>
+                            					<label class="form-label  form-label-auto optiune">2</label>
+                            				</li>
+                            				<li>
+                            					<label class="form-label  form-label-auto optiune">3</label>
+                            				</li>
+                            				<li>
+                            					<label class="form-label  form-label-auto optiune">4</label>
+                            				</li>
+                            				<li>
+                            					<label class="form-label  form-label-auto optiune">5</label>
+                            				</li>
+                            				<li>
+                            					<label class="form-label  form-label-auto optiune">6</label>
+                            				</li>
+                            				<li>
+                            					<label class="form-label  form-label-auto optiune">7</label>
+                            				</li>
+                            				<li>
+                            					<label class="form-label  form-label-auto optiune">8</label>
+                            				</li>
+                            				<li>
+                            					<label class="form-label  form-label-auto optiune">9</label>
+                            				</li>
+                            				<li>
+                            					<label class="form-label  form-label-auto optiune">10</label>
+                            				</li>
+                            				<li>
+                            					<label class="form-label  form-label-auto optiune">11</label>
+                            				</li>
 
-										<div class="col-md-12 mrg-t10" >
-                      <br>
-											<input name="IngineriaSistemelorSoftwareTaxa" style="width: 40px; height:30px;" type="number" value="1"	<?php
-																																					if($Preferinte[1] == '') 		
-																																						echo '';		
-																																					else		
-																																						echo $Preferinte[1];		
-																																				?> />
-											<span style="font-size:15px;">Ingineria sistemelor software tax&#259;</span>
-
-										</div>
-
-										<div class="col-md-12 mrg-t10" > 
-                      <br>
-											<input name="SistemeDistribuiteTaxa" style="width: 40px; height:30px;" type="number" value="2"	<?php
-																																			if($Preferinte[2] == '') 		
-																																				echo '';		
-																																			else		
-																																				echo $Preferinte[2];		
-																																		?> />
-											<span style="font-size:15px;">Sisteme distribuite tax&#259;</span>
-
-										</div>
-
-										<div class="col-md-12 mrg-t10">
-                      <br>
-											<input name="SecuritateaInformatieiTaxa" style="width: 40px; height:30px;" type="number" value="3"<?php 
-																																				if($Preferinte[3] == '') 		
-																																					echo '';		
-																																				else		
-																																					echo $Preferinte[3];		
-																																			?> />
-											<span style="font-size:15px;">Securitatea informa&#355;iei tax&#259;</span>
-
-										</div>
-
-										<div class="col-md-12 mrg-t10" >
-                      <br>
-											<input name="OptimizareaComputationalaTaxa" style="width: 40px; height:30px;" type="number" value="4" <?php
-																																					if($Preferinte[4] == '') 		
-																																						echo '';		
-																																					else		
-																																						echo $Preferinte[4];		
-																																				?> />
-											<span style="font-size:15px;">Optimizare computa&#355;ional&#259; tax&#259;</span>
-
-										</div>
-
-									</div>
-
-									<div class="col-md-4" style="padding:0;">
-
-										<div class="col-md-12 mrg-t10" >
-                      <br>
-											<input name="LingvistivaComputationalaTaxa" style="width: 40px; height:30px;" type="number" value="5"<?php
-																																					if($Preferinte[5] == '') 		
-																																						echo '';		
-																																					else		
-																																						echo $Preferinte[5];		
-																																				?> />
-											<span style="font-size:15px;">Lingvistic&#259; computational&#259; tax&#259;</span>
-
-										</div>
-
-										<div class="col-md-12 mrg-t10" >
-                      <br>
-											<input name="StudiiAvansateInInformaticaTaxa" style="width: 40px; height:30px;" type="number" value="6"<?php
-																																					if($Preferinte[6] == '') 		
-																																						echo '';		
-																																					else		
-																																						echo $Preferinte[6];		
-																																				?> />
-											<span style="font-size:15px;">Studii avansate &#238;n informatic&#259; tax&#259;</span>
-
-										</div>
-
-										<div class="col-md-12 mrg-t10" >
-                      <br>
-											<input name="IngineriaSoftwareBuget" style="width: 40px; height:30px;" type="number" value="7"<?php
-																																					if($Preferinte[7] == '') 		
-																																						echo '';		
-																																					else		
-																																						echo $Preferinte[7];		
-																																				?> />
-											<span style="font-size:15px;">Ingineria sistemelor software buget</span>
-
-										</div>
-
-										<div class="col-md-12 mrg-t10" >
-                      <br>
-											<input name="SistemeDistribuiteBuget" style="width: 40px; height:30px;" type="number" value="8"<?php
-																																					if($Preferinte[8] == '') 		
-																																						echo '';		
-																																					else		
-																																						echo $Preferinte[8];		
-																																				?> />
-											<span style="font-size:15px;">Sisteme distribuite buget</span>
-
-										</div>
-
-									</div>
-
-									<div class="col-md-4">
-
-										<div class="col-md-12 mrg-t10">
-                      <br>
-											<input name="SecuritateaInformatieiBuget" style="width: 40px; height:30px;" type="number" value="9"<?php
-																																					if($Preferinte[9] == '') 		
-																																						echo '';		
-																																					else		
-																																						echo $Preferinte[9];		
-																																				?> />
-											<span style="font-size:15px;">Securitatea informa&#355;iei buget</span>
-
-										</div>
-
-										<div class="col-md-12 mrg-t10">
-                      <br>
-											<input name="OptimizareaComputationalaBuget" style="width: 40px; height:30px;" type="number" value="10"<?php
-																																					if($Preferinte[10] == '') 		
-																																						echo '';		
-																																					else		
-																																						echo $Preferinte[10];		
-																																				?> />
-											<span style="font-size:15px;">Optimizare computa&#355;ional&#259; buget</span>
-
-										</div>
-
-										<div class="col-md-12 mrg-t10" >
-                      <br>
-											<input name="LingvisticaComputationalaBuget" style="width: 40px; height:30px;" type="number" value="11"	<?php
-																																					if($Preferinte[11] == '') 		
-																																						echo '';		
-																																					else		
-																																						echo $Preferinte[11];		
-																																				?> />
-											<span style="font-size:15px;">Lingvistic&#259; computational&#259; buget</span>
-
-										</div>
-
-									</div>
+                            				
+                            			</ul>
+										<ul class="sortable list">
+											<li>Ingineria Sistemelor Software - Taxă</li>
+											<li>Sisteme Distribuite - Taxă</li>
+											<li>Securitatea Informaţiei - Taxă</li>
+											<li>Optimizarea Computaţională - Taxă</li>
+											<li>Lingvistica Computaţională - Taxă</li>
+											<li>Studii  Avansate În Informatică - Taxă</li>
+											<li>Ingineria Sistemelor Software - Buget</li>
+											<li>Sisteme Distribuite - Buget</li>
+											<li>Securitatea Informaţiei - Buget</li>
+											<li>Optimizarea Computaţională - Buget</li>
+											<li>Lingvistica Computaţională - Buget</li>
+										</ul>
+									</section>
 									
 									<span style="color:red">		
 										<?php 		
@@ -11508,6 +11458,7 @@
 									</span>
 
 								</div>
+
 
                 <div  class="form-input jf-required cid_1" style:"display:inline-block">
                     <br>
@@ -11571,22 +11522,23 @@
                 <br>
                 <ul class="checkbox-grid">
                   <br>
-                  <li><input type="checkbox" name="Master_Diploma_BAC_Original" class="css-checkbox" value="1" id="Master_Diploma_BAC_Original" />
-                    <label for="Master_Diploma_BAC_Original" class="css-label2">Diploma de Bacalaureat în original</label></li>
-                  <li><input type="checkbox" name="Master_Diploma_BAC_Copie" class="css-checkbox" value="1" id="Master_Diploma_BAC_Copie" />
-                    <label for="Master_Diploma_BAC_Copie" class="css-label2">Diploma de Bacalaureat copie legalizată</label></li>
-                  <li><input type="checkbox" name="Master_Echivalare_Studii_Preuniversitare_Original" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Original" />
-                    <label for="Master_Echivalare_Studii_Preuniversitare_Original" class="css-label2">Document echivalare studii preuniversitare - original</label></li>
-                  <li><input type="checkbox" name="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Copie" />
-                    <label for="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-label2">Document echivalare studii preuniversitare - copie legalizată</label></li>
-                  <li><input type="checkbox" name="Master_Diploma_Master_Original" class="css-checkbox" value="1" id="Master_Diploma_Master_Original" />
-                    <label for="Master_Diploma_Master_Original" class="css-label2">Diplomă de licenţă - original</label></li>
-                  <li><input type="checkbox" name="Master_Diploma_Master_Copie" class="css-checkbox" value="1" id="Master_Diploma_Master_Copie" />
-                    <label for="Master_Diploma_Master_Copie" class="css-label2">Diplomă de licenţă - copie legalizată</label></li> 
-                  <li><input type="checkbox" name="Master_Echivalare_Studii_Master_Original" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Master_Original" />
-                    <label for="Master_Echivalare_Studii_Master_Original" class="css-label2">Document echivalare studii licenţă - original</label></li>
-                  <li><input type="checkbox" name="Master_Echivalare_Studii_Master_Copie" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Master_Copie" />
-                    <label for="Master_Echivalare_Studii_Master_Copie" class="css-label2">Document echivalare studii licenţă - copie legalizată</label></li>
+                  <li><input type="radio" name="Master_Diploma_BAC" class="css-checkbox" value="1" id="Master_Diploma_BAC_Original" />
+                    <label for="Master_Diploma_BAC_Original" class="css-label">Diploma de Bacalaureat în original</label></li>
+                  <li><input type="radio" name="Master_Diploma_BAC" class="css-checkbox" value="1" id="Master_Diploma_BAC_Copie" />
+                    <label for="Master_Diploma_BAC_Copie" class="css-label">Diploma de Bacalaureat copie legalizată</label></li>
+                  <li><input type="radio" name="Master_Echivalare_Studii_Preuniversitare" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Original" />
+                    <label for="Master_Echivalare_Studii_Preuniversitare_Original" class="css-label">Document echivalare studii preuniversitare - original</label></li>
+                  <li><input type="radio" name="Master_Echivalare_Studii_Preuniversitare" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Copie" />
+                    <label for="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-label">Document echivalare studii preuniversitare - copie legalizată</label></li>
+                  <li><br><input type="radio" name="Master_Diploma_Master" class="css-checkbox" value="1" id="Master_Diploma_Master_Original" />
+                    <label for="Master_Diploma_Master_Original" class="css-label">Diplomă de licenţă - original</label></li>
+                  <li><br><input type="radio" name="Master_Diploma_Master" class="css-checkbox" value="1" id="Master_Diploma_Master_Copie" />
+                    <label for="Master_Diploma_Master_Copie" class="css-label">Diplomă de licenţă - copie legalizată</label></li> 
+
+                  <li><input type="radio" name="Master_Echivalare_Studii_Master" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Master_Original" />
+                    <label for="Master_Echivalare_Studii_Master_Original" class="css-label">Document echivalare studii licenţă - original</label></li>
+                  <li><input type="radio" name="Master_Echivalare_Studii_Master" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Master_Copie" />
+                    <label for="Master_Echivalare_Studii_Master_Copie" class="css-label">Document echivalare studii licenţă - copie legalizată</label></li>
                 </ul>
                 <div  class="form-input jf-required cid_1" style:"display:inline-block">
                     <br>
@@ -12676,7 +12628,22 @@
 				<p class="hr_text">&copy; 2017 Grupa B3 Facultatea de Informatic&#259; Iasi</p>
 			</hr>
 		</footer>
-
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="js/jquery.sortable.js"></script>
+		<script>
+			$(function() {
+				$('.sortable').sortable();
+				$('.handles').sortable({
+					handle: 'span'
+				});
+				$('.connected').sortable({
+					connectWith: '.connected'
+				});
+				$('.exclude').sortable({
+					items: ':not(.disabled)'
+				});
+			});
+		</script>
 	</body>
 
 </html>
