@@ -574,20 +574,20 @@
 							$v_Master_Etnie = $_POST["Master_Etnie"];
 							$v_Master_Limba_Materna = $_POST["Master_Limba_Materna"];
 							$v_id = 1;
-							$v_Chitanta = $_POST["Master_Chitanta_nr"];		
-							$v_Suma_Taxa = $_POST["Master_Suma_Taxa"];		
-							$v_Radio1 = $_POST["group1"];		
-							$v_Scutire = $_POST["Master_Motiv_Scutire_taxa"];	
-								$vscutire = validScutire($v_Scutire);							
-							$v_Stare_civila = $_POST["Master_Stare_Civila"];		
-							$v_Master_Sex = $_POST["Master_Sex"];		
-							$v_Master_luna = $_POST["Master_Buletin_Luna"];		
-							$v_Master_an = $_POST["Master_Buletin_An"];		
-							$v_Master_zi = $_POST["Master_Buletin_Ziua"];		
-							$v_Master_limba = $_POST["Master_Limba_Aleasa"];		
+							$v_Chitanta = $_POST["Master_Chitanta_nr"];
+							$v_Suma_Taxa = $_POST["Master_Suma_Taxa"];
+							$v_Radio1 = $_POST["group1"];
+							$v_Scutire = $_POST["Master_Motiv_Scutire_taxa"];
+								$vscutire = validScutire($v_Scutire);
+							$v_Stare_civila = $_POST["Master_Stare_Civila"];
+							$v_Master_Sex = $_POST["Master_Sex"];
+							$v_Master_luna = $_POST["Master_Buletin_Luna"];
+							$v_Master_an = $_POST["Master_Buletin_An"];
+							$v_Master_zi = $_POST["Master_Buletin_Ziua"];
+							$v_Master_limba = $_POST["Master_Limba_Aleasa"];
 							$v_Radio2 = $_POST["group2"];
 								$vradio2 = validRadio($v_Radio2);
-							$v_Tara = $_POST["Master_Tara"];		
+							$v_Tara = $_POST["Master_Tara"];
 							$v_Radio5 = $_POST["group5"];
 								$vradio5 = validRadio($v_Radio5);
 							$v_Radio6 = $_POST["group6"];
@@ -613,6 +613,8 @@
 								$vradio25 = validRadio($v_Radio25);
 							$v_Radio24 = $_POST["group24"];
 								$vradio24 = validRadio($v_Radio24);
+							$v_Radio23 = $_POST["group23"];
+								$vradio23 = validRadio($v_Radio23);
 							$v_Radio21 = $_POST["group21"];
 								$vradio21 = validRadio($v_Radio21);
 							$v_Radio20 = $_POST["group20"];
@@ -641,8 +643,11 @@
 								$vradio35 = validRadio($v_Radio35);
 							$v_Master_Liceu = $_POST["Master_Liceu"];
 							$v_Master_Serie_DiplomaMaster = $_POST["Master_Serie_DiplomaMaster"];
+								$vMaster_Serie_DiplomaMaster = validSerieBAC($v_Master_Serie_DiplomaMaster);
 							$v_Master_AbsolventMaster_Durata_Studii = $_POST["Master_AbsolventMaster_Durata_Studii"];
+								$vMaster_AbsolventMaster_Durata_Studii = validareAniStudii($v_Master_AbsolventMaster_Durata_Studii);
 							$v_Master_Emitere_DiplomaMaster = $_POST["Master_Emitere_DiplomaMaster"];
+								$vMaster_Emitere_DiplomaMaster=validBuletinEliberatDe($v_Master_Emitere_DiplomaMaster);
 							$v_Master_Nr_DiplomaMaster = $_POST["Master_Nr_DiplomaMaster"];
 							$v_Master_DiplomaMaster_Ziua = $_POST["Master_DiplomaMaster_Ziua"];
 							$v_Master_DiplomaMaster_An = $_POST["Master_DiplomaMaster_An"];
@@ -654,11 +659,16 @@
 							$v_Master_AbsolventMaster_ActEchivalare_An = $_POST["Master_AbsolventaMaster_ActEchivalare_An"];
 							$v_Radio25 = $_POST["group25"];
 							$v_Master_Medie_Admitere = $_POST["Master_Medie_Admitere"];
+								$vMaster_Medie_Admitere =  validareMedieBac($v_Master_Medie_Admitere);
 							$v_Master_Nota_Master = $_POST["Master_Nota_Master"];
+								$vMaster_Nota_Master =  validareMedieBac($v_Master_Nota_Master);
 							$v_Master_AbsolventMaster_Univ = $_POST["Master_AbsolventMaster_Univ"];
-							$v_Master_AbsolventMaster_Facultate = $_POST["Master_AbsolventMaster_Facultate"];	
+							$v_Master_AbsolventMaster_Facultate = $_POST["Master_AbsolventMaster_Facultate"];
+								$vMaster_AbsolventMaster_Facultate = validNume($v_Master_AbsolventMaster_Facultate);
 							$v_Master_AbsolventMaster_Domeniu_Master = $_POST["Master_AbsolventMaster_Domeniu_Master"];
+								$vMaster_AbsolventMaster_Domeniu_Master = validNume($v_Master_AbsolventMaster_Domeniu_Master);
 							$v_Master_AbsolventMaster_An_Facultate = $_POST["Master_AbsolventMaster_An_Facultate"];
+								$vMaster_AbsolventMaster_An_Facultate = validNume($v_Master_AbsolventMaster_An_Facultate);
 							$v_Numele_De_Familie_La_Nastere=$_POST["Master_Numele_De_Familie_La_nastere"];
 								$vNumele_De_Familie_La_Nastere = validNume($v_Numele_De_Familie_La_Nastere);
 							$v_Master_Numele_De_Familie_Actual = $_POST["Master_Numele_De_Familie_Actual"];
@@ -687,11 +697,11 @@
 							$v_Master_Serie_ActRecunoastere = $_POST["Master_Serie_ActRecunoastere"];
 								$vMaster_Serie_ActRecunoastere = validSerieBAC($v_Master_Serie_ActRecunoastere);
 							$v_Master_Nr_ActRecunoastere = $_POST["Master_Nr_ActRecunoastere"];
-							$v_Master_AbsolventMaster_Univ = $_POST["Master_AbsolventMaster_Univ"];		
+							$v_Master_AbsolventMaster_Univ = $_POST["Master_AbsolventMaster_Univ"];
 								$vMaster_AbsolventMaster_Univ = validNume($v_Master_AbsolventMaster_Univ);
-							$v_Master_AbsolventMaster_Univ1 = $_POST["Master_AbsolventMaster_Univ1"];		
+							$v_Master_AbsolventMaster_Univ1 = $_POST["Master_AbsolventMaster_Univ1"];
 								$vMaster_AbsolventMaster_Univ1 = validNume($v_Master_AbsolventMaster_Univ1);
-							$v_Master_AbsolventMaster_Facultate1 = $_POST["Master_AbsolventMaster_Facultate1"];		
+							$v_Master_AbsolventMaster_Facultate1 = $_POST["Master_AbsolventMaster_Facultate1"];
 								$vMaster_AbsolventMaster_Facultate1 = validNume($v_Master_AbsolventMaster_Facultate1);
 							$v_Master_AbsolventMaster_Domeniu_Master1 = $_POST["Master_AbsolventMaster_Domeniu_Master1"];
 								$vMaster_AbsolventMaster_Domeniu_Master1 = validNume($v_Master_AbsolventMaster_Domeniu_Master1);
@@ -715,6 +725,51 @@
 								$vMaster_Emitere_DiplomaLicenta = validBuletinEliberatDe($v_Master_Emitere_DiplomaLicenta);
 							$v_Master_AbsolventMaster_Serie_ActRecunoastere = $_POST["Master_AbsolventMaster_Serie_ActRecunoastere"];
 								$vMaster_AbsolventMaster_Serie_ActRecunoastere = validSerieBAC($v_Master_AbsolventMaster_Serie_ActRecunoastere);
+							$v_Master_AltaUniversitate = $_POST["Master_AltaUniversitate"];
+								$vMaster_AltaUniversitate = validNume($v_Master_AltaUniversitate);
+							$v_Master_AltaFacultate = $_POST["Master_AltaFacultate"];
+								$vMaster_AltaFacultate = validNume($v_Master_AltaFacultate);
+							$v_Master_Domeniu_Master = $_POST["Master_Domeniu_Master"];
+								$vMaster_Domeniu_Master = validNume($v_Master_Domeniu_Master);
+							$v_Master_Specializare = $_POST["Master_Specializare"];
+								$vMaster_Specializare = validNume($v_Master_Specializare);
+							$v_Master_An_Facultate = $_POST["Master_An_Facultate"];
+								$vMaster_An_Facultate = validareAn($v_Master_An_Facultate);
+							$v_Master_Semestre_Finantate = $_POST["Master_Semestre_Finantate"];
+								$vMaster_Semestre_Finantate = validareNrSemCuBursa($v_Master_Semestre_Finantate);
+							$v_Master_Semestre_Bursa = $_POST["Master_Semestre_Bursa"];
+								$vMaster_Semestre_Bursa = validareNrSemCuBursa($v_Master_Semestre_Bursa);
+							$v_Master_Localitate_AltaFacultate = $_POST["Master_Localitate_AltaFacultate"];
+								$vMaster_Localitate_AltaFacultate = validLocalitate($v_Master_Localitate_AltaFacultate);
+							$v_Master_AbsolventMaster_Univ = $_POST["Master_AbsolventMaster_Univ"];
+								$vMaster_AbsolventMaster_Univ = validNume($v_Master_AbsolventMaster_Univ);
+							$v_Master_AbsolventMaster_Specializare = $_POST["Master_AbsolventMaster_Specializare"];
+								$vMaster_AbsolventMaster_Specializare = validNume($v_Master_AbsolventMaster_Specializare);
+							$v_Master_AbsolventMaster_Semestre_Finantate = $_POST["Master_AbsolventMaster_Semestre_Finantate"];
+								$vMaster_AbsolventMaster_Semestre_Finantate = validareNrSemCuBursa($v_Master_AbsolventMaster_Semestre_Finantate);
+							$v_Master_AbsolventMaster_Semestre_Bursa = $_POST["Master_AbsolventMaster_Semestre_Bursa"];
+								$vMaster_AbsolventMaster_Semestre_Bursa = validareNrSemCuBursa($v_Master_AbsolventMaster_Semestre_Bursa);
+							$v_Master_AbsolventMaster_Localitate_AltaFacultate = $_POST["Master_AbsolventMaster_Localitate_AltaFacultate"];
+								$vMaster_AbsolventMaster_Localitate_AltaFacultate = validLocalitate($v_Master_AbsolventMaster_Localitate_AltaFacultate);
+							$v_Master_DiplomaMaster_Nr_ActRecunoastere=$_POST["Master_DiplomaMaster_Nr_ActRecunoastere"];
+							$v_Master_AlteConcursuri_Facultate3 = $_POST["Master_AlteConcursuri_Facultate3"];
+								$vMaster_AlteConcursuri_Facultate3 = validNume($v_Master_AlteConcursuri_Facultate3);
+							$v_Master_AlteConcursuri_Univ3 = $_POST["Master_AlteConcursuri_Univ3"];		
+								$vMaster_AlteConcursuri_Univ3 = validNume($v_Master_AlteConcursuri_Univ3);
+							$v_Master_AlteConcursuri_Facultate2 = $_POST["Master_AlteConcursuri_Facultate2"];
+								$vMaster_AlteConcursuri_Facultate2 = validNume($v_Master_AlteConcursuri_Facultate2);
+							$v_Master_AlteConcursuri_Univ2 = $_POST["Master_AlteConcursuri_Univ2"];		
+								$vMaster_AlteConcursuri_Univ2 = validNume($v_Master_AlteConcursuri_Univ2);
+							$v_Master_AlteConcursuri_Facultate1 = $_POST["Master_AlteConcursuri_Facultate1"];
+								$vMaster_AlteConcursuri_Facultate1 = validNume($v_Master_AlteConcursuri_Facultate1);
+							$v_Master_AlteConcursuri_Univ1 = $_POST["Master_AlteConcursuri_Univ1"];		
+								$vMaster_AlteConcursuri_Univ1 = validNume($v_Master_AlteConcursuri_Univ1);
+							$v_Master_Domeniu_Studii = $_POST["Master_Domeniu_Studii"];
+								$vMaster_Domeniu_Studii = validNume($v_Master_Domeniu_Studii);
+							$v_Master_DiplomaMaster_Serie_ActRecunoastere=$_POST["Master_DiplomaMaster_Serie_ActRecunoastere"];
+								$vMaster_DiplomaMaster_Serie_ActRecunoastere=validSerieBAC($v_Master_DiplomaMaster_Serie_ActRecunoastere);
+							$v_Master_DiplomaMaster_Nr_FoaieMatricola = $_POST["Master_DiplomaMaster_Nr_FoaieMatricola"];
+							
 						?>
 						<ul>
 						
@@ -10020,15 +10075,17 @@
 									if($v_Radio25==1) {
 										$v_Master_AltaUniversitate = $_POST["Master_AltaUniversitate"];
 											$vMaster_AltaUniversitate = validNume($v_Master_AltaUniversitate);
-											if(strlen($v_Master_AltaUniversitate)==0) {
-														echo "C&#226;mp necompletat!";
-													}
+											if($vMaster_AltaUniversitate==-1)
+												echo "C&#226;mp necompletat!";
+											else
+												if($vMaster_AltaUniversitate==1)
+													echo "C&#226;mpul conține caractere nepermise!";
 												else
-													if($vMaster_AltaUniversitate!==0){
-														echo "C&#226;mp invalid!";
+													if($vMaster_AltaUniversitate==2)
+														echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
 													}
 									}
-								}
+								
 							?>
 						</span>
                           </span>
@@ -10047,13 +10104,14 @@
 									if($v_Radio25==1) {
 										$v_Master_AltaFacultate = $_POST["Master_AltaFacultate"];
 											$vMaster_AltaFacultate = validNume($v_Master_AltaFacultate);
-											if(strlen($v_Master_AltaFacultate)==0) {
-													echo "C&#226;mp necompletat!";
-												}
-												else	
-													if($vMaster_AltaFacultate!==0){
-														echo "C&#226;mp invalid!";
-													}
+											if($vMaster_AltaFacultate==-1)
+												echo "C&#226;mp necompletat!";
+											else
+												if($vMaster_AltaFacultate==1)
+													echo "C&#226;mpul conține caractere nepermise!";
+												else
+													if($vMaster_AltaFacultate==2)
+														echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
 									}
 								}
 							?>
@@ -10073,25 +10131,25 @@
                                 <span class="form-sub-label-container" style="vertical-align:top; width:35%; display:inline-block" >
                                   <label class="form-sub-label" style="min-height:13px;"> Domeniul de Studii </label>
                                   <input type="text"  name="Master_Domeniu_Studii" class="form-textbox form-address-city first_1" size="21" placeholder="" data-component="city" value="<?php
-																																						if($v_Master_Domeniu_Master == '')
+																																						if($v_Master_Domeniu_Studii == '')
 																																							echo '';
 																																						else
-																																							echo $v_Master_Domeniu_Master;
+																																							echo $v_Master_Domeniu_Studii;
 																																					?>" />
 																																	
 						<span style="color:red">
 							<?php
 								if(isset($_POST['Submit'])) {
 									if($v_Radio25==1) {
-										$v_Master_Domeniu_Master = $_POST["Master_Domeniu_Master"];
-											$vMaster_Domeniu_Master = validNume($v_Master_Domeniu_Master);
-											if($vMaster_Domeniu_Master==-1)
+										$v_Master_Domeniu_Studii = $_POST["Master_Domeniu_Studii"];
+											$vMaster_Domeniu_Studii = validNume($v_Master_Domeniu_Studii);
+											if($vMaster_Domeniu_Studii==-1)
 												echo "C&#226;mp necompletat!";
 											else
-												if($vMaster_Domeniu_Master==1)
+												if($vMaster_Domeniu_Studii==1)
 													echo "C&#226;mpul conține caractere nepermise!";
 												else
-													if($vMaster_Domeniu_Master==2)
+													if($vMaster_Domeniu_Studii==2)
 														echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
 									}
 								}
@@ -10156,10 +10214,10 @@
                                 </span>
                                 <span class="form-sub-label-container" style="vertical-align:top; width:15%">
                                    <label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Formă învăţământ </label>
-								   <?php 
-									$v_Master_FormaInvatamant_AltaUniv=$_POST["Master_FormaInvatamant_AltaUniv"];
-							   ?>
                                   <select class="form-dropdown form-address-country gen" name="Master_FormaInvatamant_AltaUniv" data-component="country">
+									<?php 
+										$v_Master_FormaInvatamant_AltaUniv=$_POST["Master_FormaInvatamant_AltaUniv"];
+									?>
                                      <option value="ZI" <?php
 														if($v_Master_FormaInvatamant_AltaUniv=="ZI")
 															echo 'selected';
@@ -10356,7 +10414,7 @@
 																														echo 'checked="checked"';
 																													else
 																														echo '';
-																											?>/>   
+																											?>/>
                           <label for="daAbsolventMaster" class="css-label" style="margin-right:100px">Da</label>
                           <input type="radio" onClick="AbsolventMaster()" name="group24" id="nuAbsolventMaster" class="css-checkbox" value="2" <?php
 																												if($v_Radio24 == '')
@@ -10507,7 +10565,7 @@
                                 </span>
                                 <span class="form-sub-label-container" style="vertical-align:top; width:12%">
                                   <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Titlu obţinut </label>
-                                  <input type="text"  name="Master_AbsolventMaster_An_Facultate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php
+                                  <input type="text"  name="Master_AbsolventMaster_An_Facultate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: Profesor" data-component="city" value="<?php
 																																													if($v_Master_AbsolventMaster_An_Facultate == '')
 																																														echo '';
 																																													else
@@ -10535,10 +10593,10 @@
                                 </span>
                                 <span class="form-sub-label-container" style="vertical-align:top; width:15%">
                                    <label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Formă învăţământ </label>
-								    <?php 
+                                  <select class="form-dropdown form-address-country gen" name="Master_AbsolventMaster_FormaInvatamant" data-component="country">
+									<?php 
 										$v_Master_AbsolventMaster_FormaInvatamant=$_POST["Master_AbsolventMaster_FormaInvatamant"];
 									?>
-                                  <select class="form-dropdown form-address-country gen" name="Master_AbsolventMaster_FormaInvatamant" data-component="country">
                                       <option value="ZI" <?php
 														if($v_Master_AbsolventMaster_FormaInvatamant=="ZI")
 															echo 'selected';
@@ -10575,23 +10633,23 @@
 																																														echo $v_Master_AbsolventMaster_Durata_Studii;
 																																												?>"  />
 								<span style="color:red">
-								<?php
-									if(isset($_POST['Submit'])) {
-										if($v_Radio24==1) {
-											$v_Master_AbsolventMaster_Durata_Studii = $_POST["Master_AbsolventMaster_Durata_Studii"];
-												$vMaster_AbsolventMaster_Durata_Studii = validareAniStudii($v_Master_AbsolventMaster_Durata_Studii);
-												if($vMaster_AbsolventMaster_Durata_Studii==-1)
-													echo "C&#226;mp necompletat!";
-												else
-													if($vMaster_AbsolventMaster_Durata_Studii==1)
-														echo "Caractere nepermise!";
+									<?php
+										if(isset($_POST['Submit'])) {
+											if($v_Radio24==1) {
+												$v_Master_AbsolventMaster_Durata_Studii = $_POST["Master_AbsolventMaster_Durata_Studii"];
+													$vMaster_AbsolventMaster_Durata_Studii = validareAniStudii($v_Master_AbsolventMaster_Durata_Studii);
+													if($vMaster_AbsolventMaster_Durata_Studii==-1)
+														echo "C&#226;mp necompletat!";
 													else
-														if($vMaster_AbsolventMaster_Durata_Studii==2)
-															echo "Între 1 si 6 ani!";
+														if($vMaster_AbsolventMaster_Durata_Studii==1)
+															echo "Caractere nepermise!";
+														else
+															if($vMaster_AbsolventMaster_Durata_Studii==2)
+																echo "Între 1 si 6 ani!";
+											}
 										}
-									}
-								?>
-						</span>
+									?>
+								</span>
 
                                 </span>
                               </td>
@@ -10715,10 +10773,10 @@
                                 
                                 <span class="form-sub-label-container" style="vertical-align:top; width:32%">
                                    <label class="form-sub-label" for="input_3_country"  style="min-height:13px;">&#354;ar&#259; </label>
-								    <?php 
+                                  <select class="form-dropdown form-address-country gen" name="Master_AbsolventMaster_Tara_AltaFacultate" data-component="country">
+									<?php 
 										$v_Master_AbsolventMaster_Tara_AltaFacultate = $_POST["Master_AbsolventMaster_Tara_AltaFacultate"];
 									?>
-                                  <select class="form-dropdown form-address-country gen" name="Master_AbsolventMaster_Tara_AltaFacultate" data-component="country">
                                     <option value="Romania" <?php
 															if($v_Master_AbsolventMaster_Tara_AltaFacultate=="Romania")
 																echo 'selected';
@@ -10777,7 +10835,7 @@
 									  if(isset($_POST['Submit'])) {
 										  
 										$v_Radio23 = $_POST["group23"];
-										$vradio23 = validRadio($v_Radio23);
+											$vradio23 = validRadio($v_Radio23);
 										if($v_Radio24==1) {
 											if($vradio23!==1 && $vradio23!==2)
 												echo "Nu ați ales o opțiune!";
@@ -10804,7 +10862,7 @@
 										<span style="color:red">
 											<?php
 												if(isset($_POST['Submit'])) {
-													if($v_Radio24==1) {
+													if($v_Radio24==1 && $v_Radio23==1) {
 														$v_Master_Serie_DiplomaMaster = $_POST["Master_Serie_DiplomaMaster"];
 														$vMaster_Serie_DiplomaMaster = validSerieBAC($v_Master_Serie_DiplomaMaster);
 														if($vMaster_Serie_DiplomaMaster==-1)
@@ -10818,7 +10876,7 @@
 										</span>
                                     </span>
                                     <span class="form-sub-label-container" style="vertical-align:top; width:14%">
-                                      <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Numarul dimplomei </label>
+                                      <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Numărul dimplomei </label>
                                       <input type="number"  name="Master_Nr_DiplomaMaster" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php
 																																																		if($v_Master_Nr_DiplomaMaster == '')
 																																																			echo '';
@@ -10828,7 +10886,7 @@
 										<span style="color:red">
 											<?php
 												if(isset($_POST['Submit'])) {
-													if($v_Radio24==1) {
+													if($v_Radio24==1 && $v_Radio23==1) {
 														$v_Master_Nr_DiplomaMaster = $_POST["Master_Nr_DiplomaMaster"];
 														if($v_Master_Nr_DiplomaMaster=='')
 															echo "C&#226;mp necompletat!";
@@ -10852,7 +10910,7 @@
 										<span style="color:red">
 											<?php
 												if(isset($_POST['Submit'])) {
-													if($v_Radio24==1) {
+													if($v_Radio24==1 && $v_Radio23==1) {
 														$v_Master_Emitere_DiplomaMaster = $_POST["Master_Emitere_DiplomaMaster"];
 														$vMaster_Emitere_DiplomaMaster=validBuletinEliberatDe($v_Master_Emitere_DiplomaMaster);
 														if($vMaster_Emitere_DiplomaMaster==-1)
@@ -10873,10 +10931,10 @@
                                         <div data-wrapper-react="true">
                                           <span class="form-sub-label-container" style="vertical-align:top; ">
                                             <label class="form-sub-label"  style="min-height:13px;">Data Emitere</label>
-												<?php 
-												  $v_Master_DiplomaMaster_Luna = $_POST["Master_DiplomaMaster_Luna"];
-												?>
                                             <select style="height:40px;" name="Master_DiplomaMaster_Luna"  class="form-dropdown" data-component="birthdate-month">
+												<?php 
+													$v_Master_DiplomaMaster_Luna = $_POST["Master_DiplomaMaster_Luna"];
+												?>
                                                 <option value="January" <?php
 																	if($v_Master_DiplomaMaster_Luna=="January")
 																		echo 'selected';
@@ -10984,7 +11042,7 @@
 
                                     </span>
                                     <span class="form-sub-label-container" style="vertical-align:top; width:15%">
-                                      <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Numarul Foaie Matricolă </label>
+                                      <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Numărul Foaie Matricolă </label>
                                       <input type="number"  name="Master_DiplomaMaster_Nr_FoaieMatricola" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php
 																																													if($v_Master_DiplomaMaster_Nr_FoaieMatricola == '')
 																																														echo '';
@@ -10994,7 +11052,7 @@
 									  <span style="color:red">
 											<?php
 												if(isset($_POST['Submit'])) {
-													if($v_Radio24==1) {
+													if($v_Radio24==1 && $v_Radio23==1) {
 														$v_Master_DiplomaMaster_Nr_FoaieMatricola = $_POST["Master_DiplomaMaster_Nr_FoaieMatricola"];
 														if($v_Master_DiplomaMaster_Nr_FoaieMatricola=='')
 															echo "C&#226;mp necompletat!";
@@ -11032,7 +11090,7 @@
 										<span style="color:red">
 											<?php
 												if(isset($_POST['Submit'])) {
-													if($v_Radio24==1) {
+													if($v_Radio24==1 && $v_Radio23==1) {
 														$v_Master_DiplomaMaster_Nr_ActRecunoastere=$_POST["Master_DiplomaMaster_Nr_ActRecunoastere"];
 														//if($v_Licenta_AbsolventLicenta_Nr_ActRecunoastere=='')
 														//		echo "C&#226;mp necompletat!";
@@ -11046,7 +11104,7 @@
 								  </span>
                                   <span class="form-sub-label-container" style="vertical-align:top; width:15%">
                                     <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Seria </label>
-                                    <input type="text"  name="Master_DiplomaMaster_Serie_ActRecunoastere" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php
+                                    <input type="text"  name="Master_DiplomaMaster_Serie_ActRecunoastere" class="form-textbox form-address-city first_1" size="21" placeholder="ex: F" data-component="city" value="<?php
 																																																						if($v_Master_DiplomaMaster_Serie_ActRecunoastere == '')
 																																																							echo '';
 																																																						else
@@ -11055,7 +11113,7 @@
 										<span style="color:red">
 											<?php
 												if(isset($_POST['Submit'])) {
-													if($v_Radio24==1) {
+													if($v_Radio24==1 && $v_Radio23==1) {
 														$v_Master_DiplomaMaster_Serie_ActRecunoastere=$_POST["Master_DiplomaMaster_Serie_ActRecunoastere"];
 														$vMaster_DiplomaMaster_Serie_ActRecunoastere=validSerieBAC($v_Master_DiplomaMaster_Serie_ActRecunoastere);
 														//if($vLicenta_AbsolventLicenta_Serie_ActRecunoasteree==-1)
@@ -11288,24 +11346,24 @@
 
 										<div class="col-md-12 mrg-t10" >
                       <br>
-											<input name="IngineriaSistemelorSoftwareTaxa" style="width: 40px; height:30px;" type="number" value="1"<?php
+											<input name="IngineriaSistemelorSoftwareTaxa" style="width: 40px; height:30px;" type="number" value="1"	<?php
 																																					if($Preferinte[1] == '') 		
 																																						echo '';		
 																																					else		
 																																						echo $Preferinte[1];		
-																																				?>" />
+																																				?> />
 											<span style="font-size:15px;">Ingineria sistemelor software tax&#259;</span>
 
 										</div>
 
 										<div class="col-md-12 mrg-t10" > 
                       <br>
-											<input name="SistemeDistribuiteTaxa" style="width: 40px; height:30px;" type="number" value="2"<?php
+											<input name="SistemeDistribuiteTaxa" style="width: 40px; height:30px;" type="number" value="2"	<?php
 																																			if($Preferinte[2] == '') 		
 																																				echo '';		
 																																			else		
 																																				echo $Preferinte[2];		
-																																		?>" />
+																																		?> />
 											<span style="font-size:15px;">Sisteme distribuite tax&#259;</span>
 
 										</div>
@@ -11317,19 +11375,19 @@
 																																					echo '';		
 																																				else		
 																																					echo $Preferinte[3];		
-																																			?>" />
+																																			?> />
 											<span style="font-size:15px;">Securitatea informa&#355;iei tax&#259;</span>
 
 										</div>
 
 										<div class="col-md-12 mrg-t10" >
                       <br>
-											<input name="OptimizareaComputationalaTaxa" style="width: 40px; height:30px;" type="number" value="4"<?php
+											<input name="OptimizareaComputationalaTaxa" style="width: 40px; height:30px;" type="number" value="4" <?php
 																																					if($Preferinte[4] == '') 		
 																																						echo '';		
 																																					else		
 																																						echo $Preferinte[4];		
-																																				?>" />
+																																				?> />
 											<span style="font-size:15px;">Optimizare computa&#355;ional&#259; tax&#259;</span>
 
 										</div>
@@ -11345,7 +11403,7 @@
 																																						echo '';		
 																																					else		
 																																						echo $Preferinte[5];		
-																																				?>" />
+																																				?> />
 											<span style="font-size:15px;">Lingvistic&#259; computational&#259; tax&#259;</span>
 
 										</div>
@@ -11357,7 +11415,7 @@
 																																						echo '';		
 																																					else		
 																																						echo $Preferinte[6];		
-																																				?>" />
+																																				?> />
 											<span style="font-size:15px;">Studii avansate &#238;n informatic&#259; tax&#259;</span>
 
 										</div>
@@ -11369,7 +11427,7 @@
 																																						echo '';		
 																																					else		
 																																						echo $Preferinte[7];		
-																																				?>" />
+																																				?> />
 											<span style="font-size:15px;">Ingineria sistemelor software buget</span>
 
 										</div>
@@ -11381,7 +11439,7 @@
 																																						echo '';		
 																																					else		
 																																						echo $Preferinte[8];		
-																																				?>" />
+																																				?> />
 											<span style="font-size:15px;">Sisteme distribuite buget</span>
 
 										</div>
@@ -11397,7 +11455,7 @@
 																																						echo '';		
 																																					else		
 																																						echo $Preferinte[9];		
-																																				?>" />
+																																				?> />
 											<span style="font-size:15px;">Securitatea informa&#355;iei buget</span>
 
 										</div>
@@ -11409,19 +11467,19 @@
 																																						echo '';		
 																																					else		
 																																						echo $Preferinte[10];		
-																																				?>" />
+																																				?> />
 											<span style="font-size:15px;">Optimizare computa&#355;ional&#259; buget</span>
 
 										</div>
 
 										<div class="col-md-12 mrg-t10" >
                       <br>
-											<input name="LingvisticaComputationalaBuget" style="width: 40px; height:30px;" type="number" value="11"<?php
+											<input name="LingvisticaComputationalaBuget" style="width: 40px; height:30px;" type="number" value="11"	<?php
 																																					if($Preferinte[11] == '') 		
 																																						echo '';		
 																																					else		
 																																						echo $Preferinte[11];		
-																																				?>"" />
+																																				?> />
 											<span style="font-size:15px;">Lingvistic&#259; computational&#259; buget</span>
 
 										</div>
@@ -11548,7 +11606,7 @@
 																														echo '';
 																											?>/>      
                             <label for="daAltConcurs"  class="css-label" style="margin-right:100px">Da</label>
-                            <input type="radio" onClick="AlteConcursuri()" name="group27" id="nuAltConcurs" class="css-checkbox"  value="2"/  <?php
+                            <input type="radio" onClick="AlteConcursuri()" name="group27" id="nuAltConcurs" class="css-checkbox"  value="2"  <?php
 																												if($v_Radio27 == '')
 																													echo '';
 																												else
@@ -11560,7 +11618,7 @@
                             <label for="nuAltConcurs" class="css-label" style="margin-right: 50px;">Nu</label>
                             
                         </span>
-	<span style="color:red">
+							<span style="color:red">
 								<?php
 									  if(isset($_POST['Submit'])) {
 										$v_Radio27 = $_POST["group27"];
@@ -11585,15 +11643,17 @@
 							  <span style="color:red">		
 									<?php		
 										if(isset($_POST['Submit'])) {
+											if($v_Radio27==1) {
 											$v_Master_AlteConcursuri_Univ1 = $_POST["Master_AlteConcursuri_Univ1"];		
-											$vMaster_AlteConcursuri_Univ1 = validScutire($v_Master_AlteConcursuri_Univ1);		
-											if($vMaster_AlteConcursuri_Univ1!==0){
+											$vMaster_AlteConcursuri_Univ1 = validNume($v_Master_AlteConcursuri_Univ1);
+											if($vMaster_AlteConcursuri_Univ1>0){
 												echo "C&#226;mp invalid!";
 											}
 											else
 												if(strlen($v_Master_AlteConcursuri_Univ1)==0) {
 													echo "C&#226;mp necompletat!";
 												}
+											}
 										}
 									?>		
 								</span>
@@ -11610,15 +11670,17 @@
 							  <span style="color:red">		
 									<?php		
 										if(isset($_POST['Submit'])) {
+											if($v_Radio27==1) {
 											$v_Master_AlteConcursuri_Facultate1 = $_POST["Master_AlteConcursuri_Facultate1"];		
-											$vMaster_AlteConcursuri_Facultate1 = validScutire($v_Master_AlteConcursuri_Facultate1);		
-											if($vMaster_AlteConcursuri_Facultate1!==0){
+											$vMaster_AlteConcursuri_Facultate1 = validNume($v_Master_AlteConcursuri_Facultate1);		
+											if($vMaster_AlteConcursuri_Facultate1>0){
 												echo "C&#226;mp invalid!";
 											}
 											else
 												if(strlen($v_Master_AlteConcursuri_Facultate1)==0) {
 													echo "C&#226;mp necompletat!";
 												}
+											}
 										}
 									?>		
 								</span>                    
@@ -11640,10 +11702,16 @@
 							  <span style="color:red">		
 									<?php		
 										if(isset($_POST['Submit'])) {
-											$v_Master_AlteConcursuri_Univ2 = $_POST["Master_AlteConcursuri_Univ2"];		
-											$vMaster_AlteConcursuri_Univ2 = validScutire($v_Master_AlteConcursuri_Univ2);		
-											if($vMaster_AlteConcursuri_Univ2!==0){
-												echo "C&#226;mp invalid!";
+											if($v_Radio27==1) {
+												$v_Master_AlteConcursuri_Univ2 = $_POST["Master_AlteConcursuri_Univ2"];		
+												$vMaster_AlteConcursuri_Univ2 = validNume($v_Master_AlteConcursuri_Univ2);
+												if($vMaster_AlteConcursuri_Univ2>0){
+													echo "C&#226;mp invalid!";
+												}
+												else
+													if(strlen($v_Master_AlteConcursuri_Univ2)==0 && $v_Master_AlteConcursuri_Facultate2!=='') {
+														echo "C&#226;mp necompletat!";
+													}
 											}
 										}
 									?>		
@@ -11660,10 +11728,16 @@
 							  <span style="color:red">		
 									<?php		
 										if(isset($_POST['Submit'])) {
-											$v_Master_AlteConcursuri_Facultate2 = $_POST["Master_AlteConcursuri_Facultate2"];		
-											$vMaster_AlteConcursuri_Facultate2 = validScutire($v_Master_AlteConcursuri_Facultate2);		
-											if($vMaster_AlteConcursuri_Facultate2!==0){
-												echo "C&#226;mp invalid!";
+											if($v_Radio27==1) {
+												$v_Master_AlteConcursuri_Facultate2 = $_POST["Master_AlteConcursuri_Facultate2"];		
+												$vMaster_AlteConcursuri_Facultate2 = validNume($v_Master_AlteConcursuri_Facultate2);	
+												if($vMaster_AlteConcursuri_Facultate2>0){
+													echo "C&#226;mp invalid!";
+												}
+												else
+													if(strlen($v_Master_AlteConcursuri_Facultate2)==0 && $v_Master_AlteConcursuri_Univ2!=='') {
+														echo "C&#226;mp necompletat!";
+													}
 											}
 										}
 									?>		
@@ -11685,10 +11759,16 @@
 							  <span style="color:red">		
 									<?php		
 										if(isset($_POST['Submit'])) {
+											if($v_Radio27==1) {
 											$v_Master_AlteConcursuri_Univ3 = $_POST["Master_AlteConcursuri_Univ3"];		
-											$vMaster_AlteConcursuri_Univ3 = validScutire($v_Master_AlteConcursuri_Univ3);		
-											if($vMaster_AlteConcursuri_Univ3!==0){
-												echo "C&#226;mp invalid!";
+											$vMaster_AlteConcursuri_Univ3 = validNume($v_Master_AlteConcursuri_Univ3);
+												if($vMaster_AlteConcursuri_Univ3>0){
+													echo "C&#226;mp invalid!";
+												}
+												else
+													if(strlen($v_Master_AlteConcursuri_Univ3)==0 && $v_Master_AlteConcursuri_Facultate3!=='') {
+														echo "C&#226;mp necompletat!";
+													}
 											}
 										}
 									?>		
@@ -11705,10 +11785,16 @@
 							  <span style="color:red">		
 									<?php		
 										if(isset($_POST['Submit'])) {
-											$v_Master_AlteConcursuri_Facultate3 = $_POST["Master_AlteConcursuri_Facultate3"];		
-											$vMaster_AlteConcursuri_Facultate3 = validScutire($v_Master_AlteConcursuri_Facultate3);		
-											if($vMaster_AlteConcursuri_Facultate3!==0){
-												echo "C&#226;mp invalid!";
+											if($v_Radio27==1) {
+												$v_Master_AlteConcursuri_Facultate3 = $_POST["Master_AlteConcursuri_Facultate3"];		
+												$vMaster_AlteConcursuri_Facultate3 = validNume($v_Master_AlteConcursuri_Facultate3);		
+													if($vMaster_AlteConcursuri_Facultate3>0){
+														echo "C&#226;mp invalid!";
+													}
+													else
+														if(strlen($v_Master_AlteConcursuri_Facultate3)==0 && $v_Master_AlteConcursuri_Univ3!=='') {
+															echo "C&#226;mp necompletat!";
+														}
 											}
 										}
 									?>		
