@@ -670,7 +670,9 @@
 							$v_Master_Localitate_Liceu = $_POST["Master_Localitate_Liceu"];
 								$vMaster_Localitate_Liceu=validLocalitate($v_Master_Localitate_Liceu);
 							$v_Master_Profil_Liceu = $_POST["Master_Profil_Liceu"];
-								$vMaster_Profil_Liceu = ProfilValidare($v_Master_Profil_Liceu);
+								if($v_Master_Profil_Liceu!=''){
+									$vMaster_Profil_Liceu = ProfilValidare($v_Master_Profil_Liceu);
+								}
 							$v_Master_Durata_Liceu = $_POST["Master_Durata_Liceu"];
 								$vMaster_Durata_Liceu = validDurata($v_Master_Durata_Liceu);
 							$v_Master_An_Liceu = $_POST["Master_An_Liceu"];
@@ -9722,16 +9724,16 @@
 	                                      </span>
 	                                      <span class="form-sub-label-container" style="vertical-align:bottom;">
 	                                        <select style="height:40px;" name="Master_DiplomaLicenta_Ziua"  class="form-dropdown" data-component="birthdate-day">
-	                                          <?php
-												$v_Master_DiplomaLicenta_Ziua = $_POST["Master_DiplomaLicenta_Ziua"];
-											 for($i=1;$i<=31;$i++)
-	                                          {
-	                                            echo '<option value="'.$i.'" ';
-	                                            if($v_Master_DiplomaLicenta_Ziua==$i)
-	                                              echo 'selected';
-	                                            echo '> '.$i.' </option>';
-	                                            }
-	                                        ?>
+												<?php
+													$v_Master_DiplomaLicenta_Ziua = $_POST["Master_DiplomaLicenta_Ziua"];
+													for($i=1;$i<=31;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_Master_DiplomaLicenta_Ziua==$i)
+														  echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
 	                                        </select>
 	                                      </span>
 	                                      <span class="form-sub-label-container" style="vertical-align:bottom;">
