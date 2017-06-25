@@ -7816,6 +7816,7 @@
 
 <?php
 
+  date_default_timezone_set('Europe/Bucharest');
   if(isset($_POST['Submit'])){
     $username = 'ADMITERE1';
     $password = 'ADMITERE1';
@@ -7826,38 +7827,92 @@
     if(!$connection)
       echo "Connection failed. Please try again";
     else {
-
-        $statement = oci_parse($connection, "SELECT max(id) AS COUNT FROM FORMULAR_PREADMITERE");
-        oci_execute($statement);
-
-        while (oci_fetch($statement)) {
-            $numaratoare_formular_preadmitere = oci_result($statement, "COUNT") + 1;
-        }
-
+        $v_Chitanta = $_POST["Licenta_Chitanta_nr"];    
+		$vChitanta = validChitanta($v_Chitanta);
+        
+        $v_Suma_Taxa = $_POST["Licenta_Suma_Taxa"];   
+		$vsuma = validSuma($v_Suma_Taxa);
+        
+        $v_Numele_De_Familie_La_Nastere=$_POST["Licenta_Numele_De_Familie_La_nastere"];
+        $vNumele_De_Familie_La_Nastere = validNume($v_Numele_De_Familie_La_Nastere);
+        
+        $v_Licenta_Initiala_Tata = $_POST["Licenta_Initiala_Tata"];
+		$vLicenta_Initiala_Tata = validInitialaTata($v_Licenta_Initiala_Tata);
+        
+        $v_Licenta_Prenumele = $_POST["Licenta_Prenumele"];
+		$vLicenta_Prenumele = validPremume($v_Licenta_Prenumele);
+        
+        $v_Licenta_Prenume_Mama = $_POST["Licenta_Prenume_Mama"];
+		$vLicenta_PrenumeMama = validPremume($v_Licenta_Prenume_Mama);
+        
+        $v_Licenta_Prenume_Tata = $_POST["Licenta_Prenume_Tata"];
+		$vLicenta_PrenumeTata = validPremume($v_Licenta_Prenume_Tata);
+        
+        $v_Licenta_Tara_Nastere = $_POST["Licenta_Tara_Nastere"];
+        $vLicenta_Tara_Nastere = validTara($v_Licenta_Tara_Nastere);
+        
+        $v_Licenta_Localitate_Nastere = $_POST["Licenta_Localitate_Nastere"];
+		$vLicenta_Localitate_Nastere = validLocalitate($v_Licenta_Localitate_Nastere);
+        
+        $v_Licenta_Cetatenie = $_POST["Licenta_Cetatenie"];
+        $vLicenta_Cetatenie = validCetatetnie($v_Licenta_Cetatenie);
+        
+        $v_Licenta_Etnie = $_POST["Licenta_Etnie"];
+		$vLicenta_Etnie = validEtnie($v_Licenta_Etnie);
+        
+        $v_Licenta_Limba_Materna = $_POST["Licenta_Limba_Materna"];
+        $vLicenta_Limba_Materna = validLimbaMaterna($v_Licenta_Limba_Materna);
+        
+        $v_Licenta_CNP = $_POST["Licenta_CNP"];
+		$vLicenta_CNP = validCNP($v_Licenta_CNP);
+        
+        $v_Licenta_Tip_Buletin = $_POST["Licenta_Tip_Buletin"];  // V
+		$vLicenta_Tip_Buletin = validTipBuletin($v_Licenta_Tip_Buletin);
+        
+        $v_Licenta_Serie_Buletin = $_POST["Licenta_Serie_Buletin"];
+		$vLicenta_Serie_Buletin = validSerieBuletin($v_Licenta_Serie_Buletin);
+        
+        $v_Licenta_Numar_Buletin = $_POST["Licenta_Numar_Buletin"];
+        $vLicenta_Numar_Buletin = validNumarBuletin($v_Licenta_Numar_Buletin);
+        
+        $v_Licenta_Buletin_Eliberat_De = $_POST["Licenta_Buletin_Eliberat_De"];  // V
+		$vLicenta_Buletin_Eliberat_De = validEliberareBuletin($v_Licenta_Buletin_Eliberat_De);
+        
+        $v_Liceul_Absolvit = $_POST["Master_Liceu"];
+        
+        $v_Licenta_Localitate = $_POST["Licenta_Localitate"];
+		$vLicenta_Localitate = validLocalitate($v_Licenta_Localitate);
+        
+        if($vChitanta == 0 && $vsuma == 0 && $vNumele_De_Familie_La_Nastere == 0 && $vLicenta_Initiala_Tata == 0 && $vLicenta_Prenumele == 0 && $vLicenta_PrenumeMama == 0 && $vLicenta_PrenumeTata == 0 && $vLicenta_Tara_Nastere == 0 && $vLicenta_Localitate_Nastere == 0 && $vLicenta_Cetatenie == 0 && $vLicenta_Etnie == 0 && $vLicenta_Limba_Materna == 0 && $vLicenta_CNP == 0 && $vLicenta_Tip_Buletin == 0 && $vLicenta_Serie_Buletin == 0 && $vLicenta_Numar_Buletin == 0 && $vLicenta_Buletin_Eliberat_De == 0 && $vLicenta_Localitate == 0 && $v_Liceul_Absolvit != null ) {
+        
         $statement = oci_parse($connection, "SELECT max(formular_id) AS COUNT FROM DATE_PERSONALE_PREADMITERE");
         oci_execute($statement);
 
         while (oci_fetch($statement)) {
-            $numaratoare_date_personale = oci_result($statement, "COUNT") + 1;
+            $numaratoare_preadmitere = oci_result($statement, "COUNT") + 1;
         }
 
         ini_set('display_errors', 1);
         error_reporting(E_ALL);
 
-           $statement = oci_parse($connection, "INSERT INTO FORMULAR_PREADMITERE VALUES (
+        $current = mktime(date("H"), date("i"), date("s"), date("m")  , date("d")-1, date("Y"));
+        $currDate=date("dmYHis",$current);
+        
+        $statement = oci_parse($connection, "INSERT INTO FORMULAR_PREADMITERE VALUES (
           :id, 
           :nr_chitanta, 
           :suma, 
           :optiune_test_scris,
-          NULL,
+          to_timestamp(:currDate,'dd-mm-yyyy HH24-MI-SS'),
           NULL,
           0)");
 
-        oci_bind_by_name($statement, ':id', $numaratoare_formular_preadmitere);
-        oci_bind_by_name($statement, ':nr_chitanta', $_POST["Licenta_Chitanta_nr"]);
-        oci_bind_by_name($statement, ':suma', $_POST["Licenta_Suma_Taxa"]); 
+        oci_bind_by_name($statement, ':id', $numaratoare_preadmitere);
+        oci_bind_by_name($statement, ':nr_chitanta', $v_Chitanta);
+        oci_bind_by_name($statement, ':suma', $v_Suma_Taxa); 
         oci_bind_by_name($statement, ':optiune_test_scris', $_POST["Licenta_Obiect_Test_Ales"]);
-
+        oci_bind_by_name($statement,':currDate',$currDate);
+        
         if (!$statement) {
             ini_set('display_errors', 1);
             error_reporting(E_ALL);
@@ -7889,6 +7944,7 @@
           :nationalitate,
           :etnie,
           :limba_materna,
+          :tip_act_ident,
           :serie_CL,
           :numar_CL,
           :eliberat_de,
@@ -7898,31 +7954,33 @@
            :tara_liceu,
            :localitate_liceu,
            :judet_liceu
-           )");                       
-            oci_bind_by_name($statement, ':id', $numaratoare_date_personale);
-            oci_bind_by_name($statement, ':nume_nastere', $_POST['Licenta_Numele_De_Familie_La_nastere']);
-            oci_bind_by_name($statement, ':initiale', $_POST['Licenta_Initiala_Tata']);
+           )");
+            
+            oci_bind_by_name($statement, ':id', $numaratoare_preadmitere);
+            oci_bind_by_name($statement, ':nume_nastere', $v_Numele_De_Familie_La_Nastere);
+            oci_bind_by_name($statement, ':initiale', $v_Licenta_Initiala_Tata);
             oci_bind_by_name($statement, ':nume_actual', $_POST['Licenta_Numele_De_Familie']);
-            oci_bind_by_name($statement, ':prenume', $_POST['Licenta_Prenumele']); 
-            oci_bind_by_name($statement, ':prenume_tata', $_POST['Licenta_Prenume_Tata']);
-            oci_bind_by_name($statement, ':prenume_mama', $_POST['Licenta_Prenume_Mama']);          
-            oci_bind_by_name($statement, ':CNP', $_POST['Licenta_CNP']);
+            oci_bind_by_name($statement, ':prenume', $v_Licenta_Prenumele); 
+            oci_bind_by_name($statement, ':prenume_tata', $v_Licenta_Prenume_Tata);
+            oci_bind_by_name($statement, ':prenume_mama', $v_Licenta_Prenume_Mama);          
+            oci_bind_by_name($statement, ':CNP', $v_Licenta_CNP);
             oci_bind_by_name($statement, ':sex', $_POST['Licenta_Sex']);
 
             oci_bind_by_name($statement, ':zi', $_POST['Licenta_Nastere_Zi']);
             oci_bind_by_name($statement, ':luna', $_POST['Licenta_Nastere_Luna']);
             oci_bind_by_name($statement, ':an', $_POST['Licenta_Nastere_An']);
 
-            oci_bind_by_name($statement, ':tara_nastere', $_POST['Licenta_Tara_Nastere']);
+            oci_bind_by_name($statement, ':tara_nastere', $v_Licenta_Tara_Nastere);
             oci_bind_by_name($statement, ':judet_nastere', $_POST['Licenta_Judet_Nastere']);
-            oci_bind_by_name($statement, ':localitate_nastere', $_POST['Licenta_Localitate_Nastere']);
-            oci_bind_by_name($statement, ':cetatenie', $_POST['Licenta_Cetatenie']); 
+            oci_bind_by_name($statement, ':localitate_nastere', $v_Licenta_Localitate_Nastere);
+            oci_bind_by_name($statement, ':cetatenie', $v_Licenta_Cetatenie); 
             oci_bind_by_name($statement, ':nationalitate', $_POST['Licenta_Nationalitate']);
-            oci_bind_by_name($statement, ':etnie', $_POST['Licenta_Etnie']);
-            oci_bind_by_name($statement, ':limba_materna', $_POST['Licenta_Limba_Materna']);
-            oci_bind_by_name($statement, ':serie_CL', $_POST['Licenta_Serie_Buletin']);
-            oci_bind_by_name($statement, ':numar_CL', $_POST['Licenta_Numar_Buletin']);
-            oci_bind_by_name($statement, ':eliberat_de', $_POST['Licenta_Buletin_Eliberat_De']);
+            oci_bind_by_name($statement, ':etnie', $v_Licenta_Etnie);
+            oci_bind_by_name($statement, ':limba_materna', $v_Licenta_Limba_Materna);
+            oci_bind_by_name($statement, ':tip_act_ident', $v_Licenta_Tip_Buletin);
+            oci_bind_by_name($statement, ':serie_CL', $v_Licenta_Serie_Buletin);
+            oci_bind_by_name($statement, ':numar_CL', $v_Licenta_Numar_Buletin);
+            oci_bind_by_name($statement, ':eliberat_de', $v_Licenta_Buletin_Eliberat_De);
 
             oci_bind_by_name($statement, ':bZi' ,$_POST['Licenta_Buletin_Ziua']);
             oci_bind_by_name($statement, ':lZi' ,$_POST['Licenta_Buletin_Luna']);
@@ -7931,9 +7989,9 @@
             oci_bind_by_name($statement, ':elZi' ,$_POST['Master_Buletin_Luna']);
             oci_bind_by_name($statement, ':eaZi' ,$_POST['Master_Buletin_An']);                           
 
-            oci_bind_by_name($statement, ':institutie_liceu', $_POST['Master_Liceu']);
+            oci_bind_by_name($statement, ':institutie_liceu', $v_Liceul_Absolvit);
             oci_bind_by_name($statement, ':tara_liceu', $_POST['Licenta_Tara']);
-            oci_bind_by_name($statement, ':localitate_liceu', $_POST['Licenta_Localitate']);
+            oci_bind_by_name($statement, ':localitate_liceu', $v_Licenta_Localitate);
             oci_bind_by_name($statement, ':judet_liceu', $_POST['Licenta_Judet']);
 
             if(!$statement){
@@ -7948,7 +8006,9 @@
               error_reporting(E_ALL); 
               }
 
-
+            echo '<script>window.location.href = "Validare_Formular.php";</script>';
+            
+        }
     }
   }
   ?>
