@@ -2303,7 +2303,7 @@
 																$v_Radio4 = $_POST["group4"];	
 																$vradio4 = validRadio($v_Radio4);
 																if($vradio4!==1 && $vradio4!==2)
-																	echo "Nu ați ales o opțiune!!";
+																	echo "Nu ați ales o opțiune!";
 																
 															  }
 														?>
@@ -9076,18 +9076,19 @@
 															<?php 
 																if(isset($_POST['Submit'])) {
 																	$v_Licenta_Nr_ActRecunoastere = $_POST["Licenta_Nr_ActRecunoastere"];
-																	if($v_Licenta_Nr_ActRecunoastere=='')
-																		echo "C&#226;mp necompletat!";
-																	else
-																		if(!ctype_digit($v_Licenta_Nr_ActRecunoastere))
-																			echo "C&#226;mp invalid!";
+																	if($v_Licenta_Serie_ActRecunoastere!=='') 
+																		if($v_Licenta_Nr_ActRecunoastere=='')
+																			echo "C&#226;mp necompletat!";
+																		else
+																			if(!ctype_digit($v_Licenta_Nr_ActRecunoastere))
+																				echo "C&#226;mp invalid!";
 																}
 															?>
 														</span>
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:15%">
 														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Seria </label>
-														<input type="text"  name="Licenta_Serie_ActRecunoastere" class="form-textbox form-address-city first_1" size="21" placeholder="ex: B" value="<?php 
+														<input type="text" name="Licenta_Serie_ActRecunoastere" class="form-textbox form-address-city first_1" size="21" placeholder="ex: B" value="<?php 
 																																																		if($v_Licenta_Serie_ActRecunoastere == '') 
 																																																			echo '';
 																																																		else
@@ -9098,11 +9099,12 @@
 																if(isset($_POST['Submit'])) {
 																	$v_Licenta_Serie_ActRecunoastere = $_POST["Licenta_Serie_ActRecunoastere"];
 																	$vLicenta_Serie_ActRecunoastere = validSerieBAC($v_Licenta_Serie_ActRecunoastere);
-																	if($vLicenta_Serie_ActRecunoastere==-1)
-																		echo "C&#226;mp necompletat!";
-																	else
-																		if($vLicenta_Serie_ActRecunoastere==1)
-																			echo "Caractere nepermise";
+																	if($v_Licenta_Nr_ActRecunoastere!=='') 
+																		if($v_Licenta_Serie_ActRecunoastere=='')
+																			echo "C&#226;mp necompletat!";
+																		else
+																			if($vLicenta_Serie_ActRecunoastere==1)
+																				echo "Caractere nepermise";
 																}
 															?>
 														</span>
@@ -10460,7 +10462,7 @@
 												$v_Radio2 = $_POST["group2"];
 												$vradio2 = validRadio($v_Radio2);
 												if($vradio2!==1 && $vradio2!==2)
-													echo "C&#226;mp necompletat!";
+													echo "Nu ați ales o opțiune!";
 												}
 										?>
 									</span>
@@ -10627,12 +10629,15 @@
 									<?php 
 										if(isset($_POST['Submit'])) {
 											$v_Licenta_AnPreadmitere = $_POST["Licenta_AnPreadmitere"];
-											$vLicenta_AnPreadmitere = validareAn($v_Licenta_AnPreadmitere);
-											if($v_Licenta_AnPreadmitere=='')
-												echo "An necompletat!";
-											else
-												if($vLicenta_AnPreadmitere!==0)
-													echo "An invalid!";
+											if($vradio21==1)
+											{
+												$vLicenta_AnPreadmitere = validareAn($v_Licenta_AnPreadmitere);
+												if($v_Licenta_AnPreadmitere=='')
+													echo "An necompletat!";
+												else
+													if($vLicenta_AnPreadmitere!==0)
+														echo "An invalid!";
+											}
 										}
 									?>
 								</span>
