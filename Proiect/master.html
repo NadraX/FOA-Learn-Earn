@@ -15,7 +15,30 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bar.js"></script>
-
+<script>
+	function showDiv(nr,nr2) {
+	if(nr==1)
+	{document.getElementById(2).style.display = "none";
+	document.getElementById(1).style.display = "block";}
+	else
+	if(nr==2)
+	{document.getElementById(1).style.display = "none";
+	document.getElementById(2).style.display = "block";
+	for(i=3;i<=8;i++)
+	{document.getElementById(i).style.display = "block";}}
+	else
+	{document.getElementById(1).style.display = "none";
+	document.getElementById(2).style.display = "block";
+	for(i=3;i<=8;i++)
+	{document.getElementById(i).style.display = "none";
+	document.getElementById(nr).style.display = "block";}}
+	
+	for(j=9;j<=16;j++)
+	{if ( document.getElementById(j).classList.contains("active") )
+	{document.getElementById(j).classList.remove("active");}}
+	document.getElementById(nr2).classList.add("active");
+}
+	</script>	
 <meta charset="UTF-8"/>
 	
 </head>
@@ -55,7 +78,7 @@
 
     <div class="container bodyA">
 	<div class="page-header">
-	  <h1><img src="imagini/licenta.jpg" alt="licenta" height="50" width="60"><a href="paginaAdmitere.html">Admitere</a></h1>
+	  <h1><a href="paginaAdmitere.html"><img src="imagini/admision_cap.png" height="50" width="190" alt="admision_cap" ></a></h1>
 	  </div>
 		  <div class="wrapper">
 			 <div class="row">
@@ -67,31 +90,31 @@
 						</ul>
 						
 						<ul class="list-group">
-							<a href="#1" class="list-group-item fond_left">Domenii şi specializări</a>
+							<a href="#" id="9" class="list-group-item active fond_left" onclick="showDiv(1,id)">Domenii şi specializări</a>
 							<div class="panel-group">
 								<div class="panel panel-default">
-								  <div class="panel-heading">
+								 <!-- <div class="panel-heading">
 									<h4 class="panel-title">
-									  <a data-toggle="collapse" href="#collapse1"><p style="color:#595959;font-family:Century Gothic, sans-serif;font-size:15px;">Informaţii privind admiterea - sesiunea iulie 2017 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="glyphicon glyphicon-triangle-bottom" style="font-size:22px"></i></p></a>
+									  <a data-toggle="collapse" href="#collapse1" class="list-group-item" id="10" onclick="showDiv(2,id)"><p style="color:#595959;font-family:Century Gothic, sans-serif;font-size:15px;">Informaţii privind admiterea - sesiunea iulie 2017 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="glyphicon glyphicon-triangle-bottom" style="font-size:22px"></i></p></a>
 									</h4>
 								  </div>
+								  -->
+								  <h4 class="panel-title">
+									  <a data-toggle="collapse" href="#collapse1" class="list-group-item" id="10" onclick="showDiv(2,id)"><p style="color:#595959;font-family:Century Gothic, sans-serif;font-size:15px; line-height:10px;">Informaţii privind admiterea - sesiunea iulie 2017 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="glyphicon glyphicon-triangle-bottom" style="font-size:20px"></i></p></a>
+									</h4>
 								  <div id="collapse1" class="panel-collapse collapse">
 									<ul class="list-group fond_left">
-									  <a href="#3" class="list-group-item">Calendar admitere</a>
-									  <a href="#4" class="list-group-item">Număr de locuri</a>
-									  <a href="#5" class="list-group-item">Condiţii de admitere</a>
-									  <a href="#6" class="list-group-item">Taxe</a>
-									  <a href="#7" class="list-group-item">Acte necesare pentru înscriere</a>
-									  <a href="#8" class="list-group-item">Candidaţii de etnie romă şi cetăţeni ai Republicii Moldova</a>
+									  <a href="#" id="11" class="list-group-item" onclick="showDiv(3,id)">Calendar admitere</a>
+									  <a href="#" id="12" class="list-group-item" onclick="showDiv(4,id)">Număr de locuri</a>
+									  <a href="#" id="13" class="list-group-item" onclick="showDiv(5,id)">Condiţii de admitere</a>
+									  <a href="#" id="14" class="list-group-item" onclick="showDiv(6,id)">Taxe</a>
+									  <a href="#" id="15" class="list-group-item" onclick="showDiv(7,id)">Acte necesare pentru înscriere</a>
+									  <a href="#" id="16" class="list-group-item" onclick="showDiv(8,id)">Candidaţii de etnie romă şi cetăţeni ai Republicii Moldova</a>
 									  </ul>
 								  </div>
 								</div>
 							  </div>
 						</ul>
-						</br></br></br></br>
-						
-						
-						<img src="imagini/admitere.jpg" alt="admitere poza" height="350" width="250">
 						
 				  </div>
 				  
@@ -105,8 +128,8 @@
 					
 							
 					  
-					  
-				<h3 id="1" class="color">Domenii şi specializări (2 ani)</h3> 
+				<div id="1">	  
+				<h3 class="color">Domenii şi specializări (2 ani)</h3> 
 					<p>Master profesional în limba engleză, studii la zi:<p>
 					 <ul>
 						<li>Ingineria sistemelor software</li>
@@ -120,31 +143,41 @@
 					<li>Studii avansate în informatică</li>
 					</ul>
 					<p>Planurile de studii pentru anul universitar curent (2016-2017) sunt disponibile <a href=http://www.info.uaic.ro/Programs/Master class="fond_links">aici.</a><br> Alte detalii sunt disponibile pe situl <a href=http://admitere.uaic.ro class="fond_links">Admitere la UAIC</a>, inclusiv <a href=http://admitere.uaic.ro/wp-content/uploads/2017/02/02.-Metodologie_Admitere_Master_2017.pdf class="fond_links">Metodologia de admitere la studii de master.</a></p>
-	
-	
+				</div>
+					
+				<div id="2" style="display:none;">
 				 <h3 class="color font_h1_margin">Informaţii privind admiterea - sesiunea iulie 2017</h3>
 				 
-				 <h4 id="3" class="color upper font_h_margin">calendar admitere</h4>
+				 <div id="3" style="display:none;">
+				 <h4 class="color upper font_h_margin">calendar admitere</h4>
 					<p>Perioada de înscriere: <b>17-21 iulie</b> <br> Selecţia candidaţilor şi afişarea rezultatelor: <b>24-26 iulie</b></p>
-					
-				 <h4 id="4"class="color upper font_h_margin">număr de locuri solicitat</h4>
+				</div>
+
+				<div id="4" style="display:none;">
+				 <h4 class="color upper font_h_margin">număr de locuri solicitat</h4>
 					<p>Locuri finanţate de la buget: <b>100</b> <br> Locuri cu taxă: <b>10</b> <br> Numărul de locuri aprobat va fi publicat în momentul în care va fi cunoscut. </p>
+				</div>
 				
-				 <h4 id="5"class="color upper font_h_margin">condiţii de admitere</h4>
+				<div id="5" style="display:none;">
+				 <h4  class="color upper font_h_margin">condiţii de admitere</h4>
 					 <p>Media de admitere se calculează astfel:</p>
 					 <ul>
 						 <li>60% media examenului de licenţă</li>
 						 <li>40% nota la interviu (în limba de predare a programului)</li>
 					 </ul>
 					 <p>În caz de egalitate, departajarea se va face pe baza mediei generale ECTS a anilor de studii la nivel licenţă.</p>
-					
-				<h4 id="6"class="color upper font_h_margin">taxe</h4>
+				</div>
+
+				<div id="6" style="display:none;">
+				<h4  class="color upper font_h_margin">taxe</h4>
 					<ul>
 						<li>Taxă de înscriere: <b>300 RON</b></li>
 						<li>Taxă de școlarizare: <b>3900 RON</b></li>
 					</ul>
+				</div>
 				
-				<h4 id="7"class="color upper font_h_margin">acte necesare pentru înscriere</h4>
+				<div id="7" style="display:none;">
+				<h4  class="color upper font_h_margin">acte necesare pentru înscriere</h4>
 					<ul>
 						<li>fişa de înscriere tip;</li>
 						<li>diploma de bacalaureat şi diploma de licenţă (sau echivalentul ei), originale sau copii legalizate însoţite de dovada că originalele sunt depuse la altă facultate;</li>
@@ -160,14 +193,14 @@
 						<li>dosar plic.</li>
 					</ul>
 					<p>Candidaţii absolvenţi de studii universitare de licenţă de la universităţile particulare vor prezenta, la înscriere, o dovadă a acreditării specializării absolvite.</p>
-					
-				 <h4 id="8"class="color upper font_h_margin">candidaţii cetăţeni ai republicii moldova sau de etnie romă</h4>
+				</div>
+
+				<div id="8" style="display:none;">
+				 <h4  class="color upper font_h_margin">candidaţii cetăţeni ai republicii moldova sau de etnie romă</h4>
 					<p>Detaliile privind înscrierea candidaţilor din Republica Moldova şi a candidaţilor de etnie romă vor fi publicate în momentul în care vor deveni disponibile.</p>
+				</div>
+				</div>
 					
-					</br>
-					<div class="row">
-						<center><div><a href="master-form.php"><button class="w3-button w3-indigo w3-border w3-round-xxlarge  w3-btn w3-hover-white w3-large "><b>&#206nscrie-te </b></button></a></div></center>
-					</div>
 					</br></br>
 				 </div>
 				</div>

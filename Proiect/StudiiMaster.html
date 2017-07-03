@@ -15,10 +15,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bar.js"></script>
 <script>
-	function showDiv(nr) {
+	function showDiv(nr,nr2) {
 	for(i=1;i<=5;i++)
 	{ document.getElementById(i).style.display = "none";}
      document.getElementById(nr).style.display = "block";
+	 for(j=6;j<=10;j++)
+	{if ( document.getElementById(j).classList.contains("active") )
+	{document.getElementById(j).classList.remove("active");}}
+	document.getElementById(nr2).classList.add("active");
 }
 </script>
 <meta charset="UTF-8"/>
@@ -60,27 +64,32 @@
 
 <div class="container bodyA">
 	<div class="page-header">
-	  <h1><img src="imagini/licenta.jpg" alt="licenta" height="50" width="60"><a href="paginaAdmitere.html">Admitere</a></h1>
+	  <h1><a href="paginaAdmitere.html"><img src="imagini/admision_cap.png" height="50" width="190" alt="admision_cap" ></a></h1>
 	  </div>
 		  <div class="wrapper">
 			 <div class="row">
 				  <div class="col-sm-3">
-						<ul class="list-group fond_left">
+						<!--<ul class="list-group fond_left">
 							<a href="StudiiLicenta.html" class="list-group-item">Studii de licen&#355&#259</a>
 							<li class="list-group-item active">Studii de master</li>
-						</ul>
+						</ul> -->
 						
 						
 									<ul class="list-group fond_left nav">
-									  <a href="#" class="list-group-item" onclick="showDiv(1)">Inginerie Software</a>
-									  <a href="#" class="list-group-item" onclick="showDiv(2)">Lingvistică Computaţională</a>
-									  <a href="#" class="list-group-item" onclick="showDiv(3)">Optimizare Computaţională</a>
-									  <a href="#" class="list-group-item" onclick="showDiv(4)">Sisteme Distribuite</a>
-									  <a href="#" class="list-group-item" onclick="showDiv(5)">Securitatea Informaţiei</a>
+									  <a href="#" id="6" class="list-group-item active" onclick="showDiv(1,id)">Inginerie Software</a>
+									  <a href="#" id="7" class="list-group-item" onclick="showDiv(2,id)">Lingvistică Computaţională</a>
+									  <a href="#" id="8" class="list-group-item" onclick="showDiv(3,id)">Optimizare Computaţională</a>
+									  <a href="#" id="9" class="list-group-item" onclick="showDiv(4,id)">Sisteme Distribuite</a>
+									  <a href="#" id="10"class="list-group-item" onclick="showDiv(5,id)">Securitatea Informaţiei</a>
 									</ul>
-						<br /><br /><br /><br /><br /><br /><br />
+									
+									<ul class="list-group fond_left nav">
+									<a href="master.html" class="list-group-item">Informatii generale master</a>
+									<a href="CazareVara.html" class="list-group-item">Cazare Vara</a>
+									</ul>
 						
 						
+						  <br/><br/><br/><br/>
 						<img src="imagini/admitere.jpg" alt="admitere poza" height="350" width="250">
 						
 				  </div>

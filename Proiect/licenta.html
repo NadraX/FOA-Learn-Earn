@@ -16,7 +16,30 @@
 <script type="text/javascript" src="js/bar.js"></script>
 <link rel="icon" href="imagini/fii.png">
 <meta charset="UTF-8"/>
+<script>
+	function showDiv(nr,nr2) {
+	if(nr==1)
+	{document.getElementById(2).style.display = "none";
+	document.getElementById(1).style.display = "block";}
+	else
+	if(nr==2)
+	{document.getElementById(1).style.display = "none";
+	document.getElementById(2).style.display = "block";
+	for(i=3;i<=11;i++)
+	{document.getElementById(i).style.display = "block";}}
+	else
+	{document.getElementById(1).style.display = "none";
+	document.getElementById(2).style.display = "block";
+	for(i=3;i<=11;i++)
+	{document.getElementById(i).style.display = "none";
+	document.getElementById(nr).style.display = "block";}}
 	
+	for(j=12;j<=22;j++)
+	{if ( document.getElementById(j).classList.contains("active") )
+	{document.getElementById(j).classList.remove("active");}}
+	document.getElementById(nr2).classList.add("active");
+}
+	</script>	
 </head>
 
 <body >
@@ -54,7 +77,7 @@
 
 <div class="container bodyA">
 	<div class="page-header">
-	  <h1><img src="imagini/licenta.jpg" alt="licenta" height="50" width="60"><a href="paginaAdmitere.html">Admitere</a></h1>
+	  <h1><a href="paginaAdmitere.html"><img src="imagini/admision_cap.png" height="50" width="190" alt="admision_cap" ></a></h1>
 	  </div>
 		  <div class="wrapper">
 			 <div class="row">
@@ -66,34 +89,30 @@
 						</ul>
 						
 						<ul class="list-group">
-							<a href="#1" class="list-group-item fond_left">Domenii şi specializări</a>
+							<a href="#" id="12" class="list-group-item fond_left active" onclick="showDiv(1,id)">Domenii şi specializări</a>
 							<div class="panel-group">
 								<div class="panel panel-default">
-								  <div class="panel-heading">
-									<h4 class="panel-title">
-									  <a data-toggle="collapse" href="#collapse1"><p style="color:#595959;font-family:Century Gothic, sans-serif;font-size:15px;">Informaţii privind admiterea - sesiunea iulie 2017 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="glyphicon glyphicon-triangle-bottom" style="font-size:22px"></i></p></a>
+								<h4 class="panel-title">
+									  <a data-toggle="collapse" id="13" href="#collapse1" class="list-group-item" onclick="showDiv(2,id)"><p style="color:#595959;font-family:Century Gothic, sans-serif;font-size:15px; line-height:10px;">Informaţii privind admiterea - sesiunea iulie 2017 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="glyphicon glyphicon-triangle-bottom" style="font-size:20px"></i></p></a>
 									</h4>
-								  </div>
+								  
 								  <div id="collapse1" class="panel-collapse collapse">
 									<ul class="list-group fond_left">
-									  <a href="#3" class="list-group-item">Metodologie</a>
-									  <a href="#4" class="list-group-item">Calendar admitere</a>
-									  <a href="#5" class="list-group-item">Număr de locuri solicitat</a>
-									  <a href="#6" class="list-group-item">Condiţii de admitere</a>
-									  <a href="#7" class="list-group-item">Concursul elevilor de liceu</a>
-									  <a href="#8" class="list-group-item">Taxe</a>
-									  <a href="#9" class="list-group-item">Acte necesare</a>
-									  <a href="#10" class="list-group-item">Candidaţii cetăţeni ai Republicii Moldova sau de etnie romă</a>
-									  <a href="#11" class="list-group-item">Subiectele date la testul scris la admitere, sesiunea iulie 2016</a>
+									  <a href="#" id="14" class="list-group-item" onclick="showDiv(3,id)">Metodologie</a>
+									  <a href="#" id="15" class="list-group-item" onclick="showDiv(4,id)">Calendar admitere</a>
+									  <a href="#" id="16" class="list-group-item" onclick="showDiv(5,id)">Număr de locuri solicitat</a>
+									  <a href="#" id="17" class="list-group-item" onclick="showDiv(6,id)">Condiţii de admitere</a>
+									  <a href="#" id="18" class="list-group-item" onclick="showDiv(7,id)">Concursul elevilor de liceu</a>
+									  <a href="#" id="19" class="list-group-item" onclick="showDiv(8,id)">Taxe</a>
+									  <a href="#" id="20" class="list-group-item" onclick="showDiv(9,id)">Acte necesare</a>
+									  <a href="#" id="21" class="list-group-item" onclick="showDiv(10,id)">Candidaţii cetăţeni ai Republicii Moldova sau de etnie romă</a>
+									  <a href="#" id="22" class="list-group-item" onclick="showDiv(11,id)">Subiectele date la testul scris la admitere, sesiunea iulie 2016</a>
 									</ul>
 								  </div>
 								</div>
 							  </div>
 						</ul>
-						</br></br></br></br>
 						
-						
-						<img src="imagini/admitere.jpg" alt="admitere poza" height="350" width="250">
 						
 				  </div>
 				  
@@ -108,8 +127,8 @@
 						
 							
 					  
-					  
-				<h3 id="1" class="color">Domenii şi specializări</h3>
+				<div id="1">	  
+				<h3 class="color">Domenii şi specializări</h3>
 				      <ul>
 						<li>Informatică în limba română - ZI</li>
 						<li>Informatică în limba engleză - ZI</li>
@@ -119,22 +138,32 @@
 				<p>Candidaţii care vor să studieze la secţia în limba engleză vor face dovada competenţei lingvistice, prin intermediul unui interviu susţinut în faţa comisiei de admitere. Acest interviu poate fi echivalat prin <a href=https://profs.info.uaic.ro/~admitere/2013/Anexa%202%20lista%20examenelor.pdf class="fond_links">certificate recunoscute de M.E.N.C.S.</a></p>
 				<p>Consultaţi programa de studii şi informaţiile oferite de situl <a href=http://admitere.uaic.ro class="fond_links">Admitere la UAIC.</a></p>
 				
+				</div>
+				
+				<div id="2" style="display:none;">
 				 <h3 class="color font_h1_margin">Informaţii privind admiterea - sesiunea iulie 2017</h3>
 				 
-				 <h4 id="3"class="color upper font_h_margin">Metodologie</h4>
+				 <div id="3" style="display:none;">
+				 <h4 class="color upper font_h_margin">Metodologie</h4>
 					<p>Consultaţi <a href=http://admitere.uaic.ro/wp-content/uploads/2017/02/01.-Metodologie_Admitere_Licenta_2017.pdf class="fond_links">Metodologia de admitere la studii de licenţă</a> a Universităţii „Alexandru Ioan Cuza” Iaşi.</p>
-					
-				 <h4 id="4" class="color upper font_h_margin">calendar admitere</h4>
+				</div>
+				
+				<div id="4" style="display:none;">
+				 <h4 class="color upper font_h_margin">calendar admitere</h4>
 					<p>Perioada de înscriere: <b>17-21 iulie</b> <br> Susţinerea probei scrise şi afişarea rezultatelor: <b>24-26 iulie</b></p>
-					
-				 <h4 id="5" class="color upper font_h_margin">număr de locuri solicitat</h4>
+				</div>
+				
+				<div id="5" style="display:none;">
+				 <h4 class="color upper font_h_margin">număr de locuri solicitat</h4>
 						<ul>
 							<li>Informatică zi fără taxă (buget): <b>290</b></li>
 							<li>Informatică zi cu taxă: <b>85</b></li>
 						</ul>
 					    <p>Numărul de locuri aprobat va fi publicat în momentul în care va fi cunoscut.	</p>	
+				</div>
 				
-				 <h4 id="6" class="color upper font_h_margin">condiţii de admitere</h4>
+				<div id="6" style="display:none;">
+				 <h4 class="color upper font_h_margin">condiţii de admitere</h4>
 					<p>Candidaţii vor susţine un test scris la una din disciplinele Informatică sau Matematică, la alegere.</p>
 					<p>Materia pentru testul scris este cea cea de la proba scrisă la Bacalaureat - filiera teoretică, profil real (<b>M1, respectiv Informatică intensiv</b>), iar subiectele vor fi similare celor de la Bacalaureat.</p>
 					<p><b>Media de admitere</b> va fi calculată astfel:</p>
@@ -168,8 +197,10 @@
 					</ul>
 					<p>Absolvenţii de liceu care au participat la faza naţională a Olimpiadei de Informatică, Matematică, Fizică sau Chimie, în clasa a XI-a sau a XII-a, pot cere înlocuirea cu nota 10 a mediei generale de la Bacalaureat, dar cu obligaţia de a susţine testul scris.</p>
 					<p>Candidaţii vor depune la dosar diplomele care dovedesc participările/rezultatele obţinute la aceste competiţii.</p>
-   				 
-				 <h4 id="7" class="color upper font_h_margin">concursul elevilor de liceu</h4>
+   				 </div>
+				 
+				 <div id="7" style="display:none;">
+				 <h4 class="color upper font_h_margin">concursul elevilor de liceu</h4>
 					<p>Începând din anul 2015, Facultatea de Informatică organizează, în paralel cu proba scrisă din cadrul concursului de admitere, un concurs deschis elevilor de liceu.</p>
 					<p>Rezultatele obţinute la concurs de către elevi vor putea fi echivalate cu proba scrisă din cadrul concursurilor de admitere din anii următori; fiecare candidat va putea face uz de această posibilitate de echivalare într-o singură sesiune de admitere.</p>
 					<p>Detalii:</p>
@@ -179,16 +210,20 @@
 						<li>Testul va fi susţinut <b>în acelaşi timp cu proba scrisă din cadrul concursului de admitere</b> şi va fi <b>identic în conţinut</b> cu aceasta.</li>
 					</ul>
 					<p>Mai multe informaţii se găsesc în <a href=C:\Users\Lenovo\Desktop\pagini_anca\preadmitere.html class="fond_links">pagina dedicată concursului</a></p>
-					
-				 <h4 id="8" class="color upper font_h_margin">taxe</h4>
+				</div>
+
+				<div id="8" style="display:none;">
+				 <h4 class="color upper font_h_margin">taxe</h4>
 				 <ul>
 					<li>Taxă de înscriere: <b>300 RON</b></li>
 						<ul>
 							<li>Pentru participanţii la ediţiile anterioare ale concursului elevilor de liceu <b>care nu vor susţine din nou testul scris</b>, taxa de înscriere de la momentul concursului (100 RON) va fi scăzută din taxa de înscriere la concursul de admitere.</li>
 						</ul>
-					<li>Taxă de şcolarizare: <b>3600 RON</b><li>
-					
-				 <h4 id="9" class="color upper font_h_margin">acte necesare</h4>
+					<li>Taxă de şcolarizare: <b>3600 RON</b></li>
+				</div>
+
+				<div id="9" style="display:none;">
+				 <h4 class="color upper font_h_margin">acte necesare</h4>
 					<ul>
 						<li>fişa de înscriere</li>
 						<li>trei fotografii tip buletin de identitate</li>
@@ -212,11 +247,15 @@
 						<li>adeverinţă de la facultatea urmată, care să ateste numărul de semestre finanţate de la buget de care au beneficiat, precum și numărul de semestre în care au beneficiat de bursă</li>
 					</ul>
 					<p>Întrucât candidaţii au dreptul de a se prezenta concomitent la două sau mai multe domenii, în vederea admiterii în învăţământul superior, dosarul cu actele originale se depune la prima opţiune. Înscrierea pentru celelalte domenii se face pe baza documentelor mai sus menţionate, prezentate în copie (pentru domeniile din Universitatea „Alexandru Ioan Cuza” Iaşi) sau în copie legalizată (pentru domeniile altor instituţii în afara Universităţii „Alexandru Ioan Cuza” Iaşi), la care se adaugă o adeverinţă de înscriere de la facultatea unde s-a depus dosarul cu actele originale. <b>Indiferent dacă Facultatea de Informatică reprezintă sau nu prima opţiune, testul scris este obligatoriu pentru toţi candidaţii.</b></p>
+				 </div>
 				 
-				 <h4 id="10" class="color upper font_h_margin">candidaţii cetăţeni ai republicii moldova sau de etnie romă</h4>
+				 <div id="10" style="display:none;">
+				 <h4 class="color upper font_h_margin">candidaţii cetăţeni ai republicii moldova sau de etnie romă</h4>
 					<p>Detaliile privind înscrierea candidaţilor din Republica Moldova şi a candidaţilor de etnie romă vor fi publicate în momentul în care vor deveni disponibile.</p>
+				</div>
 				
-				<h4 id="11" class="color upper font_h_margin">Detaliile privind înscrierea candidaţilor din Republica Moldova şi a candidaţilor de etnie romă vor fi publicate în momentul în care vor deveni disponibile.</h4>
+				<div id="11" style="display:none;">
+				<h4 class="color upper font_h_margin">Detaliile privind înscrierea candidaţilor din Republica Moldova şi a candidaţilor de etnie romă vor fi publicate în momentul în care vor deveni disponibile.</h4>
 				<ul>
 						<li><a href=https://profs.info.uaic.ro/~webdata/admitere/2016/subiecte/subiecte_info_C.pdf class="fond_links">Subiecte Informatică - limbajul C/C++</a></li>
 						<li><a href=https://profs.info.uaic.ro/~webdata/admitere/2016/subiecte/subiecte_info_P.pdf class="fond_links">Subiecte Informatică - limbajul Pascal</a></li>
@@ -224,12 +263,12 @@
 						<li><a href=https://profs.info.uaic.ro/~webdata/admitere/2016/subiecte/barem_info.pdf class="fond_links">Barem Informatică</a></li>
 						<li><a href=https://profs.info.uaic.ro/~webdata/admitere/2016/subiecte/barem_mat.pdf class="fond_links">Barem Matematică</a></li>
 					</ul>
-					</br>
-					<div class="row">
-						<center><div><a href="Formular_Licenta.php"><button class="w3-button w3-indigo w3-border w3-round-xxlarge  w3-btn w3-hover-white w3-large "><b>&#206nscrie-te </b></button></a></div></center>
+				</div>
 					</div>
-					</br></br>
+					</br>
+					
 				 </div>
+				 
 				</div>
 				
 

@@ -20,10 +20,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bar.js"></script>
 	<script>
-	function showDiv(nr) {
+	function showDiv(nr,nr2) {
 	for(i=1;i<=6;i++)
 	{ document.getElementById(i).style.display = "none";}
      document.getElementById(nr).style.display = "block";
+	 for(j=7;j<=12;j++)
+	{if ( document.getElementById(j).classList.contains("active") )
+	{document.getElementById(j).classList.remove("active");}}
+	document.getElementById(nr2).classList.add("active");
 }
 	</script>
 </head>
@@ -63,26 +67,30 @@
 
 <div class="container bodyA">
 	<div class="page-header">
-	  <h1><img src="imagini/licenta.jpg" alt="licenta" height="50" width="60"><a href="paginaAdmitere.html">Admitere</a></h1>
+	  <h1><a href="paginaAdmitere.html"><img src="imagini/admision_cap.png" height="50" width="190" alt="admision_cap" ></a></h1>
 	  </div>
 		  <div class="wrapper">
 			 <div class="row">
 				  <div class="col-sm-3">
-						<ul class="list-group fond_left">
+						<!--<ul class="list-group fond_left">
 							<li class="list-group-item active">Studii de licen&#355&#259</li>
 							<a href="StudiiMaster.html" class="list-group-item">Studii de master</a>
-						</ul>
+						</ul> -->
 						
 						
 									<ul class="list-group fond_left nav">
-									  <a href="#" class="list-group-item" onclick="showDiv(1)">Anul I, semestrul 1</a>
-									  <a href="#" class="list-group-item" onclick="showDiv(2)">Anul I, semestrul 2</a>
-									  <a href="#" class="list-group-item" onclick="showDiv(3)">Anul II, semestrul 1</a>
-									  <a href="#" class="list-group-item" onclick="showDiv(4)">Anul II, semestrul 2</a>
-									  <a href="#" class="list-group-item" onclick="showDiv(5)">Anul III, semestrul 1</a>
-									  <a href="#" class="list-group-item" onclick="showDiv(6)">Anul III, semestrul 2</a>
+									  <a href="#" id="7" class="list-group-item active" onclick="showDiv(1,id)">Anul I, semestrul 1</a>
+									  <a href="#" id="8" class="list-group-item" onclick="showDiv(2,id)">Anul I, semestrul 2</a>
+									  <a href="#" id="9" class="list-group-item" onclick="showDiv(3,id)">Anul II, semestrul 1</a>
+									  <a href="#" id="10" class="list-group-item" onclick="showDiv(4,id)">Anul II, semestrul 2</a>
+									  <a href="#" id="11" class="list-group-item" onclick="showDiv(5,id)">Anul III, semestrul 1</a>
+									  <a href="#" id="12" class="list-group-item" onclick="showDiv(6,id)">Anul III, semestrul 2</a>
 									</ul>
 					
+									<ul class="list-group fond_left nav">
+									<a href="licenta.html" class="list-group-item">Informatii generale licenta</a>
+									<a href="CazareVara.html" class="list-group-item">Cazare Vara</a>
+									</ul>
 						
 						
 					
