@@ -285,7 +285,7 @@ CREATE TABLE Date_preg_anterioara_master (
     nr_act_rec_licenta varchar2(10)  NULL,
     serie_act_rec_licenta varchar2(10)  NULL,
     data_act_rec_licenta date  NULL,
-    in_curs_student_alta_fac varchar2(10)  NULL,
+    in_curs_student_alta_fac number(1,0)  NULL,
     in_curs_tara_master varchar2(35)  NULL,
     in_curs_localitate_master varchar2(35)  NULL,
     in_curs_judet_master varchar2(35)  NULL,
