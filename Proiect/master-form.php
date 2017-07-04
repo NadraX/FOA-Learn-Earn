@@ -12562,7 +12562,7 @@
 
 									<div style="text-align:center" class="form-buttons-wrapper">
 
-										<button id="Submit" type="submit" name="Submit" class="" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button">
+										<button id="Submit" type="submit" onclick="allItems()" name="Submit" class="" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button">
 
 											Trimitere formular
 
@@ -12648,6 +12648,22 @@
 				<p class="hr_text">&copy; 2017 Grupa B3 Facultatea de Informatic&#259; Iasi</p>
 			</hr>
 		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="js/jquery.sortable.js"></script>
+		<script>
+			$(function() {
+				$('.sortable').sortable();
+				$('.handles').sortable({
+					handle: 'span'
+				});
+				$('.connected').sortable({
+					connectWith: '.connected'
+				});
+				$('.exclude').sortable({
+					items: ':not(.disabled)'
+				});
+			});
+		</script>
 
 	</body>
 
