@@ -1039,7 +1039,26 @@
 										</span>
                     
 										<span id="initiala" class="form-sub-label-container" style="vertical-align:top;">
-											<label class="form-sub-label"  style="min-height:13px;"> Ini&#355;iala (ele) tat&#259;lui/mamei </label>
+											<label class="form-sub-label"  style="min-height:13px;"> Ini&#355;iala(ele) tat&#259;lui/mamei <span class="info-box" <?php	
+																																										if($v_Licenta_Initiala_Tata!='') 
+																																											if($vLicenta_Initiala_Tata!==0) 
+																																												echo 'style="background-color : red;"';
+																																									?>> 
+																																				<?php
+																																					if($v_Licenta_Initiala_Tata!='')
+																																						if($vLicenta_Initiala_Tata!==0) 
+																																							echo "!"; 
+																																						else 
+																																							echo "?"; 
+																																					else 
+																																						echo "?";
+																																				?> 
+																																				<span class="info-box__content">
+																																					Inițialele trebuie să fie urmate de punct și fără spații între ele.
+																																					<?php if($vLicenta_Initiala_Tata>0) echo "<br><a style=\"color:red\">*Nu ați respectat formatul specificat!</a>"; ?> 
+																																				</span>
+																																			</span>
+											</label>
 
 											<input type="text" name="Licenta_Initiala_Tata" class="form-textbox middle_1" size="10" placeholder="ex: C./C.D." data-component="first" value="<?php 
 																																																if($v_Licenta_Initiala_Tata == '') 
@@ -1178,18 +1197,19 @@
 										<span  class="form-sub-label-container" style="vertical-align:top; width:25%;padding:0;margin:0;">
 											<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Sex</label>
 											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Licenta_Sex" data-component="country">
-												<option name="sexFeminin" value="F" <?php
-																					if($v_Master_Sex=="F")
-																						echo 'selected';
-																					else
-																						echo '';
-																				?>>Feminin</option>
 												<option name="sexMasculin" value="M" <?php
 																					if($v_Master_Sex=="M")
 																						echo 'selected';
 																					else
 																						echo '';
 																				?>>Masculin</option>
+												<option name="sexFeminin" value="F" <?php
+																					if($v_Master_Sex=="F")
+																						echo 'selected';
+																					else
+																						echo '';
+																				?>>Feminin</option>
+												
 											</select>
 										</span>
 									</div> 
@@ -1514,25 +1534,46 @@
 										</span>
 										<span  class="form-sub-label-container" style="vertical-align:top; width:8%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip Buletin </label>
-											<input type="text"  name="Licenta_Tip_Buletin" class="form-textbox first_1" size="20" placeholder="CI" data-component="first" value="<?php 
+											<!--<input type="text"  name="Licenta_Tip_Buletin" class="form-textbox first_1" size="20" placeholder="CI" data-component="first" value="<?php 
 																																																if($v_Licenta_Tip_Buletin == '') 
 																																																	echo '';
 																																																else
 																																																	echo $v_Licenta_Tip_Buletin;
-																																															?>"/ readonly>
-											<!--<span style="color:red">
+																																															?>"/ readonly> -->
+											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Licenta_Tip_Buletin" data-component="country">
+												<option name="-" value="-" <?php
+																					if($v_Licenta_Tip_Buletin=="CI")
+																						echo 'selected';
+																					else
+																						echo '';
+																				?>>-</option>
+												<option name="CI" value="CI" <?php
+																					if($v_Licenta_Tip_Buletin=="CI")
+																						echo 'selected';
+																					else
+																						echo '';
+																				?>>CI</option>
+												<option name="Pasaport" value="Pasaport" <?php
+																					if($v_Licenta_Tip_Buletin=="Pasaport")
+																						echo 'selected';
+																					else
+																						echo '';
+																				?>>Pașaport</option>
+												
+											</select>
+											<span style="color:red">
 												<?php
-													/*if(isset($_POST['Submit'])) { 
-														$v_Licenta_Tip_Buletin = $_POST["Licenta_Tip_Buletin"];  // V
+													if(isset($_POST['Submit'])) { 
+														$v_Licenta_Tip_Buletin = $_POST["Licenta_Tip_Buletin"];
 														$vLicenta_Tip_Buletin = validTipBuletin($v_Licenta_Tip_Buletin);
-														if($v_Licenta_Tip_Buletin=='')
+														if($v_Licenta_Tip_Buletin=='-')
 															echo "C&#226;mp necompletat!";
-														else
-															if($vLicenta_Tip_Buletin!==0)
-																echo "C&#226;mp invalid!";
-													}*/
+														//else
+														//	if($vLicenta_Tip_Buletin!==0)
+															//	echo "C&#226;mp invalid!";
+													}
 												?>
-											</span>-->
+											</span>
 										</span>
 
 										<span  class="form-sub-label-container" style="vertical-align:top; width:9%;padding:0;margin:0;">
@@ -8894,7 +8935,7 @@
 															?>
 														</span>
 													</span>
-													<span class="form-sub-label-container" style="vertical-align:top; width:27%">
+													<!--<span class="form-sub-label-container" style="vertical-align:top; width:27%">
 														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Emisă de </label>
 														<input type="text"  name="Licenta_Emitere_DiplomaBAC" class="form-textbox form-address-city first_1" size="21" placeholder="ex: ISJ Iasi" value="<?php 
 																																																			if($v_Licenta_Emitere_DiplomaBAC == '') 
@@ -8918,7 +8959,7 @@
 																}
 															?>
 														</span>
-													</span>
+													</span>-->
 													<span>
 														<div  class="form-input jf-required" style="vertical-align:top;padding:0;margin:0;height:40px">
 															<div data-wrapper-react="true">
@@ -10089,7 +10130,7 @@
 																</span>
 
 															</span>
-															<span class="form-sub-label-container" style="vertical-align:top; width:22%">
+															<!--<span class="form-sub-label-container" style="vertical-align:top; width:22%">
 																<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Emisă de </label>
 																<input type="text"  name="Licenta_Emitere_DiplomaLicenta" class="form-textbox form-address-city first_1" size="21" placeholder="ex: Facultatea de Informatică Iași" data-component="city" value="<?php
 																																																																	if($v_Licenta_Emitere_DiplomaLicenta == '')
@@ -10113,7 +10154,7 @@
 																		}
 																	?>
 																</span>
-															</span>
+															</span>-->
 															<span>
 																<div  class="form-input jf-required" style="vertical-align:top;padding:0;margin:0;height:40px">
 																	<div data-wrapper-react="true">

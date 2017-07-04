@@ -777,10 +777,22 @@ function validInitialaTata($p_initTata)
 	if(strlen($p_initTata) > 14 || strlen($p_initTata) < 2)
 		return 1; // lungime incorecta
 
+	$p_initTata_diacritice=str_replace(array('.','Ă','Î','Ș','Ț','Â'),'',$p_initTata);
+	if(!preg_match('/^[A-Z ]*$/', $p_initTata_diacritice))
+		return 2;//caract incorecte
+	if(!preg_match('/(([A-ZĂÎȘȚÂ]\.)+)$/', $p_initTata))
+		return 3;//Format incorect
+	return 0;
+	
+	/*
 	$lung=strlen($p_initTata);
-
-	if($lung%2==1)
-        return 3;//Format incorect
+	
+	if($lung%2==1){
+		if(!preg_match('/(([A-ZĂÎȘȚÂ]\.)+)$/', $p_initTata))
+			return 3;//Format incorect
+		else
+			return 0;
+	}
 
     $initialaTata=str_split($p_initTata);
 
@@ -790,7 +802,7 @@ function validInitialaTata($p_initTata)
             return 2;//caract incorecte
         else 
 			if( $initialaTata[1]!='.')
-                return 3;//caractere incorecte
+                return 3;//Format incorect
             else
 				return 0;
         }
@@ -801,13 +813,13 @@ function validInitialaTata($p_initTata)
                     return 2;//caractere incorecte
                 else 
 					if($initialaTata[1]!='.')
-						return 3;//caractere incorecte
+						return 3;//Format incorect
 					else 
 						if(!preg_match('/^[A-Z]$/', $initialaTata[2]))
 							return 2;//caractere incorecte
 						else 
 							if($initialaTata[3]!='.')
-								return 3;//caractere incorecte
+								return 3;//Format incorect
 							else
 								return 0;
             }
@@ -818,19 +830,19 @@ function validInitialaTata($p_initTata)
 						return 2;
 					else 
 						if($initialaTata[1]!='.')
-                            return 3;
+                            return 3;//Format incorect
 						else 
 							if(!preg_match('/^[A-Z]$/', $initialaTata[2]))
 								return 2;
 							else 
 								if($initialaTata[3]!='.')
-									return 3;
+									return 3;//Format incorect
 								else
 									if(!preg_match('/^[A-Z]$/', $initialaTata[4]))
 										return 2;
 									else
 										if($initialaTata[5]!='.')
-											return 3;
+											return 3;//Format incorect
 										else
 											return 0;
                 }
@@ -1038,7 +1050,7 @@ function validInitialaTata($p_initTata)
 																										return 3;
 																									else
 																										return 0;
-									}
+									}*/
 
 }
 
@@ -1089,10 +1101,12 @@ function validBuletinEliberatDe($p_eliberat_de)
 //fct buna
 function validCetatetnie($nationalitate)
 {
+	$nationalitate_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$nationalitate);
     if(!$nationalitate)
         return -1;
-    $nationalitate = strtolower($nationalitate);
-    if($nationalitate != 'romana')
+   // $nationalitate = strtolower($nationalitate);
+   // if($nationalitate != 'romana')
+	if(!preg_match('/^[a-zA-Z ]*$/', $nationalitate_diacritice))
         return 1; // cetatenie incorecta
     return 0;
 }
@@ -1206,7 +1220,7 @@ function validEtnie($nationalitate)
 {
     if(!$nationalitate)
         return -1;
-    $nationalitate = strtolower($nationalitate);
+   /* $nationalitate = strtolower($nationalitate);
     if($nationalitate != 'danez' && $nationalitate != 'englez' && $nationalitate != 'estonian' && $nationalitate != 'finlandez' &&
       $nationalitate != 'islandez' && $nationalitate != 'irlandez' && $nationalitate != 'letonian' && $nationalitate != 'lituanian' &&
       $nationalitate != 'nord irlandez' && $nationalitate != 'norvegian' && $nationalitate != 'scotian' && $nationalitate != 'suedez' &&
@@ -1235,9 +1249,15 @@ function validEtnie($nationalitate)
       $nationalitate != 'tunisian' && $nationalitate != 'etiopian' && $nationalitate != 'kenian' && $nationalitate != 'somalez' &&
       $nationalitate != 'sudanez' && $nationalitate != 'tanzanez' && $nationalitate != 'ugandez' && $nationalitate != 'angolez' &&
       $nationalitate != 'botswaneza' && $nationalitate != 'congolez' && $nationalitate != 'malagas' && $nationalitate != 'mozambican' &&
-      $nationalitate != 'namibian' && $nationalitate != 'sud africa' && $nationalitate != 'zambian' && $nationalitate != 'zimbabuean' && $nationalitate != 'rrom' && $nationalitate != 'moldovean')
+      $nationalitate != 'namibian' && $nationalitate != 'sud africa' && $nationalitate != 'zambian' && $nationalitate != 'zimbabuean' && 
+	  $nationalitate != 'rrom' && $nationalitate != 'moldovean')
         return 1; // nu exista acea nationalitate
-		
+	*/
+	$nationalitate_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$nationalitate);
+    if(!$nationalitate)
+        return -1;
+	if(!preg_match('/^[a-zA-Z ]*$/', $nationalitate_diacritice))
+        return 1; // cetatenie incorecta
     return 0;
 
 }
@@ -1275,15 +1295,18 @@ function validNumarBuletin($p_numar)
 
 //fct buna
     function validNume($p_nume) 
-    {
-        if(!$p_nume)
-            return -1;
-        else
-            if(!preg_match('/^[a-zA-Z ]*$/', $p_nume))
-                return 1;//caract incorecte
-        else 
-            if(strlen($p_nume)<3 || strlen($p_nume)>30)
+    {	$p_nume_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_nume);
+        
+		if(!$p_nume)
+			return -1;
+		else 
+			if(strlen($p_nume)<1 || strlen($p_nume)>30)
                 return 2; // lungime gresita
+			else
+				if(!preg_match('/^[a-zA-Z ]*$/', $p_nume_diacritice))
+					return 1;//caract incorecte
+       
+          
         return 0;//corect
     }
 
@@ -1292,21 +1315,24 @@ function validNumarBuletin($p_numar)
 //fct buna
     function validPremume($p_prenume)
     {
+		$p_prenume_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_prenume);
         if(!$p_prenume)
             return -1;
 		
 		if($p_prenume=='-')
 			return 0;
-		
-        if (!ctype_alpha(str_replace(' ','',str_replace('-', '', $p_prenume))))
-            return 1;//caractere incorecte
-        else if(strpos($p_prenume, '--') !== false)
-            return 1;//caractere incorecte
-        else if(strpos($p_prenume, '  ') !== false)
-            return 1;//caractere incorecte
-        else 
-            if(strlen($p_prenume)<3 || strlen($p_prenume)>30)
-                return 2; // lungime gresita
+		if(strlen($p_prenume)<1 || strlen($p_prenume)>30)
+			return 2; // lungime gresita
+		else
+			if(!ctype_alpha(str_replace(' ','',str_replace('-', '', $p_prenume_diacritice))))
+				return 1;//caractere incorecte
+			else 
+				if(strpos($p_prenume, '--') !== false)
+					return 1;//caractere incorecte
+				else
+					if(strpos($p_prenume, '  ') !== false)
+						return 1;//caractere incorecte
+					
         return 0;
     }
 
@@ -1497,7 +1523,7 @@ function validTipBuletin($p_tip)
 {
     if(!$p_tip)
         return -1;
-    if(!ctype_alpha(str_replace('.','',str_replace(' ', '', $p_tip))))
+    if(!ctype_alpha(str_replace('.','',str_replace(' ', '', str_replace('-', '', $p_tip)))))
         return 1;
     
     return 0;
@@ -1976,7 +2002,7 @@ function validareLiceu($p_liceu){
 	{
         if(!$chitanta)
             return -1;
-		if(!(ctype_digit($chitanta)))
+		if(!(ctype_alnum($chitanta)))
 			return 1;
 		if($chitanta<0)
 			return 2;
@@ -2020,11 +2046,12 @@ function validareLiceu($p_liceu){
 //fct buna
 	function validScutire($scutire)
 	{
+		$p_scutire_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$scutire);
 		if(!$scutire)
 			return -1;
 		if(strlen($scutire)<6 || strlen($scutire)>50)
 			return 2;
-		if(!(ctype_alpha(str_replace(' ', '', $scutire))))
+		if(!(ctype_alpha(str_replace(' ', '', $p_scutire_diacritice))))
 			return 1;
 		return 0;
 	}

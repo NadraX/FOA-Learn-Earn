@@ -1607,27 +1607,49 @@
 										</span>
 
 										<span  class="form-sub-label-container" style="vertical-align:top; width:8%;padding:0;margin:0;">
-										  <label class="form-sub-label"  style="min-height:13px;"> Tip Buletin </label>
 
-										  <input type="text" name="Master_Tip_Buletin" class="form-textbox first_1" size="20" placeholder="CI" data-component="first" value="<?php 
+										 
+										<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip Buletin </label>
+											<!--<input type="text" name="Master_Tip_Buletin" class="form-textbox first_1" size="20" placeholder="CI" data-component="first" value="<?php 
 																																															if($v_Master_Tip_Buletin == '') 
 																																																echo '';
 																																															else
 																																																echo $v_Master_Tip_Buletin;
-																																														?>"/ readonly>
-													<!--<span style="color:red">
+																																														?>"/ readonly>-->
+											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Master_Tip_Buletin" data-component="country">
+												<option name="-" value="-" <?php
+																					if($v_Master_Tip_Buletin=="CI")
+																						echo 'selected';
+																					else
+																						echo '';
+																				?>>-</option>
+												<option name="CI" value="CI" <?php
+																					if($v_Master_Tip_Buletin=="CI")
+																						echo 'selected';
+																					else
+																						echo '';
+																				?>>CI</option>
+												<option name="Pasaport" value="Pasaport" <?php
+																					if($v_Master_Tip_Buletin=="Pasaport")
+																						echo 'selected';
+																					else
+																						echo '';
+																				?>>Pașaport</option>
+												
+											</select>
+											<span style="color:red">
 												<?php
-													/*if(isset($_POST['Submit'])) { 
-														$v_Master_Tip_Buletin = $_POST["Master_Tip_Buletin"];  // V
+													if(isset($_POST['Submit'])) { 
+														$v_Master_Tip_Buletin = $_POST["Master_Tip_Buletin"];
 														$vMaster_Tip_Buletin = validTipBuletin($v_Master_Tip_Buletin);
-														if($v_Master_Tip_Buletin=='')
+														if($v_Master_Tip_Buletin=='-')
 															echo "C&#226;mp necompletat!";
-														else
-															if($vMaster_Tip_Buletin!==0)
-																echo "C&#226;mp invalid!";
-													}*/
+														//else
+														//	if($vLicenta_Tip_Buletin!==0)
+															//	echo "C&#226;mp invalid!";
+													}
 												?>
-											</span>-->
+											</span>
 
 
 										</span>
@@ -8953,7 +8975,7 @@
 							</span>
 
 	                          </span>
-	                          <span class="form-sub-label-container" style="vertical-align:top; width:22%">
+	                         <!-- <span class="form-sub-label-container" style="vertical-align:top; width:22%">
 	                            <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Emisă de </label>
 	                            <input type="text"  name="Master_Emitere_DiplomaBAC" class="form-textbox form-address-city first_1" size="21" placeholder="ex: Liceul X" data-component="city" value="<?php 
 																																										if($v_Master_Emitere_DiplomaBAC == '') 
@@ -8961,24 +8983,24 @@
 																																										else
 																																											echo $v_Master_Emitere_DiplomaBAC;
 																																									?>" placeholder="ex: " data-component="city" />
-							<span style="color:red">
-								<?php 
-									if(isset($_POST['Submit'])) {
-										$v_Master_Emitere_DiplomaBAC = $_POST["Master_Emitere_DiplomaBAC"];
-										$vMaster_Emitere_DiplomaBAC = validBuletinEliberatDe($v_Master_Emitere_DiplomaBAC);
-										if($vMaster_Emitere_DiplomaBAC==-1)
-											echo "C&#226;mp necompletat!";
-										else
-											if($vMaster_Emitere_DiplomaBAC==1)
-												echo "Caractere nepermise!";
+								<span style="color:red">
+									<?php 
+										if(isset($_POST['Submit'])) {
+											$v_Master_Emitere_DiplomaBAC = $_POST["Master_Emitere_DiplomaBAC"];
+											$vMaster_Emitere_DiplomaBAC = validBuletinEliberatDe($v_Master_Emitere_DiplomaBAC);
+											if($vMaster_Emitere_DiplomaBAC==-1)
+												echo "C&#226;mp necompletat!";
 											else
-												if($vMaster_Emitere_DiplomaBAC==2)
-													echo "Minim 3 caractere!";
-									}
-								?>
-							</span>
+												if($vMaster_Emitere_DiplomaBAC==1)
+													echo "Caractere nepermise!";
+												else
+													if($vMaster_Emitere_DiplomaBAC==2)
+														echo "Minim 3 caractere!";
+										}
+									?>
+								</span>
 
-	                          </span>
+	                          </span> -->
 	                          <span>
 	                            <div  class="form-input jf-required" style="vertical-align:top;padding:0;margin:0;height:40px">
 	                              <div data-wrapper-react="true">
@@ -9705,7 +9727,7 @@
 							</span>
 
 	                                </span>
-	                                <span class="form-sub-label-container" style="vertical-align:top; width:22%">
+	                                 <!--<span class="form-sub-label-container" style="vertical-align:top; width:22%">
 	                                  <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Emisă de </label>
 	                                  <input type="text"  name="Master_Emitere_DiplomaLicenta" class="form-textbox form-address-city first_1" size="21" placeholder="ex: ISJ Iasi" data-component="city" value="<?php 
 																																																			if($v_Master_Emitere_DiplomaLicenta == '') 
@@ -9713,24 +9735,24 @@
 																																																			else
 																																																				echo $v_Master_Emitere_DiplomaLicenta;
 																																																		?>"  data-component="city" />
-							<span style="color:red">
-								<?php 
-									if(isset($_POST['Submit'])) {
-										$v_Master_Emitere_DiplomaLicenta = $_POST["Master_Emitere_DiplomaLicenta"];
-										$vMaster_Emitere_DiplomaLicenta = validBuletinEliberatDe($v_Master_Emitere_DiplomaLicenta);
-										if($vMaster_Emitere_DiplomaLicenta==-1)
-											echo "C&#226;mp necompletat!";
-										else
-											if($vMaster_Emitere_DiplomaLicenta==1)
-												echo "C&#226;mp invalid!";
-											else
-												if($vMaster_Emitere_DiplomaLicenta==2)
-													echo "Minim 3 caractere!";
-									}
-								?>
-							</span>
+										<span style="color:red">
+											<?php 
+												if(isset($_POST['Submit'])) {
+													$v_Master_Emitere_DiplomaLicenta = $_POST["Master_Emitere_DiplomaLicenta"];
+													$vMaster_Emitere_DiplomaLicenta = validBuletinEliberatDe($v_Master_Emitere_DiplomaLicenta);
+													if($vMaster_Emitere_DiplomaLicenta==-1)
+														echo "C&#226;mp necompletat!";
+													else
+														if($vMaster_Emitere_DiplomaLicenta==1)
+															echo "C&#226;mp invalid!";
+														else
+															if($vMaster_Emitere_DiplomaLicenta==2)
+																echo "Minim 3 caractere!";
+												}
+											?>
+										</span>
 
-	                                </span>
+	                                </span> -->
 	                                <span>
 	                                  <div  class="form-input jf-required" style="vertical-align:top;padding:0;margin:0;height:40px">
 	                                    <div data-wrapper-react="true">
@@ -10935,7 +10957,7 @@
 											?>
 										</span>
                                     </span>
-                                    <span class="form-sub-label-container" style="vertical-align:top; width:22%">
+                                  <!--  <span class="form-sub-label-container" style="vertical-align:top; width:22%">
                                       <label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Emisă de </label>
                                       <input type="text"  name="Master_Emitere_DiplomaMaster" class="form-textbox form-address-city first_1" size="21" placeholder="ex: UAIC Iasi" data-component="city" value="<?php
 																																																		if($v_Master_Emitere_DiplomaMaster == '')
@@ -10962,7 +10984,7 @@
 												}
 											?>
 										</span>
-									</span>
+									</span> -->
                                     <span>
                                       <div  class="form-input jf-required" style="vertical-align:top;padding:0;margin:0;height:40px">
                                         <div data-wrapper-react="true">
