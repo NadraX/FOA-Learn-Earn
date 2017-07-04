@@ -1,6 +1,23 @@
 -- Created by Vertabelo (http://vertabelo.com)
 -- Last modification date: 2017-06-12 19:56:18.236
 
+DROP TABLE Cerinte_licenta;
+DROP TABLE Cerinte_master;
+DROP TABLE Chestionar_licenta;
+DROP TABLE Chestionar_master;
+DROP TABLE Date_personale_licenta;
+DROP TABLE Date_personale_master;
+DROP TABLE Date_personale_preadmitere;
+DROP TABLE Date_preg_anterioara_licenta;
+DROP TABLE Date_preg_anterioara_master;
+DROP TABLE Informatii_documente_licenta;
+DROP TABLE Informatii_documente_master;
+DROP TABLE Optiuni_licenta;
+DROP TABLE Ordine_preferinte_master;
+DROP TABLE Formular_licenta;
+DROP TABLE Formular_master;
+DROP TABLE Formular_preadmitere;
+
 -- tables
 -- Table: Cerinte_licenta
 CREATE TABLE Cerinte_licenta (
