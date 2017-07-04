@@ -594,7 +594,7 @@
 		</div> 
 		<br>
 		<div class="container formular2" style="width:100%">
-			<form  style="width:90%" action="" method='post' enctype="multipart/form-data">
+			<form id="myform" name="myform" style="width:90%" action="" method='post' enctype="multipart/form-data">
 				<input type="hidden" name="formID" value="71274520949360" />
 				<div class="">
 					<ul class="form-section page-section">
@@ -10772,7 +10772,9 @@
 										Preferinţe:
 									</label>
 									<ul id="sortable2" class="droptrue sortable" style="float:right; width:100%;">
-									  
+										<ul id="navbar">
+											
+										</ul>
 									</ul>
 									<br>
 									<br>
@@ -10797,10 +10799,25 @@
 								</center>
 								<script>
 									function myFunction(){
-										//if($( ".sortable2" ).empty())
-										//	document.writeln("NUUUUUUUUUUUUUUUUUUUUUUU");
-										//else 
-										//	document.writeln("DAAAAAAAAAAAAAA");
+												$('#myform').submit(function() {
+													var lis = document.getElementById("sortable2").getElementsByTagName("li");
+													var li="<li>";
+													var eoli="</li>";
+													var li0=lis[0].textContent;
+													var li1=lis[1].textContent;
+													var li2=lis[2].textContent;
+													var li3=lis[3].textContent;
+													
+									//				if(li0!=='')
+									//					document.writeln(li.concat(li0,eoli));
+									//				if(li!=='')
+									//					document.writeln(li.concat(li1,eoli));
+									//				if(li2!=='')
+									//					document.writeln(li.concat(li2,eoli));
+									//				if(li3!=='')
+									//					document.writeln(li.concat(li3,eoli));
+												});
+												
 									};
 								</script>
 								
@@ -10948,7 +10965,7 @@
 										<?php
 											if(isset($_POST['Submit'])) {
 												$v_Radio26 = $_POST["group26"];
-												$vradio26 = validRadio($v_Radio26);
+												$vradio26 = validRadio3($v_Radio26);
 												if($vradio26!==1 && $vradio26!==2 && $vradio26!==3)
 													echo "C&#226;mp necompletat!";
 											}

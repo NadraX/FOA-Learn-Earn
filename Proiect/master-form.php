@@ -467,7 +467,7 @@
 
 		<div class="container formular2" style="width:100%">
 
-			<form style="width:90%" method='post' enctype="multipart/form-data">
+			<form id="myform" name="myform" style="width:90%" method='post' enctype="multipart/form-data">
 
 				<div>
 
@@ -11411,40 +11411,40 @@
                             					<label class="form-label  form-label-auto optiune" style="margin-top:14px;">1</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">2</label>
+                            					<label class="form-label form-label-auto optiune">2</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">3</label>
+                            					<label class="form-label form-label-auto optiune">3</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">4</label>
+                            					<label class="form-label form-label-auto optiune">4</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">5</label>
+                            					<label class="form-label form-label-auto optiune">5</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">6</label>
+                            					<label class="form-label form-label-auto optiune">6</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">7</label>
+                            					<label class="form-label form-label-auto optiune">7</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">8</label>
+                            					<label class="form-label form-label-auto optiune">8</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">9</label>
+                            					<label class="form-label form-label-auto optiune">9</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">10</label>
+                            					<label class="form-label form-label-auto optiune">10</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">11</label>
+                            					<label class="form-label form-label-auto optiune">11</label>
                             				</li>
 
                             				
                             			</ul>
-										<ul class="sortable list">
-                                            <li>Ingineria Sistemelor Software - Buget</li>
+										<ul id="navbar" class="sortable list">
+											<li>Ingineria Sistemelor Software - Buget</li>
 											<li>Sisteme Distribuite - Buget</li>
 											<li>Securitatea Informaţiei - Buget</li>
 											<li>Optimizarea Computaţională - Buget</li>
@@ -11522,7 +11522,7 @@
 								<?php
 									  if(isset($_POST['Submit'])) {
 										$v_Radio26 = $_POST["group26"];
-										$vradio26 = validRadio($v_Radio26);
+										$vradio26 = validRadio3($v_Radio26);
 										if($vradio26!==1 && $vradio26!==2 && $vradio26!==3)
 												echo "C&#226;mp necompletat!";
 									  }
@@ -12665,6 +12665,36 @@
 			});
 		</script>
 
+											<script> 
+												$('#myform').submit(function() {
+													var lis = document.getElementById("navbar").getElementsByTagName("li");
+													var li="<li>";
+													var eoli="</li>";
+													var li0=lis[0].textContent;
+													var li1=lis[1].textContent;
+													var li2=lis[2].textContent;
+													var li3=lis[3].textContent;
+													var li4=lis[4].textContent;
+													var li5=lis[5].textContent;
+													var li6=lis[6].textContent;
+													var li7=lis[7].textContent;
+													var li8=lis[8].textContent;
+													var li9=lis[9].textContent;
+													var li10=lis[10].textContent;
+											//			document.writeln(li.concat(li0,eoli));
+											//			document.writeln(li.concat(li1,eoli));
+											//			document.writeln(li.concat(li2,eoli));
+											//			document.writeln(li.concat(li3,eoli));
+											//			document.writeln(li.concat(li4,eoli));
+											//			document.writeln(li.concat(li5,eoli));
+											//			document.writeln(li.concat(li6,eoli));
+											//			document.writeln(li.concat(li7,eoli));
+											//			document.writeln(li.concat(li8,eoli));
+											//			document.writeln(li.concat(li9,eoli));
+											//			document.writeln(li.concat(li10,eoli));
+												});
+												
+											</script>
 	</body>
 
 </html>
