@@ -221,7 +221,7 @@ CREATE TABLE Date_preg_anterioara_licenta (
     domeniu_licenta_fac varchar2(35)  NULL,
     specializare_fac varchar2(35)  NULL,
     forma_invatamant_fac varchar2(5)  NULL,
-    anul_fac number(1,0)  NULL,
+    anul_fac number(4,0)  NULL,
     nr_semestre_buget_fac number(2,0)  NULL,
     nr_semestre_bursa_fac number(2,0)  NULL,
     anul_absolvirii number(4,0)  NULL,
