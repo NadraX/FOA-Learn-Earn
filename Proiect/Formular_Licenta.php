@@ -12297,12 +12297,16 @@
         
         //v_Radio1 trb sa fie 1 sau 2
 		
-		if(vradio1 == 1) $v_Motiv_Scutire = $_POST["Licenta_Motiv_Scutire_taxa"];
-		$vscutire = //validare motiv scutire;
+		$v_verificare_radio_1 = 0;
+		
+		if($v_Radio1 == 1) 
+		{
+			$v_Motiv_Scutire = $_POST["Licenta_Motiv_Scutire_taxa"];
+			$vscutire = validScutire($v_Motiv_Scutire);
 			
-		
-		
-        
+			if($vscutire == 0) $v_verificare_radio_1 = 1;
+		}
+			
         $v_Medie_BAC = $_POST["Licenta_Medie_BAC"];
 		$vmediebac = validareMedieBac($v_Medie_BAC);
        
@@ -12500,7 +12504,7 @@
 		
 			$v_verificare_radio_25 = 0;
 			
-			if($vradio25 == 1) 
+			if($v_Radio25 == 1) 
 			{
 				$v_Licenta_Localitate_AltaFacultate = $_POST["Licenta_Localitate_AltaFacultate"];
 				$vLicenta_Localitate_AltaFacultate = validLocalitate($v_Licenta_Localitate_AltaFacultate);
@@ -12532,7 +12536,7 @@
 			
 			$v_verificare_radio_23 = 0;
 		
-			if($vradio23 == 1)
+			if($v_Radio23 == 1)
 			{
 				$v_Licenta_Serie_DiplomaLicenta=$_POST["Licenta_Serie_DiplomaLicenta"];
 				$vLicenta_Serie_DiplomaLicenta=validSerieBAC($v_Licenta_Serie_DiplomaLicenta);
@@ -12552,7 +12556,7 @@
 		
 			$v_verificare_radio_24 = 0;
 			
-			if($vradio24 == 1)
+			if($v_Radio24 == 1)
 			{
 				$v_Licenta_AbsolventLicenta_Univ = $_POST["Licenta_AbsolventLicenta_Univ"];
 		 		$vLicenta_AbsolventLicenta_Univ = validNume($v_Licenta_AbsolventLicenta_Univ);
@@ -12588,7 +12592,7 @@
 				
 			}
 		
-        if ($vChitanta == 0 && $vsuma == 0 && vmediebac == 0 && vnotami == 0 && ($vradio1 == 1 || $vradio1 == 2) && $v_Obiect_Test_Ales != null && ($vradio21 == 1 || $vradio21 == 2) && ($vradio2 == 1 || $vradio2 == 2) && vNumele_De_Familie_La_Nastere == 0 && vInitialaTata == 0 && vNumeleDeFamilieActual == 0 && vPrenumele == 0 && vPrenumeTata == 0 && vPrenumeMama == 0 && vLicenta_CNP == 0 && vTaraNastere == 0 && vLicenta_Localitate_Nastere == 0 && v_Licenta_Nationalitate != null && vLicenta_Cetatenie == 0 && $vLicenta_Etnie == 0 && $vLicenta_Limba_Materna == 0 && $vLicenta_Serie_Buletin == 0 && $vLicenta_Numar_Buletin == 0 && $vLicenta_Buletin_Eliberat_De == 0 && $vLicenta_Strada == 0 && $vLicenta_Numar == 0 && $vLicenta_Bloc == 0 && $vLicenta_Scara == 0&& $vLicenta_Etaj == 0 && $vLicenta_Apartament == 0 && $vLicenta_Localitate == 0 && $vLicenta_Cod_Postal == 0 && $vLicenta_Telefon == 0 && $vLicenta_Email == 0 && $vLicenta_Localitate_Liceu == 0 && $vLicenta_Profil_Liceu == 0 && $vLicenta_Durata_Liceu == 0 && $vLicenta_An_Liceu == 0 && $vLicenta_Serie_DiplomaBAC == 0 && $vLicenta_Nr_DiplomaBAC == 0 && $v_Liceul_Absolvit != null && ($vradio4 == 1 || $vradio4 == 2) && ($vradio5 == 1 || $vradio5 == 2) && ($vradio6 == 1 || $vradio6 == 2) && $vLicenta_Emitere_DiplomaBAC == 0 && $v_Licenta_Nr_FoaieMatricola != null && $vLicenta_Serie_ActRecunoastere == 0 && $v_Licenta_Nr_ActRecunoastere != null && (($vradio25 == 1 && $v_verificare_radio_25 == 1) || $vradio25 == 2) && (($vradio24 == 1 && $v_verificare_radio_24== 1) || $vradio24 == 2) && ($v_Diploma_BAC == 1 || $v_Diploma_BAC == 2) && ($v_Adeverinta == 1 || $v_Adeverinta == 2) && ($v_Document_Echivalare_Studii == 1 || $v_Document_Echivalare_Studii == 2) && $v_Diploma_Olimpiada == 1 && ($vradio27 == 1 || $vradio27 == 2) && ($vradio26 == 1 || $vradio26 == 2) && ($vradio28 == 1 || $vradio28 == 2) && ($vradio29 == 1 || $vradio29 == 2) && ($vradio30 == 1 || $vradio30 == 2) && ($vradio31 == 1 || $vradio31 == 2) && ($vradio32 == 1 || $vradio32 == 2) && ($vradio33 == 1 || $vradio33 == 2) && ($vradio34 == 1 || $vradio34 == 2) && ($vradio35 == 1 || $vradio35 == 2))
+        if ($vChitanta == 0 && $vsuma == 0 && vmediebac == 0 && vnotami == 0 && (($v_Radio1 == 1 && $v_verificare_radio_1 == 1) || $v_Radio1 == 2) && $v_Obiect_Test_Ales != null && ($vradio21 == 1 || $vradio21 == 2) && ($vradio2 == 1 || $vradio2 == 2) && vNumele_De_Familie_La_Nastere == 0 && vInitialaTata == 0 && vNumeleDeFamilieActual == 0 && vPrenumele == 0 && vPrenumeTata == 0 && vPrenumeMama == 0 && vLicenta_CNP == 0 && vTaraNastere == 0 && vLicenta_Localitate_Nastere == 0 && v_Licenta_Nationalitate != null && vLicenta_Cetatenie == 0 && $vLicenta_Etnie == 0 && $vLicenta_Limba_Materna == 0 && $vLicenta_Serie_Buletin == 0 && $vLicenta_Numar_Buletin == 0 && $vLicenta_Buletin_Eliberat_De == 0 && $vLicenta_Strada == 0 && $vLicenta_Numar == 0 && $vLicenta_Bloc == 0 && $vLicenta_Scara == 0&& $vLicenta_Etaj == 0 && $vLicenta_Apartament == 0 && $vLicenta_Localitate == 0 && $vLicenta_Cod_Postal == 0 && $vLicenta_Telefon == 0 && $vLicenta_Email == 0 && $vLicenta_Localitate_Liceu == 0 && $vLicenta_Profil_Liceu == 0 && $vLicenta_Durata_Liceu == 0 && $vLicenta_An_Liceu == 0 && $vLicenta_Serie_DiplomaBAC == 0 && $vLicenta_Nr_DiplomaBAC == 0 && $v_Liceul_Absolvit != null && ($vradio4 == 1 || $vradio4 == 2) && ($vradio5 == 1 || $vradio5 == 2) && ($vradio6 == 1 || $vradio6 == 2) && $vLicenta_Emitere_DiplomaBAC == 0 && $v_Licenta_Nr_FoaieMatricola != null && $vLicenta_Serie_ActRecunoastere == 0 && $v_Licenta_Nr_ActRecunoastere != null && (($v_Radio25 == 1 && $v_verificare_radio_25 == 1) || $v_Radio25 == 2) && (($v_Radio24 == 1 && $v_verificare_radio_24== 1) || $v_Radio24 == 2) && ($v_Diploma_BAC == 1 || $v_Diploma_BAC == 2) && ($v_Adeverinta == 1 || $v_Adeverinta == 2) && ($v_Document_Echivalare_Studii == 1 || $v_Document_Echivalare_Studii == 2) && $v_Diploma_Olimpiada == 1 && ($vradio27 == 1 || $vradio27 == 2) && ($vradio26 == 1 || $vradio26 == 2) && ($vradio28 == 1 || $vradio28 == 2) && ($vradio29 == 1 || $vradio29 == 2) && ($vradio30 == 1 || $vradio30 == 2) && ($vradio31 == 1 || $vradio31 == 2) && ($vradio32 == 1 || $vradio32 == 2) && ($vradio33 == 1 || $vradio33 == 2) && ($vradio34 == 1 || $vradio34 == 2) && ($vradio35 == 1 || $vradio35 == 2))
         
 		{
         
