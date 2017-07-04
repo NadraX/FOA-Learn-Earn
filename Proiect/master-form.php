@@ -467,7 +467,7 @@
 
 		<div class="container formular2" style="width:100%">
 
-			<form style="width:90%" method='post' enctype="multipart/form-data">
+			<form id="myform" name="myform" style="width:90%" method='post' enctype="multipart/form-data">
 
 				<div>
 
@@ -11411,40 +11411,40 @@
                             					<label class="form-label  form-label-auto optiune" style="margin-top:14px;">1</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">2</label>
+                            					<label class="form-label form-label-auto optiune">2</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">3</label>
+                            					<label class="form-label form-label-auto optiune">3</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">4</label>
+                            					<label class="form-label form-label-auto optiune">4</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">5</label>
+                            					<label class="form-label form-label-auto optiune">5</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">6</label>
+                            					<label class="form-label form-label-auto optiune">6</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">7</label>
+                            					<label class="form-label form-label-auto optiune">7</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">8</label>
+                            					<label class="form-label form-label-auto optiune">8</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">9</label>
+                            					<label class="form-label form-label-auto optiune">9</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">10</label>
+                            					<label class="form-label form-label-auto optiune">10</label>
                             				</li>
                             				<li>
-                            					<label class="form-label  form-label-auto optiune">11</label>
+                            					<label class="form-label form-label-auto optiune">11</label>
                             				</li>
 
                             				
                             			</ul>
-										<ul class="sortable list">
-                                            <li>Ingineria Sistemelor Software - Buget</li>
+										<ul id="navbar" class="sortable list">
+											<li>Ingineria Sistemelor Software - Buget</li>
 											<li>Sisteme Distribuite - Buget</li>
 											<li>Securitatea Informaţiei - Buget</li>
 											<li>Optimizarea Computaţională - Buget</li>
@@ -11522,7 +11522,7 @@
 								<?php
 									  if(isset($_POST['Submit'])) {
 										$v_Radio26 = $_POST["group26"];
-										$vradio26 = validRadio($v_Radio26);
+										$vradio26 = validRadio3($v_Radio26);
 										if($vradio26!==1 && $vradio26!==2 && $vradio26!==3)
 												echo "C&#226;mp necompletat!";
 									  }
@@ -12562,7 +12562,7 @@
 
 									<div style="text-align:center" class="form-buttons-wrapper">
 
-										<button id="Submit" type="submit" name="Submit" class="" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button">
+										<button id="Submit" type="submit" onclick="allItems()" name="Submit" class="" style="background-color:#3488CB;color:white;height:40px;width:300px; border-radius:25px;" data-component="button">
 
 											Trimitere formular
 
@@ -12648,17 +12648,73 @@
 				<p class="hr_text">&copy; 2017 Grupa B3 Facultatea de Informatic&#259; Iasi</p>
 			</hr>
 		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="js/jquery.sortable.js"></script>
+		<script>
+			$(function() {
+				$('.sortable').sortable();
+				$('.handles').sortable({
+					handle: 'span'
+				});
+				$('.connected').sortable({
+					connectWith: '.connected'
+				});
+				$('.exclude').sortable({
+					items: ':not(.disabled)'
+				});
+			});
+		</script>
 
+											<script> 
+												$('#myform').submit(function() {
+													var lis = document.getElementById("navbar").getElementsByTagName("li");
+													var li="<li>";
+													var eoli="</li>";
+													var li0=lis[0].textContent;
+													var li1=lis[1].textContent;
+													var li2=lis[2].textContent;
+													var li3=lis[3].textContent;
+													var li4=lis[4].textContent;
+													var li5=lis[5].textContent;
+													var li6=lis[6].textContent;
+													var li7=lis[7].textContent;
+													var li8=lis[8].textContent;
+													var li9=lis[9].textContent;
+													var li10=lis[10].textContent;
+											//			document.writeln(li.concat(li0,eoli));
+											//			document.writeln(li.concat(li1,eoli));
+											//			document.writeln(li.concat(li2,eoli));
+											//			document.writeln(li.concat(li3,eoli));
+											//			document.writeln(li.concat(li4,eoli));
+											//			document.writeln(li.concat(li5,eoli));
+											//			document.writeln(li.concat(li6,eoli));
+											//			document.writeln(li.concat(li7,eoli));
+											//			document.writeln(li.concat(li8,eoli));
+											//			document.writeln(li.concat(li9,eoli));
+											//			document.writeln(li.concat(li10,eoli));
+												});
+												
+											</script>
 	</body>
 
 </html>
 
 <?php
 
+  ini_set('display_errors', 0);
+
   if(isset($_POST['Submit'])){
     $username = 'ADMITERE1';
     $password = 'ADMITERE1';
     $connection_string = 'localhost/xe';
+
+    /*
+      --
+        Aici este conditia pentru a putea fi indeplinit insertul
+      --
+    */
+
+    if($vChitanta ==0 && $vsuma ==0 && $vradio1 ==1 && $vscutire == 0 && $vNumele_De_Familie_La_Nastere ==0 && $vMaster_Numele_De_Familie_Actual == 0 && $vLicenta_Initiala_Tata == 0 && $vMaster_Prenumele == 0 && $vMaster_PrenumeMama == 0 && $vMaster_PrenumeTata == 0 && $vMaster_Tara_Nastere == 0 && $vMaster_Localitate_Nastere == 0 && $vMaster_Cetatenie == 0 && $vMaster_Etnie == 0 && $vMaster_Limba_Materna == 0 && $vMaster_CNP == 0 && $vMaster_Serie_Buletin == 0 && $vMaster_Numar_Buletin == 0 && $vMaster_Buletin_Eliberat_De == 0 && $vradio3 == 1 && $vMaster_Strada == 0 &&  $vMaster_Numar == 0 &&   $vMaster_Bloc == 0 && $vMaster_Scara == 0 && $vMaster_Etaj == 0 && $vMaster_Apartament == 0 && $vMaster_Localitate1 == 0 && $vMaster_Cod_Postal == 0 && $vMaster_Telefon == 0 && $vMaster_Email == 0 && $vradio5 == 1 && $vradio4 == 1 && $vMaster_Localitate_Liceu == 0 && $vMaster_Profil_Liceu == 0 && $vMaster_Durata_Liceu == 0 && $vMaster_An_Liceu == 0 && $vMaster_Serie_DiplomaBAC == 0 && $vMaster_Nr_DiplomaBAC == 0 && $vMaster_AbsolventMaster_Univ1 == 0 && $vMaster_AbsolventMaster_Facultate1 == 0 && $vMaster_AbsolventMaster_Domeniu_Master1 == 0 && $vMaster_AbsolventMaster_Specializare1 == 0 && $vMaster_AbsolventMaster_An_Facultate1 == 0 && $vMaster_AbsolventMaster_Durata_Studii1 == 0 && $vMaster_AbsolventMaster_Semestre_Finantate1 == 0 && $vMaster_AbsolventMaster_Semestre_Bursa1 == 0 && $vMaster_AbsolventMaster_Localitate_AltaFacultate1 == 0 && $vMaster_Serie_DiplomaLicenta == 0 && $vradio25 == 1 && $vMaster_AltaUniversitate == 0 && $vMaster_AltaFacultate == 0 && $vMaster_Domeniu_Studii == 0 && $vMaster_Specializare == 0 && $vMaster_An_Facultate == 0 && $vMaster_Semestre_Finantate == 0 && $vMaster_Semestre_Bursa == 0 && $vMaster_Localitate_AltaFacultate == 0 && $vradio24 == 1 && $vMaster_AbsolventMaster_Univ == 0 && $vMaster_AbsolventMaster_Facultate == 0 && $vMaster_AbsolventMaster_Domeniu_Master == 0 && $vMaster_AbsolventMaster_Specializare == 0 && $vMaster_AbsolventMaster_An_Facultate == 0 && $vMaster_AbsolventMaster_Durata_Studii == 0 && $vMaster_AbsolventMaster_Semestre_Finantate == 0 && $vMaster_AbsolventMaster_Semestre_Bursa == 0 && $vMaster_AbsolventMaster_Localitate_AltaFacultate == 0 && $vradio23 == 1 && $v_Master_Serie_DiplomaMaster == 0 && $vMaster_Medie_Admitere == 0 && $vMaster_Nota_Master == 0 && $vradio26 == 1 && $vradio27 == 1 && $vMaster_AlteConcursuri_Univ1 == 0 && $vMaster_AlteConcursuri_Facultate1 == 0 && $vMaster_AlteConcursuri_Univ2 == 0 && $vMaster_AlteConcursuri_Facultate2 == 0 && $vMaster_AlteConcursuri_Univ3 == 0 && $vMaster_AlteConcursuri_Facultate3 == 0 && $vradio27 == 1){
 
     $connection = oci_connect($username, $password, $connection_string);
 
@@ -12816,7 +12872,7 @@
             error_reporting(E_ALL);
         }
 
-        $statement = oci_parse($connection, "INSERT INTO date_personale_master values (
+        $statement = oci_parse($connection, "INSERT INTO date_personale_master(formular_id, nume_familie_nastere, initialele_tatalui_mamei, nume_familie_actual, prenume_candidat, prenume_tata, prenume_mama, cnp, sex, cetatenia, data_nasterii, tara_nasterii, judetul_nasterii, localitatea_nasterii, nationalitate, etnie, limba_materna, stare_civila, tip_act_ident, serie_act, numar_act, eliberat_de, data_eliberarii, data_expirarii, mediu_domiciliu, tara_domiciliu, judet_domiciliu, localitate_domiciliu, strada, numar, bloc, scara, etaj, apartament, cod_postal, telefon, email, solicita_cazare_studii, stare_sociala_speciala, persoana_cu_dizabilitati) values (
           :id,
           :nume_nastere,
           :initiale,
@@ -12825,95 +12881,89 @@
           :prenume_tata,
           :prenume_mama,
           :CNP,
-          :sex,
-          to_date(:zi||'-'||:luna||'-'||:an, 'dd-mm-yyyy'),
+          :sex,   
+          'romana',
+          to_date(:zi||'-'||:luna||'-'||:an, 'DD-MM-YY'),    
           :tara_nastere,
           :judet_nastere,
           :localitate_nastere,
-          :cetatenie,
-          :nationalitate,
+          'romana',
           :etnie,
           :limba_materna,
           :stare_civila,
+          'CL',
           :serie_CL,
-          :numar_CL,
+          :numar_CL,        
           :eliberat_de,
-           to_date(:bZi||'-'||:lZi||'-'||:aZi, 'dd-mm-yyyy'),
-           to_date(:eZi||'-'||:elZi||'-'||:eaZi, 'dd-mm-yyyy'),
-           :mediu_domiciliu,
-           :tara_domiciliu,
-           :judet_domiciliu,
-           :localitate_domiciliu,
-           :strada,
-           :numar,
-           :bloc,
-           :scara,
-           :etaj,
-           :apartament,
-           :telefon,
-           :email,
-           :solicitare_cazare,
-           0,
-           :orfan_ambii,
-           :orfan_unul,
-           :case_de_copii,
-           :plasament_familial,
-           :fam_mono,
-           :dizabilitati)       
+          to_date(:bZi||'-'||:lZi||'-'||:aZi, 'DD-MM-YY'),
+          to_date(:eZi||'-'||:elZi||'-'||:eaZi, 'DD-MM-YY'),         
+          :mediu_domiciliu,
+          :tara_domiciliu,
+          :judet_domiciliu,
+          :localitate_domiciliu,        
+          :strada,
+          :numar,
+          :bloc,
+          :scara,
+          :etaj,
+          :apartament,
+          :cod_postal,
+          :telefon,
+          :email,
+          :solicitare_cazare,
+          :stare_sociala,
+          :dizabilitati)      
           ");                          //44
 
             oci_bind_by_name($statement, ':id', $numaratoare);
             oci_bind_by_name($statement, ':nume_nastere', $_POST['Master_Numele_De_Familie_La_nastere']);
             oci_bind_by_name($statement, ':initiale', $v_Master_Initiala_Tata);
-            oci_bind_by_name($statement, ':nume_actual', $_POST['Master_Numele_De_Familie']);
+            oci_bind_by_name($statement, ':nume_actual', $_POST['Master_Numele_De_Familie_Actual']);
             oci_bind_by_name($statement, ':prenume', $v_Master_Prenumele); 
             oci_bind_by_name($statement, ':prenume_tata', $v_Master_Prenume_Tata);
             oci_bind_by_name($statement, ':prenume_mama', $v_Master_Prenume_Mama);          
             oci_bind_by_name($statement, ':CNP', $v_Master_CNP);
             oci_bind_by_name($statement, ':sex', $v_Master_Sex);
 
-            oci_bind_by_name($statement, ':zi', $v_data_nastere_zi);
-            oci_bind_by_name($statement, ':luna', $v_data_nastere_luna);
-            oci_bind_by_name($statement, ':an', $v_data_nastere_an);
+            oci_bind_by_name($statement, ':zi', $v_Master_nastere_zi);
+            oci_bind_by_name($statement, ':luna', $v_Master_nastere_luna);
+            oci_bind_by_name($statement, ':an', $v_Master_nastere_an);
 
             oci_bind_by_name($statement, ':tara_nastere', $_POST['Master_Tara_Nastere']);
             oci_bind_by_name($statement, ':judet_nastere', $_POST['Master_Judet_Nastere']);
             oci_bind_by_name($statement, ':localitate_nastere', $_POST['Master_Localitate_Nastere']);
-            oci_bind_by_name($statement, ':cetatenie', $v_cetatenie);
-            oci_bind_by_name($statement, ':nationalitate', $_POST['Master_Nationalitate']);
             oci_bind_by_name($statement, ':etnie', $_POST['Master_Etnie']);
             oci_bind_by_name($statement, ':limba_materna', $_POST['Master_Limba_Materna']);
+
             oci_bind_by_name($statement, ':stare_civila', $_POST['Master_Stare_Civila']);
             oci_bind_by_name($statement, ':serie_CL', $v_Master_Serie_Buletin);
             oci_bind_by_name($statement, ':numar_CL', $v_Master_Numar_Buletin);
             oci_bind_by_name($statement, ':eliberat_de', $v_Master_Buletin_Eliberat_De);
 
-            oci_bind_by_name($statement, ':bZi' ,$v_buletin_zi);
-            oci_bind_by_name($statement, ':lZi' ,$v_buletin_luna);
-            oci_bind_by_name($statement, ':aZi' ,$v_buletin_an);
-            oci_bind_by_name($statement, ':eZi' ,$v_buletin_zi);
-            oci_bind_by_name($statement, ':elZi' ,$v_buletin_luna);
-            oci_bind_by_name($statement, ':eaZi' ,$v_buletin_an);                           
+            oci_bind_by_name($statement, ':bZi' ,$_POST['Master_Buletin_Ziua']);
+            oci_bind_by_name($statement, ':lZi' ,$_POST['Master_Buletin_Luna']);
+            oci_bind_by_name($statement, ':aZi' ,$_POST['Master_Buletin_An']);
+            oci_bind_by_name($statement, ':eZi' ,$_POST['Master_Buletin_Ziua']);
+            oci_bind_by_name($statement, ':elZi' ,$_POST['Master_Buletin_Luna_Exp']);
+            oci_bind_by_name($statement, ':eaZi' ,$_POST['Master_Buletin_An']);  
 
             oci_bind_by_name($statement, ':mediu_domiciliu', $_POST['group3']);
             oci_bind_by_name($statement, ':tara_domiciliu', $_POST['Master_Tara']);
             oci_bind_by_name($statement, ':judet_domiciliu', $v_Master_Judet);
-            oci_bind_by_name($statement, ':localitate_domiciliu', $v_Master_Localitate);
+            oci_bind_by_name($statement, ':localitate_domiciliu', $_POST['Master_Localitate_Nastere']);
+            
             oci_bind_by_name($statement, ':strada', $v_Master_Strada);
             oci_bind_by_name($statement, ':numar', $v_Master_Numar);
             oci_bind_by_name($statement, ':bloc', $v_Master_Bloc);
             oci_bind_by_name($statement, ':scara', $v_Master_Scara);            
             oci_bind_by_name($statement, ':etaj', $v_Master_Etaj);
             oci_bind_by_name($statement, ':apartament', $v_Master_Apartament);
+            oci_bind_by_name($statement, ':cod_postal', $_POST['Master_Cod_Postal']);
             oci_bind_by_name($statement, ':telefon', $v_Master_Telefon);
             oci_bind_by_name($statement, ':email', $v_Master_Email);    
             oci_bind_by_name($statement, ':solicitare_cazare', $_POST['group5']);                   
 
-            oci_bind_by_name($statement, ':orfan_ambii', $_POST['Master_Stare_speciala']);
-            oci_bind_by_name($statement, ':orfan_unul', $_POST['Master_Stare_speciala']);
-            oci_bind_by_name($statement, ':case_de_copii', $_POST['Master_Stare_speciala']);            
-            oci_bind_by_name($statement, ':plasament_familial', $_POST['Master_Stare_speciala']);
-            oci_bind_by_name($statement, ':fam_mono', $_POST['Master_Stare_speciala']);
+            oci_bind_by_name($statement, ':stare_sociala', $_POST['Master_Stare_speciala']);
             oci_bind_by_name($statement, ':dizabilitati', $_POST['group4']);
 
             if(!$statement){
@@ -12928,7 +12978,7 @@
               error_reporting(E_ALL); 
               }
 
-                
+                /*
                   if($v_preferinta1 == 1){
                       $statement4 = oci_parse($connection, "insert into ordine_preferinte_master(formular_id, preferinta_1, optiune_admitere_taxa) values (
                           :id,
@@ -15149,7 +15199,7 @@
                           $e = oci_error($statement8);
                           trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
                       }
-                  }
+                  }*/
 
         $statement = oci_parse($connection, "INSERT INTO informatii_documente_master VALUES (
           :id, 
@@ -15196,7 +15246,7 @@
         $v_emisaLuna = $_POST['Master_Diploma_Luna'];
         $v_emisaAn = $_POST['Master_Diploma_An'];
 
-        $statement = oci_parse($connection, "INSERT into date_preg_anterioara_master values (
+          $statement = oci_parse($connection, "INSERT into date_preg_anterioara_master values (
           :id,
           :liceu,
           :tara_liceu,
@@ -15208,7 +15258,6 @@
           :forma_invatamant,
           :serie_dipl,
           :nr_dipl,
-          :emisa_de,
           to_date(:dZi||'-'||:dLuna||'-'||:dAn, 'dd-mm-yyyy'),
           :nr_foi,
           :act_rec_echiv,
@@ -15228,14 +15277,13 @@
           :durata_studii,
           :diploma_Master_serie,
           :diploma_Master_nr,
-          :dipl_emisa_de,
           to_date(:diZi||'-'||:diLuna||'-'||:diAn, 'dd-mm-yyyy'),
-          :nr_foi_dipl,
+      :nr_foaie_matr,
           :act_rec_master,
+          :act_rec_master_nr,
           :act_rec_master_serie,
           to_date(:strainZi||'-'||:strainLuna||'-'||:strainAn, 'dd-mm-yyyy'),
           :student_alta_fac,
-          :den_inst_superior,
           :tara_altafac,
           :localitate_altafac,
           :judet_altafac,
@@ -15255,12 +15303,14 @@
           :abs_den_fac,
           :abs_dom,
           :abs_spec,
+      :abs_titlu_obt,
           :abs_forma,
           :abs_sem_buget,
           :abs_sem_bursa,
+      :abs_durata_studii,
+      :abs_cu_dipl,
           :abs_dipl_serie,
           :abs_dipl_nr,
-          :abs_dipl_emisa_de,
            to_date(:absZi||'-'||:absLuna||'-'||:absAn, 'dd-mm-yyyy'),
            :abs_nr_foi,
            :abs_act_rec_nr,
@@ -15278,7 +15328,6 @@
         oci_bind_by_name($statement, ':forma_invatamant', $_POST['Master_FormaInvatamant_Liceu']);
         oci_bind_by_name($statement, ':serie_dipl', $_POST['Master_Serie_DiplomaBAC']);
         oci_bind_by_name($statement, ':nr_dipl', $_POST['Master_Nr_DiplomaBAC']);
-        oci_bind_by_name($statement, ':emisa_de', $_POST['Master_Emitere_DiplomaBAC']);
 
         oci_bind_by_name($statement, ':dZi', $v_emisaZi);
         oci_bind_by_name($statement, ':dLuna', $v_emisaLuna);
@@ -15306,14 +15355,16 @@
         oci_bind_by_name($statement, ':durata_studii', $_POST['Master_AbsolventMaster_Durata_Studii']);
         oci_bind_by_name($statement, ':diploma_Master_serie', $_POST['Master_Serie_DiplomaMaster']);     
         oci_bind_by_name($statement, ':diploma_Master_nr', $_POST['Master_Nr_DiplomaMaster']);       
-        oci_bind_by_name($statement, ':dipl_emisa_de', $_POST['Master_Emitere_DiplomaMaster']); 
 
         oci_bind_by_name($statement, ':diZi', $_POST['Master_DiplomaMaster_Ziua']);
         oci_bind_by_name($statement, ':diLuna', $_POST['Master_DiplomaMaster_Luna']);
         oci_bind_by_name($statement, ':diAn', $_POST['Master_DiplomaMaster_An']);
 
-        oci_bind_by_name($statement, ':nr_foi_dipl', $_POST['Master_AbsolventMaster_Nr_FoaieMatricola']); 
-        oci_bind_by_name($statement, ':act_rec_master', $_POST['Master_AbsolventMaster_Nr_ActRecunoastere']); 
+        oci_bind_by_name($statement, ':nr_foaie_matr', $_POST['Master_AbsolventMaster_Nr_FoaieMatricola']); 
+  
+    oci_bind_by_name($statement, ':act_rec_master', $_POST['Master_AbsolventMaster_Nr_FoaieMatricola']); 
+    
+        oci_bind_by_name($statement, ':act_rec_master_nr', $_POST['Master_AbsolventMaster_Nr_ActRecunoastere']); 
         oci_bind_by_name($statement, ':act_rec_master_serie', $_POST['Master_AbsolventMaster_Serie_ActRecunoastere']);       
 
         oci_bind_by_name($statement, ':strainZi', $_POST['Master_AbsolventMaster_ActEchivalare_Ziua']);
@@ -15321,7 +15372,6 @@
         oci_bind_by_name($statement, ':strainAn', $_POST['Master_AbsolventMaster_ActEchivalare_An']);    
 
         oci_bind_by_name($statement, ':student_alta_fac', $_POST['group25']);
-        oci_bind_by_name($statement, ':den_inst_superior', $_POST['Master_AbsolventMaster_Univ']);
         oci_bind_by_name($statement, ':tara_altafac', $_POST['Master_Tara_AltaFacultate']);
         oci_bind_by_name($statement, ':judet_altafac', $_POST['Master_Judet_AltaFacultate']);
         oci_bind_by_name($statement, ':localitate_altafac', $_POST['Master_Localitate_AltaFacultate']);        
@@ -15340,14 +15390,21 @@
        oci_bind_by_name($statement, ':abs_den_inst', $_POST['Master_AbsolventMaster_Univ']);   
        oci_bind_by_name($statement, ':abs_den_fac', $_POST['Master_AbsolventMaster_Facultate']);        
        oci_bind_by_name($statement, ':abs_dom', $_POST['Master_AbsolventMaster_Domeniu_Master']);  
-       oci_bind_by_name($statement, ':abs_spec', $_POST['Master_AbsolventMaster_Specializare']);              
+       oci_bind_by_name($statement, ':abs_spec', $_POST['Master_AbsolventMaster_Specializare']); 
+    
+    oci_bind_by_name($statement, ':abs_titlu_obt', $_POST['Master_AbsolventMaster_An_Facultate']);
+    
        oci_bind_by_name($statement, ':abs_forma', $_POST['Master_AbsolventMaster_FormaInvatamant']);
        oci_bind_by_name($statement, ':abs_sem_buget', $_POST['Master_AbsolventMaster_Semestre_Finantate']);
        oci_bind_by_name($statement, ':abs_sem_bursa', $_POST['Master_AbsolventMaster_Semestre_Bursa']); 
 
+     oci_bind_by_name($statement, ':abs_durata_studii', $_POST['Master_AbsolventMaster_Durata_Studii1']); 
+    
+     oci_bind_by_name($statement, ':abs_cu_dipl', $_POST['group24']); 
+    
+    //almost
        oci_bind_by_name($statement, ':abs_dipl_serie', $_POST['Master_Serie_DiplomaMaster']); 
-       oci_bind_by_name($statement, ':abs_dipl_nr', $_POST['Master_Nr_DiplomaMaster']); 
-       oci_bind_by_name($statement, ':abs_dipl_emisa_de', $_POST['Master_Emitere_DiplomaMaster']);   
+       oci_bind_by_name($statement, ':abs_dipl_nr', $_POST['Master_Nr_DiplomaMaster']);   
 
        oci_bind_by_name($statement, ':absZi', $_POST['Master_DiplomaMaster_Ziua']);
        oci_bind_by_name($statement, ':absLuna', $_POST['Master_DiplomaMaster_Luna']);
@@ -15423,4 +15480,5 @@
 
     }
   }
+}
   ?>

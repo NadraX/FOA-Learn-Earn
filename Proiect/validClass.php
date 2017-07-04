@@ -1533,6 +1533,8 @@ function validTipBuletin($p_tip)
 //fct buna
 function validareStrada($p_Strada)
 {
+	if(!$p_Strada)
+		return -1;
     if(!ctype_alpha(str_replace(' ', '', str_replace('-','',$p_Strada))))
         return 1;//caractere incorecte
     
@@ -2023,6 +2025,16 @@ function validareLiceu($p_liceu){
 
 //fct buna
 	function validRadio($data)
+	{
+        if(!$data)
+            return -1;
+		if($data!==1&&$data!==2)
+			return 1;
+		return 0;
+	}
+	
+	//fct buna
+	function validRadio3($data)
 	{
         if(!$data)
             return -1;
