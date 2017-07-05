@@ -7683,7 +7683,7 @@
 							
 								<div data-wrapper-react="true">
 
-									<span class="form-sub-label-container" style="vertical-align:top;">
+									<!--<span class="form-sub-label-container" style="vertical-align:top;">
 
 										<label class="form-label form-label-left form-label-auto" style="color: #3488CB; font-size:large">IX. Uploadare diplome,certificate (format pdf)</label>
 
@@ -7735,7 +7735,7 @@
 	 
 										</object>
 
-									</span>
+									</span> -->
 
 								</div>
 

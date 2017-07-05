@@ -7372,7 +7372,7 @@
               
 							<li class="form-line" >
 								<div data-wrapper-react="true">
-									<span class="form-sub-label-container" style="vertical-align:top;">
+									<!--<span class="form-sub-label-container" style="vertical-align:top;">
 										<label class="form-label form-label-left form-label-auto" id="label_9" for="input_9" style="color: #3488CB; font-size:large">XI. Uploadare diplome, certificate (format pdf)</label>
 										<object data="YourFile.pdf" type="application/x-pdf" title="SamplePdf" width="500" height="320" style="font-size:30px" >
 											<img src="imagini/upload.png" style="height:50px; width:50px; display:inline-block" alt="upload" />
@@ -7418,7 +7418,7 @@
                                             
 												?>
 										</object>
-									</span> 
+									</span> -->
 								</div>
 							</li>
 			       
