@@ -1534,9 +1534,10 @@ function validTipBuletin($p_tip)
 //fct buna
 function validareStrada($p_Strada)
 {
+	$p_Strada_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_Strada);
 	if(!$p_Strada)
 		return -1;
-    if(!ctype_alpha(str_replace(' ', '', str_replace('-','',$p_Strada))))
+    if(!ctype_alpha(str_replace(' ', '', str_replace('-','',$p_Strada_diacritice))))
         return 1;//caractere incorecte
     
     return 0;
@@ -1599,7 +1600,54 @@ function validEliberareBuletin($p_eliberat)
 		
         return 0;//corect
     }
-
+	
+	
+//fct buna
+ function validareMedieAlegere($input){
+     
+        if(!$input)
+            return -1;
+		
+		if($input=='-')  // poate fi si -
+			return 0;
+     
+        if(ctype_digit(str_replace(array(".", ","), '', $input)) == 0)
+            return 1; //caractere incorecte , nu exista cifra
+		
+        if($input < 6 || $input > 10)
+            return 2;  // numar medie incorect
+		
+		if($input=='10') 
+			return 0;
+		else {
+			$nota=str_split($input);
+			if($nota[0]<'6' && $nota[0]>'9')
+				return 2; // medie incorecta
+			else 
+				if(strlen($input)==1)
+					return 0; // media 6,7,8 sau 9
+				else
+					if($nota[1]!=',' && $nota[1]!='.')
+						return 2; // cevadiferit de 6,...
+					else
+						if(strlen($input)==2)
+							return 2; // e doar 6. sau 6,
+						else {
+							$nr_caractere_permise=substr_count($input, ',') + substr_count($input, '.');
+							if($nr_caractere_permise>1)
+								return 2;// poate fi 6.5,4
+							else 
+								if(!ctype_digit(substr($input,2))) // daca dupa 6, urmeaza unul sau mai multe caractere non-numerice 
+									return 1; // poate fi 6.A56
+								else
+									return 0;
+						}
+		}
+			
+		
+		
+        return 0;//corect
+    }
 
 //fct buna
     function validareNotaMatematica($input){
@@ -1681,9 +1729,10 @@ function FilieraValidare(String $Filiera)
 //fct buna
 function ProfilValidare(String $Profil)
 {
+	$Profil_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$Profil);
     if(!$Profil)
         return -1;
-    if(!ctype_alpha(str_replace(array(' ','-','.'),'',$Profil)))
+    if(!ctype_alpha(str_replace(array(' ','-','.'),'',$Profil_diacritice)))
         return 1;//caract incor
     if(strlen($Profil)<2 || strlen($Profil)>30 )
         return 2;//lungime incor
@@ -1944,6 +1993,19 @@ function validareAn($input){
 
          return 0;
 }
+function validareAnFacultate($input){
+        if(!$input)
+            return -1;
+		
+
+        if(!ctype_digit($input))
+            return 1;// caractere incorecte
+
+        if($input < 1 || $input > 9)
+            return 2;//eroare , an incorect
+
+         return 0;
+}
 
 
 //fct buna
@@ -2065,6 +2127,19 @@ function validareLiceu($p_liceu){
 		if(!$scutire)
 			return -1;
 		if(strlen($scutire)<6 || strlen($scutire)>50)
+			return 2;
+		if(!(ctype_alpha(str_replace(' ', '', $p_scutire_diacritice))))
+			return 1;
+		return 0;
+	}
+	
+	//fct buna
+	function validAlteSurse($scutire)
+	{
+		$p_scutire_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$scutire);
+		if(!$scutire)
+			return -1;
+		if(strlen($scutire)<4 || strlen($scutire)>50)
 			return 2;
 		if(!(ctype_alpha(str_replace(' ', '', $p_scutire_diacritice))))
 			return 1;

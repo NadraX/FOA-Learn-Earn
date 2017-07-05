@@ -4620,7 +4620,7 @@
 														</span>
 														<span class="form-sub-label-container" style="vertical-align:top; width:12%">
 															<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> An </label>
-															<input type="number"  name="Licenta_An_Facultate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2016" data-component="city" value="<?php
+															<input type="number"  name="Licenta_An_Facultate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 3" data-component="city" value="<?php
 																																																								if($v_Licenta_An_Facultate == '')
 																																																									echo '';
 																																																								else
@@ -4631,7 +4631,7 @@
 																	if(isset($_POST['Submit'])) {
 																		if($v_Radio25==1) {
 																			$v_Licenta_An_Facultate = $_POST["Licenta_An_Facultate"];
-																				$vLicenta_An_Facultate = validareAn($v_Licenta_An_Facultate);
+																				$vLicenta_An_Facultate = validareAnFacultate($v_Licenta_An_Facultate);
 																				if($vLicenta_An_Facultate==-1)
 																					echo "C&#226;mp necompletat!";
 																				else
@@ -5730,7 +5730,7 @@
 												<?php 
 													if(isset($_POST['Submit'])) {
 														$v_Licenta_Nota_MI = $_POST["Licenta_Nota_MI"];  // V
-														$vLicenta_Nota_MI = validareMedieBac($v_Licenta_Nota_MI);
+														$vLicenta_Nota_MI = validareMedieAlegere($v_Licenta_Nota_MI);
 														if($vLicenta_Nota_MI==-1)
 															echo "C&#226;mp necompletat!";
 														else
@@ -6785,7 +6785,7 @@
 											<?php		
 												if(isset($_POST['Submit'])) {
 													$v_Alte_Surse = $_POST["Alte_Surse"];
-													$vAlte_Surse = validScutire($v_Alte_Surse);
+													$vAlte_Surse = validAlteSurse($v_Alte_Surse);
 													if($vAlte_Surse==1)
 														echo "Caractere invalide!";
 													else
