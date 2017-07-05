@@ -1215,7 +1215,7 @@
 											<span style="color:red">
 												<?php 
 													if(isset($_POST['Submit'])) {
-														$v_Licenta_Buletin_Eliberat_De = $_POST["Licenta_Buletin_Eliberat_De"];  // V
+														$v_Licenta_Buletin_Eliberat_De = $_POST["Licenta_Buletin_Eliberat_De"];
 														$vLicenta_Buletin_Eliberat_De = validEliberareBuletin($v_Licenta_Buletin_Eliberat_De);
 														if($vLicenta_Buletin_Eliberat_De==-1)
 																echo "C&#226;mp necompletat!";

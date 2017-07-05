@@ -5448,7 +5448,7 @@
 																	if(isset($_POST['Submit'])) {
 																		if($v_Radio25==1) {
 																			$v_Master_An_Facultate = $_POST["Master_An_Facultate"];
-																				$vMaster_An_Facultate = validareAn($v_Master_An_Facultate);
+																				$vMaster_An_Facultate = validareAnFacultate($v_Master_An_Facultate);
 																				if($vMaster_An_Facultate==-1)
 																					echo "C&#226;mp necompletat!";
 																				else
@@ -7002,17 +7002,73 @@
 								<br>
 								<ul class="checkbox-grid">
 									<br>
-									<li><input type="checkbox" name="Site_Admitere" class="css-checkbox" value="" id="Site_Admitere" />
+									<?php 
+										$Site_Admitere=$_POST["Site_Admitere"];
+										$Site_Facultate=$_POST["Site_Facultate"];
+										$FB_Univ=$_POST["FB_Univ"];
+										$Prieteni_Rude=$_POST["Prieteni_Rude"];
+										$Profesori_Liceu=$_POST["Profesori_Liceu"];
+										$Presa=$_POST["Presa"];
+									?>
+									<li><input type="checkbox" name="Site_Admitere" class="css-checkbox" value="1" id="Site_Admitere" <?php
+																																if($Site_Admitere == '')
+																																	echo '';
+																																else
+																																	if($Site_Admitere!==0)
+																																		echo 'checked="checked"';
+																																	else
+																																		echo '';
+																															?> />
 										<label for="Site_Admitere" class="css-label2">Site-ul dedicat admiterii (admitere.uaic.ro) </label></li>
-									<li><input type="checkbox" name="Site_Facultate" class="css-checkbox" value="" id="Site_Facultate" />
+									<li><input type="checkbox" name="Site_Facultate" class="css-checkbox" value="1" id="Site_Facultate" <?php
+																														if($Site_Facultate == '')
+																															echo '';
+																														else
+																															if($Site_Facultate!==0)
+																																echo 'checked="checked"';
+																															else
+																																echo '';
+																													?>/>
 										<label for="Site_Facultate" class="css-label2">Site-ul Faculăţii</label></li>
-									<li><input type="checkbox" name="FB_Univ" class="css-checkbox" value="" id="FB_Univ" />
+									<li><input type="checkbox" name="FB_Univ" class="css-checkbox" value="1" id="FB_Univ" <?php
+																														if($FB_Univ == '')
+																															echo '';
+																														else
+																															if($FB_Univ!==0)
+																																echo 'checked="checked"';
+																															else
+																																echo '';
+																													?>/>
 										<label for="FB_Univ" class="css-label2">Pagina de Facebook a Universităţii</label></li>
-									<li><input type="checkbox" name="Prieteni_Rude" class="css-checkbox" value="" id="Prieteni_Rude" />
+									<li><input type="checkbox" name="Prieteni_Rude" class="css-checkbox" value="1" id="Prieteni_Rude" <?php
+																														if($Prieteni_Rude == '')
+																															echo '';
+																														else
+																															if($Prieteni_Rude!==0)
+																																echo 'checked="checked"';
+																															else
+																																echo '';
+																													?>/>
 										<label for="Prieteni_Rude" class="css-label2">Prieteni, Cunoştinţe, Rude</label></li>
-									<li><input type="checkbox" name="Profesori_Liceu" class="css-checkbox" value="" id="Profesori_Liceu" />
+									<li><input type="checkbox" name="Profesori_Liceu" class="css-checkbox" value="1" id="Profesori_Liceu" <?php
+																														if($Profesori_Liceu == '')
+																															echo '';
+																														else
+																															if($Profesori_Liceu!==0)
+																																echo 'checked="checked"';
+																															else
+																																echo '';
+																													?>/>
 										<label for="Profesori_Liceu" class="css-label2">Profesorii de facultate</label></li>
-									<li><input type="checkbox" name="Presa" class="css-checkbox" value="" id="Presa" />
+									<li><input type="checkbox" name="Presa" class="css-checkbox" value="1" id="Presa" <?php
+																														if($Presa == '')
+																															echo '';
+																														else
+																															if($Presa!==0)
+																																echo 'checked="checked"';
+																															else
+																																echo '';
+																													?> />
 										<label for="Presa" class="css-label2">Presă</label></li>
 									<li>
 										<label style="

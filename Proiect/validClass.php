@@ -1547,11 +1547,12 @@ function validareStrada($p_Strada)
 //fct buna
 function validEliberareBuletin($p_eliberat)
 {
+	$p_eliberat_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_eliberat);
     if(!$p_eliberat)
         return -1;
 	if(strlen($p_eliberat)<3)
 		return 2;
-    if(!ctype_alpha(str_replace(',','',str_replace('.','',str_replace(' ', '', $p_eliberat)))))
+    if(!ctype_alpha(str_replace(',','',str_replace('.','',str_replace(' ', '', $p_eliberat_diacritice)))))
         return 1;
     return 0;
 }
@@ -1614,18 +1615,18 @@ function validEliberareBuletin($p_eliberat)
         if(ctype_digit(str_replace(array(".", ","), '', $input)) == 0)
             return 1; //caractere incorecte , nu exista cifra
 		
-        if($input < 6 || $input > 10)
+        if($input < 5 || $input > 10)
             return 2;  // numar medie incorect
 		
 		if($input=='10') 
 			return 0;
 		else {
 			$nota=str_split($input);
-			if($nota[0]<'6' && $nota[0]>'9')
+			if($nota[0]<'5' && $nota[0]>'9')
 				return 2; // medie incorecta
 			else 
 				if(strlen($input)==1)
-					return 0; // media 6,7,8 sau 9
+					return 0; // media 5,6,7,8 sau 9
 				else
 					if($nota[1]!=',' && $nota[1]!='.')
 						return 2; // cevadiferit de 6,...
