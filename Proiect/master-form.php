@@ -58,8 +58,7 @@
 				if (document.getElementById('daAltaFacultate').checked) {
 					document.getElementById('AltaUniv').style.display = 'block';
 				}
-				else 
-					document.getElementById('AltaUniv').style.display = 'none';
+				else document.getElementById('AltaUniv').style.display = 'none';
 			}
 
 			function AlteConcursuri () {
@@ -4065,7 +4064,7 @@
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:25%">
 														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Anul absolvirii </label>
-														<input type="number"  name="Master_An_Liceu" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php 
+														<input type="number"  name="Master_An_Liceu" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2015" data-component="city" value="<?php 
 																																																					if($v_Master_An_Liceu == '') 
 																																																						echo '';
 																																																					else
