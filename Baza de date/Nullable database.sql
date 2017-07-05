@@ -205,7 +205,7 @@ CREATE TABLE Date_personale_preadmitere (
     eliberat_de varchar2(35)  NULL,
     data_eliberarii date  NULL,
     data_expirarii date  NULL,
-    institutie_liceu varchar2(70)  NULL,
+    institutie_liceu varchar2(140)  NULL,
     tara_liceu varchar2(35)  NULL,
     localitate_liceu varchar2(35)  NULL,
     judet_liceu varchar2(35)  NULL
@@ -368,7 +368,7 @@ CREATE TABLE Formular_preadmitere (
     id integer  NOT NULL,
     nr_chitanta varchar2(70)  NULL,
     suma integer  NULL,
-    optiune_test_scris varchar2(20)  NOT NULL,
+    optiune_test_scris varchar2(25)  NOT NULL,
 	data_crearii TIMESTAMP	NULL,
 	data_ultimei_modificari TIMESTAMP NULL,
 	stare number(1,0)	NULL,
