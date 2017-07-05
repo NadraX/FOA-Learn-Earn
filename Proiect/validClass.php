@@ -1266,12 +1266,13 @@ function validEtnie($nationalitate)
 //fct buna
 function validLimbaMaterna($p_limba)
 {
+	$p_limba_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_limba);
     if(!$p_limba)
         return -1;
     if(strlen($p_limba)<3 || strlen($p_limba)>20)
         return 1;//numar insuficient de caractere
     
-    if(!ctype_alpha($p_limba))
+    if(!ctype_alpha($p_limba_diacritice))
         return 2; // caractere invalida 
     
     return 0;
@@ -1533,9 +1534,10 @@ function validTipBuletin($p_tip)
 //fct buna
 function validareStrada($p_Strada)
 {
+	$p_Strada_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_Strada);
 	if(!$p_Strada)
 		return -1;
-    if(!ctype_alpha(str_replace(' ', '', str_replace('-','',$p_Strada))))
+    if(!ctype_alpha(str_replace(' ', '', str_replace('-','',$p_Strada_diacritice))))
         return 1;//caractere incorecte
     
     return 0;
@@ -1545,11 +1547,12 @@ function validareStrada($p_Strada)
 //fct buna
 function validEliberareBuletin($p_eliberat)
 {
+	$p_eliberat_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_eliberat);
     if(!$p_eliberat)
         return -1;
 	if(strlen($p_eliberat)<3)
 		return 2;
-    if(!ctype_alpha(str_replace(',','',str_replace('.','',str_replace(' ', '', $p_eliberat)))))
+    if(!ctype_alpha(str_replace(',','',str_replace('.','',str_replace(' ', '', $p_eliberat_diacritice)))))
         return 1;
     return 0;
 }
@@ -1598,7 +1601,54 @@ function validEliberareBuletin($p_eliberat)
 		
         return 0;//corect
     }
-
+	
+	
+//fct buna
+ function validareMedieAlegere($input){
+     
+        if(!$input)
+            return -1;
+		
+		if($input=='-')  // poate fi si -
+			return 0;
+     
+        if(ctype_digit(str_replace(array(".", ","), '', $input)) == 0)
+            return 1; //caractere incorecte , nu exista cifra
+		
+        if($input < 5 || $input > 10)
+            return 2;  // numar medie incorect
+		
+		if($input=='10') 
+			return 0;
+		else {
+			$nota=str_split($input);
+			if($nota[0]<'5' && $nota[0]>'9')
+				return 2; // medie incorecta
+			else 
+				if(strlen($input)==1)
+					return 0; // media 5,6,7,8 sau 9
+				else
+					if($nota[1]!=',' && $nota[1]!='.')
+						return 2; // cevadiferit de 6,...
+					else
+						if(strlen($input)==2)
+							return 2; // e doar 6. sau 6,
+						else {
+							$nr_caractere_permise=substr_count($input, ',') + substr_count($input, '.');
+							if($nr_caractere_permise>1)
+								return 2;// poate fi 6.5,4
+							else 
+								if(!ctype_digit(substr($input,2))) // daca dupa 6, urmeaza unul sau mai multe caractere non-numerice 
+									return 1; // poate fi 6.A56
+								else
+									return 0;
+						}
+		}
+			
+		
+		
+        return 0;//corect
+    }
 
 //fct buna
     function validareNotaMatematica($input){
@@ -1680,9 +1730,10 @@ function FilieraValidare(String $Filiera)
 //fct buna
 function ProfilValidare(String $Profil)
 {
+	$Profil_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$Profil);
     if(!$Profil)
         return -1;
-    if(!ctype_alpha(str_replace(array(' ','-','.'),'',$Profil)))
+    if(!ctype_alpha(str_replace(array(' ','-','.'),'',$Profil_diacritice)))
         return 1;//caract incor
     if(strlen($Profil)<2 || strlen($Profil)>30 )
         return 2;//lungime incor
@@ -1849,11 +1900,12 @@ function validare_locatie($id,$tara,$judet,$localitate,$strada)
 
 //fct buna
 function validTara($p_tara){
+	$p_tara_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_tara);
     if(!$p_tara)
         return -1;
     if(strlen($p_tara)>36 || strlen($p_tara)<4)
         return 1;//numar incorect caractere
-    if(!(ctype_alpha(str_replace(array(" ", "-"), '', $p_tara))))
+    if(!(ctype_alpha(str_replace(array(" ", "-"), '', $p_tara_diacritice))))
         return 2;//caractere invalide
     return 0;
 }
@@ -1861,11 +1913,12 @@ function validTara($p_tara){
 
 //fct buna
 function validLocalitate($p_localitate){
+	$p_localitate_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_localitate);
     if(!$p_localitate)
         return -1;
     if(strlen($p_localitate)>85 || strlen($p_localitate)<3)
         return 1;//numar incorect caractere
-    if(!(ctype_alpha(str_replace(array(" ", "-"), '', $p_localitate))))
+    if(!(ctype_alpha(str_replace(array(" ", "-"), '', $p_localitate_diacritice))))
         return 2;//caractere invalide
     return 0;
 }
@@ -1937,6 +1990,19 @@ function validareAn($input){
             return 1;// caractere incorecte
 
         if($input < 1950 || $input > $data)
+            return 2;//eroare , an incorect
+
+         return 0;
+}
+function validareAnFacultate($input){
+        if(!$input)
+            return -1;
+		
+
+        if(!ctype_digit($input))
+            return 1;// caractere incorecte
+
+        if($input < 1 || $input > 9)
             return 2;//eroare , an incorect
 
          return 0;
@@ -2062,6 +2128,19 @@ function validareLiceu($p_liceu){
 		if(!$scutire)
 			return -1;
 		if(strlen($scutire)<6 || strlen($scutire)>50)
+			return 2;
+		if(!(ctype_alpha(str_replace(' ', '', $p_scutire_diacritice))))
+			return 1;
+		return 0;
+	}
+	
+	//fct buna
+	function validAlteSurse($scutire)
+	{
+		$p_scutire_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$scutire);
+		if(!$scutire)
+			return -1;
+		if(strlen($scutire)<4 || strlen($scutire)>50)
 			return 2;
 		if(!(ctype_alpha(str_replace(' ', '', $p_scutire_diacritice))))
 			return 1;
