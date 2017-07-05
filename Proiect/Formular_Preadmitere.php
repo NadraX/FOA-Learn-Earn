@@ -1136,20 +1136,44 @@
 										</span>
 										<span  class="form-sub-label-container" style="vertical-align:top; width:8%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip Buletin </label>
-											<input type="text"  name="Licenta_Tip_Buletin" class="form-textbox first_1" size="20" placeholder="CI" data-component="first" value="<?php 
-																																													if($v_Licenta_Tip_Buletin == '') 
-																																													  echo '';
-																																													else
-																																													  echo $v_Licenta_Tip_Buletin;
-																																												  ?>"/ readonly>
+											<!--<input type="text"  name="Licenta_Tip_Buletin" class="form-textbox first_1" size="20" placeholder="CI" data-component="first" value="<?php 
+																																																if($v_Licenta_Tip_Buletin == '') 
+																																																	echo '';
+																																																else
+																																																	echo $v_Licenta_Tip_Buletin;
+																																															?>"/ readonly> -->
+											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Licenta_Tip_Buletin" data-component="country">
+												<option name="-" value="-" <?php
+																					if($v_Licenta_Tip_Buletin=="CI")
+																						echo 'selected';
+																					else
+																						echo '';
+																				?>>-</option>
+												<option name="CI" value="CI" <?php
+																					if($v_Licenta_Tip_Buletin=="CI")
+																						echo 'selected';
+																					else
+																						echo '';
+																				?>>CI</option>
+												<option name="Pasaport" value="Pasaport" <?php
+																					if($v_Licenta_Tip_Buletin=="Pasaport")
+																						echo 'selected';
+																					else
+																						echo '';
+																				?>>Pașaport</option>
+												
+											</select>
 											<span style="color:red">
 												<?php
-													/*if(isset($_POST['Submit'])) { 
-														$v_Licenta_Tip_Buletin = $_POST["Licenta_Tip_Buletin"];  // V
+													if(isset($_POST['Submit'])) { 
+														$v_Licenta_Tip_Buletin = $_POST["Licenta_Tip_Buletin"];
 														$vLicenta_Tip_Buletin = validTipBuletin($v_Licenta_Tip_Buletin);
-														if($vLicenta_Tip_Buletin!==0)
-															echo "C&#226;mp invalid!";
-													}*/
+														if($v_Licenta_Tip_Buletin=='-')
+															echo "C&#226;mp necompletat!";
+														//else
+														//	if($vLicenta_Tip_Buletin!==0)
+															//	echo "C&#226;mp invalid!";
+													}
 												?>
 											</span>
 										</span>
@@ -2930,7 +2954,7 @@
 									<span class="form-sub-label-container gen" style="vertical-align:top;">
 										<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Doresc s&#259; dau testul scris la obiectul</label>
 										<select class="form-dropdown form-address-country gen" name="Licenta_Obiect_Test_Ales"  data-component="country">
-											<option value="Alege optiune"></option> 
+											<option value="Alege optiune">-</option> 
 											<option value="Matematica"<?php
 																		if($v_Licenta_Obiect=="Matematica")
 																			echo 'selected';
