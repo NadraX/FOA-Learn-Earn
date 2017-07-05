@@ -1406,7 +1406,25 @@
 									<div data-wrapper-react="true">
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Naţionalitate </label>
-											<input type="text" name="Licenta_Nationalitate" value="Romana" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="Rom&#226;n&#259;" data-component="middle" readonly />
+											<input type="text" name="Licenta_Nationalitate" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="Rom&#226;n&#259;" data-component="middle"  value="<?php 
+																																																													if($v_Licenta_Nationalitate == '') 
+																																																														echo '';
+																																																													else
+																																																														echo $v_Licenta_Nationalitate;
+																																																												?>"/>
+											<span style="color:red">
+												<?php 
+													if(isset($_POST['Submit'])) {
+														$v_Licenta_Nationalitate = $_POST["Licenta_Nationalitate"];
+														$vLicenta_Nationalitate = validCetatetnie($v_Licenta_Nationalitate);
+														if($vLicenta_Nationalitate==-1)
+																echo "C&#226;mp necompletat!";
+															else
+																if($vLicenta_Nationalitate==1)
+																	echo "C&#226;mp Invalid!";
+													}
+												?>
+											</span>	
 										</span>
 										<span class="form-sub-label-container" style="vertical-align:top; width:25%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Cetăţenia (ţara) </label>
@@ -1433,7 +1451,7 @@
             
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Etnie </label>
-											<input type="text" name="Licenta_Etnie"  class="form-textbox first_1" size="20" placeholder="ex: Rrom"  data-component="first"  value="<?php 
+											<input type="text" name="Licenta_Etnie"  class="form-textbox first_1" size="20" placeholder="ex: Român"  data-component="first"  value="<?php 
 																																														if($v_Licenta_Etnie == '') 
 																																															echo '';
 																																														else

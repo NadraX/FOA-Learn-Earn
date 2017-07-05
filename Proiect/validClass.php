@@ -1266,12 +1266,13 @@ function validEtnie($nationalitate)
 //fct buna
 function validLimbaMaterna($p_limba)
 {
+	$p_limba_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_limba);
     if(!$p_limba)
         return -1;
     if(strlen($p_limba)<3 || strlen($p_limba)>20)
         return 1;//numar insuficient de caractere
     
-    if(!ctype_alpha($p_limba))
+    if(!ctype_alpha($p_limba_diacritice))
         return 2; // caractere invalida 
     
     return 0;
@@ -1849,11 +1850,12 @@ function validare_locatie($id,$tara,$judet,$localitate,$strada)
 
 //fct buna
 function validTara($p_tara){
+	$p_tara_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_tara);
     if(!$p_tara)
         return -1;
     if(strlen($p_tara)>36 || strlen($p_tara)<4)
         return 1;//numar incorect caractere
-    if(!(ctype_alpha(str_replace(array(" ", "-"), '', $p_tara))))
+    if(!(ctype_alpha(str_replace(array(" ", "-"), '', $p_tara_diacritice))))
         return 2;//caractere invalide
     return 0;
 }
@@ -1861,11 +1863,12 @@ function validTara($p_tara){
 
 //fct buna
 function validLocalitate($p_localitate){
+	$p_localitate_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_localitate);
     if(!$p_localitate)
         return -1;
     if(strlen($p_localitate)>85 || strlen($p_localitate)<3)
         return 1;//numar incorect caractere
-    if(!(ctype_alpha(str_replace(array(" ", "-"), '', $p_localitate))))
+    if(!(ctype_alpha(str_replace(array(" ", "-"), '', $p_localitate_diacritice))))
         return 2;//caractere invalide
     return 0;
 }
