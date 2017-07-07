@@ -856,13 +856,33 @@
 							$v_Master_DiplomaMaster_Serie_ActRecunoastere=$_POST["Master_DiplomaMaster_Serie_ActRecunoastere"];
 								$vMaster_DiplomaMaster_Serie_ActRecunoastere=validSerieBAC($v_Master_DiplomaMaster_Serie_ActRecunoastere);
 							$v_Master_DiplomaMaster_Nr_FoaieMatricola = $_POST["Master_DiplomaMaster_Nr_FoaieMatricola"];
-							
+							$vOptiune1=$_POST["Optiune1"];
+							$vOptiune2=$_POST["Optiune2"];
+							$vOptiune3=$_POST["Optiune3"];
+							$vOptiune4=$_POST["Optiune4"];
+							$vOptiune5=$_POST["Optiune5"];
+							$vOptiune6=$_POST["Optiune6"];
+							$vOptiune7=$_POST["Optiune7"];
+							$vOptiune8=$_POST["Optiune8"];
+							$vOptiune9=$_POST["Optiune9"];
+							$vOptiune10=$_POST["Optiune10"];
+							$vOptiune11=$_POST["Optiune11"];
+							$v_MedieGeneralaAdmitere0 = $_POST["MedieGeneralaAdmitere0"];
+							$v_MedieGeneralaAdmitere1 = $_POST["MedieGeneralaAdmitere1"];
+							$v_MedieGeneralaAdmitere2 = $_POST["MedieGeneralaAdmitere2"];
+							$v_MedieGeneralaAdmitere3 = $_POST["MedieGeneralaAdmitere3"];
 						?>
 						<ul>
 						
 							<li class="form-line" data-type="control_taxa" id="id_12">
 								<br>
-								<label class="form-label form-label-left form-label-auto" style="color: #3488CB; font-size:large"> I. Taxă de înscriere  </label>
+								<label class="form-label form-label-left form-label-auto" style="color: #3488CB; font-size:large"> I. Taxă de înscriere <span class="info-box" > 
+																																							?
+																																							<span class="info-box__content" style="width:255px;">
+																																								Poate fi achitată la orice sucursală BRD sau în incinta Facultății de Informatică.
+																																							</span>
+																																						</span>
+								</label>
 								<div class="form-input jf-required cid_1">
 									<table  style="width:100%">
 										<tbody>
@@ -885,7 +905,7 @@
 																			echo "C&#226;mp necompletat!";
 																		else
 																			if($vChitanta==1)
-																				echo "Câmp invalid! Introdu un număr (pozitiv)!";
+																				echo "Câmpul conține caractere non-alfanumerice!";
 																	}		  
 																?>		
 															</span>	
@@ -920,7 +940,13 @@
 											<tr>
 												<td>
 													<br>
-													<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Sunteţi scutit de această taxă?  </label>                        
+													<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Sunteţi scutit de această taxă? <span class="info-box"> 
+																																																							?
+																																																							<span class="info-box__content" style="width:270px;">
+																																																								Se depune la dosar adeverință în original care dovedește motivul precizat.
+																																																							</span>
+																																																						</span> 
+													</label>                        
 
 													<span style="width:40%">
 														<input type="radio" name="group1" id="checkbox11" class="css-checkbox" value="1" <?php
@@ -1016,6 +1042,8 @@
 							<li class="form-line" data-type="control_fullname" id="id_1">
 
 								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:larger"> II. Date personale ale candidatului cu cetăţenie română <span class="info-box">?<span class="info-box__content">În măsura în care este posibil, datele personale se vor completa din buletin </span></span></label>
+
+								<h4 style="color:red;">Informațiile se completează conform certificatului de naștere și actului de identitate.</h4>
 
 								<br>
 
@@ -1208,9 +1236,9 @@
 													
 													$vMaster_PrenumeMama = validPremume($v_Master_Prenume_Mama);
 													
-													//if($vMaster_PrenumeMama==-1)
-													//	echo "C&#226;mp necompletat!";
-													//else
+													if($vMaster_PrenumeMama==-1)
+														echo "C&#226;mp necompletat!";
+													else
 														if($vMaster_PrenumeMama==1)
 															echo "C&#226;mpul conține caractere nepermise!";
 														else
@@ -1238,9 +1266,9 @@
 													$v_Master_Prenume_Tata = $_POST["Master_Prenume_Tata"];
 												   
 													$vMaster_PrenumeTata = validPremume($v_Master_Prenume_Tata);
-													//if($vMaster_PrenumeTata==-1)
-													//	echo "C&#226;mp necompletat!";
-													//else
+													if($vMaster_PrenumeTata==-1)
+														echo "C&#226;mp necompletat!";
+													else
 														if($vMaster_PrenumeTata==1)
 															echo "C&#226;mpul conține caractere nepermise!";
 														else
@@ -1630,7 +1658,9 @@
 																													echo "?";
 																											?> 
 																											<span class="info-box__content">
-																												Codul Numeric Personal cum se găsește în buletin. <?php if($vLicenta_CNP>0) echo "<a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
+																												Codul Numeric Personal cum se găsește în actul de identitate.
+																												Completați cu informațiile de pe adeverința primită de la SPCLEP în cazul în care CI nu mai este validă.
+																												<?php if($vLicenta_CNP>0) echo "<a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																											</span>
 																										</span>
 											</label>
@@ -1666,7 +1696,7 @@
 										<span  class="form-sub-label-container" style="vertical-align:top; width:8%;padding:0;margin:0;">
 
 										 
-											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip Buletin </label>
+											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip Act Identitate </label>
 											<!--<input type="text" name="Master_Tip_Buletin" class="form-textbox first_1" size="20" placeholder="CI" data-component="first" value="<?php 
 																																													//		if($v_Master_Tip_Buletin == '') 
 																																													//			echo '';
@@ -1675,7 +1705,7 @@
 																																														?>"/ readonly>-->
 											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Master_Tip_Buletin" data-component="country">
 												<option name="-" value="-" <?php
-																				if($v_Master_Tip_Buletin=="CI")
+																				if($v_Master_Tip_Buletin=="-")
 																					echo 'selected';
 																				else
 																					echo '';
@@ -1692,6 +1722,12 @@
 																							else
 																								echo '';
 																						?>>Pașaport</option>
+												<option name="Adeverinta" value="Adeverinta" <?php
+																							if($v_Master_Tip_Buletin=="Adeverinta")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Adeverință</option>
 												
 											</select>
 											<span style="color:red">
@@ -2046,7 +2082,14 @@
 										<tbody>
 											<tr>
 												<td>
-													<label class="form-label form-label-left form-label-auto" id="label_3" style="color: gray; font-size:medium; width:25%; display:inline-block"> Domiciliu stabil: </label>
+													<label class="form-label form-label-left form-label-auto" id="label_3" style="color: gray; font-size:medium; width:25%; display:inline-block"> Domiciliu stabil: <span class="info-box" > 
+																																																						?
+																																																						<span class="info-box__content" style="width:235px;">
+																																																							Completați adresa conform CI; 
+																																																							Puneți "-" în câmpurile nerelevante
+																																																						</span>
+																																																					</span>
+													</label>
 												
 													<span style="width:75%">
 														<input type="radio" name="group3" id="checkbox1" class="css-checkbox" value="1" <?php
@@ -6508,57 +6551,161 @@
 
 								<div class="form-input jf-required cid_1" >
 
-									<div data-wrapper-react="true" class="mg">
+									<!--<div data-wrapper-react="true" class="mg">-->
 
 										<span class="form-sub-label-container" style="vertical-align:top; width:100%" >
 
 											<label class="form-sub-label" style="min-height:13px;">Media general&#259; de Admitere</label>
 
 
-											<input type="text"  name="Master_Medie_Admitere"  class="form-textbox first_1"  size="20" data-component="first" value="<?php
-																																										if($v_Master_Medie_Admitere == '')
-																																											echo '';
-																																										else
-																																											echo $v_Master_Medie_Admitere;
-																																									?>" />
-											<span style="color:red">
+											<!--<input type="text"  name="Master_Medie_Admitere"  class="form-textbox first_1"  size="20" data-component="first" value="<?php
+																																									//	if($v_Master_Medie_Admitere == '')
+																																									//		echo '';
+																																									//	else
+																																									//		echo $v_Master_Medie_Admitere;
+																																									?>" /> -->
+											<select style="height:40px;" name="MedieGeneralaAdmitere0"  class="form-dropdown" data-component="birthdate-day">
 												<?php
-													if(isset($_POST['Submit'])) {
-															$v_Master_Medie_Admitere = $_POST["Master_Medie_Admitere"];
-																$vMaster_Medie_Admitere =  validareMedieBac($v_Master_Medie_Admitere);
-																if($vMaster_Medie_Admitere==-1)
-																	echo "C&#226;mp necompletat!";
-																else
-																	if($vMaster_Medie_Admitere==1)
-																		echo "Format nepotrivit!";
-																	else
-																		if($vMaster_Medie_Admitere==2)
-																			echo "Notă incorectă!";
+													$v_MedieGeneralaAdmitere0 = $_POST["MedieGeneralaAdmitere0"];
+													for($i=0;$i<=1;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieGeneralaAdmitere0==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
 													}
 												?>
-											</span>
-													
+											</select>
+											<select style="height:40px;" name="MedieGeneralaAdmitere1"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_MedieGeneralaAdmitere1 = $_POST["MedieGeneralaAdmitere1"];
+													for($i=0;$i<=9;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieGeneralaAdmitere1==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
+											.
+											<select style="height:40px;" name="MedieGeneralaAdmitere2"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_MedieGeneralaAdmitere2 = $_POST["MedieGeneralaAdmitere2"];
+													for($i=0;$i<=9;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieGeneralaAdmitere2==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
+											<select style="height:40px;" name="MedieGeneralaAdmitere3"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_MedieGeneralaAdmitere3 = $_POST["MedieGeneralaAdmitere3"];
+													for($i=0;$i<=9;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieGeneralaAdmitere3==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
+											
 										</span>
+										
+										<span style="color:red">
+											<?php
+												if(isset($_POST['Submit'])) {
+														//$v_Master_Medie_Admitere = $_POST["Master_Medie_Admitere"];
+														$v_Master_Medie_Admitere=$v_MedieGeneralaAdmitere0*10+$v_MedieGeneralaAdmitere1+$v_MedieGeneralaAdmitere2/10+$v_MedieGeneralaAdmitere3/100;
+														/*	$vMaster_Medie_Admitere =  validareMedieBac($v_Master_Medie_Admitere);
+															if($vMaster_Medie_Admitere==-1)
+																echo "C&#226;mp necompletat!";
+															else
+																if($vMaster_Medie_Admitere==1)
+																	echo "Format nepotrivit!";
+																else
+																	if($vMaster_Medie_Admitere==2)
+																		echo "Notă incorectă!";*/
+												}
+											?>
+										</span>
+										
+										<br><br>
 
-									</div> 
+									<!--</div> -->
 
-									<div data-wrapper-react="true" class="mg">
+									<!--<div data-wrapper-react="true" class="mg">-->
 
 										<span class="form-sub-label-container gen" style="vertical-align:top; height:40px; width:100%;">
 
 											<label class="form-sub-label"  style="min-height:13px;">Nota licen&#355;&#259;</label>
 
-											<input type="text"  name="Master_Nota_Master" class="form-textbox first_1" size="20" data-component="first" value="<?php 
-																																									if($v_Master_Nota_Master == '') 
-																																										echo '';
-																																									else
-																																										echo $v_Master_Nota_Master;
-																																								?>" />
+											<!--<input type="text"  name="Master_Nota_Master" class="form-textbox first_1" size="20" data-component="first" value="<?php 
+																																								//	if($v_Master_Nota_Master == '') 
+																																								//		echo '';
+																																								//	else
+																																								//		echo $v_Master_Nota_Master;
+																																								?>" />-->
+											<select style="height:40px;" name="NotaLicenta0"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_NotaLicenta0 = $_POST["NotaLicenta0"];
+													for($i=0;$i<=1;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_NotaLicenta0==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
+											<select style="height:40px;" name="NotaLicenta1"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_NotaLicenta1 = $_POST["NotaLicenta1"];
+													for($i=0;$i<=9;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_NotaLicenta1==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
+											.
+											<select style="height:40px;" name="NotaLicenta2"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_NotaLicenta2 = $_POST["NotaLicenta2"];
+													for($i=0;$i<=9;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_NotaLicenta2==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
+											<select style="height:40px;" name="NotaLicenta3"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_NotaLicenta3 = $_POST["NotaLicenta3"];
+													for($i=0;$i<=9;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_NotaLicenta3==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
 											<span style="color:red">
 												<?php 
 													if(isset($_POST['Submit'])) {
-														$v_Master_Nota_Master = $_POST["Master_Nota_Master"];
-														$vMaster_Nota_Master =  validareMedieBac($v_Master_Nota_Master);
+														//$v_Master_Nota_Master = $_POST["Master_Nota_Master"];
+														$v_Master_Nota_Master=$v_NotaLicenta0*10+$v_NotaLicenta1+$v_NotaLicenta2/10+$v_NotaLicenta3/100;
+														/*$vMaster_Nota_Master =  validareMedieBac($v_Master_Nota_Master);
+														
 														if($vMaster_Nota_Master==-1)
 															echo "C&#226;mp necompletat!";
 														else
@@ -6566,7 +6713,7 @@
 																echo "Format nepotrivit!";
 															else
 																if($vMaster_Nota_Master==2)
-																	echo "Notă incorectă!";
+																	echo "Notă incorectă!";*/
 													}
 												?>
 											</span>
@@ -6574,7 +6721,9 @@
 
 										</span>
 
-									</div>
+										<br><br>
+
+									<!--</div>-->
 
 										
 								</div>
@@ -6586,7 +6735,7 @@
 									<label class="form-sub-label form-label" style="width:100%; float:left;color: #3488CB;font-size: large;">V. Opţiuni master</label>
 
 									<section>
-										<h5 class="form-label  form-label-auto" style="color: gray; font-size:medium; width:100%; display:inline-block; padding-top:1%;">
+										<!--<h5 class="form-label  form-label-auto" style="color: gray; font-size:medium; width:100%; display:inline-block; padding-top:1%;">
 											Ordonaţi opţiunile de mai jos în ordinea preferinţelor dumneavoastră (glisaţi fiecare opţiune pe locul dorit)</h5>
 										 <h5 class="form-label  form-label-auto" style="color: red; font-size:medium; width:100%; display:inline-block;">TOATE opțiunile sunt obligatorii!</h5>
 										<ul style="display:inline-block; width:7%; float:left;list-style-type: none;">
@@ -6637,10 +6786,975 @@
 											<li>Optimizarea Computaţională - Taxă</li>
 											<li>Lingvistica Computaţională - Taxă</li>
 											<li>Studii  Avansate în Informatică - Taxă</li>
-										</ul>
+										</ul>-->
+										<h5 class="form-label  form-label-auto" style="color: gray; font-size:medium; width:100%; display:inline-block; padding-top:1%;">
+											Ordonaţi opţiunile de mai jos în ordinea preferinţelor dumneavoastră!
+										</h5>
+										<label>Preferință 1(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune1" data-component="country">
+											<option value="Selectati" <?php
+																			if($vOptiune1=="Selectați")
+																				echo 'selected';
+																			else
+																				echo '';
+																		?>>Selectați</option> 
+											<option value="Ingineria Sistemelor Software - Buget" <?php
+																								if($vOptiune1=="Ingineria Sistemelor Software - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Buget</option> 
+											<option value="Sisteme Distribuite - Buget" <?php
+																								if($vOptiune1=="Sisteme Distribuite - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Buget</option>
+											<option value="Securitatea Informaţiei - Buget" <?php
+																								if($vOptiune1=="Securitatea Informaţiei - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Buget</option>
+											<option value="Optimizarea Computaţională - Buget" <?php
+																								if($vOptiune1=="Optimizarea Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Buget</option>
+											<option value="Lingvistica Computaţională - Buget" <?php
+																								if($vOptiune1=="Lingvistica Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Buget</option>
+											<option value="Ingineria Sistemelor Software - Taxă" <?php
+																								if($vOptiune1=="Ingineria Sistemelor Software - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Taxă</option>
+											<option value="Sisteme Distribuite - Taxă" <?php
+																								if($vOptiune1=="Sisteme Distribuite - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Taxă</option>
+											<option value="Securitatea Informaţiei - Taxă" <?php
+																								if($vOptiune1=="Securitatea Informaţiei - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Taxă</option>
+											<option value="Optimizarea Computaţională - Taxă" <?php
+																								if($vOptiune1=="Optimizarea Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Taxă</option>
+											<option value="Lingvistica Computaţională - Taxă" <?php
+																								if($vOptiune1=="Lingvistica Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Taxă</option>
+											<option value="Studii  Avansate în Informatică - Taxă" <?php
+																								if($vOptiune1=="Studii  Avansate în Informatică - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Studii  Avansate în Informatică - Taxă</option>
+										</select>
+										<span style="color:red">	
+											<?php
+												if(isset($_POST['Submit'])) {		
+													$vOptiune1=$_POST["Optiune1"];
+													if($_POST["Optiune1"] == 'Selectati')		
+														echo "Preferință neselectată!";		
+												}	
+											?>
+										</span>
+										
+										<br><br>
+										<label>Preferință 2(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune2" data-component="country">
+											<option value="Selectati" <?php
+																			if($vOptiune2=="Selectați")
+																				echo 'selected';
+																			else
+																				echo '';
+																		?>>Selectați</option> 
+											<option value="Ingineria Sistemelor Software - Buget" <?php
+																								if($vOptiune2=="Ingineria Sistemelor Software - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Buget</option> 
+											<option value="Sisteme Distribuite - Buget" <?php
+																								if($vOptiune2=="Sisteme Distribuite - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Buget</option>
+											<option value="Securitatea Informaţiei - Buget" <?php
+																								if($vOptiune2=="Securitatea Informaţiei - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Buget</option>
+											<option value="Optimizarea Computaţională - Buget" <?php
+																								if($vOptiune2=="Optimizarea Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Buget</option>
+											<option value="Lingvistica Computaţională - Buget" <?php
+																								if($vOptiune2=="Lingvistica Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Buget</option>
+											<option value="Ingineria Sistemelor Software - Taxă" <?php
+																								if($vOptiune2=="Ingineria Sistemelor Software - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Taxă</option>
+											<option value="Sisteme Distribuite - Taxă" <?php
+																								if($vOptiune2=="Sisteme Distribuite - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Taxă</option>
+											<option value="Securitatea Informaţiei - Taxă" <?php
+																								if($vOptiune2=="Securitatea Informaţiei - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Taxă</option>
+											<option value="Optimizarea Computaţională - Taxă" <?php
+																								if($vOptiune2=="Optimizarea Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Taxă</option>
+											<option value="Lingvistica Computaţională - Taxă" <?php
+																								if($vOptiune2=="Lingvistica Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Taxă</option>
+											<option value="Studii  Avansate în Informatică - Taxă" <?php
+																								if($vOptiune2=="Studii  Avansate în Informatică - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Studii  Avansate în Informatică - Taxă</option>
+										</select>
+										<span style="color:red">	
+											<?php
+												if(isset($_POST['Submit'])) {		
+													$vOptiune2=$_POST["Optiune2"];
+													if($_POST["Optiune2"] == 'Selectati')		
+														echo "Preferință neselectată!";		
+												}	
+											?>
+										</span>
+										
+										<br><br>
+										<label>Preferință 3(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune3" data-component="country">
+											<option value="Selectati" <?php
+																			if($vOptiune3=="Selectați")
+																				echo 'selected';
+																			else
+																				echo '';
+																		?>>Selectați</option> 
+											<option value="Ingineria Sistemelor Software - Buget" <?php
+																								if($vOptiune3=="Ingineria Sistemelor Software - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Buget</option> 
+											<option value="Sisteme Distribuite - Buget" <?php
+																								if($vOptiune3=="Sisteme Distribuite - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Buget</option>
+											<option value="Securitatea Informaţiei - Buget" <?php
+																								if($vOptiune3=="Securitatea Informaţiei - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Buget</option>
+											<option value="Optimizarea Computaţională - Buget" <?php
+																								if($vOptiune3=="Optimizarea Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Buget</option>
+											<option value="Lingvistica Computaţională - Buget" <?php
+																								if($vOptiune3=="Lingvistica Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Buget</option>
+											<option value="Ingineria Sistemelor Software - Taxă" <?php
+																								if($vOptiune3=="Ingineria Sistemelor Software - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Taxă</option>
+											<option value="Sisteme Distribuite - Taxă" <?php
+																								if($vOptiune3=="Sisteme Distribuite - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Taxă</option>
+											<option value="Securitatea Informaţiei - Taxă" <?php
+																								if($vOptiune3=="Securitatea Informaţiei - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Taxă</option>
+											<option value="Optimizarea Computaţională - Taxă" <?php
+																								if($vOptiune3=="Optimizarea Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Taxă</option>
+											<option value="Lingvistica Computaţională - Taxă" <?php
+																								if($vOptiune3=="Lingvistica Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Taxă</option>
+											<option value="Studii  Avansate în Informatică - Taxă" <?php
+																								if($vOptiune3=="Studii  Avansate în Informatică - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Studii  Avansate în Informatică - Taxă</option>
+										</select>
+										<span style="color:red">	
+											<?php
+												if(isset($_POST['Submit'])) {		
+													$vOptiune3=$_POST["Optiune3"];
+													if($_POST["Optiune3"] == 'Selectati')		
+														echo "Preferință neselectată!";		
+												}	
+											?>
+										</span>
+										
+										<br><br>
+										<label>Preferință 4(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune4" data-component="country">
+											<option value="Selectati" <?php
+																			if($vOptiune4=="Selectați")
+																				echo 'selected';
+																			else
+																				echo '';
+																		?>>Selectați</option> 
+											<option value="Ingineria Sistemelor Software - Buget" <?php
+																								if($vOptiune4=="Ingineria Sistemelor Software - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Buget</option> 
+											<option value="Sisteme Distribuite - Buget" <?php
+																								if($vOptiune4=="Sisteme Distribuite - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Buget</option>
+											<option value="Securitatea Informaţiei - Buget" <?php
+																								if($vOptiune4=="Securitatea Informaţiei - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Buget</option>
+											<option value="Optimizarea Computaţională - Buget" <?php
+																								if($vOptiune4=="Optimizarea Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Buget</option>
+											<option value="Lingvistica Computaţională - Buget" <?php
+																								if($vOptiune4=="Lingvistica Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Buget</option>
+											<option value="Ingineria Sistemelor Software - Taxă" <?php
+																								if($vOptiune4=="Ingineria Sistemelor Software - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Taxă</option>
+											<option value="Sisteme Distribuite - Taxă" <?php
+																								if($vOptiune4=="Sisteme Distribuite - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Taxă</option>
+											<option value="Securitatea Informaţiei - Taxă" <?php
+																								if($vOptiune4=="Securitatea Informaţiei - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Taxă</option>
+											<option value="Optimizarea Computaţională - Taxă" <?php
+																								if($vOptiune4=="Optimizarea Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Taxă</option>
+											<option value="Lingvistica Computaţională - Taxă" <?php
+																								if($vOptiune4=="Lingvistica Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Taxă</option>
+											<option value="Studii  Avansate în Informatică - Taxă" <?php
+																								if($vOptiune4=="Studii  Avansate în Informatică - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Studii  Avansate în Informatică - Taxă</option>
+										</select>
+										<span style="color:red">	
+											<?php
+												if(isset($_POST['Submit'])) {		
+													$vOptiune4=$_POST["Optiune4"];
+													if($_POST["Optiune4"] == 'Selectati')		
+														echo "Preferință neselectată!";		
+												}	
+											?>
+										</span>
+										
+										<br><br>
+										<label>Preferință 5(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune5" data-component="country">
+											<option value="Selectati" <?php
+																			if($vOptiune5=="Selectați")
+																				echo 'selected';
+																			else
+																				echo '';
+																		?>>Selectați</option> 
+											<option value="Ingineria Sistemelor Software - Buget" <?php
+																								if($vOptiune5=="Ingineria Sistemelor Software - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Buget</option> 
+											<option value="Sisteme Distribuite - Buget" <?php
+																								if($vOptiune5=="Sisteme Distribuite - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Buget</option>
+											<option value="Securitatea Informaţiei - Buget" <?php
+																								if($vOptiune5=="Securitatea Informaţiei - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Buget</option>
+											<option value="Optimizarea Computaţională - Buget" <?php
+																								if($vOptiune5=="Optimizarea Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Buget</option>
+											<option value="Lingvistica Computaţională - Buget" <?php
+																								if($vOptiune5=="Lingvistica Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Buget</option>
+											<option value="Ingineria Sistemelor Software - Taxă" <?php
+																								if($vOptiune5=="Ingineria Sistemelor Software - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Taxă</option>
+											<option value="Sisteme Distribuite - Taxă" <?php
+																								if($vOptiune5=="Sisteme Distribuite - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Taxă</option>
+											<option value="Securitatea Informaţiei - Taxă" <?php
+																								if($vOptiune5=="Securitatea Informaţiei - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Taxă</option>
+											<option value="Optimizarea Computaţională - Taxă" <?php
+																								if($vOptiune5=="Optimizarea Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Taxă</option>
+											<option value="Lingvistica Computaţională - Taxă" <?php
+																								if($vOptiune5=="Lingvistica Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Taxă</option>
+											<option value="Studii  Avansate în Informatică - Taxă" <?php
+																								if($vOptiune5=="Studii  Avansate în Informatică - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Studii  Avansate în Informatică - Taxă</option>
+										</select>
+										<span style="color:red">	
+											<?php
+												if(isset($_POST['Submit'])) {		
+													$vOptiune5=$_POST["Optiune5"];
+													if($_POST["Optiune5"] == 'Selectati')		
+														echo "Preferință neselectată!";		
+												}	
+											?>
+										</span>
+										
+										<br><br>
+										<label>Preferință 6(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune6" data-component="country">
+											<option value="Selectati" <?php
+																			if($vOptiune6=="Selectați")
+																				echo 'selected';
+																			else
+																				echo '';
+																		?>>Selectați</option> 
+											<option value="Ingineria Sistemelor Software - Buget" <?php
+																								if($vOptiune6=="Ingineria Sistemelor Software - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Buget</option> 
+											<option value="Sisteme Distribuite - Buget" <?php
+																								if($vOptiune6=="Sisteme Distribuite - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Buget</option>
+											<option value="Securitatea Informaţiei - Buget" <?php
+																								if($vOptiune6=="Securitatea Informaţiei - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Buget</option>
+											<option value="Optimizarea Computaţională - Buget" <?php
+																								if($vOptiune6=="Optimizarea Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Buget</option>
+											<option value="Lingvistica Computaţională - Buget" <?php
+																								if($vOptiune6=="Lingvistica Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Buget</option>
+											<option value="Ingineria Sistemelor Software - Taxă" <?php
+																								if($vOptiune6=="Ingineria Sistemelor Software - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Taxă</option>
+											<option value="Sisteme Distribuite - Taxă" <?php
+																								if($vOptiune6=="Sisteme Distribuite - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Taxă</option>
+											<option value="Securitatea Informaţiei - Taxă" <?php
+																								if($vOptiune6=="Securitatea Informaţiei - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Taxă</option>
+											<option value="Optimizarea Computaţională - Taxă" <?php
+																								if($vOptiune6=="Optimizarea Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Taxă</option>
+											<option value="Lingvistica Computaţională - Taxă" <?php
+																								if($vOptiune6=="Lingvistica Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Taxă</option>
+											<option value="Studii  Avansate în Informatică - Taxă" <?php
+																								if($vOptiune6=="Studii  Avansate în Informatică - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Studii  Avansate în Informatică - Taxă</option>
+										</select>
+										<span style="color:red">	
+											<?php
+												if(isset($_POST['Submit'])) {		
+													$vOptiune6=$_POST["Optiune6"];
+													if($_POST["Optiune6"] == 'Selectati')		
+														echo "Preferință neselectată!";		
+												}	
+											?>
+										</span>
+										
+										<br><br>
+										<label>Preferință 7(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune7" data-component="country">
+											<option value="Selectati" <?php
+																			if($vOptiune7=="Selectați")
+																				echo 'selected';
+																			else
+																				echo '';
+																		?>>Selectați</option> 
+											<option value="Ingineria Sistemelor Software - Buget" <?php
+																								if($vOptiune7=="Ingineria Sistemelor Software - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Buget</option> 
+											<option value="Sisteme Distribuite - Buget" <?php
+																								if($vOptiune7=="Sisteme Distribuite - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Buget</option>
+											<option value="Securitatea Informaţiei - Buget" <?php
+																								if($vOptiune7=="Securitatea Informaţiei - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Buget</option>
+											<option value="Optimizarea Computaţională - Buget" <?php
+																								if($vOptiune7=="Optimizarea Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Buget</option>
+											<option value="Lingvistica Computaţională - Buget" <?php
+																								if($vOptiune7=="Lingvistica Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Buget</option>
+											<option value="Ingineria Sistemelor Software - Taxă" <?php
+																								if($vOptiune7=="Ingineria Sistemelor Software - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Taxă</option>
+											<option value="Sisteme Distribuite - Taxă" <?php
+																								if($vOptiune7=="Sisteme Distribuite - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Taxă</option>
+											<option value="Securitatea Informaţiei - Taxă" <?php
+																								if($vOptiune7=="Securitatea Informaţiei - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Taxă</option>
+											<option value="Optimizarea Computaţională - Taxă" <?php
+																								if($vOptiune7=="Optimizarea Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Taxă</option>
+											<option value="Lingvistica Computaţională - Taxă" <?php
+																								if($vOptiune7=="Lingvistica Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Taxă</option>
+											<option value="Studii  Avansate în Informatică - Taxă" <?php
+																								if($vOptiune7=="Studii  Avansate în Informatică - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Studii  Avansate în Informatică - Taxă</option>
+										</select>
+										<span style="color:red">	
+											<?php
+												if(isset($_POST['Submit'])) {		
+													$vOptiune7=$_POST["Optiune7"];
+													if($_POST["Optiune7"] == 'Selectati')		
+														echo "Preferință neselectată!";		
+												}	
+											?>
+										</span>
+										
+										<br><br>
+										<label>Preferință 8(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune8" data-component="country">
+											<option value="Selectati" <?php
+																			if($vOptiune8=="Selectați")
+																				echo 'selected';
+																			else
+																				echo '';
+																		?>>Selectați</option> 
+											<option value="Ingineria Sistemelor Software - Buget" <?php
+																								if($vOptiune8=="Ingineria Sistemelor Software - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Buget</option> 
+											<option value="Sisteme Distribuite - Buget" <?php
+																								if($vOptiune8=="Sisteme Distribuite - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Buget</option>
+											<option value="Securitatea Informaţiei - Buget" <?php
+																								if($vOptiune8=="Securitatea Informaţiei - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Buget</option>
+											<option value="Optimizarea Computaţională - Buget" <?php
+																								if($vOptiune8=="Optimizarea Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Buget</option>
+											<option value="Lingvistica Computaţională - Buget" <?php
+																								if($vOptiune8=="Lingvistica Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Buget</option>
+											<option value="Ingineria Sistemelor Software - Taxă" <?php
+																								if($vOptiune8=="Ingineria Sistemelor Software - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Taxă</option>
+											<option value="Sisteme Distribuite - Taxă" <?php
+																								if($vOptiune8=="Sisteme Distribuite - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Taxă</option>
+											<option value="Securitatea Informaţiei - Taxă" <?php
+																								if($vOptiune8=="Securitatea Informaţiei - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Taxă</option>
+											<option value="Optimizarea Computaţională - Taxă" <?php
+																								if($vOptiune8=="Optimizarea Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Taxă</option>
+											<option value="Lingvistica Computaţională - Taxă" <?php
+																								if($vOptiune8=="Lingvistica Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Taxă</option>
+											<option value="Studii  Avansate în Informatică - Taxă" <?php
+																								if($vOptiune8=="Studii  Avansate în Informatică - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Studii  Avansate în Informatică - Taxă</option>
+										</select>
+										<span style="color:red">	
+											<?php
+												if(isset($_POST['Submit'])) {		
+													$vOptiune8=$_POST["Optiune8"];
+													if($_POST["Optiune8"] == 'Selectati')		
+														echo "Preferință neselectată!";		
+												}	
+											?>
+										</span>
+										
+										<br><br>
+										<label>Preferință 9(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune9" data-component="country">
+											<option value="Selectati" <?php
+																			if($vOptiune9=="Selectați")
+																				echo 'selected';
+																			else
+																				echo '';
+																		?>>Selectați</option> 
+											<option value="Ingineria Sistemelor Software - Buget" <?php
+																								if($vOptiune9=="Ingineria Sistemelor Software - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Buget</option> 
+											<option value="Sisteme Distribuite - Buget" <?php
+																								if($vOptiune9=="Sisteme Distribuite - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Buget</option>
+											<option value="Securitatea Informaţiei - Buget" <?php
+																								if($vOptiune9=="Securitatea Informaţiei - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Buget</option>
+											<option value="Optimizarea Computaţională - Buget" <?php
+																								if($vOptiune9=="Optimizarea Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Buget</option>
+											<option value="Lingvistica Computaţională - Buget" <?php
+																								if($vOptiune9=="Lingvistica Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Buget</option>
+											<option value="Ingineria Sistemelor Software - Taxă" <?php
+																								if($vOptiune9=="Ingineria Sistemelor Software - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Taxă</option>
+											<option value="Sisteme Distribuite - Taxă" <?php
+																								if($vOptiune9=="Sisteme Distribuite - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Taxă</option>
+											<option value="Securitatea Informaţiei - Taxă" <?php
+																								if($vOptiune9=="Securitatea Informaţiei - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Taxă</option>
+											<option value="Optimizarea Computaţională - Taxă" <?php
+																								if($vOptiune9=="Optimizarea Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Taxă</option>
+											<option value="Lingvistica Computaţională - Taxă" <?php
+																								if($vOptiune9=="Lingvistica Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Taxă</option>
+											<option value="Studii  Avansate în Informatică - Taxă" <?php
+																								if($vOptiune9=="Studii  Avansate în Informatică - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Studii  Avansate în Informatică - Taxă</option>
+										</select>
+										<span style="color:red">	
+											<?php
+												if(isset($_POST['Submit'])) {		
+													$vOptiune9=$_POST["Optiune9"];
+													if($_POST["Optiune9"] == 'Selectati')		
+														echo "Preferință neselectată!";		
+												}	
+											?>
+										</span>
+										
+										<br><br>
+										<label>Preferință 10(obligatoriu) &nbsp; &nbsp; &nbsp; </label>
+										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune10" data-component="country">
+											<option value="Selectati" <?php
+																			if($vOptiune10=="Selectați")
+																				echo 'selected';
+																			else
+																				echo '';
+																		?>>Selectați</option> 
+											<option value="Ingineria Sistemelor Software - Buget" <?php
+																								if($vOptiune10=="Ingineria Sistemelor Software - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Buget</option> 
+											<option value="Sisteme Distribuite - Buget" <?php
+																								if($vOptiune10=="Sisteme Distribuite - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Buget</option>
+											<option value="Securitatea Informaţiei - Buget" <?php
+																								if($vOptiune10=="Securitatea Informaţiei - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Buget</option>
+											<option value="Optimizarea Computaţională - Buget" <?php
+																								if($vOptiune10=="Optimizarea Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Buget</option>
+											<option value="Lingvistica Computaţională - Buget" <?php
+																								if($vOptiune10=="Lingvistica Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Buget</option>
+											<option value="Ingineria Sistemelor Software - Taxă" <?php
+																								if($vOptiune10=="Ingineria Sistemelor Software - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Taxă</option>
+											<option value="Sisteme Distribuite - Taxă" <?php
+																								if($vOptiune10=="Sisteme Distribuite - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Taxă</option>
+											<option value="Securitatea Informaţiei - Taxă" <?php
+																								if($vOptiune10=="Securitatea Informaţiei - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Taxă</option>
+											<option value="Optimizarea Computaţională - Taxă" <?php
+																								if($vOptiune10=="Optimizarea Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Taxă</option>
+											<option value="Lingvistica Computaţională - Taxă" <?php
+																								if($vOptiune10=="Lingvistica Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Taxă</option>
+											<option value="Studii  Avansate în Informatică - Taxă" <?php
+																								if($vOptiune10=="Studii  Avansate în Informatică - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Studii  Avansate în Informatică - Taxă</option>
+										</select>
+										<span style="color:red">	
+											<?php
+												if(isset($_POST['Submit'])) {		
+													$vOptiune10=$_POST["Optiune10"];
+													if($_POST["Optiune10"] == 'Selectati')		
+														echo "Preferință neselectată!";		
+												}	
+											?>
+										</span>
+										
+										<br><br>
+										<label>Preferință 11(obligatoriu) &nbsp; &nbsp; &nbsp; </label>
+										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune11" data-component="country">
+											<option value="Selectati" <?php
+																			if($vOptiune11=="Selectați")
+																				echo 'selected';
+																			else
+																				echo '';
+																		?>>Selectați</option> 
+											<option value="Ingineria Sistemelor Software - Buget" <?php
+																								if($vOptiune11=="Ingineria Sistemelor Software - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Buget</option> 
+											<option value="Sisteme Distribuite - Buget" <?php
+																								if($vOptiune11=="Sisteme Distribuite - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Buget</option>
+											<option value="Securitatea Informaţiei - Buget" <?php
+																								if($vOptiune11=="Securitatea Informaţiei - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Buget</option>
+											<option value="Optimizarea Computaţională - Buget" <?php
+																								if($vOptiune11=="Optimizarea Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Buget</option>
+											<option value="Lingvistica Computaţională - Buget" <?php
+																								if($vOptiune11=="Lingvistica Computaţională - Buget")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Buget</option>
+											<option value="Ingineria Sistemelor Software - Taxă" <?php
+																								if($vOptiune11=="Ingineria Sistemelor Software - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Ingineria Sistemelor Software - Taxă</option>
+											<option value="Sisteme Distribuite - Taxă" <?php
+																								if($vOptiune11=="Sisteme Distribuite - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Sisteme Distribuite - Taxă</option>
+											<option value="Securitatea Informaţiei - Taxă" <?php
+																								if($vOptiune11=="Securitatea Informaţiei - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Securitatea Informaţiei - Taxă</option>
+											<option value="Optimizarea Computaţională - Taxă" <?php
+																								if($vOptiune11=="Optimizarea Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Optimizarea Computaţională - Taxă</option>
+											<option value="Lingvistica Computaţională - Taxă" <?php
+																								if($vOptiune11=="Lingvistica Computaţională - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Lingvistica Computaţională - Taxă</option>
+											<option value="Studii  Avansate în Informatică - Taxă" <?php
+																								if($vOptiune11=="Studii  Avansate în Informatică - Taxă")
+																									echo 'selected';
+																								else
+																									echo '';
+																							?>>Studii  Avansate în Informatică - Taxă</option>
+										</select>
+										<span style="color:red">	
+											<?php
+												if(isset($_POST['Submit'])) {		
+													$vOptiune11=$_POST["Optiune11"];
+													if($_POST["Optiune11"] == 'Selectati')		
+														echo "Preferință neselectată!";		
+												}	
+											?>
+										</span>
+										<script>  
+											$('select').on('change', function() {
+												HandleDropdowns($(this));
+											});
+
+											function HandleDropdowns(element) {
+												var $element = element;
+												var value = $element.val();
+										  
+												$.each($('select').not($element), function() { //loop all remaining select elements
+													var subValue = $(this).val();
+													if (subValue === value) { // if value is same reset
+														$(this).val('Selectati');
+														console.log('resetting ' + $(this).attr('id')); // demo purpose
+													}
+												});  
+											}
+										</script>
 									</section>
 										
-									<span style="color:red">		
+									<!--<span style="color:red">		
 										<?php 		
 											if(isset($_POST['Submit'])) {		
 												$Preferinte[1] = $_POST["IngineriaSistemelorSoftwareTaxa"];		
@@ -6659,7 +7773,7 @@
 													echo "C&#226;mpuri invalide!";		
 											}		
 										?>		
-									</span>
+									</span>--?
 
 								</div>
 
@@ -7657,17 +8771,15 @@
 							<span style="color:red">
 								<?php
 									if(isset($_POST['Submit'])) {
-										$v_Radio27 = $_POST["group27"];
-										$vradio27 = validRadio($v_Radio27);
-										if($vradio28!==0 && $vradio28!==1 && $vradio28!==3 && $vradio28!==4 && $vradio28!==5 || 
-										   $vradio29!==0 && $vradio29!==1 && $vradio29!==3 && $vradio29!==4 && $vradio29!==5 ||
-										   $vradio30!==0 && $vradio30!==1 && $vradio30!==3 && $vradio30!==4 && $vradio30!==5 ||
-										   $vradio31!==0 && $vradio31!==1 && $vradio31!==3 && $vradio31!==4 && $vradio31!==5 ||
-										   $vradio32!==0 && $vradio32!==1 && $vradio32!==3 && $vradio32!==4 && $vradio32!==5 ||
-										   $vradio33!==0 && $vradio33!==1 && $vradio33!==3 && $vradio33!==4 && $vradio33!==5 ||
-										   $vradio34!==0 && $vradio34!==1 && $vradio34!==3 && $vradio34!==4 && $vradio34!==5 ||
-										   $vradio35!==0 && $vradio35!==1 && $vradio35!==3 && $vradio35!==4 && $vradio35!==5)
-											echo "C&#226;mp(uri) necompletat(e)!";
+										if($v_Radio28=='' ||
+										   $v_Radio29=='' || 
+										   $v_Radio30=='' ||
+										   $v_Radio31=='' ||
+										   $v_Radio32=='' || 
+										   $v_Radio33=='' ||
+										   $v_Radio34=='' ||
+										   $v_Radio35=='')
+												echo "C&#226;mp(uri) necompletat(e)!";
 									}
 								?>
 							</span>
@@ -10634,4 +11746,4 @@
     }
   }
 }
-  ?>
+  ?>>

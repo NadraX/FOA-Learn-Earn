@@ -790,11 +790,21 @@
 							$NrPref = -1;
 							$v_Licenta_AnPreadmitere = $_POST["Licenta_AnPreadmitere"];
 								$vLicenta_AnPreadmitere = validareAn($v_Licenta_AnPreadmitere);
+							$vOptiune1=$_POST["Optiune1"];
+							$vOptiune2=$_POST["Optiune2"];
+							$vOptiune3=$_POST["Optiune3"];
+							$vOptiune4=$_POST["Optiune4"];
 						?>
 						<ul>
 							<li class="form-line" data-type="control_taxa" id="id_12">
 								<br>
-								<label class="form-label form-label-left form-label-auto" style="color: #3488CB; font-size:larger"> I. Taxă de înscriere  </label>
+								<label class="form-label form-label-left form-label-auto" style="color: #3488CB; font-size:larger"> I. Taxă de înscriere 	<span class="info-box"> 
+																																								?
+																																								<span class="info-box__content" style="width:255px;">
+																																									Poate fi achitată la orice sucursală BRD sau în incinta Facultății de Informatică.
+																																								</span>
+																																							</span>
+								</label>
 								<div class="form-input jf-required cid_1">
 									<table  style="width:100%">
 										<tbody>
@@ -817,7 +827,7 @@
 																echo "C&#226;mp necompletat!";
 															else
 																if($vChitanta==1)
-																	echo "Câmp invalid! Introdu un număr (pozitiv)!";
+																	echo "Câmpul conține caractere non-alfanumerice!";
 															}		
 														?>		
 													</span>	
@@ -850,7 +860,13 @@
 											<tr>
 												<td>
 													<br>
-													<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Sunteţi scutit de această taxă?  </label>     
+													<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Sunteţi scutit de această taxă? 	<span class="info-box"> 
+																																																							?
+																																																							<span class="info-box__content" style="width:270px;">
+																																																								Se depune la dosar adeverință în original care dovedește motivul precizat.
+																																																							</span>
+																																																						</span> 
+													</label>     
 					   
 													<span style="width:40%">
 														<input type="radio" name="group1" id="checkbox11" class="css-checkbox" value="1" <?php
@@ -945,6 +961,8 @@
 
 							<li class="form-line" data-type="control_fullname" >
 								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:larger"> II. Date personale ale candidatului cu cetăţenie română <span class="info-box">?<span class="info-box__content">În măsura în care este posibil, datele personale se vor completa din buletin </span></span></label>
+								
+								<h4 style="color:red;">Informațiile se completează conform certificatului de naștere și actului de identitate.</h4>
 								<br>
 								<div  class="form-input jf-required cid_1">
 									<div class="general_name" data-wrapper-react="true">
@@ -1132,9 +1150,9 @@
                                                         
 														$vLicenta_PrenumeMama = validPremume($v_Licenta_Prenume_Mama);
 														
-														//if($vLicenta_PrenumeMama==-1)
-														//	echo "C&#226;mp necompletat!";
-														//else
+														if($vLicenta_PrenumeMama==-1)
+															echo "C&#226;mp necompletat!";
+														else
 															if($vLicenta_PrenumeMama==1)
 																echo "C&#226;mpul conține caractere nepermise!";
 															else
@@ -1158,9 +1176,9 @@
 														$v_Licenta_Prenume_Tata = $_POST["Licenta_Prenume_Tata"];
                                                        
 														$vLicenta_PrenumeTata = validPremume($v_Licenta_Prenume_Tata);
-														//if($vLicenta_PrenumeTata==-1)
-														//	echo "C&#226;mp necompletat!";
-														//else
+														if($vLicenta_PrenumeTata==-1)
+															echo "C&#226;mp necompletat!";
+														else
 															if($vLicenta_PrenumeTata==1)
 																echo "C&#226;mpul conține caractere nepermise!";
 															else
@@ -1520,7 +1538,9 @@
 																																	echo "?";
 																															?> 
 																															<span class="info-box__content">
-																																Codul Numeric Personal cum se găsește în buletin. <?php if($vLicenta_CNP>0) echo "<a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
+																																Codul Numeric Personal cum se găsește în actul de identitate.
+																																Completați cu informațiile de pe adeverința primită de la SPCLEP în cazul în care CI nu mai este validă.
+																																<?php if($vLicenta_CNP>0) echo "<a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																															</span>
 																														</span>
 											</label>
@@ -1551,7 +1571,7 @@
 											</span>
 										</span>
 										<span  class="form-sub-label-container" style="vertical-align:top; width:8%;padding:0;margin:0;">
-											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip Buletin </label>
+											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip Act Identitate </label>
 											<!--<input type="text"  name="Licenta_Tip_Buletin" class="form-textbox first_1" size="20" placeholder="CI" data-component="first" value="<?php 
 																																																if($v_Licenta_Tip_Buletin == '') 
 																																																	echo '';
@@ -1560,7 +1580,7 @@
 																																															?>"/ readonly> -->
 											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Licenta_Tip_Buletin" data-component="country">
 												<option name="-" value="-" <?php
-																					if($v_Licenta_Tip_Buletin=="CI")
+																					if($v_Licenta_Tip_Buletin=="-")
 																						echo 'selected';
 																					else
 																						echo '';
@@ -1577,6 +1597,12 @@
 																					else
 																						echo '';
 																				?>>Pașaport</option>
+												<option name="Adeverinta" value="Adeverinta" <?php
+																							if($v_Licenta_Tip_Buletin=="Adeverinta")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Adeverință</option>
 												
 											</select>
 											<span style="color:red">
@@ -1905,7 +1931,14 @@
 										<tbody>
 											<tr>
 												<td>
-													<label class="form-label form-label-left form-label-auto" id="label_3" style="color: gray; font-size:medium; width:25%; display:inline-block"> Domiciliu stabil: </label>
+													<label class="form-label form-label-left form-label-auto" id="label_3" style="color: gray; font-size:medium; width:25%; display:inline-block"> Domiciliu stabil: <span class="info-box" > 
+																																																						?
+																																																						<span class="info-box__content" style="width:235px;">
+																																																							Completați adresa conform CI; 
+																																																							Puneți "-" în câmpurile nerelevante
+																																																						</span>
+																																																					</span>
+													</label>
                         
 													<span style="width:75%">
 														<input type="radio" name="group3" id="checkbox1" class="css-checkbox" value="1" <?php
@@ -4068,7 +4101,7 @@
 											<tr>
 												<td>
 													<span class="form-sub-label-container" style="vertical-align:top; width:20%; display:inline-block" >
-														<label class="form-sub-label" style="min-height:13px;"> Seria diplomei de Bacalaureat </label>
+														<label class="form-sub-label" style="min-height:13px;"> Seria diplomei de Bacalaureat/Adeveriță </label>
 														<input type="text"  name="Licenta_Serie_DiplomaBAC" class="form-textbox form-address-city first_1" size="21" placeholder="ex: A" value="<?php 
 																																																	if($v_Licenta_Serie_DiplomaBAC == '') 
 																																																		echo '';
@@ -5693,16 +5726,74 @@
 									<div data-wrapper-react="true" class="mg">
 										<span class="form-sub-label-container" style="vertical-align:top; width:100%" >
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;">Media general&#259; Bacalaureat</label>
-											<input type="text"  name="Licenta_Medie_BAC" class="form-textbox first_1"  size="20" data-component="first"  value="<?php 
+											<!--<input type="text"  name="Licenta_Medie_BAC" class="form-textbox first_1"  size="20" data-component="first"  value="<?php 
 																																									if($v_Licenta_Medie_BAC == '') 
 																																										echo '';
 																																									else
 																																										echo $v_Licenta_Medie_BAC;
-																																								?>" />
-											<span style="color:red">
+																																								?>" />-->
+											<select style="height:40px;" name="MedieBac0"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_MedieBac0 = $_POST["MedieBac0"];
+													for($i=0;$i<=1;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieBac0==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
+											<select style="height:40px;" name="MedieBac1"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_MedieBac1 = $_POST["MedieBac1"];
+													for($i=0;$i<=0;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieBac1==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+													for($i=6;$i<=9;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieBac1==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
+											.
+											<select style="height:40px;" name="MedieBac2"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_MedieBac2 = $_POST["MedieBac2"];
+													for($i=0;$i<=9;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieBac2==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
+											<select style="height:40px;" name="MedieBac3"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_MedieBac3 = $_POST["MedieBac3"];
+													for($i=0;$i<=9;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieBac3==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
+										</span>
+										<span style="color:red">
 												<?php 
 													if(isset($_POST['Submit'])) {
-														$v_Licenta_Medie_BAC = $_POST["Licenta_Medie_BAC"];
+														//$v_Licenta_Medie_BAC = $_POST["Licenta_Medie_BAC"];
+														$v_Licenta_Medie_BAC=$v_MedieBac0*10+$v_MedieBac1+$v_MedieBac2/10+$v_MedieBac3/100;
 														$vLicenta_Medie_BAC = validareMedieBac($v_Licenta_Medie_BAC);
 														if($vLicenta_Medie_BAC==-1)
 															echo "C&#226;mp necompletat!";
@@ -5715,21 +5806,77 @@
 													}
 												?>
 											</span>
-										</span>
 									</div> 
 									<div data-wrapper-react="true" class="mg">
 										<span  class="form-sub-label-container gen" style="vertical-align:top;">
 											<label class="form-sub-label sublabel_first"   style="min-height:13px;">Nota la Matematic&#259; sau Informatic&#259;<span class="info-box">?<span class="info-box__content">Nota la examenul de bacalaureat la una din cele două materii</span></span></label>
-											<input type="text"  name="Licenta_Nota_MI" class="form-textbox first_1" size="20" data-component="first" value="<?php 
+											<!--<input type="text"  name="Licenta_Nota_MI" class="form-textbox first_1" size="20" data-component="first" value="<?php 
 																																								if($v_Licenta_Nota_MI == '') 
 																																									echo '';
 																																								else
 																																									echo $v_Licenta_Nota_MI;
-																																							?>" />
+																																							?>" />-->
+											<select style="height:40px;" name="MedieAlegere0"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_MedieAlegere0 = $_POST["MedieAlegere0"];
+													for($i=0;$i<=1;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieAlegere0==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
+											<select style="height:40px;" name="MedieAlegere1"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_MedieAlegere1 = $_POST["MedieAlegere1"];
+													for($i=0;$i<=0;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieAlegere1==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+													for($i=5;$i<=9;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieAlegere1==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
+											.
+											<select style="height:40px;" name="MedieAlegere2"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_MedieAlegere2 = $_POST["MedieAlegere2"];
+													for($i=0;$i<=9;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieAlegere2==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
+											<select style="height:40px;" name="MedieAlegere3"  class="form-dropdown" data-component="birthdate-day">
+												<?php
+													$v_MedieAlegere3 = $_POST["MedieAlegere3"];
+													for($i=0;$i<=9;$i++)
+													{
+														echo '<option value="'.$i.'" ';
+														if($v_MedieAlegere3==$i)
+															echo 'selected';
+														echo '> '.$i.' </option>';
+													}
+												?>
+											</select>
 											<span style="color:red">
 												<?php 
 													if(isset($_POST['Submit'])) {
-														$v_Licenta_Nota_MI = $_POST["Licenta_Nota_MI"];  // V
+														//$v_Licenta_Nota_MI = $_POST["Licenta_Nota_MI"];
+														$v_Licenta_Nota_MI=$v_MedieAlegere0*10+$v_MedieAlegere1+$v_MedieAlegere2/10+$v_MedieAlegere3/100;
 														$vLicenta_Nota_MI = validareMedieAlegere($v_Licenta_Nota_MI);
 														if($vLicenta_Nota_MI==-1)
 															echo "C&#226;mp necompletat!";
@@ -5931,7 +6078,7 @@
 								<label class="form-label form-label-left form-label-auto" style="color: #3488CB; font-size:larger"> V. Opţiuni de admitere, în ordinea preferinţelor  </label>
 								
 								
-								<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:100%; display:inline-block; padding-top:1%;"> Glisaţi opţiunile dorite din lista "Opţiuni disponibile" în "Preferinţe" iar apoi ordonaţi-le în ordinea dorită (nu trebuie selectate toate opţiunile):</label>
+								<!--<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:100%; display:inline-block; padding-top:1%;"> Glisaţi opţiunile dorite din lista "Opţiuni disponibile" în "Preferinţe" iar apoi ordonaţi-le în ordinea dorită (nu trebuie selectate toate opţiunile):</label>
 
 								<section style="display:inline-block; height:250px; width:47%; float:left;">
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:70%; display:inline-block; padding-top:1%;"> 
@@ -5957,7 +6104,7 @@
 									<br>
 									
 									<!--<input type="radio" name="group999" id="AlesOptiuni" class="css-checkbox" value="1" />
-									<label for="AlesOptiuni" class="css-label">Am ales opțiunile dorite!</label>-->
+									<label for="AlesOptiuni" class="css-label">Am ales opțiunile dorite!</label>
 								</section>
 								
 								<center>
@@ -5966,11 +6113,11 @@
 									<br>
 									<span style="color:red">
 										<?php 
-											if(isset($_POST['Submit'])) {
-												$v_AlesOptiuni = $_POST["AlesOptiuni"];
-												if($v_AlesOptiuni=='')
-													echo "Opțiuni nealese!";
-											}
+										//	if(isset($_POST['Submit'])) {
+										//		$v_AlesOptiuni = $_POST["AlesOptiuni"];
+										//		if($v_AlesOptiuni=='')
+										//			echo "Opțiuni nealese!";
+										//	}
 										?>
 									</span>
 								</center>
@@ -6090,7 +6237,202 @@
 										//$NrPref = "<script>document.writeln(countL2);</script>";
 										//echo $NrPref;
 									?>
-								</span> -->
+								</span>
+										<li class="ui-state-default" value = "1">Informatică Limba Română - Buget</li>
+										<li class="ui-state-default" value = "2">Informatică Limba Română - Taxă</li>
+										<li class="ui-state-default" value = "3">Informatică Limba Engleză - Buget</li>
+										<li class="ui-state-default" value = "4">Informatică Limba Engleză - Taxă</li>
+								-->
+								<section>
+									<h5 class="form-label  form-label-auto" style="color: gray; font-size:medium; width:100%; display:inline-block; padding-top:1%;">
+										Ordonaţi opţiunile de mai jos în ordinea preferinţelor dumneavoastră!
+									</h5>
+									<label>Preferință 1(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+									<select class="form-dropdown form-address-country gen" style="width:18%" name="Optiune1" data-component="country">
+										<option value="Selectati" <?php
+																		if($vOptiune1=="Selectați")
+																			echo 'selected';
+																		else
+																			echo '';
+																	?>>Selectați</option> 
+										<option value="Informatică Limba Română - Buget" <?php
+																							if($vOptiune1=="Informatică Limba Română - Buget")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Română - Buget</option> 
+										<option value="Informatică Limba Română - Taxă" <?php
+																							if($vOptiune1=="Informatică Limba Română - Taxă")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Română - Taxă</option>
+										<option value="Informatică Limba Engleză - Buget" <?php
+																							if($vOptiune1=="Informatică Limba Engleză - Buget")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Engleză - Buget</option>
+										<option value="Informatică Limba Engleză - Taxă" <?php
+																							if($vOptiune1=="Informatică Limba Engleză - Taxă")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Engleză - Taxă</option>
+									</select>
+									<span style="color:red">	
+										<?php
+											if(isset($_POST['Submit'])) {		
+												$vOptiune1=$_POST["Optiune1"];
+												if($_POST["Optiune1"] == 'Selectati')		
+													echo "Preferință neselectată!";		
+											}	
+										?>
+									</span>
+									<br><br>
+									<label>Preferință 2(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
+									<select class="form-dropdown form-address-country gen" style="width:18%" name="Optiune2"  data-component="country">
+										<option value="Selectati" <?php
+																		if($vOptiune2=="Selectați")
+																			echo 'selected';
+																		else
+																			echo '';
+																	?>>-</option> 
+										<option value="Informatică Limba Română - Buget" <?php
+																							if($vOptiune2=="Informatică Limba Română - Buget")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Română - Buget</option> 
+										<option value="Informatică Limba Română - Taxă" <?php
+																							if($vOptiune2=="Informatică Limba Română - Taxă")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Română - Taxă</option>
+										<option value="Informatică Limba Engleză - Buget" <?php
+																							if($vOptiune2=="Informatică Limba Engleză - Buget")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Engleză - Buget</option>
+										<option value="Informatică Limba Engleză - Taxă" <?php
+																							if($vOptiune2=="Informatică Limba Engleză - Taxă")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Engleză - Taxă</option>
+									</select>
+									<br><br>
+									<label>Preferință 3(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
+									<select class="form-dropdown form-address-country gen" style="width:18%" name="Optiune3"  data-component="country">
+										<option value="Selectati" <?php
+																		if($vOptiune3=="Selectați")
+																			echo 'selected';
+																		else
+																			echo '';
+																	?>>-</option> 
+										<option value="Informatică Limba Română - Buget" <?php
+																							if($vOptiune3=="Informatică Limba Română - Buget")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Română - Buget</option> 
+										<option value="Informatică Limba Română - Taxă" <?php
+																							if($vOptiune3=="Informatică Limba Română - Taxă")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Română - Taxă</option>
+										<option value="Informatică Limba Engleză - Buget" <?php
+																							if($vOptiune3=="Informatică Limba Engleză - Buget")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Engleză - Buget</option>
+										<option value="Informatică Limba Engleză - Taxă" <?php
+																							if($vOptiune3=="Informatică Limba Engleză - Taxă")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Engleză - Taxă</option>
+									</select>
+									<br><br>
+									<label>Preferință 4(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</label>
+									<select class="form-dropdown form-address-country gen" style="width:18%" name="Optiune4"  data-component="country">
+										<option value="Selectati" <?php
+																		if($vOptiune4=="Selectați")
+																			echo 'selected';
+																		else
+																			echo '';
+																	?>>-</option> 
+										<option value="Informatică Limba Română - Buget" <?php
+																							if($vOptiune4=="Informatică Limba Română - Buget")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Română - Buget</option> 
+										<option value="Informatică Limba Română - Taxă" <?php
+																							if($vOptiune4=="Informatică Limba Română - Taxă")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Română - Taxă</option>
+										<option value="Informatică Limba Engleză - Buget" <?php
+																							if($vOptiune4=="Informatică Limba Engleză - Buget")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Engleză - Buget</option>
+										<option value="Informatică Limba Engleză - Taxă" <?php
+																							if($vOptiune4=="Informatică Limba Engleză - Taxă")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Informatică Limba Engleză - Taxă</option>
+									</select>
+									<script>  
+									//	$('select').on('change', function() {
+									//		HandleDropdowns($(this));
+									//	});
+
+									//	function HandleDropdowns(element) {
+									//		var $element = element;
+									//		var value = $element.val();
+									  
+									//		$.each($('select').not($element), function() { //loop all remaining select elements
+									//			var subValue = $(this).val();
+									//			if (subValue === value) { // if value is same reset
+									//				$(this).val('Selectati');
+									//				console.log('resetting ' + $(this).attr('id')); // demo purpose
+									//			}
+									//		});  
+									//	}
+									</script>
+								</section>
+								<span style="color:red">	
+									<?php
+										$vOptiune1=$_POST["Optiune1"];
+										$vOptiune2=$_POST["Optiune2"];
+										$vOptiune3=$_POST["Optiune3"];
+										$vOptiune4=$_POST["Optiune4"];
+									?>
+								</span>
+
+								<!--	<span style="color:red">		
+										<?php 		
+										//	if(isset($_POST['Submit'])) {		
+										//		$Preferinte[1] = $_POST["IngineriaSistemelorSoftwareTaxa"];		
+										//		$Preferinte[2] = $_POST["SistemeDistribuiteTaxa"];		
+										//		$Preferinte[3] = $_POST["SecuritateaInformatieiTaxa"];		
+										//		$Preferinte[4] = $_POST["OptimizareaComputationalaTaxa"];		
+
+										//		$vPreferinte = validarePreferinte($Preferinte);		
+										//		if($vPreferinte==0)		
+										//			echo "C&#226;mpuri invalide!";		
+										//	}		
+										?>		
+									</span>-->
 							
 								<div  class="form-input jf-required cid_1" style="display:inline-block">
 									<script> 
@@ -6298,7 +6640,7 @@
 																																				echo '';
 																																	?> />
 				 
-									<label for="Diploma_BAC_Copie" class="css-label">Diploma de Bacalaureat copie legalizată</label></li>
+									<label for="Diploma_BAC_Copie" class="css-label">Diploma de Bacalaureat copie</label></li>
 				 
 									<li><input type="radio" name="Adeverinta" class="css-checkbox" value="1" id="Adeverinţă_Original" <?php
 																																		if($v_Adeverinta == '')
@@ -6322,7 +6664,7 @@
 																																			echo '';
 																																?> />
 				 
-									<label for="Adeverinţă_Copie" class="css-label">Adeverinţă copie legalizată</label></li>
+									<label for="Adeverinţă_Copie" class="css-label">Adeverinţă copie</label></li>
 				 
 									<li><input type="radio" name="Document_Echivalare_Studii" class="css-checkbox" value="1" id="Document_Echivalare_Studii_Original" <?php
 																																										if($v_Document_Echivalare_Studii == '')
@@ -6346,7 +6688,7 @@
 																																												echo '';
 																																									?> />
 				 
-									<label for="Document_Echivalare_Studii_Copie" class="css-label">Document echivalare studii copie legalizată</label></li> 
+									<label for="Document_Echivalare_Studii_Copie" class="css-label">Document echivalare studii copie</label></li> 
 				 
 									<li><input type="radio" name="Diploma_Olimpiada" class="css-checkbox" value="1" id="Diploma_Olimpiada_Original"   <?php
 																																						if($v_Diploma_Olimpiada == '')

@@ -2072,8 +2072,8 @@ function validareLiceu($p_liceu){
             return -1;
 		if(!(ctype_alnum($chitanta)))
 			return 1;
-		if($chitanta<0)
-			return 2;
+		//if($chitanta<0)
+		//	return 2;
 		return 0;
 	}
 

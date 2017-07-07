@@ -492,7 +492,13 @@
 							<li class="form-line" data-type="control_taxa" id="id_12">
 							<li class="form-line" data-type="control_taxa" id="id_12">
 								<br>
-								<label class="form-label form-label-left form-label-auto" style="color: #3488CB; font-size:larger"> I. Taxă de înscriere  </label>
+								<label class="form-label form-label-left form-label-auto" style="color: #3488CB; font-size:larger"> I. Taxă de înscriere  	<span class="info-box"> 
+																																								?
+																																								<span class="info-box__content" style="width:255px;">
+																																									Poate fi achitată la orice sucursală BRD sau în incinta Facultății de Informatică.
+																																								</span>
+																																							</span>
+								</label>
 								<div class="form-input jf-required cid_1">
 									<table  style="width:100%">
 										<tbody>
@@ -550,6 +556,7 @@
 
 							<li class="form-line" data-type="control_fullname" >
 								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:larger"> II. Date personale ale candidatului cu cetăţenie română <span class="info-box">?<span class="info-box__content">În măsura în care este posibil, datele personale se vor completa din buletin </span></span></label>
+								<h4 style="color:red;">Informațiile se completează conform certificatului de naștere și actului de identitate.</h4>
 								<br>
 								<div  class="form-input jf-required cid_1">
 									<div class="general_name" data-wrapper-react="true">
@@ -715,9 +722,9 @@
 													if(isset($_POST['Submit'])) {
 														$v_Preadmitere_Prenume_Mama = $_POST["Preadmitere_Prenume_Mama"];
 														$vPreadmitere_PrenumeMama = validPremume($v_Preadmitere_Prenume_Mama);
-														//if($vPreadmitere_PrenumeMama==-1)
-														//		echo "C&#226;mp necompletat!";
-														//	else
+														if($vPreadmitere_PrenumeMama==-1)
+																echo "C&#226;mp necompletat!";
+															else
 																if($vPreadmitere_PrenumeMama==1)
 																	echo "C&#226;mpul conține caractere nepermise!";
 																else
@@ -740,9 +747,9 @@
 													if(isset($_POST['Submit'])) {
 														$v_Preadmitere_Prenume_Tata = $_POST["Preadmitere_Prenume_Tata"];
 														$vPreadmitere_PrenumeTata = validPremume($v_Preadmitere_Prenume_Tata);
-														//if($vPreadmitere_PrenumeTata==-1)
-														//		echo "C&#226;mp necompletat!";
-														//	else
+														if($vPreadmitere_PrenumeTata==-1)
+																echo "C&#226;mp necompletat!";
+															else
 																if($vPreadmitere_PrenumeTata==1)
 																	echo "C&#226;mpul conține caractere nepermise!";
 																else
@@ -1102,7 +1109,8 @@
 																																	echo "?";
 																															?> 
 																															<span class="info-box__content">
-																																Codul Numeric Personal cum se găsește în buletin
+																																Codul Numeric Personal cum se găsește în actul de identitate.
+																																Completați cu informațiile de pe adeverința primită de la SPCLEP în cazul în care CI nu mai este validă.
 																																<?php if($vPreadmitere_CNP>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																															</span>
 																														</span> 
@@ -1135,7 +1143,7 @@
 											</span>
 										</span>
 										<span  class="form-sub-label-container" style="vertical-align:top; width:8%;padding:0;margin:0;">
-											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip Buletin </label>
+											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip Act Identitate </label>
 											<!--<input type="text"  name="Preadmitere_Tip_Buletin" class="form-textbox first_1" size="20" placeholder="CI" data-component="first" value="<?php 
 																																																if($v_Preadmitere_Tip_Buletin == '') 
 																																																	echo '';
@@ -1144,7 +1152,7 @@
 																																															?>"/ readonly> -->
 											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Preadmitere_Tip_Buletin" data-component="country">
 												<option name="-" value="-" <?php
-																					if($v_Preadmitere_Tip_Buletin=="CI")
+																					if($v_Preadmitere_Tip_Buletin=="-")
 																						echo 'selected';
 																					else
 																						echo '';
@@ -1161,6 +1169,12 @@
 																					else
 																						echo '';
 																				?>>Pașaport</option>
+												<option name="Adeverinta" value="Adeverinta" <?php
+																							if($v_Preadmitere_Tip_Buletin=="Adeverinta")
+																								echo 'selected';
+																							else
+																								echo '';
+																						?>>Adeverință</option>
 												
 											</select>
 											<span style="color:red">
