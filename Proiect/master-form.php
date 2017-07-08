@@ -7773,7 +7773,7 @@
 													echo "C&#226;mpuri invalide!";		
 											}		
 										?>		
-									</span>--?
+									</span>-->
 
 								</div>
 
