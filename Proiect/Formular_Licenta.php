@@ -2368,7 +2368,7 @@
 										<tbody>
 											<tr>
 												<td>
-												  <label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Candidat care se încadrează în categoria persoanelor cu dizabilități  </label>                        
+												  <label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Vă încadrați în categoria persoanelor cu dizabilități? </label>                        
 													<span style="width:55%">
 														<input type="radio" name="group4" id="checkbox7" class="css-checkbox" value="1" <?php
 																																			if($v_Radio4 == '')
@@ -2408,7 +2408,8 @@
 												<td>
 													<br>
 													<span class="form-sub-label-container" style="vertical-align:top; width:30%">
-														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Stare socială specială </label>
+														<!--<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> -->
+														<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Stare socială specială: </label>
 														<select class="form-dropdown form-address-country gen" name="Licenta_Stare_speciala"  data-component="country">
 															<option value="1"<?php
 																				if($v_Stare_Speciala=="1")
@@ -2496,6 +2497,9 @@
 								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:larger"> III. Date privind pregătirea anterioara a candidatului </label>
 								<br>
 								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:large"> III. a. Studiile preuniversitare absolvite, nivel liceu </label>
+
+								<h4 style="color:red;">Completați datele conform diplomei de Bacalaureat sau a adeverinței echivalente.</h4>
+
 								<div class="form-input jf-required cid_1">
 									<div>
 										<span class="form-sub-label-container liceu" style="vertical-align:top; width:100%;">
@@ -5685,7 +5689,13 @@
 								<label class="form-label form-label-left form-label-auto"  style="color: #3488CB; font-size:larger"> IV. Cerinţe Specifice Facultăţii </label>
 
 								<div  class="form-input jf-required cid_1" >
-									<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Solicitaţi echivalare cu diploma olimpiadă organizată MEN? </label>
+									<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Solicitaţi echivalare cu diploma olimpiadă organizată MEN? <span class="info-box">
+																																																									?
+																																																									<span class="info-box__content" style="width:250px;">
+																																																										Diploma se prezintă în original comisiei de admitere pentru validare
+																																																									</span>
+																																																								</span>
+									</label>
 									
 									<span style="width:55%">
 										<input type="radio" name="group2" id="checkbox10" class="css-checkbox" value="1" 	<?php
@@ -5727,10 +5737,10 @@
 										<span class="form-sub-label-container" style="vertical-align:top; width:100%" >
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;">Media general&#259; Bacalaureat</label>
 											<!--<input type="text"  name="Licenta_Medie_BAC" class="form-textbox first_1"  size="20" data-component="first"  value="<?php 
-																																									if($v_Licenta_Medie_BAC == '') 
-																																										echo '';
-																																									else
-																																										echo $v_Licenta_Medie_BAC;
+																																									//if($v_Licenta_Medie_BAC == '') 
+																																									//	echo '';
+																																									//else
+																																									//	echo $v_Licenta_Medie_BAC;
 																																								?>" />-->
 											<select style="height:40px;" name="MedieBac0"  class="form-dropdown" data-component="birthdate-day">
 												<?php
@@ -5809,7 +5819,13 @@
 									</div> 
 									<div data-wrapper-react="true" class="mg">
 										<span  class="form-sub-label-container gen" style="vertical-align:top;">
-											<label class="form-sub-label sublabel_first"   style="min-height:13px;">Nota la Matematic&#259; sau Informatic&#259;<span class="info-box">?<span class="info-box__content">Nota la examenul de bacalaureat la una din cele două materii</span></span></label>
+											<label class="form-sub-label sublabel_first"   style="min-height:13px;">Nota la Matematic&#259; sau Informatic&#259;<span class="info-box">
+																																									?
+																																									<span class="info-box__content">
+																																										Nota la examenul de bacalaureat la una din cele două materii
+																																									</span>
+																																								</span>
+											</label>
 											<!--<input type="text"  name="Licenta_Nota_MI" class="form-textbox first_1" size="20" data-component="first" value="<?php 
 																																								if($v_Licenta_Nota_MI == '') 
 																																									echo '';
@@ -5912,7 +5928,7 @@
 									</div>  
 									<div data-wrapper-react="true" class="mg">
 										<span class="form-sub-label-container gen" style="vertical-align:top;">
-											<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Doresc s&#259; dau admitere la obiectul</label>
+											<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Doresc să dau testul scris la materia:</label>
 											<select class="form-dropdown form-address-country gen" name="Licenta_Obiect_Test_Ales"  data-component="country">
 												<option value="Alege optiune"></option> 
 												<option value="Matematica"<?php
@@ -6248,7 +6264,7 @@
 										Ordonaţi opţiunile de mai jos în ordinea preferinţelor dumneavoastră!
 									</h5>
 									<label>Preferință 1(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-									<select class="form-dropdown form-address-country gen" style="width:18%" name="Optiune1" data-component="country">
+									<select class="clasaPreferinte" style="width:18%" name="Optiune1" data-component="country">
 										<option value="Selectati" <?php
 																		if($vOptiune1=="Selectați")
 																			echo 'selected';
@@ -6291,7 +6307,7 @@
 									</span>
 									<br><br>
 									<label>Preferință 2(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
-									<select class="form-dropdown form-address-country gen" style="width:18%" name="Optiune2"  data-component="country">
+									<select class="clasaPreferinte" style="width:18%" name="Optiune2"  data-component="country">
 										<option value="Selectati" <?php
 																		if($vOptiune2=="Selectați")
 																			echo 'selected';
@@ -6325,7 +6341,7 @@
 									</select>
 									<br><br>
 									<label>Preferință 3(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
-									<select class="form-dropdown form-address-country gen" style="width:18%" name="Optiune3"  data-component="country">
+									<select class="clasaPreferinte" style="width:18%" name="Optiune3"  data-component="country">
 										<option value="Selectati" <?php
 																		if($vOptiune3=="Selectați")
 																			echo 'selected';
@@ -6359,7 +6375,7 @@
 									</select>
 									<br><br>
 									<label>Preferință 4(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</label>
-									<select class="form-dropdown form-address-country gen" style="width:18%" name="Optiune4"  data-component="country">
+									<select class="clasaPreferinte" style="width:18%" name="Optiune4"  data-component="country">
 										<option value="Selectati" <?php
 																		if($vOptiune4=="Selectați")
 																			echo 'selected';
@@ -6392,23 +6408,23 @@
 																						?>>Informatică Limba Engleză - Taxă</option>
 									</select>
 									<script>  
-									//	$('select').on('change', function() {
-									//		HandleDropdowns($(this));
-									//	});
+											$(".clasaPreferinte").on('change', function() {
+												HandleDropdowns($(this));
+											});
 
-									//	function HandleDropdowns(element) {
-									//		var $element = element;
-									//		var value = $element.val();
-									  
-									//		$.each($('select').not($element), function() { //loop all remaining select elements
-									//			var subValue = $(this).val();
-									//			if (subValue === value) { // if value is same reset
-									//				$(this).val('Selectati');
-									//				console.log('resetting ' + $(this).attr('id')); // demo purpose
-									//			}
-									//		});  
-									//	}
-									</script>
+											function HandleDropdowns(element) {
+												var $element = element;
+												var value = $element.val();
+										  
+												$.each($(".clasaPreferinte").not($element), function() { //loop all remaining select elements
+													var subValue = $(this).val();
+													if (subValue === value) { // if value is same reset
+														$(this).val('Selectati');
+														console.log('resetting ' + $(this).attr('id')); // demo purpose
+													}
+												});  
+											}
+										</script>
 								</section>
 								<span style="color:red">	
 									<?php

@@ -2966,7 +2966,7 @@
 								<label class="form-label form-label-left form-label-auto"  style="color: #3488CB; font-size:larger"> IV. Cerinţe Specifice Facultăţii </label>                               
 								<div data-wrapper-react="true" class="mg">
 									<span class="form-sub-label-container gen" style="vertical-align:top;">
-										<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Doresc s&#259; dau testul scris la obiectul</label>
+										<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Doresc să dau testul scris la materia:</label>
 										<select class="form-dropdown form-address-country gen" name="Preadmitere_Obiect_Test_Ales"  data-component="country">
 											<option value="Alege optiune">-</option> 
 											<option value="Matematica"<?php

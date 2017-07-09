@@ -2487,7 +2487,7 @@
 										<tbody>
 											<tr>
 												<td>
-													<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Candidat care se încadrează în categoria persoanelor cu dizabilități  </label>                        
+													<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Vă încadrați în categoria persoanelor cu dizabilități?  </label>                        
 													<span style="width:55%">
 														<input type="radio" name="group4" id="checkbox7" class="css-checkbox" value="1" <?php
 																																			if($v_Radio4 == '')
@@ -2527,7 +2527,8 @@
 												<td>
 													<br>
 													<span class="form-sub-label-container" style="vertical-align:top; width:30%">
-														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Stare socială specială </label>
+														<!--<label class="form-sub-label" for="input_3_country" style="min-height:13px;">--> 
+														<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Stare socială specială </label>
 														<select class="form-dropdown form-address-country gen" name="Master_Stare_speciala"  data-component="country">
 															<option value="1"<?php
 																				if($v_Stare_Speciala=="1")
@@ -2579,6 +2580,9 @@
 								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:larger"> III. Date privind pregătirea anterioara a candidatului </label>
 								<br>
 								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:large"> III. a. Studiile preuniversitare absolvite, nivel liceu </label>
+
+								<h4 style="color:red;">Completați datele conform diplomei de Bacalaureat sau a adeverinței echivalente.</h4>
+
 								<div class="form-input jf-required cid_1">
 									<div>
 										<span class="form-sub-label-container liceu" style="vertical-align:top; width:100%;">
@@ -4081,7 +4085,7 @@
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:22%">
 														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Durata studiilor (ani) </label>
-														<input type="number"  name="Master_Durata_Liceu" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php
+														<input type="number"  name="Master_Durata_Liceu" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php 
 																																																						if($v_Master_Durata_Liceu == '') 
 																																																							echo '';
 																																																						else
@@ -7651,7 +7655,6 @@
 										
 										<br><br>
 										<label>Preferință 11(obligatoriu) &nbsp; &nbsp; &nbsp; </label>
-										<!--class="form-dropdown form-address-country gen"-->
 										<select class="clasaPreferinte" style="width:40%" name="Optiune11" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune11=="Selectați")
