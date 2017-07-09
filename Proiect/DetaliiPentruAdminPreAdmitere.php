@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 
-
-
 <html>
 
 <head>
-
-
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
@@ -31,8 +27,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 
     <script type="text/javascript">
-
-
 
     $(document).ready(function () {
 
@@ -78,8 +72,6 @@
 
     });
 
-
-
     </script>
 
     <meta charset="UTF-8">
@@ -93,8 +85,6 @@
     <meta name="viewport" content="widt=device-width, initial-scale=1">
 
     <title>Administrator</title>
-
-
 
 </head>
 
@@ -160,7 +150,7 @@
 
   </div>
 
-  </br></br>
+  <br/><br/>
 
   
 
@@ -276,12 +266,25 @@
 
                             <span class="col-md-12 sub-title">
 
-                                <br>Informa&#355;ii Generale
+                                <br>Taxa de &#238;nscriere
 
                             </span>
 
                         </div>
+                        
+                        <label class="marg-t10">Chitața nr.</label><input name="chitantaNr" class="form-control" value=""/>
+                        
+                        <label class="marg-t10">Suma</label><input name="suma" class="form-control" value=""/>
+                        
+                        <div class="align-center">
 
+                            <span class="col-md-12 sub-title">
+
+                                <br>Date personale ale candidatului cu cetăţenie română/ UE/ SEE
+
+                            </span>
+
+                        </div>
 
                         <div class="col-md-12" style="font-size:17px;">
 
@@ -333,11 +336,20 @@
                             
                              
 
+                        
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+                    
                         <div class="align-center">
 
                             <span class="col-md-12 sub-title">
 
-                                <br>Adresa studentului
+                                <br>Adresa candidatului
 
                             </span>
 
@@ -349,23 +361,18 @@
 
                                 <label class="marg-t10">Localitate: </label><input name="localitate" class="form-control" value="'.getLocalitateNastere($id_formular).'"/>
 
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-
                         <div class="align-center">
 
                             <span class="col-md-12 sub-title">
 
-                                <br>Date Card de Identitate
+                                <br>Date act de identitate
 
                             </span>
 
                         </div>
                             <div class="col-md-12" style="font-size:17px; margin-bottom:45px;">
+                            
+                            <label>Tip act:</label><input name="tipAct" class="form-control" value="" />
                         
                             <label>CNP:</label><input name="cnp" class="form-control" value="'.getCNP($id_formular).'" />
 
@@ -410,7 +417,7 @@
 
                             </span>
 
-                         </div>
+                            </div>
 
                                 <label class="marg-t10">Liceul de provenien&#355;&#259;</label><input name="liceuNume" class="form-control" value="'.getNumeLiceu($id_formular).'" />
 
@@ -421,24 +428,6 @@
                                 <label class="marg-t10">Localitate: </label><input name="localitateLiceu" class="form-control" value="'.getLocalitateLiceu($id_formular).'"/>
 
                                 <label class="marg-t10">Vrea s&#259; sus&#355;in&#259; testul la: </label><input name="proba" class="form-control" value="'.getMaterieTest($id_formular).'"/>
-
-                        <div class="align-center">
-
-                            <span class="col-md-12 sub-title">
-
-                                <br>Diplome, Certificate
-
-                            </span>
-
-                        </div>
-
-
-
-                        <img class="wid100" src="imagini/exemplu-diploma.jpg" />
-
-                        
-
-                        <img class="wid100" src="imagini/exemplu-diploma.jpg" />
 
 
                                 
@@ -504,7 +493,7 @@
 
                     <i class="fa fa-map-marker" id="bloc1"></i>
 
-                    <div id="bloc2"><p>&nbsp&nbspStrada General Henri Mathias Barthelot 16</p>
+                    <div id="bloc2"><p>&nbsp;&nbsp;Strada General Henri Mathias Barthelot 16</p>
 
                     <p>Iasi, Rom&#226;nia</p></div>
 
@@ -516,7 +505,7 @@
 
                     <i class="fa fa-phone"></i>
 
-                    <p>&nbsp&nbsp0232 201 102</p>
+                    <p>&nbsp;&nbsp;0232 201 102</p>
 
                 </div>
 
@@ -526,7 +515,7 @@
 
                     <i class="fa fa-envelope"></i>
 
-                    <p class="footer-links"><a href="secretariat AT info.uaic.ro">&nbsp&nbspsecretariat AT info.uaic.ro</a></p>
+                    <p class="footer-links"><a href="secretariat AT info.uaic.ro">&nbsp;&nbsp;secretariat AT info.uaic.ro</a></p>
 
                 </div>
 
@@ -544,7 +533,7 @@
 
                      <img class="footer_img grayscale" src="imagini/fii.png" alt="fII"  id="bloc1"/>
 
-                     <a href="https://www.info.uaic.ro/bin/Main/"><p id="bloc2" class="footer-links"> &nbsp&nbspFacultatea de informatic&#259; Iasi<p></a>
+                     <a href="https://www.info.uaic.ro/bin/Main/"><p id="bloc2" class="footer-links"> &nbsp;&nbsp;Facultatea de informatic&#259; Iasi<p></a>
 
                 </div>
 
@@ -552,7 +541,7 @@
 
                      <img class="footer_img grayscale" src="imagini/logo.png" alt="uaic" id="bloc1" />
 
-                     <a href="http://www.uaic.ro/"><p id="bloc2" > &nbsp&nbspUAIC<p></a>
+                     <a href="http://www.uaic.ro/"><p id="bloc2" > &nbsp;&nbsp;UAIC<p></a>
 
                 </div>
 
@@ -562,7 +551,7 @@
 
                 <img class="footer_img grayscale" src="imagini/facebook-icon.png" alt="fb" id="bloc1" >
 
-                <a href="https://www.facebook.com/FacultateaDeInformaticaUAICIasi/?fref=ts"><p id="bloc2"> &nbsp&nbspFacebook-ul faculta&#355;ii de informatic&#259;<p></a>
+                <a href="https://www.facebook.com/FacultateaDeInformaticaUAICIasi/?fref=ts"><p id="bloc2"> &nbsp;&nbsp;Facebook-ul faculta&#355;ii de informatic&#259;<p></a>
 
                 </div>
 
@@ -588,7 +577,7 @@
 
                 <p class="hr_text">&copy; 2017 Grupa B3 Facultatea de Informatic&#259; Iasi</p>
 
-            </hr>
+            <!--</hr>-->
 
         </footer>
 
@@ -656,7 +645,4 @@
 
 </html>
 
-
-
 <script src="js/page-admin.js"></script>
-
