@@ -95,8 +95,8 @@
       
       <script>
     setTimeout(function(){
-       window.location='DespreFII.html';
-    }, 3000);
+       window.location='paginaAdmitere.html';
+    }, 7000);
 </script>
   </span>
   <footer class="footer-distributed">
