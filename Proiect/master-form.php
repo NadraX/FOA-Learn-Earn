@@ -871,6 +871,14 @@
 							$v_MedieGeneralaAdmitere1 = $_POST["MedieGeneralaAdmitere1"];
 							$v_MedieGeneralaAdmitere2 = $_POST["MedieGeneralaAdmitere2"];
 							$v_MedieGeneralaAdmitere3 = $_POST["MedieGeneralaAdmitere3"];
+							$Master_Diploma_BAC_Original=$_POST["Master_Diploma_BAC_Original"];
+							$Master_Diploma_BAC_Copie=$_POST["Master_Diploma_BAC_Copie"];
+							$Master_Echivalare_Studii_Preuniversitare_Original=$_POST["Master_Echivalare_Studii_Preuniversitare_Original"];
+							$Master_Echivalare_Studii_Preuniversitare_Copie=$_POST["Master_Echivalare_Studii_Preuniversitare_Copie"];
+							$Master_Diploma_Master_Original=$_POST["Master_Diploma_Master_Original"];
+							$Master_Diploma_Master_Copie=$_POST["Master_Diploma_Master_Copie"];
+							$Master_Echivalare_Studii_Master_Original=$_POST["Master_Echivalare_Studii_Master_Original"];
+							$Master_Echivalare_Studii_Master_Copie=$_POST["Master_Echivalare_Studii_Master_Copie"];
 						?>
 						<ul>
 						
@@ -7837,22 +7845,86 @@
 								<br>
 								<ul class="checkbox-grid">
 									<br>
-									<li><input type="checkbox" name="Master_Diploma_BAC_Original" class="css-checkbox" value="1" id="Master_Diploma_BAC_Original" />
-										<label for="Master_Diploma_BAC_Original" class="css-label2">Diploma de Bacalaureat în original</label></li>
-									<li><input type="checkbox" name="Master_Diploma_BAC_Copie" class="css-checkbox" value="1" id="Master_Diploma_BAC_Copie" />
-										<label for="Master_Diploma_BAC_Copie" class="css-label2">Diploma de Bacalaureat copie legalizată</label></li>
-									<li><input type="checkbox" name="Master_Echivalare_Studii_Preuniversitare_Original" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Original" />
+									<li><input type="checkbox" name="Master_Diploma_BAC_Original" class="css-checkbox" value="1" id="Master_Diploma_BAC_Original" 	<?php
+																																										if($Master_Diploma_BAC_Original == '')
+																																											echo '';
+																																										else
+																																											if($Master_Diploma_BAC_Original!==0)
+																																												echo 'checked="checked"';
+																																											else
+																																												echo '';
+																																									?>/>
+										<label for="Master_Diploma_BAC_Original" class="css-label2">Diploma de Bacalaureat - original</label></li>
+									<li><input type="checkbox" name="Master_Diploma_BAC_Copie" class="css-checkbox" value="1" id="Master_Diploma_BAC_Copie" <?php
+																																								if($Master_Diploma_BAC_Copie == '')
+																																									echo '';
+																																								else
+																																									if($Master_Diploma_BAC_Copie!==0)
+																																										echo 'checked="checked"';
+																																									else
+																																										echo '';
+																																							?> />
+										<label for="Master_Diploma_BAC_Copie" class="css-label2">Diploma de Bacalaureat copie</label></li>
+									<li><input type="checkbox" name="Master_Echivalare_Studii_Preuniversitare_Original" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Original" 	<?php
+																																																					if($Master_Echivalare_Studii_Preuniversitare_Original == '')
+																																																						echo '';
+																																																					else
+																																																						if($Master_Echivalare_Studii_Preuniversitare_Original!==0)
+																																																							echo 'checked="checked"';
+																																																						else
+																																																							echo '';
+																																																				?> />
 										<label for="Master_Echivalare_Studii_Preuniversitare_Original" class="css-label2">Document echivalare studii preuniversitare - original</label></li>
-									<li><input type="checkbox" name="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Copie" />
-										<label for="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-label2">Document echivalare studii preuniversitare - copie legalizată</label></li>
-									<li><input type="checkbox" name="Master_Diploma_Master_Original" class="css-checkbox" value="1" id="Master_Diploma_Master_Original" />
+									<li><input type="checkbox" name="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Copie" <?php
+																																																			if($Master_Echivalare_Studii_Preuniversitare_Copie == '')
+																																																				echo '';
+																																																			else
+																																																				if($Master_Echivalare_Studii_Preuniversitare_Copie!==0)
+																																																					echo 'checked="checked"';
+																																																				else
+																																																					echo '';
+																																																		?> />
+										<label for="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-label2">Document echivalare studii preuniversitare - copie</label></li>
+									<li><input type="checkbox" name="Master_Diploma_Master_Original" class="css-checkbox" value="1" id="Master_Diploma_Master_Original" <?php
+																																											if($Master_Diploma_Master_Original == '')
+																																												echo '';
+																																											else
+																																												if($Master_Diploma_Master_Original!==0)
+																																													echo 'checked="checked"';
+																																												else
+																																													echo '';
+																																										?> />
 										<label for="Master_Diploma_Master_Original" class="css-label2">Diplomă de licenţă - original</label></li>
-									<li><input type="checkbox" name="Master_Diploma_Master_Copie" class="css-checkbox" value="1" id="Master_Diploma_Master_Copie" />
-										<label for="Master_Diploma_Master_Copie" class="css-label2">Diplomă de licenţă - copie legalizată</label></li> 
-									<li><input type="checkbox" name="Master_Echivalare_Studii_Master_Original" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Master_Original" />
+									<li><input type="checkbox" name="Master_Diploma_Master_Copie" class="css-checkbox" value="1" id="Master_Diploma_Master_Copie" 	<?php
+																																										if($Master_Diploma_Master_Copie == '')
+																																											echo '';
+																																										else
+																																											if($Master_Diploma_Master_Copie!==0)
+																																												echo 'checked="checked"';
+																																											else
+																																												echo '';
+																																									?> />
+										<label for="Master_Diploma_Master_Copie" class="css-label2">Diplomă de licenţă - copie</label></li> 
+									<li><input type="checkbox" name="Master_Echivalare_Studii_Master_Original" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Master_Original" <?php
+																																																if($Master_Echivalare_Studii_Master_Original == '')
+																																																	echo '';
+																																																else
+																																																	if($Master_Echivalare_Studii_Master_Original!==0)
+																																																		echo 'checked="checked"';
+																																																	else
+																																																		echo '';
+																																															?> />
 										<label for="Master_Echivalare_Studii_Master_Original" class="css-label2">Document echivalare studii licenţă - original</label></li>
-									<li><input type="checkbox" name="Master_Echivalare_Studii_Master_Copie" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Master_Copie" />
-										<label for="Master_Echivalare_Studii_Master_Copie" class="css-label2">Document echivalare studii licenţă - copie legalizată</label></li>
+									<li><input type="checkbox" name="Master_Echivalare_Studii_Master_Copie" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Master_Copie"  	<?php
+																																															if($Master_Echivalare_Studii_Master_Copie == '')
+																																																echo '';
+																																															else
+																																																if($Master_Echivalare_Studii_Master_Copie!==0)
+																																																	echo 'checked="checked"';
+																																																else
+																																																	echo '';
+																																														?> />
+										<label for="Master_Echivalare_Studii_Master_Copie" class="css-label2">Document echivalare studii licenţă - copie</label></li>
 								</ul>
 								<div  class="form-input jf-required cid_1" sryle="display:inline-block">
 									<br>
