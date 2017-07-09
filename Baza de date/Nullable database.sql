@@ -415,27 +415,27 @@ CREATE TABLE Informatii_documente_master (
 -- Table: Optiuni_licenta
 CREATE TABLE Optiuni_licenta (
     formular_id integer  NOT NULL,
-    preferinta_1 varchar2(50)  NULL,
-    preferinta_2 varchar2(50)  NULL,
-    preferinta_3 varchar2(50)  NULL,
-    preferinta_4 varchar2(50)  NULL,
+    preferinta_1 varchar2(60)  NULL,
+    preferinta_2 varchar2(60)  NULL,
+    preferinta_3 varchar2(60)  NULL,
+    preferinta_4 varchar2(60)  NULL,
     stare_taxa varchar2(20)  NULL
 ) ;
 
 -- Table: Ordine_preferinte_master
 CREATE TABLE Ordine_preferinte_master (
     formular_id integer  NOT NULL,
-    preferinta_1 varchar2(50)	NULL,
-    preferinta_2 varchar2(50)   NULL,
-    preferinta_3 varchar2(50)   NULL,
-    preferinta_4 varchar2(50)   NULL,
-    preferinta_5 varchar2(50)   NULL,
-    preferinta_6 varchar2(50)   NULL,
-    preferinta_7 varchar2(50)   NULL,
-    preferinta_8 varchar2(50)   NULL,
-    preferinta_9 varchar2(50)   NULL,
-    preferinta_10 varchar2(50)   NULL,
-    preferinta_11 varchar2(50)   NULL,
+    preferinta_1 varchar2(60)	NULL,
+    preferinta_2 varchar2(60)   NULL,
+    preferinta_3 varchar2(60)   NULL,
+    preferinta_4 varchar2(60)   NULL,
+    preferinta_5 varchar2(60)   NULL,
+    preferinta_6 varchar2(60)   NULL,
+    preferinta_7 varchar2(60)   NULL,
+    preferinta_8 varchar2(60)   NULL,
+    preferinta_9 varchar2(60)   NULL,
+    preferinta_10 varchar2(60)   NULL,
+    preferinta_11 varchar2(60)   NULL,
     optiune_admitere_taxa varchar2(20)  NULL
 ) ;
 
