@@ -9642,10 +9642,7 @@
           error_reporting(E_ALL);
       }
 
-      echo '<script type="text/javascript">
-           window.location = "DespreFII.html"
-      </script>';
-      
+     echo '<script>window.location.href = "Validare_Formular.php";</script>';      
     }
   }
 }
