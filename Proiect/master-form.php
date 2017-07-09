@@ -9086,6 +9086,7 @@
         ini_set('display_errors', 1);
         error_reporting(E_ALL);
 
+
            $statement = oci_parse($connection, "INSERT INTO formular_master VALUES (
           :id, 
           :nr_chitanta, 
@@ -9502,6 +9503,7 @@
         :informatii_univ,
         :apropierea)
         ");
+      
       oci_bind_by_name($statement, ':id', $numaratoare6);
       oci_bind_by_name($statement, ':site_adm', $_POST['Site_Admitere']);
       oci_bind_by_name($statement, ':site_fac', $_POST['Site_Facultate']);
@@ -9573,11 +9575,9 @@
           error_reporting(E_ALL);
       }
 
-      /*echo '<script type="text/javascript">
+      echo '<script type="text/javascript">
            window.location = "DespreFII.html"
       </script>';
-      */
-
     }
   }
 }
