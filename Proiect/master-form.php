@@ -4081,7 +4081,7 @@
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:22%">
 														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Durata studiilor (ani) </label>
-														<input type="number"  name="Master_Durata_Liceu" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php 
+														<input type="number"  name="Master_Durata_Liceu" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php
 																																																						if($v_Master_Durata_Liceu == '') 
 																																																							echo '';
 																																																						else
@@ -8975,7 +8975,7 @@
       --
     */
 
-    if($vChitanta ==0 && $vsuma ==0 && $vradio1 ==1 && $vscutire == 0 && $vNumele_De_Familie_La_Nastere ==0 && $vMaster_Numele_De_Familie_Actual == 0 && $vLicenta_Initiala_Tata == 0 && $vMaster_Prenumele == 0 && $vMaster_PrenumeMama == 0 && $vMaster_PrenumeTata == 0 && $vMaster_Tara_Nastere == 0 && $vMaster_Localitate_Nastere == 0 && $vMaster_Cetatenie == 0 && $vMaster_Etnie == 0 && $vMaster_Limba_Materna == 0 && $vMaster_CNP == 0 && $vMaster_Serie_Buletin == 0 && $vMaster_Numar_Buletin == 0 && $vMaster_Buletin_Eliberat_De == 0 && $vradio3 == 1 && $vMaster_Strada == 0 &&  $vMaster_Numar == 0 &&   $vMaster_Bloc == 0 && $vMaster_Scara == 0 && $vMaster_Etaj == 0 && $vMaster_Apartament == 0 && $vMaster_Localitate1 == 0 && $vMaster_Cod_Postal == 0 && $vMaster_Telefon == 0 && $vMaster_Email == 0 && $vradio5 == 1 && $vradio4 == 1 && $vMaster_Localitate_Liceu == 0 && $vMaster_Profil_Liceu == 0 && $vMaster_Durata_Liceu == 0 && $vMaster_An_Liceu == 0 && $vMaster_Serie_DiplomaBAC == 0 && $vMaster_Nr_DiplomaBAC == 0 && $vMaster_AbsolventMaster_Univ1 == 0 && $vMaster_AbsolventMaster_Facultate1 == 0 && $vMaster_AbsolventMaster_Domeniu_Master1 == 0 && $vMaster_AbsolventMaster_Specializare1 == 0 && $vMaster_AbsolventMaster_An_Facultate1 == 0 && $vMaster_AbsolventMaster_Durata_Studii1 == 0 && $vMaster_AbsolventMaster_Semestre_Finantate1 == 0 && $vMaster_AbsolventMaster_Semestre_Bursa1 == 0 && $vMaster_AbsolventMaster_Localitate_AltaFacultate1 == 0 && $vMaster_Serie_DiplomaLicenta == 0  && $vradio26 == 1 && $vradio27 == 1 && $vOptiune1 == 0 && $vOptiune2 == 0 && $vOptiunea3 == 0 && $vOptiunea4 == 0 && $vOptiunea5 == 0 && $vOptiune6==0 && $vOptiune7 == 0 && $vOptiune8 == 0 && $vOptiune9 == 0 && $vOptiune10 == 0 && $vOptiune11 == 0 && $vAlte_Surse == 0){
+    if($vChitanta ==0 && $vsuma ==0 && $vradio1 ==1 && $vNumele_De_Familie_La_Nastere ==0 && $vMaster_Numele_De_Familie_Actual == 0 && $vLicenta_Initiala_Tata == 0 && $vMaster_Prenumele == 0 && $vMaster_PrenumeMama == 0 && $vMaster_PrenumeTata == 0 && $vMaster_Tara_Nastere == 0 && $vMaster_Localitate_Nastere == 0 && $vMaster_Cetatenie == 0 && $vMaster_Etnie == 0 && $vMaster_Limba_Materna == 0 && $vMaster_CNP == 0 && $vMaster_Serie_Buletin == 0 && $vMaster_Numar_Buletin == 0 && $vMaster_Buletin_Eliberat_De == 0 && $vradio3 == 1 && $vMaster_Strada == 0 &&  $vMaster_Numar == 0 &&   $vMaster_Bloc == 0 && $vMaster_Scara == 0 && $vMaster_Etaj == 0 && $vMaster_Apartament == 0 && $vMaster_Localitate1 == 0 && $vMaster_Cod_Postal == 0 && $vMaster_Telefon == 0 && $vMaster_Email == 0 && $vradio5 == 1 && $vradio4 == 1 && $vMaster_Localitate_Liceu == 0 && $vMaster_Profil_Liceu == 0 && $vMaster_Durata_Liceu == 0 && $vMaster_An_Liceu == 0 && $vMaster_Serie_DiplomaBAC == 0 && $vMaster_Nr_DiplomaBAC == 0 && $vMaster_AbsolventMaster_Univ1 == 0 && $vMaster_AbsolventMaster_Facultate1 == 0 && $vMaster_AbsolventMaster_Domeniu_Master1 == 0 && $vMaster_AbsolventMaster_Specializare1 == 0 && $vMaster_AbsolventMaster_An_Facultate1 == 0 && $vMaster_AbsolventMaster_Durata_Studii1 == 0 && $vMaster_AbsolventMaster_Semestre_Finantate1 == 0 && $vMaster_AbsolventMaster_Semestre_Bursa1 == 0 && $vMaster_AbsolventMaster_Localitate_AltaFacultate1 == 0 && $vMaster_Serie_DiplomaLicenta == 0  && $vradio26 == 1 && $vradio27 == 1 && $vOptiune1 == 0 && $vOptiune2 == 0 && $vOptiunea3 == 0 && $vOptiunea4 == 0 && $vOptiunea5 == 0 && $vOptiune6==0 && $vOptiune7 == 0 && $vOptiune8 == 0 && $vOptiune9 == 0 && $vOptiune10 == 0 && $vOptiune11 == 0 && $vAlte_Surse == 0){
 
     $connection = oci_connect($username, $password, $connection_string);
 
@@ -9088,14 +9088,14 @@
         error_reporting(E_ALL);
 
 
-           $statement = oci_parse($connection, "INSERT INTO formular_master VALUES (
+           $statement = oci_parse($connection, "insert into formular_master values (
           :id, 
           :nr_chitanta, 
           :suma, 
           :scutit, 
           :motiv_scutire,
-          NULL,
-          NULL,
+          current_timestamp,
+          current_timestamp,
           0)");
 
         oci_bind_by_name($statement, ':id', $numaratoare2);
@@ -9330,7 +9330,7 @@
           :forma_invatamant2,
           :nr_sem_buget,
           :nr_sem_bursa,
-          :durata_studii,
+          :durata_studii2,
           :diploma_Master_serie,
           :diploma_Master_nr,
           to_date(:diZi||'-'||:diLuna||'-'||:diAn, 'dd-mm-yyyy'),
@@ -9377,7 +9377,7 @@
         oci_bind_by_name($statement, ':liceu', $_POST['Master_Liceu']);
         oci_bind_by_name($statement, ':tara_liceu', $_POST['Master_Tara']);
         oci_bind_by_name($statement, ':localitate_liceu', $_POST['Master_Localitate_Liceu']);
-        oci_bind_by_name($statement, ':judet_liceu', $_POST['Master_Judet']);       
+        oci_bind_by_name($statement, ':judet_liceu', $_POST['Master_Judet']);
         oci_bind_by_name($statement, ':profil', $_POST['Master_Profil_Liceu']);
         oci_bind_by_name($statement, ':durata_studii', $_POST['Master_Durata_Liceu']);
         oci_bind_by_name($statement, ':an_absolvire', $_POST['Master_An_Liceu']);
@@ -9387,92 +9387,83 @@
 
         oci_bind_by_name($statement, ':dZi', $v_emisaZi);
         oci_bind_by_name($statement, ':dLuna', $v_emisaLuna);
-        oci_bind_by_name($statement, ':dAn', $v_emisaAn); 
-        
+        oci_bind_by_name($statement, ':dAn', $v_emisaAn);
+
         oci_bind_by_name($statement, ':nr_foi', $_POST['Master_Nr_FoaieMatricola']);
         oci_bind_by_name($statement, ':act_rec_echiv', $_POST['Master_Nr_ActRecunoastere']);
         oci_bind_by_name($statement, ':serie_act', $_POST['Master_Serie_ActRecunoastere']);
 
         oci_bind_by_name($statement, ':actZi', $_POST['Master_ActEchivalare_Ziua']);
         oci_bind_by_name($statement, ':actLuna', $_POST['Master_ActEchivalare_Luna']);
-        oci_bind_by_name($statement, ':actAn', $_POST['Master_ActEchivalare_An']);   
-        
-        oci_bind_by_name($statement, ':tara_fac', $_POST['Master_Tara_AltaFacultate']);
-        oci_bind_by_name($statement, ':localitate_fac', $_POST['Master_AbsolventMaster_Localitate_AltaFacultate']);  
-        oci_bind_by_name($statement, ':judet_fac', $_POST['Master_Judet_AltaFacultate']);
-        oci_bind_by_name($statement, ':denumire_institutie', $_POST['Master_AbsolventMaster_Univ']);
-        oci_bind_by_name($statement, ':denumire_fac', $_POST['Master_AbsolventMaster_Facultate']);     
-        oci_bind_by_name($statement, ':denumire_domeniu', $_POST['Master_AbsolventMaster_Domeniu_Master']);    
-        oci_bind_by_name($statement, ':specializare', $_POST['Master_AbsolventMaster_Specializare']);
-        oci_bind_by_name($statement, ':titlu_obtinut', $_POST['Master_AbsolventMaster_An_Facultate']);
-        oci_bind_by_name($statement, ':forma_invatamant2', $_POST['Master_AbsolventMaster_FormaInvatamant']);
-        oci_bind_by_name($statement, ':nr_sem_buget', $_POST['Master_AbsolventMaster_Semestre_Finantate']);
-        oci_bind_by_name($statement, ':nr_sem_bursa', $_POST['Master_AbsolventMaster_Semestre_Bursa']);
-        oci_bind_by_name($statement, ':durata_studii', $_POST['Master_AbsolventMaster_Durata_Studii']);
-        oci_bind_by_name($statement, ':diploma_Master_serie', $_POST['Master_Serie_DiplomaMaster']);     
-        oci_bind_by_name($statement, ':diploma_Master_nr', $_POST['Master_Nr_DiplomaMaster']);       
+        oci_bind_by_name($statement, ':actAn', $_POST['Master_ActEchivalare_An']);        
 
-        oci_bind_by_name($statement, ':diZi', $_POST['Master_DiplomaMaster_Ziua']);
-        oci_bind_by_name($statement, ':diLuna', $_POST['Master_DiplomaMaster_Luna']);
-        oci_bind_by_name($statement, ':diAn', $_POST['Master_DiplomaMaster_An']);
+        oci_bind_by_name($statement, ':tara_fac', $_POST['Master_Tara_AltaFacultate1']); 
+        oci_bind_by_name($statement, ':localitate_fac', $_POST['Master_AbsolventMaster_Localitate_AltaFacultate1']);  
+        oci_bind_by_name($statement, ':judet_fac', $_POST['Master_Judet_AltaFacultate1']);
+        oci_bind_by_name($statement, ':denumire_institutie', $_POST['Master_AbsolventMaster_Univ1']);  
+        oci_bind_by_name($statement, ':denumire_fac', $_POST['Master_AbsolventMaster_Facultate1']);   
+        oci_bind_by_name($statement, ':denumire_domeniu', $_POST['Master_AbsolventMaster_Domeniu_Master1']);
+        oci_bind_by_name($statement, ':specializare', $_POST['Master_AbsolventMaster_Specializare1']);
+        oci_bind_by_name($statement, ':titlu_obtinut', $_POST['Master_AbsolventMaster_An_Facultate1']);
+        oci_bind_by_name($statement, ':forma_invatamant2', $_POST['Master_AbsolventMaster_FormaInvatamant1']);
+        oci_bind_by_name($statement, ':nr_sem_buget', $_POST['Master_AbsolventMaster_Semestre_Finantate1']);
+        oci_bind_by_name($statement, ':nr_sem_bursa', $_POST['Master_AbsolventMaster_Semestre_Bursa1']);
+        oci_bind_by_name($statement, ':durata_studii2', $_POST['Master_AbsolventMaster_Durata_Studii1']);
+        oci_bind_by_name($statement, ':diploma_Master_serie', $_POST['Master_Serie_DiplomaLicenta']);
+        oci_bind_by_name($statement, ':diploma_Master_nr', $_POST['Master_Nr_DiplomaLicenta']);
 
-        oci_bind_by_name($statement, ':nr_foaie_matr', $_POST['Master_AbsolventMaster_Nr_FoaieMatricola']); 
-  
-        oci_bind_by_name($statement, ':act_rec_master', $_POST['Master_AbsolventMaster_Nr_FoaieMatricola']); 
-    
-        oci_bind_by_name($statement, ':act_rec_master_nr', $_POST['Master_AbsolventMaster_Nr_ActRecunoastere']); 
-        oci_bind_by_name($statement, ':act_rec_master_serie', $_POST['Master_AbsolventMaster_Serie_ActRecunoastere']);       
+        oci_bind_by_name($statement, ':diZi', $_POST['Master_DiplomaLicenta_Ziua']);
+        oci_bind_by_name($statement, ':diLuna', $_POST['Master_DiplomaLicenta_Luna']);
+        oci_bind_by_name($statement, ':diAn', $_POST['Master_DiplomaLicenta_An']);
 
+		oci_bind_by_name($statement, ':nr_foaie_matr', $_POST['Master_AbsolventLicenta_Nr_FoaieMatricola']);
+		oci_bind_by_name($statement, ':act_rec_master', $_POST['Master_AbsolventMaster_Nr_ActRecunoastere']);
+        oci_bind_by_name($statement, ':act_rec_master_nr', $_POST['Master_AbsolventMaster_Nr_ActRecunoastere']);
+        oci_bind_by_name($statement, ':act_rec_master_serie', $_POST['Master_AbsolventMaster_Serie_ActRecunoastere']);            
         oci_bind_by_name($statement, ':strainZi', $_POST['Master_AbsolventMaster_ActEchivalare_Ziua']);
         oci_bind_by_name($statement, ':strainLuna', $_POST['Master_AbsolventMaster_ActEchivalare_Luna']);  
-        oci_bind_by_name($statement, ':strainAn', $_POST['Master_AbsolventMaster_ActEchivalare_An']);    
+        oci_bind_by_name($statement, ':strainAn', $_POST['Master_AbsolventMaster_ActEchivalare_An']); 
 
         oci_bind_by_name($statement, ':student_alta_fac', $_POST['group25']);
         oci_bind_by_name($statement, ':tara_altafac', $_POST['Master_Tara_AltaFacultate']);
+        oci_bind_by_name($statement, ':localitate_altafac', $_POST['Master_Localitate_AltaFacultate']);
         oci_bind_by_name($statement, ':judet_altafac', $_POST['Master_Judet_AltaFacultate']);
-        oci_bind_by_name($statement, ':localitate_altafac', $_POST['Master_Localitate_AltaFacultate']);        
-        oci_bind_by_name($statement, ':den_inst_superior2', $_POST['Master_AbsolventMaster_Univ']);    
-        oci_bind_by_name($statement, ':facultate_altafac', $_POST['Master_AltaFacultate']);    
-        oci_bind_by_name($statement, ':dom_studii', $_POST['Master_Domeniu_Studii']); 
-        oci_bind_by_name($statement, ':dom_specializare', $_POST['Master_Specializare']); 
-        oci_bind_by_name($statement, ':dom_forma_invat', $_POST['Master_FormaInvatamant_AltaUniv']);          
-        oci_bind_by_name($statement, ':dom_an' ,$_POST['Master_An_Facultate']);
-        oci_bind_by_name($statement, ':dom_sem_fin' ,$_POST['Master_AbsolventMaster_Semestre_Finantate']);
-        oci_bind_by_name($statement, ':dom_sem_bursa' ,$_POST['Master_AbsolventMaster_Semestre_Bursa']);       
+        oci_bind_by_name($statement, ':den_inst_superior2', $_POST['Master_AltaUniversitate']);
+        oci_bind_by_name($statement, ':facultate_altafac', $_POST['Master_AltaFacultate']);
+        oci_bind_by_name($statement, ':dom_studii', $_POST['Master_Domeniu_Studii']);
+        oci_bind_by_name($statement, ':dom_specializare', $_POST['Master_Specializare']);
+        oci_bind_by_name($statement, ':dom_forma_invat', $_POST['Master_FormaInvatamant_AltaUniv']);
+        oci_bind_by_name($statement, ':dom_an', $_POST['Master_An_Facultate']);
+        oci_bind_by_name($statement, ':dom_sem_fin', $_POST['Master_Semestre_Finantate']);
+        oci_bind_by_name($statement, ':dom_sem_bursa', $_POST['Master_Semestre_Bursa']);
 
-       oci_bind_by_name($statement, ':abs_tara' ,$_POST['Master_AbsolventMaster_Tara_AltaFacultate']);  
-       oci_bind_by_name($statement, ':abs_local' ,$_POST['Master_AbsolventMaster_Localitate_AltaFacultate']); 
-       oci_bind_by_name($statement, ':abs_judet' ,$_POST['Master_AbsolventMaster_Judet_AltaFacultate']);    
-       oci_bind_by_name($statement, ':abs_den_inst', $_POST['Master_AbsolventMaster_Univ']);   
-       oci_bind_by_name($statement, ':abs_den_fac', $_POST['Master_AbsolventMaster_Facultate']);        
-       oci_bind_by_name($statement, ':abs_dom', $_POST['Master_AbsolventMaster_Domeniu_Master']);  
-       oci_bind_by_name($statement, ':abs_spec', $_POST['Master_AbsolventMaster_Specializare']); 
-    
-       oci_bind_by_name($statement, ':abs_titlu_obt', $_POST['Master_AbsolventMaster_An_Facultate']);
-    
-       oci_bind_by_name($statement, ':abs_forma', $_POST['Master_AbsolventMaster_FormaInvatamant']);
-       oci_bind_by_name($statement, ':abs_sem_buget', $_POST['Master_AbsolventMaster_Semestre_Finantate']);
-       oci_bind_by_name($statement, ':abs_sem_bursa', $_POST['Master_AbsolventMaster_Semestre_Bursa']); 
+        oci_bind_by_name($statement, ':abs_tara', $_POST['Master_AbsolventMaster_Tara_AltaFacultate']);
+        oci_bind_by_name($statement, ':abs_local', $_POST['Master_AbsolventMaster_Localitate_AltaFacultate']);
+        oci_bind_by_name($statement, ':abs_judet', $_POST['Master_AbsolventMaster_Judet_AltaFacultate']);
+        oci_bind_by_name($statement, ':abs_den_inst', $_POST['Master_AbsolventMaster_Univ']);
+        oci_bind_by_name($statement, ':abs_den_fac', $_POST['Master_AbsolventMaster_Facultate']);
+        oci_bind_by_name($statement, ':abs_dom', $_POST['Master_AbsolventMaster_Domeniu_Master']);
+        oci_bind_by_name($statement, ':abs_spec', $_POST['Master_AbsolventMaster_Specializare']);
+        oci_bind_by_name($statement, ':abs_titlu_obt', $_POST['Master_AbsolventMaster_An_Facultate']);
+        oci_bind_by_name($statement, ':abs_forma', $_POST['Master_AbsolventMaster_FormaInvatamant']);
+        oci_bind_by_name($statement, ':abs_sem_buget', $_POST['Master_AbsolventMaster_Semestre_Finantate']);
+        oci_bind_by_name($statement, ':abs_sem_bursa', $_POST['Master_AbsolventMaster_Semestre_Bursa']);
+        oci_bind_by_name($statement, ':abs_durata_studii', $_POST['Master_AbsolventMaster_Durata_Studii']);
+        oci_bind_by_name($statement, ':abs_cu_dipl', $_POST['group23']);
+        oci_bind_by_name($statement, ':abs_dipl_serie', $_POST['Master_Serie_DiplomaMaster']);
+        oci_bind_by_name($statement, ':abs_dipl_nr', $_POST['Master_Nr_DiplomaMaster']);   
 
-       oci_bind_by_name($statement, ':abs_durata_studii', $_POST['Master_AbsolventMaster_Durata_Studii1']); 
-    
-       oci_bind_by_name($statement, ':abs_cu_dipl', $_POST['group24']); 
-    
-    //almost
-       oci_bind_by_name($statement, ':abs_dipl_serie', $_POST['Master_Serie_DiplomaMaster']); 
-       oci_bind_by_name($statement, ':abs_dipl_nr', $_POST['Master_Nr_DiplomaMaster']);   
+        oci_bind_by_name($statement, ':absZi', $_POST['Master_DiplomaMaster_Ziua']);
+        oci_bind_by_name($statement, ':absLuna', $_POST['Master_DiplomaMaster_Luna']);
+        oci_bind_by_name($statement, ':absAn', $_POST['Master_DiplomaMaster_An']);   
 
-       oci_bind_by_name($statement, ':absZi', $_POST['Master_DiplomaMaster_Ziua']);
-       oci_bind_by_name($statement, ':absLuna', $_POST['Master_DiplomaMaster_Luna']);
-       oci_bind_by_name($statement, ':absAn', $_POST['Master_DiplomaMaster_An']);   
+	    oci_bind_by_name($statement, ':abs_nr_foi', $_POST['Master_DiplomaMaster_Nr_FoaieMatricola']);
+        oci_bind_by_name($statement, ':abs_act_rec_nr', $_POST['Master_DiplomaMaster_Nr_ActRecunoastere']);
+        oci_bind_by_name($statement, ':abs_act_rec_serie', $_POST['Master_DiplomaMaster_Serie_ActRecunoastere']);
 
-       oci_bind_by_name($statement, ':abs_nr_foi', $_POST['Master_DiplomaMaster_Nr_FoaieMatricola']);
-       oci_bind_by_name($statement, ':abs_act_rec_nr', $_POST['Master_DiplomaMaster_Nr_ActRecunoastere']); 
-       oci_bind_by_name($statement, ':abs_act_rec_serie', $_POST['Master_DiplomaMaster_Serie_ActRecunoastere']); 
-
-       oci_bind_by_name($statement, ':absRecZi', $_POST['Master_DiplomaMaster_ActEchivalare_Ziua']);
-       oci_bind_by_name($statement, ':absRecLuna', $_POST['Master_DiplomaMaster_ActEchivalare_Luna']);
-       oci_bind_by_name($statement, ':absRecAn', $_POST['Master_DiplomaMaster_ActEchivalare_An']);   
+        oci_bind_by_name($statement, ':absRecZi', $_POST['Master_DiplomaMaster_ActEchivalare_Ziua']);
+        oci_bind_by_name($statement, ':absRecLuna', $_POST['Master_DiplomaMaster_ActEchivalare_Luna']);
+        oci_bind_by_name($statement, ':absRecAn', $_POST['Master_DiplomaMaster_ActEchivalare_An']);   
       
        if (!$statement) {
           ini_set('display_errors', 1);
@@ -9579,6 +9570,7 @@
       echo '<script type="text/javascript">
            window.location = "DespreFII.html"
       </script>';
+      
     }
   }
 }
