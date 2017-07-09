@@ -1117,7 +1117,7 @@
 												<?php
 													if(isset($_POST['Submit'])) {
 														$v_Licenta_Prenumele = $_POST["Licenta_Prenumele"];
-														$vLicenta_Prenumele = validPremume($v_Licenta_Prenumele);
+														$vLicenta_Prenumele = validPrenume($v_Licenta_Prenumele);
 														if($vLicenta_Prenumele==-1)
 															echo "C&#226;mp necompletat!";
 														else
@@ -1126,6 +1126,9 @@
 															else
 																if($vLicenta_Prenumele==2)
 																	echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																else
+																	if($vLicenta_Prenumele==3)
+																		echo "Format incorect!";
 														}
 												?>
 											</span>
@@ -1148,7 +1151,7 @@
 													if(isset($_POST['Submit'])) {
 														$v_Licenta_Prenume_Mama = $_POST["Licenta_Prenume_Mama"];
                                                         
-														$vLicenta_PrenumeMama = validPremume($v_Licenta_Prenume_Mama);
+														$vLicenta_PrenumeMama = validPrenume($v_Licenta_Prenume_Mama);
 														
 														if($vLicenta_PrenumeMama==-1)
 															echo "C&#226;mp necompletat!";
@@ -1158,6 +1161,9 @@
 															else
 																if($vLicenta_PrenumeMama==2)
 																	echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																else
+																	if($vLicenta_PrenumeMama==3)
+																		echo "Format incorect!";
 													}
 												?>
 											</span>
@@ -1175,7 +1181,7 @@
 													if(isset($_POST['Submit'])) {
 														$v_Licenta_Prenume_Tata = $_POST["Licenta_Prenume_Tata"];
                                                        
-														$vLicenta_PrenumeTata = validPremume($v_Licenta_Prenume_Tata);
+														$vLicenta_PrenumeTata = validPrenume($v_Licenta_Prenume_Tata);
 														if($vLicenta_PrenumeTata==-1)
 															echo "C&#226;mp necompletat!";
 														else
@@ -1184,6 +1190,9 @@
 															else
 																if($vLicenta_PrenumeTata==2)
 																	echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																else
+																	if($vLicenta_PrenumeTata==3)
+																		echo "Format incorect!";
 													}
 												?>
 											</span>
@@ -1424,7 +1433,7 @@
 									<div data-wrapper-react="true">
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Naţionalitate </label>
-											<input type="text" name="Licenta_Nationalitate" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="Rom&#226;n&#259;" data-component="middle"  value="<?php 
+											<input type="text" name="Licenta_Nationalitate" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;n&#259;" data-component="middle"  value="<?php 
 																																																													if($v_Licenta_Nationalitate == '') 
 																																																														echo '';
 																																																													else
@@ -1445,8 +1454,8 @@
 											</span>	
 										</span>
 										<span class="form-sub-label-container" style="vertical-align:top; width:25%;padding:0;margin:0;">
-											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Cetăţenia (ţara) </label>
-											<input type="text" name="Licenta_Cetatenie" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;na"  data-component="middle"  value="<?php 
+											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Cetăţenie </label>
+											<input type="text" name="Licenta_Cetatenie" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;n&#259;"  data-component="middle"  value="<?php 
 																																																													if($v_Licenta_Cetatenie == '') 
 																																																														echo '';
 																																																													else
@@ -1469,7 +1478,7 @@
             
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Etnie </label>
-											<input type="text" name="Licenta_Etnie"  class="form-textbox first_1" size="20" placeholder="ex: Român"  data-component="first"  value="<?php 
+											<input type="text" name="Licenta_Etnie"  class="form-textbox first_1" size="20" placeholder="ex: Rom&#226;n&#259;"  data-component="first"  value="<?php 
 																																														if($v_Licenta_Etnie == '') 
 																																															echo '';
 																																														else
@@ -1492,7 +1501,7 @@
 
 										<span class="form-sub-label-container" style="vertical-align:top; width:25%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Limba maternă </label>
-											<input type="text"  name="Licenta_Limba_Materna"  class="form-textbox first_1" size="20"  placeholder="ex: Romana"   data-component="first"  value="<?php 
+											<input type="text"  name="Licenta_Limba_Materna"  class="form-textbox first_1" size="20"  placeholder="ex: Rom&#226;n&#259;"   data-component="first"  value="<?php 
 																																																	if($v_Licenta_Limba_Materna == '') 
 																																																		echo '';
 																																																	else
@@ -1571,7 +1580,7 @@
 											</span>
 										</span>
 										<span  class="form-sub-label-container" style="vertical-align:top; width:8%;padding:0;margin:0;">
-											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip Act Identitate </label>
+											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip act identitate </label>
 											<!--<input type="text"  name="Licenta_Tip_Buletin" class="form-textbox first_1" size="20" placeholder="CI" data-component="first" value="<?php 
 																																																if($v_Licenta_Tip_Buletin == '') 
 																																																	echo '';
@@ -1621,7 +1630,7 @@
 										</span>
 
 										<span  class="form-sub-label-container" style="vertical-align:top; width:9%;padding:0;margin:0;">
-											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Serie Buletin </label>
+											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Serie act identitate </label>
 											<input type="text"  name="Licenta_Serie_Buletin" class="form-textbox first_1" size="20" placeholder="ex: IS " data-component="first" value="<?php 
 																																																if($v_Licenta_Serie_Buletin == '') 
 																																																	echo '';
@@ -1646,7 +1655,7 @@
 											</span>
 										</span>
 										<span  class="form-sub-label-container" style="vertical-align:top; width:9%;padding:0;margin:0;">
-											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Numar Buletin </label>
+											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Numar act identitate </label>
 											<input type="number"  name="Licenta_Numar_Buletin" class="form-textbox first_1" size="20" placeholder="ex: 123456" data-component="first" value="<?php 
 																																																if($v_Licenta_Numar_Buletin == '') 
 																																																	echo '';
@@ -4300,9 +4309,10 @@
 															<?php 
 																if(isset($_POST['Submit'])) {
 																	$v_Licenta_Nr_FoaieMatricola = $_POST["Licenta_Nr_FoaieMatricola"];
-																	if($v_Licenta_Nr_FoaieMatricola=='')
-																		echo "C&#226;mp necompletat!";
-																	else
+																	//if($v_Licenta_Nr_FoaieMatricola=='')
+																	//	echo "C&#226;mp necompletat!";
+																	//else
+																	if($v_Licenta_Nr_FoaieMatricola!=='')
 																		if(!ctype_digit($v_Licenta_Nr_FoaieMatricola))
 																			echo "Caractere nepermise!";
 																}
@@ -6634,15 +6644,15 @@
 										$v_Document_Echivalare_Studii=$_POST["Document_Echivalare_Studii"];
 										$v_Diploma_Olimpiada=$_POST["Diploma_Olimpiada"];
 									?>
-								   <li><input type="radio" name="Diploma_BAC" class="css-checkbox" value="1" id="Diploma_BAC_Original"  <?php
-																																			if($v_Diploma_BAC == '')
-																																				echo '';
-																																			else
-																																				if($v_Diploma_BAC==1)
-																																					echo 'checked="checked"';
-																																				else
+								   <li><input type="radio" name="Diploma_BAC" class="css-checkbox" value="1" id="Diploma_BAC_Original"  	<?php
+																																				if($v_Diploma_BAC == '')
 																																					echo '';
-																																		?>/>
+																																				else
+																																					if($v_Diploma_BAC==1)
+																																						echo 'checked="checked"';
+																																					else
+																																						echo '';
+																																			?> />
 				 
 									<label for="Diploma_BAC_Original" class="css-label">Diploma de Bacalaureat în original</label></li>
 				 
@@ -7924,13 +7934,13 @@
 		$vNumeleDeFamilieActual = validNume($v_Numele_De_Familie_Actual);
 		
         $v_Prenumele = $_POST["Licenta_Prenumele"];
-        $vPrenumele = validPremume($v_Prenumele);
+        $vPrenumele = validPrenume($v_Prenumele);
         
         $v_Prenume_Tata = $_POST["Licenta_Prenume_Tata"];                 
-		$vPrenumeTata = validPremume($v_Prenume_Tata);
+		$vPrenumeTata = validPrenume($v_Prenume_Tata);
 		
         $v_Prenume_Mama = $_POST["Licenta_Prenume_Mama"];
-        $vPrenumeMama = validPremume($v_Prenume_Mama);
+        $vPrenumeMama = validPrenume($v_Prenume_Mama);
 		
 		$v_Licenta_CNP = $_POST["Licenta_CNP"];
 		$vLicenta_CNP = validCNP($v_Licenta_CNP);

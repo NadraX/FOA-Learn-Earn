@@ -778,10 +778,10 @@ function validInitialaTata($p_initTata)
 		return 1; // lungime incorecta
 
 	$p_initTata_diacritice=str_replace(array('.','Ă','Î','Ș','Ț','Â'),'',$p_initTata);
-	if(!preg_match('/^[A-Z ]*$/', $p_initTata_diacritice))
-		return 2;//caract incorecte
 	if(!preg_match('/(([A-ZĂÎȘȚÂ]\.)+)$/', $p_initTata))
 		return 3;//Format incorect
+	if(!preg_match('/^[A-Z]*$/', $p_initTata_diacritice))
+		return 2;//caract incorecte
 	return 0;
 	
 	/*
@@ -1306,20 +1306,22 @@ function validNumarBuletin($p_numar)
 			else
 				if(!preg_match('/^[a-zA-Z ]*$/', $p_nume_diacritice))
 					return 1;//caract incorecte
-       
-          
+
         return 0;//corect
     }
 
 
 
 //fct buna
-    function validPremume($p_prenume)
+    function validPrenume($p_prenume)
     {
 		$p_prenume_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_prenume);
         if(!$p_prenume)
             return -1;
-		
+		$prenume=str_split($p_prenume);
+		$lungime=strlen($p_prenume);
+		if($prenume[$lungime-1]=='-')
+			return 3;
 		if($p_prenume=='-')
 			return 0;
 		if(strlen($p_prenume)<1 || strlen($p_prenume)>30)
@@ -2081,6 +2083,8 @@ function validareLiceu($p_liceu){
 //fct buna
 	function validSuma($suma)
 	{
+		if($suma==0)
+			return 0;
         if(!$suma)
             return -1;
 		if($suma<0)

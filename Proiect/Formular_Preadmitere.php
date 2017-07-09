@@ -650,7 +650,30 @@
 										</span>
 						
 										<span id="initiala" class="form-sub-label-container" style="vertical-align:top;">
-											<label class="form-sub-label"  style="min-height:13px;"> Ini&#355;iala (ele) tat&#259;lui/mamei </label>
+											<label class="form-sub-label"  style="min-height:13px;"> Ini&#355;iala (ele) tat&#259;lui/mamei <span class="info-box" <?php	
+																																										if($v_Preadmitere_Initiala_Tata!='') 
+																																											if($vPreadmitere_Initiala_Tata!==0) 
+																																												echo 'style="background-color : red;"';
+																																									?>> 
+																																				<?php
+																																					if($v_Preadmitere_Initiala_Tata!='')
+																																						if($vPreadmitere_Initiala_Tata!==0) 
+																																							echo "!"; 
+																																						else 
+																																							echo "?"; 
+																																					else 
+																																						echo "?";
+																																				?> 
+																																				<span class="info-box__content">
+																																					Inițialele trebuie să fie urmate de punct și fără spații între ele.
+																																					<?php 
+																																						$vPreadmitere_Initiala_Tata = validInitialaTata($v_Preadmitere_Initiala_Tata);
+																																						if($vPreadmitere_Initiala_Tata>0) 
+																																							echo "<br><a style=\"color:red\">*Nu ați respectat formatul specificat!</a>"; 
+																																					?> 
+																																				</span>
+																																			</span>
+											</label>
 
 											<input type="text" name="Preadmitere_Initiala_Tata" class="form-textbox middle_1" size="10" placeholder="ex: C./C.D."  data-component="first"  value="<?php 
 																																																	if($v_Preadmitere_Initiala_Tata == '') 
@@ -691,7 +714,7 @@
 												<?php
 													if(isset($_POST['Submit'])) {
 														$v_Preadmitere_Prenumele = $_POST["Preadmitere_Prenumele"];
-														$vPreadmitere_Prenumele = validPremume($v_Preadmitere_Prenumele);
+														$vPreadmitere_Prenumele = validPrenume($v_Preadmitere_Prenumele);
 														if($vPreadmitere_Prenumele==-1)
 																echo "C&#226;mp necompletat!";
 															else
@@ -700,6 +723,9 @@
 																else
 																	if($vPreadmitere_Prenumele==2)
 																		echo "C&#226;mpul trebuie sa aibe între 3 și 30 caractere!";
+																	else
+																		if($vPreadmitere_Prenumele==3)
+																			echo "Format incorect!";
 													}
 												?>
 											</span>
@@ -721,7 +747,7 @@
 												<?php 
 													if(isset($_POST['Submit'])) {
 														$v_Preadmitere_Prenume_Mama = $_POST["Preadmitere_Prenume_Mama"];
-														$vPreadmitere_PrenumeMama = validPremume($v_Preadmitere_Prenume_Mama);
+														$vPreadmitere_PrenumeMama = validPrenume($v_Preadmitere_Prenume_Mama);
 														if($vPreadmitere_PrenumeMama==-1)
 																echo "C&#226;mp necompletat!";
 															else
@@ -730,6 +756,9 @@
 																else
 																	if($vPreadmitere_PrenumeMama==2)
 																		echo "C&#226;mpul trebuie sa aibe între 3 și 30 caractere!";
+																	else
+																		if($vPreadmitere_PrenumeMama==3)
+																			echo "Format incorect!";
 													}
 												?>
 											</span>
@@ -746,7 +775,7 @@
 												<?php 
 													if(isset($_POST['Submit'])) {
 														$v_Preadmitere_Prenume_Tata = $_POST["Preadmitere_Prenume_Tata"];
-														$vPreadmitere_PrenumeTata = validPremume($v_Preadmitere_Prenume_Tata);
+														$vPreadmitere_PrenumeTata = validPrenume($v_Preadmitere_Prenume_Tata);
 														if($vPreadmitere_PrenumeTata==-1)
 																echo "C&#226;mp necompletat!";
 															else
@@ -755,6 +784,9 @@
 																else
 																	if($vPreadmitere_PrenumeTata==2)
 																		echo "C&#226;mpul trebuie sa aibe între 3 și 30 caractere!";
+																	else
+																		if($vPreadmitere_PrenumeTata==3)
+																			echo "Format incorect!";
 													}
 												?>
 											</span>
@@ -993,7 +1025,7 @@
 									
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Naţionalitate </label>
-											<input type="text" name="Preadmitere_Nationalitate" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="Rom&#226;n&#259;" data-component="middle" value="<?php 
+											<input type="text" name="Preadmitere_Nationalitate" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;n&#259;" data-component="middle" value="<?php 
 																																																													if($v_Preadmitere_Nationalitate == '') 
 																																																														echo '';
 																																																													else
@@ -1016,8 +1048,8 @@
 										</span>
 										
 										<span class="form-sub-label-container" style="vertical-align:top; width:25%;padding:0;margin:0;">
-											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Cetăţenia (ţara) </label>
-											<input type="text" name="Preadmitere_Cetatenie"  class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="obl: Rom&#226;na" data-component="middle" value="<?php 
+											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Cetăţenie </label>
+											<input type="text" name="Preadmitere_Cetatenie"  class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;n&#259;" data-component="middle" value="<?php 
 																																																													if($v_Preadmitere_Cetatenie == '') 
 																																																														echo '';
 																																																													else
@@ -1040,7 +1072,7 @@
 				
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Etnie </label>
-											<input type="text" name="Preadmitere_Etnie"  class="form-textbox first_1" size="20" placeholder="ex: Român"  data-component="first"  value="<?php 
+											<input type="text" name="Preadmitere_Etnie"  class="form-textbox first_1" size="20" placeholder="ex: Rom&#226;n&#259;"  data-component="first"  value="<?php 
 																																														if($v_Preadmitere_Etnie == '') 
 																																															echo '';
 																																														else
@@ -1063,7 +1095,7 @@
 
 										<span class="form-sub-label-container" style="vertical-align:top; width:25%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Limba maternă </label>
-											<input type="text" name="Preadmitere_Limba_Materna"  class="form-textbox first_1" size="20"  placeholder="ex: Romana" data-component="first" value="<?php 
+											<input type="text" name="Preadmitere_Limba_Materna"  class="form-textbox first_1" size="20"  placeholder="ex: Rom&#226;n&#259;" data-component="first" value="<?php 
 																																																if($v_Preadmitere_Limba_Materna == '') 
 																																																	echo '';
 																																																else
@@ -2968,7 +3000,7 @@
 									<span class="form-sub-label-container gen" style="vertical-align:top;">
 										<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Doresc să dau testul scris la materia:</label>
 										<select class="form-dropdown form-address-country gen" name="Preadmitere_Obiect_Test_Ales"  data-component="country">
-											<option value="Alege optiune">-</option> 
+											<option value="Alege optiune">Selectați</option> 
 											<option value="Matematica"<?php
 																		if($v_Preadmitere_Obiect=="Matematica")
 																			echo 'selected';
@@ -2994,7 +3026,7 @@
 												if(isset($_POST['Submit'])) {
 													$v_Preadmitere_Obiect = $_POST["Preadmitere_Obiect_Test_Ales"];
 													if($v_Preadmitere_Obiect=='Alege optiune')
-														echo "C&#226;mp necompletat!";
+														echo "Opțiune nealeasă!";
 													}
 											?>
 										</span>
@@ -3115,13 +3147,13 @@
 		$vPreadmitere_Initiala_Tata = validInitialaTata($v_Preadmitere_Initiala_Tata);
         
         $v_Preadmitere_Prenumele = $_POST["Preadmitere_Prenumele"];
-		$vPreadmitere_Prenumele = validPremume($v_Preadmitere_Prenumele);
+		$vPreadmitere_Prenumele = validPrenume($v_Preadmitere_Prenumele);
         
         $v_Preadmitere_Prenume_Mama = $_POST["Preadmitere_Prenume_Mama"];
-		$vPreadmitere_PrenumeMama = validPremume($v_Preadmitere_Prenume_Mama);
+		$vPreadmitere_PrenumeMama = validPrenume($v_Preadmitere_Prenume_Mama);
         
         $v_Preadmitere_Prenume_Tata = $_POST["Preadmitere_Prenume_Tata"];
-		$vPreadmitere_PrenumeTata = validPremume($v_Preadmitere_Prenume_Tata);
+		$vPreadmitere_PrenumeTata = validPrenume($v_Preadmitere_Prenume_Tata);
         
         $v_Preadmitere_Tara_Nastere = $_POST["Preadmitere_Tara_Nastere"];
         $vPreadmitere_Tara_Nastere = validTara($v_Preadmitere_Tara_Nastere);
