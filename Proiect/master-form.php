@@ -1049,7 +1049,7 @@
 
 							<li class="form-line" data-type="control_fullname" id="id_1">
 
-								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:larger"> II. Date personale ale candidatului cu cetăţenie română <span class="info-box">?<span class="info-box__content">În măsura în care este posibil, datele personale se vor completa din buletin </span></span></label>
+								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:larger"> II. Date personale ale candidatului cu cetăţenie română <span class="info-box">?<span class="info-box__content">În măsura în care este posibil, datele personale se vor completa din actul de identitate </span></span></label>
 
 								<h4 style="color:red;">Informațiile se completează conform certificatului de naștere și actului de identitate.</h4>
 
@@ -1538,7 +1538,7 @@
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Nationalitate </label>
 											
-											<input type="text" name="Master_Nationalitate" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="Rom&#226;n&#259;" data-component="middle" value="<?php 
+											<input type="text" name="Master_Nationalitate" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;n&#259;" data-component="middle" value="<?php 
 																																																													if($v_Master_Nationalitate == '') 
 																																																														echo '';
 																																																													else
@@ -1560,7 +1560,7 @@
 										</span>
 
 										<span class="form-sub-label-container" style="vertical-align:top; width:25%;padding:0;margin:0;">
-											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Cetăţenia (ţara) </label>
+											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Cetăţenie </label>
 											<input type="text" name="Master_Cetatenie"  class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;na" data-component="middle"  value="<?php 
 																																																													if($v_Master_Cetatenie == '') 
 																																																														echo '';
@@ -1611,7 +1611,7 @@
 										<span class="form-sub-label-container" style="vertical-align:top; width:25%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Limba maternă </label>
 
-											<input type="text"  name="Master_Limba_Materna" placeholder="ex: Romana" class="form-textbox first_1" size="20" data-component="first"   value="<?php 
+											<input type="text"  name="Master_Limba_Materna" placeholder="ex: Rom&#226;n&#259;" class="form-textbox first_1" size="20" data-component="first"   value="<?php 
 																																																if($v_Master_Limba_Materna == '') 
 																																																	echo '';
 																																																else
@@ -1704,7 +1704,7 @@
 										<span  class="form-sub-label-container" style="vertical-align:top; width:8%;padding:0;margin:0;">
 
 										 
-											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip Act Identitate </label>
+											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip act Identitate </label>
 											<!--<input type="text" name="Master_Tip_Buletin" class="form-textbox first_1" size="20" placeholder="CI" data-component="first" value="<?php 
 																																													//		if($v_Master_Tip_Buletin == '') 
 																																													//			echo '';
@@ -1755,7 +1755,7 @@
 										</span>
 
 										<span  class="form-sub-label-container" style="vertical-align:top; width:9%;padding:0;margin:0;">
-											<label class="form-sub-label"  style="min-height:13px;"> Serie Buletin </label>
+											<label class="form-sub-label"  style="min-height:13px;"> Serie act identitate </label>
 
 											<input type="text" name="Master_Serie_Buletin" class="form-textbox first_1" size="20" placeholder="ex: IS / IF" data-component="first" value="<?php 
 																																																if($v_Master_Serie_Buletin == '') 
@@ -1783,7 +1783,7 @@
 										</span>
 
 										<span  class="form-sub-label-container" style="vertical-align:top; width:9%;padding:0;margin:0;">
-											<label class="form-sub-label"  style="min-height:13px;"> Numar Buletin </label>
+											<label class="form-sub-label"  style="min-height:13px;"> Numar act identitate </label>
 
 											<input type="text"  name="Master_Numar_Buletin" class="form-textbox first_1" size="20" placeholder="ex: 123456" data-component="first" value="<?php 
 																																																if($v_Master_Numar_Buletin == '') 
@@ -8164,7 +8164,7 @@
 
 										<li>copie simplă carte de identitate;</li>
 
-										<li>două fotografii tip buletin;</li>
+										<li>două fotografii tip act identitate;</li>
 
 										<li>chitanţa ce dovedeşte plata taxei de înscriere (la concursul de admitere pentru studii universitare de masterat nu se acordă scutiri de la taxa de înscriere);</li>
 
