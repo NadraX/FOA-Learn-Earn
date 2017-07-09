@@ -6791,7 +6791,7 @@
 											Ordonaţi opţiunile de mai jos în ordinea preferinţelor dumneavoastră!
 										</h5>
 										<label>Preferință 1(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune1" data-component="country">
+										<select class="clasaPreferinte" style="width:40%" name="Optiune1" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune1=="Selectați")
 																				echo 'selected';
@@ -6877,7 +6877,7 @@
 										
 										<br><br>
 										<label>Preferință 2(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune2" data-component="country">
+										<select class="clasaPreferinte" style="width:40%" name="Optiune2" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune2=="Selectați")
 																				echo 'selected';
@@ -6963,7 +6963,7 @@
 										
 										<br><br>
 										<label>Preferință 3(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune3" data-component="country">
+										<select class="clasaPreferinte" style="width:40%" name="Optiune3" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune3=="Selectați")
 																				echo 'selected';
@@ -7049,7 +7049,7 @@
 										
 										<br><br>
 										<label>Preferință 4(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune4" data-component="country">
+										<select class="clasaPreferinte" style="width:40%" name="Optiune4" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune4=="Selectați")
 																				echo 'selected';
@@ -7135,7 +7135,7 @@
 										
 										<br><br>
 										<label>Preferință 5(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune5" data-component="country">
+										<select class="clasaPreferinte" style="width:40%" name="Optiune5" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune5=="Selectați")
 																				echo 'selected';
@@ -7221,7 +7221,7 @@
 										
 										<br><br>
 										<label>Preferință 6(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune6" data-component="country">
+										<select class="clasaPreferinte" style="width:40%" name="Optiune6" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune6=="Selectați")
 																				echo 'selected';
@@ -7307,7 +7307,7 @@
 										
 										<br><br>
 										<label>Preferință 7(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune7" data-component="country">
+										<select class="clasaPreferinte" style="width:40%" name="Optiune7" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune7=="Selectați")
 																				echo 'selected';
@@ -7393,7 +7393,7 @@
 										
 										<br><br>
 										<label>Preferință 8(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune8" data-component="country">
+										<select class="clasaPreferinte" style="width:40%" name="Optiune8" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune8=="Selectați")
 																				echo 'selected';
@@ -7479,7 +7479,7 @@
 										
 										<br><br>
 										<label>Preferință 9(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune9" data-component="country">
+										<select class="clasaPreferinte" style="width:40%" name="Optiune9" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune9=="Selectați")
 																				echo 'selected';
@@ -7565,7 +7565,7 @@
 										
 										<br><br>
 										<label>Preferință 10(obligatoriu) &nbsp; &nbsp; &nbsp; </label>
-										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune10" data-component="country">
+										<select class="clasaPreferinte" style="width:40%" name="Optiune10" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune10=="Selectați")
 																				echo 'selected';
@@ -7651,7 +7651,8 @@
 										
 										<br><br>
 										<label>Preferință 11(obligatoriu) &nbsp; &nbsp; &nbsp; </label>
-										<select class="form-dropdown form-address-country gen" style="width:20%" name="Optiune11" data-component="country">
+										<!--class="form-dropdown form-address-country gen"-->
+										<select class="clasaPreferinte" style="width:40%" name="Optiune11" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune11=="Selectați")
 																				echo 'selected';
@@ -7735,7 +7736,7 @@
 											?>
 										</span>
 										<script>  
-											$('select').on('change', function() {
+											$(".clasaPreferinte").on('change', function() {
 												HandleDropdowns($(this));
 											});
 
@@ -7743,7 +7744,7 @@
 												var $element = element;
 												var value = $element.val();
 										  
-												$.each($('select').not($element), function() { //loop all remaining select elements
+												$.each($(".clasaPreferinte").not($element), function() { //loop all remaining select elements
 													var subValue = $(this).val();
 													if (subValue === value) { // if value is same reset
 														$(this).val('Selectati');
