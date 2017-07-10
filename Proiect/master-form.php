@@ -311,8 +311,8 @@
 				left: calc(100% + 5px);
 				bottom: 100%;
 				padding: 10px;
-				background-color: #F0F8FF;
-				color: black;
+				background-color: #2d80bf;
+				color: white;
 				font-size: 12px;
 				border-radius: 5px;
 			}
@@ -1155,30 +1155,7 @@
 											
 										<span id="initiala" class="form-sub-label-container" style="vertical-align:top;">
 
-											<label class="form-sub-label"  style="min-height:13px;"> Ini&#355;iala (ele) tat&#259;lui / mamei <span class="info-box" <?php	
-																																										if($v_Master_Initiala_Tata!='') 
-																																											if($vLicenta_Initiala_Tata!==0) 
-																																												echo 'style="background-color : red;"';
-																																									?>> 
-																																				<?php
-																																					if($v_Master_Initiala_Tata!='')
-																																						if($vLicenta_Initiala_Tata!==0) 
-																																							echo "!"; 
-																																						else 
-																																							echo "?"; 
-																																					else 
-																																						echo "?";
-																																				?> 
-																																				<span class="info-box__content">
-																																					Inițialele trebuie să fie urmate de punct și fără spații între ele.
-																																					<?php 
-																																						$vLicenta_Initiala_Tata = validInitialaTata($v_Master_Initiala_Tata);
-																																						if($vLicenta_Initiala_Tata>0) 
-																																							echo "<br><a style=\"color:red\">*Nu ați respectat formatul specificat!</a>"; 
-																																					?> 
-																																				</span>
-																																			</span>
-											</label>
+											<label class="form-sub-label"  style="min-height:13px;"> Ini&#355;iala (ele) tat&#259;lui / mamei </label>
 
 											<input type="text" name="Master_Initiala_Tata" class="form-textbox middle_1" placeholder="ex: C./C.D." size="10" data-component="middle"  value="<?php 
 																																																if($v_Master_Initiala_Tata == '')
@@ -1222,7 +1199,7 @@
 												<?php
 														if(isset($_POST['Submit'])) {
 															$v_Master_Prenumele = $_POST["Master_Prenumele"];
-															$vMaster_Prenumele = validPrenume($v_Master_Prenumele);
+															$vMaster_Prenumele = validPremume($v_Master_Prenumele);
 															if($vMaster_Prenumele==-1)
 																echo "C&#226;mp necompletat!";
 															else
@@ -1232,9 +1209,6 @@
 																	else
 																		if($vMaster_Prenumele==2)
 																			echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
-																		else
-																			if($vMaster_Prenumele==3)
-																				echo "Format incorect!";
 																}
 																else
 																	echo 'Trebuie să ai un prenume!';
@@ -1268,7 +1242,7 @@
 													if(isset($_POST['Submit'])) {
 													$v_Master_Prenume_Mama = $_POST["Master_Prenume_Mama"];
 													
-													$vMaster_PrenumeMama = validPrenume($v_Master_Prenume_Mama);
+													$vMaster_PrenumeMama = validPremume($v_Master_Prenume_Mama);
 													
 													if($vMaster_PrenumeMama==-1)
 														echo "C&#226;mp necompletat!";
@@ -1278,9 +1252,6 @@
 														else
 															if($vMaster_PrenumeMama==2)
 																echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
-															else
-																if($vMaster_PrenumeMama==3)
-																	echo "Format incorect!";
 												}
 												?>
 											</span>
@@ -1302,7 +1273,7 @@
 													if(isset($_POST['Submit'])) {
 													$v_Master_Prenume_Tata = $_POST["Master_Prenume_Tata"];
 												   
-													$vMaster_PrenumeTata = validPrenume($v_Master_Prenume_Tata);
+													$vMaster_PrenumeTata = validPremume($v_Master_Prenume_Tata);
 													if($vMaster_PrenumeTata==-1)
 														echo "C&#226;mp necompletat!";
 													else
@@ -1311,9 +1282,6 @@
 														else
 															if($vMaster_PrenumeTata==2)
 																echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
-															else
-																if($vMaster_PrenumeTata==3)
-																	echo "Format incorect!";
 												}
 												?>
 											</span>
@@ -4407,25 +4375,15 @@
 
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:15%">
-														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Numărul Foaie Matricolă </label>
+														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Numărul Foaie Matricolă (optional) </label>
 														<input type="number"  name="Master_Nr_FoaieMatricola" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 186"  data-component="city"  value="<?php 
 																																																								if($v_Master_Nr_FoaieMatricola == '') 
 																																																									echo '';
 																																																								else
 																																																									echo $v_Master_Nr_FoaieMatricola;
 																																																							?>"  data-component="city" />
-														<span style="color:red">
-															<?php 
-																if(isset($_POST['Submit'])) {
-																	$v_Master_Nr_FoaieMatricola = $_POST["Master_Nr_FoaieMatricola"];
-																	if($v_Master_Nr_FoaieMatricola=='')
-																		echo "C&#226;mp necompletat!";
-																	else
-																		if(!ctype_digit($v_Master_Nr_FoaieMatricola))
-																			echo "Caractere nepermise!";
-																}
-															?>
-														</span>
+														
+
 													</span>
 												</td>
 											</tr>
@@ -5151,26 +5109,14 @@
 													</span>
 													
 													<span class="form-sub-label-container" style="vertical-align:top; width:15%">
-														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Numarul Foaie Matricolă </label>
+														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Numarul Foaie Matricolă (optional) </label>
 														<input type="number"  name="Master_AbsolventLicenta_Nr_FoaieMatricola" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php 
 																																																											if($v_Master_AbsolventLicenta_Nr_FoaieMatricola == '') 
 																																																												echo '';
 																																																											else
 																																																												echo $v_Master_AbsolventLicenta_Nr_FoaieMatricola;
 																																																										?>"  data-component="city" />
-														<span style="color:red">
-															<?php 
-																if(isset($_POST['Submit'])) {
-																	$v_Master_AbsolventLicenta_Nr_FoaieMatricola = $_POST["Master_AbsolventLicenta_Nr_FoaieMatricola"];
-																	//if($v_Master_AbsolventLicenta_Nr_FoaieMatricola=='')
-																	//	echo "C&#226;mp necompletat!";
-																	//else
-																	if($v_Master_AbsolventLicenta_Nr_FoaieMatricola!=='')
-																		if(!ctype_digit($v_Master_AbsolventLicenta_Nr_FoaieMatricola))
-																			echo "Caractere nepermise!";
-																}
-															?>
-														</span>
+														
 
 													</span>
 												</td>
