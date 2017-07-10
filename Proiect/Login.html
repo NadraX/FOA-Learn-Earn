@@ -31,7 +31,7 @@
       <ul class="left-menu">
         <li class="lung"><a href="DespreFII.html">Despre FII</a></li>
         <li class="scurt"><a href="DespreFII.html">FII</a></li>
-        <li><a href="paginaAdmitere.html">Admitere</a></li>
+        <li><a href="paginaAdmitere.php">Admitere</a></li>
       </ul>
         
       <ul class="right-menu">
@@ -52,7 +52,7 @@
     <div id="menu">
       <ul class="tog1">
         <li class="tog2"><a href="DespreFII.html">Despre FII</a></li>  
-        <li class="tog2"><a href="paginaAdmitere.html">Admitere</a></li>
+        <li class="tog2"><a href="paginaAdmitere.php">Admitere</a></li>
         <li class="tog2"><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
         <li class="tog2"><a href="contact.html">Contact</a></li>
       </ul>
@@ -95,7 +95,7 @@
 				<p class="footer-links">
 					<a href="DespreFII.html">Despre FII</a>
 					·
-					<a href="paginaAdmitere.html">Admitere</a>
+					<a href="paginaAdmitere.php">Admitere</a>
 					·
 					<a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri frecvente</a>
 					·
