@@ -31,7 +31,7 @@
         <ul class="left-menu">
             <li class="lung"><a href="DespreFII.html">Despre FII</a></li>
             <li class="scurt"><a href="DespreFII.html">FII</a></li>
-            <li><a href="paginaAdmitere.html">Admitere</a></li>
+            <li><a href="paginaAdmitere.php">Admitere</a></li>
         </ul>
         <ul class="right-menu">
           <li><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
@@ -49,7 +49,7 @@
     <div id="menu">
       <ul class="tog1">
         <li class="tog2"><a href="DespreFII.html">Despre FII</a></li>  
-        <li class="tog2"><a href="paginaAdmitere.html">Admitere</a></li>
+        <li class="tog2"><a href="paginaAdmitere.php">Admitere</a></li>
         <li class="tog2"><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
 		<li class="tog2"><a href="contact.html">Contact</a></li>
       </ul>
@@ -130,10 +130,18 @@
 
 <hr>
 <div class="row">
+	<?php
+    include 'adminMainPagePreAdmitere.php';
+    $nr_formulare_preadmitere = nrFormularePreadmitereA();
+    $nr_formulare_licenta = nrFormulareLicentaA();
+    $nr_formulare_master = nrFormulareMasterA();
 
-<div class="col-sm-4"><center><a href="preadmitere.html"><img src="imagini/enroll.png" style="width:30%;" class="floating-box1" /><font size="4"><div class="floating-box1 font_move"><b>Preadmitere</b><p>200 inscrisi</p></div></font></a></center></div>
-<div class="col-sm-4"><center><a href="licenta.html"><img src="imagini/grad_cap.png" style="width:30%;" class="floating-box1" /><font size="4"><div class="floating-box1 font_move"><b>Admitere licen&#355;&#259;</b><p>200 inscrisi</p></div></font></a></center></div>
-<div class="col-sm-4"><center><a href="master.html"><img src="imagini/abs.png" style="width:30%;" class="floating-box1" /><font size="4"><div class="floating-box1 font_move"><b>Admitere master</b><p>200 inscrisi</p></div></font></a></center></div>
+	?>
+
+
+<div class="col-sm-4"><center><a href="preadmitere.html"><img src="imagini/enroll.png" style="width:30%;" class="floating-box1" /><font size="4"><div class="floating-box1 font_move"><b>Preadmitere</b><p><?php echo "$nr_formulare_preadmitere"; ?> inscrisi</p></div></font></a></center></div>
+<div class="col-sm-4"><center><a href="licenta.html"><img src="imagini/grad_cap.png" style="width:30%;" class="floating-box1" /><font size="4"><div class="floating-box1 font_move"><b>Admitere licen&#355;&#259;</b><p><?php echo "$nr_formulare_licenta"; ?> inscrisi</p></div></font></a></center></div>
+<div class="col-sm-4"><center><a href="master.html"><img src="imagini/abs.png" style="width:30%;" class="floating-box1" /><font size="4"><div class="floating-box1 font_move"><b>Admitere master</b><p><?php echo "$nr_formulare_master"; ?> inscrisi</p></div></font></a></center></div>
 
 </div>
 
@@ -152,7 +160,7 @@
 				<p class="footer-links">
 					<a href="DespreFII.html">Despre FII</a>
 					·
-					<a href="paginaAdmitere.html">Admitere</a>
+					<a href="paginaAdmitere.php">Admitere</a>
 					·
 					<a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri frecvente</a>
 					·

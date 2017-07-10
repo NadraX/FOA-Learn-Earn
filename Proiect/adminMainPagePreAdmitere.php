@@ -36,6 +36,40 @@ function nrFormulareMaster()
     return $v;
 }
 
+function nrFormularePreadmitereA()
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $s = oci_parse($c, " begin  select count(f.id) into :bv from formular_preadmitere f 
+                                        where f.stare > -1;
+                                       end;");
+    oci_bind_by_name($s, ":bv", $v, 10);
+    oci_execute($s);
+    oci_close($c);
+    return $v;
+}
+
+function nrFormulareLicentaA()
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $s = oci_parse($c, " begin  select count(f.id) into :bv from formular_licenta f  where f.stare > -1;
+                                       end;");
+    oci_bind_by_name($s, ":bv", $v, 10);
+    oci_execute($s);
+    oci_close($c);
+    return $v;
+}
+
+function nrFormulareMasterA()
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $s = oci_parse($c, " begin  select count(f.id) into :bv from formular_master f  where f.stare > -1;
+                                       end;");
+    oci_bind_by_name($s, ":bv", $v, 10);
+    oci_execute($s);
+    oci_close($c);
+    return $v;
+}
+
         function nrIntrebari()
         {
             $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
