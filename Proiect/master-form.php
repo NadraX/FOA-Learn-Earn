@@ -2082,9 +2082,9 @@
 													</select>
 												</span>
 												<span class="form-sub-label-container" style="vertical-align:bottom;">
-													<select style="height:40px;" name="Master_Buletin_Ziua"  class="form-dropdown" data-component="birthdate-day">
+													<select style="height:40px;" name="Master_Buletin_Ziua_Exp"  class="form-dropdown" data-component="birthdate-day">
 														<?php
-															$v_Master_Buletin_Ziua = $_POST["Master_Buletin_Ziua"];
+															$v_Master_Buletin_Ziua = $_POST["Master_Buletin_Ziua_Exp"];
 															for($i=1;$i<=31;$i++)
 															{
 																echo '<option value="'.$i.'" ';
@@ -2096,9 +2096,9 @@
 													</select>
 												</span>
 												<span class="form-sub-label-container" style="vertical-align:bottom;">
-													<select style="height:40px;" name="Master_Buletin_An"  class="form-dropdown" data-component="birthdate-year">
+													<select style="height:40px;" name="Master_Buletin_An_Exp"  class="form-dropdown" data-component="birthdate-year">
 														<?php
-															$v_Master_Buletin_An=$_POST["Master_Buletin_An"];
+															$v_Master_Buletin_An=$_POST["Master_Buletin_An_Exp"];
 															for($i=2017;$i>=1920;$i--)
 															{
 																echo '<option value="'.$i.'" ';
@@ -9127,7 +9127,7 @@
 
     if($vChitanta ==0 && $vsuma ==0 && $vradio1 ==1 && $vNumele_De_Familie_La_Nastere ==0 && $vMaster_Numele_De_Familie_Actual == 0 && $vLicenta_Initiala_Tata == 0 && $vMaster_Prenumele == 0 && $vMaster_PrenumeMama == 0 && $vMaster_PrenumeTata == 0 && $vMaster_Tara_Nastere == 0 && $vMaster_Localitate_Nastere == 0 && $vMaster_Cetatenie == 0 && $vMaster_Etnie == 0 && $vMaster_Limba_Materna == 0 && $vMaster_CNP == 0 && $vMaster_Serie_Buletin == 0 && $vMaster_Numar_Buletin == 0 && $vMaster_Buletin_Eliberat_De == 0 && $vradio3 == 1 && $vMaster_Strada == 0 &&  $vMaster_Numar == 0 &&   $vMaster_Bloc == 0 && $vMaster_Scara == 0 && $vMaster_Etaj == 0 && $vMaster_Apartament == 0 && $vMaster_Localitate1 == 0 && $vMaster_Cod_Postal == 0 && $vMaster_Telefon == 0 && $vMaster_Email == 0 && $vradio5 == 1 && $vradio4 == 1 && $vMaster_Localitate_Liceu == 0 && $vMaster_Profil_Liceu == 0 && $vMaster_Durata_Liceu == 0 && $vMaster_An_Liceu == 0 && $vMaster_Serie_DiplomaBAC == 0 && $vMaster_Nr_DiplomaBAC == 0 && $vMaster_AbsolventMaster_Univ1 == 0 && $vMaster_AbsolventMaster_Facultate1 == 0 && $vMaster_AbsolventMaster_Domeniu_Master1 == 0 && $vMaster_AbsolventMaster_Specializare1 == 0 && $vMaster_AbsolventMaster_An_Facultate1 == 0 && $vMaster_AbsolventMaster_Durata_Studii1 == 0 && $vMaster_AbsolventMaster_Semestre_Finantate1 == 0 && $vMaster_AbsolventMaster_Semestre_Bursa1 == 0 && $vMaster_AbsolventMaster_Localitate_AltaFacultate1 == 0 && $vMaster_Serie_DiplomaLicenta == 0  && $vradio26 == 1 && $vradio27 == 1 && $vOptiune1 == 0 && $vOptiune2 == 0 && $vOptiunea3 == 0 && $vOptiunea4 == 0 && $vOptiunea5 == 0 && $vOptiune6==0 && $vOptiune7 == 0 && $vOptiune8 == 0 && $vOptiune9 == 0 && $vOptiune10 == 0 && $vOptiune11 == 0){
 
-    $connection = oci_connect($username, $password, $connection_string);
+    $connection = oci_connect($username, $password, $connection_string, 'AL32UTF8');
 
     if(!$connection)
       echo "Connection failed. Please try again";
@@ -9366,9 +9366,9 @@
             oci_bind_by_name($statement, ':bZi' ,$_POST['Master_Buletin_Ziua']);
             oci_bind_by_name($statement, ':lZi' ,$_POST['Master_Buletin_Luna']);
             oci_bind_by_name($statement, ':aZi' ,$_POST['Master_Buletin_An']);
-            oci_bind_by_name($statement, ':eZi' ,$_POST['Master_Buletin_Ziua']);
+            oci_bind_by_name($statement, ':eZi' ,$_POST['Master_Buletin_Ziua_Exp']);
             oci_bind_by_name($statement, ':elZi' ,$_POST['Master_Buletin_Luna_Exp']);
-            oci_bind_by_name($statement, ':eaZi' ,$_POST['Master_Buletin_An']);  
+            oci_bind_by_name($statement, ':eaZi' ,$_POST['Master_Buletin_An_Exp']);  
 
             oci_bind_by_name($statement, ':mediu_domiciliu', $_POST['group3']);
             oci_bind_by_name($statement, ':tara_domiciliu', $_POST['Master_Tara']);
