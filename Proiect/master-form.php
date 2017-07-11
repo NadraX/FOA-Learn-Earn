@@ -1706,6 +1706,9 @@
 															else
 																if($vMaster_CNP==3)
 																	echo "Dată invalidă(*YYMMDD******)";
+																else
+																	if($vLicenta_CNP==4)
+																		echo "CNP-ul nu corespunde formulei de pe WIKI";
 												}
 												?>
 											</span>

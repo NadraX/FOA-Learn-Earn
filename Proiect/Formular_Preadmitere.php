@@ -651,6 +651,7 @@
 						
 										<span id="initiala" class="form-sub-label-container" style="vertical-align:top;">
 											<label class="form-sub-label"  style="min-height:13px;"> Ini&#355;iala (ele) tat&#259;lui/mamei <span class="info-box" <?php	
+																																										$vPreadmitere_Initiala_Tata = validInitialaTata($v_Preadmitere_Initiala_Tata);
 																																										if($v_Preadmitere_Initiala_Tata!='') 
 																																											if($vPreadmitere_Initiala_Tata!==0) 
 																																												echo 'style="background-color : red;"';
@@ -818,18 +819,19 @@
 										<span  class="form-sub-label-container" style="vertical-align:top; width:25%;padding:0;margin:0;">
 											<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Sex</label>
 											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Preadmitere_Sex" data-component="country">
-												<option name="sexFeminin" value="F" <?php
-																						if($v_Preadmitere_Sex=="F")
-																							echo 'selected';
-																						else
-																							echo '';
-																					?>>Feminin</option>
 												<option name="sexMasculin" value="M" <?php
 																						if($v_Preadmitere_Sex=="M")
 																							echo 'selected';
 																						else
 																							echo '';
 																					?>>Masculin</option>
+												<option name="sexFeminin" value="F" <?php
+																						if($v_Preadmitere_Sex=="F")
+																							echo 'selected';
+																						else
+																							echo '';
+																					?>>Feminin</option>
+												
 											</select>
 										</span>
 									</div> 
@@ -1169,6 +1171,9 @@
 																	else
 																		if($vPreadmitere_CNP==3)
 																			echo "Dată invalidă(*YYMMDD******)";
+																		else
+																			if($vLicenta_CNP==4)
+																				echo "CNP-ul nu corespunde formulei de pe WIKI";
 																	
 													}
 												?>
