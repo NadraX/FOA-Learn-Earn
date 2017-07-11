@@ -16,6 +16,9 @@
     $v_DataMonth=$_POST["dataNasteriiMonth"];
     $v_DataYear=$_POST["dataNasteriiYear"];
 
+    $v_Numarul_Chitantei=$_POST["chitantaNr"];
+    $v_Suma=$_POST["suma"];
+
     $v_Numele_De_Familie=$_POST["numeDeFamilie"];
     $v_Numele_De_Familie_Actual=$_POST["numeDeFamilieActual"];
     $v_Prenume=$_POST["prenume"];
@@ -30,7 +33,7 @@
     //$v_nrDeTelefon=$_POST["nrDeTelefon"];
     //$v_email=$_POST["email"];
     $v_cnp=$_POST["cnp"];
-    //$v_tipBuletin=$_POST["tipBuletin"];
+    $v_tipAct=$_POST["tipAct"];
     $v_serieBuletin=$_POST["serieBuletin"];
     $v_nrBuletin=$_POST["nrBuletin"];
     $v_eliberatDe=$_POST["eliberatDe"];
@@ -44,6 +47,8 @@
     $v_tara_Liceu=$_POST["taraLiceu"];
     //$v_codPostal=$_POST["codPostal"];
 
+    updateNrChitantei($v_idFormular,$v_Numarul_Chitantei);
+    updateSuma($v_idFormular,$v_Suma);
 
     updateNumeNastere($v_idFormular,$v_Numele_De_Familie);
     updateNumeActual($v_idFormular,$v_Numele_De_Familie_Actual);
@@ -59,7 +64,7 @@
     //updateTelefon($v_idFormular,$v_nrDeTelefon);
     //updateEmail($v_idFormular,$v_email);
     updateCNP($v_idFormular,$v_cnp);
-    //updateTipBuletin($v_idFormular,$v_tipBuletin);
+    updateTipAct($v_idFormular,$v_tipAct);
     updateSerieBuletin($v_idFormular,$v_serieBuletin);
     updateNumarBuletin($v_idFormular,$v_nrBuletin);
     updateBuletinEliberatDe($v_idFormular,$v_eliberatDe);

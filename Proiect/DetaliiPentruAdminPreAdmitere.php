@@ -261,44 +261,41 @@
                 <div class="col-md-12" style="margin-top:20px; ">
 
                     <div class="col-md-6 ">
-
-                        <div class="align-center">
-
-                            <span class="col-md-12 sub-title">
-
-                                <br>Taxa de &#238;nscriere
-
-                            </span>
-
-                        </div>
-                        
-                        <label class="marg-t10">Chitața nr.</label><input name="chitantaNr" class="form-control" value=""/>
-                        
-                        <label class="marg-t10">Suma</label><input name="suma" class="form-control" value=""/>
-                        
-                        <div class="align-center">
-
-                            <span class="col-md-12 sub-title">
-
-                                <br>Date personale ale candidatului cu cetăţenie română/ UE/ SEE
-
-                            </span>
-
-                        </div>
-
-                        <div class="col-md-12" style="font-size:17px;">
-
                         <?php
-                        error_reporting(E_ERROR);
+                        /*error_reporting(E_ERROR);
                         error_reporting(0);
                         error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-                        $id_formular=$_POST['id_formular'];
+                        $id_formular=$_POST['id_formular'];*/
 
+                      echo '<div class="align-center">
 
+                                <span class="col-md-12 sub-title">
 
-                        echo '<label>Numele de familie (din certificatul de naștere)</label><input name="numeDeFamilie" class="form-control" value="'.getNumeNastere($id_formular).'"/>
+                                    <br>Taxa de &#238;nscriere
+
+                                </span>
+
+                            </div>
+
+                            <label class="marg-t10">Chitanța nr.</label><input name="chitantaNr" class="form-control" value="'.getChitantaNr($id_formular).'"/>
+
+                            <label class="marg-t10">Suma</label><input name="suma" class="form-control" value="'.getSuma($id_formular).'"/>
+
+                            <div class="align-center">
+
+                                <span class="col-md-12 sub-title">
+
+                                    <br>Date personale ale candidatului cu cetăţenie română/ UE/ SEE
+
+                                </span>
+
+                            </div>
+
+                            <div class="col-md-12" style="font-size:17px;">
+
+                            <label>Numele de familie (din certificatul de naștere)</label><input name="numeDeFamilie" class="form-control" value="'.getNumeNastere($id_formular).'"/>
                         
-                           <label class="marg-t10">Numele de familie actual (după căsătorie, înfiere, modificare la cerere conform actului doveditor, dacă este cazul)</label><input name="numeDeFamilieActual" class="form-control" value="'.getNumeActual($id_formular).'"/>
+                            <label class="marg-t10">Numele de familie actual</label><input name="numeDeFamilieActual" class="form-control" value="'.getNumeActual($id_formular).'"/>
 
                             <label class="marg-t10">Prenume:</label><input name="prenume" class="form-control" value="'.getPrenume($id_formular).'" />
 
@@ -331,14 +328,6 @@
 
                             <label class="marg-t10">Limba matern&#259;: </label><input name="limbaMaterna" class="form-control" value="'.getLimbaMaterna($id_formular).'" />
 
-                                             
-
-                            
-                             
-
-                        
-
-
                         </div>
 
                     </div>
@@ -349,7 +338,7 @@
 
                             <span class="col-md-12 sub-title">
 
-                                <br>Adresa candidatului
+                                <br>Domiciliul candidatului
 
                             </span>
 
@@ -372,14 +361,14 @@
                         </div>
                             <div class="col-md-12" style="font-size:17px; margin-bottom:45px;">
                             
-                            <label>Tip act:</label><input name="tipAct" class="form-control" value="" />
+                            <label>Tip act:</label><input name="tipAct" class="form-control" value="'.getTipAct($id_formular).'" />
                         
                             <label>CNP:</label><input name="cnp" class="form-control" value="'.getCNP($id_formular).'" />
 
 
-                            <label class="marg-t10">Serie Buletin: </label><input name="serieBuletin" class="form-control" value="'.getSerieBuletin($id_formular).'" />
+                            <label class="marg-t10">Serie act: </label><input name="serieBuletin" class="form-control" value="'.getSerieBuletin($id_formular).'" />
 
-                            <label class="marg-t10">Num&#259;r Buletin: </label><input name="nrBuletin" class="form-control" value="'.getNumarBuletin($id_formular).'" />
+                            <label class="marg-t10">Num&#259;r act: </label><input name="nrBuletin" class="form-control" value="'.getNumarBuletin($id_formular).'" />
 
                             <label class="marg-t10">Eliberat de: </label><input name="eliberatDe" class="form-control" value="'.getBuletinEliberatDe($id_formular).'" />
 

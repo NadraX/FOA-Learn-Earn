@@ -1,11 +1,29 @@
 <?php
 
+function updateNrChitantei($id_formular,$nume)
+{
 
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, "UPDATE Formular_preadmitere
+                        SET nr_chitanta='$nume'  where id='$id_formular'");
+    oci_execute($s);
+    oci_close($c);
+}
+
+function updateSuma($id_formular,$nume)
+{
+
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, "UPDATE Formular_preadmitere
+                        SET suma='$nume'  where id='$id_formular'");
+    oci_execute($s);
+    oci_close($c);
+}
 
 function updateNumeNastere($id_formular,$nume)
 {
 
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into date_personale_preadmitere dp
                                 using formular_preadmitere f 
                                 on (f.id=dp.formular_id)
@@ -18,7 +36,7 @@ function updateNumeNastere($id_formular,$nume)
 function updateNumeActual($id_formular,$nume)
 {
 
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into date_personale_preadmitere dp
                                 using formular_preadmitere f 
                                 on (f.id=dp.formular_id)
@@ -30,7 +48,7 @@ function updateNumeActual($id_formular,$nume)
 
 function updatePrenume($id_formular,$prenume)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -45,7 +63,7 @@ function updatePrenume($id_formular,$prenume)
 
 function updateInitialaTata($id_formular,$initialaTata)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -60,7 +78,7 @@ function updateInitialaTata($id_formular,$initialaTata)
 
 function updatePrenumeTata($id_formular,$prenumeTata)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -75,7 +93,7 @@ function updatePrenumeTata($id_formular,$prenumeTata)
 
 function updatePrenumeMama($id_formular,$prenumeMama)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -90,7 +108,7 @@ function updatePrenumeMama($id_formular,$prenumeMama)
 
 function updateCetatenie($id_formular,$cetatenie)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -105,7 +123,7 @@ function updateCetatenie($id_formular,$cetatenie)
 
 function updateSex($id_formular,$sex)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -120,7 +138,7 @@ function updateSex($id_formular,$sex)
 
 function updateNationalitate($id_formular,$nationalitate)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -135,7 +153,7 @@ function updateNationalitate($id_formular,$nationalitate)
 
 function updateEtnie($id_formular,$etnie)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -149,7 +167,7 @@ function updateEtnie($id_formular,$etnie)
 }
 function updateLimbaMaterna($id_formular,$limbaMaterna)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -164,7 +182,7 @@ function updateLimbaMaterna($id_formular,$limbaMaterna)
 /*
 function updateTelefon($id_formular,$telefon)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -179,7 +197,7 @@ function updateTelefon($id_formular,$telefon)
 
 function updateEmail($id_formular,$email)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -194,7 +212,7 @@ function updateEmail($id_formular,$email)
 */
 function updateDataNasterii($id_formular,$dataDay,$dataMonth,$dataYear)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -211,7 +229,7 @@ function updateDataNasterii($id_formular,$dataDay,$dataMonth,$dataYear)
 
 function updateCNP($id_formular,$cnp)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -224,30 +242,30 @@ function updateCNP($id_formular,$cnp)
 
 }
 
-/*
-function updateTipBuletin($id_formular,$tipBuletin)
+
+function updateTipAct($id_formular,$tipAct)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
                                                  when matched then
-                                                 update set dp.tip_buletin='$tipBuletin'
+                                                 update set dp.tip_act_ident='$tipAct'
                                                  where f.id='$id_formular' ");
 
     oci_execute($s);
     oci_close($c);
 
 }
-*/
+
 function updateSerieBuletin($id_formular,$serieBuletin)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
                                                  when matched then
-                                                 update set dp.serie_ci='$serieBuletin'
+                                                 update set dp.serie_act='$serieBuletin'
                                                  where f.id='$id_formular' ");
 
     oci_execute($s);
@@ -257,12 +275,12 @@ function updateSerieBuletin($id_formular,$serieBuletin)
 
 function updateNumarBuletin($id_formular,$numarBuletin)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
                                                  when matched then
-                                                 update set dp.numar_ci='$numarBuletin'
+                                                 update set dp.numar_act='$numarBuletin'
                                                  where f.id='$id_formular' ");
 
     oci_execute($s);
@@ -272,7 +290,7 @@ function updateNumarBuletin($id_formular,$numarBuletin)
 
 function updateBuletinEliberatDe($id_formular,$buletinEliberatDe)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -287,7 +305,7 @@ function updateBuletinEliberatDe($id_formular,$buletinEliberatDe)
 
 function updateDataEliberareBuletin($id_formular,$dataEliberareDay,$dataEliberareMonth,$dataEliberareYear)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -302,7 +320,7 @@ function updateDataEliberareBuletin($id_formular,$dataEliberareDay,$dataEliberar
 
 function updateDataExpirareBuletin($id_formular,$dataExpirareDay,$dataExpirareMonth,$dataExpirareYear)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -318,7 +336,7 @@ function updateDataExpirareBuletin($id_formular,$dataExpirareDay,$dataExpirareMo
 /*
 function updateStada($id_formular,$strada)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -333,7 +351,7 @@ function updateStada($id_formular,$strada)
 
 function updateNrStada($id_formular,$nrStrada)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -348,7 +366,7 @@ function updateNrStada($id_formular,$nrStrada)
 
 function updateNrBloc($id_formular,$nrBloc)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -363,7 +381,7 @@ function updateNrBloc($id_formular,$nrBloc)
 
 function updateApartament($id_formular,$apartament)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -379,7 +397,7 @@ function updateApartament($id_formular,$apartament)
 
 function updateMaterieTest($id_formular,$materieTest)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " update formular_preadmitere  set optiune_test_scris='$materieTest'
                                                  where id='$id_formular' ");
 
@@ -390,7 +408,7 @@ function updateMaterieTest($id_formular,$materieTest)
 
 function updateNumeLiceu($id_formular,$numeLiceu)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -405,7 +423,7 @@ function updateNumeLiceu($id_formular,$numeLiceu)
 /*
 function updateCodPostal($id_formular,$codPostal)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -420,7 +438,7 @@ function updateCodPostal($id_formular,$codPostal)
 */
 function updateLocalitateNastere($id_formular,$localitate)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -435,7 +453,7 @@ function updateLocalitateNastere($id_formular,$localitate)
 
 function updateJudetNastere($id_formular,$judet)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -450,7 +468,7 @@ function updateJudetNastere($id_formular,$judet)
 
 function updateTaraNastere($id_formular,$tara)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -465,7 +483,7 @@ function updateTaraNastere($id_formular,$tara)
 
 function updateLocalitateLiceu($id_formular,$localitate)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -480,7 +498,7 @@ function updateLocalitateLiceu($id_formular,$localitate)
 
 function updateJudetLiceu($id_formular,$judet)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -495,7 +513,7 @@ function updateJudetLiceu($id_formular,$judet)
 
 function updateTaraLiceu($id_formular,$tara)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " merge into  date_personale_preadmitere dp
                                                  using formular_preadmitere f 
                                                  on (f.id=dp.formular_id)
@@ -510,7 +528,7 @@ function updateTaraLiceu($id_formular,$tara)
 
 function validare($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " update formular_preadmitere set stare=1 where id='$id_formular' ");
 
     oci_execute($s);
@@ -520,7 +538,7 @@ function validare($id_formular)
 
 function respingere($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, "update formular_preadmitere set stare=-1 where id='$id_formular'");
 
     oci_execute($s);

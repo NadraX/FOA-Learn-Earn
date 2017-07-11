@@ -133,7 +133,7 @@
 
 
 
-    <title>Administrator</title>
+    <title>Administrare</title>
 
 </head>
 
@@ -194,7 +194,7 @@
         <div style="display: inline-flex;" class="col-md-10">
 
             <img class="icon-admin" src="imagini/admin-logo.png">
-            <h1><span aria-hidden=true> Administra&#355;ie</span></h1>
+            <h1><span aria-hidden=true> Administrare</span></h1>
 
         </div>
 
@@ -345,7 +345,7 @@
 
                         throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
                     });
-                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
 
                     $sql="select * from  date_personale_preadmitere";
 
@@ -364,17 +364,17 @@
                         echo '<form action="DetaliiPentruAdminPreAdmitere.php" method="post">';
                         echo '<tr>';
                         echo ' <th scope="row">'.$i.'</th>';
-                       echo '<td>'.$row['NUME_FAMILIE_ACTUAL'].'</td>';
+                        echo '<td>'.$row['NUME_FAMILIE_ACTUAL'].'</td>';
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
                         echo '</td>';
                         echo '</tr>';
-                       echo ' <input type="hidden" name="id_formular" value='.$row['ID'].' />';
+                        echo ' <input type="hidden" name="id_formular" value='.$row['ID'].' />';
                         echo '</form>';
 
                         $i++;
@@ -464,7 +464,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
