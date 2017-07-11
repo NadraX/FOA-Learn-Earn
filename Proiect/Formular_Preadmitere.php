@@ -3131,7 +3131,7 @@
     $password = 'ADMITERE1';
     $connection_string = 'localhost/xe';
 
-    $connection = oci_connect($username, $password, $connection_string);
+    $connection = oci_connect($username, $password, $connection_string, 'AL32UTF8');
 
     if(!$connection)
       echo "Connection failed. Please try again";
