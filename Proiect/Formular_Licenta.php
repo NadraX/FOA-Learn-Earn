@@ -1274,19 +1274,38 @@
 										</span>
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Judeţul în care v-aţi născut</label>
-											<select class="form-dropdown form-address-country gen" name="Licenta_Judet_Nastere" >
-												<?php
-													$array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
-													$v_Licenta_Judet_Nastere=$_POST["Licenta_Judet_Nastere"];
-													for($i=0;$i<41;$i++)
+											<input type="text" class="form-dropdown form-address-country liceu" name="Licenta_Judet_Nastere" data-component="country" list="JudetNastere" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Licenta_Judet_Nastere = $_POST["Licenta_Judet_Nastere"];
+																																															echo $v_Licenta_Judet_Nastere;
+																																														} 
+																																													?>'>
+											<datalist id="JudetNastere" >
+											<?php
+													$array=array("Alba","Arad","Argeș","Bacău","Bihor","Bistrița-Năsăud","Botoșani","Brăila","Brașov","București","Buzău","Călărași","Caraș-Severin","Cluj","Constanța","Covasna","Dâmbovița","Galați","Giurgiu","Gorj","Harghita","Hunedoara","Ialomița","Iași","Ilfov","Maramureș","Mehedinți","Mureș","Neamț","Olt","Prahova","Sălaj","Satu Mare","Sibiu","Suceava","Teleorman","Timișoara","Tulcea","Vâlcea","Vaslui","Vrancea","Bălți","Cahul","Chișinău","Edineț","Găgăuzia","Lăpușna","Orhei","Taraclia","Tighina","Ungheni","Soroca");
+													for($i=0;$i<52;$i++)
 													{
 														echo '<option value="'.$array[$i].'" ';
-														if($v_Licenta_Judet_Nastere==$array[$i])
-															echo 'selected';
-														echo '> '.$array[$i].' </option>';
+																						echo '> '.$array[$i].' </option>';
 													}
 												?>
-											</select>
+											</datalist>
+											<span style="color:red">
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Licenta_Judet_Nastere = $_POST["Licenta_Judet_Nastere"];
+														$vLicenta_Judet_Nastere=validNume($v_Licenta_Judet_Nastere);
+														if($vLicenta_Judet_Nastere==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vLicenta_Judet_Nastere==1)
+																echo "C&#226;mpul conține caractere nepermise!";
+															else
+																if($vLicenta_Judet_Nastere==2)
+																	echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+													}
+												?>
+											</span>
 										</span>
             
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
@@ -2172,19 +2191,38 @@
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:24%">
 														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Jude&#355; </label>
-														<select class="form-dropdown form-address-country gen" name="Licenta_Judet"  data-component="country">
-															<?php
-																$v_Licenta_Judet=$_POST["Licenta_Judet"];
-																$array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
-																for($i=0;$i<41;$i++)
+														<input type="text" class="form-dropdown form-address-country liceu" name="Licenta_Judet" data-component="country" list="JudetStabil" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Licenta_Judet = $_POST["Licenta_Judet"];
+																																															echo $v_Licenta_Judet;
+																																														} 
+																																													?>'>
+														<datalist id="JudetStabil" >
+														<?php
+																$array=array("Alba","Arad","Argeș","Bacău","Bihor","Bistrița-Năsăud","Botoșani","Brăila","Brașov","București","Buzău","Călărași","Caraș-Severin","Cluj","Constanța","Covasna","Dâmbovița","Galați","Giurgiu","Gorj","Harghita","Hunedoara","Ialomița","Iași","Ilfov","Maramureș","Mehedinți","Mureș","Neamț","Olt","Prahova","Sălaj","Satu Mare","Sibiu","Suceava","Teleorman","Timișoara","Tulcea","Vâlcea","Vaslui","Vrancea","Bălți","Cahul","Chișinău","Edineț","Găgăuzia","Lăpușna","Orhei","Taraclia","Tighina","Ungheni","Soroca");
+																for($i=0;$i<52;$i++)
 																{
 																	echo '<option value="'.$array[$i].'" ';
-																	if($v_Licenta_Judet==$array[$i])
-																		echo 'selected';
-																	echo '> '.$array[$i].' </option>';
+																									echo '> '.$array[$i].' </option>';
 																}
 															?>
-														</select>
+														</datalist>
+														<span style="color:red">
+															<?php
+																if(isset($_POST['Submit'])) {
+																	$v_Licenta_Judet = $_POST["Licenta_Judet"];
+																	$vLicenta_Judet=validNume($v_Licenta_Judet);
+																	if($vLicenta_Judet==-1)
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vLicenta_Judet==1)
+																			echo "C&#226;mpul conține caractere nepermise!";
+																		else
+																			if($vLicenta_Judet==2)
+																				echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																}
+															?>
+														</span>
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:24%">
 														<label class="form-sub-label"  id="sublabel_3_postal" style="min-height:13px;"> Cod po&#351;tal</label>
@@ -3939,21 +3977,38 @@
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Jude&#355; </label>
-														<select class="form-dropdown form-address-country gen" name="Licenta_Judet_Liceu" value="<?php
-																																					echo $_POST["Licenta_Judet_Liceu"];
-																																				?>" data-component="country">
-															<?php
-																$array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
-																$v_Licenta_Judet_Liceu=$_POST["Licenta_Judet_Liceu"];
-																for($i=0;$i<41;$i++)
+														<input type="text" class="form-dropdown form-address-country liceu" name="Licenta_Judet_Liceu" data-component="country" list="JudetLicenta" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Licenta_Judet_Liceu = $_POST["Licenta_Judet_Liceu"];
+																																															echo $v_Licenta_Judet_Liceu;
+																																														} 
+																																													?>'>
+														<datalist id="JudetLicenta" >
+														<?php
+																$array=array("Alba","Arad","Argeș","Bacău","Bihor","Bistrița-Năsăud","Botoșani","Brăila","Brașov","București","Buzău","Călărași","Caraș-Severin","Cluj","Constanța","Covasna","Dâmbovița","Galați","Giurgiu","Gorj","Harghita","Hunedoara","Ialomița","Iași","Ilfov","Maramureș","Mehedinți","Mureș","Neamț","Olt","Prahova","Sălaj","Satu Mare","Sibiu","Suceava","Teleorman","Timișoara","Tulcea","Vâlcea","Vaslui","Vrancea","Bălți","Cahul","Chișinău","Edineț","Găgăuzia","Lăpușna","Orhei","Taraclia","Tighina","Ungheni","Soroca");
+																for($i=0;$i<52;$i++)
 																{
 																	echo '<option value="'.$array[$i].'" ';
-																	if($v_Licenta_Judet_Liceu==$array[$i])
-																		echo 'selected';
-																	echo '> '.$array[$i].' </option>';
+																									echo '> '.$array[$i].' </option>';
 																}
 															?>
-														</select>
+														</datalist>
+														<span style="color:red">
+															<?php
+																if(isset($_POST['Submit'])) {
+																	$v_Licenta_Judet_Liceu = $_POST["Licenta_Judet_Liceu"];
+																	$vLicenta_Judet_Liceu=validNume($v_Licenta_Judet_Liceu);
+																	if($vLicenta_Judet_Liceu==-1)
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vLicenta_Judet_Liceu==1)
+																			echo "C&#226;mpul conține caractere nepermise!";
+																		else
+																			if($vLicenta_Judet_Liceu==2)
+																				echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																}
+															?>
+														</span>
 													</span>
 												  
 													<span class="form-sub-label-container" style="vertical-align:top; width:32%">
@@ -4828,19 +4883,39 @@
 														</span>
 														<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 															<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Jude&#355; </label>
-															<select class="form-dropdown form-address-country gen" name="Licenta_Judet_AltaFacultate"  data-component="country">
-																<?php
-																	$v_Licenta_Judet_AltaFacultate=$_POST["Licenta_Judet_AltaFacultate"];
-																	$array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
-																	for($i=0;$i<41;$i++)
+															
+															<input type="text" class="form-dropdown form-address-country liceu" name="Licenta_Judet_AltaFacultate" data-component="country" list="JudetAltaFacultate" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Licenta_Judet_AltaFacultate = $_POST["Licenta_Judet_AltaFacultate"];
+																																															echo $v_Licenta_Judet_AltaFacultate;
+																																														} 
+																																													?>'>
+															<datalist id="JudetAltaFacultate" >
+															<?php
+																	$array=array("Alba","Arad","Argeș","Bacău","Bihor","Bistrița-Năsăud","Botoșani","Brăila","Brașov","București","Buzău","Călărași","Caraș-Severin","Cluj","Constanța","Covasna","Dâmbovița","Galați","Giurgiu","Gorj","Harghita","Hunedoara","Ialomița","Iași","Ilfov","Maramureș","Mehedinți","Mureș","Neamț","Olt","Prahova","Sălaj","Satu Mare","Sibiu","Suceava","Teleorman","Timișoara","Tulcea","Vâlcea","Vaslui","Vrancea","Bălți","Cahul","Chișinău","Edineț","Găgăuzia","Lăpușna","Orhei","Taraclia","Tighina","Ungheni","Soroca");
+																	for($i=0;$i<52;$i++)
 																	{
 																		echo '<option value="'.$array[$i].'" ';
-																		if($v_Licenta_Judet_AltaFacultate==$array[$i])
-																			echo 'selected';
-																		echo '> '.$array[$i].' </option>';
+																										echo '> '.$array[$i].' </option>';
 																	}
 																?>
-															</select>
+															</datalist>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Licenta_Judet_AltaFacultate = $_POST["Licenta_Judet_AltaFacultate"];
+																		$vLicenta_Judet_AltaFacultate=validNume($v_Licenta_Judet_AltaFacultate);
+																		if($vLicenta_Judet_AltaFacultate==-1)
+																			echo "C&#226;mp necompletat!";
+																		else
+																			if($vLicenta_Judet_AltaFacultate==1)
+																				echo "C&#226;mpul conține caractere nepermise!";
+																			else
+																				if($vLicenta_Judet_AltaFacultate==2)
+																					echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																	}
+																?>
+															</span>
 														</span>
 												
 														<span class="form-sub-label-container" style="vertical-align:top; width:32%">
@@ -5251,19 +5326,38 @@
 														</span>
 														<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 															<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Jude&#355; </label>
-															<select class="form-dropdown form-address-country gen" name="Licenta_AbsolventLicenta_Judet_AltaFacultate"  data-component="country">
-																<?php
-																	$array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
-																	$v_Licenta_AbsolventLicenta_Judet_AltaFacultate=$_POST["Licenta_AbsolventLicenta_Judet_AltaFacultate"];
-																	for($i=0;$i<41;$i++)
+															<input type="text" class="form-dropdown form-address-country liceu" name="Licenta_AbsolventLicenta_Judet_AltaFacultate" data-component="country" list="JudetLicentaAbsolvita" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Licenta_AbsolventLicenta_Judet_AltaFacultate = $_POST["Licenta_AbsolventLicenta_Judet_AltaFacultate"];
+																																															echo $v_Licenta_AbsolventLicenta_Judet_AltaFacultate;
+																																														} 
+																																													?>'>
+															<datalist id="JudetLicentaAbsolvita" >
+															<?php
+																	$array=array("Alba","Arad","Argeș","Bacău","Bihor","Bistrița-Năsăud","Botoșani","Brăila","Brașov","București","Buzău","Călărași","Caraș-Severin","Cluj","Constanța","Covasna","Dâmbovița","Galați","Giurgiu","Gorj","Harghita","Hunedoara","Ialomița","Iași","Ilfov","Maramureș","Mehedinți","Mureș","Neamț","Olt","Prahova","Sălaj","Satu Mare","Sibiu","Suceava","Teleorman","Timișoara","Tulcea","Vâlcea","Vaslui","Vrancea","Bălți","Cahul","Chișinău","Edineț","Găgăuzia","Lăpușna","Orhei","Taraclia","Tighina","Ungheni","Soroca");
+																	for($i=0;$i<52;$i++)
 																	{
 																		echo '<option value="'.$array[$i].'" ';
-																		if($v_Licenta_AbsolventLicenta_Judet_AltaFacultate==$array[$i])
-																			echo 'selected';
-																		echo '> '.$array[$i].' </option>';
+																										echo '> '.$array[$i].' </option>';
 																	}
 																?>
-															</select>
+															</datalist>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Licenta_AbsolventLicenta_Judet_AltaFacultate = $_POST["Licenta_AbsolventLicenta_Judet_AltaFacultate"];
+																		$vLicenta_AbsolventLicenta_Judet_AltaFacultate=validNume($v_Licenta_AbsolventLicenta_Judet_AltaFacultate);
+																		if($vLicenta_AbsolventLicenta_Judet_AltaFacultate==-1)
+																			echo "C&#226;mp necompletat!";
+																		else
+																			if($vLicenta_AbsolventLicenta_Judet_AltaFacultate==1)
+																				echo "C&#226;mpul conține caractere nepermise!";
+																			else
+																				if($vLicenta_AbsolventLicenta_Judet_AltaFacultate==2)
+																					echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																	}
+																?>
+															</span>
 														</span>
 												
 														<span class="form-sub-label-container" style="vertical-align:top; width:32%">

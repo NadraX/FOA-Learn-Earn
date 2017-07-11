@@ -1412,19 +1412,39 @@
 										</span>
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Judeţul în care v-aţi născut</label>
-											<select class="form-dropdown form-address-country gen" name="Master_Judet_Nastere" >
-												<?php
-													$array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
-													$v_Master_Judet_Nastere=$_POST["Master_Judet_Nastere"];
-													for($i=0;$i<41;$i++)
+
+											<input type="text" class="form-dropdown form-address-country liceu" name="Master_Judet_Nastere" data-component="country" list="JudetNastere" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Master_Judet_Nastere = $_POST["Master_Judet_Nastere"];
+																																															echo $v_Master_Judet_Nastere;
+																																														} 
+																																													?>'>
+											<datalist id="JudetNastere" >
+											<?php
+													$array=array("Alba","Arad","Argeș","Bacău","Bihor","Bistrița-Năsăud","Botoșani","Brăila","Brașov","București","Buzău","Călărași","Caraș-Severin","Cluj","Constanța","Covasna","Dâmbovița","Galați","Giurgiu","Gorj","Harghita","Hunedoara","Ialomița","Iași","Ilfov","Maramureș","Mehedinți","Mureș","Neamț","Olt","Prahova","Sălaj","Satu Mare","Sibiu","Suceava","Teleorman","Timișoara","Tulcea","Vâlcea","Vaslui","Vrancea","Bălți","Cahul","Chișinău","Edineț","Găgăuzia","Lăpușna","Orhei","Taraclia","Tighina","Ungheni","Soroca");
+													for($i=0;$i<52;$i++)
 													{
 														echo '<option value="'.$array[$i].'" ';
-														if($v_Master_Judet_Nastere==$array[$i])
-															echo 'selected';
-														echo '> '.$array[$i].' </option>';
+																						echo '> '.$array[$i].' </option>';
 													}
 												?>
-											</select>
+											</datalist>
+											<span style="color:red">
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Master_Judet_Nastere = $_POST["Master_Judet_Nastere"];
+														$vMaster_Judet_Nastere=validNume($v_Master_Judet_Nastere);
+														if($vMaster_Judet_Nastere==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vMaster_Judet_Nastere==1)
+																echo "C&#226;mpul conține caractere nepermise!";
+															else
+																if($vMaster_Judet_Nastere==2)
+																	echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+													}
+												?>
+											</span>
 										</span>
 								
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
@@ -2353,19 +2373,39 @@
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:24%">
 														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Jude&#355; </label>
-														<select class="form-dropdown form-address-country gen" name="Master_Judet1"  data-component="country">
-															<?php
-																$array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
-																$v_Master_Judet1 = $_POST["Master_Judet1"];
-																for($i=0;$i<41;$i++)
+
+														<input type="text" class="form-dropdown form-address-country liceu" name="Master_Judet1" data-component="country" list="JudetStabil" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Master_Judet1 = $_POST["Master_Judet1"];
+																																															echo $v_Master_Judet1;
+																																														} 
+																																													?>'>
+														<datalist id="JudetStabil" >
+														<?php
+																$array=array("Alba","Arad","Argeș","Bacău","Bihor","Bistrița-Năsăud","Botoșani","Brăila","Brașov","București","Buzău","Călărași","Caraș-Severin","Cluj","Constanța","Covasna","Dâmbovița","Galați","Giurgiu","Gorj","Harghita","Hunedoara","Ialomița","Iași","Ilfov","Maramureș","Mehedinți","Mureș","Neamț","Olt","Prahova","Sălaj","Satu Mare","Sibiu","Suceava","Teleorman","Timișoara","Tulcea","Vâlcea","Vaslui","Vrancea","Bălți","Cahul","Chișinău","Edineț","Găgăuzia","Lăpușna","Orhei","Taraclia","Tighina","Ungheni","Soroca");
+																for($i=0;$i<52;$i++)
 																{
 																	echo '<option value="'.$array[$i].'" ';
-																	if($v_Master_Judet1==$array[$i])
-																		echo 'selected';
-																	echo '> '.$array[$i].' </option>';
+																									echo '> '.$array[$i].' </option>';
 																}
 															?>
-														</select>
+														</datalist>
+														<span style="color:red">
+															<?php
+																if(isset($_POST['Submit'])) {
+																	$v_Master_Judet1 = $_POST["Master_Judet1"];
+																	$vMaster_Judet1=validNume($v_Master_Judet1);
+																	if($vMaster_Judet1==-1)
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vMaster_Judet1==1)
+																			echo "C&#226;mpul conține caractere nepermise!";
+																		else
+																			if($vMaster_Judet1==2)
+																				echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																}
+															?>
+														</span>
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:24%">
 														<label class="form-sub-label"  id="sublabel_3_postal" style="min-height:13px;"> Cod po&#351;tal</label>
@@ -4054,19 +4094,39 @@
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Jude&#355; </label>
-														<select class="form-dropdown form-address-country gen" name="Master_Judet"  data-component="country">
-															<?php
-																$array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
-																$v_Master_Judet = $_POST["Master_Judet"];
-																for($i=0;$i<41;$i++)
+														
+														<input type="text" class="form-dropdown form-address-country liceu" name="Master_Judet" data-component="country" list="JudetLiceuAbs" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Master_Judet = $_POST["Master_Judet"];
+																																															echo $v_Master_Judet;
+																																														} 
+																																													?>'>
+														<datalist id="JudetLiceuAbs" >
+														<?php
+																$array=array("Alba","Arad","Argeș","Bacău","Bihor","Bistrița-Năsăud","Botoșani","Brăila","Brașov","București","Buzău","Călărași","Caraș-Severin","Cluj","Constanța","Covasna","Dâmbovița","Galați","Giurgiu","Gorj","Harghita","Hunedoara","Ialomița","Iași","Ilfov","Maramureș","Mehedinți","Mureș","Neamț","Olt","Prahova","Sălaj","Satu Mare","Sibiu","Suceava","Teleorman","Timișoara","Tulcea","Vâlcea","Vaslui","Vrancea","Bălți","Cahul","Chișinău","Edineț","Găgăuzia","Lăpușna","Orhei","Taraclia","Tighina","Ungheni","Soroca");
+																for($i=0;$i<52;$i++)
 																{
 																	echo '<option value="'.$array[$i].'" ';
-																	if($v_Master_Judet==$array[$i])
-																		echo 'selected';
-																	echo '> '.$array[$i].' </option>';
+																									echo '> '.$array[$i].' </option>';
 																}
 															?>
-														</select>
+														</datalist>
+														<span style="color:red">
+															<?php
+																if(isset($_POST['Submit'])) {
+																	$v_Master_Judet = $_POST["Master_Judet"];
+																	$vMaster_Judet=validNume($v_Master_Judet);
+																	if($vMaster_Judet==-1)
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vMaster_Judet==1)
+																			echo "C&#226;mpul conține caractere nepermise!";
+																		else
+																			if($vMaster_Judet==2)
+																				echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																}
+															?>
+														</span>
 													</span>
 										  
 													<span class="form-sub-label-container" style="vertical-align:top; width:32%">
@@ -4918,19 +4978,39 @@
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 														<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Jude&#355; </label>
-														<select class="form-dropdown form-address-country gen" name="Master_Judet_AltaFacultate1"  data-component="country">
-															<?php
-																$v_Master_Judet_AltaFacultate1 = $_POST["Master_Judet_AltaFacultate1"];
-																$array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
-																for($i=0;$i<41;$i++)
+														
+														<input type="text" class="form-dropdown form-address-country liceu" name="Master_Judet_AltaFacultate1" data-component="country" list="JudetLicentaAbs" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Master_Judet_AltaFacultate1 = $_POST["Master_Judet_AltaFacultate1"];
+																																															echo $v_Master_Judet_AltaFacultate1;
+																																														} 
+																																													?>'>
+														<datalist id="JudetLicentaAbs" >
+														<?php
+																$array=array("Alba","Arad","Argeș","Bacău","Bihor","Bistrița-Năsăud","Botoșani","Brăila","Brașov","București","Buzău","Călărași","Caraș-Severin","Cluj","Constanța","Covasna","Dâmbovița","Galați","Giurgiu","Gorj","Harghita","Hunedoara","Ialomița","Iași","Ilfov","Maramureș","Mehedinți","Mureș","Neamț","Olt","Prahova","Sălaj","Satu Mare","Sibiu","Suceava","Teleorman","Timișoara","Tulcea","Vâlcea","Vaslui","Vrancea","Bălți","Cahul","Chișinău","Edineț","Găgăuzia","Lăpușna","Orhei","Taraclia","Tighina","Ungheni","Soroca");
+																for($i=0;$i<52;$i++)
 																{
 																	echo '<option value="'.$array[$i].'" ';
-																	if($v_Master_Judet_AltaFacultate1==$array[$i])
-																		echo 'selected';
-																	echo '> '.$array[$i].' </option>';
+																									echo '> '.$array[$i].' </option>';
 																}
 															?>
-														</select>
+														</datalist>
+														<span style="color:red">
+															<?php
+																if(isset($_POST['Submit'])) {
+																	$v_Master_Judet_AltaFacultate1 = $_POST["Master_Judet_AltaFacultate1"];
+																	$vMaster_Judet_AltaFacultate1=validNume($v_Master_Judet_AltaFacultate1);
+																	if($vMaster_Judet_AltaFacultate1==-1)
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vMaster_Judet_AltaFacultate1==1)
+																			echo "C&#226;mpul conține caractere nepermise!";
+																		else
+																			if($vMaster_Judet_AltaFacultate1==2)
+																				echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																}
+															?>
+														</span>
 													</span>
 											
 													<span class="form-sub-label-container" style="vertical-align:top; width:32%">
@@ -5695,19 +5775,39 @@
 														</span>
 														<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 															<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Jude&#355; </label>
-															<select class="form-dropdown form-address-country gen" name="Master_Judet_AltaFacultate"  data-component="country">
-																<?php
-																	$array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
-																	$v_Master_Judet_AltaFacultate = $_POST["Master_Judet_AltaFacultate"];
-																	for($i=0;$i<41;$i++)
+
+															<input type="text" class="form-dropdown form-address-country liceu" name="Master_Judet_AltaFacultate" data-component="country" list="JudetAltaFacultate" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Master_Judet_AltaFacultate = $_POST["Master_Judet_AltaFacultate"];
+																																															echo $v_Master_Judet_AltaFacultate;
+																																														} 
+																																													?>'>
+															<datalist id="JudetAltaFacultate" >
+															<?php
+																	$array=array("Alba","Arad","Argeș","Bacău","Bihor","Bistrița-Năsăud","Botoșani","Brăila","Brașov","București","Buzău","Călărași","Caraș-Severin","Cluj","Constanța","Covasna","Dâmbovița","Galați","Giurgiu","Gorj","Harghita","Hunedoara","Ialomița","Iași","Ilfov","Maramureș","Mehedinți","Mureș","Neamț","Olt","Prahova","Sălaj","Satu Mare","Sibiu","Suceava","Teleorman","Timișoara","Tulcea","Vâlcea","Vaslui","Vrancea","Bălți","Cahul","Chișinău","Edineț","Găgăuzia","Lăpușna","Orhei","Taraclia","Tighina","Ungheni","Soroca");
+																	for($i=0;$i<52;$i++)
 																	{
 																		echo '<option value="'.$array[$i].'" ';
-																		if($v_Master_Judet_AltaFacultate==$array[$i])
-																			echo 'selected';
-																		echo '> '.$array[$i].' </option>';
+																										echo '> '.$array[$i].' </option>';
 																	}
 																?>
-															</select>
+															</datalist>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Master_Judet_AltaFacultate = $_POST["Master_Judet_AltaFacultate"];
+																		$vMaster_Judet_AltaFacultate=validNume($v_Master_Judet_AltaFacultate);
+																		if($vMaster_Judet_AltaFacultate==-1)
+																			echo "C&#226;mp necompletat!";
+																		else
+																			if($vMaster_Judet_AltaFacultate==1)
+																				echo "C&#226;mpul conține caractere nepermise!";
+																			else
+																				if($vMaster_Judet_AltaFacultate==2)
+																					echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																	}
+																?>
+															</span>
 														</span>
 												
 														<span class="form-sub-label-container" style="vertical-align:top; width:32%">
@@ -6135,19 +6235,39 @@
 														</span>
 														<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 															<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Jude&#355; </label>
-															<select class="form-dropdown form-address-country gen" name="Master_AbsolventMaster_Judet_AltaFacultate"  data-component="country">
-																<?php
-																	$array=array("Alba","Arad","Arges","Bacau","Bihor","BistritaNasaud","Botosani","Braila","Brasov","Bucuresti","Buzau","Calarasi","Caras-Severin","Cluj","Constanta","Covasna","Dambovita","Galati","Giurgiu","Gorj","Harghita","Hunedoara","Ialomita","Iasi","Ilfov","Maramures","Mehedinti","Mures","Neamt","Olt","Prahova","Salaj","Satu Mare","Sibiu","Suceava","Teleorman","Timisoara","Tulcea","Valcea","Vaslui","Vrancea");
-																	$v_Master_AbsolventMaster_Judet_AltaFacultate =$_POST["Master_AbsolventMaster_Judet_AltaFacultate"];
-																	for($i=0;$i<41;$i++)
+
+															<input type="text" class="form-dropdown form-address-country liceu" name="Master_AbsolventMaster_Judet_AltaFacultate" data-component="country" list="JudetAltMaster" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Master_AbsolventMaster_Judet_AltaFacultate = $_POST["Master_AbsolventMaster_Judet_AltaFacultate"];
+																																															echo $v_Master_AbsolventMaster_Judet_AltaFacultate;
+																																														} 
+																																													?>'>
+															<datalist id="JudetAltMaster" >
+															<?php
+																	$array=array("Alba","Arad","Argeș","Bacău","Bihor","Bistrița-Năsăud","Botoșani","Brăila","Brașov","București","Buzău","Călărași","Caraș-Severin","Cluj","Constanța","Covasna","Dâmbovița","Galați","Giurgiu","Gorj","Harghita","Hunedoara","Ialomița","Iași","Ilfov","Maramureș","Mehedinți","Mureș","Neamț","Olt","Prahova","Sălaj","Satu Mare","Sibiu","Suceava","Teleorman","Timișoara","Tulcea","Vâlcea","Vaslui","Vrancea","Bălți","Cahul","Chișinău","Edineț","Găgăuzia","Lăpușna","Orhei","Taraclia","Tighina","Ungheni","Soroca");
+																	for($i=0;$i<52;$i++)
 																	{
 																		echo '<option value="'.$array[$i].'" ';
-																		if($v_Master_AbsolventMaster_Judet_AltaFacultate==$array[$i])
-																			echo 'selected';
-																		echo '> '.$array[$i].' </option>';
+																										echo '> '.$array[$i].' </option>';
 																	}
 																?>
-															</select>
+															</datalist>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Master_AbsolventMaster_Judet_AltaFacultate = $_POST["Master_AbsolventMaster_Judet_AltaFacultate"];
+																		$vMaster_AbsolventMaster_Judet_AltaFacultate=validNume($v_Master_AbsolventMaster_Judet_AltaFacultate);
+																		if($vMaster_AbsolventMaster_Judet_AltaFacultate==-1)
+																			echo "C&#226;mp necompletat!";
+																		else
+																			if($vMaster_AbsolventMaster_Judet_AltaFacultate==1)
+																				echo "C&#226;mpul conține caractere nepermise!";
+																			else
+																				if($vMaster_AbsolventMaster_Judet_AltaFacultate==2)
+																					echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																	}
+																?>
+															</span>
 														</span>
 												
 														<span class="form-sub-label-container" style="vertical-align:top; width:32%">
