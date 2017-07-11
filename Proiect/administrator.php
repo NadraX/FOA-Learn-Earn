@@ -368,7 +368,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -464,7 +464,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        ////echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -558,7 +558,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        ////echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -654,7 +654,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -750,7 +750,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -846,7 +846,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -942,7 +942,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -1039,7 +1039,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -1136,7 +1136,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
