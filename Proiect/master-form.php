@@ -311,8 +311,8 @@
 				left: calc(100% + 5px);
 				bottom: 100%;
 				padding: 10px;
-				background-color: #2d80bf;
-				color: white;
+				background-color: #F0F8FF;
+				color: black;
 				font-size: 12px;
 				border-radius: 5px;
 			}
@@ -1006,7 +1006,7 @@
 																																									else 
 																																										echo "?";
 																																								?> 
-																																								<span class="info-box__content">
+																																								<span class="info-box__content" style="width:275px;">
 																																									Sunteți scutit de taxa de admitere în cazuri precum "copil de cadru de didactic"
 																																									<?php if($vscutire>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																																								</span>
@@ -1049,7 +1049,7 @@
 
 							<li class="form-line" data-type="control_fullname" id="id_1">
 
-								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:larger"> II. Date personale ale candidatului cu cetăţenie română <span class="info-box">?<span class="info-box__content">În măsura în care este posibil, datele personale se vor completa din actul de identitate </span></span></label>
+								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:larger"> II. Date personale ale candidatului cu cetăţenie română <span class="info-box">?<span class="info-box__content" style="width:315px;">În măsura în care este posibil, datele personale se vor completa din actul de identitate </span></span></label>
 
 								<h4 style="color:red;">Informațiile se completează conform certificatului de naștere și actului de identitate.</h4>
 
@@ -1075,7 +1075,7 @@
 																																						else 
 																																							echo "?";
 																																					?> 
-																																					<span class="info-box__content">
+																																					<span class="info-box__content" style="width:235px;">
 																																						Numele de familie din certificatul de naştere.<?php if($vNumele_De_Familie_La_Nastere>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																																					</span>
 																																				</span>
@@ -1120,7 +1120,7 @@
 																																		else 
 																																			echo "?";
 																																	?> 
-																																	<span class="info-box__content">
+																																	<span class="info-box__content" style="width:235px;">
 																																	Numele dupa căsătorie, înfiere, modificare la cerere conform actului doveditor daca este cazul.
 																																	<?php if($vNumele_De_Familie_Actual>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																																	</span>
@@ -1154,8 +1154,30 @@
 										</span>
 											
 										<span id="initiala" class="form-sub-label-container" style="vertical-align:top;">
-
-											<label class="form-sub-label"  style="min-height:13px;"> Ini&#355;iala (ele) tat&#259;lui / mamei </label>
+											<label class="form-sub-label"  style="min-height:13px;"> Ini&#355;iala (ele) tat&#259;lui / mamei 	<span class="info-box" <?php  
+																																											if($v_Master_Initiala_Tata!='') 
+																																												if($vLicenta_Initiala_Tata!==0) 
+																																													echo 'style="background-color : red;"';
+																																										?>> 
+																																					<?php
+																																						if($v_Master_Initiala_Tata!='')
+																																							if($vLicenta_Initiala_Tata!==0) 
+																																								echo "!"; 
+																																							else 
+																																								echo "?"; 
+																																						else 
+																																							echo "?";
+																																					?> 
+																																					<span class="info-box__content"  style="width:255px;">
+																																						Inițialele trebuie să fie urmate de punct și fără spații între ele.
+																																						<?php 
+																																							$vLicenta_Initiala_Tata = validInitialaTata($v_Master_Initiala_Tata);
+																																							if($vLicenta_Initiala_Tata>0) 
+																																								echo "<br><a style=\"color:red\">*Nu ați respectat formatul specificat!</a>"; 
+																																						?> 
+																																					</span>
+																																			  </span>
+											</label>
 
 											<input type="text" name="Master_Initiala_Tata" class="form-textbox middle_1" placeholder="ex: C./C.D." size="10" data-component="middle"  value="<?php 
 																																																if($v_Master_Initiala_Tata == '')
@@ -1676,7 +1698,7 @@
 																												else 
 																													echo "?";
 																											?> 
-																											<span class="info-box__content">
+																											<span class="info-box__content" style="width:370px;">
 																												Codul Numeric Personal cum se găsește în actul de identitate.
 																												Completați cu informațiile de pe adeverința primită de la SPCLEP în cazul în care CI nu mai este validă.
 																												<?php if($vLicenta_CNP>0) echo "<a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
@@ -2463,7 +2485,7 @@
 										<tbody>
 											<tr>
 												<td>
-													<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Solicitați cazare pe timpul studiilor? <span class="info-box">?<span class="info-box__content">Cazare în căminele Universității "Alexandru Ioan Cuza"</span></span> </label>
+													<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Solicitați cazare pe timpul studiilor? <span class="info-box">?<span class="info-box__content" style="width:230px;">Cazare în căminele Universității "Alexandru Ioan Cuza"</span></span> </label>
 													<span style="width:55%">
 														<input type="radio" name="group5" id="checkbox3" class="css-checkbox" value="1" <?php
 																																			if($v_Radio5 == '')
@@ -4398,6 +4420,20 @@
 																																																							?>"  data-component="city" />
 														
 
+														<span style="color:red">
+															<?php 
+																if(isset($_POST['Submit'])) {
+																	$v_Master_AbsolventLicenta_Nr_FoaieMatricola = $_POST["Master_AbsolventLicenta_Nr_FoaieMatricola"];
+																	//if($v_Master_AbsolventLicenta_Nr_FoaieMatricola=='')
+																	//  echo "C&#226;mp necompletat!";
+																	//else
+																	if($v_Master_AbsolventLicenta_Nr_FoaieMatricola!=='')
+																		if(!ctype_digit($v_Master_AbsolventLicenta_Nr_FoaieMatricola))
+																			echo "Caractere nepermise!";
+																}
+															?>
+														</span>
+ 
 													</span>
 												</td>
 											</tr>
@@ -5748,33 +5784,34 @@
 								<div id="AbsolventMaster" style="display:none">
 									<div  class="form-input jf-required cid_1">
 										<div class="general_name" data-wrapper-react="true">
-										<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Anul absolvirii </label>
-															<input type="text"  name="Master_AbsolventMaster_Anul_Absolvirii" style="width: 20%" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2015" value="<?php
-                                                   if($v_Master_AbsolventMaster_Durata_Studii == '')
-                                                    echo '';
-                                                   else
-                                                    echo $v_Master_AbsolventMaster_Durata_Studii;
-                                                  ?>">
-															<br>
+											<span class="form-sub-label-container" style="vertical-align:top;  height: 40px; width:50%;">
+												<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Anul absolvirii </label>
+												<input type="text"  name="Master_AbsolventMaster_Anul_Absolvirii" style="width: 20%" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2015" value="<?php
+																																																								if($v_Master_AbsolventMaster_Durata_Studii == '')
+																																																									echo '';
+																																																								else
+																																																									echo $v_Master_AbsolventMaster_Durata_Studii;
+																																																							?>">
+												<br>
 
-															<span style="color:red">
-									               <?php 
-									                if(isset($_POST['Submit'])) {
-									                 $v_Master_An_Absolvire = $_POST["Master_AbsolventMaster_Anul_Absolvirii"];
-									                 $vMaster_An_Absolvire = validareAn($v_Master_An_Absolvire);
-									               //  if($vLicenta_An_Liceu==-1)
-									               //   echo "C&#226;mp necompletat!";
-									              //   else
-									                  if($vMaster_An_Absolvire==1)
-									                   echo "Caractere nepermise!";
-									                  else
-									                   if($vMaster_An_Absolvire==2)
-									                    echo "An incorect!";
-									                }
-									               ?>
-									              </span>
-
-									              <br>
+												<span style="color:red">
+													<?php 
+														if(isset($_POST['Submit'])) {
+															$v_Master_An_Absolvire = $_POST["Master_AbsolventMaster_Anul_Absolvirii"];
+															$vMaster_An_Absolvire = validareAn($v_Master_An_Absolvire);
+															if($vLicenta_An_Liceu==-1)
+															   	echo "C&#226;mp necompletat!";
+															else
+																if($vMaster_An_Absolvire==1)
+																	echo "Caractere nepermise!";
+																else
+																	if($vMaster_An_Absolvire==2)
+																		echo "An incorect!";
+														}
+													?>
+												</span>
+											</span>
+									         <br><br><br>
 
 											<span class="form-sub-label-container" style="vertical-align:top;  height: 40px; width:50%;">
 												<label class="form-sub-label sublabel_first" style="min-height:13px;"> Denumirea instituţiei de învăţământ superior </label>
@@ -6394,9 +6431,7 @@
 																		if(isset($_POST['Submit'])) {
 																			if($v_Radio24==1 && $v_Radio23==1) {
 																				$v_Master_DiplomaMaster_Nr_FoaieMatricola = $_POST["Master_DiplomaMaster_Nr_FoaieMatricola"];
-																				if($v_Master_DiplomaMaster_Nr_FoaieMatricola=='')
-																					echo "C&#226;mp necompletat!";
-																				else
+																				if($v_Master_DiplomaMaster_Nr_FoaieMatricola!=='')
 																					if(!ctype_digit($v_Master_DiplomaMaster_Nr_FoaieMatricola))
 																						echo "Caractere nepermise!";
 																			}
