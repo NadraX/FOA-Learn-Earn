@@ -467,7 +467,7 @@
 
 					<li class="scurt"><a href="DespreFII.html">FII</a></li>
 
-					<li><a href="paginaAdmitere.html">Admitere</a></li>
+					<li><a href="paginaAdmitere.php">Admitere</a></li>
 
 				</ul>
 
@@ -501,7 +501,7 @@
 
 					<li class="tog2"><a href="DespreFII.html">Despre FII</a></li>  
 
-					<li class="tog2"><a href="paginaAdmitere.html">Admitere</a></li>
+					<li class="tog2"><a href="paginaAdmitere.php">Admitere</a></li>
 
 					<li class="tog2"><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
 
@@ -8942,7 +8942,7 @@
 				<p class="footer-links">
 					<a href="DespreFII.html">Despre FII</a>
 					·
-					<a href="paginaAdmitere.html">Admitere</a>
+					<a href="paginaAdmitere.php">Admitere</a>
 					·
 					<a href="IntrebariFrecvente.html">&#206;ntrebari frecvente</a>
 					·
