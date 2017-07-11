@@ -220,7 +220,10 @@
                 
                 <form  method="post" action="pdf_preadmitere.php">
                     
-                    <input type="hidden" name="id_formular" value="1">
+                    <input type="hidden" name="id_formular" value="<?php
+                    $id_formular_pdf = $_POST['id_formular'];
+                    echo ''.$id_formular_pdf;
+                    ?> "/>
                     
                     <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit">
 
@@ -256,12 +259,20 @@
                     ?>
 
                 </div>
-
-
+                
+                <?php
+                        /*error_reporting(E_ERROR);
+                        error_reporting(0);
+                        error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);*/
+                        $id_formular=$_POST['id_formular'];
+                
+                echo '
                 <div class="col-md-12" style="margin-top:20px; ">
-
+                        
                     <div class="col-md-6 ">
 
+                        
+                        
                         <div class="align-center">
 
                             <span class="col-md-12 sub-title">
@@ -272,9 +283,9 @@
 
                         </div>
                         
-                        <label class="marg-t10">Chitața nr.</label><input name="chitantaNr" class="form-control" value=""/>
+                        <label class="marg-t10">Chitața nr.</label><input name="chitantaNr" class="form-control" value="'.getNumarulChitantei($id_formular).'"/>
                         
-                        <label class="marg-t10">Suma</label><input name="suma" class="form-control" value=""/>
+                        <label class="marg-t10">Suma</label><input name="suma" class="form-control" value="'.getSuma($id_formular).'"/>
                         
                         <div class="align-center">
 
@@ -288,15 +299,7 @@
 
                         <div class="col-md-12" style="font-size:17px;">
 
-                        <?php
-                        error_reporting(E_ERROR);
-                        error_reporting(0);
-                        error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-                        $id_formular=$_POST['id_formular'];
-
-
-
-                        echo '<label>Numele de familie (din certificatul de naștere)</label><input name="numeDeFamilie" class="form-control" value="'.getNumeNastere($id_formular).'"/>
+                        <label>Numele de familie (din certificatul de naștere)</label><input name="numeDeFamilie" class="form-control" value="'.getNumeNastere($id_formular).'"/>
                         
                            <label class="marg-t10">Numele de familie actual (după căsătorie, înfiere, modificare la cerere conform actului doveditor, dacă este cazul)</label><input name="numeDeFamilieActual" class="form-control" value="'.getNumeActual($id_formular).'"/>
 
@@ -331,14 +334,6 @@
 
                             <label class="marg-t10">Limba matern&#259;: </label><input name="limbaMaterna" class="form-control" value="'.getLimbaMaterna($id_formular).'" />
 
-                                             
-
-                            
-                             
-
-                        
-
-
                         </div>
 
                     </div>
@@ -372,7 +367,7 @@
                         </div>
                             <div class="col-md-12" style="font-size:17px; margin-bottom:45px;">
                             
-                            <label>Tip act:</label><input name="tipAct" class="form-control" value="" />
+                            <label>Tip act:</label><input name="tipAct" class="form-control" value="'.getTipAct($id_formular).'" />
                         
                             <label>CNP:</label><input name="cnp" class="form-control" value="'.getCNP($id_formular).'" />
 
@@ -433,18 +428,19 @@
                                 
                             </div>
 
-                        </div> '
-                        ?>
+                        </div>
 
 
                 
-            </div>
-
+            </div> '
+                ?>
+            </form>
+            
         </div>
 
-
+        
     </div>
-            </form>
+            
 
             <form id="RespingereStudPreadmitere" method="post" action="respingereFormularPreAdmitere.php" >
                 <?php

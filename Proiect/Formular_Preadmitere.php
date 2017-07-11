@@ -555,7 +555,7 @@
 							</li>
 
 							<li class="form-line" data-type="control_fullname" >
-								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:larger"> II. Date personale ale candidatului cu cetăţenie română <span class="info-box">?<span class="info-box__content">În măsura în care este posibil, datele personale se vor completa din buletin </span></span></label>
+								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:larger"> II. Date personale ale candidatului cu cetăţenie română <span class="info-box">?<span class="info-box__content" style="width:255px;">În măsura în care este posibil, datele personale se vor completa din buletin </span></span></label>
 								<h4 style="color:red;">Informațiile se completează conform certificatului de naștere și actului de identitate.</h4>
 								<br>
 								<div  class="form-input jf-required cid_1">
@@ -574,7 +574,7 @@
 																																						else 
 																																							echo "?";
 																																					?> 
-																																					<span class="info-box__content">
+																																					<span class="info-box__content" style="width:235px;">
 																																						Numele de familie din certificatul de naştere
 																																						<?php if($vNumele_De_Familie_La_Nastere>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																																					</span>
@@ -617,7 +617,7 @@
 																																						else 
 																																							echo "?";
 																																					?> 
-																																					<span class="info-box__content">
+																																					<span class="info-box__content" style="width:235px;">
 																																					Numele dupa căsătorie, înfiere, 
 																																					modificare la cerere conform actului doveditor daca este cazul
 																																					<?php if($vNumele_De_Familie>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
@@ -665,7 +665,7 @@
 																																					else 
 																																						echo "?";
 																																				?> 
-																																				<span class="info-box__content">
+																																				<span class="info-box__content" style="width:255px;">
 																																					Inițialele trebuie să fie urmate de punct și fără spații între ele.
 																																					<?php 
 																																						$vPreadmitere_Initiala_Tata = validInitialaTata($v_Preadmitere_Initiala_Tata);
@@ -1142,7 +1142,7 @@
 																																else 
 																																	echo "?";
 																															?> 
-																															<span class="info-box__content">
+																															<span class="info-box__content" style="width:370px;">
 																																Codul Numeric Personal cum se găsește în actul de identitate.
 																																Completați cu informațiile de pe adeverința primită de la SPCLEP în cazul în care CI nu mai este validă.
 																																<?php if($vPreadmitere_CNP>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
@@ -3131,7 +3131,7 @@
     $password = 'ADMITERE1';
     $connection_string = 'localhost/xe';
 
-    $connection = oci_connect($username, $password, $connection_string);
+    $connection = oci_connect($username, $password, $connection_string, 'AL32UTF8');
 
     if(!$connection)
       echo "Connection failed. Please try again";

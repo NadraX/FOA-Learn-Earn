@@ -133,7 +133,7 @@
 
 
 
-    <title>Administrator</title>
+    <title>Administrarer</title>
 
 </head>
 
@@ -194,7 +194,7 @@
         <div style="display: inline-flex;" class="col-md-10">
 
             <img class="icon-admin" src="imagini/admin-logo.png">
-            <h1><span aria-hidden=true> Administra&#355;ie</span></h1>
+            <h1><span aria-hidden=true> Administrare</span></h1>
 
         </div>
 
@@ -345,7 +345,7 @@
 
                         throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
                     });
-                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe",  'AL32UTF8');
 
                     $sql="select * from  date_personale_preadmitere";
 
@@ -368,7 +368,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -441,7 +441,7 @@
 
                         throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
                     });
-                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe",  'AL32UTF8');
 
                     $sql="select * from  date_personale_preadmitere";
 
@@ -464,7 +464,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        ////echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -535,7 +535,7 @@
 
                         throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
                     });
-                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe",  'AL32UTF8');
 
                     $sql="select * from  date_personale_preadmitere";
 
@@ -558,7 +558,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        ////echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -629,7 +629,7 @@
 
                         throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
                     });
-                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe",  'AL32UTF8');
                     /*$sql= " SELECT f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
                                           join  date_personale_candidat dpc on f.date_personale_candidat_id=dpc.id
                                            join  detalii_aplicare da on f.detaliiaplicare_id=da.id
@@ -654,7 +654,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -725,7 +725,7 @@
 
                         throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
                     });
-                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe",  'AL32UTF8');
                     /*$sql= " SELECT f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
                                           join  date_personale_candidat dpc on f.date_personale_candidat_id=dpc.id
                                            join  detalii_aplicare da on f.detaliiaplicare_id=da.id
@@ -750,7 +750,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -821,7 +821,7 @@
 
                         throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
                     });
-                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe",  'AL32UTF8');
                     /*$sql= " SELECT f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
                                           join  date_personale_candidat dpc on f.date_personale_candidat_id=dpc.id
                                            join  detalii_aplicare da on f.detaliiaplicare_id=da.id
@@ -846,7 +846,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -917,7 +917,7 @@
 
                         throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
                     });
-                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe",  'AL32UTF8');
                     /*$sql= " SELECT f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
                                           join  date_personale_candidat dpc on f.date_personale_candidat_id=dpc.id
                                            join  detalii_aplicare da on f.detaliiaplicare_id=da.id
@@ -942,7 +942,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -1014,7 +1014,7 @@
 
                         throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
                     });
-                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe",  'AL32UTF8');
                     /*$sql= " SELECT f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
                                           join  date_personale_candidat dpc on f.date_personale_candidat_id=dpc.id
                                            join  detalii_aplicare da on f.detaliiaplicare_id=da.id
@@ -1039,7 +1039,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
@@ -1111,7 +1111,7 @@
 
                         throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
                     });
-                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+                    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe",  'AL32UTF8');
                     /*$sql= " SELECT f.id,dpc.nume,dpc.prenume,f.creation_date from formular f
                                           join  date_personale_candidat dpc on f.date_personale_candidat_id=dpc.id
                                            join  detalii_aplicare da on f.detaliiaplicare_id=da.id
@@ -1136,7 +1136,7 @@
 
                         echo '<td>'.$row['PRENUME_CANDIDAT'].'</td>';
                         echo '<td>'.$row['DATA_CREARII'].'</td>';
-                        echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
+                        //echo '<td>'.$row['DATA_ULTIMEI_MODIFICARI'].'</td>';
                         echo '<td>';
                         echo '<input type="submit" value="Detalii" name="id_formular1" >';
 
