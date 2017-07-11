@@ -1178,7 +1178,10 @@ function validCNP($p_cnp)
             return 3;  // nu corespunde cu o data valida
 		// 				  2			  7			  9  		  1			  4			  6			  3			  5			  8			  2			   7			9
 		$checkC = $cnp[0]*2 + $cnp[1]*7 + $cnp[2]*9 + $cnp[3]*1 + $cnp[4]*4 + $cnp[5]*6 + $cnp[6]*3 + $cnp[7]*5 + $cnp[8]*8 + $cnp[9]*2 + $cnp[10]*7 + $cnp[11]*9;
-		$checkC = ($checkC % 11) % 10;
+		$checkC = $checkC % 11;
+		
+		if($checkC==10)
+			$checkC=1;
 		
 		if($checkC==$cnp[12])
 			return 0;  //corect
