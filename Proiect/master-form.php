@@ -880,6 +880,7 @@
 							$Master_Echivalare_Studii_Master_Original=$_POST["Master_Echivalare_Studii_Master_Original"];
 							$Master_Echivalare_Studii_Master_Copie=$_POST["Master_Echivalare_Studii_Master_Copie"];
 							$v_Master_An_Absolvire = $_POST["Master_AbsolventMaster_Anul_Absolvirii"];
+							$v_Master_ActEchivalare_Luna= $_POST["Master_ActEchivalare_Luna"];
 						?>
 						<ul>
 						
@@ -1491,6 +1492,10 @@
 
 												<span class="form-sub-label-container" style="vertical-align:top; ">
 													<select style="height:40px;" name="Master_Nastere_Luna" id="input_10_month" class="form-dropdown" data-component="birthdate-month">
+														<?php 
+															$v_Master_Nastere_Luna=$_POST["Master_Nastere_Luna"];
+														?>
+														
 														<option value="January" <?php
 																		  if($v_Master_nastere_luna=="January")
 																			echo 'selected';
@@ -1568,6 +1573,7 @@
 												<span class="form-sub-label-container" style="vertical-align:top;">
 													<select style="height:40px;" name="Master_Nastere_Zi" id="input_10_day" class="form-dropdown" data-component="birthdate-day">
 														<?php
+															$v_Master_nastere_zi=$_POST["Master_Nastere_Zi"];
 															for($i=1;$i<=31;$i++)
 															{
 																echo '<option value="'.$i.'" ';
@@ -1581,6 +1587,7 @@
 												<span class="form-sub-label-container" style="vertical-align:top;">
 													<select style="height:40px;" name="Master_Nastere_An" id="input_10_year" class="form-dropdown" data-component="birthdate-year">
 														<?php
+															$v_Master_nastere_an=$_POST["Master_Nastere_An"];
 															for($i=2017;$i>=1920;$i--)
 															{
 																echo '<option value="'.$i.'" ';
@@ -1592,6 +1599,41 @@
 													</select>
 												</span>
 											</div>
+											<span style="color:red">
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Master_nastere_an=$_POST["Master_Nastere_An"];
+														$v_Master_nastere_zi=$_POST["Master_Nastere_Zi"];
+														$v_Master_Nastere_Luna=$_POST["Master_Nastere_Luna"];
+														if($v_Master_Nastere_Luna=="January")
+															$v_Master_Nastere_Luna_Nr=1;
+														if($v_Master_Nastere_Luna=="February")
+															$v_Master_Nastere_Luna_Nr=2;
+														if($v_Master_Nastere_Luna=="March")
+															$v_Master_Nastere_Luna_Nr=3;
+														if($v_Master_Nastere_Luna=="April")
+															$v_Master_Nastere_Luna_Nr=4;
+														if($v_Master_Nastere_Luna=="May")
+															$v_Master_Nastere_Luna_Nr=5;
+														if($v_Master_Nastere_Luna=="June")
+															$v_Master_Nastere_Luna_Nr=6;
+														if($v_Master_Nastere_Luna=="July")
+															$v_Master_Nastere_Luna_Nr=7;
+														if($v_Master_Nastere_Luna=="August")
+															$v_Master_Nastere_Luna_Nr=8;
+														if($v_Master_Nastere_Luna=="September")
+															$v_Master_Nastere_Luna_Nr=9;
+														if($v_Master_Nastere_Luna=="October")
+															$v_Master_Nastere_Luna_Nr=10;
+														if($v_Master_Nastere_Luna=="November")
+															$v_Master_Nastere_Luna_Nr=11;
+														if($v_Master_Nastere_Luna=="December")
+															$v_Master_Nastere_Luna_Nr=12;
+														if(checkdate($v_Master_Nastere_Luna_Nr,$v_Master_nastere_zi,$v_Master_nastere_an)==0)
+															echo "Dată incorect!";
+													}
+												?>
+											</span>
 										</div>
 										<br>
 									</div>
@@ -1910,11 +1952,14 @@
 
 												<label class="form-sub-label"  style="min-height:13px;">Data Eliberare</label>
 
-
 												<span class="form-sub-label-container" style="vertical-align:top; ">
 
 													<select style="height:40px;" name="Master_Buletin_Luna"  class="form-dropdown" data-component="luna_eliberare">
 
+														<?php
+															$v_Master_luna=$_POST["Master_Buletin_Luna"];
+														?>
+														
 														<option value="January" <?php
 																					if($v_Master_luna=="January")		
 																						echo 'selected';		
@@ -2032,6 +2077,42 @@
 
 											</div>
 
+											<span style="color:red">
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Master_Buletin_An = $_POST["Master_Buletin_An"];
+														$v_Master_Buletin_Ziua = $_POST["Master_Buletin_Ziua"];
+														$v_Master_luna=$_POST["Master_Buletin_Luna"];
+														if($v_Master_luna=="January")
+															$v_Master_luna_nr=1;
+														if($v_Master_luna=="February")
+															$v_Master_luna_nr=2;
+														if($v_Master_luna=="March")
+															$v_Master_luna_nr=3;
+														if($v_Master_luna=="April")
+															$v_Master_luna_nr=4;
+														if($v_Master_luna=="May")
+															$v_Master_luna_nr=5;
+														if($v_Master_luna=="June")
+															$v_Master_luna_nr=6;
+														if($v_Master_luna=="July")
+															$v_Master_luna_nr=7;
+														if($v_Master_luna=="August")
+															$v_Master_luna_nr=8;
+														if($v_Master_luna=="September")
+															$v_Master_luna_nr=9;
+														if($v_Master_luna=="October")
+															$v_Master_luna_nr=10;
+														if($v_Master_luna=="November")
+															$v_Master_luna_nr=11;
+														if($v_Master_luna=="December")
+															$v_Master_luna_nr=12;
+														if(checkdate($v_Master_luna_nr,$v_Master_Buletin_Ziua,$v_Master_Buletin_An)==0)
+															echo "Dată incorect!";
+													}
+												?>
+											</span>
+
 										</div>  
 
 										<div  class="form-input jf-required" style="vertical-align:top;padding:0;margin:0;height:40px">
@@ -2039,7 +2120,9 @@
 												<span class="form-sub-label-container" style="vertical-align:top; ">
 													<label class="form-sub-label"  style="min-height:13px;">Data Expirare</label>
 													<select style="height:40px;" name="Master_Buletin_Luna_Exp"  class="form-dropdown" data-component="birthdate-month">
-														<?php $v_Master_Buletin_Luna_Exp = $_POST["Master_Buletin_Luna_Exp"];?>
+														<?php 
+															$v_Master_Buletin_Luna_Exp = $_POST["Master_Buletin_Luna_Exp"];
+														?>
 														<option value="January" <?php
 																					if($v_Master_Buletin_Luna_Exp=="January")
 																						echo 'selected';
@@ -2143,6 +2226,41 @@
 													</select>
 												</span>
 											</div>
+											<span style="color:red">
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Master_Buletin_An=$_POST["Master_Buletin_An_Exp"];
+														$v_Master_Buletin_Ziua = $_POST["Master_Buletin_Ziua_Exp"];
+														$v_Master_Buletin_Luna_Exp = $_POST["Master_Buletin_Luna_Exp"];
+														if($v_Master_Buletin_Luna_Exp=="January")
+															$v_Master_Buletin_Luna_Exp_Nr=1;
+														if($v_Master_Buletin_Luna_Exp=="February")
+															$v_Master_Buletin_Luna_Exp_Nr=2;
+														if($v_Master_Buletin_Luna_Exp=="March")
+															$v_Master_Buletin_Luna_Exp_Nr=3;
+														if($v_Master_Buletin_Luna_Exp=="April")
+															$v_Master_Buletin_Luna_Exp_Nr=4;
+														if($v_Master_Buletin_Luna_Exp=="May")
+															$v_Master_Buletin_Luna_Exp_Nr=5;
+														if($v_Master_Buletin_Luna_Exp=="June")
+															$v_Master_Buletin_Luna_Exp_Nr=6;
+														if($v_Master_Buletin_Luna_Exp=="July")
+															$v_Master_Buletin_Luna_Exp_Nr=7;
+														if($v_Master_Buletin_Luna_Exp=="August")
+															$v_Master_Buletin_Luna_Exp_Nr=8;
+														if($v_Master_Buletin_Luna_Exp=="September")
+															$v_Master_Buletin_Luna_Exp_Nr=9;
+														if($v_Master_Buletin_Luna_Exp=="October")
+															$v_Master_Buletin_Luna_Exp_Nr=10;
+														if($v_Master_Buletin_Luna_Exp=="November")
+															$v_Master_Buletin_Luna_Exp_Nr=11;
+														if($v_Master_Buletin_Luna_Exp=="December")
+															$v_Master_Buletin_Luna_Exp_Nr=12;
+														if(checkdate($v_Master_Buletin_Luna_Exp_Nr,$v_Master_Buletin_Ziua,$v_Master_Buletin_An)==0)
+															echo "Dată incorect!";
+													}
+												?>
+											</span>
 										</div>         
 
 									</div>
@@ -4505,6 +4623,41 @@
 																	</select>
 																</span>
 															</div>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Master_Diploma_An = $_POST["Master_Diploma_An"];
+																		$v_Master_Diploma_Ziua = $_POST["Master_Diploma_Ziua"];
+																		$v_Master_Diploma_Luna = $_POST["Master_Diploma_Luna"];
+																		if($v_Master_Diploma_Luna=="January")
+																			$v_Master_Diploma_Luna_Nr=1;
+																		if($v_Master_Diploma_Luna=="February")
+																			$v_Master_Diploma_Luna_Nr=2;
+																		if($v_Master_Diploma_Luna=="March")
+																			$v_Master_Diploma_Luna_Nr=3;
+																		if($v_Master_Diploma_Luna=="April")
+																			$v_Master_Diploma_Luna_Nr=4;
+																		if($v_Master_Diploma_Luna=="May")
+																			$v_Master_Diploma_Luna_Nr=5;
+																		if($v_Master_Diploma_Luna=="June")
+																			$v_Master_Diploma_Luna_Nr=6;
+																		if($v_Master_Diploma_Luna=="July")
+																			$v_Master_Diploma_Luna_Nr=7;
+																		if($v_Master_Diploma_Luna=="August")
+																			$v_Master_Diploma_Luna_Nr=8;
+																		if($v_Master_Diploma_Luna=="September")
+																			$v_Master_Diploma_Luna_Nr=9;
+																		if($v_Master_Diploma_Luna=="October")
+																			$v_Master_Diploma_Luna_Nr=10;
+																		if($v_Master_Diploma_Luna=="November")
+																			$v_Master_Diploma_Luna_Nr=11;
+																		if($v_Master_Diploma_Luna=="December")
+																			$v_Master_Diploma_Luna_Nr=12;
+																		if(checkdate($v_Master_Diploma_Luna_Nr,$v_Master_Diploma_Ziua,$v_Master_Diploma_An)==0)
+																			echo "Dată incorect!";
+																	}
+																?>
+															</span>
 														</div>
 
 													</span>
@@ -4598,10 +4751,11 @@
 															<div data-wrapper-react="true">
 																<span class="form-sub-label-container" style="vertical-align:top; ">
 																	<label class="form-sub-label"  style="min-height:13px;">Data Echivalare</label>
-																	<?php
-																		$v_Master_ActEchivalare_Luna= $_POST["Master_ActEchivalare_Luna"];
-																	?>
+																	
 																	<select style="height:40px;" name="Master_ActEchivalare_Luna"  class="form-dropdown" data-component="birthdate-month">
+																		<?php
+																			$v_Master_ActEchivalare_Luna= $_POST["Master_ActEchivalare_Luna"];
+																		?>
 																		<option value="January" <?php
 																									if($v_Master_ActEchivalare_Luna=="January")
 																										echo 'selected';
@@ -4609,7 +4763,7 @@
 																										echo '';
 																								?>>Ianuarie</option>
 																		<option value="February" <?php
-																									if($v_Master_ActEchivalare_Luna=="July")
+																									if($v_Master_ActEchivalare_Luna=="February")
 																										echo 'selected';
 																									else
 																										echo '';
@@ -4705,6 +4859,41 @@
 																	</select>
 																</span>
 															</div>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Master_ActEchivalare_An = $_POST["Master_ActEchivalare_An"];
+																		$_Master_ActEchivalare_Ziua = $_POST["Master_ActEchivalare_Ziua"];
+																		$v_Master_ActEchivalare_Luna= $_POST["Master_ActEchivalare_Luna"];
+																		if($v_Master_ActEchivalare_Luna=="January")
+																			$v_Master_ActEchivalare_Luna_Nr=1;
+																		if($v_Master_ActEchivalare_Luna=="February")
+																			$v_Master_ActEchivalare_Luna_Nr=2;
+																		if($v_Master_ActEchivalare_Luna=="March")
+																			$v_Master_ActEchivalare_Luna_Nr=3;
+																		if($v_Master_ActEchivalare_Luna=="April")
+																			$v_Master_ActEchivalare_Luna_Nr=4;
+																		if($v_Master_ActEchivalare_Luna=="May")
+																			$v_Master_ActEchivalare_Luna_Nr=5;
+																		if($v_Master_ActEchivalare_Luna=="June")
+																			$v_Master_ActEchivalare_Luna_Nr=6;
+																		if($v_Master_ActEchivalare_Luna=="July")
+																			$v_Master_ActEchivalare_Luna_Nr=7;
+																		if($v_Master_ActEchivalare_Luna=="August")
+																			$v_Master_ActEchivalare_Luna_Nr=8;
+																		if($v_Master_ActEchivalare_Luna=="September")
+																			$v_Master_ActEchivalare_Luna_Nr=9;
+																		if($v_Master_ActEchivalare_Luna=="October")
+																			$v_Master_ActEchivalare_Luna_Nr=10;
+																		if($v_Master_ActEchivalare_Luna=="November")
+																			$v_Master_ActEchivalare_Luna_Nr=11;
+																		if($v_Master_ActEchivalare_Luna=="December")
+																			$v_Master_ActEchivalare_Luna_Nr=12;
+																		if(checkdate($v_Master_ActEchivalare_Luna_Nr,$_Master_ActEchivalare_Ziua,$v_Master_ActEchivalare_An)==0)
+																			echo "Dată incorect!";
+																	}
+																?>
+															</span>
 														</div>
 													</span>
 								  
@@ -5284,6 +5473,41 @@
 																	</select>
 																</span>
 															</div>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Master_DiplomaLicenta_An = $_POST["Master_DiplomaLicenta_An"];
+																		$v_Master_DiplomaLicenta_Ziua = $_POST["Master_DiplomaLicenta_Ziua"];
+																		$v_Master_DiplomaLicenta_Luna = $_POST["Master_DiplomaLicenta_Luna"];
+																		if($v_Master_DiplomaLicenta_Luna=="January")
+																			$v_Master_DiplomaLicenta_Luna_Nr=1;
+																		if($v_Master_DiplomaLicenta_Luna=="February")
+																			$v_Master_DiplomaLicenta_Luna_Nr=2;
+																		if($v_Master_DiplomaLicenta_Luna=="March")
+																			$v_Master_DiplomaLicenta_Luna_Nr=3;
+																		if($v_Master_DiplomaLicenta_Luna=="April")
+																			$v_Master_DiplomaLicenta_Luna_Nr=4;
+																		if($v_Master_DiplomaLicenta_Luna=="May")
+																			$v_Master_DiplomaLicenta_Luna_Nr=5;
+																		if($v_Master_DiplomaLicenta_Luna=="June")
+																			$v_Master_DiplomaLicenta_Luna_Nr=6;
+																		if($v_Master_DiplomaLicenta_Luna=="July")
+																			$v_Master_DiplomaLicenta_Luna_Nr=7;
+																		if($v_Master_DiplomaLicenta_Luna=="August")
+																			$v_Master_DiplomaLicenta_Luna_Nr=8;
+																		if($v_Master_DiplomaLicenta_Luna=="September")
+																			$v_Master_DiplomaLicenta_Luna_Nr=9;
+																		if($v_Master_DiplomaLicenta_Luna=="October")
+																			$v_Master_DiplomaLicenta_Luna_Nr=10;
+																		if($v_Master_DiplomaLicenta_Luna=="November")
+																			$v_Master_DiplomaLicenta_Luna_Nr=11;
+																		if($v_Master_DiplomaLicenta_Luna=="December")
+																			$v_Master_DiplomaLicenta_Luna_Nr=12;
+																		if(checkdate($v_Master_DiplomaLicenta_Luna_Nr,$v_Master_DiplomaLicenta_Ziua,$v_Master_DiplomaLicenta_An)==0)
+																			echo "Dată incorect!";
+																	}
+																?>
+															</span>
 														</div>
 													</span>
 													
@@ -5365,6 +5589,9 @@
 																<span class="form-sub-label-container" style="vertical-align:top; ">
 																	<label class="form-sub-label"  style="min-height:13px;">Data Echivalare</label>
 																	<select style="height:40px;" name="Master_AbsolventMaster_ActEchivalare_Luna"  class="form-dropdown" data-component="birthdate-month">
+																		<?php 
+																			$v_Master_AbsolventMaster_ActEchivalare_Luna=$_POST["Master_AbsolventMaster_ActEchivalare_Luna"];
+																		?>
 																		<option value="January" <?php
 																									if($v_Master_AbsolventMaster_ActEchivalare_Luna=="January")
 																										echo 'selected';
@@ -5468,6 +5695,41 @@
 																	</select>
 																</span>
 															</div>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Master_AbsolventMaster_ActEchivalare_An = $_POST["Master_AbsolventMaster_ActEchivalare_An"];
+																		$v_Master_AbsolventMaster_ActEchivalare_Ziua = $_POST["Master_AbsolventMaster_ActEchivalare_Ziua"];
+																		$v_Master_AbsolventMaster_ActEchivalare_Luna=$_POST["Master_AbsolventMaster_ActEchivalare_Luna"];
+																		if($v_Master_AbsolventMaster_ActEchivalare_Luna=="January")
+																			$v_Master_AbsolventMaster_ActEchivalare_Luna_Nr=1;
+																		if($v_Master_AbsolventMaster_ActEchivalare_Luna=="February")
+																			$v_Master_AbsolventMaster_ActEchivalare_Luna_Nr=2;
+																		if($v_Master_AbsolventMaster_ActEchivalare_Luna=="March")
+																			$v_Master_AbsolventMaster_ActEchivalare_Luna_Nr=3;
+																		if($v_Master_AbsolventMaster_ActEchivalare_Luna=="April")
+																			$v_Master_AbsolventMaster_ActEchivalare_Luna_Nr=4;
+																		if($v_Master_AbsolventMaster_ActEchivalare_Luna=="May")
+																			$v_Master_AbsolventMaster_ActEchivalare_Luna_Nr=5;
+																		if($v_Master_AbsolventMaster_ActEchivalare_Luna=="June")
+																			$v_Master_AbsolventMaster_ActEchivalare_Luna_Nr=6;
+																		if($v_Master_AbsolventMaster_ActEchivalare_Luna=="July")
+																			$v_Master_AbsolventMaster_ActEchivalare_Luna_Nr=7;
+																		if($v_Master_AbsolventMaster_ActEchivalare_Luna=="August")
+																			$v_Master_AbsolventMaster_ActEchivalare_Luna_Nr=8;
+																		if($v_Master_AbsolventMaster_ActEchivalare_Luna=="September")
+																			$v_Master_AbsolventMaster_ActEchivalare_Luna_Nr=9;
+																		if($v_Master_AbsolventMaster_ActEchivalare_Luna=="October")
+																			$v_Master_AbsolventMaster_ActEchivalare_Luna_Nr=10;
+																		if($v_Master_AbsolventMaster_ActEchivalare_Luna=="November")
+																			$v_Master_AbsolventMaster_ActEchivalare_Luna_Nr=11;
+																		if($v_Master_AbsolventMaster_ActEchivalare_Luna=="December")
+																			$v_Master_AbsolventMaster_ActEchivalare_Luna_Nr=12;
+																		if(checkdate($v_Master_AbsolventMaster_ActEchivalare_Luna_Nr,$v_Master_AbsolventMaster_ActEchivalare_Ziua,$v_Master_AbsolventMaster_ActEchivalare_An)==0)
+																			echo "Dată incorect!";
+																	}
+																?>
+															</span>
 														</div>
 
 													</span>
@@ -5843,16 +6105,18 @@
 															<span style="color:red">
 																<?php
 																	if(isset($_POST['Submit'])) {
-																		$v_Master_Judet_AltaFacultate = $_POST["Master_Judet_AltaFacultate"];
-																		$vMaster_Judet_AltaFacultate=validNume($v_Master_Judet_AltaFacultate);
-																		if($vMaster_Judet_AltaFacultate==-1)
-																			echo "C&#226;mp necompletat!";
-																		else
-																			if($vMaster_Judet_AltaFacultate==1)
-																				echo "C&#226;mpul conține caractere nepermise!";
+																		if($v_Radio25==1) {
+																			$v_Master_Judet_AltaFacultate = $_POST["Master_Judet_AltaFacultate"];
+																			$vMaster_Judet_AltaFacultate=validNume($v_Master_Judet_AltaFacultate);
+																			if($vMaster_Judet_AltaFacultate==-1)
+																				echo "C&#226;mp necompletat!";
 																			else
-																				if($vMaster_Judet_AltaFacultate==2)
-																					echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																				if($vMaster_Judet_AltaFacultate==1)
+																					echo "C&#226;mpul conține caractere nepermise!";
+																				else
+																					if($vMaster_Judet_AltaFacultate==2)
+																						echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																		}
 																	}
 																?>
 															</span>
@@ -5880,16 +6144,18 @@
 															<span style="color:red">
 																<?php
 																	if(isset($_POST['Submit'])) {
-																		$v_Master_Tara_AltaFacultate = $_POST["Master_Tara_AltaFacultate"];
-																		$vMaster_Tara_AltaFacultate=validTara($v_Master_Tara_AltaFacultate);
-																		if($vMaster_Tara_AltaFacultate==-1)
-																			echo "C&#226;mp necompletat!";
-																		else
-																			if($vMaster_Tara_AltaFacultate==2)
-																				echo "C&#226;mpul conține caractere nepermise!";
+																		if($v_Radio25==1) {
+																			$v_Master_Tara_AltaFacultate = $_POST["Master_Tara_AltaFacultate"];
+																			$vMaster_Tara_AltaFacultate=validTara($v_Master_Tara_AltaFacultate);
+																			if($vMaster_Tara_AltaFacultate==-1)
+																				echo "C&#226;mp necompletat!";
 																			else
-																				if($vMaster_Tara_AltaFacultate==1)
-																					echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																				if($vMaster_Tara_AltaFacultate==2)
+																					echo "C&#226;mpul conține caractere nepermise!";
+																				else
+																					if($vMaster_Tara_AltaFacultate==1)
+																						echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																		}
 																	}
 																?>
 															</span>
@@ -5957,16 +6223,18 @@
 												<span style="color:red">
 													<?php 
 														if(isset($_POST['Submit'])) {
-															$v_Master_An_Absolvire = $_POST["Master_AbsolventMaster_Anul_Absolvirii"];
-															$vMaster_An_Absolvire = validareAn($v_Master_An_Absolvire);
-															if($vMaster_An_Absolvire==-1)
-															   	echo "C&#226;mp necompletat!";
-															else
-																if($vMaster_An_Absolvire==1)
-																	echo "Caractere nepermise!";
+															if($v_Radio24==1) {
+																$v_Master_An_Absolvire = $_POST["Master_AbsolventMaster_Anul_Absolvirii"];
+																$vMaster_An_Absolvire = validareAn($v_Master_An_Absolvire);
+																if($vMaster_An_Absolvire==-1)
+																	echo "C&#226;mp necompletat!";
 																else
-																	if($vMaster_An_Absolvire==2)
-																		echo "An incorect!";
+																	if($vMaster_An_Absolvire==1)
+																		echo "Caractere nepermise!";
+																	else
+																		if($vMaster_An_Absolvire==2)
+																			echo "An incorect!";
+															}
 														}
 													?>
 												</span>
@@ -6314,16 +6582,18 @@
 															<span style="color:red">
 																<?php
 																	if(isset($_POST['Submit'])) {
-																		$v_Master_AbsolventMaster_Judet_AltaFacultate = $_POST["Master_AbsolventMaster_Judet_AltaFacultate"];
-																		$vMaster_AbsolventMaster_Judet_AltaFacultate=validNume($v_Master_AbsolventMaster_Judet_AltaFacultate);
-																		if($vMaster_AbsolventMaster_Judet_AltaFacultate==-1)
-																			echo "C&#226;mp necompletat!";
-																		else
-																			if($vMaster_AbsolventMaster_Judet_AltaFacultate==2)
-																				echo "C&#226;mpul conține caractere nepermise!";
+																		if($v_Radio24==1) {
+																			$v_Master_AbsolventMaster_Judet_AltaFacultate = $_POST["Master_AbsolventMaster_Judet_AltaFacultate"];
+																			$vMaster_AbsolventMaster_Judet_AltaFacultate=validNume($v_Master_AbsolventMaster_Judet_AltaFacultate);
+																			if($vMaster_AbsolventMaster_Judet_AltaFacultate==-1)
+																				echo "C&#226;mp necompletat!";
 																			else
-																				if($vMaster_AbsolventMaster_Judet_AltaFacultate==1)
-																					echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																				if($vMaster_AbsolventMaster_Judet_AltaFacultate==2)
+																					echo "C&#226;mpul conține caractere nepermise!";
+																				else
+																					if($vMaster_AbsolventMaster_Judet_AltaFacultate==1)
+																						echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																		}
 																	}
 																?>
 															</span>
@@ -6351,16 +6621,18 @@
 															<span style="color:red">
 																<?php
 																	if(isset($_POST['Submit'])) {
-																		$v_Master_AbsolventMaster_Tara_AltaFacultate = $_POST["Master_AbsolventMaster_Tara_AltaFacultate"];
-																		$vMaster_AbsolventMaster_Tara_AltaFacultate=validTara($v_Master_AbsolventMaster_Tara_AltaFacultate);
-																		if($vMaster_AbsolventMaster_Tara_AltaFacultate==-1)
-																			echo "C&#226;mp necompletat!";
-																		else
-																			if($vMaster_AbsolventMaster_Tara_AltaFacultate==2)
-																				echo "C&#226;mpul conține caractere nepermise!";
+																		if($v_Radio24==1) {
+																			$v_Master_AbsolventMaster_Tara_AltaFacultate = $_POST["Master_AbsolventMaster_Tara_AltaFacultate"];
+																			$vMaster_AbsolventMaster_Tara_AltaFacultate=validTara($v_Master_AbsolventMaster_Tara_AltaFacultate);
+																			if($vMaster_AbsolventMaster_Tara_AltaFacultate==-1)
+																				echo "C&#226;mp necompletat!";
 																			else
-																				if($vMaster_AbsolventMaster_Tara_AltaFacultate==1)
-																					echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																				if($vMaster_AbsolventMaster_Tara_AltaFacultate==2)
+																					echo "C&#226;mpul conține caractere nepermise!";
+																				else
+																					if($vMaster_AbsolventMaster_Tara_AltaFacultate==1)
+																						echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																		}
 																	}
 																?>
 															</span>
@@ -6606,6 +6878,41 @@
 																			</select>
 																		</span>
 																	</div>
+																	<span style="color:red">
+																		<?php
+																			if(isset($_POST['Submit'])) {
+																				$v_Master_DiplomaMaster_An = $_POST["Master_DiplomaMaster_An"];
+																				$v_Master_DiplomaMaster_Ziua = $_POST["Master_DiplomaMaster_Ziua"];
+																				$v_Master_DiplomaMaster_Luna = $_POST["Master_DiplomaMaster_Luna"];
+																				if($v_Master_DiplomaMaster_Luna=="January")
+																					$v_Master_DiplomaMaster_Luna_Nr=1;
+																				if($v_Master_DiplomaMaster_Luna=="February")
+																					$v_Master_DiplomaMaster_Luna_Nr=2;
+																				if($v_Master_DiplomaMaster_Luna=="March")
+																					$v_Master_DiplomaMaster_Luna_Nr=3;
+																				if($v_Master_DiplomaMaster_Luna=="April")
+																					$v_Master_DiplomaMaster_Luna_Nr=4;
+																				if($v_Master_DiplomaMaster_Luna=="May")
+																					$v_Master_DiplomaMaster_Luna_Nr=5;
+																				if($v_Master_DiplomaMaster_Luna=="June")
+																					$v_Master_DiplomaMaster_Luna_Nr=6;
+																				if($v_Master_DiplomaMaster_Luna=="July")
+																					$v_Master_DiplomaMaster_Luna_Nr=7;
+																				if($v_Master_DiplomaMaster_Luna=="August")
+																					$v_Master_DiplomaMaster_Luna_Nr=8;
+																				if($v_Master_DiplomaMaster_Luna=="September")
+																					$v_Master_DiplomaMaster_Luna_Nr=9;
+																				if($v_Master_DiplomaMaster_Luna=="October")
+																					$v_Master_DiplomaMaster_Luna_Nr=10;
+																				if($v_Master_DiplomaMaster_Luna=="November")
+																					$v_Master_DiplomaMaster_Luna_Nr=11;
+																				if($v_Master_DiplomaMaster_Luna=="December")
+																					$v_Master_DiplomaMaster_Luna_Nr=12;
+																				if(checkdate($v_Master_DiplomaMaster_Luna_Nr,$v_Master_DiplomaMaster_Ziua,$v_Master_DiplomaMaster_An)==0)
+																					echo "Dată incorect!";
+																			}
+																		?>
+																	</span>
 																</div>
 															</span>
 												
@@ -6698,10 +7005,10 @@
 																	<div data-wrapper-react="true">
 																		<span class="form-sub-label-container" style="vertical-align:top; ">
 																			<label class="form-sub-label"  style="min-height:13px;">Data Echivalare</label>
-																			<?php 
-																				$v_Master_DiplomaMaster_ActEchivalare_Luna=$_POST["Master_DiplomaMaster_ActEchivalare_Luna"];
-																			?>
 																			<select style="height:40px;" name="Master_DiplomaMaster_ActEchivalare_Luna"  class="form-dropdown" data-component="birthdate-month">
+																				<?php 
+																					$v_Master_DiplomaMaster_ActEchivalare_Luna=$_POST["Master_DiplomaMaster_ActEchivalare_Luna"];
+																				?>
 																				<option value="January" <?php
 																										if($v_Master_DiplomaMaster_ActEchivalare_Luna=="January")
 																											echo 'selected';
@@ -6805,6 +7112,41 @@
 																			</select>
 																		</span>
 																	</div>
+																	<span style="color:red">
+																		<?php
+																			if(isset($_POST['Submit'])) {
+																				$v_Master_DiplomaMaster_ActEchivalare_An = $_POST["Master_DiplomaMaster_ActEchivalare_An"];
+																				$v_Master_DiplomaMaster_ActEchivalare_Ziua = $_POST["Master_DiplomaMaster_ActEchivalare_Ziua"];
+																				$v_Master_DiplomaMaster_ActEchivalare_Luna=$_POST["Master_DiplomaMaster_ActEchivalare_Luna"];
+																				if($v_Master_DiplomaMaster_ActEchivalare_Luna=="January")
+																					$v_Master_DiplomaMaster_ActEchivalare_Luna_Nr=1;
+																				if($v_Master_DiplomaMaster_ActEchivalare_Luna=="February")
+																					$v_Master_DiplomaMaster_ActEchivalare_Luna_Nr=2;
+																				if($v_Master_DiplomaMaster_ActEchivalare_Luna=="March")
+																					$v_Master_DiplomaMaster_ActEchivalare_Luna_Nr=3;
+																				if($v_Master_DiplomaMaster_ActEchivalare_Luna=="April")
+																					$v_Master_DiplomaMaster_ActEchivalare_Luna_Nr=4;
+																				if($v_Master_DiplomaMaster_ActEchivalare_Luna=="May")
+																					$v_Master_DiplomaMaster_ActEchivalare_Luna_Nr=5;
+																				if($v_Master_DiplomaMaster_ActEchivalare_Luna=="June")
+																					$v_Master_DiplomaMaster_ActEchivalare_Luna_Nr=6;
+																				if($v_Master_DiplomaMaster_ActEchivalare_Luna=="July")
+																					$v_Master_DiplomaMaster_ActEchivalare_Luna_Nr=7;
+																				if($v_Master_DiplomaMaster_ActEchivalare_Luna=="August")
+																					$v_Master_DiplomaMaster_ActEchivalare_Luna_Nr=8;
+																				if($v_Master_DiplomaMaster_ActEchivalare_Luna=="September")
+																					$v_Master_DiplomaMaster_ActEchivalare_Luna_Nr=9;
+																				if($v_Master_DiplomaMaster_ActEchivalare_Luna=="October")
+																					$v_Master_DiplomaMaster_ActEchivalare_Luna_Nr=10;
+																				if($v_Master_DiplomaMaster_ActEchivalare_Luna=="November")
+																					$v_Master_DiplomaMaster_ActEchivalare_Luna_Nr=11;
+																				if($v_Master_DiplomaMaster_ActEchivalare_Luna=="December")
+																					$v_Master_DiplomaMaster_ActEchivalare_Luna_Nr=12;
+																				if(checkdate($v_Master_DiplomaMaster_ActEchivalare_Luna_Nr,$v_Master_DiplomaMaster_ActEchivalare_Ziua,$v_Master_DiplomaMaster_ActEchivalare_An)==0)
+																					echo "Dată incorect!";
+																			}
+																		?>
+																	</span>
 																</div>
 
 															</span>

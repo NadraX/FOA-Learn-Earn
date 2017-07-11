@@ -1350,6 +1350,9 @@
 
 												<span class="form-sub-label-container" style="vertical-align:top; ">
 													<select style="height:40px;" name="Licenta_Nastere_Luna" id="input_10_month" class="form-dropdown" data-component="birthdate-month">
+														<?php 
+															$v_Licenta_nastere_luna=$_POST["Licenta_Nastere_Luna"];
+														?>
 														<option value="January" <?php
 																					if($v_Licenta_nastere_luna=="January")
 																						echo 'selected';
@@ -1453,6 +1456,41 @@
 													</select>
 												</span>
 											</div>
+											<span style="color:red">
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Licenta_Nastere_An=$_POST["Licenta_Nastere_An"];
+														$v_Licenta_Nastere_Zi=$_POST["Licenta_Nastere_Zi"];
+														$v_Licenta_nastere_luna=$_POST["Licenta_Nastere_Luna"];
+														if($v_Licenta_nastere_luna=="January")
+															$v_Licenta_nastere_luna_nr=1;
+														if($v_Licenta_nastere_luna=="February")
+															$v_Licenta_nastere_luna_nr=2;
+														if($v_Licenta_nastere_luna=="March")
+															$v_Licenta_nastere_luna_nr=3;
+														if($v_Licenta_nastere_luna=="April")
+															$v_Licenta_nastere_luna_nr=4;
+														if($v_Licenta_nastere_luna=="May")
+															$v_Licenta_nastere_luna_nr=5;
+														if($v_Licenta_nastere_luna=="June")
+															$v_Licenta_nastere_luna_nr=6;
+														if($v_Licenta_nastere_luna=="July")
+															$v_Licenta_nastere_luna_nr=7;
+														if($v_Licenta_nastere_luna=="August")
+															$v_Licenta_nastere_luna_nr=8;
+														if($v_Licenta_nastere_luna=="September")
+															$v_Licenta_nastere_luna_nr=9;
+														if($v_Licenta_nastere_luna=="October")
+															$v_Licenta_nastere_luna_nr=10;
+														if($v_Licenta_nastere_luna=="November")
+															$v_Licenta_nastere_luna_nr=11;
+														if($v_Licenta_nastere_luna=="December")
+															$v_Licenta_nastere_luna_nr=12;
+														if(checkdate($v_Licenta_nastere_luna_nr,$v_Licenta_Nastere_Zi,$v_Licenta_Nastere_An)==0)
+															echo "Dată incorect!";
+													}
+												?>
+											</span>
 										</div>
 										<br>
 									</div>
@@ -1849,6 +1887,41 @@
 													</select>
 												</span>
 											</div>
+											<span style="color:red">
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Licenta_Buletin_An=$_POST["Licenta_Eliberat_Buletin_An"];
+														$v_Licenta_Buletin_Ziua=$_POST["Licenta_Eliberat_Buletin_Ziua"];
+														$v_Licenta_Buletin_Luna=$_POST["Licenta_Eliberat_Buletin_Luna"];
+														if($v_Licenta_Buletin_Luna=="January")
+															$v_Licenta_Buletin_Luna_Nr=1;
+														if($v_Licenta_Buletin_Luna=="February")
+															$v_Licenta_Buletin_Luna_Nr=2;
+														if($v_Licenta_Buletin_Luna=="March")
+															$v_Licenta_Buletin_Luna_Nr=3;
+														if($v_Licenta_Buletin_Luna=="April")
+															$v_Licenta_Buletin_Luna_Nr=4;
+														if($v_Licenta_Buletin_Luna=="May")
+															$v_Licenta_Buletin_Luna_Nr=5;
+														if($v_Licenta_Buletin_Luna=="June")
+															$v_Licenta_Buletin_Luna_Nr=6;
+														if($v_Licenta_Buletin_Luna=="July")
+															$v_Licenta_Buletin_Luna_Nr=7;
+														if($v_Licenta_Buletin_Luna=="August")
+															$v_Licenta_Buletin_Luna_Nr=8;
+														if($v_Licenta_Buletin_Luna=="September")
+															$v_Licenta_Buletin_Luna_Nr=9;
+														if($v_Licenta_Buletin_Luna=="October")
+															$v_Licenta_Buletin_Luna_Nr=10;
+														if($v_Licenta_Buletin_Luna=="November")
+															$v_Licenta_Buletin_Luna_Nr=11;
+														if($v_Licenta_Buletin_Luna=="December")
+															$v_Licenta_Buletin_Luna_Nr=12;
+														if(checkdate($v_Licenta_Buletin_Luna_Nr,$v_Licenta_Buletin_Ziua,$v_Licenta_Buletin_An)==0)
+															echo "Dată incorect!";
+													}
+												?>
+											</span>
 										</div>
 										<div  class="form-input jf-required" style="vertical-align:top;padding:0;margin:0;height:40px">
 											<div data-wrapper-react="true">
@@ -1961,6 +2034,41 @@
 													</select>
 												</span>
 											</div>
+											<span style="color:red">
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Licenta_an_expirare=$_POST["Licenta_Buletin_An_Expirare"];
+														$v_Licenta_Buletin_Ziua_expirare=$_POST["Licenta_Expirat_Buletin_Ziua"];
+														$v_Licenta_Buletin_Luna_expirare=$_POST["Licenta_Expirat_Buletin_Luna"];
+														if($v_Licenta_Buletin_Luna_expirare=="January")
+															$v_Licenta_Buletin_Luna_expirare_Nr=1;
+														if($v_Licenta_Buletin_Luna_expirare=="February")
+															$v_Licenta_Buletin_Luna_expirare_Nr=2;
+														if($v_Licenta_Buletin_Luna_expirare=="March")
+															$v_Licenta_Buletin_Luna_expirare_Nr=3;
+														if($v_Licenta_Buletin_Luna_expirare=="April")
+															$v_Licenta_Buletin_Luna_expirare_Nr=4;
+														if($v_Licenta_Buletin_Luna_expirare=="May")
+															$v_Licenta_Buletin_Luna_expirare_Nr=5;
+														if($v_Licenta_Buletin_Luna_expirare=="June")
+															$v_Licenta_Buletin_Luna_expirare_Nr=6;
+														if($v_Licenta_Buletin_Luna_expirare=="July")
+															$v_Licenta_Buletin_Luna_expirare_Nr=7;
+														if($v_Licenta_Buletin_Luna_expirare=="August")
+															$v_Licenta_Buletin_Luna_expirare_Nr=8;
+														if($v_Licenta_Buletin_Luna_expirare=="September")
+															$v_Licenta_Buletin_Luna_expirare_Nr=9;
+														if($v_Licenta_Buletin_Luna_expirare=="October")
+															$v_Licenta_Buletin_Luna_expirare_Nr=10;
+														if($v_Licenta_Buletin_Luna_expirare=="November")
+															$v_Licenta_Buletin_Luna_expirare_Nr=11;
+														if($v_Licenta_Buletin_Luna_expirare=="December")
+															$v_Licenta_Buletin_Luna_expirare_Nr=12;
+														if(checkdate($v_Licenta_Buletin_Luna_expirare_Nr,$v_Licenta_Buletin_Ziua,$v_Licenta_Buletin_Ziua_expirare)==0)
+															echo "Dată incorect!";
+													}
+												?>
+											</span>
 										</div>
 										<br>
 									</div> 
@@ -4388,6 +4496,41 @@
 																	</select>
 																</span>
 															</div>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Licenta_Diploma_An=$_POST["Licenta_Diploma_An"];
+																		$v_Licenta_Diploma_Ziua=$_POST["Licenta_Diploma_Ziua"];
+																		$v_Licenta_Diploma_Luna = $_POST["Licenta_Diploma_Luna"];
+																		if($v_Licenta_Diploma_Luna=="January")
+																			$v_Licenta_Diploma_Luna_Nr=1;
+																		if($v_Licenta_Diploma_Luna=="February")
+																			$v_Licenta_Diploma_Luna_Nr=2;
+																		if($v_Licenta_Diploma_Luna=="March")
+																			$v_Licenta_Diploma_Luna_Nr=3;
+																		if($v_Licenta_Diploma_Luna=="April")
+																			$v_Licenta_Diploma_Luna_Nr=4;
+																		if($v_Licenta_Diploma_Luna=="May")
+																			$v_Licenta_Diploma_Luna_Nr=5;
+																		if($v_Licenta_Diploma_Luna=="June")
+																			$v_Licenta_Diploma_Luna_Nr=6;
+																		if($v_Licenta_Diploma_Luna=="July")
+																			$v_Licenta_Diploma_Luna_Nr=7;
+																		if($v_Licenta_Diploma_Luna=="August")
+																			$v_Licenta_Diploma_Luna_Nr=8;
+																		if($v_Licenta_Diploma_Luna=="September")
+																			$v_Licenta_Diploma_Luna_Nr=9;
+																		if($v_Licenta_Diploma_Luna=="October")
+																			$v_Licenta_Diploma_Luna_Nr=10;
+																		if($v_Licenta_Diploma_Luna=="November")
+																			$v_Licenta_Diploma_Luna_Nr=11;
+																		if($v_Licenta_Diploma_Luna=="December")
+																			$v_Licenta_Diploma_Luna_Nr=12;
+																		if(checkdate($v_Licenta_Diploma_Luna_Nr,$v_Licenta_Diploma_Ziua,$v_Licenta_Diploma_An)==0)
+																			echo "Dată incorect!";
+																	}
+																?>
+															</span>
 														</div>
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:15%">
@@ -4582,6 +4725,41 @@
 																	</select>
 																</span>
 															</div>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Licenta_ActEchivalare_An=$_POST["Licenta_ActEchivalare_An"];
+																		$v_Licenta_ActEchivalare_Ziua=$_POST["Licenta_ActEchivalare_Ziua"];
+																		$v_Licenta_ActEchivalare_Luna= $_POST["Licenta_ActEchivalare_Luna"];
+																		if($v_Licenta_ActEchivalare_Luna=="January")
+																			$v_Licenta_ActEchivalare_Luna_Nr=1;
+																		if($v_Licenta_ActEchivalare_Luna=="February")
+																			$v_Licenta_ActEchivalare_Luna_Nr=2;
+																		if($v_Licenta_ActEchivalare_Luna=="March")
+																			$v_Licenta_ActEchivalare_Luna_Nr=3;
+																		if($v_Licenta_ActEchivalare_Luna=="April")
+																			$v_Licenta_ActEchivalare_Luna_Nr=4;
+																		if($v_Licenta_ActEchivalare_Luna=="May")
+																			$v_Licenta_ActEchivalare_Luna_Nr=5;
+																		if($v_Licenta_ActEchivalare_Luna=="June")
+																			$v_Licenta_ActEchivalare_Luna_Nr=6;
+																		if($v_Licenta_ActEchivalare_Luna=="July")
+																			$v_Licenta_ActEchivalare_Luna_Nr=7;
+																		if($v_Licenta_ActEchivalare_Luna=="August")
+																			$v_Licenta_ActEchivalare_Luna_Nr=8;
+																		if($v_Licenta_ActEchivalare_Luna=="September")
+																			$v_Licenta_ActEchivalare_Luna_Nr=9;
+																		if($v_Licenta_ActEchivalare_Luna=="October")
+																			$v_Licenta_ActEchivalare_Luna_Nr=10;
+																		if($v_Licenta_ActEchivalare_Luna=="November")
+																			$v_Licenta_ActEchivalare_Luna_Nr=11;
+																		if($v_Licenta_ActEchivalare_Luna=="December")
+																			$v_Licenta_ActEchivalare_Luna_Nr=12;
+																		if(checkdate($v_Licenta_ActEchivalare_Luna_Nr,$v_Licenta_ActEchivalare_Ziua,$v_Licenta_ActEchivalare_An)==0)
+																			echo "Dată incorect!";
+																	}
+																?>
+															</span>
 														</div>
 													</span>
 												</td>
@@ -4937,16 +5115,18 @@
 															<span style="color:red">
 																<?php
 																	if(isset($_POST['Submit'])) {
-																		$v_Licenta_Judet_AltaFacultate = $_POST["Licenta_Judet_AltaFacultate"];
-																		$vLicenta_Judet_AltaFacultate=validNume($v_Licenta_Judet_AltaFacultate);
-																		if($vLicenta_Judet_AltaFacultate==-1)
-																			echo "C&#226;mp necompletat!";
-																		else
-																			if($vLicenta_Judet_AltaFacultate==1)
-																				echo "C&#226;mpul conține caractere nepermise!";
+																		if($v_Radio25==1) {
+																			$v_Licenta_Judet_AltaFacultate = $_POST["Licenta_Judet_AltaFacultate"];
+																			$vLicenta_Judet_AltaFacultate=validNume($v_Licenta_Judet_AltaFacultate);
+																			if($vLicenta_Judet_AltaFacultate==-1)
+																				echo "C&#226;mp necompletat!";
 																			else
-																				if($vLicenta_Judet_AltaFacultate==2)
-																					echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																				if($vLicenta_Judet_AltaFacultate==1)
+																					echo "C&#226;mpul conține caractere nepermise!";
+																				else
+																					if($vLicenta_Judet_AltaFacultate==2)
+																						echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																		}
 																	}
 																?>
 															</span>
@@ -4974,16 +5154,18 @@
 															<span style="color:red">
 																<?php
 																	if(isset($_POST['Submit'])) {
-																		$v_Licenta_Tara_AltaFacultate = $_POST["Licenta_Tara_AltaFacultate"];
-																		$vLicenta_Tara_AltaFacultate=validTara($v_Licenta_Tara_AltaFacultate);
-																		if($vLicenta_Tara_AltaFacultate==-1)
-																			echo "C&#226;mp necompletat!";
-																		else
-																			if($vLicenta_Tara_AltaFacultate==2)
-																				echo "C&#226;mpul conține caractere nepermise!";
+																		if($v_Radio25==1) {
+																			$v_Licenta_Tara_AltaFacultate = $_POST["Licenta_Tara_AltaFacultate"];
+																			$vLicenta_Tara_AltaFacultate=validTara($v_Licenta_Tara_AltaFacultate);
+																			if($vLicenta_Tara_AltaFacultate==-1)
+																				echo "C&#226;mp necompletat!";
 																			else
-																				if($vLicenta_Tara_AltaFacultate==1)
-																					echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																				if($vLicenta_Tara_AltaFacultate==2)
+																					echo "C&#226;mpul conține caractere nepermise!";
+																				else
+																					if($vLicenta_Tara_AltaFacultate==1)
+																						echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																		}
 																	}
 																?>
 															</span>
@@ -5389,16 +5571,18 @@
 															<span style="color:red">
 																<?php
 																	if(isset($_POST['Submit'])) {
-																		$v_Licenta_AbsolventLicenta_Judet_AltaFacultate = $_POST["Licenta_AbsolventLicenta_Judet_AltaFacultate"];
-																		$vLicenta_AbsolventLicenta_Judet_AltaFacultate=validNume($v_Licenta_AbsolventLicenta_Judet_AltaFacultate);
-																		if($vLicenta_AbsolventLicenta_Judet_AltaFacultate==-1)
-																			echo "C&#226;mp necompletat!";
-																		else
-																			if($vLicenta_AbsolventLicenta_Judet_AltaFacultate==1)
-																				echo "C&#226;mpul conține caractere nepermise!";
+																		if($v_Radio24==1) {
+																			$v_Licenta_AbsolventLicenta_Judet_AltaFacultate = $_POST["Licenta_AbsolventLicenta_Judet_AltaFacultate"];
+																			$vLicenta_AbsolventLicenta_Judet_AltaFacultate=validNume($v_Licenta_AbsolventLicenta_Judet_AltaFacultate);
+																			if($vLicenta_AbsolventLicenta_Judet_AltaFacultate==-1)
+																				echo "C&#226;mp necompletat!";
 																			else
-																				if($vLicenta_AbsolventLicenta_Judet_AltaFacultate==2)
-																					echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																				if($vLicenta_AbsolventLicenta_Judet_AltaFacultate==1)
+																					echo "C&#226;mpul conține caractere nepermise!";
+																				else
+																					if($vLicenta_AbsolventLicenta_Judet_AltaFacultate==2)
+																						echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																		}
 																	}
 																?>
 															</span>
@@ -5426,16 +5610,18 @@
 															<span style="color:red">
 																<?php
 																	if(isset($_POST['Submit'])) {
-																		$v_Licenta_Tara_AltaFacultate_Licenta = $_POST["Licenta_Tara_AltaFacultate_Licenta"];
-																		$vLicenta_Tara_AltaFacultate_Licenta=validTara($v_Licenta_Tara_AltaFacultate_Licenta);
-																		if($vLicenta_Tara_AltaFacultate_Licenta==-1)
-																			echo "C&#226;mp necompletat!";
-																		else
-																			if($vLicenta_Tara_AltaFacultate_Licenta==2)
-																				echo "C&#226;mpul conține caractere nepermise!";
+																		if($v_Radio24==1) {
+																			$v_Licenta_Tara_AltaFacultate_Licenta = $_POST["Licenta_Tara_AltaFacultate_Licenta"];
+																			$vLicenta_Tara_AltaFacultate_Licenta=validTara($v_Licenta_Tara_AltaFacultate_Licenta);
+																			if($vLicenta_Tara_AltaFacultate_Licenta==-1)
+																				echo "C&#226;mp necompletat!";
 																			else
-																				if($vLicenta_Tara_AltaFacultate_Licenta==1)
-																					echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																				if($vLicenta_Tara_AltaFacultate_Licenta==2)
+																					echo "C&#226;mpul conține caractere nepermise!";
+																				else
+																					if($vLicenta_Tara_AltaFacultate_Licenta==1)
+																						echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																		}
 																	}
 																?>
 															</span>
@@ -5671,6 +5857,41 @@
 																			</select>
 																		</span>
 																	</div>
+																	<span style="color:red">
+																		<?php
+																			if(isset($_POST['Submit'])) {
+																				$v_Licenta_DiplomaLicenta_An=$_POST["Licenta_DiplomaLicenta_An"];
+																				$v_Licenta_DiplomaLicenta_Ziua=$_POST["Licenta_DiplomaLicenta_Ziua"];
+																				$v_Licenta_DiplomaLicenta_Luna = $_POST["Licenta_DiplomaLicenta_Luna"];
+																				if($v_Licenta_DiplomaLicenta_Luna=="January")
+																					$v_Licenta_DiplomaLicenta_Luna_Nr=1;
+																				if($v_Licenta_DiplomaLicenta_Luna=="February")
+																					$v_Licenta_DiplomaLicenta_Luna_Nr=2;
+																				if($v_Licenta_DiplomaLicenta_Luna=="March")
+																					$v_Licenta_DiplomaLicenta_Luna_Nr=3;
+																				if($v_Licenta_DiplomaLicenta_Luna=="April")
+																					$v_Licenta_DiplomaLicenta_Luna_Nr=4;
+																				if($v_Licenta_DiplomaLicenta_Luna=="May")
+																					$v_Licenta_DiplomaLicenta_Luna_Nr=5;
+																				if($v_Licenta_DiplomaLicenta_Luna=="June")
+																					$v_Licenta_DiplomaLicenta_Luna_Nr=6;
+																				if($v_Licenta_DiplomaLicenta_Luna=="July")
+																					$v_Licenta_DiplomaLicenta_Luna_Nr=7;
+																				if($v_Licenta_DiplomaLicenta_Luna=="August")
+																					$v_Licenta_DiplomaLicenta_Luna_Nr=8;
+																				if($v_Licenta_DiplomaLicenta_Luna=="September")
+																					$v_Licenta_DiplomaLicenta_Luna_Nr=9;
+																				if($v_Licenta_DiplomaLicenta_Luna=="October")
+																					$v_Licenta_DiplomaLicenta_Luna_Nr=10;
+																				if($v_Licenta_DiplomaLicenta_Luna=="November")
+																					$v_Licenta_DiplomaLicenta_Luna_Nr=11;
+																				if($v_Licenta_DiplomaLicenta_Luna=="December")
+																					$v_Licenta_DiplomaLicenta_Luna_Nr=12;
+																				if(checkdate($v_Licenta_DiplomaLicenta_Luna_Nr,$v_Licenta_DiplomaLicenta_Ziua,$v_Licenta_DiplomaLicenta_An)==0)
+																					echo "Dată incorect!";
+																			}
+																		?>
+																	</span>
 																</div>
 															</span>
 															<span class="form-sub-label-container" style="vertical-align:top; width:15%">
@@ -5864,6 +6085,41 @@
 																			</select>
 																		</span>
 																	</div>
+																	<span style="color:red">
+																		<?php
+																			if(isset($_POST['Submit'])) {
+																				$v_Licenta_AbsolventLicenta_ActEchivalare_An=$_POST["Licenta_AbsolventLicenta_ActEchivalare_An"];
+																				$v_Licenta_AbsolventLicenta_ActEchivalare_Ziua=$_POST["Licenta_AbsolventLicenta_ActEchivalare_Ziua"];
+																				$v_Licenta__AbsolventLicenta_ActEchivalare_Luna=$_POST["Licenta__AbsolventLicenta_ActEchivalare_Luna"];
+																				if($v_Licenta__AbsolventLicenta_ActEchivalare_Luna=="January")
+																					$v_Licenta__AbsolventLicenta_ActEchivalare_Luna_Nr=1;
+																				if($v_Licenta__AbsolventLicenta_ActEchivalare_Luna=="February")
+																					$v_Licenta__AbsolventLicenta_ActEchivalare_Luna_Nr=2;
+																				if($v_Licenta__AbsolventLicenta_ActEchivalare_Luna=="March")
+																					$v_Licenta__AbsolventLicenta_ActEchivalare_Luna_Nr=3;
+																				if($v_Licenta__AbsolventLicenta_ActEchivalare_Luna=="April")
+																					$v_Licenta__AbsolventLicenta_ActEchivalare_Luna_Nr=4;
+																				if($v_Licenta__AbsolventLicenta_ActEchivalare_Luna=="May")
+																					$v_Licenta__AbsolventLicenta_ActEchivalare_Luna_Nr=5;
+																				if($v_Licenta__AbsolventLicenta_ActEchivalare_Luna=="June")
+																					$v_Licenta__AbsolventLicenta_ActEchivalare_Luna_Nr=6;
+																				if($v_Licenta__AbsolventLicenta_ActEchivalare_Luna=="July")
+																					$v_Licenta__AbsolventLicenta_ActEchivalare_Luna_Nr=7;
+																				if($v_Licenta__AbsolventLicenta_ActEchivalare_Luna=="August")
+																					$v_Licenta__AbsolventLicenta_ActEchivalare_Luna_Nr=8;
+																				if($v_Licenta__AbsolventLicenta_ActEchivalare_Luna=="September")
+																					$v_Licenta__AbsolventLicenta_ActEchivalare_Luna_Nr=9;
+																				if($v_Licenta__AbsolventLicenta_ActEchivalare_Luna=="October")
+																					$v_Licenta__AbsolventLicenta_ActEchivalare_Luna_Nr=10;
+																				if($v_Licenta__AbsolventLicenta_ActEchivalare_Luna=="November")
+																					$v_Licenta__AbsolventLicenta_ActEchivalare_Luna_Nr=11;
+																				if($v_Licenta__AbsolventLicenta_ActEchivalare_Luna=="December")
+																					$v_Licenta__AbsolventLicenta_ActEchivalare_Luna_Nr=12;
+																				if(checkdate($v_Licenta__AbsolventLicenta_ActEchivalare_Luna_Nr,$v_Licenta_AbsolventLicenta_ActEchivalare_Ziua,$v_Licenta_AbsolventLicenta_ActEchivalare_An)==0)
+																					echo "Dată incorect!";
+																			}
+																		?>
+																	</span>
 																</div>
 															</span>
 														</td>

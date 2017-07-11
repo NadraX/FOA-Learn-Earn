@@ -944,6 +944,9 @@
 												<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Data naşterii </label>
 												<span class="form-sub-label-container" style="vertical-align:top; ">
 													<select style="height:40px;" name="Preadmitere_Nastere_Luna" id="input_10_month" class="form-dropdown" data-component="birthdate-month">
+														<?php 
+															$v_Preadmitere_nastere_luna =$_POST["Preadmitere_Nastere_Luna"];
+														?>
 														<option value="January" <?php
 																					if($v_Preadmitere_nastere_luna=="January")
 																						echo 'selected';
@@ -1046,6 +1049,41 @@
 													</select>
 												</span>
 											</div>
+											<span style="color:red">
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Preadmitere_Nastere_An=$_POST["Preadmitere_Nastere_An"];
+														$v_Preadmitere_Nastere_Zi=$_POST["Preadmitere_Nastere_Zi"];
+														$v_Preadmitere_nastere_luna =$_POST["Preadmitere_Nastere_Luna"];
+														if($v_Preadmitere_nastere_luna=="January")
+															$v_Preadmitere_nastere_luna_nr=1;
+														if($v_Preadmitere_nastere_luna=="February")
+															$v_Preadmitere_nastere_luna_nr=2;
+														if($v_Preadmitere_nastere_luna=="March")
+															$v_Preadmitere_nastere_luna_nr=3;
+														if($v_Preadmitere_nastere_luna=="April")
+															$v_Preadmitere_nastere_luna_nr=4;
+														if($v_Preadmitere_nastere_luna=="May")
+															$v_Preadmitere_nastere_luna_nr=5;
+														if($v_Preadmitere_nastere_luna=="June")
+															$v_Preadmitere_nastere_luna_nr=6;
+														if($v_Preadmitere_nastere_luna=="July")
+															$v_Preadmitere_nastere_luna_nr=7;
+														if($v_Preadmitere_nastere_luna=="August")
+															$v_Preadmitere_nastere_luna_nr=8;
+														if($v_Preadmitere_nastere_luna=="September")
+															$v_Preadmitere_nastere_luna_nr=9;
+														if($v_Preadmitere_nastere_luna=="October")
+															$v_Preadmitere_nastere_luna_nr=10;
+														if($v_Preadmitere_nastere_luna=="November")
+															$v_Preadmitere_nastere_luna_nr=11;
+														if($v_Preadmitere_nastere_luna=="December")
+															$v_Preadmitere_nastere_luna_nr=12;
+														if(checkdate($v_Preadmitere_nastere_luna_nr,$v_Preadmitere_Nastere_Zi,$v_Preadmitere_Nastere_An)==0)
+															echo "Dată incorect!";
+													}
+												?>
+											</span>
 										</div>
 										<br>
 									</div>
@@ -1339,6 +1377,9 @@
 											<div data-wrapper-react="true">
 												<span class="form-sub-label-container" style="vertical-align:top; ">
 													<label class="form-sub-label"  style="min-height:13px;">Data Eliberare</label>
+													<?php 
+														$v_Preadmitere_Buletin_Luna_Eliberarii=$_POST["Preadmitere_Eliberat_Buletin_Luna"];
+													?>
 													<select style="height:40px;" name="Preadmitere_Eliberat_Buletin_Luna"  class="form-dropdown" data-component="birthdate-month">
 														<option value="January" <?php
 																					if($v_Preadmitere_Buletin_Luna_Eliberarii=="January")
@@ -1441,12 +1482,50 @@
 													</select>
 												</span>
 											</div>
+											<span style="color:red">
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Preadmitere_Buletin_An=$_POST["Preadmitere_Eliberat_Buletin_An"];
+														$v_Preadmitere_Buletin_Ziua=$_POST["Preadmitere_Eliberat_Buletin_Ziua"];
+														$v_Preadmitere_Buletin_Luna_Eliberarii=$_POST["Preadmitere_Eliberat_Buletin_Luna"];
+														if($v_Preadmitere_Buletin_Luna_Eliberarii=="January")
+															$v_Preadmitere_Buletin_Luna_Eliberarii_nr=1;
+														if($v_Preadmitere_Buletin_Luna_Eliberarii=="February")
+															$v_Preadmitere_Buletin_Luna_Eliberarii_nr=2;
+														if($v_Preadmitere_Buletin_Luna_Eliberarii=="March")
+															$v_Preadmitere_Buletin_Luna_Eliberarii_nr=3;
+														if($v_Preadmitere_Buletin_Luna_Eliberarii=="April")
+															$v_Preadmitere_Buletin_Luna_Eliberarii_nr=4;
+														if($v_Preadmitere_Buletin_Luna_Eliberarii=="May")
+															$v_Preadmitere_Buletin_Luna_Eliberarii_nr=5;
+														if($v_Preadmitere_Buletin_Luna_Eliberarii=="June")
+															$v_Preadmitere_Buletin_Luna_Eliberarii_nr=6;
+														if($v_Preadmitere_Buletin_Luna_Eliberarii=="July")
+															$v_Preadmitere_Buletin_Luna_Eliberarii_nr=7;
+														if($v_Preadmitere_Buletin_Luna_Eliberarii=="August")
+															$v_Preadmitere_Buletin_Luna_Eliberarii_nr=8;
+														if($v_Preadmitere_Buletin_Luna_Eliberarii=="September")
+															$v_Preadmitere_Buletin_Luna_Eliberarii_nr=9;
+														if($v_Preadmitere_Buletin_Luna_Eliberarii=="October")
+															$v_Preadmitere_Buletin_Luna_Eliberarii_nr=10;
+														if($v_Preadmitere_Buletin_Luna_Eliberarii=="November")
+															$v_Preadmitere_Buletin_Luna_Eliberarii_nr=11;
+														if($v_Preadmitere_Buletin_Luna_Eliberarii=="December")
+															$v_Preadmitere_Buletin_Luna_Eliberarii_nr=12;
+														if(checkdate($v_Preadmitere_Buletin_Luna_Eliberarii_nr,$v_Preadmitere_Buletin_Ziua,$v_Preadmitere_Buletin_An)==0)
+															echo "Dată incorect!";
+													}
+												?>
+											</span>
 										</div>
 										<div  class="form-input jf-required" style="vertical-align:top;padding:0;margin:0;height:40px">
 											<div data-wrapper-react="true">
 												<span class="form-sub-label-container" style="vertical-align:top; ">
 													<label class="form-sub-label"  style="min-height:13px;">Data Expirare</label>
 													<select style="height:40px;" name="Preadmitere_Expirat_Buletin_Luna"  class="form-dropdown" data-component="birthdate-month">
+														<?php 
+															$v_Preadmitere_Buletin_Luna_Expirare=$_POST["Preadmitere_Expirat_Buletin_Luna"];
+														?>
 														<option value="January" <?php
 																	if($v_Preadmitere_Buletin_Luna_Expirare=="January")
 																	  echo 'selected';
@@ -1524,10 +1603,10 @@
 												<span class="form-sub-label-container" style="vertical-align:bottom;">
 													<select style="height:40px;" name="Preadmitere_Expirat_Buletin_Ziua"  class="form-dropdown" data-component="birthdate-day">
 														<?php
-															$v_Preadmitere_Buletin_Ziua=$_POST["Preadmitere_Expirat_Buletin_Ziua"];
+															$v_Preadmitere_Buletin_Ziua_Expirare=$_POST["Preadmitere_Expirat_Buletin_Ziua"];
 															for($i=1;$i<=31;$i++) {
 																echo '<option value="'.$i.'" ';
-																if($v_Preadmitere_Buletin_Ziua==$i)
+																if($v_Preadmitere_Buletin_Ziua_Expirare==$i)
 																	echo 'selected';
 																echo '> '.$i.' </option>';
 															}
@@ -1537,10 +1616,10 @@
 												<span class="form-sub-label-container" style="vertical-align:bottom;">
 													<select style="height:40px;" name="Preadmitere_Expirat_Buletin_An"  class="form-dropdown" data-component="birthdate-year">
 														<?php
-															$v_Preadmitere_Buletin_An=$_POST["Preadmitere_Expirat_Buletin_An"];
+															$v_Preadmitere_Buletin_An_Expirare=$_POST["Preadmitere_Expirat_Buletin_An"];
 															for($i=2017;$i>=1920;$i--) {
 																echo '<option value="'.$i.'" ';
-																if($v_Preadmitere_Buletin_An==$i)
+																if($v_Preadmitere_Buletin_An_Expirare==$i)
 																	echo 'selected';
 																echo '> '.$i.' </option>';
 															}
@@ -1548,6 +1627,41 @@
 													</select>
 												</span>
 											</div>
+											<span style="color:red">
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Preadmitere_Buletin_An_Expirare=$_POST["Preadmitere_Expirat_Buletin_An"];
+														$v_Preadmitere_Buletin_Ziua_Expirare=$_POST["Preadmitere_Expirat_Buletin_Ziua"];
+														$v_Preadmitere_Buletin_Luna_Expirare=$_POST["Preadmitere_Expirat_Buletin_Luna"];
+														if($v_Preadmitere_Buletin_Luna_Expirare=="January")
+															$v_Preadmitere_Buletin_Luna_Expirare_Nr=1;
+														if($v_Preadmitere_Buletin_Luna_Expirare=="February")
+															$v_Preadmitere_Buletin_Luna_Expirare_Nr=2;
+														if($v_Preadmitere_Buletin_Luna_Expirare=="March")
+															$v_Preadmitere_Buletin_Luna_Expirare_Nr=3;
+														if($v_Preadmitere_Buletin_Luna_Expirare=="April")
+															$v_Preadmitere_Buletin_Luna_Expirare_Nr=4;
+														if($v_Preadmitere_Buletin_Luna_Expirare=="May")
+															$v_Preadmitere_Buletin_Luna_Expirare_Nr=5;
+														if($v_Preadmitere_Buletin_Luna_Expirare=="June")
+															$v_Preadmitere_Buletin_Luna_Expirare_Nr=6;
+														if($v_Preadmitere_Buletin_Luna_Expirare=="July")
+															$v_Preadmitere_Buletin_Luna_Expirare_Nr=7;
+														if($v_Preadmitere_Buletin_Luna_Expirare=="August")
+															$v_Preadmitere_Buletin_Luna_Expirare_Nr=8;
+														if($v_Preadmitere_Buletin_Luna_Expirare=="September")
+															$v_Preadmitere_Buletin_Luna_Expirare_Nr=9;
+														if($v_Preadmitere_Buletin_Luna_Expirare=="October")
+															$v_Preadmitere_Buletin_Luna_Expirare_Nr=10;
+														if($v_Preadmitere_Buletin_Luna_Expirare=="November")
+															$v_Preadmitere_Buletin_Luna_Expirare_Nr=11;
+														if($v_Preadmitere_Buletin_Luna_Expirare=="December")
+															$v_Preadmitere_Buletin_Luna_Expirare_Nr=12;
+														if(checkdate($v_Preadmitere_Buletin_Luna_Expirare_Nr,$v_Preadmitere_Buletin_Ziua_Expirare,$v_Preadmitere_Buletin_An_Expirare)==0)
+															echo "Dată incorect!";
+													}
+												?>
+											</span>
 										</div>
 										<br>
 									</div> 
