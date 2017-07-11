@@ -669,7 +669,7 @@
 							$v_Licenta_Nationalitate = $_POST["Licenta_Nationalitate"];
 							$v_Licenta_Etnie = $_POST["Licenta_Etnie"];
 							$v_Licenta_Limba_Materna = $_POST["Licenta_Limba_Materna"];
-							$v_Master_an_expirare=$_POST["Master_Buletin_An_Expirare"];
+							$v_Licenta_an_expirare=$_POST["Licenta_Buletin_An_Expirare"];
 							$v_Licenta_Emitere_DiplomaBAC = $_POST["Licenta_Emitere_DiplomaBAC"];
 							$v_Licenta_AltaFacultate = $_POST["Licenta_AltaFacultate"];
 							$v_id = 1;
@@ -680,11 +680,11 @@
 							$v_Scutire = $_POST["Licenta_Motiv_Scutire_taxa"];	
 								$vscutire = validScutire($v_Scutire);
 							$v_Stare_civila = $_POST["Licenta_Stare_Civila"];		
-							$v_Master_Sex = $_POST["Licenta_Sex"];		
-							$v_Master_luna = $_POST["Licenta_Buletin_Luna"];		
-							$v_Master_an = $_POST["Licenta_Buletin_An"];		
-							$v_Master_zi = $_POST["Licenta_Buletin_Ziua"];		
-							$v_Master_limba = $_POST["Licenta_Limba_Aleasa"];
+							$v_Licenta_Sex = $_POST["Licenta_Sex"];		
+							$v_Licenta_luna = $_POST["Licenta_Eliberat_Buletin_Luna"];		
+							$v_Licenta_an = $_POST["Licenta_Eliberat_Buletin_An"];		
+							$v_Licenta_zi = $_POST["Licenta_Eliberat_Buletin_Ziua"];		
+							$v_Licenta_limba = $_POST["Licenta_Limba_Aleasa"];
 							$v_Licenta_Profil_Liceu = $_POST["Licenta_Profil_Liceu"];
 							$v_Licenta_Durata_Liceu = $_POST["Licenta_Durata_Liceu"];
 							$v_Licenta_Specializare = $_POST["Licenta_Specializare"];
@@ -706,7 +706,7 @@
 							$v_Licenta_AbsolventLicenta_Domeniu_Licenta = $_POST["Licenta_AbsolventLicenta_Domeniu_Licenta"];
 							$v_Licenta_AbsolventLicenta_Specializare = $_POST["Licenta_AbsolventLicenta_Specializare"];
 							$v_Licenta_AbsolventLicenta_An_Facultate = $_POST["Licenta_AbsolventLicenta_An_Facultate"];
-							$v_Master_nastere_luna = $_POST["Licenta_Nastere_Luna"];		
+							$v_Licenta_nastere_luna = $_POST["Licenta_Nastere_Luna"];		
 							$v_Licenta_AbsolventLicenta_Durata_Studii = $_POST["Licenta_AbsolventLicenta_Durata_Studii"];
 							$v_Licenta_AlteConcursuri_Facultate3 = $_POST["Licenta_AlteConcursuri_Facultate3"];		
 							$v_Licenta_AlteConcursuri_Univ3 = $_POST["Licenta_AlteConcursuri_Univ3"];	
@@ -714,8 +714,8 @@
 							$v_Licenta_AlteConcursuri_Univ2 = $_POST["Licenta_AlteConcursuri_Univ2"];
 							$v_Licenta_AlteConcursuri_Univ1 = $_POST["Licenta_AlteConcursuri_Univ1"];
 							$v_Licenta_AlteConcursuri_Facultate1 = $_POST["Licenta_AlteConcursuri_Facultate1"];	
-							$v_Master_nastere_zi = $_POST["Licenta_Nastere_Zi"];		
-							$v_Master_nastere_an = $_POST["Licenta_Nastere_An"];		
+							$v_Licenta_nastere_zi = $_POST["Licenta_Nastere_Zi"];		
+							$v_Licenta_nastere_an = $_POST["Licenta_Nastere_An"];		
 							$v_Licenta_Obiect = $_POST["Licenta_Obiect_Test_Ales"];		
 							$v_Judet = $_POST["Licenta_Judet"];		
 							$v_Liceu = $_POST["Licenta_Liceu"];
@@ -1225,13 +1225,13 @@
 											<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Sex</label>
 											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Licenta_Sex" data-component="country">
 												<option name="sexMasculin" value="M" <?php
-																					if($v_Master_Sex=="M")
+																					if($v_Licenta_Sex=="M")
 																						echo 'selected';
 																					else
 																						echo '';
 																				?>>Masculin</option>
 												<option name="sexFeminin" value="F" <?php
-																					if($v_Master_Sex=="F")
+																					if($v_Licenta_Sex=="F")
 																						echo 'selected';
 																					else
 																						echo '';
@@ -1320,73 +1320,73 @@
 												<span class="form-sub-label-container" style="vertical-align:top; ">
 													<select style="height:40px;" name="Licenta_Nastere_Luna" id="input_10_month" class="form-dropdown" data-component="birthdate-month">
 														<option value="January" <?php
-																					if($v_Master_nastere_luna=="January")
+																					if($v_Licenta_nastere_luna=="January")
 																						echo 'selected';
 																					else
 																						echo '';
 																				?>>Ianuarie</option>
 														<option value="February" <?php
-																					if($v_Master_nastere_luna=="February")
+																					if($v_Licenta_nastere_luna=="February")
 																						echo 'selected';
 																					else
 																						echo '';
 																				?>> Februarie</option>    
 														<option value="March" <?php   
-																					if($v_Master_nastere_luna=="March")   
+																					if($v_Licenta_nastere_luna=="March")   
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				?>> Martie </option>    
 														<option value="April" <?php   
-																					if($v_Master_nastere_luna=="April")   
+																					if($v_Licenta_nastere_luna=="April")   
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				?>> Aprilie </option>   
 														<option value="May" <?php    
-																				if($v_Master_nastere_luna=="May")   
+																				if($v_Licenta_nastere_luna=="May")   
 																					echo 'selected';    
 																				else    
 																					echo '';    
 																			?>> Mai </option>   
 														<option value="June" <?php   
-																					if($v_Master_nastere_luna=="June")    
+																					if($v_Licenta_nastere_luna=="June")    
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				?>> Iunie </option>   
 														<option value="July" <?php   
-																					if($v_Master_nastere_luna=="July")    
+																					if($v_Licenta_nastere_luna=="July")    
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				?>> Iulie</option>    
 														<option value="August" <?php   
-																					if($v_Master_nastere_luna=="August")    
+																					if($v_Licenta_nastere_luna=="August")    
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				?>> August </option>    
 														<option value="September" <?php    
-																					if($v_Master_nastere_luna=="September")   
+																					if($v_Licenta_nastere_luna=="September")   
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				?>> Septembrie </option>    
 														<option value="October" <?php    
-																					if($v_Master_nastere_luna=="October")   
+																					if($v_Licenta_nastere_luna=="October")   
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				?>> Octombrie </option>   
 														<option value="November" <?php   
-																					if($v_Master_nastere_luna=="November")    
+																					if($v_Licenta_nastere_luna=="November")    
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				?>> Noiembrie</option>    
 														<option value="December" <?php   
-																					if($v_Master_nastere_luna=="December")    
+																					if($v_Licenta_nastere_luna=="December")    
 																						echo 'selected';    
 																					else    
 																						echo '';    
@@ -1711,9 +1711,9 @@
 											<div data-wrapper-react="true">
 												<span class="form-sub-label-container" style="vertical-align:top; ">
 													<label class="form-sub-label"  style="min-height:13px;">Data Eliberare</label>
-													<select style="height:40px;" name="Licenta_Buletin_Luna"  class="form-dropdown" data-component="birthdate-month">
+													<select style="height:40px;" name="Licenta_Eliberat_Buletin_Luna"  class="form-dropdown" data-component="birthdate-month">
   														<?php 
-															$v_Licenta_Buletin_Luna=$_POST["Licenta_Buletin_Luna"];
+															$v_Licenta_Buletin_Luna=$_POST["Licenta_Eliberat_Buletin_Luna"];
 														?>
 														<option value="January" <?php
   																					if($v_Licenta_Buletin_Luna=="January")
@@ -1790,9 +1790,9 @@
 													</select>
 												</span>
 												<span class="form-sub-label-container" style="vertical-align:bottom;">
-													<select style="height:40px;" name="Licenta_Buletin_Ziua"  class="form-dropdown" data-component="birthdate-day">
+													<select style="height:40px;" name="Licenta_Eliberat_Buletin_Ziua"  class="form-dropdown" data-component="birthdate-day">
 														<?php
-														$v_Licenta_Buletin_Ziua=$_POST["Licenta_Buletin_Ziua"];
+														$v_Licenta_Buletin_Ziua=$_POST["Licenta_Eliberat_Buletin_Ziua"];
 														for($i=1;$i<=31;$i++)
 														{
 															echo '<option value="'.$i.'" ';
@@ -1804,9 +1804,9 @@
 													</select>
 												</span>
 												<span class="form-sub-label-container" style="vertical-align:bottom;">
-													<select style="height:40px;" name="Licenta_Buletin_An"  class="form-dropdown" data-component="birthdate-year">
+													<select style="height:40px;" name="Licenta_Eliberat_Buletin_An"  class="form-dropdown" data-component="birthdate-year">
 													<?php
-														$v_Licenta_Buletin_An=$_POST["Licenta_Buletin_An"];
+														$v_Licenta_Buletin_An=$_POST["Licenta_Eliberat_Buletin_An"];
 														for($i=2017;$i>=1920;$i--)
 														{
 															echo '<option value="'.$i.'" ';
@@ -1823,78 +1823,78 @@
 											<div data-wrapper-react="true">
 												<span class="form-sub-label-container" style="vertical-align:top; ">
 													<label class="form-sub-label"  style="min-height:13px;">Data Expirare</label>
-													<select style="height:40px;" name="Master_Buletin_Luna"  class="form-dropdown" data-component="birthdate-month">
+													<select style="height:40px;" name="Licenta_Expirat_Buletin_Luna"  class="form-dropdown" data-component="birthdate-month">
 														<?php 
-															$v_Master_Buletin_Luna=$_POST["Master_Buletin_Luna"];
+															$v_Licenta_Buletin_Luna=$_POST["Licenta_Expirat_Buletin_Luna"];
 														?>
 														<option value="January" <?php
-																					if($v_Master_Buletin_Luna=="January")
+																					if($v_Licenta_Buletin_Luna=="January")
 																						echo 'selected';
 																					else
 																						echo '';
 																				?>>Ianuarie</option>
 														<option value="February" <?php
-																					if($v_Master_Buletin_Luna=="February")
+																					if($v_Licenta_Buletin_Luna=="February")
 																						echo 'selected';
 																					else
 																						echo '';
 																				?>> Februarie</option>    
 														<option value="March"   <?php   
-																					if($v_Master_Buletin_Luna=="March")   
+																					if($v_Licenta_Buletin_Luna=="March")   
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				?>> Martie </option>    
 														<option value="April"   <?php   
-																					if($v_Master_Buletin_Luna=="April")   
+																					if($v_Licenta_Buletin_Luna=="April")   
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				?>> Aprilie </option>   
 														<option value="May" <?php    
-																				if($v_Master_Buletin_Luna=="May")   
+																				if($v_Licenta_Buletin_Luna=="May")   
 																					echo 'selected';    
 																				else    
 																					echo '';    
 																			?>> Mai </option>   
 														<option value="June" <?php   
-																				if($v_Master_Buletin_Luna=="June")    
+																				if($v_Licenta_Buletin_Luna=="June")    
 																					echo 'selected';    
 																				else    
 																					echo '';    
 																			 ?>> Iunie </option>   
 														<option value="July" <?php   
-																				if($v_Master_Buletin_Luna=="July")    
+																				if($v_Licenta_Buletin_Luna=="July")    
 																					echo 'selected';    
 																				else    
 																					echo '';    
 																			 ?>> Iulie</option>    
 														<option value="August" <?php   
-																					if($v_Master_Buletin_Luna=="August")    
+																					if($v_Licenta_Buletin_Luna=="August")    
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				?>> August </option>    
 														<option value="September" <?php    
-																					if($v_Master_Buletin_Luna=="September")   
+																					if($v_Licenta_Buletin_Luna=="September")   
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				 ?>> Septembrie </option>    
 														<option value="October" <?php    
-																					if($v_Master_Buletin_Luna=="October")   
+																					if($v_Licenta_Buletin_Luna=="October")   
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				 ?>> Octombrie </option>   
 														<option value="November" <?php   
-																					if($v_Master_Buletin_Luna=="November")    
+																					if($v_Licenta_Buletin_Luna=="November")    
 																						echo 'selected';    
 																					else    
 																						echo '';    
 																				 ?>> Noiembrie</option>    
 														<option value="December" <?php   
-																					if($v_Master_Buletin_Luna=="December")    
+																					if($v_Licenta_Buletin_Luna=="December")    
 																						echo 'selected';    
 																					else    
 																						echo '';    
@@ -1902,13 +1902,13 @@
 													</select>
 												</span>
 												<span class="form-sub-label-container" style="vertical-align:bottom;">
-													<select style="height:40px;" name="Master_Buletin_Ziua"  class="form-dropdown" data-component="birthdate-day">
+													<select style="height:40px;" name="Licenta_Expirat_Buletin_Ziua"  class="form-dropdown" data-component="birthdate-day">
 														<?php
-															$v_Master_Buletin_Ziua=$_POST["Master_Buletin_Ziua"];
+															$v_Licenta_Buletin_Ziua=$_POST["Licenta_Expirat_Buletin_Ziua"];
 															for($i=1;$i<=31;$i++)
 															{
 																echo '<option value="'.$i.'" ';
-																if($v_Master_Buletin_Ziua==$i)
+																if($v_Licenta_Buletin_Ziua==$i)
 																	echo 'selected';
 																echo '> '.$i.' </option>';
 															}
@@ -1916,13 +1916,13 @@
 													</select>
 												</span>
 												<span class="form-sub-label-container" style="vertical-align:bottom;">
-													<select style="height:40px;" name="Master_Buletin_An_Expirare"  class="form-dropdown" data-component="birthdate-year">
+													<select style="height:40px;" name="Licenta_Buletin_An_Expirare"  class="form-dropdown" data-component="birthdate-year">
 														<?php
-															$v_Master_an_expirare=$_POST["Master_Buletin_An_Expirare"];
+															$v_Licenta_an_expirare=$_POST["Licenta_Buletin_An_Expirare"];
 															for($i=2027;$i>=1920;$i--)
 															{
 																echo '<option value="'.$i.'" ';
-																if($v_Master_an_expirare==$i)
+																if($v_Licenta_an_expirare==$i)
 																	echo 'selected';
 																echo '> '.$i.' </option>';
 															}
@@ -4916,26 +4916,26 @@
 										<div class="general_name" data-wrapper-react="true">
 											<span class="form-sub-label-container" style="vertical-align:top;  height: 40px; width:50%;">
 												<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Anul absolvirii </label>
-												<input type="text"  name="Licenta_AbsolventMaster_Anul_Absolvirii" style="width: 20%" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2015" value="<?php
-																																																								if($v_Licenta_AbsolventMaster_Anul_Absolvirii == '')
+												<input type="text"  name="Licenta_AbsolventLicenta_Anul_Absolvirii" style="width: 20%" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2015" value="<?php
+																																																								if($v_Licenta_AbsolventLicenta_Anul_Absolvirii == '')
 																																																									echo '';
 																																																								else
-																																																									echo $v_Licenta_AbsolventMaster_Anul_Absolvirii;
+																																																									echo $v_Licenta_AbsolventLicenta_Anul_Absolvirii;
 																																																							?>">
 												<br>
 
 												<span style="color:red">
 													<?php 
 														if(isset($_POST['Submit'])) {
-															$v_Licenta_AbsolventMaster_Anul_Absolvirii = $_POST["Licenta_AbsolventMaster_Anul_Absolvirii"];
-															$vLicenta_AbsolventMaster_Anul_Absolvirii = validareAn($v_Licenta_AbsolventMaster_Anul_Absolvirii);
+															$v_Licenta_AbsolventLicenta_Anul_Absolvirii = $_POST["Licenta_AbsolventLicenta_Anul_Absolvirii"];
+															$vLicenta_AbsolventLicenta_Anul_Absolvirii = validareAn($v_Licenta_AbsolventLicenta_Anul_Absolvirii);
 															if($vLicenta_An_Liceu==-1)
 															   	echo "C&#226;mp necompletat!";
 															else
-																if($vLicenta_AbsolventMaster_Anul_Absolvirii==1)
+																if($vLicenta_AbsolventLicenta_Anul_Absolvirii==1)
 																	echo "Caractere nepermise!";
 																else
-																	if($vLicenta_AbsolventMaster_Anul_Absolvirii==2)
+																	if($vLicenta_AbsolventLicenta_Anul_Absolvirii==2)
 																		echo "An incorect!";
 														}
 													?>
@@ -5572,8 +5572,10 @@
 																				//if($v_Licenta_AbsolventLicenta_Nr_ActRecunoastere=='')
 																				//		echo "C&#226;mp necompletat!";
 																				//	else
+                                                                                if($v_Licenta_AbsolventLicenta_Nr_ActRecunoastere != null) {
 																						if(!ctype_digit($v_Licenta_AbsolventLicenta_Nr_ActRecunoastere))
 																							echo "Caractere nepermise!";
+                                                                                }
 																			}
 																		?>
 																</span>
@@ -5952,13 +5954,13 @@
 											<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Doresc &#238;nva&#355;&#259;m&#226;nt de zi</label>
 											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Licenta_Limba_Aleasa" data-component="country">
 												<option value="In limba romana" <?php
-																					if($v_Master_limba=="In limba romana")
+																					if($v_Licenta_limba=="In limba romana")
 																						echo 'selected';
 																					else
 																						echo '';
 																				?>>&#206;n limba rom&#226;n&#259;</option>
 												<option value="In limba engleza"<?php
-																					if($v_Master_limba=="In limba engleza")
+																					if($v_Licenta_limba=="In limba engleza")
 																						echo 'selected';
 																					else
 																						echo '';
@@ -7932,7 +7934,7 @@
     $password = 'ADMITERE1';
     $connection_string = 'localhost/xe';
 
-    $connection = oci_connect($username, $password, $connection_string);
+    $connection = oci_connect($username, $password, $connection_string, 'AL32UTF8');
 
     if(!$connection)
       echo "Connection failed. Please try again";
@@ -7959,11 +7961,11 @@
 			if($vscutire == 0) $v_verificare_radio_1 = 1;
 		}	
         
-        $v_Medie_BAC = $_POST["Licenta_Medie_BAC"];
-		$vmediebac = validareMedieBac($v_Medie_BAC);
+        $v_Licenta_Medie_BAC=$v_MedieBac0*10+$v_MedieBac1+$v_MedieBac2/10+$v_MedieBac3/100;
+        $vLicenta_Medie_BAC = validareMedieBac($v_Licenta_Medie_BAC);
        
-        $v_Nota_MI = $_POST["Licenta_Nota_MI"];  // V
-		$vnotami = validareMedieBac($v_Nota_MI);
+        $v_Licenta_Nota_MI=$v_MedieAlegere0*10+$v_MedieAlegere1+$v_MedieAlegere2/10+$v_MedieAlegere3/100;
+         $vLicenta_Nota_MI = validareMedieAlegere($v_Licenta_Nota_MI);
         
         $v_Obiect_Test_Ales = $_POST["Licenta_Obiect_Test_Ales"]; // != null
         
@@ -7971,7 +7973,8 @@
 		$vradio21 = validRadio($v_Echivalare_Preadmitere);
 			
 		$v_Echivalare_MEN = $_POST["group2"];
-		$vradio2 = validRadio($v_Echivalare_MEN);
+		$vradio2 = validRadio3($v_Echivalare_MEN);
+        
 		$v_Numele_De_Familie_La_Nastere=$_POST["Licenta_Numele_De_Familie_La_Nastere"];
 		$vNumele_De_Familie_La_Nastere = validNume($v_Numele_De_Familie_La_Nastere);
         
@@ -7983,7 +7986,7 @@
 		
         $v_Prenumele = $_POST["Licenta_Prenumele"];
         $vPrenumele = validPrenume($v_Prenumele);
-        
+       
         $v_Prenume_Tata = $_POST["Licenta_Prenume_Tata"];                 
 		$vPrenumeTata = validPrenume($v_Prenume_Tata);
 		
@@ -8000,7 +8003,8 @@
 		$vLicenta_Localitate_Nastere = validLocalitate($v_Licenta_Localitate_Nastere);
         
 		$v_Licenta_Nationalitate = $_POST["Licenta_Nationalitate"];
-		
+		$vLicentaNationalitate = validCetatetnie($v_Licenta_Nationalitate);
+        
         $v_Licenta_Cetatenie = $_POST["Licenta_Cetatenie"];
 		$vLicenta_Cetatenie = validCetatetnie($v_Licenta_Cetatenie);
         
@@ -8012,7 +8016,7 @@
        
         $v_Licenta_Tip_Buletin = $_POST["Licenta_Tip_Buletin"];  // V
 		$vLicenta_Tip_Buletin = validTipBuletin($v_Licenta_Tip_Buletin);
-        
+         
         $v_Licenta_Serie_Buletin = $_POST["Licenta_Serie_Buletin"];  // V
 		$vLicenta_Serie_Buletin = validSerieBuletin($v_Licenta_Serie_Buletin);
         
@@ -8022,8 +8026,8 @@
         $v_Licenta_Buletin_Eliberat_De = $_POST["Licenta_Buletin_Eliberat_De"];  // V
 		$vLicenta_Buletin_Eliberat_De = validEliberareBuletin($v_Licenta_Buletin_Eliberat_De);
        
-		$vDomiciliu = $_POST["group3"];  // 1 sau 2
-		
+		$v_Radio3 = $_POST["group3"];  // 1 sau 2
+        
         $v_Licenta_Strada = $_POST["Licenta_Strada"];  // V
         $vLicenta_Strada = validareStrada($v_Licenta_Strada);
        
@@ -8125,7 +8129,7 @@
 		//Inmatriculare in caz ca nu e acc la buget
 		
 		$v_Radio26 = $_POST["group26"];
-		$vradio26 = validRadio($v_Radio26);
+		$vradio26 = validRadio3($v_Radio26);
 		
 		
 		//Chestionar
@@ -8133,6 +8137,7 @@
 		$v_Radio28 = $_POST["group28"];
 		$vradio28 = validRadioFinal($v_Radio28);
 		
+       
 		$v_Radio29 = $_POST["group29"];
 		$vradio29 = validRadioFinal($v_Radio29);
 		
@@ -8174,7 +8179,7 @@
 				$vLicentaSpecializare = validNume($v_Licenta_Specializare);
 				
 				$v_Licenta_An_Facultate = $_POST["Licenta_An_Facultate"];
-				$vLicentaAnFacultate = validareAn($v_Licenta_An_Facultate);
+				$vLicentaAnFacultate = validareAnFacultate($v_Licenta_An_Facultate);
 				
 				$v_Licenta_Semestre_Finantate = $_POST["Licenta_Semestre_Finantate"];
 				$vLicenta_Semestre_Finantate = validareNrSemCuBursa($v_Licenta_Semestre_Finantate);
@@ -8183,6 +8188,7 @@
 				$vLicenta_Semestre_Bursa = validareNrSemCuBursa($v_Licenta_Semestre_Bursa);
 				
 				if($vLicenta_Semestre_Bursa == 0 && $vLicenta_Semestre_Finantate == 0 && $vLicentaAnFacultate == 0 && $vLicentaSpecializare == 0 && $vLicentaDomeniuLicenta == 0 && $vLicenta_AltaFacultate == 0 && $vLicenta_AltaUniversitate == 0 && $vLicenta_Localitate_AltaFacultate == 0) $v_verificare_radio_25 = 1;
+                
 				
 			}
 
@@ -8196,13 +8202,8 @@
 				$v_Licenta_Nr_DiplomaLicenta=$_POST["Licenta_Nr_DiplomaLicenta"];
 	
 				$v_Licenta_AbsolventLicenta_Nr_FoaieMatricola=$_POST["Licenta_AbsolventLicenta_Nr_FoaieMatricola"];
-
-				$v_Licenta_AbsolventLicenta_Nr_ActRecunoastere=$_POST["Licenta_AbsolventLicenta_Nr_ActRecunoastere"];
-
-				$v_Licenta_AbsolventLicenta_Serie_ActRecunoasteree=$_POST["Licenta_AbsolventLicenta_Serie_ActRecunoastere"];
-				$vLicenta_AbsolventLicenta_Serie_ActRecunoasteree=validSerieBAC($v_Licenta_AbsolventLicenta_Serie_ActRecunoasteree);
 				
-				if($vLicenta_Serie_DiplomaLicenta == 0 && $vLicenta_AbsolventLicenta_Serie_ActRecunoasteree == 0 && ctype_digit($v_Licenta_Nr_DiplomaLicenta) && ctype_digit($v_Licenta_AbsolventLicenta_Nr_FoaieMatricola) && ctype_digit($v_Licenta_AbsolventLicenta_Nr_ActRecunoastere)) $v_verificare_radio_23 = 1;
+				if($vLicenta_Serie_DiplomaLicenta == 0 && ctype_digit($v_Licenta_Nr_DiplomaLicenta) && ctype_digit($v_Licenta_AbsolventLicenta_Nr_FoaieMatricola)) $v_verificare_radio_23 = 1;
 
 			}
 
@@ -8210,6 +8211,9 @@
 			
 			if($v_Radio24 == 1)
 			{
+                $v_Licenta_AbsolventLicenta_Anul_Absolvirii = $_POST["Licenta_AbsolventLicenta_Anul_Absolvirii"];
+				$vLicenta_AbsolventLicenta_Anul_Absolvirii = validareAn($v_Licenta_AbsolventLicenta_Anul_Absolvirii);
+                
 				$v_Licenta_AbsolventLicenta_Univ = $_POST["Licenta_AbsolventLicenta_Univ"];
 		 		$vLicenta_AbsolventLicenta_Univ = validNume($v_Licenta_AbsolventLicenta_Univ);
 				
@@ -8243,11 +8247,16 @@
 				if($vLicenta_AbsolventLicenta_Localitate_AltaFacultate == 0 && $vLicenta_AbsolventLicenta_Semestre_Bursa == 0 && $vLicenta_AbsolventLicenta_Semestre_Finantate == 0 && $vLicenta_AbsolventLicenta_Durata_Studii == 0 && $vLicenta_AbsolventLicenta_An_Facultate == 0 && $vLicenta_AbsolventLicenta_Specializare == 0 && $vLicenta_AbsolventLicenta_Domeniu_Licenta == 0 && $vLicenta_AbsolventLicenta_Facultate == 0 & $vLicenta_AbsolventLicenta_Univ == 0 && (($v_Radio23 == 1 && $v_verificare_radio_23 == 1) || $v_Radio23 == 2)) $v_verificare_radio_24 = 1;
 				
 			}
-		
-        if ($vChitanta == 0 && $vsuma == 0 && vmediebac == 0 && vnotami == 0 && (($v_Radio1 == 1 && $v_verificare_radio_1 == 1)  || $v_Radio1 == 2) && $v_Obiect_Test_Ales != null && ($v_Radio21 == 1 || $v_Radio21 == 2) && ($v_Radio2 == 1 || $v_Radio2 == 2) && vNumele_De_Familie_La_Nastere == 0 && vInitialaTata == 0 && vNumeleDeFamilieActual == 0 && vPrenumele == 0 && vPrenumeTata == 0 && vPrenumeMama == 0 && vLicenta_CNP == 0 && vTaraNastere == 0 && vLicenta_Localitate_Nastere == 0 && v_Licenta_Nationalitate != null && vLicenta_Cetatenie == 0 && $vLicenta_Etnie == 0 && $vLicenta_Limba_Materna == 0 && $vLicenta_Serie_Buletin == 0 && $vLicenta_Numar_Buletin == 0 && $vLicenta_Buletin_Eliberat_De == 0 && $vLicenta_Strada == 0 && $vLicenta_Numar == 0 && $vLicenta_Bloc == 0 && $vLicenta_Scara == 0&& $vLicenta_Etaj == 0 && $vLicenta_Apartament == 0 && $vLicenta_Localitate == 0 && $vLicenta_Cod_Postal == 0 && $vLicenta_Telefon == 0 && $vLicenta_Email == 0 && $vLicenta_Localitate_Liceu == 0 && $vLicenta_Profil_Liceu == 0 && $vLicenta_Durata_Liceu == 0 && $vLicenta_An_Liceu == 0 && $vLicenta_Serie_DiplomaBAC == 0 && $vLicenta_Nr_DiplomaBAC == 0 && $v_Liceul_Absolvit != null && ($v_Radio4 == 1 || $v_Radio4 == 2) && ($v_Radio5 == 1 || $v_Radio5 == 2))
+        
+        //Preferinte
+        $vOptiune1=$_POST["Optiune1"];
+        $vOptiune2=$_POST["Optiune2"];
+        $vOptiune3=$_POST["Optiune3"];
+        $vOptiune4=$_POST["Optiune4"];
+        
+        if ($vChitanta == 0 && $vsuma == 0 && (($v_Radio1 == 1 && $v_verificare_radio_1 == 1)  || $v_Radio1 == 2) && $vNumele_De_Familie_La_Nastere == 0 && $vInitialaTata == 0 && $vNumeleDeFamilieActual == 0 && $vPrenumele == 0 && $vPrenumeTata == 0 && $vPrenumeMama == 0 && $vLicenta_CNP == 0 && $vTaraNastere == 0 && $vLicenta_Localitate_Nastere == 0 && $vLicentaNationalitate == 0 && $vLicenta_Cetatenie == 0 && $vLicenta_Etnie == 0 && $vLicenta_Limba_Materna == 0 && $vLicenta_Tip_Buletin == 0 && $vLicenta_Serie_Buletin == 0 && $vLicenta_Numar_Buletin == 0 && $vLicenta_Buletin_Eliberat_De == 0 && ($v_Radio3 == 1 || $v_Radio3 == 2) && $vLicenta_Strada == 0 && $vLicenta_Numar == 0 && $vLicenta_Bloc == 0 && $vLicenta_Scara == 0 && $vLicenta_Etaj == 0 && $vLicenta_Apartament == 0 && $vLicenta_Localitate == 0 && $vLicenta_Cod_Postal == 0 && $vLicenta_Telefon == 0 && $vLicenta_Email == 0 && ($v_Radio4 == 1 || $v_Radio4 == 2) && ($v_Radio5 == 1 || $v_Radio5 == 2) && ($v_Radio6 == 1 || $v_Radio6 == 2) && $v_Liceul_Absolvit != null && $vLicenta_Localitate_Liceu == 0 && $vLicenta_Profil_Liceu == 0 && $vLicenta_Durata_Liceu == 0 && $vLicenta_An_Liceu == 0 && $vLicenta_Serie_DiplomaBAC == 0 && $vLicenta_Nr_DiplomaBAC == 0 && ctype_digit($v_Licenta_Nr_FoaieMatricola) && $vLicenta_Medie_BAC == 0 && $vLicenta_Nota_MI == 0 && $v_Obiect_Test_Ales != null && ($v_Echivalare_MEN == 1 || $v_Echivalare_MEN == 2) && (($v_Radio25 == 1 && $v_verificare_radio_25 == 1)  || $v_Radio25 == 2) && (($v_Radio24 == 1 && $v_verificare_radio_24 == 1)  || $v_Radio24 == 2) && ($v_Radio26 == 1 || $v_Radio26 == 2 || $v_Radio26 == 3) && ($v_Radio27 == 1 || $v_Radio27 == 2) && ($v_Diploma_BAC == 1 || $v_Diploma_BAC == 2) && ($v_Adeverinta == 1 || $v_Adeverinta == 2) && ($v_Document_Echivalare_Studii == 1 || $v_Document_Echivalare_Studii == 2) && $v_Diploma_Olimpiada == 1 && ($v_Radio35 == 0 || $v_Radio35 == 1 || $v_Radio35 == 2 || $v_Radio35 == 3 || $v_Radio35 == 4 || $v_Radio35 == 5) && ($v_Radio34 == 0 || $v_Radio34 == 1 || $v_Radio34 == 2 || $v_Radio34 == 3 || $v_Radio34 == 4 || $v_Radio34 == 5) && ($v_Radio33 == 0 || $v_Radio33 == 1 || $v_Radio33 == 2 || $v_Radio33 == 3 || $v_Radio33 == 4 || $v_Radio33 == 5) && ($v_Radio32 == 0 || $v_Radio32 == 1 || $v_Radio32 == 2 || $v_Radio32 == 3 || $v_Radio32 == 4 || $v_Radio32 == 5) && ($v_Radio31 == 0 || $v_Radio31 == 1 || $v_Radio31 == 2 || $v_Radio31 == 3 || $v_Radio31 == 4 || $v_Radio31 == 5) && ($v_Radio30 == 0 || $v_Radio30 == 1 || $v_Radio30 == 2 || $v_Radio30 == 3 || $v_Radio30 == 4 || $v_Radio30 == 5) && ($v_Radio29 == 0 || $v_Radio29 == 1 || $v_Radio29 == 2 || $v_Radio29 == 3 || $v_Radio29 == 4 || $v_Radio29 == 5) && ($v_Radio28 == 0 || $v_Radio28 == 1 || $v_Radio28 == 2 || $v_Radio28 == 3 || $v_Radio28 == 4 || $v_Radio28 == 5) && $vOptiune1 != null)
         
 		{
-        
         $statement = oci_parse($connection, "SELECT max(formular_id) AS COUNT FROM DATE_PERSONALE_LICENTA");
         oci_execute($statement);
 
@@ -8273,8 +8282,8 @@
           0)");
 
         oci_bind_by_name($statement, ':id', $numaratoare_licenta);
-        oci_bind_by_name($statement, ':nr_chitanta', $_POST["Licenta_Chitanta_nr"]);
-        oci_bind_by_name($statement, ':suma', $_POST["Licenta_Suma_Taxa"]);
+        oci_bind_by_name($statement, ':nr_chitanta', $v_Chitanta);
+        oci_bind_by_name($statement, ':suma', $v_Suma_Taxa);
         oci_bind_by_name($statement, ':scutit', $_POST["group1"]);
         oci_bind_by_name($statement, ':motiv_scutire', $_POST["Licenta_Motiv_Scutire_taxa"]);
         oci_bind_by_name($statement,':currDate',$currDate);
@@ -8296,10 +8305,10 @@
 
         
         oci_bind_by_name($statement, ':id', $numaratoare_licenta);
-        oci_bind_by_name($statement, ':medie_generala_bac', $_POST["Licenta_Medie_BAC"]);
-        oci_bind_by_name($statement, ':medie_disciplina_max', $_POST["Licenta_Nota_MI"]);
-        oci_bind_by_name($statement, ':optiune_test_scris', $_POST["Licenta_Obiect_Test_Ales"]);
-        oci_bind_by_name($statement, ':solicita_echivalare', $_POST["group21"]);
+        oci_bind_by_name($statement, ':medie_generala_bac', $v_Licenta_Medie_BAC);
+        oci_bind_by_name($statement, ':medie_disciplina_max', $v_Licenta_Nota_MI);
+        oci_bind_by_name($statement, ':optiune_test_scris', $v_Obiect_Test_Ales);
+        oci_bind_by_name($statement, ':solicita_echivalare', $v_Echivalare_MEN);
         oci_bind_by_name($statement, ':an_participare_preadmitere', $_POST["Licenta_AnPreadmitere"]);
         oci_bind_by_name($statement, ':vrea_nota_preadmitere', $_POST["group21"]);
         oci_bind_by_name($statement, ':vrea_sa_sustina_examen', $_POST["group20"]);
@@ -8361,56 +8370,56 @@
           ");                          //44
 
             oci_bind_by_name($statement, ':id', $numaratoare_licenta);
-            oci_bind_by_name($statement, ':nume_nastere', $_POST['Licenta_Numele_De_Familie_La_Nastere']);
-            oci_bind_by_name($statement, ':initiale', $_POST['Licenta_Initiala_Tata']);
-            oci_bind_by_name($statement, ':nume_actual', $_POST['Licenta_Numele_De_Familie_Actual']);
-            oci_bind_by_name($statement, ':prenume', $_POST['Licenta_Prenumele']); 
-            oci_bind_by_name($statement, ':prenume_tata', $_POST['Licenta_Prenume_Tata']);
-            oci_bind_by_name($statement, ':prenume_mama', $_POST['Licenta_Prenume_Mama']);          
-            oci_bind_by_name($statement, ':CNP', $_POST['Licenta_CNP']);
+            oci_bind_by_name($statement, ':nume_nastere', $v_Numele_De_Familie_La_Nastere);
+            oci_bind_by_name($statement, ':initiale', $v_Initiala_Tata);
+            oci_bind_by_name($statement, ':nume_actual', $v_Numele_De_Familie_Actual);
+            oci_bind_by_name($statement, ':prenume', $v_Prenumele); 
+            oci_bind_by_name($statement, ':prenume_tata', $v_Prenume_Tata);
+            oci_bind_by_name($statement, ':prenume_mama', $v_Prenume_Mama);          
+            oci_bind_by_name($statement, ':CNP', $v_Licenta_CNP);
             oci_bind_by_name($statement, ':sex', $_POST['Licenta_Sex']);
 
             oci_bind_by_name($statement, ':zi', $_POST['Licenta_Nastere_Zi']);
             oci_bind_by_name($statement, ':luna', $_POST['Licenta_Nastere_Luna']);
             oci_bind_by_name($statement, ':an', $_POST['Licenta_Nastere_An']);
 
-            oci_bind_by_name($statement, ':tara_nastere', $_POST['Licenta_Tara']);
-            oci_bind_by_name($statement, ':judet_nastere', $_POST['Licenta_Judet']);
-            oci_bind_by_name($statement, ':localitate_nastere', $_POST['Licenta_Localitate_Nastere']);
-            oci_bind_by_name($statement, ':cetatenie', $_POST['Licenta_Cetatenie']);
-            oci_bind_by_name($statement, ':nationalitate', $_POST['Licenta_Nationalitate']);
-            oci_bind_by_name($statement, ':etnie', $_POST['Licenta_Etnie']);
-            oci_bind_by_name($statement, ':limba_materna', $_POST['Licenta_Limba_Materna']);
+            oci_bind_by_name($statement, ':tara_nastere', $v_Tara_Nastere);
+            oci_bind_by_name($statement, ':judet_nastere', $_POST['Licenta_Judet_Nastere']);
+            oci_bind_by_name($statement, ':localitate_nastere', $v_Licenta_Localitate_Nastere);
+            oci_bind_by_name($statement, ':cetatenie', $v_Licenta_Cetatenie);
+            oci_bind_by_name($statement, ':nationalitate', $v_Licenta_Nationalitate);
+            oci_bind_by_name($statement, ':etnie', $v_Licenta_Etnie);
+            oci_bind_by_name($statement, ':limba_materna', $v_Licenta_Limba_Materna);
             oci_bind_by_name($statement, ':stare_civila', $_POST['Licenta_Stare_Civila']);
-            oci_bind_by_name($statement, ':tip_act_ident', $_POST['Licenta_Tip_Buletin']);
-            oci_bind_by_name($statement, ':serie_CL', $_POST['Licenta_Serie_Buletin']);
-            oci_bind_by_name($statement, ':numar_CL', $_POST['Licenta_Numar_Buletin']);
-            oci_bind_by_name($statement, ':eliberat_de', $_POST['Licenta_Buletin_Eliberat_De']);
+            oci_bind_by_name($statement, ':tip_act_ident', $v_Licenta_Tip_Buletin);
+            oci_bind_by_name($statement, ':serie_CL', $v_Licenta_Serie_Buletin);
+            oci_bind_by_name($statement, ':numar_CL', $v_Licenta_Numar_Buletin);
+            oci_bind_by_name($statement, ':eliberat_de', $v_Licenta_Buletin_Eliberat_De);
 
-            oci_bind_by_name($statement, ':bZi' ,$_POST['Licenta_Buletin_Ziua']);
-            oci_bind_by_name($statement, ':lZi' ,$_POST['Licenta_Buletin_Luna']);
-            oci_bind_by_name($statement, ':aZi' ,$_POST['Licenta_Buletin_Ziua']);
-            oci_bind_by_name($statement, ':eZi' ,$_POST['Licenta_Buletin_Ziua']);
-            oci_bind_by_name($statement, ':elZi' ,$_POST['Licenta_Buletin_Ziua']);
-            oci_bind_by_name($statement, ':eaZi' ,$_POST['Licenta_Buletin_Ziua']);                           
+            oci_bind_by_name($statement, ':bZi' ,$_POST['Licenta_Eliberat_Buletin_Ziua']);
+            oci_bind_by_name($statement, ':lZi' ,$_POST['Licenta_Eliberat_Buletin_Luna']);
+            oci_bind_by_name($statement, ':aZi' ,$_POST['Licenta_Eliberat_Buletin_An']);
+            oci_bind_by_name($statement, ':eZi' ,$_POST['Licenta_Expirat_Buletin_Ziua']);
+            oci_bind_by_name($statement, ':elZi' ,$_POST['Licenta_Expirat_Buletin_Luna']);
+            oci_bind_by_name($statement, ':eaZi' ,$_POST['Licenta_Buletin_An_Expirare']);                           
 
-            oci_bind_by_name($statement, ':mediu_domiciliu', $_POST['group3']);
+            oci_bind_by_name($statement, ':mediu_domiciliu', $v_Radio3);
             oci_bind_by_name($statement, ':tara_domiciliu', $_POST['Licenta_Tara']);
             oci_bind_by_name($statement, ':judet_domiciliu', $_POST['Licenta_Judet']);
-            oci_bind_by_name($statement, ':localitate_domiciliu', $_POST['Licenta_Localitate']);
-            oci_bind_by_name($statement, ':strada', $_POST['Licenta_Strada']);
-            oci_bind_by_name($statement, ':numar', $_POST['Licenta_Numar']);
-            oci_bind_by_name($statement, ':bloc', $_POST['Licenta_Bloc']);
-            oci_bind_by_name($statement, ':scara', $_POST['Licenta_Scara']);            
-            oci_bind_by_name($statement, ':etaj', $_POST['Licenta_Etaj']);
-            oci_bind_by_name($statement, ':apartament', $_POST['Licenta_Apartament']);
-            oci_bind_by_name($statement, ':cod_postal', $_POST['Licenta_Cod_Postal']);
-            oci_bind_by_name($statement, ':telefon', $_POST['Licenta_Telefon']);
-            oci_bind_by_name($statement, ':email', $_POST['Licenta_Email']);    
-            oci_bind_by_name($statement, ':solicitare_cazare_studii', $_POST['group5']);
-            oci_bind_by_name($statement, ':solicitare_cazare_admitere', $_POST['group6']); 
+            oci_bind_by_name($statement, ':localitate_domiciliu', $v_Licenta_Localitate);
+            oci_bind_by_name($statement, ':strada', $v_Licenta_Strada);
+            oci_bind_by_name($statement, ':numar', $v_Licenta_Numar);
+            oci_bind_by_name($statement, ':bloc', $v_Licenta_Bloc);
+            oci_bind_by_name($statement, ':scara', $v_Licenta_Scara);            
+            oci_bind_by_name($statement, ':etaj', $v_Licenta_Etaj);
+            oci_bind_by_name($statement, ':apartament', $v_Licenta_Apartament);
+            oci_bind_by_name($statement, ':cod_postal', $v_Licenta_Cod_Postal);
+            oci_bind_by_name($statement, ':telefon', $v_Licenta_Telefon);
+            oci_bind_by_name($statement, ':email', $v_Licenta_Email);    
+            oci_bind_by_name($statement, ':solicitare_cazare_studii', $v_Radio5);
+            oci_bind_by_name($statement, ':solicitare_cazare_admitere', $v_Radio6); 
             oci_bind_by_name($statement, ':stare_sociala_speciala', $_POST['Licenta_Stare_speciala']);
-            oci_bind_by_name($statement, ':dizabilitati', $_POST['group4']);
+            oci_bind_by_name($statement, ':dizabilitati', $v_Radio4);
 
             if(!$statement){
               ini_set('display_errors', 1); 
@@ -8424,6 +8433,12 @@
               error_reporting(E_ALL); 
               }
         
+          //ECHIV_STUDII_ORIGINAL vs ECHIV_STUDII_COPIE
+          $echiv_original = null;
+          $echiv_copie = null;
+          if($v_Document_Echivalare_Studii == 1) $echiv_original = 1;
+          else $echiv_copie = 1;
+            
 		  $statement = oci_parse($connection, "INSERT INTO INFORMATII_DOCUMENTE_LICENTA VALUES (
           :id, 
           :diploma_bac_original,
@@ -8440,12 +8455,12 @@
           :fac3)");
 
         oci_bind_by_name($statement, ':id', $numaratoare_licenta);
-        oci_bind_by_name($statement, ':diploma_bac_original', $_POST['Diploma_BAC']);
-        oci_bind_by_name($statement, ':adeverinta_original', $_POST['Adeverinţă']);
-        oci_bind_by_name($statement, ':document_echiv_studii_original', $_POST['Document_Echivalare_Studii_Original']);
-        oci_bind_by_name($statement, ':diploma_olimpiada', $_POST['Diploma_Olimpiada']);
-        oci_bind_by_name($statement, ':diploma_echiv_studii_copie', $_POST['Document_Echivalare_Studii']);
-        oci_bind_by_name($statement, ':participa_altundeva', $_POST['group27']);
+        oci_bind_by_name($statement, ':diploma_bac_original', $v_Diploma_BAC);
+        oci_bind_by_name($statement, ':adeverinta_original', $v_Adeverinta);
+        oci_bind_by_name($statement, ':document_echiv_studii_original', $echiv_original);
+        oci_bind_by_name($statement, ':diploma_olimpiada', $v_Diploma_Olimpiada);
+        oci_bind_by_name($statement, ':diploma_echiv_studii_copie', $echiv_copie);
+        oci_bind_by_name($statement, ':participa_altundeva', $v_Radio27);
         oci_bind_by_name($statement, ':uni1', $_POST['Licenta_AlteConcursuri_Univ1']);
         oci_bind_by_name($statement, ':fac1', $_POST['Licenta_AlteConcursuri_Facultate1']);
         oci_bind_by_name($statement, ':uni2', $_POST['Licenta_AlteConcursuri_Univ2']);
@@ -8503,15 +8518,15 @@
       oci_bind_by_name($statement, ':profesori', $_POST['Profesori_Liceu']);         
       oci_bind_by_name($statement, ':presa', $_POST['Presa']);      
       oci_bind_by_name($statement, ':alte_surse', $_POST['Alte_Surse']);
-      oci_bind_by_name($statement, ':prestigiu', $_POST['group28']);  
-      oci_bind_by_name($statement, ':calitate', $_POST['group29']);
-      oci_bind_by_name($statement, ':sfat_persoane', $_POST['group30']);  
-      oci_bind_by_name($statement, ':statut', $_POST['group31']);  
-      oci_bind_by_name($statement, ':colegii', $_POST['group32']);  
-      oci_bind_by_name($statement, ':materii', $_POST['group33']);  
-      oci_bind_by_name($statement, ':informatii_univ', $_POST['group34']);  
-      oci_bind_by_name($statement, ':apropierea', $_POST['group35']);   
-        
+      oci_bind_by_name($statement, ':prestigiu', $v_Radio28);  
+      oci_bind_by_name($statement, ':calitate', $v_Radio29);
+      oci_bind_by_name($statement, ':sfat_persoane', $v_Radio30);  
+      oci_bind_by_name($statement, ':statut', $v_Radio31);  
+      oci_bind_by_name($statement, ':colegii', $v_Radio32);  
+      oci_bind_by_name($statement, ':materii', $v_Radio33);  
+      oci_bind_by_name($statement, ':informatii_univ', $v_Radio34);  
+      oci_bind_by_name($statement, ':apropierea', $v_Radio35);   
+            
        if (!$statement) {
           ini_set('display_errors', 1);
           error_reporting(E_ALL);
@@ -8524,6 +8539,44 @@
           error_reporting(E_ALL);
       }
         
+    //Optiuni licenta
+     $v_stare_taxa = null;
+     $v_optiune_1 = null;       
+     $v_optiune_2 = null;         
+     $v_optiune_3 = null;         
+     $v_optiune_4 = null;  
+            
+     if($v_Radio26 == 1) $v_stare_taxa = 'Da';
+     if($v_Radio26 == 2) $v_stare_taxa = 'Nu';
+     if($v_Radio26 == 3) $v_stare_taxa = 'Numai cu Taxă';
+        
+     if($vOptiune1 != 'Selectati') $v_optiune_1 = $vOptiune1;
+     if($vOptiune2 != 'Selectati') $v_optiune_2 = $vOptiune2;
+     if($vOptiune3 != 'Selectati') $v_optiune_3 = $vOptiune3;
+     if($vOptiune4 != 'Selectati') $v_optiune_4 = $vOptiune4;
+            
+     $statement = oci_parse($connection, "INSERT INTO OPTIUNI_LICENTA VALUES (:id, :preferinta_1, :preferinta_2, :preferinta_3, :preferinta_4, :stare_taxa)");
+
+        
+        oci_bind_by_name($statement, ':id', $numaratoare_licenta);
+        oci_bind_by_name($statement, ':preferinta_1', $v_optiune_1);
+        oci_bind_by_name($statement, ':preferinta_2', $v_optiune_2);
+        oci_bind_by_name($statement, ':preferinta_3', $v_optiune_3);
+        oci_bind_by_name($statement, ':preferinta_4', $v_optiune_4);
+        oci_bind_by_name($statement, ':stare_taxa', $v_stare_taxa);
+
+        if (!$statement) {
+            ini_set('display_errors', 1);
+            error_reporting(E_ALL);
+        }
+
+        $result = oci_execute($statement);
+
+        if (!$result) {
+            ini_set('display_errors', 1);
+            error_reporting(E_ALL);
+        }
+            
     
     //Date_preg_ant_licenta
         
@@ -8558,7 +8611,7 @@
           :an_fac,
           :nr_sem_buget_fac,
           :nr_sem_bursa_fac,
-          2000,
+          :an_absolvire,
           :cu_licenta,
           :abs_tara,
           :abs_local,
@@ -8581,56 +8634,67 @@
            to_date(:absRecZi||'-'||:absRecLuna||'-'||:absRecAn, 'dd-mm-yyyy'))");
 
         oci_bind_by_name($statement, ':id', $numaratoare_licenta);
-        oci_bind_by_name($statement, ':liceu_absolvit', $_POST['Liceu_Absolvit']);
+        oci_bind_by_name($statement, ':liceu_absolvit', $v_Liceul_Absolvit);
         oci_bind_by_name($statement, ':tara_liceu', $_POST['Licenta_Tara_Liceu']);
         oci_bind_by_name($statement, ':localitate_liceu', $_POST['Licenta_Localitate_Liceu']);
         oci_bind_by_name($statement, ':judet_liceu', $_POST['Licenta_Judet_Liceu']);       
-        oci_bind_by_name($statement, ':profil_liceu', $_POST['Licenta_Profil_Liceu']);
-        oci_bind_by_name($statement, ':durata_studii_liceu', $_POST['Licenta_Durata_Liceu']);
-        oci_bind_by_name($statement, ':an_absolvire_liceu', $_POST['Licenta_An_Liceu']);
+        oci_bind_by_name($statement, ':profil_liceu', $v_Licenta_Profil_Liceu);
+        oci_bind_by_name($statement, ':durata_studii_liceu', $v_Licenta_Durata_Liceu);
+        oci_bind_by_name($statement, ':an_absolvire_liceu', $v_Licenta_An_Liceu);
         oci_bind_by_name($statement, ':forma_invatamant_liceu', $_POST['Licenta_FormaInvatamant_Liceu_First']);
-        oci_bind_by_name($statement, ':serie_dipl_liceu', $_POST['Licenta_Serie_DiplomaBAC']);
-        oci_bind_by_name($statement, ':nr_dipl_liceu', $_POST['Licenta_Nr_DiplomaBAC']);
+        oci_bind_by_name($statement, ':serie_dipl_liceu', $v_Licenta_Serie_DiplomaBAC);
+        oci_bind_by_name($statement, ':nr_dipl_liceu', $v_Licenta_Nr_DiplomaBAC);
         
         oci_bind_by_name($statement, ':dZi', $_POST['Licenta_Diploma_Ziua']);
         oci_bind_by_name($statement, ':dLuna', $_POST['Licenta_Diploma_Luna']);
         oci_bind_by_name($statement, ':dAn', $_POST['Licenta_Diploma_An']);  
         
-        oci_bind_by_name($statement, ':nr_foi', $_POST['Licenta_Nr_FoaieMatricola']);
-        oci_bind_by_name($statement, ':act_rec_echiv', $_POST['Licenta_Nr_ActRecunoastere']);
-        oci_bind_by_name($statement, ':serie_act', $_POST['Licenta_Serie_ActRecunoastere']);
+        oci_bind_by_name($statement, ':nr_foi', $v_Licenta_Nr_FoaieMatricola);
+            
+        oci_bind_by_name($statement, ':act_rec_echiv', $v_Licenta_Nr_ActRecunoastere);
+        oci_bind_by_name($statement, ':serie_act', $v_Licenta_Serie_ActRecunoastere);
         
         oci_bind_by_name($statement, ':actZi', $_POST['Licenta_ActEchivalare_Ziua']);
         oci_bind_by_name($statement, ':actLuna', $_POST['Licenta_ActEchivalare_Luna']);
-        oci_bind_by_name($statement, ':actAn', $_POST['Licenta_ActEchivalare_An']);   
-        
-        
-        $v_Radio25 = $_POST["group25"];
-        $v_student_alta_fac = 0;
-        if($v_Radio25 == 1) $v_student_alta_fac = 1;
-        oci_bind_by_name($statement, ':student_alta_fac', $v_student_alta_fac); 
-        
-        
-        oci_bind_by_name($statement, ':tara_fac', $_POST['Licenta_Tara_AltaFacultate']);
+        oci_bind_by_name($statement, ':actAn', $_POST['Licenta_ActEchivalare_An']); 
+            
+        $tara_fac = null;
+        $judet_fac = null;
+        $forma_invat = null;
+        if($v_Radio25 == 1) {
+                             $tara_fac = $_POST['Licenta_Tara_AltaFacultate']; 
+                             $judet_fac = $_POST['Licenta_Judet_AltaFacultate'];
+                             $forma_invat = $_POST['Licenta_FormaInvatamant_Liceu'];
+                            }
+        oci_bind_by_name($statement, ':student_alta_fac', $v_Radio25); 
+        oci_bind_by_name($statement, ':tara_fac', $tara_fac);
         oci_bind_by_name($statement, ':localitate_fac', $_POST['Licenta_Localitate_AltaFacultate']);  
-        oci_bind_by_name($statement, ':judet_fac', $_POST['Licenta_Judet_AltaFacultate']);
+        oci_bind_by_name($statement, ':judet_fac', $judet_fac);
         oci_bind_by_name($statement, ':denumire_institutie_fac', $_POST['Licenta_AltaUniversitate']);
         oci_bind_by_name($statement, ':denumire_fac', $_POST['Licenta_AltaFacultate']);     
         oci_bind_by_name($statement, ':denumire_domeniu_fac', $_POST['Licenta_Domeniu_Licenta']);    
         oci_bind_by_name($statement, ':specializare', $_POST['Licenta_Specializare']);
-        oci_bind_by_name($statement, ':forma_invatamant_fac', $_POST['Licenta_FormaInvatamant_Liceu']);
+        oci_bind_by_name($statement, ':forma_invatamant_fac', $forma_invat);
         oci_bind_by_name($statement, ':an_fac', $_POST['Licenta_An_Facultate']);
         oci_bind_by_name($statement, ':nr_sem_buget_fac', $_POST['Licenta_Semestre_Finantate']);
         oci_bind_by_name($statement, ':nr_sem_bursa_fac', $_POST['Licenta_Semestre_Bursa']);
        
-		$v_cu_licenta = 0;
-        if($vradio23 == 1) $v_cu_licenta = 1;
-        oci_bind_by_name($statement, ':cu_licenta', $v_cu_licenta);     
-        
-        
-        oci_bind_by_name($statement, ':abs_tara', $_POST['Licenta_Tara_AltaFacultate_Licenta']);       
+		$tara_fac_abs = null;
+        $judet_fac_abs = null;
+        $forma_invat_abs = null;
+        $an_absolvire = null;
+        if($v_Radio24 == 1) {
+                             $tara_fac_abs = $_POST['Licenta_Tara_AltaFacultate_Licenta']; 
+                             $judet_fac_abs = $_POST['Licenta_AbsolventLicenta_Judet_AltaFacultate'];
+                             $forma_invat_abs = $_POST['Licenta_AbsolventLicenta_FormaInvatamant'];
+                             $an_absolvire = $v_Licenta_AbsolventLicenta_Anul_Absolvirii;
+                            } 
+            
+        oci_bind_by_name($statement, ':an_absolvire', $an_absolvire);
+        oci_bind_by_name($statement, ':cu_licenta', $v_Radio23);
+        oci_bind_by_name($statement, ':abs_tara', $tara_fac_abs);       
         oci_bind_by_name($statement, ':abs_local', $_POST['Licenta_AbsolventLicenta_Localitate_AltaFacultate']); 
-        oci_bind_by_name($statement, ':abs_judet', $_POST['Licenta_AbsolventLicenta_Judet_AltaFacultate']);
+        oci_bind_by_name($statement, ':abs_judet', $judet_fac_abs);
         oci_bind_by_name($statement, ':abs_den_inst', $_POST['Licenta_AbsolventLicenta_Univ']);
         oci_bind_by_name($statement, ':abs_den_fac', $_POST['Licenta_AbsolventLicenta_Facultate']);
 
@@ -8638,7 +8702,7 @@
         oci_bind_by_name($statement, ':abs_spec', $_POST['Licenta_AbsolventLicenta_Specializare']); 
         oci_bind_by_name($statement, ':abs_titlu', $_POST['Licenta_AbsolventLicenta_An_Facultate']);       
 
-        oci_bind_by_name($statement, ':abs_forma', $_POST['Licenta_AbsolventLicenta_FormaInvatamant']);
+        oci_bind_by_name($statement, ':abs_forma', $forma_invat_abs);
         oci_bind_by_name($statement, ':abs_sem_buget', $_POST['Licenta_AbsolventLicenta_Semestre_Finantate']);  
         oci_bind_by_name($statement, ':abs_sem_bursa', $_POST['Licenta_AbsolventLicenta_Semestre_Bursa']);    
         oci_bind_by_name($statement, ':durata_studii_abs', $_POST['Licenta_AbsolventLicenta_Durata_Studii']);
@@ -8669,8 +8733,7 @@
           ini_set('display_errors', 1);
           error_reporting(E_ALL);
       }
-			
-  		    echo '<script>window.location.href = "Validare_Formular.php";</script>';
+			 echo '<script>window.location.href = "Validare_Formular.php";</script>';
             
         }
 
