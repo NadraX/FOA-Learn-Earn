@@ -917,8 +917,8 @@
 																																										else 
 																																											echo "?";
 																																									?> 
-																																									<span class="info-box__content">
-																																										Sunteți scutit de taxa de admitere în cazuri precum "copil de cadru de didactic"
+																																									<span class="info-box__content" style="width:290px;">
+																																										Sunteți scutit de taxa de admitere în cazuri precum "copil de cadru de didactic".
 																																										<?php if($vscutire>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																																									</span>
 																																								</span>
@@ -960,7 +960,7 @@
 							</li>
 
 							<li class="form-line" data-type="control_fullname" >
-								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:larger"> II. Date personale ale candidatului cu cetăţenie română <span class="info-box">?<span class="info-box__content">În măsura în care este posibil, datele personale se vor completa din buletin </span></span></label>
+								<label class="form-label form-label-left form-label-auto" id="label_1"  style="color: #3488CB; font-size:larger"> II. Date personale ale candidatului cu cetăţenie română <span class="info-box">?<span class="info-box__content" style="width:255px;">În măsura în care este posibil, datele personale se vor completa din buletin. </span></span></label>
 								
 								<h4 style="color:red;">Informațiile se completează conform certificatului de naștere și actului de identitate.</h4>
 								<br>
@@ -982,7 +982,7 @@
 																																						else 
 																																							echo "?";
 																																					?> 
-																																					<span class="info-box__content">
+																																					<span class="info-box__content" style="width:230px;">
 																																						Numele de familie din certificatul de naştere.<?php if($vNumele_De_Familie_La_Nastere>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																																					</span>
 																																				</span>
@@ -1025,7 +1025,7 @@
 																																					else 
 																																						echo "?";
 																																				?> 
-																																				<span class="info-box__content">
+																																				<span class="info-box__content" style="width:230px;">
 																																					Numele dupa căsătorie, înfiere, modificare la cerere conform actului doveditor daca este cazul.
 																																					<?php if($vNumele_De_Familie_Actual>0) echo "<br><a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
 																																				</span>
@@ -1071,7 +1071,7 @@
 																																					else 
 																																						echo "?";
 																																				?> 
-																																				<span class="info-box__content">
+																																				<span class="info-box__content" style="width:255px;">
 																																					Inițialele trebuie să fie urmate de punct și fără spații între ele.
 																																					<?php if($vLicenta_Initiala_Tata>0) echo "<br><a style=\"color:red\">*Nu ați respectat formatul specificat!</a>"; ?> 
 																																				</span>
@@ -1546,7 +1546,7 @@
 																																else 
 																																	echo "?";
 																															?> 
-																															<span class="info-box__content">
+																															<span class="info-box__content" style="width:370px;">
 																																Codul Numeric Personal cum se găsește în actul de identitate.
 																																Completați cu informațiile de pe adeverința primită de la SPCLEP în cazul în care CI nu mai este validă.
 																																<?php if($vLicenta_CNP>0) echo "<a style=\"color:red\">*Câmp completat greșit!</a>"; ?> 
@@ -1947,7 +1947,7 @@
 																																																						?
 																																																						<span class="info-box__content" style="width:235px;">
 																																																							Completați adresa conform CI; 
-																																																							Puneți "-" în câmpurile nerelevante
+																																																							Puneți "-" în câmpurile nerelevante.
 																																																						</span>
 																																																					</span>
 													</label>
@@ -2297,7 +2297,7 @@
 										<tbody>
 											<tr>
 												<td>
-													<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Solicitați cazare pe timpul studiilor? <span class="info-box">?<span class="info-box__content">Cazare în căminele Universității "Alexandru Ioan Cuza"</span></span> </label>
+													<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Solicitați cazare pe timpul studiilor? <span class="info-box" >?<span class="info-box__content" style="width:230px;">Cazare în căminele Universității "Alexandru Ioan Cuza".</span></span> </label>
 													<span style="width:55%">
 														<input type="radio" name="group5" id="checkbox3" class="css-checkbox" value="1" <?php
 																																			if($v_Radio5 == '')
@@ -4915,6 +4915,34 @@
 									<div  class="form-input jf-required cid_1">
 										<div class="general_name" data-wrapper-react="true">
 											<span class="form-sub-label-container" style="vertical-align:top;  height: 40px; width:50%;">
+												<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Anul absolvirii </label>
+												<input type="text"  name="Licenta_AbsolventMaster_Anul_Absolvirii" style="width: 20%" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2015" value="<?php
+																																																								if($v_Licenta_AbsolventMaster_Anul_Absolvirii == '')
+																																																									echo '';
+																																																								else
+																																																									echo $v_Licenta_AbsolventMaster_Anul_Absolvirii;
+																																																							?>">
+												<br>
+
+												<span style="color:red">
+													<?php 
+														if(isset($_POST['Submit'])) {
+															$v_Licenta_AbsolventMaster_Anul_Absolvirii = $_POST["Licenta_AbsolventMaster_Anul_Absolvirii"];
+															$vLicenta_AbsolventMaster_Anul_Absolvirii = validareAn($v_Licenta_AbsolventMaster_Anul_Absolvirii);
+															if($vLicenta_An_Liceu==-1)
+															   	echo "C&#226;mp necompletat!";
+															else
+																if($vLicenta_AbsolventMaster_Anul_Absolvirii==1)
+																	echo "Caractere nepermise!";
+																else
+																	if($vLicenta_AbsolventMaster_Anul_Absolvirii==2)
+																		echo "An incorect!";
+														}
+													?>
+												</span>
+											</span>
+									         <br><br><br>
+											<span class="form-sub-label-container" style="vertical-align:top;  height: 40px; width:50%;">
 												<label class="form-sub-label sublabel_first" style="min-height:13px;"> Denumirea instituţiei de învăţământ superior </label>
 												<input type="text" name="Licenta_AbsolventLicenta_Univ" class="form-textbox first_1" size="10" placeholder="ex: Universitatea Alexandru Ioan Cuza" data-component="first" value="<?php
 																																																										if($v_Licenta_AbsolventLicenta_Univ == '')
@@ -5705,7 +5733,7 @@
 									<label class="form-label form-label-left form-label-auto" style="color: gray; font-size:medium; width:45%; display:inline-block"> Solicitaţi echivalare cu diploma olimpiadă organizată MEN? <span class="info-box">
 																																																									?
 																																																									<span class="info-box__content" style="width:250px;">
-																																																										Diploma se prezintă în original comisiei de admitere pentru validare
+																																																										Diploma se prezintă în original comisiei de admitere pentru validare.
 																																																									</span>
 																																																								</span>
 									</label>
@@ -5749,12 +5777,7 @@
 									<div data-wrapper-react="true" class="mg">
 										<span class="form-sub-label-container" style="vertical-align:top; width:100%" >
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;">Media general&#259; Bacalaureat</label>
-											<!--<input type="text"  name="Licenta_Medie_BAC" class="form-textbox first_1"  size="20" data-component="first"  value="<?php 
-																																									//if($v_Licenta_Medie_BAC == '') 
-																																									//	echo '';
-																																									//else
-																																									//	echo $v_Licenta_Medie_BAC;
-																																								?>" />-->
+
 											<select style="height:40px;" name="MedieBac0"  class="form-dropdown" data-component="birthdate-day">
 												<?php
 													$v_MedieBac0 = $_POST["MedieBac0"];
@@ -5813,37 +5836,37 @@
 											</select>
 										</span>
 										<span style="color:red">
-												<?php 
-													if(isset($_POST['Submit'])) {
-														//$v_Licenta_Medie_BAC = $_POST["Licenta_Medie_BAC"];
-														$v_Licenta_Medie_BAC=$v_MedieBac0*10+$v_MedieBac1+$v_MedieBac2/10+$v_MedieBac3/100;
-														$vLicenta_Medie_BAC = validareMedieBac($v_Licenta_Medie_BAC);
-														if($vLicenta_Medie_BAC==-1)
-															echo "C&#226;mp necompletat!";
+											<?php 
+												if(isset($_POST['Submit'])) {
+													//$v_Licenta_Medie_BAC = $_POST["Licenta_Medie_BAC"];
+													$v_Licenta_Medie_BAC=$v_MedieBac0*10+$v_MedieBac1+$v_MedieBac2/10+$v_MedieBac3/100;
+													$vLicenta_Medie_BAC = validareMedieBac($v_Licenta_Medie_BAC);
+													if($vLicenta_Medie_BAC==-1)
+														echo "C&#226;mp necompletat!";
+													else
+														if($vLicenta_Medie_BAC==1)
+													echo "Format nepotrivit!";
 														else
-															if($vLicenta_Medie_BAC==1)
-														echo "Format nepotrivit!";
-															else
-																if($vLicenta_Medie_BAC==2)
-																	echo "Notă incorectă!";
-													}
-												?>
-											</span>
+															if($vLicenta_Medie_BAC==2)
+																echo "Notă incorectă!";
+												}
+											?>
+										</span>
 									</div> 
 									<div data-wrapper-react="true" class="mg">
-										<span  class="form-sub-label-container gen" style="vertical-align:top;">
-											<label class="form-sub-label sublabel_first"   style="min-height:13px;">Nota la Matematic&#259; sau Informatic&#259;<span class="info-box">
+										<span class="form-sub-label-container" style="vertical-align:top; width:100%" >
+											<label class="form-sub-label sublabel_first"  style="min-height:13px;">Nota la Matematic&#259; sau Informatic&#259;<span class="info-box">
 																																									?
-																																									<span class="info-box__content">
-																																										Nota la examenul de bacalaureat la una din cele două materii
+																																									<span class="info-box__content" style="width:230px;">
+																																										Nota la examenul de bacalaureat la una din cele două materii.
 																																									</span>
 																																								</span>
 											</label>
 											<!--<input type="text"  name="Licenta_Nota_MI" class="form-textbox first_1" size="20" data-component="first" value="<?php 
-																																								if($v_Licenta_Nota_MI == '') 
-																																									echo '';
-																																								else
-																																									echo $v_Licenta_Nota_MI;
+																																							//	if($v_Licenta_Nota_MI == '') 
+																																							//		echo '';
+																																							//	else
+																																							//		echo $v_Licenta_Nota_MI;
 																																							?>" />-->
 											<select style="height:40px;" name="MedieAlegere0"  class="form-dropdown" data-component="birthdate-day">
 												<?php
@@ -5901,26 +5924,30 @@
 													}
 												?>
 											</select>
-											<span style="color:red">
-												<?php 
-													if(isset($_POST['Submit'])) {
-														//$v_Licenta_Nota_MI = $_POST["Licenta_Nota_MI"];
-														$v_Licenta_Nota_MI=$v_MedieAlegere0*10+$v_MedieAlegere1+$v_MedieAlegere2/10+$v_MedieAlegere3/100;
-														$vLicenta_Nota_MI = validareMedieAlegere($v_Licenta_Nota_MI);
-														if($vLicenta_Nota_MI==-1)
-															echo "C&#226;mp necompletat!";
+											
+										</span>
+										<span style="color:red">
+											<?php 
+												if(isset($_POST['Submit'])) {
+													//$v_Licenta_Nota_MI = $_POST["Licenta_Nota_MI"];
+													$v_Licenta_Nota_MI=$v_MedieAlegere0*10+$v_MedieAlegere1+$v_MedieAlegere2/10+$v_MedieAlegere3/100;
+													$vLicenta_Nota_MI = validareMedieAlegere($v_Licenta_Nota_MI);
+													if($vLicenta_Nota_MI==-1)
+														echo "C&#226;mp necompletat!";
+													else
+														if($vLicenta_Nota_MI==1)
+															echo "Format nepotrivit!";
 														else
-															if($vLicenta_Nota_MI==1)
-																echo "Format nepotrivit!";
-															else
-																if($vLicenta_Nota_MI==2)
-																	echo "Notă incorectă!";
-													}
-												?>
-											</span>
+															if($vLicenta_Nota_MI==2)
+																echo "Notă incorectă!";
+												}
+											?>
 										</span>
 									</div>
-									<div class="mg">
+									
+									
+									
+									<!--<div class="mg">
 										<span class="form-sub-label-container gen" style="vertical-align:top;">
 											<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Doresc &#238;nva&#355;&#259;m&#226;nt de zi</label>
 											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Licenta_Limba_Aleasa" data-component="country">
@@ -5937,8 +5964,8 @@
 																						echo '';
 																				?>>&#206;n limba englez&#259;</option>
 											</select>
-										</span>   
-									</div>  
+										</span> 
+									</div>  --> 
 									<div data-wrapper-react="true" class="mg">
 										<span class="form-sub-label-container gen" style="vertical-align:top;">
 											<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Doresc să dau testul scris la materia:</label>
@@ -5984,8 +6011,8 @@
 										Aţi participat la preadmitere la Facultatea de Informatică din Iaşi în anul  <input type="number"  name="Licenta_AnPreadmitere" class="form-textbox form-address-city first_1" style="width:100px" placeholder="ex: 2016"  value="<?php echo $_POST["Licenta_AnPreadmitere"]; ?>"  data-component="city" />
 										şi doriţi luarea în considerare a notei la examenul din sesiunea curentă?  <span class="info-box">
 																															?
-																															<span class="info-box__content">
-																																Opţiune valabilă la o singură sesiune de admitere
+																															<span class="info-box__content" style="width:200px;">
+																																Opţiune valabilă la o singură sesiune de admitere.
 																															</span>
 																														</span> 
 										<span style="color:red">
@@ -6054,7 +6081,7 @@
 										}
 									?>
 								</span>
-
+							
 								<div id="Sustine_Test" style="display:none">
 									<div  class="form-input jf-required cid_1" style="display:inline-block">
 										<br>
@@ -6062,7 +6089,7 @@
 											Doriţi să susţineţi din nou testul scris în această sesiune de admitere? <span class="info-box">
 																														?
 																														<span class="info-box__content">
-																															În acest caz va fi luată în considerare nota cea mai mare
+																															În acest caz va fi luată în considerare nota cea mai mare.
 																														</span>
 																													 </span> 
 										</label>
