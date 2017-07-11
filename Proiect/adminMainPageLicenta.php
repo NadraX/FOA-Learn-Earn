@@ -306,7 +306,7 @@ function getEmail($id_formular)
 function getCazareStudii($id_formular)
 {
     $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
-    $s = oci_parse($c, " begin  select dp.solicita_cazare_studii into :bv from date_personale_licenta dp
+    $s = oci_parse($c, " begin  select REPLACE(REPLACE(dp.solicita_cazare_studii, '1', 'DA'), '0', 'NU') into :bv from date_personale_licenta dp
                                                  join formular_licenta f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
     oci_bind_by_name($s, ":bv", $v, 100);
@@ -318,7 +318,7 @@ function getCazareStudii($id_formular)
 function getCazareExamen($id_formular)
 {
     $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
-    $s = oci_parse($c, " begin  select dp.solicita_cazare_admitere into :bv from date_personale_licenta dp
+    $s = oci_parse($c, " begin  select REPLACE(REPLACE(dp.solicita_cazare_admitere, '1', 'DA'), '0', 'NU') into :bv from date_personale_licenta dp
                                                  join formular_licenta f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
     oci_bind_by_name($s, ":bv", $v, 100);
@@ -645,7 +645,7 @@ function getTaraDomiciliu($id_formular)
 function getPersoanaCuDizabilitati($id_formular)
 {
     $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
-    $s = oci_parse($c, " begin  select dp.persoana_cu_dizabilitati into :bv from date_personale_licenta dp
+    $s = oci_parse($c, " begin  select REPLACE(REPLACE(dp.persoana_cu_dizabilitati, '1', 'DA'), '0', 'NU') into :bv from date_personale_licenta dp
                                                  join formular_licenta f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
     oci_bind_by_name($s, ":bv", $v, 100);
@@ -709,7 +709,7 @@ function getOptiuneTestScris($id_formular)
 function getSolicitaEchivalare($id_formular)
 {
     $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
-    $s = oci_parse($c, " begin  select c.solicita_echivalare into :bv from cerinte_licenta c
+    $s = oci_parse($c, " begin  select REPLACE(REPLACE(c.solicita_echivalare, '1', 'DA'), '0', 'NU') into :bv from cerinte_licenta c
                                                  join formular_licenta f on f.id=c.formular_id
                                                  where f.id='$id_formular'; end; ");
     oci_bind_by_name($s, ":bv", $v, 100);
@@ -733,7 +733,7 @@ function getAnParticiparePreadmitere($id_formular)
 function getVreaNotaPreadmitere($id_formular)
 {
     $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
-    $s = oci_parse($c, " begin  select c.vrea_nota_preadmitere into :bv from cerinte_licenta c
+    $s = oci_parse($c, " begin  select REPLACE(REPLACE(c.vrea_nota_preadmitere, '1', 'DA'), '0', 'NU') into :bv from cerinte_licenta c
                                                  join formular_licenta f on f.id=c.formular_id
                                                  where f.id='$id_formular'; end; ");
     oci_bind_by_name($s, ":bv", $v, 100);
@@ -745,7 +745,7 @@ function getVreaNotaPreadmitere($id_formular)
 function getVreaSaSustinaExamen($id_formular)
 {
     $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
-    $s = oci_parse($c, " begin  select c.vrea_sa_sustina_examen into :bv from cerinte_licenta c
+    $s = oci_parse($c, " begin  select REPLACE(REPLACE(c.vrea_sa_sustina_examen, '1', 'DA'), '0', 'NU') into :bv from cerinte_licenta c
                                                  join formular_licenta f on f.id=c.formular_id
                                                  where f.id='$id_formular'; end; ");
     oci_bind_by_name($s, ":bv", $v, 100);
@@ -957,7 +957,7 @@ function getDataRecEchiv($id_formular)
 function getStudentAltaFac($id_formular)
 {
     $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
-    $s = oci_parse($c, " begin  select dpa.student_alta_fac into :bv from date_preg_anterioara_licenta dpa
+    $s = oci_parse($c, " begin  select REPLACE(REPLACE(dpa.student_alta_fac, '1', 'DA'), '0', 'NU') into :bv from date_preg_anterioara_licenta dpa
                                                  join formular_licenta f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     oci_bind_by_name($s, ":bv", $v, 100);
