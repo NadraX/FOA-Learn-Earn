@@ -1571,10 +1571,13 @@
 																echo "Obligatoriu 13 caractere!";
 															else
 																if($vLicenta_CNP==2)
-																	echo "Trebuie început cu 1(M) sau 2(F)!";
+																	echo "Nu trebuie să înceapă cu 0!";
 																else
 																	if($vLicenta_CNP==3)
 																		echo "Dată invalidă(*YYMMDD******)";
+																	else
+																		if($vLicenta_CNP==4)
+																			echo "CNP-ul nu corespunde formulei de pe WIKI";
 													}
 												?>
 											</span>
@@ -5976,14 +5979,32 @@
 								
 								<div  class="form-input jf-required cid_1" style="display:inline-block">
 									<br>
+									
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:70%; display:inline-block; padding-top:4%;"> 
 										Aţi participat la preadmitere la Facultatea de Informatică din Iaşi în anul  <input type="number"  name="Licenta_AnPreadmitere" class="form-textbox form-address-city first_1" style="width:100px" placeholder="ex: 2016"  value="<?php echo $_POST["Licenta_AnPreadmitere"]; ?>"  data-component="city" />
-										şi doriţi luarea în considerare a notei la examenul din sesiunea curentă?   <span class="info-box">
-																														?
-																														<span class="info-box__content">
-																															Opţiune valabilă la o singură sesiune de admitere
-																														</span>
-																													</span> 
+										şi doriţi luarea în considerare a notei la examenul din sesiunea curentă?  <span class="info-box">
+																															?
+																															<span class="info-box__content">
+																																Opţiune valabilă la o singură sesiune de admitere
+																															</span>
+																														</span> 
+										<span style="color:red">
+											<?php 
+												$v_Licenta_AnPreadmitere=$_POST["Licenta_AnPreadmitere"];
+												$vLicenta_AnPreadmitere = validareAn($v_Licenta_AnPreadmitere);
+												if($v_Radio21==1)
+												{
+													if($vLicenta_AnPreadmitere==-1)
+														echo "An necompletat!";
+													else
+														if($vLicenta_AnPreadmitere==1)
+															echo "Caractere nepermise!";
+														else
+															if($vLicenta_AnPreadmitere==2)
+																echo "An incorect!";
+												}
+											?> 
+										</span>
 									</label>
 									<span style="width:23%;">
 										<input type="radio"  onClick="Preadmitere()" name="group21" id="daPreadmitere" class="css-checkbox" value="1" 	<?php

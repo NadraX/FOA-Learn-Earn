@@ -1113,6 +1113,7 @@ function validCetatetnie($nationalitate)
 
 
 //fct buna
+/*
 function validCNP($p_cnp)
     {
     if(!$p_cnp)
@@ -1153,8 +1154,37 @@ function validCNP($p_cnp)
             return 4;
 
         return 0; //corect
-    }
+    }*/
 
+	function validCNP($p_cnp)
+    {
+		if(!$p_cnp)
+            return -1;
+        // CNP must have 13 characters
+        if(strlen($p_cnp) != 13) {
+            return 1;//numar invalid de caractere
+        }
+
+        $cnp = str_split($p_cnp); 
+
+        if($cnp[0]==0)
+            return 2;// nu poate fi 0 prima
+
+        $an=$cnp[1]*10+$cnp[2];
+        $luna=$cnp[3]*10+$cnp[4];
+        $zi=$cnp[5]*10+$cnp[6];
+
+        if(checkdate($luna,$zi,$an)==0)
+            return 3;  // nu corespunde cu o data valida
+		// 				  2			  7			  9  		  1			  4			  6			  3			  5			  8			  2			   7			9
+		$checkC = $cnp[0]*2 + $cnp[1]*7 + $cnp[2]*9 + $cnp[3]*1 + $cnp[4]*4 + $cnp[5]*6 + $cnp[6]*3 + $cnp[7]*5 + $cnp[8]*8 + $cnp[9]*2 + $cnp[10]*7 + $cnp[11]*9;
+		$checkC = ($checkC % 11) % 10;
+		
+		if($checkC==$cnp[12])
+			return 0;  //corect
+		else 
+			return 4;  // nu corespunde formulei;
+    }
 
 //no need
 function checkData_Nasterii($dataNastere) {
