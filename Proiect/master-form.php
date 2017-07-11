@@ -879,6 +879,7 @@
 							$Master_Diploma_Master_Copie=$_POST["Master_Diploma_Master_Copie"];
 							$Master_Echivalare_Studii_Master_Original=$_POST["Master_Echivalare_Studii_Master_Original"];
 							$Master_Echivalare_Studii_Master_Copie=$_POST["Master_Echivalare_Studii_Master_Copie"];
+							$v_Master_An_Absolvire = $_POST["Master_AbsolventMaster_Anul_Absolvirii"];
 						?>
 						<ul>
 						
@@ -5787,10 +5788,10 @@
 											<span class="form-sub-label-container" style="vertical-align:top;  height: 40px; width:50%;">
 												<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Anul absolvirii </label>
 												<input type="text"  name="Master_AbsolventMaster_Anul_Absolvirii" style="width: 20%" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2015" value="<?php
-																																																								if($v_Master_AbsolventMaster_Durata_Studii == '')
+																																																								if($v_Master_An_Absolvire == '')
 																																																									echo '';
 																																																								else
-																																																									echo $v_Master_AbsolventMaster_Durata_Studii;
+																																																									echo $v_Master_An_Absolvire;
 																																																							?>">
 												<br>
 
@@ -5799,7 +5800,7 @@
 														if(isset($_POST['Submit'])) {
 															$v_Master_An_Absolvire = $_POST["Master_AbsolventMaster_Anul_Absolvirii"];
 															$vMaster_An_Absolvire = validareAn($v_Master_An_Absolvire);
-															if($vLicenta_An_Liceu==-1)
+															if($vMaster_An_Absolvire==-1)
 															   	echo "C&#226;mp necompletat!";
 															else
 																if($vMaster_An_Absolvire==1)

@@ -794,6 +794,7 @@
 							$vOptiune2=$_POST["Optiune2"];
 							$vOptiune3=$_POST["Optiune3"];
 							$vOptiune4=$_POST["Optiune4"];
+							$v_Licenta_AbsolventLicenta_Anul_Absolvirii = $_POST["Licenta_AbsolventLicenta_Anul_Absolvirii"];
 						?>
 						<ul>
 							<li class="form-line" data-type="control_taxa" id="id_12">
@@ -4929,7 +4930,7 @@
 														if(isset($_POST['Submit'])) {
 															$v_Licenta_AbsolventLicenta_Anul_Absolvirii = $_POST["Licenta_AbsolventLicenta_Anul_Absolvirii"];
 															$vLicenta_AbsolventLicenta_Anul_Absolvirii = validareAn($v_Licenta_AbsolventLicenta_Anul_Absolvirii);
-															if($vLicenta_An_Liceu==-1)
+															if($vLicenta_AbsolventLicenta_Anul_Absolvirii==-1)
 															   	echo "C&#226;mp necompletat!";
 															else
 																if($vLicenta_AbsolventLicenta_Anul_Absolvirii==1)
