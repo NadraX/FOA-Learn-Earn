@@ -536,6 +536,15 @@ function validare($id_formular)
 
 }
 
+/*function updateDataUltimeiModificari($id_formular)
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " update formular_preadmitere set data_ultimei_modificari=CURRENT_TIMESTAMP where id='$id_formular' ");
+
+    oci_execute($s);
+    oci_close($c);
+}*/
+
 function respingere($id_formular)
 {
     $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');

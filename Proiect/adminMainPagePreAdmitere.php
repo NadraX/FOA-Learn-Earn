@@ -1,22 +1,22 @@
 <?php
 
-error_reporting(0);
-ini_set('display_errors', 0); 
+/*error_reporting(0);
+ini_set('display_errors', 0); */
 
-        function nrFormularePreadmitere()
-        {
-            $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-            $s = oci_parse($c, " begin  select count(f.id) into :bv from formular_preadmitere f ;
-                                       end;");
-            oci_bind_by_name($s, ":bv", $v, 10);
-            oci_execute($s);
-            oci_close($c);
-            return $v;
-        }
+function nrFormularePreadmitere()
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " begin  select count(f.id) into :bv from formular_preadmitere f ;
+                               end;");
+    oci_bind_by_name($s, ":bv", $v, 10);
+    oci_execute($s);
+    oci_close($c);
+    return $v;
+}
 
 function nrFormulareLicenta()
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select count(f.id) into :bv from formular_licenta f ;
                                        end;");
     oci_bind_by_name($s, ":bv", $v, 10);
@@ -27,7 +27,7 @@ function nrFormulareLicenta()
 
 function nrFormulareMaster()
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select count(f.id) into :bv from formular_master f ;
                                        end;");
     oci_bind_by_name($s, ":bv", $v, 10);
@@ -38,7 +38,7 @@ function nrFormulareMaster()
 
 function nrFormularePreadmitereA()
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select count(f.id) into :bv from formular_preadmitere f 
                                         where f.stare > -1;
                                        end;");
@@ -50,7 +50,7 @@ function nrFormularePreadmitereA()
 
 function nrFormulareLicentaA()
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select count(f.id) into :bv from formular_licenta f  where f.stare > -1;
                                        end;");
     oci_bind_by_name($s, ":bv", $v, 10);
@@ -61,7 +61,7 @@ function nrFormulareLicentaA()
 
 function nrFormulareMasterA()
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select count(f.id) into :bv from formular_master f  where f.stare > -1;
                                        end;");
     oci_bind_by_name($s, ":bv", $v, 10);
@@ -70,31 +70,54 @@ function nrFormulareMasterA()
     return $v;
 }
 
-        function nrIntrebari()
-        {
-            $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-            $s = oci_parse($c, " begin  select count(id) into :bv from intrebare; end; ");
-            oci_bind_by_name($s, ":bv", $v, 10);
-            oci_execute($s);
-            oci_close($c);
-            return $v;
-        }
+/*function nrIntrebari()
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " begin  select count(id) into :bv from intrebare; end; ");
+    oci_bind_by_name($s, ":bv", $v, 10);
+    oci_execute($s);
+    oci_close($c);
+    return $v;
+}*/
 
-        function getNumeNastere($id_formular)
-        {
-            $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-            $s = oci_parse($c, " begin  select dp.nume_familie_nastere into :bv from date_personale_preadmitere dp
-                                                 join formular_preadmitere f on f.id=dp.formular_id
-                                                 where f.id='$id_formular'; end; ");
-            oci_bind_by_name($s, ":bv", $v, 100);
-            oci_execute($s);
-            oci_close($c);
-            return $v;
-        }
+function getNumarulChitantei($id_formular)
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " begin  select nr_chitanta into :bv from Formular_preadmitere
+                                where id='$id_formular'; end; ");
+    oci_bind_by_name($s, ":bv", $v, 100);
+    oci_execute($s);
+    oci_close($c);
+    return $v;
+}
+
+function getSuma($id_formular)
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " begin  select suma into :bv from Formular_preadmitere
+                                where id='$id_formular'; end; ");
+    oci_bind_by_name($s, ":bv", $v, 100);
+    oci_execute($s);
+    oci_close($c);
+    return $v;
+}
+
+
+function getNumeNastere($id_formular)
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " begin  select dp.nume_familie_nastere into :bv from date_personale_preadmitere dp
+                                         join formular_preadmitere f on f.id=dp.formular_id
+                                         where f.id='$id_formular'; end; ");
+    oci_bind_by_name($s, ":bv", $v, 100);
+    oci_execute($s);
+    oci_close($c);
+    return $v;
+}
 
 function getNumeActual($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.nume_familie_actual into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -105,7 +128,7 @@ function getNumeActual($id_formular)
 }
 function getPrenume($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.prenume_candidat into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -117,7 +140,7 @@ function getPrenume($id_formular)
 
 function getInitialaTata($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.initialele_tatalui_mamei into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -131,7 +154,7 @@ function getInitialaTata($id_formular)
 
 function getPrenumeTata($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.prenume_tata into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -143,7 +166,7 @@ function getPrenumeTata($id_formular)
 
 function getPrenumeMama($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.prenume_mama into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -155,7 +178,7 @@ function getPrenumeMama($id_formular)
 
 function getCetatenie($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.cetatenia into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -167,7 +190,7 @@ function getCetatenie($id_formular)
 
 function getSex($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.sex into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -179,7 +202,7 @@ function getSex($id_formular)
 
 function getNationalitate($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.nationalitate into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -191,7 +214,7 @@ function getNationalitate($id_formular)
 
 function getEtnie($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.etnie into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -203,7 +226,7 @@ function getEtnie($id_formular)
 
 function getLimbaMaterna($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.limba_materna into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -215,7 +238,7 @@ function getLimbaMaterna($id_formular)
 /*
 function getTelefon($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.telefon into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -227,7 +250,7 @@ function getTelefon($id_formular)
 
 function getEmail($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.email into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -239,7 +262,7 @@ function getEmail($id_formular)
 */
 function getDataDay($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select to_char(dp.data_nasterii,'DD') into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -251,7 +274,7 @@ function getDataDay($id_formular)
 
 function getDataMonth($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select to_char(dp.data_nasterii,'MM') into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -263,7 +286,7 @@ function getDataMonth($id_formular)
 
 function getDataYear($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select to_char(dp.data_nasterii,'YYYY') into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -275,7 +298,7 @@ function getDataYear($id_formular)
 
 function getCNP($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.cnp into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -286,10 +309,10 @@ function getCNP($id_formular)
 }
 
 
-function getTipBuletin($id_formular)
+function getTipAct($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = oci_parse($c, " begin  select dp.tip_buletin into :bv from date_personale_preadmitere dp
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " begin  select dp.tip_act_ident into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
     oci_bind_by_name($s, ":bv", $v, 100);
@@ -300,8 +323,8 @@ function getTipBuletin($id_formular)
 
 function getSerieBuletin($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = oci_parse($c, " begin  select dp.serie_ci into :bv from date_personale_preadmitere dp
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " begin  select dp.serie_act into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
     oci_bind_by_name($s, ":bv", $v, 100);
@@ -312,8 +335,8 @@ function getSerieBuletin($id_formular)
 
 function getNumarBuletin($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = oci_parse($c, " begin  select dp.numar_ci into :bv from date_personale_preadmitere dp
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " begin  select dp.numar_act into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
     oci_bind_by_name($s, ":bv", $v, 100);
@@ -324,7 +347,7 @@ function getNumarBuletin($id_formular)
 
 function getBuletinEliberatDe($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.eliberat_de into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -337,7 +360,7 @@ function getBuletinEliberatDe($id_formular)
 
 function getBuletinEliberareDay($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select to_char(dp.data_eliberarii,'DD') into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -349,7 +372,7 @@ function getBuletinEliberareDay($id_formular)
 
 function getBuletinEliberareMonth($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select to_char(dp.data_eliberarii,'MM') into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -361,7 +384,7 @@ function getBuletinEliberareMonth($id_formular)
 
 function getBuletinEliberareYear($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select to_char(dp.data_eliberarii,'YYYY') into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -373,7 +396,7 @@ function getBuletinEliberareYear($id_formular)
 
 function getBuletinExpirareDay($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select to_char(dp.data_expirarii,'DD') into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -385,7 +408,7 @@ function getBuletinExpirareDay($id_formular)
 
 function getBuletinExpirareMonth($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select to_char(dp.data_expirarii,'MM') into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -397,7 +420,7 @@ function getBuletinExpirareMonth($id_formular)
 
 function getBuletinExpirareYear($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select to_char(dp.data_expirarii,'YYYY') into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -410,7 +433,7 @@ function getBuletinExpirareYear($id_formular)
 /*
 function getStrada($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.strada into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -422,7 +445,7 @@ function getStrada($id_formular)
 
 function getNrStrada($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.numar_domiciliu into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -434,7 +457,7 @@ function getNrStrada($id_formular)
 
 function getNrBloc($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.bloc_domiciliu into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -446,7 +469,7 @@ function getNrBloc($id_formular)
 
 function getApartament($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.apartament_domiciliu into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -458,7 +481,7 @@ function getApartament($id_formular)
 */
 function getMaterieTest($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select f.optiune_test_scris into :bv from formular_preadmitere f 
                                                  where f.id='$id_formular'; end; ");
     oci_bind_by_name($s, ":bv", $v, 100);
@@ -469,8 +492,8 @@ function getMaterieTest($id_formular)
 
 function getNumeLiceu($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = oci_parse($c, " begin  select dp.institutie_liceu into :bv from date_personale_preadmitere dp
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " begin  select REPLACE(dp.institutie_liceu, '\"', '&quot;') into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
     oci_bind_by_name($s, ":bv", $v, 100);
@@ -481,7 +504,7 @@ function getNumeLiceu($id_formular)
 /*
 function getCodPostal($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.cod_postal_domiciliu into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -493,7 +516,7 @@ function getCodPostal($id_formular)
 */
 function getLocalitateNastere($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.localitatea_nasterii into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -505,7 +528,7 @@ function getLocalitateNastere($id_formular)
 
 function getJudetNastere($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.judetul_nasterii into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -517,7 +540,7 @@ function getJudetNastere($id_formular)
 
 function getTaraNastere($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.tara_nasterii into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -529,7 +552,7 @@ function getTaraNastere($id_formular)
 
 function getLocalitateLiceu($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.localitate_liceu into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -541,7 +564,7 @@ function getLocalitateLiceu($id_formular)
 
 function getJudetLiceu($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.judet_liceu into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -553,7 +576,7 @@ function getJudetLiceu($id_formular)
 
 function getTaraLiceu($id_formular)
 {
-    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = oci_parse($c, " begin  select dp.tara_liceu into :bv from date_personale_preadmitere dp
                                                  join formular_preadmitere f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
