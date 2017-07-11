@@ -266,7 +266,13 @@
                 <div class="col-md-12" style="margin-top:20px; ">
 
                     <div class="col-md-6 ">
-                        
+                        <?php
+                        /*error_reporting(E_ERROR);
+                        error_reporting(0);
+                        error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);*/
+                        $id_formular=$_POST['id_formular'];
+
+                        echo '
                         <div class="align-center">
 
                             <span class="col-md-12 sub-title">
@@ -277,13 +283,13 @@
 
                         </div>
                         
-                        <label>Chitanța nr.</label><input name="chitantaNr" class="form-control" value=""/>
+                        <label>Chitanța nr.</label><input name="chitantaNr" class="form-control" value="'.getNumarulChitantei($id_formular).'"/>
                         
-                        <label>Suma</label><input name="suma" class="form-control" value=""/>
+                        <label>Suma</label><input name="suma" class="form-control" value="'.getSuma($id_formular).'"/>
                         
-                        <label>Este scutit (se completeaza doar cu da/nu)</label><input name="esteScutit" class="form-control" value=""/>
+                        <label>Este scutit (se completeaza doar cu da/nu)</label><input name="esteScutit" class="form-control" value="'.getEsteScutit($id_formular).'"/>
                         
-                        <label>Motiv scutire</label><input name="motivScutire" class="form-control" value=""/>
+                        <label>Motiv scutire</label><input name="motivScutire" class="form-control" value="'.getMotivScutire($id_formular).'"/>
                         
                         <div class="align-center">
 
@@ -300,15 +306,9 @@
 
                        <br>
 
-                        <?php
-                        error_reporting(E_ERROR);
-                        error_reporting(0);
-                        error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-                        $id_formular=$_POST['id_formular'];
-
-                        echo '<label>Numele de familie (din certificatul de naștere)</label><input name="numeDeFamilie" class="form-control" value="'.getNumeNastere($id_formular).'"/>
+                            <label>Numele de familie (din certificatul de naștere)</label><input name="numeDeFamilie" class="form-control" value="'.getNumeNastere($id_formular).'"/>
                         
-                           <label class="marg-t10">Numele de familie actual (după căsătorie, înfiere, modificare la cerere conform actului doveditor, dacă este cazul)</label><input name="numeDeFamilieActual" class="form-control" value="'.getNumeActual($id_formular).'"/>
+                            <label class="marg-t10">Numele de familie actual (după căsătorie, înfiere, modificare la cerere conform actului doveditor, dacă este cazul)</label><input name="numeDeFamilieActual" class="form-control" value="'.getNumeActual($id_formular).'"/>
 
                             <label class="marg-t10">Prenume:</label><input name="prenume" class="form-control" value="'.getPrenume($id_formular).'" />
 
@@ -318,15 +318,15 @@
 
                             <label class="marg-t10">Prenume mamă:</label><input name="prenumeMama" class="form-control" value="'.getPrenumeMama($id_formular).'"/>
 
-                            <label class="marg-t10">Stare civilă: </label><input name="stareCivila" class="form-control" value="" />
+                            <label class="marg-t10">Stare civilă: </label><input name="stareCivila" class="form-control" value="'.getStareCivila($id_formular).'" />
 
                             <label class="marg-t10">Sex: </label><input name="sex" class="form-control" value="'.getSex($id_formular).'" />
                             
-                            <label class="marg-t10">Țară naștere: </label><input name="taraNastere" class="form-control" value=""/>
+                            <label class="marg-t10">Țară naștere: </label><input name="taraNastere" class="form-control" value="'.getTaraNastere($id_formular).'"/>
                             
-                            <label class="marg-t10">Județ naștere: </label><input name="judetNastere" class="form-control" value=""/>
+                            <label class="marg-t10">Județ naștere: </label><input name="judetNastere" class="form-control" value="'.getJudetNastere($id_formular).'"/>
                             
-                            <label class="marg-t10">Localitate naștere: </label><input name="localitateNastere" class="form-control" value=""/>
+                            <label class="marg-t10">Localitate naștere: </label><input name="localitateNastere" class="form-control" value="'.getLocalitateNastere($id_formular).'"/>
                             
                             <label class="marg-t10">Data nașterii:</label>
                             
@@ -363,7 +363,7 @@
 
                             <label>CNP:</label><input name="cnp" class="form-control" value="'.getCNP($id_formular).'" />
                             
-                            <label>Tip act:</label><input name="tipAct" class="form-control" value="" />
+                            <label>Tip act:</label><input name="tipAct" class="form-control" value="'.getTipAct($id_formular).'" />
 
                             <label class="marg-t10">Serie act: </label><input name="serieBuletin" class="form-control" value="'.getSerieBuletin($id_formular).'" />
 
@@ -406,7 +406,7 @@
 
                          </div>
                          
-                                <label class="marg-t10">Domiciliu stabil: </label><input name="domiciliuStabil" class="form-control" value=""/>
+                                <label class="marg-t10">Domiciliu stabil: </label><input name="domiciliuStabil" class="form-control" value="'.getDomiciliuStabil($id_formular).'"/>
 
                                 <label>Strada:</label><input name="strada" class="form-control" value="'.getStrada($id_formular).'"/>
 
@@ -416,7 +416,7 @@
 
                                 <label>Scara:</label><input name="scara" class="form-control" value="'.getScara($id_formular).'"/>
                                 
-                                <label>Etaj:</label><input name="etaj" class="form-control" value=""/>
+                                <label>Etaj:</label><input name="etaj" class="form-control" value="'.getEtaj($id_formular).'"/>
                                 
                                 <label>Apartament:</label><input name="apartament" class="form-control" value="'.getApartament($id_formular).'"/>
                                 
@@ -443,9 +443,9 @@
 
                         </div>
                                 
-                                <label class="marg-t10">Solicită cazare pe timpul studiilor?</label><input name="solicitaCazareStudii" class="form-control" value=""/>
+                                <label class="marg-t10">Solicită cazare pe timpul studiilor?</label><input name="solicitaCazareStudii" class="form-control" value="'.getCazareStudii($id_formular).'"/>
                                 
-                                <label class="marg-t10">Solicită cazare pe timpul examenului?</label><input name="solicitaCazareExamen" class="form-control" value=""/>
+                                <label class="marg-t10">Solicită cazare pe timpul examenului?</label><input name="solicitaCazareExamen" class="form-control" value="'.getCazareExamen($id_formular).'"/>
                                 
 
                         <div class="align-center">
@@ -460,13 +460,13 @@
 
                                 <label class="marg-t10">Candidatul se încadrează în categoria persoanelor cu dizabilități </label><input name="persoanaCuDizabilitati" class="form-control" value="'.getPersoanaCuDizabilitati($id_formular).'"/>
 
-                                <label class="marg-t10">Stare socială specială: </label><input name="stareSpeciala" class="form-control" value=""/>
+                                <label class="marg-t10">Stare socială specială: </label><input name="stareSpeciala" class="form-control" value="'.getStareSocialaSpeciala($id_formular).'"/>
                                 
                         <div class="align-center">
 
                             <span class="col-md-12 sub-title">
 
-                                <br>Studiile preuniversitare absolvite, nivel liceu
+                                Studiile preuniversitare absolvite, nivel liceu
 
                             </span>
 
@@ -664,15 +664,15 @@
 
                             </div>
                             
-                                <label class="marg-t10">Preferința 1 (obligatoriu):</label><input name="preferinta1" class="form-control" value=""/>
+                                <label class="marg-t10">Preferința 1 (obligatoriu):</label><input name="preferinta1" class="form-control" value="'.getPreferinta1($id_formular).'"/>
                                 
-                                <label class="marg-t10">Preferința 2 (opțional):</label><input name="preferinta2" class="form-control" value=""/>
+                                <label class="marg-t10">Preferința 2 (opțional):</label><input name="preferinta2" class="form-control" value="'.getPreferinta2($id_formular).'"/>
                                 
-                                <label class="marg-t10">Preferința 3 (opțional):</label><input name="preferinta3" class="form-control" value=""/>
+                                <label class="marg-t10">Preferința 3 (opțional):</label><input name="preferinta3" class="form-control" value="'.getPreferinta3($id_formular).'"/>
                                 
-                                <label class="marg-t10">Preferința 4 (opțional):</label><input name="preferinta4" class="form-control" value=""/>
+                                <label class="marg-t10">Preferința 4 (opțional):</label><input name="preferinta4" class="form-control" value="'.getPreferinta4($id_formular).'"/>
                                 
-                                <label class="marg-t10">Acceptă să fie înmatriculat pe locurile cu taxă?</label><input name="accepaTaxa" class="form-control" value=""/>
+                                <label class="marg-t10">Acceptă să fie înmatriculat pe locurile cu taxă?</label><input name="accepaTaxa" class="form-control" value="'.getLocTaxa($id_formular).'"/>
                                 
                             <div class="align-center">
 
@@ -684,23 +684,20 @@
 
                             </div>
                             
-                                <label class="marg-t10">Diploma de Bacalaureat</label><input name="diplomaBac" class="form-control" value=""/>
+                                <label class="marg-t10">Diploma de Bacalaureat</label><input name="diplomaBac" class="form-control" value="'.getDiplomaBacOriginal($id_formular).'"/>
                                 
-                                <label class="marg-t10">Adeverință</label><input name="adevetinta" class="form-control" value=""/>
+                                <label class="marg-t10">Adeverință</label><input name="adevetinta" class="form-control" value="'.getAdeverintaOriginal($id_formular).'"/>
                                 
-                                <label class="marg-t10">Document echivalare studii</label><input name="diplomaBac" class="form-control" value=""/>
+                                <label class="marg-t10">Document echivalare studii</label><input name="diplomaBac" class="form-control" value="'.getEchivalareStudii($id_formular).'"/>
                                 
-                                <label class="marg-t10">Diploma de Olimpiadă</label><input name="diplomaBac" class="form-control" value=""/>
+                                <label class="marg-t10">Diploma de Olimpiadă</label><input name="diplomaBac" class="form-control" value="'.getDiplomaOlimpiada($id_formular).'"/>
                         
                             </div>
 
-                        </div>';
-                        ?>
+                        </div>
                     
-
-
-                
-            </div>
+            </div>';
+            ?>
 
         </div>
 
