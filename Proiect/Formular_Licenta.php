@@ -1249,17 +1249,28 @@
 									<div data-wrapper-react="true">
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Ţara în care v-aţi născut </label>
-											<input type="text" name="Licenta_Tara_Nastere" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;nia" data-component="middle" value="<?php 
-																																																														if($v_Licenta_Tara_Nastere == '') 
-																																																															echo '';
-																																																														else
-																																																															echo $v_Licenta_Tara_Nastere;
-																																																													?>" />
+											
+											<input type="text" class="form-textbox middle_1" name="Licenta_Tara_Nastere" data-component="country" list="TaraNastere" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Licenta_Tara_Nastere = $_POST["Licenta_Tara_Nastere"];
+																																															echo $v_Licenta_Tara_Nastere;
+																																														} 
+																																													?>' style="vertical-align:top; width:100%;padding:0;margin:0;">
+											<datalist id="TaraNastere" >
+												<?php
+													$array=array("România","Republica Moldova");
+													for($i=0;$i<2;$i++)
+													{
+														echo '<option value="'.$array[$i].'" ';
+																						echo '> '.$array[$i].' </option>';
+													}
+												?>
+											</datalist>
 											<span style="color:red">
-												<?php 
+												<?php
 													if(isset($_POST['Submit'])) {
 														$v_Licenta_Tara_Nastere = $_POST["Licenta_Tara_Nastere"];
-														$vLicenta_Tara_Nastere = validTara($v_Licenta_Tara_Nastere);
+														$vLicenta_Tara_Nastere=validTara($v_Licenta_Tara_Nastere);
 														if($vLicenta_Tara_Nastere==-1)
 															echo "C&#226;mp necompletat!";
 														else
@@ -1267,7 +1278,7 @@
 																echo "C&#226;mpul conține caractere nepermise!";
 															else
 																if($vLicenta_Tara_Nastere==1)
-																	echo "C&#226;mpul trebuie sa conțină între 4 și 36 caractere!";
+																	echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
 													}
 												?>
 											</span>
@@ -2248,26 +2259,39 @@
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:24%">
 														<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">&#354;ar&#259; </label>
-														<select class="form-dropdown form-address-country gen" name="Licenta_Tara" data-component="country">
-															<option value="Romania" <?php
-																						if($v_Tara=="Romania")
-																							echo 'selected';
-																						else
-																							echo '';
-																					?>> Rom&#226;nia </option>
-															<option value="Republica Moldova" <?php
-																								if($v_Tara=="Republica Moldova")
-																									echo 'selected';
-																								else
-																									echo '';
-																							 ?>> Republica Moldova </option>
-															<option value="Alta Optiune" <?php
-																							if($v_Tara=="Alta Optiune")
-																								echo 'selected';
-																							else
-																								echo '';
-																						 ?>> Alta op&#355;iune</option>
-														</select>
+														
+														<input type="text" class="form-dropdown form-address-country gen" name="Licenta_Tara" data-component="country" list="TaraActuala" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Licenta_Tara = $_POST["Licenta_Tara"];
+																																															echo $v_Licenta_Tara;
+																																														} 
+																																													?>'>
+														<datalist id="TaraActuala" >
+															<?php
+																$array=array("România","Republica Moldova");
+																for($i=0;$i<2;$i++)
+																{
+																	echo '<option value="'.$array[$i].'" ';
+																									echo '> '.$array[$i].' </option>';
+																}
+															?>
+														</datalist>
+														<span style="color:red">
+															<?php
+																if(isset($_POST['Submit'])) {
+																	$v_Licenta_Tara = $_POST["Licenta_Tara"];
+																	$vLicenta_Tara=validTara($v_Licenta_Tara);
+																	if($vLicenta_Tara==-1)
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vLicenta_Tara==2)
+																			echo "C&#226;mpul conține caractere nepermise!";
+																		else
+																			if($vLicenta_Tara==1)
+																				echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																}
+															?>
+														</span>
 													</span>
 												</td>
 											</tr>
@@ -4013,29 +4037,39 @@
 												  
 													<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 														<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">&#354;ar&#259; </label>
-														<select class="form-dropdown form-address-country gen" name="Licenta_Tara_Liceu" data-component="country">
-															<?php 
-																$v_Licenta_Tara_Liceu = $_POST["Licenta_Tara_Liceu"];
+														
+														<input type="text" class="form-dropdown form-address-country gen" name="Licenta_Tara_Liceu" data-component="country" list="TaraLicenta" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Licenta_Tara_Liceu = $_POST["Licenta_Tara_Liceu"];
+																																															echo $v_Licenta_Tara_Liceu;
+																																														} 
+																																													?>'>
+														<datalist id="TaraLicenta" >
+															<?php
+																$array=array("România","Republica Moldova");
+																for($i=0;$i<2;$i++)
+																{
+																	echo '<option value="'.$array[$i].'" ';
+																									echo '> '.$array[$i].' </option>';
+																}
 															?>
-															<option value="Romania" <?php
-																						if($v_Licenta_Tara_Liceu=="Romania")
-																							echo 'selected';
-																						else
-																							echo '';
-																					?>> Rom&#226;nia </option>
-															<option value="Republica Moldova"   <?php
-																									if($v_Licenta_Tara_Liceu=="Republica Moldova")
-																										echo 'selected';
-																									else
-																										echo '';
-																								?>> Republica Moldova </option>
-															<option value="Alta Optiune" <?php
-																							if($v_Licenta_Tara_Liceu=="Alta Optiune")
-																								echo 'selected';
-																							else
-																								echo '';
-																						?>> Alta op&#355;iune</option>
-														</select>
+														</datalist>
+														<span style="color:red">
+															<?php
+																if(isset($_POST['Submit'])) {
+																	$v_Licenta_Tara_Liceu = $_POST["Licenta_Tara_Liceu"];
+																	$vLicenta_Tara_Liceu=validTara($v_Licenta_Tara_Liceu);
+																	if($vLicenta_Tara_Liceu==-1)
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vLicenta_Tara_Liceu==2)
+																			echo "C&#226;mpul conține caractere nepermise!";
+																		else
+																			if($vLicenta_Tara_Liceu==1)
+																				echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																}
+															?>
+														</span>
 													</span>
 												</td>
 											</tr>
@@ -4920,29 +4954,39 @@
 												
 														<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 															<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">&#354;ar&#259; </label>
-															<select class="form-dropdown form-address-country gen" name="Licenta_Tara_AltaFacultate" data-component="country">
-																<?php 
-																	$v_Licenta_Tara_AltaFacultate = $_POST["Licenta_Tara_AltaFacultate"];
+
+															<input type="text" class="form-dropdown form-address-country gen" name="Licenta_Tara_AltaFacultate" data-component="country" list="TaraAltaFacultate" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Licenta_Tara_AltaFacultate = $_POST["Licenta_Tara_AltaFacultate"];
+																																															echo $v_Licenta_Tara_AltaFacultate;
+																																														} 
+																																													?>'>
+															<datalist id="TaraAltaFacultate" >
+																<?php
+																	$array=array("România","Republica Moldova");
+																	for($i=0;$i<2;$i++)
+																	{
+																		echo '<option value="'.$array[$i].'" ';
+																										echo '> '.$array[$i].' </option>';
+																	}
 																?>
-																<option value="Romania" <?php
-																							if($v_Licenta_Tara_AltaFacultate=="Romania")
-																								echo 'selected';
-																							else
-																								echo '';
-																						?>> Rom&#226;nia </option>
-																<option value="Republica Moldova"   <?php
-																										if($v_Licenta_Tara_AltaFacultate=="Republica Moldova")
-																											echo 'selected';
-																										else
-																											echo '';
-																									?>> Republica Moldova </option>
-																<option value="Alta Optiune" <?php
-																								if($v_Licenta_Tara_AltaFacultate=="Alta Optiune")
-																									echo 'selected';
-																								else
-																									echo '';
-																							?>> Alta op&#355;iune</option>
-															</select>
+															</datalist>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Licenta_Tara_AltaFacultate = $_POST["Licenta_Tara_AltaFacultate"];
+																		$vLicenta_Tara_AltaFacultate=validTara($v_Licenta_Tara_AltaFacultate);
+																		if($vLicenta_Tara_AltaFacultate==-1)
+																			echo "C&#226;mp necompletat!";
+																		else
+																			if($vLicenta_Tara_AltaFacultate==2)
+																				echo "C&#226;mpul conține caractere nepermise!";
+																			else
+																				if($vLicenta_Tara_AltaFacultate==1)
+																					echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																	}
+																?>
+															</span>
 														</span>
 													</td>
 												</tr>
@@ -5362,29 +5406,39 @@
 												
 														<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 															<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">&#354;ar&#259; </label>
-															<select class="form-dropdown form-address-country gen" name="Licenta_Tara_AltaFacultate_Licenta" data-component="country">
-																<?php 
-																	$v_Licenta_Tara_AltaFacultate_Licenta = $_POST["Licenta_Tara_AltaFacultate_Licenta"];
+
+															<input type="text" class="form-dropdown form-address-country gen" name="Licenta_Tara_AltaFacultate_Licenta" data-component="country" list="TaraLicentaAbsolvita" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Licenta_Tara_AltaFacultate_Licenta = $_POST["Licenta_Tara_AltaFacultate_Licenta"];
+																																															echo $v_Licenta_Tara_AltaFacultate_Licenta;
+																																														} 
+																																													?>'>
+															<datalist id="TaraLicentaAbsolvita" >
+																<?php
+																	$array=array("România","Republica Moldova");
+																	for($i=0;$i<2;$i++)
+																	{
+																		echo '<option value="'.$array[$i].'" ';
+																										echo '> '.$array[$i].' </option>';
+																	}
 																?>
-																<option value="Romania" <?php
-																							if($v_Licenta_Tara_AltaFacultate_Licenta=="Romania")
-																								echo 'selected';
-																							else
-																								echo '';
-																						?>> Rom&#226;nia </option>
-																<option value="Republica Moldova"   <?php
-																										if($v_Licenta_Tara_AltaFacultate_Licenta=="Republica Moldova")
-																											echo 'selected';
-																										else
-																											echo '';
-																									?>> Republica Moldova </option>
-																<option value="Alta Optiune" 	<?php
-																									if($v_Licenta_Tara_AltaFacultate_Licenta=="Alta Optiune")
-																										echo 'selected';
-																									else
-																										echo '';
-																								?>> Alta op&#355;iune</option>
-															</select>
+															</datalist>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Licenta_Tara_AltaFacultate_Licenta = $_POST["Licenta_Tara_AltaFacultate_Licenta"];
+																		$vLicenta_Tara_AltaFacultate_Licenta=validTara($v_Licenta_Tara_AltaFacultate_Licenta);
+																		if($vLicenta_Tara_AltaFacultate_Licenta==-1)
+																			echo "C&#226;mp necompletat!";
+																		else
+																			if($vLicenta_Tara_AltaFacultate_Licenta==2)
+																				echo "C&#226;mpul conține caractere nepermise!";
+																			else
+																				if($vLicenta_Tara_AltaFacultate_Licenta==1)
+																					echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																	}
+																?>
+															</span>
 														</span>
 													</td>
 												</tr>

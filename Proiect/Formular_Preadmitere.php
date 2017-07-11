@@ -843,28 +843,40 @@
 									<div data-wrapper-react="true">
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Ţara în care v-aţi născut </label>
-											<input type="text" name="Preadmitere_Tara_Nastere" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;nia" data-component="middle" value="<?php 
-																																																														if($v_Preadmitere_Tara_Nastere == '') 
-																																																															echo '';
-																																																														else
-																																																															echo $v_Preadmitere_Tara_Nastere;
-																																																													?>" />
-												<span style="color:red">
-													<?php 
-														if(isset($_POST['Submit'])) {
-															$v_Preadmitere_Tara_Nastere = $_POST["Preadmitere_Tara_Nastere"];
-															$vPreadmitere_Tara_Nastere = validTara($v_Preadmitere_Tara_Nastere);
-															if($vPreadmitere_Tara_Nastere==-1)
-																echo "C&#226;mp necompletat!";
+											
+											<input type="text" class="form-textbox middle_1" name="Preadmitere_Tara_Nastere" data-component="country" list="TaraNastere" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Preadmitere_Tara_Nastere = $_POST["Preadmitere_Tara_Nastere"];
+																																															echo $v_Preadmitere_Tara_Nastere;
+																																														} 
+																																													?>' style="vertical-align:top; width:100%;padding:0;margin:0;">
+											<datalist id="TaraNastere" >
+												<?php
+													$array=array("România","Republica Moldova");
+													for($i=0;$i<2;$i++)
+													{
+														echo '<option value="'.$array[$i].'" ';
+																						echo '> '.$array[$i].' </option>';
+													}
+												?>
+											</datalist>
+											<span style="color:red">
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Preadmitere_Tara_Nastere = $_POST["Preadmitere_Tara_Nastere"];
+														$vPreadmitere_Tara_Nastere=validTara($v_Preadmitere_Tara_Nastere);
+														if($vPreadmitere_Tara_Nastere==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vPreadmitere_Tara_Nastere==2)
+																echo "C&#226;mpul conține caractere nepermise!";
 															else
-																if($vPreadmitere_Tara_Nastere==2)
-																	echo "C&#226;mpul conține caractere nepermise!";
-																else
-																	if($vPreadmitere_Tara_Nastere==1)
-																		echo "C&#226;mpul trebuie sa aibe între 4 și 36 caractere!";
-														}
-													?>
-												</span>																																												 
+																if($vPreadmitere_Tara_Nastere==1)
+																	echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+													}
+												?>
+											</span>
+
 										</span>
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Judeţul în care v-aţi născut</label>
@@ -3010,26 +3022,38 @@
 								  
 													<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 														<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">&#354;ar&#259; </label>
-														<select class="form-dropdown form-address-country gen" name="Preadmitere_Tara" data-component="country">
-															<option value="Romania" <?php
-																						if($v_Preadmitere_Tara=="Romania")
-																							echo 'selected';
-																						else
-																							echo '';
-																					?> > Rom&#226;nia </option>
-															<option value="Republica Moldova"  <?php
-																									if($v_Preadmitere_Tara=="Republica Moldova")
-																										echo 'selected';
-																									else
-																										echo '';
-																								?> > Republica Moldova </option>
-															<option  value="Alta Optiune"   <?php
-																								if($v_Preadmitere_Tara=="Alta Optiune")
-																									echo 'selected';
-																								else
-																									echo '';
-																							?> > Alta op&#355;iune</option>
-														</select>
+														<input type="text" class="form-dropdown form-address-country gen" name="Preadmitere_Tara" data-component="country" list="TaraActuala" value='<?php  
+																																																		if(isset($_POST['Submit'])) {
+																																																			$v_Preadmitere_Tara = $_POST["Preadmitere_Tara"];
+																																																			echo $v_Preadmitere_Tara;
+																																																		} 
+																																																	?>'>
+											<datalist id="TaraActuala" >
+												<?php
+													$array=array("România","Republica Moldova");
+													for($i=0;$i<2;$i++)
+													{
+														echo '<option value="'.$array[$i].'" ';
+																						echo '> '.$array[$i].' </option>';
+													}
+												?>
+											</datalist>
+											<span style="color:red">
+												<?php
+													if(isset($_POST['Submit'])) {
+														$v_Preadmitere_Tara = $_POST["Preadmitere_Tara"];
+														$vPreadmitere_Tara=validTara($v_Preadmitere_Tara);
+														if($vPreadmitere_Tara==-1)
+															echo "C&#226;mp necompletat!";
+														else
+															if($vPreadmitere_Tara==2)
+																echo "C&#226;mpul conține caractere nepermise!";
+															else
+																if($vPreadmitere_Tara==1)
+																	echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+													}
+												?>
+											</span>
 													</span>
 												</td>
 											</tr>

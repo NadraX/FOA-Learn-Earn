@@ -1387,17 +1387,28 @@
 									<div data-wrapper-react="true">
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Ţara în care v-aţi născut </label>
-											<input type="text" name="Master_Tara_Nastere"  class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;nia" data-component="middle"  value="<?php 
-																																																														if($v_Master_Tara_Nastere == '') 
-																																																															echo '';
-																																																														else
-																																																															echo $v_Master_Tara_Nastere;
-																																																													?>" />
+											
+											<input type="text" class="form-textbox middle_1" name="Master_Tara_Nastere" data-component="country" list="TaraNastere" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Master_Tara_Nastere = $_POST["Master_Tara_Nastere"];
+																																															echo $v_Master_Tara_Nastere;
+																																														} 
+																																													?>' style="vertical-align:top; width:100%;padding:0;margin:0;">
+											<datalist id="TaraNastere" >
+												<?php
+													$array=array("România","Republica Moldova");
+													for($i=0;$i<2;$i++)
+													{
+														echo '<option value="'.$array[$i].'" ';
+																						echo '> '.$array[$i].' </option>';
+													}
+												?>
+											</datalist>
 											<span style="color:red">
-												<?php 
+												<?php
 													if(isset($_POST['Submit'])) {
 														$v_Master_Tara_Nastere = $_POST["Master_Tara_Nastere"];
-														$vMaster_Tara_Nastere = validTara($v_Master_Tara_Nastere);
+														$vMaster_Tara_Nastere=validTara($v_Master_Tara_Nastere);
 														if($vMaster_Tara_Nastere==-1)
 															echo "C&#226;mp necompletat!";
 														else
@@ -1405,10 +1416,11 @@
 																echo "C&#226;mpul conține caractere nepermise!";
 															else
 																if($vMaster_Tara_Nastere==1)
-																	echo "C&#226;mpul trebuie sa conțină între 4 și 36 caractere!";
+																	echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
 													}
 												?>
 											</span>
+
 										</span>
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Judeţul în care v-aţi născut</label>
@@ -2431,29 +2443,40 @@
 													</span>
 													<span class="form-sub-label-container" style="vertical-align:top; width:24%">
 														<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">&#354;ar&#259; </label>
-														<select class="form-dropdown form-address-country gen" name="Master_Tara1" data-component="country">
-															<?php 
-																$v_Master_Tara1 = $_POST["Master_Tara1"];
+														
+														<input type="text" class="form-dropdown form-address-country gen" name="Master_Tara1" data-component="country" list="TaraStabila" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Master_Tara1 = $_POST["Master_Tara1"];
+																																															echo $v_Master_Tara1;
+																																														} 
+																																													?>'>
+														<datalist id="TaraStabila" >
+															<?php
+																$array=array("România","Republica Moldova");
+																for($i=0;$i<2;$i++)
+																{
+																	echo '<option value="'.$array[$i].'" ';
+																									echo '> '.$array[$i].' </option>';
+																}
 															?>
-															<option value="Romania" <?php
-																						if($v_Master_Tara1=="Romania")
-																							echo 'selected';
-																						else
-																							echo '';
-																					?>> Rom&#226;nia </option>
-															<option value="Republica Moldova"<?php
-																								if($v_Master_Tara1=="Republica Moldova")
-																									echo 'selected';
-																								else
-																									echo '';
-																							?>> Republica Moldova </option>
-															<option value="Alta Optiune"<?php
-																							if($v_Master_Tara1=="Alta Optiune")
-																								echo 'selected';
-																							else
-																								echo '';
-																						?>> Alta op&#355;iune</option>
-														</select>
+														</datalist>
+														<span style="color:red">
+															<?php
+																if(isset($_POST['Submit'])) {
+																	$v_Master_Tara1 = $_POST["Master_Tara1"];
+																	$vMaster_Tara1=validTara($v_Master_Tara1);
+																	if($vMaster_Tara1==-1)
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vMaster_Tara1==2)
+																			echo "C&#226;mpul conține caractere nepermise!";
+																		else
+																			if($vMaster_Tara1==1)
+																				echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																}
+															?>
+														</span>
+
 													</span>
 												</td>
 										 
@@ -4131,26 +4154,40 @@
 										  
 													<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 														<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">&#354;ar&#259; </label>
-														<select class="form-dropdown form-address-country gen" name="Master_Tara" data-component="country">
-															<option value="Romania" <?php
-																						if($v_Master_Tara_Liceu=="Romania")
-																							echo 'selected';
-																						else
-																							echo '';
-																					?>> Rom&#226;nia </option>
-															<option value="Republica Moldova" 	<?php
-																									if($v_Master_Tara_Liceu=="Republica Moldova")
-																										echo 'selected';
-																									else
-																										echo '';
-																								?>> Republica Moldova </option>
-															<option value="Alta Optiune" 	<?php
-																								if($v_Master_Tara_Liceu=="Alta Optiune")
-																									echo 'selected';
-																								else
-																									echo '';
-																							?>> Alta op&#355;iune</option>
-														</select>
+
+														<input type="text" class="form-dropdown form-address-country gen" name="Master_Tara" data-component="country" list="TaraLiceuAbs" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Master_Tara = $_POST["Master_Tara"];
+																																															echo $v_Master_Tara;
+																																														} 
+																																													?>'>
+														<datalist id="TaraLiceuAbs" >
+															<?php
+																$array=array("România","Republica Moldova");
+																for($i=0;$i<2;$i++)
+																{
+																	echo '<option value="'.$array[$i].'" ';
+																									echo '> '.$array[$i].' </option>';
+																}
+															?>
+														</datalist>
+														<span style="color:red">
+															<?php
+																if(isset($_POST['Submit'])) {
+																	$v_Master_Tara = $_POST["Master_Tara"];
+																	$vMaster_Tara=validTara($v_Master_Tara);
+																	if($vMaster_Tara==-1)
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vMaster_Tara==2)
+																			echo "C&#226;mpul conține caractere nepermise!";
+																		else
+																			if($vMaster_Tara==1)
+																				echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																}
+															?>
+														</span>
+
 													</span>
 												</td>
 											</tr>
@@ -5015,29 +5052,40 @@
 											
 													<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 														<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">&#354;ar&#259; </label>
-														<?php 
-															$v_Master_Tara_AltaFacultate1 = $_POST["Master_Tara_AltaFacultate1"];
-														?>
-														<select class="form-dropdown form-address-country gen" name="Master_Tara_AltaFacultate1" data-component="country">
-															<option value="Romania" <?php
-																						if($v_Master_Tara_AltaFacultate1=="Romania")
-																							echo 'selected';
-																						else
-																							echo '';
-																					?>> Rom&#226;nia </option>
-															<option value="Republica Moldova" 	<?php
-																									if($v_Master_Tara_AltaFacultate1=="Republica Moldova")
-																										echo 'selected';
-																									else
-																										echo '';
-																								?>> Republica Moldova </option>
-															<option value="Alta Optiune" <?php
-																							if($v_Master_Tara_AltaFacultate1=="Alta Optiune")
-																								echo 'selected';
-																							else
-																								echo '';
-																						?>> Alta op&#355;iune</option>
-														</select>
+														
+														<input type="text" class="form-dropdown form-address-country gen" name="Master_Tara_AltaFacultate1" data-component="country" list="TaraLicentaAbs" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Master_Tara_AltaFacultate1 = $_POST["Master_Tara_AltaFacultate1"];
+																																															echo $v_Master_Tara_AltaFacultate1;
+																																														} 
+																																													?>'>
+														<datalist id="TaraLicentaAbs" >
+															<?php
+																$array=array("România","Republica Moldova");
+																for($i=0;$i<2;$i++)
+																{
+																	echo '<option value="'.$array[$i].'" ';
+																									echo '> '.$array[$i].' </option>';
+																}
+															?>
+														</datalist>
+														<span style="color:red">
+															<?php
+																if(isset($_POST['Submit'])) {
+																	$v_Master_Tara_AltaFacultate1 = $_POST["Master_Tara_AltaFacultate1"];
+																	$vMaster_Tara_AltaFacultate1=validTara($v_Master_Tara_AltaFacultate1);
+																	if($vMaster_Tara_AltaFacultate1==-1)
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vMaster_Tara_AltaFacultate1==2)
+																			echo "C&#226;mpul conține caractere nepermise!";
+																		else
+																			if($vMaster_Tara_AltaFacultate1==1)
+																				echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																}
+															?>
+														</span>
+														
 													</span>
 												</td>
 								   
@@ -5812,29 +5860,40 @@
 												
 														<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 															<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">&#354;ar&#259; </label>
-															<?php 
-																$v_Master_Tara_AltaFacultate = $_POST["Master_Tara_AltaFacultate"];
-															?>
-															<select class="form-dropdown form-address-country gen" name="Master_Tara_AltaFacultate" data-component="country">
-																<option value="Romania" <?php
-																							if($v_Master_Tara_AltaFacultate=="Romania")
-																								echo 'selected';
-																							else
-																								echo '';
-																						?>> Rom&#226;nia </option>
-																<option value="Republica Moldova" 	<?php
-																										if($v_Master_Tara_AltaFacultate=="Republica Moldova")
-																											echo 'selected';
-																										else
-																											echo '';
-																									?>> Republica Moldova </option>
-																<option value="Alta Optiune" 	<?php
-																									if($v_Master_Tara_AltaFacultate=="Alta Optiune")
-																										echo 'selected';
-																									else
-																										echo '';
-																								?>> Alta op&#355;iune</option>
-															</select>
+
+															<input type="text" class="form-dropdown form-address-country gen" name="Master_Tara_AltaFacultate" data-component="country" list="TaraAltaFacultate" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Master_Tara_AltaFacultate = $_POST["Master_Tara_AltaFacultate"];
+																																															echo $v_Master_Tara_AltaFacultate;
+																																														} 
+																																													?>'>
+															<datalist id="TaraAltaFacultate" >
+																<?php
+																	$array=array("România","Republica Moldova");
+																	for($i=0;$i<2;$i++)
+																	{
+																		echo '<option value="'.$array[$i].'" ';
+																										echo '> '.$array[$i].' </option>';
+																	}
+																?>
+															</datalist>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Master_Tara_AltaFacultate = $_POST["Master_Tara_AltaFacultate"];
+																		$vMaster_Tara_AltaFacultate=validTara($v_Master_Tara_AltaFacultate);
+																		if($vMaster_Tara_AltaFacultate==-1)
+																			echo "C&#226;mp necompletat!";
+																		else
+																			if($vMaster_Tara_AltaFacultate==2)
+																				echo "C&#226;mpul conține caractere nepermise!";
+																			else
+																				if($vMaster_Tara_AltaFacultate==1)
+																					echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																	}
+																?>
+															</span>
+														
 														</span>
 													</td>
 											   
@@ -6260,11 +6319,11 @@
 																		if($vMaster_AbsolventMaster_Judet_AltaFacultate==-1)
 																			echo "C&#226;mp necompletat!";
 																		else
-																			if($vMaster_AbsolventMaster_Judet_AltaFacultate==1)
+																			if($vMaster_AbsolventMaster_Judet_AltaFacultate==2)
 																				echo "C&#226;mpul conține caractere nepermise!";
 																			else
-																				if($vMaster_AbsolventMaster_Judet_AltaFacultate==2)
-																					echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																				if($vMaster_AbsolventMaster_Judet_AltaFacultate==1)
+																					echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
 																	}
 																?>
 															</span>
@@ -6272,29 +6331,40 @@
 												
 														<span class="form-sub-label-container" style="vertical-align:top; width:32%">
 															<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">&#354;ar&#259; </label>
-															<select class="form-dropdown form-address-country gen" name="Master_AbsolventMaster_Tara_AltaFacultate" data-component="country">
-																<?php 
-																	$v_Master_AbsolventMaster_Tara_AltaFacultate = $_POST["Master_AbsolventMaster_Tara_AltaFacultate"];
+
+															<input type="text" class="form-dropdown form-address-country gen" name="Master_AbsolventMaster_Tara_AltaFacultate" data-component="country" list="TaraAltMaster" value='<?php  
+																																														if(isset($_POST['Submit'])) {
+																																															$v_Master_AbsolventMaster_Tara_AltaFacultate = $_POST["Master_AbsolventMaster_Tara_AltaFacultate"];
+																																															echo $v_Master_AbsolventMaster_Tara_AltaFacultate;
+																																														} 
+																																													?>'>
+															<datalist id="TaraAltMaster" >
+																<?php
+																	$array=array("România","Republica Moldova");
+																	for($i=0;$i<2;$i++)
+																	{
+																		echo '<option value="'.$array[$i].'" ';
+																										echo '> '.$array[$i].' </option>';
+																	}
 																?>
-																<option value="Romania" <?php
-																						if($v_Master_AbsolventMaster_Tara_AltaFacultate=="Romania")
-																							echo 'selected';
-																						else
-																							echo '';
-																					?>> Rom&#226;nia </option>
-																<option value="Republica Moldova" <?php
-																						if($v_Master_AbsolventMaster_Tara_AltaFacultate=="Republica Moldova")
-																							echo 'selected';
-																						else
-																							echo '';
-																					?>> Republica Moldova </option>
-																<option value="Alta Optiune" <?php
-																						if($v_Master_AbsolventMaster_Tara_AltaFacultate=="Alta Optiune")
-																							echo 'selected';
-																						else
-																							echo '';
-																					?>> Alta op&#355;iune</option>
-															</select>
+															</datalist>
+															<span style="color:red">
+																<?php
+																	if(isset($_POST['Submit'])) {
+																		$v_Master_AbsolventMaster_Tara_AltaFacultate = $_POST["Master_AbsolventMaster_Tara_AltaFacultate"];
+																		$vMaster_AbsolventMaster_Tara_AltaFacultate=validTara($v_Master_AbsolventMaster_Tara_AltaFacultate);
+																		if($vMaster_AbsolventMaster_Tara_AltaFacultate==-1)
+																			echo "C&#226;mp necompletat!";
+																		else
+																			if($vMaster_AbsolventMaster_Tara_AltaFacultate==2)
+																				echo "C&#226;mpul conține caractere nepermise!";
+																			else
+																				if($vMaster_AbsolventMaster_Tara_AltaFacultate==1)
+																					echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																	}
+																?>
+															</span>
+															
 														</span>
 													</td>
 								   
