@@ -9653,6 +9653,8 @@
     	$username = 'ADMITERE';
     	$password = 'Adm1terE';
     	$connection_string = 'localhost';
+    	
+    	if($vChitanta ==0 && $vsuma ==0 && $vradio1 ==1 && $vNumele_De_Familie_La_Nastere ==0 && $vMaster_Numele_De_Familie_Actual == 0 && $vLicenta_Initiala_Tata == 0 && $vMaster_Prenumele == 0 && $vMaster_PrenumeMama == 0 && $vMaster_PrenumeTata == 0 && $vMaster_Tara_Nastere == 0 && $vMaster_Localitate_Nastere == 0 && $vMaster_Cetatenie == 0 && $vMaster_Etnie == 0 && $vMaster_Limba_Materna == 0 && $vMaster_CNP == 0 && $vMaster_Serie_Buletin == 0 && $vMaster_Numar_Buletin == 0 && $vMaster_Buletin_Eliberat_De == 0 && $vradio3 == 1 && $vMaster_Strada == 0 &&  $vMaster_Numar == 0 &&   $vMaster_Bloc == 0 && $vMaster_Scara == 0 && $vMaster_Etaj == 0 && $vMaster_Apartament == 0 && $vMaster_Localitate1 == 0 && $vMaster_Cod_Postal == 0 && $vMaster_Telefon == 0 && $vMaster_Email == 0 && $vradio5 == 1 && $vradio4 == 1 && $vMaster_Localitate_Liceu == 0 && $vMaster_Profil_Liceu == 0 && $vMaster_Durata_Liceu == 0 && $vMaster_An_Liceu == 0 && $vMaster_Serie_DiplomaBAC == 0 && $vMaster_Nr_DiplomaBAC == 0 && $vMaster_AbsolventMaster_Univ1 == 0 && $vMaster_AbsolventMaster_Facultate1 == 0 && $vMaster_AbsolventMaster_Domeniu_Master1 == 0 && $vMaster_AbsolventMaster_Specializare1 == 0 && $vMaster_AbsolventMaster_An_Facultate1 == 0 && $vMaster_AbsolventMaster_Durata_Studii1 == 0 && $vMaster_AbsolventMaster_Semestre_Finantate1 == 0 && $vMaster_AbsolventMaster_Semestre_Bursa1 == 0 && $vMaster_AbsolventMaster_Localitate_AltaFacultate1 == 0 && $vMaster_Serie_DiplomaLicenta == 0  && $vradio26 == 1 && $vradio27 == 1 && $vOptiune1 == 0 && $vOptiune2 == 0 && $vOptiunea3 == 0 && $vOptiunea4 == 0 && $vOptiunea5 == 0 && $vOptiune6==0 && $vOptiune7 == 0 && $vOptiune8 == 0 && $vOptiune9 == 0 && $vOptiune10 == 0 && $vOptiune11 == 0){
 
     	$connection = mysqli_connect($connection_string, $username, $password, "FOA@LearnAndEarn");
     if(!$connection){
@@ -9740,7 +9742,19 @@
 		    }
 
 		    mysqli_stmt_close($stmt);
-		}										
+		}
+
+    	if ($stmt = mysqli_prepare($connection, "SELECT max(formular_id) from date_preg_anterioara_master")) {
+		    mysqli_stmt_execute($stmt);
+
+		    mysqli_stmt_bind_result($stmt, $v_row_date_preg);
+
+		    while (mysqli_stmt_fetch($stmt)) {
+		    	$v_row_date_preg = $v_row_date_preg + 1;
+		    }
+
+		    mysqli_stmt_close($stmt);
+		}													
 
 		/*
 			Insert in formular_master
@@ -9851,6 +9865,93 @@
         mysqli_stmt_close($statement);
 
         /*
+        	--Insert in date_preg_anterioara
+        */
+
+		$statement = mysqli_prepare($connection, "INSERT into date_preg_anterioara_master values (
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?, 
+          ?, 
+          ?,  
+          ?,
+          ?,  
+          ?,   
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?)");
+
+		$data_emitere = date('DD-MM-YY', $_POST['Master_Diploma_Ziua']||'-'||$_POST['Master_Diploma_Luna']||'-'||$_POST['Master_Diploma_An']);
+		$data_rec_echiv = date('DD-MM-YY', $_POST['Master_ActEchivalare_Ziua']||'-'||$_POST['Master_ActEchivalare_Luna']||'-'||$_POST['Master_ActEchivalare_An']);
+		$diplm_data_emit = date('DD-MM-YY', $_POST['Master_DiplomaLicenta_Ziua']||'-'||$_POST['Master_DiplomaLicenta_Luna']||'-'||$_POST['Master_DiplomaLicenta_An']);
+		$data_rec_lic = date('DD-MM-YY', $_POST['Master_AbsolventMaster_ActEchivalare_Ziua']||'-'||$_POST['Master_AbsolventMaster_ActEchivalare_Luna']||'-'||$_POST['Master_AbsolventMaster_ActEchivalare_An']);
+		$abs_dip_data = date('DD-MM-YY', $_POST['Master_DiplomaMaster_Ziua']||'-'||$_POST['Master_DiplomaMaster_Luna']||'-'||$_POST['Master_DiplomaMaster_An']);
+		$abs_act_rec = date('DD-MM-YY', $_POST['Master_DiplomaMaster_ActEchivalare_Ziua']||'-'||$_POST['Master_DiplomaMaster_ActEchivalare_Luna']||'-'||$_POST['Master_DiplomaMaster_ActEchivalare_An']);
+
+          mysqli_stmt_bind_param($statement, "isssssiisssdsssdsssssssssiiissdssssdissssssssiiiisssssssssiiiissdsssd", $v_row_date_preg, $_POST['Master_Liceu'], $_POST['Master_Tara'], $_POST['Master_Localitate_Liceu'], $_POST['Master_Judet'], $_POST['Master_Profil_Liceu'], $_POST['Master_Durata_Liceu'], $_POST['Master_An_Liceu'], $_POST['Master_FormaInvatamant_Liceu'], $_POST['Master_Serie_DiplomaBAC'], $_POST['Master_Nr_DiplomaBAC'], $data_emitere, $_POST['Master_Nr_FoaieMatricola'], $_POST['Master_Nr_ActRecunoastere'], $_POST['Master_Serie_ActRecunoastere'], $data_rec_echiv, $_POST['Master_Tara_AltaFacultate1'], $_POST['Master_AbsolventMaster_Localitate_AltaFacultate1'], $_POST['Master_Judet_AltaFacultate1'], $_POST['Master_AbsolventMaster_Univ1'], $_POST['Master_AbsolventMaster_Facultate1'], $_POST['Master_AbsolventMaster_Domeniu_Master1'], $_POST['Master_AbsolventMaster_Specializare1'], $_POST['Master_AbsolventMaster_An_Facultate1'], $_POST['Master_AbsolventMaster_FormaInvatamant1'], $_POST['Master_AbsolventMaster_Semestre_Finantate1'], $_POST['Master_AbsolventMaster_Semestre_Bursa1'], $_POST['Master_AbsolventMaster_Durata_Studii1'], $_POST['Master_Serie_DiplomaLicenta'], $_POST['Master_Nr_DiplomaLicenta'], $diplm_data_emit, $_POST['Master_AbsolventLicenta_Nr_FoaieMatricola'], $_POST['Master_AbsolventMaster_Nr_ActRecunoastere'], $_POST['Master_AbsolventMaster_Nr_ActRecunoastere'], $_POST['Master_AbsolventMaster_Serie_ActRecunoastere'], $data_rec_lic, $_POST['group25'], $_POST['Master_Tara_AltaFacultate'], $_POST['Master_Localitate_AltaFacultate'], $_POST['Master_Judet_AltaFacultate'], $_POST['Master_AltaUniversitate'], $_POST['Master_AltaFacultate'], $_POST['Master_Domeniu_Studii'], $_POST['Master_Specializare'], $_POST['Master_FormaInvatamant_AltaUniv'], $_POST['Master_An_Facultate'], $_POST['Master_Semestre_Finantate'], $_POST['Master_Semestre_Bursa'], $_POST['Master_AbsolventMaster_Anul_Absolvirii'], $_POST['Master_AbsolventMaster_Tara_AltaFacultate'], $_POST['Master_AbsolventMaster_Localitate_AltaFacultate'], $_POST['Master_AbsolventMaster_Judet_AltaFacultate'], $_POST['Master_AbsolventMaster_Univ'], $_POST['Master_AbsolventMaster_Facultate'], $_POST['Master_AbsolventMaster_Domeniu_Master'], $_POST['Master_AbsolventMaster_Specializare'], $_POST['Master_AbsolventMaster_An_Facultate'], $_POST['Master_AbsolventMaster_FormaInvatamant'], $_POST['Master_AbsolventMaster_Semestre_Finantate'], $_POST['Master_AbsolventMaster_Semestre_Bursa'], $_POST['Master_AbsolventMaster_Durata_Studii'], $_POST['group23'], $_POST['Master_Serie_DiplomaMaster'], $_POST['Master_Nr_DiplomaMaster'], $abs_dip_data, $_POST['Master_DiplomaMaster_Nr_FoaieMatricola'], $_POST['Master_DiplomaMaster_Nr_ActRecunoastere'], $_POST['Master_DiplomaMaster_Serie_ActRecunoastere'], $abs_act_rec);
+
+          mysqli_stmt_execute($statement);
+          mysqli_stmt_close($statement);       
+
+        /*
         	--Insert in chestionar_master
         */
 
@@ -9900,6 +10001,9 @@
         mysqli_stmt_bind_param($statement, 'issssssssssss', $v_row_ordine_pref, $_POST['Optiune1'], $_POST['Optiune2'], $_POST['Optiune3'], $_POST['Optiune4'], $_POST['Optiune5'], $_POST['Optiune6'], $_POST['Optiune7'], $_POST['Optiune8'], $_POST['Optiune9'], $_POST['Optiune10'], $_POST['Optiune11'], $_POST['group26']);
         mysqli_stmt_execute($statement);
         mysqli_stmt_close($statement);
+
+        echo '<script>window.location.href = "Validare_Formular.php";</script>';
+		}
 	}
 }
 
