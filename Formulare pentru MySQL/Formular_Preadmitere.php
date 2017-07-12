@@ -3304,17 +3304,22 @@
 <?php
 
   date_default_timezone_set('Europe/Bucharest');
+  ini_set('display_errors', 1);
+  error_reporting(E_ALL);
+
   if(isset($_POST['Submit'])){
-    $username = 'ADMITERE1';
-    $password = 'ADMITERE1';
-    $connection_string = 'localhost/xe';
+    $username = 'ADMITERE';
+    $password = 'Adm1terE';
+    $connection_string = 'localhost';
 
-    $connection = oci_connect($username, $password, $connection_string, 'AL32UTF8');
+    if($vChitanta == 0 && $vsuma == 0 && $vNumele_De_Familie_La_Nastere == 0 && $vNumele_De_Familie_Actual == 0 && $vPreadmitere_Initiala_Tata == 0 && $vPreadmitere_Prenumele == 0 && $vPreadmitere_PrenumeMama == 0 && $vPreadmitere_PrenumeTata == 0 && $vPreadmitere_Tara_Nastere == 0 && $vPreadmitere_Localitate_Nastere == 0 && $vPreadmitere_Nationalitate == 0 && $vPreadmitere_Cetatenie == 0 && $vPreadmitere_Etnie == 0 && $vPreadmitere_Limba_Materna == 0 && $vPreadmitere_CNP == 0 && $vPreadmitere_Tip_Buletin == 0 && $vPreadmitere_Serie_Buletin == 0 && $vPreadmitere_Numar_Buletin == 0 && $vPreadmitere_Buletin_Eliberat_De == 0 && $vPreadmitere_Localitate == 0 && $v_Liceul_Absolvit != null ) {
 
-    if(!$connection)
-      echo "Connection failed. Please try again";
+    $connection = mysqli_connect($connection_string, $username, $password, "FOA@LearnAndEarn");
+    if(!$connection){
+    	echo "Connection failed";
+    }
     else {
-        $v_Chitanta = $_POST["Preadmitere_Chitanta_nr"];    
+ 		$v_Chitanta = $_POST["Preadmitere_Chitanta_nr"];    
 		$vChitanta = validChitanta($v_Chitanta);
         
         $v_Suma_Taxa = $_POST["Preadmitere_Suma_Taxa"];   
@@ -3375,133 +3380,120 @@
         
         $v_Preadmitere_Localitate = $_POST["Preadmitere_Localitate"];
 		$vPreadmitere_Localitate = validLocalitate($v_Preadmitere_Localitate);
-        
-        if($vChitanta == 0 && $vsuma == 0 && $vNumele_De_Familie_La_Nastere == 0 && $vNumele_De_Familie_Actual == 0 && $vPreadmitere_Initiala_Tata == 0 && $vPreadmitere_Prenumele == 0 && $vPreadmitere_PrenumeMama == 0 && $vPreadmitere_PrenumeTata == 0 && $vPreadmitere_Tara_Nastere == 0 && $vPreadmitere_Localitate_Nastere == 0 && $vPreadmitere_Nationalitate == 0 && $vPreadmitere_Cetatenie == 0 && $vPreadmitere_Etnie == 0 && $vPreadmitere_Limba_Materna == 0 && $vPreadmitere_CNP == 0 && $vPreadmitere_Tip_Buletin == 0 && $vPreadmitere_Serie_Buletin == 0 && $vPreadmitere_Numar_Buletin == 0 && $vPreadmitere_Buletin_Eliberat_De == 0 && $vPreadmitere_Localitate == 0 && $v_Liceul_Absolvit != null ) {
-        
-        $statement = oci_parse($connection, "SELECT max(formular_id) AS COUNT FROM DATE_PERSONALE_PREADMITERE");
-        oci_execute($statement);
 
-        while (oci_fetch($statement)) {
-            $numaratoare_preadmitere = oci_result($statement, "COUNT") + 1;
-        }
+		$v_obiect_test_ales = $_POST['Preadmitere_Obiect_Test_Ales'];
+        $data_nasterii = date('dd-mm-yyyy', $_POST['Preadmitere_Nastere_Zi']||'-'||$_POST['Preadmitere_Nastere_Luna']||'-'||$$_POST['Preadmitere_Nastere_An']);
+        $data_eliberarii = date('dd-mm-yyyy', $_POST['Preadmitere_Eliberat_Buletin_Ziua']||'-'||$_POST['Preadmitere_Eliberat_Buletin_Luna']||'-'||$_POST['Preadmitere_Eliberat_Buletin_An']);
+        $data_expirarii = date('dd-mm-yyyy', $_POST['Preadmitere_Expirat_Buletin_Ziua']||'-'||$_POST['Preadmitere_Expirat_Buletin_Luna']||'-'||$_POST['Preadmitere_Expirat_Buletin_An']);		
 
-        ini_set('display_errors', 1);
-        error_reporting(E_ALL);
+		/*
+			--Facut autoincrementarea ID-urilor in functie de max(id)
+		*/
 
-        $current = mktime(date("H"), date("i"), date("s"), date("m")  , date("d")-1, date("Y"));
-        $currDate=date("dmYHis",$current);
-        
-        $statement = oci_parse($connection, "INSERT INTO FORMULAR_PREADMITERE VALUES (
-          :id, 
-          :nr_chitanta, 
-          :suma, 
-          :optiune_test_scris,
-          to_timestamp(:currDate,'dd-mm-yyyy HH24-MI-SS'),
+		if ($stmt = mysqli_prepare($connection, "SELECT max(id) from FORMULAR_PREADMITERE")) {
+		    mysqli_stmt_execute($stmt);
+
+		    mysqli_stmt_bind_result($stmt, $v_row_formular);
+
+		    while (mysqli_stmt_fetch($stmt)) {
+		    	$v_row_formular = $v_row_formular + 1;
+		    }
+
+		    mysqli_stmt_close($stmt);
+		}
+
+		if ($stmt = mysqli_prepare($connection, "SELECT max(formular_id) from date_personale_preadmitere")) {
+		    mysqli_stmt_execute($stmt);
+
+		    /* bind variables to prepared statement */
+		    mysqli_stmt_bind_result($stmt, $v_row_date_pers);
+
+		    /* fetch values */
+		    while (mysqli_stmt_fetch($stmt)) {
+		    	$v_row_date_pers = $v_row_date_pers + 1;
+		    }
+
+		    /* close statement */
+		    mysqli_stmt_close($stmt);
+		}		
+
+		/*
+			--De aici incep inserturile
+		*/
+
+			/*
+				--Insert formular_preadmitere
+			*/
+
+        $statement = mysqli_prepare($connection, "INSERT INTO FORMULAR_PREADMITERE VALUES ( 
+          ?,	
+          ?, 
+          ?, 
+          ?,
+          current_timestamp,
           NULL,
           0)");
 
-        oci_bind_by_name($statement, ':id', $numaratoare_preadmitere);
-        oci_bind_by_name($statement, ':nr_chitanta', $v_Chitanta);
-        oci_bind_by_name($statement, ':suma', $v_Suma_Taxa); 
-        oci_bind_by_name($statement, ':optiune_test_scris', $_POST["Preadmitere_Obiect_Test_Ales"]);
-        oci_bind_by_name($statement,':currDate',$currDate);
-        
-        if (!$statement) {
-            ini_set('display_errors', 1);
-            error_reporting(E_ALL);
-        }
+        mysqli_stmt_bind_param($statement, "ddds",$v_row_formular, $v_Chitanta, $v_Suma_Taxa, $v_obiect_test_ales);
 
-        $result = oci_execute($statement);
+        mysqli_stmt_execute($statement);
 
-        if (!$result) {
-            ini_set('display_errors', 1);
-            error_reporting(E_ALL);
-        }
+        mysqli_stmt_close($statement);
 
 
-        $statement = oci_parse($connection, "INSERT INTO DATE_PERSONALE_PREADMITERE VALUES (
-          :id,
-          :nume_nastere,
-          :initiale,
-          :nume_actual,
-          :prenume,
-          :prenume_tata,
-          :prenume_mama,
-          :CNP,
-          :sex,
-          to_date(:zi||'-'||:luna||'-'||:an, 'dd-mm-yyyy'),
-          :tara_nastere,
-          :judet_nastere,
-          :localitate_nastere,
-          :cetatenie,
-          :nationalitate,
-          :etnie,
-          :limba_materna,
-          :tip_act_ident,
-          :serie_CL,
-          :numar_CL,
-          :eliberat_de,
-           to_date(:bZi||'-'||:lZi||'-'||:aZi, 'dd-mm-yyyy'),
-           to_date(:eZi||'-'||:elZi||'-'||:eaZi, 'dd-mm-yyyy'),
-           :institutie_liceu,
-           :tara_liceu,
-           :localitate_liceu,
-           :judet_liceu
-           )");
-            
-            oci_bind_by_name($statement, ':id', $numaratoare_preadmitere);
-            oci_bind_by_name($statement, ':nume_nastere', $v_Numele_De_Familie_La_Nastere);
-            oci_bind_by_name($statement, ':initiale', $v_Preadmitere_Initiala_Tata);
-            oci_bind_by_name($statement, ':nume_actual', $_POST['Preadmitere_Numele_De_Familie']);
-            oci_bind_by_name($statement, ':prenume', $v_Preadmitere_Prenumele); 
-            oci_bind_by_name($statement, ':prenume_tata', $v_Preadmitere_Prenume_Tata);
-            oci_bind_by_name($statement, ':prenume_mama', $v_Preadmitere_Prenume_Mama);          
-            oci_bind_by_name($statement, ':CNP', $v_Preadmitere_CNP);
-            oci_bind_by_name($statement, ':sex', $_POST['Preadmitere_Sex']);
 
-            oci_bind_by_name($statement, ':zi', $_POST['Preadmitere_Nastere_Zi']);
-            oci_bind_by_name($statement, ':luna', $_POST['Preadmitere_Nastere_Luna']);
-            oci_bind_by_name($statement, ':an', $_POST['Preadmitere_Nastere_An']);
+        	/*
+        		--Insert date_personale_preadmitere
+        	*/
 
-            oci_bind_by_name($statement, ':tara_nastere', $v_Preadmitere_Tara_Nastere);
-            oci_bind_by_name($statement, ':judet_nastere', $_POST['Preadmitere_Judet_Nastere']);
-            oci_bind_by_name($statement, ':localitate_nastere', $v_Preadmitere_Localitate_Nastere);
-            oci_bind_by_name($statement, ':cetatenie', $v_Preadmitere_Cetatenie); 
-            oci_bind_by_name($statement, ':nationalitate', $_POST['Preadmitere_Nationalitate']);
-            oci_bind_by_name($statement, ':etnie', $v_Preadmitere_Etnie);
-            oci_bind_by_name($statement, ':limba_materna', $v_Preadmitere_Limba_Materna);
-            oci_bind_by_name($statement, ':tip_act_ident', $v_Preadmitere_Tip_Buletin);
-            oci_bind_by_name($statement, ':serie_CL', $v_Preadmitere_Serie_Buletin);
-            oci_bind_by_name($statement, ':numar_CL', $v_Preadmitere_Numar_Buletin);
-            oci_bind_by_name($statement, ':eliberat_de', $v_Preadmitere_Buletin_Eliberat_De);
 
-            oci_bind_by_name($statement, ':bZi' ,$_POST['Preadmitere_Eliberat_Buletin_Ziua']);
-            oci_bind_by_name($statement, ':lZi' ,$_POST['Preadmitere_Eliberat_Buletin_Luna']);
-            oci_bind_by_name($statement, ':aZi' ,$_POST['Preadmitere_Eliberat_Buletin_An']);
-            oci_bind_by_name($statement, ':eZi' ,$_POST['Preadmitere_Expirat_Buletin_Ziua']);
-            oci_bind_by_name($statement, ':elZi' ,$_POST['Preadmitere_Expirat_Buletin_Luna']);
-            oci_bind_by_name($statement, ':eaZi' ,$_POST['Preadmitere_Expirat_Buletin_An']);                           
+		  $statement = mysqli_prepare($connection, "INSERT INTO DATE_PERSONALE_PREADMITERE(formular_id, nume_familie_nastere, initialele_tatalui_mamei, nume_familie_actual, prenume_candidat, prenume_tata, prenume_mama, cnp, sex, data_nasterii, tara_nasterii, judetul_nasterii, localitatea_nasterii, cetatenia, nationalitate, etnie, limba_materna, tip_act_ident, serie_act, numar_act, eliberat_de, data_eliberarii, data_expirarii, institutie_liceu, tara_liceu, localitate_liceu, judet_liceu) VALUES (
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?,
+		  ?
+          )");
 
-            oci_bind_by_name($statement, ':institutie_liceu', $v_Liceul_Absolvit);
-            oci_bind_by_name($statement, ':tara_liceu', $_POST['Preadmitere_Tara']);
-            oci_bind_by_name($statement, ':localitate_liceu', $v_Preadmitere_Localitate);
-            oci_bind_by_name($statement, ':judet_liceu', $_POST['Preadmitere_Judet']);
+		  mysqli_stmt_bind_param($statement, 'dssssssdsdsssssssssssddssss', $v_row_date_pers, $v_Numele_De_Familie_La_Nastere, $v_Preadmitere_Initiala_Tata, $v_Numele_De_Familie, $v_Preadmitere_Prenumele, $v_Preadmitere_Prenume_Tata, $v_Preadmitere_Prenume_Mama, $v_Preadmitere_CNP, $v_Preadmitere_Sex, $data_nasterii, $v_Preadmitere_Tara_Nastere, $v_Preadmitere_Judet_Nastere, $v_Preadmitere_Localitate_Nastere, $v_Preadmitere_Cetatenie, $v_Preadmitere_Nationalitate, $v_Preadmitere_Etnie, $v_Preadmitere_Limba_Materna, $v_Preadmitere_Tip_Buletin, $v_Preadmitere_Serie_Buletin, $v_Preadmitere_Numar_Buletin, $v_Preadmitere_Buletin_Eliberat_De, $data_eliberarii, $data_expirarii, $v_Liceul_Absolvit, $v_Preadmitere_Tara, $v_Preadmitere_Localitate, $v_Preadmitere_Judet);
 
-            if(!$statement){
-              ini_set('display_errors', 1); 
-              error_reporting(E_ALL);
-            }
+		  mysqli_stmt_execute($statement);
 
-            $result=oci_execute($statement);
+		  mysqli_stmt_close($statement);
 
-            if(!$result){
-              ini_set('display_errors', 1); 
-              error_reporting(E_ALL); 
-              }
+		  /*
+		  	--Sfarsit inserturi 
+		  */
 
-            echo '<script>window.location.href = "Validare_Formular.php";</script>';
-            
-        }
+
+		  /*
+		  	--Pagina de redirect
+		  */
+
+          echo '<script>window.location.href = "Validare_Formular.php";</script>';		  
     }
-  }
+   }
+}
   ?>
