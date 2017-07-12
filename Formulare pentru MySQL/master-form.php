@@ -2679,7 +2679,7 @@
 																																					echo '';
 																																		?> />
 														<label for="checkbox3" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="2" <?php
+														<input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="0" <?php
 																																			if($v_Radio5 == '')
 																																				echo '';
 																																			else
@@ -2725,7 +2725,7 @@
 																																					echo '';
 																																		?> />   
 														<label for="checkbox7" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="2" <?php
+														<input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="0" <?php
 																																			if($v_Radio4 == '')
 																																				echo '';
 																																			else
@@ -9646,27 +9646,261 @@
 
 <?php
 
-  if(isset($_POST['Submit'])){
-    $username = 'ADMITERE';
-    $password = 'Adm1terE';
-    $connection_string = 'localhost';
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
 
-    $connection = mysqli_connect($connection_string, $username, $password, "FOA@LearnAndEarn");
+    if(isset($_POST['Submit'])){
+    	$username = 'ADMITERE';
+    	$password = 'Adm1terE';
+    	$connection_string = 'localhost';
+
+    	$connection = mysqli_connect($connection_string, $username, $password, "FOA@LearnAndEarn");
     if(!$connection){
     	echo "Connection failed";
     }
 
     else {
-    	 $statement = mysqli_prepare($connection, "insert into formular_master values (1, 1, 1, 1 ,1, NULL, NULL, 0)");
 
-    	mysqli_stmt_execute($statement);   
+    	$v_nota_Admitere = $_POST['MedieGeneralaAdmitere0']||$_POST['MedieGeneralaAdmitere1']||'.'||$_POST['MedieGeneralaAdmitere2']||$_POST['MedieGeneralaAdmitere3'];
+    	$v_nota_Licenta = $_POST["NotaLicenta0"]||$_POST["NotaLicenta1"]||'.'||$_POST["NotaLicenta2"]||$_POST["NotaLicenta3"];
+    	$data_nasterii = date('DD-MM-YY', $v_Master_nastere_zi||'-'||$v_Master_nastere_luna||'-'||$v_Master_nastere_an);
+    	$data_eliberarii = date('DD-MM-YY', $_POST['Master_Buletin_Ziua']||'-'||$_POST['Master_Buletin_Luna']||'-'||$_POST['Master_Buletin_An']);
+    	$data_expirare = date('DD-MM-YY', $_POST['Master_Buletin_Ziua_Exp']||'-'||$_POST['Master_Buletin_Luna_Exp']||'-'||$_POST['Master_Buletin_An_Exp']);
 
-    if (mysqli_query($connection, $statement)) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $statement . "<br>" . mysqli_error($connection);
-}
-  }
+    	/*
+    		--Autoincrementare ID-uri in functie de max(id)
+    	*/
+    	if ($stmt = mysqli_prepare($connection, "SELECT max(id) from formular_master")) {
+		    mysqli_stmt_execute($stmt);
+
+		    mysqli_stmt_bind_result($stmt, $v_row_formular);
+
+		    while (mysqli_stmt_fetch($stmt)) {
+		    	$v_row_formular = $v_row_formular + 1;
+		    }
+
+		    mysqli_stmt_close($stmt);
+		}
+
+    	if ($stmt = mysqli_prepare($connection, "SELECT max(formular_id) from cerinte_master")) {
+		    mysqli_stmt_execute($stmt);
+
+		    mysqli_stmt_bind_result($stmt, $v_row_cerinte);
+
+		    while (mysqli_stmt_fetch($stmt)) {
+		    	$v_row_cerinte = $v_row_cerinte + 1;
+		    }
+
+		    mysqli_stmt_close($stmt);
+		}	
+
+    	if ($stmt = mysqli_prepare($connection, "SELECT max(formular_id) from date_personale_master")) {
+		    mysqli_stmt_execute($stmt);
+
+		    mysqli_stmt_bind_result($stmt, $v_row_date_pers);
+
+		    while (mysqli_stmt_fetch($stmt)) {
+		    	$v_row_date_pers = $v_row_date_pers + 1;
+		    }
+
+		    mysqli_stmt_close($stmt);
+		}	
+
+    	if ($stmt = mysqli_prepare($connection, "SELECT max(formular_id) from informatii_documente_master")) {
+		    mysqli_stmt_execute($stmt);
+
+		    mysqli_stmt_bind_result($stmt, $v_row_informatii);
+
+		    while (mysqli_stmt_fetch($stmt)) {
+		    	$v_row_informatii = $v_row_informatii + 1;
+		    }
+
+		    mysqli_stmt_close($stmt);
+		}
+
+    	if ($stmt = mysqli_prepare($connection, "SELECT max(formular_id) from chestionar_master")) {
+		    mysqli_stmt_execute($stmt);
+
+		    mysqli_stmt_bind_result($stmt, $v_row_chestionar);
+
+		    while (mysqli_stmt_fetch($stmt)) {
+		    	$v_row_chestionar = $v_row_chestionar + 1;
+		    }
+
+		    mysqli_stmt_close($stmt);
+		}
+
+    	if ($stmt = mysqli_prepare($connection, "SELECT max(formular_id) from ordine_preferinte_master")) {
+		    mysqli_stmt_execute($stmt);
+
+		    mysqli_stmt_bind_result($stmt, $v_row_ordine_pref);
+
+		    while (mysqli_stmt_fetch($stmt)) {
+		    	$v_row_ordine_pref = $v_row_ordine_pref + 1;
+		    }
+
+		    mysqli_stmt_close($stmt);
+		}										
+
+		/*
+			Insert in formular_master
+		*/
+
+		$statement = mysqli_prepare($connection, "insert into formular_master values (
+          ?, 
+          ?, 
+          ?, 
+          ?, 
+          ?,
+          current_timestamp,
+          NULL,
+          0)");
+
+        mysqli_stmt_bind_param($statement, 'isids', $v_row_formular, $_POST['Master_Chitanta_nr'], $_POST['Master_Suma_Taxa'], $_POST['group1'], $_POST['Master_Motiv_Scutire_taxa']);
+        mysqli_stmt_execute($statement);
+        mysqli_stmt_close($statement);
+
+        /*
+        	Insert in cerinte_master
+        */
+
+        $statement = mysqli_prepare($connection, "INSERT INTO cerinte_master VALUES (
+        ?,
+        ?, 
+        ?)");
+
+        mysqli_stmt_bind_param($statement, 'idd', $v_row_cerinte, $v_nota_Admitere ,$v_nota_Licenta);
+        mysqli_stmt_execute($statement);
+        mysqli_stmt_close($statement);
+
+        /*
+        	Insert in date_personale_master
+        */
+
+        $statement = mysqli_prepare($connection,  "INSERT INTO date_personale_master(formular_id, nume_familie_nastere, initialele_tatalui_mamei, nume_familie_actual, prenume_candidat, prenume_tata, prenume_mama, cnp, sex, cetatenia, data_nasterii, tara_nasterii, judetul_nasterii, localitatea_nasterii, nationalitate, etnie, limba_materna, stare_civila, tip_act_ident, serie_act, numar_act, eliberat_de, data_eliberarii, data_expirarii, mediu_domiciliu, tara_domiciliu, judet_domiciliu, localitate_domiciliu, strada, numar, bloc, scara, etaj, apartament, cod_postal, telefon, email, solicita_cazare_studii, stare_sociala_speciala, persoana_cu_dizabilitati) values (
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,   
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,        
+          ?,
+          ?,
+          ?,         
+          ?,
+          ?,
+          ?,
+          ?,        
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?)      
+          ");
+
+        mysqli_stmt_bind_param($statement, 'issssssdssdsssssssssssddssssssssssdssssi', $v_row_date_pers, $_POST['Master_Numele_De_Familie_La_nastere'], $v_Master_Initiala_Tata, $_POST['Master_Numele_De_Familie_Actual'], $v_Master_Prenumele, $v_Master_Prenume_Tata, $v_Master_Prenume_Mama, $v_Master_CNP, $v_Master_Sex, $_POST['Master_Cetatenie'], $data_nasterii, $_POST['Master_Tara_Nastere'], $_POST['Master_Judet_Nastere'], $_POST['Master_Localitate_Nastere'], $_POST['Master_Nationalitate'], $_POST['Master_Etnie'], $_POST['Master_Limba_Materna'], $_POST['Master_Stare_Civila'], $_POST['Master_Tip_Buletin'], $v_Master_Serie_Buletin, $v_Master_Numar_Buletin, $v_Master_Buletin_Eliberat_De, $data_eliberarii, $data_expirare, $_POST['group3'], $_POST['Master_Tara'], $v_Master_Judet, $_POST['Master_Localitate_Nastere'], $v_Master_Strada, $v_Master_Numar, $v_Master_Bloc, $v_Master_Scara, $v_Master_Etaj, $v_Master_Apartament, $_POST['Master_Cod_Postal'], $v_Master_Telefon, $v_Master_Email, $_POST['group5'], $_POST['Master_Stare_speciala'], $_POST['group4']);
+        mysqli_stmt_execute($statement);
+        mysqli_stmt_close($statement);
+
+        /*
+        	--Insert in informatii documente master
+        */
+
+        $statement = mysqli_prepare($connection, "INSERT INTO informatii_documente_master values(
+		  ?, 
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?,
+          ?)");
+
+        mysqli_stmt_bind_param($statement, 'iiiiiiiiiissssss', $v_row_informatii, $_POST['Master_Diploma_BAC_Original'], $_POST['Master_Diploma_BAC_Copie'], $_POST['Master_Echivalare_Studii_Preuniversitare_Original'], $_POST['Master_Echivalare_Studii_Preuniversitare_Copie'], $_POST['Master_Diploma_Master_Original'], $_POST['Master_Diploma_Master_Copie'], $_POST['Master_Echivalare_Studii_Master_Original'], $_POST['Master_Echivalare_Studii_Master_Copie'], $_POST['group27'], $_POST['Master_AlteConcursuri_Facultate1'], $_POST['Master_AlteConcursuri_Univ1'], $_POST['Master_AlteConcursuri_Facultate2'], $_POST['Master_AlteConcursuri_Univ2'], $_POST['Master_AlteConcursuri_Facultate3'], $_POST['Master_AlteConcursuri_Univ3']);
+        mysqli_stmt_execute($statement);
+        mysqli_stmt_close($statement);
+
+        /*
+        	--Insert in chestionar_master
+        */
+
+        $statement = mysqli_prepare($connection, "INSERT into chestionar_master values (
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        ?)
+        ");
+
+        mysqli_stmt_bind_param($statement, 'iiiiiiisiiiiiiii', $v_row_chestionar, $_POST['Site_Admitere'],$_POST['Site_Facultate'], $_POST['FB_Univ'], $_POST['Prieteni_Rude'], $_POST['Profesori_Liceu'], $_POST['Presa'], $_POST['Alte_Surse'], $_POST['group28'], $_POST['group29'], $_POST['group30'], $_POST['group31'], $_POST['group32'], $_POST['group33'], $_POST['group34'], $_POST['group35']);
+        mysqli_stmt_execute($statement);
+        mysqli_stmt_close($statement);
+
+        /*
+        	--Insert in ordine_preferinte
+        */
+
+        $statement = mysqli_prepare($connection, "insert into ordine_preferinte_master values (
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?,
+      ?
+      )");
+
+        mysqli_stmt_bind_param($statement, 'issssssssssss', $v_row_ordine_pref, $_POST['Optiune1'], $_POST['Optiune2'], $_POST['Optiune3'], $_POST['Optiune4'], $_POST['Optiune5'], $_POST['Optiune6'], $_POST['Optiune7'], $_POST['Optiune8'], $_POST['Optiune9'], $_POST['Optiune10'], $_POST['Optiune11'], $_POST['group26']);
+        mysqli_stmt_execute($statement);
+        mysqli_stmt_close($statement);
+	}
 }
 
   ?>
