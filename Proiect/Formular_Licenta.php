@@ -2426,7 +2426,7 @@
 														echo "C&#226;mp necompletat!";
 													else
 														if($vLicenta_Telefon==1)
-															echo "Între 10 si 14 caractere!";
+															echo "Între 10 si 14 cifre!";
 														else 
 															if($vLicenta_Telefon==2)
 																echo "Caractere nepersmise!";
@@ -4827,7 +4827,7 @@
 														if(isset($_POST['Submit'])) {
 															if($v_Radio25==1) {
 																$v_Licenta_AltaUniversitate = $_POST["Licenta_AltaUniversitate"];
-																	$vLicenta_AltaUniversitate = validNume($v_Licenta_AltaUniversitate);
+																	$vLicenta_AltaUniversitate = validNumeInstitutie($v_Licenta_AltaUniversitate);
 																	if($vLicenta_AltaUniversitate==-1)
 																		echo "C&#226;mp necompletat!";
 																	else
@@ -4835,7 +4835,7 @@
 																			echo "C&#226;mpul conține caractere nepermise!";
 																		else
 																			if($vLicenta_AltaUniversitate==2)
-																				echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																				echo "C&#226;mpul trebuie sa conțină între 1 și 100 caractere!";
 															}
 														}
 													?>
@@ -4856,7 +4856,7 @@
 														if(isset($_POST['Submit'])) {
 															if($v_Radio25==1) {
 																$v_Licenta_AltaFacultate = $_POST["Licenta_AltaFacultate"];
-																	$vLicenta_AltaFacultate = validNume($v_Licenta_AltaFacultate);
+																	$vLicenta_AltaFacultate = validNumeInstitutie($v_Licenta_AltaFacultate);
 																	if($vLicenta_AltaFacultate==-1)
 																		echo "C&#226;mp necompletat!";
 																	else
@@ -4864,7 +4864,7 @@
 																			echo "C&#226;mpul conține caractere nepermise!";
 																		else
 																			if($vLicenta_AltaFacultate==2)
-																				echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																				echo "C&#226;mpul trebuie sa conțină între 1 și 100 caractere!";
 															}
 														}
 													?>
@@ -5009,7 +5009,7 @@
 													<td>
 														<span class="form-sub-label-container" style="vertical-align:top; width:50%">
 															<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Nr. Semestre finanţate de la bugetul de stat</label>
-															<input type="number"  name="Licenta_Semestre_Finantate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city"   value="<?php
+															<input type="number"  name="Licenta_Semestre_Finantate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2" data-component="city"   value="<?php
 																																																									if($v_Licenta_Semestre_Finantate == '')
 																																																										echo '';
 																																																									else
@@ -5021,7 +5021,7 @@
 																		if($v_Radio25==1) {
 																			$v_Licenta_Semestre_Finantate = $_POST["Licenta_Semestre_Finantate"];
 																				$vLicenta_Semestre_Finantate = validareNrSemCuBursa($v_Licenta_Semestre_Finantate);
-																				if($vLicenta_Semestre_Finantate==-1)
+																				if($v_Licenta_Semestre_Finantate=='')
 																					echo "C&#226;mp necompletat!";
 																				else
 																					if($vLicenta_Semestre_Finantate==1)
@@ -5044,12 +5044,12 @@
 																	if(isset($_POST['Submit'])) {
 																		if($v_Radio25==1) {
 																			$v_Licenta_Semestre_Bursa = $_POST["Licenta_Semestre_Bursa"];
-																				$vLicenta_Semestre_Bursa = validareNrSemCuBursa($v_Licenta_Semestre_Bursa);
-																				if($vLicenta_Semestre_Bursa==-1)
-																					echo "C&#226;mp necompletat!";
-																				else
-																					if($vLicenta_Semestre_Bursa==1)
-																						echo "Între 0 și 16 semestre cu bursă!";
+																			$vLicenta_Semestre_Bursa = validareNrSemCuBursa($v_Licenta_Semestre_Bursa);
+																			if($v_Licenta_Semestre_Bursa=='')
+																				echo "C&#226;mp necompletat!";
+																			else
+																				if($vLicenta_Semestre_Bursa==1)
+																					echo "Între 0 și 16 semestre cu bursă!";
 																		}
 																	}
 																?>
@@ -5257,15 +5257,15 @@
 															if(isset($_POST['Submit'])) {
 																if($v_Radio24==1) {
 																	$v_Licenta_AbsolventLicenta_Univ = $_POST["Licenta_AbsolventLicenta_Univ"];
-																		$vLicenta_AbsolventLicenta_Univ = validNume($v_Licenta_AbsolventLicenta_Univ);
-																		if($vLicenta_AbsolventLicenta_Univ==-1)
-																			echo "C&#226;mp necompletat!";
+																	$vLicenta_AbsolventLicenta_Univ = validNumeInstitutie($v_Licenta_AbsolventLicenta_Univ);
+																	if($vLicenta_AbsolventLicenta_Univ==-1)
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vLicenta_AbsolventLicenta_Univ==1)
+																			echo "C&#226;mpul conține caractere nepermise!";
 																		else
-																			if($vLicenta_AbsolventLicenta_Univ==1)
-																				echo "C&#226;mpul conține caractere nepermise!";
-																			else
-																				if($vLicenta_AbsolventLicenta_Univ==2)
-																					echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																			if($vLicenta_AbsolventLicenta_Univ==2)
+																				echo "C&#226;mpul trebuie sa conțină între 1 și 100 caractere!";
 																}
 															}
 														?>
@@ -5284,7 +5284,7 @@
 															if(isset($_POST['Submit'])) {
 																if($v_Radio24==1) {
 																	$v_Licenta_AbsolventLicenta_Facultate = $_POST["Licenta_AbsolventLicenta_Facultate"];
-																		$vLicenta_AbsolventLicenta_Facultate = validNume($v_Licenta_AbsolventLicenta_Facultate);
+																		$vLicenta_AbsolventLicenta_Facultate = validNumeInstitutie($v_Licenta_AbsolventLicenta_Facultate);
 																		if($vLicenta_AbsolventLicenta_Facultate==-1)
 																			echo "C&#226;mp necompletat!";
 																		else
@@ -5292,7 +5292,7 @@
 																				echo "C&#226;mpul conține caractere nepermise!";
 																			else
 																				if($vLicenta_AbsolventLicenta_Facultate==2)
-																					echo "C&#226;mpul trebuie sa conțină între 3 și 30 caractere!";
+																					echo "C&#226;mpul trebuie sa conțină între 1 și 100 caractere!";
 																}
 															}
 														?>
@@ -5363,7 +5363,7 @@
 														</span>
 														<span class="form-sub-label-container" style="vertical-align:top; width:12%">
 															<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Titlu obţinut </label>
-															<input type="text"  name="Licenta_AbsolventLicenta_An_Facultate" class="form-textbox form-address-city first_1" size="21" placeholder="" data-component="city" value="<?php
+															<input type="text"  name="Licenta_AbsolventLicenta_An_Facultate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: Licențiat în informatică" data-component="city" value="<?php
 																																																										if($v_Licenta_AbsolventLicenta_An_Facultate == '')
 																																																											echo '';
 																																																										else
@@ -5466,7 +5466,7 @@
 													<td>
 														<span class="form-sub-label-container" style="vertical-align:top; width:50%">
 															<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Nr. Semestre finanţate de la bugetul de stat</label>
-															<input type="number"  name="Licenta_AbsolventLicenta_Semestre_Finantate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 4" data-component="city" value="<?php
+															<input type="number"  name="Licenta_AbsolventLicenta_Semestre_Finantate" class="form-textbox form-address-city first_1" size="21" placeholder="ex: 2" data-component="city" value="<?php
 																																																													if($v_Licenta_AbsolventLicenta_Semestre_Finantate == '')
 																																																														echo '';
 																																																													else
@@ -5478,7 +5478,7 @@
 																		if($v_Radio24==1) {
 																			$v_Licenta_AbsolventLicenta_Semestre_Finantate = $_POST["Licenta_AbsolventLicenta_Semestre_Finantate"];
 																				$vLicenta_AbsolventLicenta_Semestre_Finantate = validareNrSemCuBursa($v_Licenta_AbsolventLicenta_Semestre_Finantate);
-																				if($vLicenta_AbsolventLicenta_Semestre_Finantate==-1)
+																				if($v_Licenta_AbsolventLicenta_Semestre_Finantate=='')
 																					echo "C&#226;mp necompletat!";
 																				else
 																					if($vLicenta_AbsolventLicenta_Semestre_Finantate==1)
@@ -5502,11 +5502,11 @@
 																		if($v_Radio24==1) {
 																			$v_Licenta_AbsolventLicenta_Semestre_Bursa = $_POST["Licenta_AbsolventLicenta_Semestre_Bursa"];
 																				$vLicenta_AbsolventLicenta_Semestre_Bursa = validareNrSemCuBursa($v_Licenta_AbsolventLicenta_Semestre_Bursa);
-																				if($vLicenta_AbsolventLicenta_Semestre_Bursa==-1)
+																				if($v_Licenta_AbsolventLicenta_Semestre_Bursa=='')
 																					echo "C&#226;mp necompletat!";
 																				else
-																					if($vLicenta_AbsolventLicenta_Semestre_Bursa==1)
-																						echo "Între 0 și 16 semestre cu bursă!";
+																					if($vLicenta_AbsolventLicenta_Semestre_Finantate==1)
+																						echo "Între 0 și 16 semestre cu bursa!";
 																		}
 																	}
 																?>
@@ -7251,14 +7251,15 @@
 														if(isset($_POST['Submit'])) {
 															if($vradio27==1){
 																$v_Licenta_AlteConcursuri_Univ1 = $_POST["Licenta_AlteConcursuri_Univ1"];
-																$vLicenta_AlteConcursuri_Univ1 = validNume($v_Licenta_AlteConcursuri_Univ1);		
-																if(strlen($v_Licenta_AlteConcursuri_Univ1)==0) {
+																$vLicenta_AlteConcursuri_Univ1 = validNumeInstitutie($v_Licenta_AlteConcursuri_Univ1);
+																	if($vLicenta_AlteConcursuri_Univ1==-1)
 																		echo "C&#226;mp necompletat!";
-																	}
-																else
-																	if($vLicenta_AlteConcursuri_Univ1!==0){
-																		echo "C&#226;mp invalid!";
-																	}
+																	else
+																		if($vLicenta_AlteConcursuri_Univ1==1)
+																			echo "C&#226;mpul conține caractere nepermise!";
+																		else
+																			if($vLicenta_AlteConcursuri_Univ1==2)
+																				echo "C&#226;mpul trebuie sa conțină între 1 și 100 caractere!";
 																	
 															}
 														}
@@ -7277,15 +7278,16 @@
 													<?php		
 														if(isset($_POST['Submit'])) {
 															if($vradio27==1){
-																$v_Licenta_AlteConcursuri_Facultate1 = $_POST["Licenta_AlteConcursuri_Facultate1"];		
-																$vLicenta_AlteConcursuri_Facultate1 = validScutire($v_Licenta_AlteConcursuri_Facultate1);		
-																if(strlen($v_Licenta_AlteConcursuri_Facultate1)==0) {
-																	echo "C&#226;mp necompletat!";
-																}
-																else	
-																	if($vLicenta_AlteConcursuri_Facultate1!==0){
-																		echo "C&#226;mp invalid!";
-																	}
+																$v_Licenta_AlteConcursuri_Facultate1 = $_POST["Licenta_AlteConcursuri_Facultate1"];			
+																$vLicenta_AlteConcursuri_Facultate1 = validNumeInstitutie($v_Licenta_AlteConcursuri_Facultate1);
+																	if($vLicenta_AlteConcursuri_Facultate1==-1)
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vLicenta_AlteConcursuri_Facultate1==1)
+																			echo "C&#226;mpul conține caractere nepermise!";
+																		else
+																			if($vLicenta_AlteConcursuri_Facultate1==2)
+																				echo "C&#226;mpul trebuie sa conțină între 1 și 100 caractere!";
 															}
 														}
 													?>		
@@ -7309,14 +7311,18 @@
 														if(isset($_POST['Submit'])) {
 															if($vradio27==1){
 																$v_Licenta_AlteConcursuri_Univ2 = $_POST["Licenta_AlteConcursuri_Univ2"];	
-																$vLicenta_AlteConcursuri_Univ2 = validScutire($v_Licenta_AlteConcursuri_Univ2);		
-																if(strlen($v_Licenta_AlteConcursuri_Univ2)!=0 && $vLicenta_AlteConcursuri_Univ2!==0){
-																	echo "C&#226;mp invalid!";
+																$vLicenta_AlteConcursuri_Univ2 = validNumeInstitutie($v_Licenta_AlteConcursuri_Univ2);		
+																if($v_Licenta_AlteConcursuri_Univ2!==''){
+																	if($vLicenta_AlteConcursuri_Univ2==1)
+																		echo "C&#226;mpul conține caractere nepermise!";
+																	else
+																		if($vLicenta_AlteConcursuri_Univ2==2)
+																			echo "C&#226;mpul trebuie sa conțină între 1 și 100 caractere!";
 																}
 																else
-																	if(strlen($v_Licenta_AlteConcursuri_Facultate2)!=0 && strlen($v_Licenta_AlteConcursuri_Univ2)==0) {
+																	if($v_Licenta_AlteConcursuri_Facultate2!=='' && $v_Licenta_AlteConcursuri_Univ2=='') {
 																		echo "Completați și Universitatea!";
-																}
+																	}
 															}
 														}
 													?>		
@@ -7334,12 +7340,16 @@
 														if(isset($_POST['Submit'])) {
 															if($vradio27==1){
 																$v_Licenta_AlteConcursuri_Facultate2 = $_POST["Licenta_AlteConcursuri_Facultate2"];		
-																$vLicenta_AlteConcursuri_Facultate2 = validScutire($v_Licenta_AlteConcursuri_Facultate2);		
-																if(strlen($v_Licenta_AlteConcursuri_Facultate2)!=0 && $vLicenta_AlteConcursuri_Facultate2!==0){
-																	echo "C&#226;mp invalid!";
+																$vLicenta_AlteConcursuri_Facultate2 = validNumeInstitutie($v_Licenta_AlteConcursuri_Facultate2);		
+																if($v_Licenta_AlteConcursuri_Facultate2!=='') {
+																	if($vLicenta_AlteConcursuri_Facultate2==1) 
+																		echo "C&#226;mpul conține caractere nepermise!";
+																	else
+																		if($vLicenta_AlteConcursuri_Facultate2==2)
+																			echo "C&#226;mpul trebuie sa conțină între 1 și 100 caractere!";
 																}
 																else
-																	if(strlen($v_Licenta_AlteConcursuri_Univ2)!=0 && strlen($v_Licenta_AlteConcursuri_Facultate2)==0)
+																	if($v_Licenta_AlteConcursuri_Univ2!=='' && $v_Licenta_AlteConcursuri_Facultate2=='')
 																		echo "Completați și Facultatea!";
 															}
 														}
@@ -7363,12 +7373,16 @@
 														if(isset($_POST['Submit'])) {
 															if($vradio27==1){
 																$v_Licenta_AlteConcursuri_Univ3 = $_POST["Licenta_AlteConcursuri_Univ3"];		
-																$vLicenta_AlteConcursuri_Univ3 = validScutire($v_Licenta_AlteConcursuri_Univ3);		
-																if(strlen($v_Licenta_AlteConcursuri_Univ3)!=0 && $vLicenta_AlteConcursuri_Univ3!==0){
-																	echo "C&#226;mp invalid!";
+																$vLicenta_AlteConcursuri_Univ3 = validNumeInstitutie($v_Licenta_AlteConcursuri_Univ3);		
+																if($v_Licenta_AlteConcursuri_Univ3!==''){
+																	if($vLicenta_AlteConcursuri_Univ3==1) 
+																		echo "C&#226;mpul conține caractere nepermise!";
+																	else
+																		if($vLicenta_AlteConcursuri_Univ3==2)
+																			echo "C&#226;mpul trebuie sa conțină între 1 și 100 caractere!";
 																}
 																else
-																	if(strlen($v_Licenta_AlteConcursuri_Facultate3)!=0 && strlen($v_Licenta_AlteConcursuri_Univ3)==0)
+																	if($v_Licenta_AlteConcursuri_Facultate3!=='' && $v_Licenta_AlteConcursuri_Univ3=='')
 																		echo "Completați și Universitatea!";
 															}
 														}
@@ -7387,12 +7401,16 @@
 														if(isset($_POST['Submit'])) {
 															if($vradio27==1){
 																$v_Licenta_AlteConcursuri_Facultate3 = $_POST["Licenta_AlteConcursuri_Facultate3"];		
-																$vLicenta_AlteConcursuri_Facultate3 = validScutire($v_Licenta_AlteConcursuri_Facultate3);		
-																if(strlen($v_Licenta_AlteConcursuri_Facultate3)!=0 && $vLicenta_AlteConcursuri_Facultate3!==0){
-																	echo "C&#226;mp invalid!";
+																$vLicenta_AlteConcursuri_Facultate3 = validNumeInstitutie($v_Licenta_AlteConcursuri_Facultate3);		
+																if($v_Licenta_AlteConcursuri_Facultate3!==''){
+																	if($vLicenta_AlteConcursuri_Facultate3==1) 
+																		echo "C&#226;mpul conține caractere nepermise!";
+																	else
+																		if($vLicenta_AlteConcursuri_Facultate3==2)
+																			echo "C&#226;mpul trebuie sa conțină între 1 și 100 caractere!";
 																}
 																else
-																	if(strlen($v_Licenta_AlteConcursuri_Univ3)!=0 && strlen($v_Licenta_AlteConcursuri_Facultate3)==0)
+																	if($v_Licenta_AlteConcursuri_Univ3!=='' && $v_Licenta_AlteConcursuri_Facultate3=='')
 																		echo "Completați și Facultatea!";
 															}
 														}
@@ -8283,7 +8301,7 @@
 				<h3 class="headernou2">Contact</h3>
 				<div>
 					<i class="fa fa-map-marker" id="bloc1"></i>
-					<div id="bloc2"><p>&nbsp&nbspStrada General Henri Mathias Barthelot 16</p>
+					<div id="bloc2"><p>&nbsp&nbspStrada General Henri Mathias Berthelot 16</p>
 					<p>Iasi, Rom&#226;nia</p></div>
 				</div>
 

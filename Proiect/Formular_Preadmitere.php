@@ -3257,7 +3257,7 @@
 						<h3 class="headernou2">Contact</h3>
 					<div>
 						<i class="fa fa-map-marker" id="bloc1"></i>
-						<div id="bloc2"><p>&nbsp&nbspStrada General Henri Mathias Barthelot 16</p>
+						<div id="bloc2"><p>&nbsp&nbspStrada General Henri Mathias Berthelot 16</p>
 						<p>Iasi, Rom&#226;nia</p></div>
 					</div>
 

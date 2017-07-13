@@ -1342,6 +1342,21 @@ function validNumarBuletin($p_numar)
 
         return 0;//corect
     }
+	
+	 function validNumeInstitutie($p_nume) 
+    {	$p_nume_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_nume);
+        
+		if(!$p_nume)
+			return -1;
+		else 
+			if(strlen($p_nume)<1 || strlen($p_nume)>100)
+                return 2; // lungime gresita
+			else
+				if(!preg_match('/^[a-zA-Z ]*$/', $p_nume_diacritice))
+					return 1;//caract incorecte
+
+        return 0;//corect
+    }
 
 
 
@@ -1504,7 +1519,7 @@ function validareNumar($p_numar)
             return -1;
         
         if(!is_numeric($p_nr) || strlen($p_nr) < 10 || strlen($p_nr) > 14)
-            return 1; // numar nasol de caractere
+            return 1; // numar gresit de caractere
         
         if(!ctype_digit($p_nr))
             return 2; // caractere incorecte
@@ -2187,11 +2202,16 @@ function validareLiceu($p_liceu){
 
 //fct buna
 function validareNrSemCuBursa($nrSem){
-	if($nrSem >=0 && $nrSem <= 16)
-		return 0; //corect
+	if($nrSem==0)
+		return 0;
 	
 	if(!$nRSem)
 		return -1;
+	
+	if($nrSem >=0 && $nrSem <= 16)
+		return 0; //corect
+	
+	
 	
 	return 1;//prea multe semestre
 }
