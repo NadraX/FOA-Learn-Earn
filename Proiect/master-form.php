@@ -7250,8 +7250,8 @@
 													if(isset($_POST['Submit'])) {
 															//$v_Master_Medie_Admitere = $_POST["Master_Medie_Admitere"];
 															$v_Master_Medie_Admitere=$v_MedieGeneralaAdmitere0*10+$v_MedieGeneralaAdmitere1+$v_MedieGeneralaAdmitere2/10+$v_MedieGeneralaAdmitere3/100;
-																if($v_Master_Medie_Admitere>10)
-																	echo "Notă incorectă!";
+																if($v_Master_Medie_Admitere>10 || $v_Master_Medie_Admitere<5)
+																	echo "Notă incorectă!";  // intre 5 si 10
 															/*	$vMaster_Medie_Admitere =  validareMedieBac($v_Master_Medie_Admitere);
 																if($vMaster_Medie_Admitere==-1)
 																	echo "C&#226;mp necompletat!";
@@ -7336,7 +7336,7 @@
 													if(isset($_POST['Submit'])) {
 														//$v_Master_Nota_Master = $_POST["Master_Nota_Master"];
 														$v_Master_Nota_Master=$v_NotaLicenta0*10+$v_NotaLicenta1+$v_NotaLicenta2/10+$v_NotaLicenta3/100;
-														if($v_Master_Nota_Master>10)
+														if($v_Master_Nota_Master>10 || $v_Master_Nota_Master<5)
 															echo "Notă incorectă!";
 														/*$vMaster_Nota_Master =  validareMedieBac($v_Master_Nota_Master);
 														
