@@ -9650,7 +9650,15 @@
 				});
 			});
 		</script>
-
+		<script type="text/javascript">
+			$(document).ready(function() {
+				AltaUniv();
+				AlteConcursuri();
+				AbsolventMaster();
+				DiplomaMaster();
+			}
+			);
+		</script>
 	</body>
 
 </html>
