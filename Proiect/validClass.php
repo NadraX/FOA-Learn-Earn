@@ -1979,6 +1979,7 @@ function validSerieBAC($bac)
  {
   if(!$bac)
       return -1;
+  
   if(!(ctype_alpha($bac)))
    return 1;
     
@@ -2208,7 +2209,7 @@ function validareNrSemCuBursa($nrSem){
 	if(!$nRSem)
 		return -1;
 	
-	if($nrSem >=0 && $nrSem <= 16)
+	if($nrSem >0 && $nrSem <= 16)
 		return 0; //corect
 	
 	

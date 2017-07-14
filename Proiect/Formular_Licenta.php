@@ -1278,7 +1278,7 @@
 																echo "C&#226;mpul conține caractere nepermise!";
 															else
 																if($vLicenta_Tara_Nastere==1)
-																	echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																	echo "C&#226;mpul trebuie sa conțină între 4 și 36 caractere!";
 													}
 												?>
 											</span>
@@ -2396,7 +2396,7 @@
 																			echo "C&#226;mpul conține caractere nepermise!";
 																		else
 																			if($vLicenta_Tara==1)
-																				echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																				echo "C&#226;mpul trebuie sa conțină între 4 și 36 caractere!";
 																}
 															?>
 														</span>
@@ -4174,7 +4174,7 @@
 																			echo "C&#226;mpul conține caractere nepermise!";
 																		else
 																			if($vLicenta_Tara_Liceu==1)
-																				echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																				echo "C&#226;mpul trebuie sa conțină între 4 și 36 caractere!";
 																}
 															?>
 														</span>
@@ -5164,7 +5164,7 @@
 																					echo "C&#226;mpul conține caractere nepermise!";
 																				else
 																					if($vLicenta_Tara_AltaFacultate==1)
-																						echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																						echo "C&#226;mpul trebuie sa conțină între 4 și 36 caractere!";
 																		}
 																	}
 																?>
@@ -5229,16 +5229,18 @@
 												<span style="color:red">
 													<?php 
 														if(isset($_POST['Submit'])) {
-															$v_Licenta_AbsolventLicenta_Anul_Absolvirii = $_POST["Licenta_AbsolventLicenta_Anul_Absolvirii"];
-															$vLicenta_AbsolventLicenta_Anul_Absolvirii = validareAn($v_Licenta_AbsolventLicenta_Anul_Absolvirii);
-															if($vLicenta_AbsolventLicenta_Anul_Absolvirii==-1)
-															   	echo "C&#226;mp necompletat!";
-															else
-																if($vLicenta_AbsolventLicenta_Anul_Absolvirii==1)
-																	echo "Caractere nepermise!";
+															if($v_Radio24==1) {
+																$v_Licenta_AbsolventLicenta_Anul_Absolvirii = $_POST["Licenta_AbsolventLicenta_Anul_Absolvirii"];
+																$vLicenta_AbsolventLicenta_Anul_Absolvirii = validareAn($v_Licenta_AbsolventLicenta_Anul_Absolvirii);
+																if($vLicenta_AbsolventLicenta_Anul_Absolvirii==-1)
+																	echo "C&#226;mp necompletat!";
 																else
-																	if($vLicenta_AbsolventLicenta_Anul_Absolvirii==2)
-																		echo "An incorect!";
+																	if($vLicenta_AbsolventLicenta_Anul_Absolvirii==1)
+																		echo "Caractere nepermise!";
+																	else
+																		if($vLicenta_AbsolventLicenta_Anul_Absolvirii==2)
+																			echo "An incorect!";
+															}
 														}
 													?>
 												</span>
@@ -5620,7 +5622,7 @@
 																					echo "C&#226;mpul conține caractere nepermise!";
 																				else
 																					if($vLicenta_Tara_AltaFacultate_Licenta==1)
-																						echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																						echo "C&#226;mpul trebuie sa conțină între 4 și 36 caractere!";
 																		}
 																	}
 																?>
@@ -5658,13 +5660,14 @@
 											<label for="nuDiplomaLicenta" class="css-label">Nu</label>
 											<span style="color:red">
 												<?php
-													  if(isset($_POST['Submit'])) {
-														$v_Radio23 = $_POST["group23"];
-														$vradio23 = validRadio($v_Radio23);
-														if($vradio23!==1 && $vradio23!==2)
-															echo "Nu ați ales o opțiune!";
-														
-													  }
+													if(isset($_POST['Submit'])) {
+														if($v_Radio24==1) {
+															$v_Radio23 = $_POST["group23"];
+															$vradio23 = validRadio($v_Radio23);
+															if($vradio23!==1 && $vradio23!==2)
+																echo "Nu ați ales o opțiune!";
+														}
+													}
 												?>
 											</span>
 									  </span>
@@ -5686,14 +5689,18 @@
 																																																								?>"/>
 																<span style="color:red">
 																	<?php
-																		if($vradio23==1){
-																			$v_Licenta_Serie_DiplomaLicenta=$_POST["Licenta_Serie_DiplomaLicenta"];
-																			$vLicenta_Serie_DiplomaLicenta=validSerieBAC($v_Licenta_Serie_DiplomaLicenta);
-																			if($vLicenta_Serie_DiplomaLicenta==-1)
-																				echo "C&#226;mp necompletat!";
-																			else
-																				if($vLicenta_Serie_DiplomaLicenta==1)
-																					echo "Caractere nepermise";
+																		if(isset($_POST['Submit'])) {
+																			if($v_Radio24==1) {
+																				if($v_Radio23==1){
+																					$v_Licenta_Serie_DiplomaLicenta=$_POST["Licenta_Serie_DiplomaLicenta"];
+																					$vLicenta_Serie_DiplomaLicenta=validSerieBAC($v_Licenta_Serie_DiplomaLicenta);
+																					if($v_Licenta_Serie_DiplomaLicenta=='')
+																						echo "C&#226;mp necompletat!";
+																					else
+																						if($vLicenta_Serie_DiplomaLicenta==1)
+																							echo "Caractere nepermise";
+																				}
+																			}
 																		}
 																	?>
 																</span>
@@ -5708,43 +5715,23 @@
 																																																									?>"/>
 																<span style="color:red">
 																	<?php
-																		if($vradio23==1){
-																			$v_Licenta_Nr_DiplomaLicenta=$_POST["Licenta_Nr_DiplomaLicenta"];
-																			if($v_Licenta_Nr_DiplomaLicenta=='')
-																					echo "C&#226;mp necompletat!";
-																				else
-																					if(!ctype_digit($v_Licenta_Nr_DiplomaLicenta))
-																						echo "Caractere nepermise!";
+																		if(isset($_POST['Submit'])) {
+																			if($v_Radio24==1) {
+																				if($v_Radio23==1){
+																					$v_Licenta_Nr_DiplomaLicenta=$_POST["Licenta_Nr_DiplomaLicenta"];
+																					if($v_Licenta_Nr_DiplomaLicenta=='')
+																							echo "C&#226;mp necompletat!";
+																						else
+																							if(!ctype_digit($v_Licenta_Nr_DiplomaLicenta))
+																								echo "Caractere nepermise!";
+																				}
+																			}
 																		}
 																	?>
 																</span>
 
 															</span>
-															<!--<span class="form-sub-label-container" style="vertical-align:top; width:22%">
-																<label class="form-sub-label" for="input_3_country" style="min-height:13px;"> Emisă de </label>
-																<input type="text"  name="Licenta_Emitere_DiplomaLicenta" class="form-textbox form-address-city first_1" size="21" placeholder="ex: Facultatea de Informatică Iași" data-component="city" value="<?php
-																																																																	if($v_Licenta_Emitere_DiplomaLicenta == '')
-																																																																		echo '';
-																																																																	else
-																																																																		echo $v_Licenta_Emitere_DiplomaLicenta;
-																																																																?>"/>
-																<span style="color:red">
-																	<?php
-																		if($vradio23==1){
-																			$v_Licenta_Emitere_DiplomaLicenta=$_POST["Licenta_Emitere_DiplomaLicenta"];
-																			$vLicenta_Emitere_DiplomaLicenta=validBuletinEliberatDe($v_Licenta_Emitere_DiplomaLicenta);
-																			if($vLicenta_Emitere_DiplomaLicenta==-1)
-																					echo "C&#226;mp necompletat!";
-																				else
-																					if($vLicenta_Emitere_DiplomaLicenta==1)
-																						echo "C&#226;mp invalid!";
-																					else
-																						if($vLicenta_Emitere_DiplomaLicenta==2)
-																							echo "Minim 3 caractere!";
-																		}
-																	?>
-																</span>
-															</span>-->
+															
 															<span>
 																<div  class="form-input jf-required" style="vertical-align:top;padding:0;margin:0;height:40px">
 																	<div data-wrapper-react="true">
@@ -5904,13 +5891,17 @@
 																																																													?>" />
 																<span style="color:red">
 																	<?php
-																		if($vradio23==1){
-																			$v_Licenta_AbsolventLicenta_Nr_FoaieMatricola=$_POST["Licenta_AbsolventLicenta_Nr_FoaieMatricola"];
-																			if($v_Licenta_AbsolventLicenta_Nr_FoaieMatricola=='')
-																					echo "C&#226;mp necompletat!";
-																				else
-																					if(!ctype_digit($v_Licenta_AbsolventLicenta_Nr_FoaieMatricola))
-																						echo "Caractere nepermise!";
+																		if(isset($_POST['Submit'])) {
+																			if($v_Radio24==1) {
+																				if($v_Radio23==1){
+																					$v_Licenta_AbsolventLicenta_Nr_FoaieMatricola=$_POST["Licenta_AbsolventLicenta_Nr_FoaieMatricola"];
+																					if($v_Licenta_AbsolventLicenta_Nr_FoaieMatricola=='')
+																							echo "C&#226;mp necompletata!";
+																						else
+																							if(!ctype_digit($v_Licenta_AbsolventLicenta_Nr_FoaieMatricola))
+																								echo "Caractere nepermise!";
+																				}
+																			}
 																		}
 																	?>
 																</span>

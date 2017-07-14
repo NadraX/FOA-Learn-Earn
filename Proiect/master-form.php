@@ -630,7 +630,7 @@
 							$v_Numele_De_Familie_Actual = $_POST["Master_Numele_De_Familie_Actual"];
 								$vNumele_De_Familie_Actual = validNume($v_Numele_De_Familie_Actual);
 							$v_Master_Initiala_Tata = $_POST["Master_Initiala_Tata"];
-								$vMaster_Initiala_Tata = validInitialaTata($v_Master_Initiala_Tata);
+									$vMaster_Initiala_Tata = validInitialaTata($v_Master_Initiala_Tata);
 							$v_Master_Email = $_POST["Master_Email"];
 								$vMaster_Email = validEmail($v_Master_Email);
 							$v_Liceul_Absolvit = $_POST["Liceu_Absolvit"];
@@ -1158,12 +1158,12 @@
 										<span id="initiala" class="form-sub-label-container" style="vertical-align:top;">
 											<label class="form-sub-label"  style="min-height:13px;"> Ini&#355;iala (ele) tat&#259;lui / mamei 	<span class="info-box" <?php  
 																																											if($v_Master_Initiala_Tata!='') 
-																																												if($vLicenta_Initiala_Tata!==0) 
+																																												if($vMaster_Initiala_Tata!==0) 
 																																													echo 'style="background-color : red;"';
 																																										?>> 
 																																					<?php
 																																						if($v_Master_Initiala_Tata!='')
-																																							if($vLicenta_Initiala_Tata!==0) 
+																																							if($vMaster_Initiala_Tata!==0) 
 																																								echo "!"; 
 																																							else 
 																																								echo "?"; 
@@ -1173,8 +1173,8 @@
 																																					<span class="info-box__content"  style="width:255px;">
 																																						Inițialele trebuie să fie urmate de punct și fără spații între ele.
 																																						<?php 
-																																							$vLicenta_Initiala_Tata = validInitialaTata($v_Master_Initiala_Tata);
-																																							if($vLicenta_Initiala_Tata>0) 
+																																							$vMaster_Initiala_Tata = validInitialaTata($v_Master_Initiala_Tata);
+																																							if($vMaster_Initiala_Tata>0) 
 																																								echo "<br><a style=\"color:red\">*Nu ați respectat formatul specificat!</a>"; 
 																																						?> 
 																																					</span>
@@ -1190,18 +1190,18 @@
 											<span style="color:red">
 												<?php
 													if(isset($_POST['Submit'])) {
-														$v_Licenta_Initiala_Tata = $_POST["Master_Initiala_Tata"];
-														$vLicenta_Initiala_Tata = validInitialaTata($v_Licenta_Initiala_Tata);
-														if($vLicenta_Initiala_Tata==-1)
+														$v_Master_Initiala_Tata = $_POST["Master_Initiala_Tata"];
+														$vMaster_Initiala_Tata = validInitialaTata($v_Master_Initiala_Tata);
+														if($vMaster_Initiala_Tata==-1)
 															echo "C&#226;mp necompletat!";
 														else
-															if($vLicenta_Initiala_Tata==1)
+															if($vMaster_Initiala_Tata==1)
 																echo "Între 2 si 16 caractere!";
 															else
-																if($vLicenta_Initiala_Tata==2)
+																if($vMaster_Initiala_Tata==2)
 																	echo "Caractere nepermise!";
 																else
-																	if($vLicenta_Initiala_Tata==3)
+																	if($vMaster_Initiala_Tata==3)
 																		echo "Format Incorect!";
 													}
 												?>
@@ -1401,7 +1401,7 @@
 													for($i=0;$i<2;$i++)
 													{
 														echo '<option value="'.$array[$i].'" ';
-																						echo '> '.$array[$i].' </option>';
+															echo '> '.$array[$i].' </option>';
 													}
 												?>
 											</datalist>
@@ -1417,7 +1417,7 @@
 																echo "C&#226;mpul conține caractere nepermise!";
 															else
 																if($vMaster_Tara_Nastere==1)
-																	echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																	echo "C&#226;mpul trebuie sa conțină între 4 și 36 caractere!";
 													}
 												?>
 											</span>
@@ -2590,7 +2590,7 @@
 																			echo "C&#226;mpul conține caractere nepermise!";
 																		else
 																			if($vMaster_Tara1==1)
-																				echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																				echo "C&#226;mpul trebuie sa conțină între 4 și 36 caractere!";
 																}
 															?>
 														</span>
@@ -4301,7 +4301,7 @@
 																			echo "C&#226;mpul conține caractere nepermise!";
 																		else
 																			if($vMaster_Tara==1)
-																				echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																				echo "C&#226;mpul trebuie sa conțină între 4 și 36 caractere!";
 																}
 															?>
 														</span>
@@ -5159,9 +5159,9 @@
 																			if($v_Master_AbsolventMaster_Semestre_Bursa1=='')
 																				echo "C&#226;mp necompletat!";
 																			else
-																				if($vMaster_AbsolventMaster_Semestre_Bursa1!==0)
-																					echo "C&#226;mp invalid!";
-																	
+																			
+																				if($vMaster_AbsolventMaster_Semestre_Bursa1==1)
+																					echo "Între 0 și 16 semestre cu bursă!";
 																}
 															?>
 														</span>
@@ -5272,7 +5272,7 @@
 																			echo "C&#226;mpul conține caractere nepermise!";
 																		else
 																			if($vMaster_Tara_AltaFacultate1==1)
-																				echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																				echo "C&#226;mpul trebuie sa conțină între 4 și 36 caractere!";
 																}
 															?>
 														</span>
@@ -6158,7 +6158,7 @@
 																					echo "C&#226;mpul conține caractere nepermise!";
 																				else
 																					if($vMaster_Tara_AltaFacultate==1)
-																						echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																						echo "C&#226;mpul trebuie sa conțină între 4 și 36 caractere!";
 																		}
 																	}
 																?>
@@ -6634,7 +6634,7 @@
 																					echo "C&#226;mpul conține caractere nepermise!";
 																				else
 																					if($vMaster_AbsolventMaster_Tara_AltaFacultate==1)
-																						echo "C&#226;mpul trebuie sa conțină între 3 și 36 caractere!";
+																						echo "C&#226;mpul trebuie sa conțină între 4 și 36 caractere!";
 																		}
 																	}
 																?>
