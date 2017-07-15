@@ -1330,7 +1330,7 @@ function validNumarBuletin($p_numar)
 //fct buna
     function validNume($p_nume) 
     {	$p_nume_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â','-'),'',$p_nume);
-		$p_nume_fara_liniute=str_replace('-'.'',$p_nume);
+		$p_nume_fara_liniute=str_replace('-','',$p_nume);
         
 		if(!$p_nume)
 			return -1;
