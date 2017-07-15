@@ -144,9 +144,9 @@ function Footer()
 	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
-	  $pdf->MultiCell(130, 6, ''.strtoupper($nume_familie_nastere), 1, 1);
+	  $pdf->MultiCell(130, 6, ''.mb_strtoupper($nume_familie_nastere, 'UTF-8'), 1, 1);
 	  $pdf->SetXY($x + 145, $y);
-	  $pdf->MultiCell(35, 6,''.strtoupper($initialele_tatalui_mamei),1,  1);
+	  $pdf->MultiCell(35, 6,''.mb_strtoupper($initialele_tatalui_mamei, 'UTF-8'),1,  1);
 
 	  $pdf->Ln(1);
 	  $pdf->SetFont('DejaVu','B',8);
@@ -155,7 +155,7 @@ function Footer()
 	  $pdf->Ln(7);
 	  $pdf->Cell(10);
 	  $pdf->SetFont('DejaVu','B',7);
-	  $pdf->Cell(170,6,''.strtoupper($nume_familie_actual),1,0,'L');
+	  $pdf->Cell(170,6,''.mb_strtoupper($nume_familie_actual, 'UTF-8'),1,0,'L');
 	  
 	  $pdf->Ln(5);
 	  $pdf->Cell(9);
@@ -165,7 +165,7 @@ function Footer()
 	  $pdf->Ln(7);
 	  $pdf->Cell(10);
 	  $pdf->SetFont('DejaVu','B',7);
-	  $pdf->Cell(170,6,''.strtoupper($prenume_candidat),1,0,'L');
+	  $pdf->Cell(170,6,''.mb_strtoupper($prenume_candidat, 'UTF-8'),1,0,'L');
 	  
 	  $pdf->Ln(9);
 	  $x = $pdf->GetX();
@@ -179,13 +179,13 @@ function Footer()
 	  $pdf->MultiCell(12, 12,'Mama',1,  1);
 	  $pdf->SetXY($x + 82, $y);
 	  $pdf->SetFont('DejaVu','B',7);
-	  $pdf->MultiCell(43, 12,''.strtoupper($prenume_mama),1,  1);
+	  $pdf->MultiCell(43, 12,''.mb_strtoupper($prenume_mama, 'UTF-8'),1,  1);
 	  $pdf->SetXY($x + 125, $y);
 	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->MultiCell(12, 12,'Tata',1,  1);
 	  $pdf->SetXY($x + 137, $y);
 	  $pdf->SetFont('DejaVu','B',7);
-	  $pdf->MultiCell(43, 12,''.strtoupper($prenume_tata),1,  1);
+	  $pdf->MultiCell(43, 12,''.mb_strtoupper($prenume_tata, 'UTF-8'),1,  1);
 
 	  $pdf->Ln(4);
 

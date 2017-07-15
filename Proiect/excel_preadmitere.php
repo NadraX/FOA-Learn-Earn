@@ -54,12 +54,12 @@ require('PHPExcel/Classes/PHPExcel/IOFactory.php');
 
     //Date personale
 
-    fwrite($myfile, strtoupper($nume_familie_nastere)."\t");
-    fwrite($myfile, strtoupper($initialele_tatalui_mamei)."\t");
-    fwrite($myfile, strtoupper($nume_familie_actual)."\t");
-    fwrite($myfile, strtoupper($prenume_candidat)."\t");
-    fwrite($myfile, strtoupper($prenume_tata)."\t");
-    fwrite($myfile, strtoupper($prenume_mama)."\t");
+    fwrite($myfile, mb_strtoupper($nume_familie_nastere, 'UTF-8')."\t");
+    fwrite($myfile, mb_strtoupper($initialele_tatalui_mamei, 'UTF-8')."\t");
+    fwrite($myfile, mb_strtoupper($nume_familie_actual, 'UTF-8')."\t");
+    fwrite($myfile, mb_strtoupper($prenume_candidat, 'UTF-8')."\t");
+    fwrite($myfile, mb_strtoupper($prenume_tata, 'UTF-8')."\t");
+    fwrite($myfile, mb_strtoupper($prenume_mama, 'UTF-8')."\t");
     fwrite($myfile, $cnp."\t");
     fwrite($myfile, $sex."\t");
     fwrite($myfile, $data_nasterii."\t");
@@ -82,6 +82,7 @@ require('PHPExcel/Classes/PHPExcel/IOFactory.php');
     fwrite($myfile, $institutie_liceu."\t");
     fwrite($myfile, $tara_liceu."\t");
     fwrite($myfile, $localitate_liceu."\t");
+    fwrite($myfile, $judet_liceu."\t");
     fwrite($myfile, $optiune_test_scris);
 
     fwrite($myfile, "\n");
