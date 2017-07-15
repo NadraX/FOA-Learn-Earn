@@ -1329,12 +1329,13 @@ function validNumarBuletin($p_numar)
 
 //fct buna
     function validNume($p_nume) 
-    {	$p_nume_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â'),'',$p_nume);
+    {	$p_nume_diacritice=str_replace(array('ă','î','ș','ț','â','Ă','Î','Ș','Ț','Â','-'),'',$p_nume);
+		$p_nume_fara_liniute=str_replace('-'.'',$p_nume);
         
 		if(!$p_nume)
 			return -1;
 		else 
-			if(strlen($p_nume)<1 || strlen($p_nume)>30)
+			if(strlen($p_nume_fara_liniute)<1 || strlen($p_nume_fara_liniute)>30)
                 return 2; // lungime gresita
 			else
 				if(!preg_match('/^[a-zA-Z ]*$/', $p_nume_diacritice))
