@@ -92,7 +92,7 @@
 
     <meta name="viewport" content="widt=device-width, initial-scale=1">
 
-    <title>Administrator</title>
+    <title>Administrare</title>
 
 
 
@@ -160,7 +160,7 @@
 
   </div>
 
-  </br></br>
+  <br/><br/>
 
   
 
@@ -172,7 +172,7 @@
 
                 <img class="icon-admin" src="imagini/admin-logo.png">
 
-                <h1><span aria-hidden=true> Administra&#355;ie</span></h1>
+                <h1><span aria-hidden=true> Administrare</span></h1>
 
             </div>
 
@@ -320,7 +320,7 @@
 
                             <label class="marg-t10">Stare civilă: </label><input name="stareCivila" class="form-control" value="'.getStareCivila($id_formular).'" />
 
-                            <label class="marg-t10">Sex: </label><input name="sex" class="form-control" value="'.getSex($id_formular).'" />
+                            <label class="marg-t10">Sex (doar M sau F) </label><input name="sex" class="form-control" value="'.getSex($id_formular).'" />
                             
                             <label class="marg-t10">Țară naștere: </label><input name="taraNastere" class="form-control" value="'.getTaraNastere($id_formular).'"/>
                             
@@ -428,6 +428,16 @@
                                 
                                 <label class="marg-t10">Țară: </label><input name="tara" class="form-control" value="'.getTaraDomiciliu($id_formular).'"/>
 
+                        <div class="align-center">
+
+                            <span class="col-md-12 sub-title">
+
+                                <br>Date de contact
+
+                            </span>
+
+                         </div>
+
                                 <label class="marg-t10">Num&#259;r de telefon:</label><input name="nrDeTelefon" class="form-control" value="'.getTelefon($id_formular).'"/>
 
                                 <label class="marg-t10">E-mail:</label><input name="email" class="form-control" value="'.getEmail($id_formular).'"/>
@@ -499,20 +509,30 @@
                             <label class="marg-t10">Numărul:</label><input name="nrDiplomaBac" class="form-control" value="'.getNrDiplomaBac($id_formular).'" />
 
                             <label class="marg-t10">Emisă de:</label><input name="emisaDeLiceu" class="form-control" value="'.getEmisaDeLiceu($id_formular).'" />
+                            
+                            <label class="marg-t10">Data emitere:</label>
+                            
+                            <div class="col-md-12" style="padding-left:0; padding-right:0;">
 
-                            <label class="marg-t10">Data emitere:</label><input name="dataEmiteriiDiploma" class="form-control" value="'.getDataEmiteriiDiploma($id_formular).'" />
+                                <input name="dataEliberariiBacDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getBacEliberareDay($id_formular).'"/>
+
+                                <input name="dataEliberariiBacMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getBacEliberareMonth($id_formular).'"/>
+
+                                <input name="dataEliberariiBacYear" class="col-md-4 form-control wid33" value="'.getBacEliberareYear($id_formular).'"/>
+
+                            </div><br>
 
                             <label class="marg-t10">Numarul foii matricole care insoteste actul de studii:</label><input name="nrFoiiMatricole" class="form-control" value="'.getNrFoiiMatricole($id_formular).'" />
                             
                         <div class="align-center">
 
-                                <span class="col-md-12 sub-title">
+                            <span class="col-md-12 sub-title">
 
-                                    <br>Alte observatii (pentru caurile in care candidatul a absolvit studii anterioare in strainatate)
+                                <br>Alte observatii (pentru caurile in care candidatul a absolvit studii anterioare in strainatate)
 
-                                </span>
+                            </span>
 
-                            </div>
+                        </div>
 
                                 <label class="marg-t10"> Act de recunoastere/ echivalare (eliberat de DPIRP/CNRED):</label>
 
@@ -520,7 +540,17 @@
 
                                 <label class="marg-t10">Serie:</label><input name="serieActRecEchiv" class="form-control" value="'.getSerieActRecEchiv($id_formular).'" />
 
-                                <label class="marg-t10">Data echivalarii:</label><input name="dataRecEchiv" class="form-control" value="'.getDataRecEchiv($id_formular).'" />
+                                <label class="marg-t10">Data echivalării:</label>
+                                    
+                                <div class="col-md-12" style="padding-left:0; padding-right:0;">
+
+                                    <input name="dataEchivLiceuDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getEchivLiceuDay($id_formular).'"/>
+
+                                    <input name="dataEchivLiceuMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getEchivLiceuMonth($id_formular).'"/>
+
+                                    <input name="dataEchivLiceuYear" class="col-md-4 form-control wid33" value="'.getEchivLiceuYear($id_formular).'"/>
+
+                                </div><br>
 
                         </div>
 
@@ -577,7 +607,7 @@
                             </div>
 
 
-                                <label class="marg-t10">Absolvent al studiilor de licență?</label><input name="anulAbsolvirii" class="form-control" value="'.getAnulAbsolvirii($id_formular).'" />
+                                <label class="marg-t10">Absolvent al studiilor de licență în anul:</label><input name="anulAbsolvirii" class="form-control" value="'.getAnulAbsolvirii($id_formular).'" />
 
                                 <label class="marg-t10">Denumirea institutiei de invatamant superior:</label><input name="denumireInstitutieAbs" class="form-control" value="'.getDenumireInstitutieAbs($id_formular).'" />
 
@@ -603,7 +633,7 @@
                                 
                                 <label class="marg-t10">Tara:</label><input name="taraFacAbs" class="form-control" value="'.getTaraFacAbs($id_formular).'" />
 
-                                <label class="marg-t10">Diploma de licenta</label><br>
+                                <label class="marg-t10">Diploma de licență</label><br>
 
                                 <label class="marg-t10">Seria</label><input name="serieDiplomaLicenta" class="form-control" value="'.getSerieDiplomaLicenta($id_formular).'" />
 
@@ -611,7 +641,17 @@
 
                                 <label class="marg-t10">Emisa de</label><input name="licentaEmisaDe" class="form-control" value="'.getLicentaEmisaDe($id_formular).'" />
 
-                                <label class="marg-t10">Data emiterii</label><input name="dataEmiteriiLicenta" class="form-control" value="'.getDataEmiteriiLicenta($id_formular).'" />
+                                <label class="marg-t10">Data emiterii:</label>
+                                    
+                                <div class="col-md-12" style="padding-left:0; padding-right:0;">
+
+                                    <input name="dataEmitereLicentaDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getEmitereLicentaDay($id_formular).'"/>
+
+                                    <input name="dataEmitereLicentaMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getEmitereLicentaMonth($id_formular).'"/>
+
+                                    <input name="dataEmitereLicentaYear" class="col-md-4 form-control wid33" value="'.getEmitereLicentaYear($id_formular).'"/>
+
+                                </div><br>
 
                                 <label class="marg-t10">Numarul suplimentului/ foii matricole care insoteste actul de studii</label><input name="nrSupliment" class="form-control" value="'.getNrSupliment($id_formular).'" />
 
@@ -622,6 +662,7 @@
                                     <br>Alte observatii (pentru caurile in care candidatul a absolvit studii anterioare in strainatate)
 
                                 </span>
+                                
                             </div>
 
                                 <label class="marg-t10"> Act de recunoastere/ echivalare (eliberat de DPIRP/CNRED):</label>
@@ -630,7 +671,17 @@
 
                                 <label class="marg-t10">Serie:</label><input name="serieActRecEchivAbs" class="form-control" value="'.getSerieActRecEchivAbs($id_formular).'" />
 
-                                <label class="marg-t10">Data echivalarii:</label><input name="dataEchivAbs" class="form-control" value="'.getDataEchivAbs($id_formular).'" />
+                                <label class="marg-t10">Data echivalării:</label>
+                                    
+                                <div class="col-md-12" style="padding-left:0; padding-right:0;">
+
+                                    <input name="dataEchivAbsDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getEchivAbsDay($id_formular).'"/>
+
+                                    <input name="dataEchivAbsMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getEchivAbsMonth($id_formular).'"/>
+
+                                    <input name="dataEchivAbsYear" class="col-md-4 form-control wid33" value="'.getEchivAbsYear($id_formular).'"/>
+
+                                </div><br>
                                 
                             <div class="align-center">
 
@@ -672,7 +723,7 @@
                                 
                                 <label class="marg-t10">Preferința 4 (opțional):</label><input name="preferinta4" class="form-control" value="'.getPreferinta4($id_formular).'"/>
                                 
-                                <label class="marg-t10">Acceptă să fie înmatriculat pe locurile cu taxă?</label><input name="accepaTaxa" class="form-control" value="'.getLocTaxa($id_formular).'"/>
+                                <label class="marg-t10">Acceptă să fie înmatriculat pe locurile cu taxă?</label><input name="acceptaTaxa" class="form-control" value="'.getLocTaxa($id_formular).'"/>
                                 
                             <div class="align-center">
 
@@ -684,13 +735,37 @@
 
                             </div>
                             
-                                <label class="marg-t10">Diploma de Bacalaureat</label><input name="diplomaBac" class="form-control" value="'.getDiplomaBacOriginal($id_formular).'"/>
+                                <label class="marg-t10">Diploma de Bacalaureat</label><input name="diplomaBacDoc" class="form-control" value="'.getDiplomaBacOriginal($id_formular).'"/>
                                 
-                                <label class="marg-t10">Adeverință</label><input name="adevetinta" class="form-control" value="'.getAdeverintaOriginal($id_formular).'"/>
+                                <label class="marg-t10">Adeverință</label><input name="adeverintaDoc" class="form-control" value="'.getAdeverintaOriginal($id_formular).'"/>
                                 
-                                <label class="marg-t10">Document echivalare studii</label><input name="diplomaBac" class="form-control" value="'.getEchivalareStudii($id_formular).'"/>
+                                <label class="marg-t10">Document echivalare studii</label><input name="echivStudiiDoc" class="form-control" value="'.getEchivalareStudii($id_formular).'"/>
                                 
-                                <label class="marg-t10">Diploma de Olimpiadă</label><input name="diplomaBac" class="form-control" value="'.getDiplomaOlimpiada($id_formular).'"/>
+                                <label class="marg-t10">Diploma de Olimpiadă</label><input name="diplomaOlimpiadaDoc" class="form-control" value="'.getDiplomaOlimpiada($id_formular).'"/>
+                            
+                            <div class="align-center">
+
+                                <span class="col-md-12 sub-title">
+
+                                    <br>Alte concursuri de admitere
+
+                                </span>
+
+                            </div>
+                            
+                                <label class="marg-t10">Participă la alte concursuri de admitere?</label><input name="alteConcursuri" class="form-control" value="'.getAlteConcursuri($id_formular).'"/>
+                            
+                                <label class="marg-t10">Denumirea instituţiei de învăţământ superior</label><input name="altaUniv1" class="form-control" value="'.getAltaUniv1($id_formular).'"/>
+                                
+                                <label class="marg-t10">Facultatea</label><input name="altaFac1" class="form-control" value="'.getAltaFac1($id_formular).'"/>
+                                
+                                <label class="marg-t10">Denumirea instituţiei de învăţământ superior</label><input name="altaUniv2" class="form-control" value="'.getAltaUniv2($id_formular).'"/>
+                                
+                                <label class="marg-t10">Facultatea</label><input name="altaFac2" class="form-control" value="'.getAltaFac2($id_formular).'"/>
+                                
+                                <label class="marg-t10">Denumirea instituţiei de învăţământ superior</label><input name="altaUniv3" class="form-control" value="'.getAltaUniv3($id_formular).'"/>
+                                
+                                <label class="marg-t10">Facultatea</label><input name="altaFac3" class="form-control" value="'.getAltaFac3($id_formular).'"/>
                         
                             </div>
 
@@ -764,7 +839,7 @@
 
                     <i class="fa fa-phone"></i>
 
-                    <p>&nbsp&nbsp0232 201 102</p>
+                    <p>&nbsp;&nbsp;0232 201 102</p>
 
                 </div>
 
@@ -774,7 +849,7 @@
 
                     <i class="fa fa-envelope"></i>
 
-                    <p class="footer-links"><a href="secretariat AT info.uaic.ro">&nbsp&nbspsecretariat AT info.uaic.ro</a></p>
+                    <p class="footer-links"><a href="secretariat AT info.uaic.ro">&nbsp;&nbsp;secretariat AT info.uaic.ro</a></p>
 
                 </div>
 
@@ -792,7 +867,7 @@
 
                      <img class="footer_img grayscale" src="imagini/fii.png" alt="fII"  id="bloc1"/>
 
-                     <a href="https://www.info.uaic.ro/bin/Main/"><p id="bloc2" class="footer-links"> &nbsp&nbspFacultatea de informatic&#259; Iasi<p></a>
+                     <a href="https://www.info.uaic.ro/bin/Main/"><p id="bloc2" class="footer-links"> &nbsp;&nbsp;Facultatea de informatic&#259; Iasi<p></a>
 
                 </div>
 
@@ -800,7 +875,7 @@
 
                      <img class="footer_img grayscale" src="imagini/logo.png" alt="uaic" id="bloc1" />
 
-                     <a href="http://www.uaic.ro/"><p id="bloc2" > &nbsp&nbspUAIC<p></a>
+                     <a href="http://www.uaic.ro/"><p id="bloc2" > &nbsp;&nbsp;UAIC<p></a>
 
                 </div>
 
@@ -810,7 +885,7 @@
 
                 <img class="footer_img grayscale" src="imagini/facebook-icon.png" alt="fb" id="bloc1" >
 
-                <a href="https://www.facebook.com/FacultateaDeInformaticaUAICIasi/?fref=ts"><p id="bloc2"> &nbsp&nbspFacebook-ul faculta&#355;ii de informatic&#259;<p></a>
+                <a href="https://www.facebook.com/FacultateaDeInformaticaUAICIasi/?fref=ts"><p id="bloc2"> &nbsp;&nbsp;Facebook-ul faculta&#355;ii de informatic&#259;<p></a>
 
                 </div>
 

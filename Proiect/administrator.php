@@ -133,7 +133,7 @@
 
 
 
-    <title>Administrarer</title>
+    <title>Administrare</title>
 
 </head>
 
