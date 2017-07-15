@@ -230,11 +230,30 @@
                 
                 <form  method="post" action="pdf_master.php">
                     
-                    <input type="hidden" name="id_formular" value="1">
+                    <input type="hidden" name="id_formular" value="<?php
+                    $id_formular_pdf = $_POST['id_formular'];
+                    echo ''.$id_formular_pdf;
+                    ?> "/>
     
                     <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit">
 
                         <span  style="color:white;">Generare pdf</span>
+
+                    </button>
+                    
+                    
+                </form>
+                
+                <form  method="post" action="excel_master.php">
+                    
+                    <input type="hidden" name="id_formular" value="<?php
+                    $id_formular_pdf = $_POST['id_formular'];
+                    echo ''.$id_formular_pdf;
+                    ?> "/>
+                    
+                    <button id="Submit" name="Submit" Value="Register" class="btn buton validare-btn wid100" type="submit">
+
+                        <span  style="color:white;">Generare excel</span>
 
                     </button>
                     

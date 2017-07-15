@@ -4,8 +4,9 @@
 date_default_timezone_set('Europe/Bucharest');
 
  if(isset($_POST['Submit'])) {
-require('FPDF/fpdf.php');
-class PDF extends FPDF
+require('FPDF/tfpdf.php');
+     
+class PDF extends tFPDF
 {
     
 function Footer()
@@ -264,51 +265,52 @@ function Footer()
       oci_execute($s);
       oci_close($c);
      
-	  $pdf = new PDF('P', 'mm', 'A4' );
+	  $pdf = new tFPDF('P', 'mm', 'A4' );
 	  $pdf->AliasNbPages();
 	  $pdf->AddPage();
      
+    $pdf->AddFont('DejaVu','','DejaVuSerif.ttf',true);
+    $pdf->AddFont('DejaVu','B','DejaVuSerif-Bold.ttf',true);
+    $pdf->AddFont('DejaVu','I','DejaVuSerif-Italic.ttf',true); 
+     
     $pdf->Ln(-4);
     $pdf->Image('imagini/fii.png',12,12,20);
-    $pdf->SetFont('Arial','B',9);
-    $pdf->Cell(50);
-    $pdf->Cell(30,20,'UNIVERSITATEA "ALEXANDRU IOAN CUZA" DIN IASI',0,0,'C');
+    $pdf->SetFont('DejaVu','B',9);
+    $pdf->Cell(56);
+    $pdf->Cell(30,20,'UNIVERSITATEA "ALEXANDRU IOAN CUZA" DIN IAȘI',0,0,'C');
     $pdf->Ln(5);
-    $pdf->Cell(34.5);
-    $pdf->Cell(30,20,'FACULTATEA DE INFORMATICA',0,0,'C');
+    $pdf->Cell(37);
+    $pdf->Cell(30,20,'FACULTATEA DE INFORMATICĂ',0,0,'C');
     $pdf->Ln(10);
-	$pdf->Cell(65);
-	$pdf->SetFont('Arial','B',12);
-	$pdf->Cell(50, 20, 'FISA DE INSCRIERE - ADMITERE SESIUNEA', 0, 0, 'C');
-	$pdf->Cell(27);
-	$pdf->SetFont('Arial','BU',12);
+	$pdf->Cell(58);
+	$pdf->SetFont('DejaVu','B',12);
+	$pdf->Cell(50, 20, 'FIȘĂ DE ÎNSCRIERE - ADMITERE SESIUNEA', 0, 0, 'C');
+	$pdf->Cell(38.5);
+	$pdf->SetFont('DejaVu','B',12);
 	$pdf->Cell(10, 20, 'IULIE 2017', 0, 0, 'C');
 	
 	$pdf->Ln(5);
-	$pdf->Cell(76);
-	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(50, 20, 'Studii universitare de MASTER - forma de invatamant:', 0, 0, 'C');
+	$pdf->Cell(72);
+	$pdf->SetFont('DejaVu','B',10);
+	$pdf->Cell(50, 20, 'Studii universitare de MASTER - forma de învățământ:', 0, 0, 'C');
 	
 	$pdf->Ln(5);
-	$pdf->Cell(76.5);
-	$pdf->SetFont('Arial','I',9);
-	$pdf->Cell(50, 20, 'invatamant cu frecventa; invatamant cu frecventa redusa', 0, 0, 'C');
+	$pdf->Cell(72);
+	$pdf->SetFont('DejaVu','I',9);
+	$pdf->Cell(50, 20, 'învățământ cu frecvență; învățământ cu frecvență redusă;', 0, 0, 'C');
 	
 	$pdf->Ln(10);
-	$pdf->Cell(71);
-	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(67);
+	$pdf->SetFont('DejaVu','B',10);
 	$pdf->Cell(10, 20, 'Dosar nr. ', 0, 0, 'C');
 	
-	$pdf->Cell(7.5);
-	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(9.5);
 	$pdf->Cell(5, 20, '..............', 0, 0, 'C');
 	
-	$pdf->Cell(7.5);
-	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(9.5);
 	$pdf->Cell(5, 20, 'Data', 0, 0, 'C');
 	
-	$pdf->Cell(11);
-	$pdf->SetFont('Arial','B',10);
+	$pdf->Cell(13.5);
 	$pdf->Cell(5, 20, '.......................', 0, 0, 'C');
 	
 	//Verificare daca este scutit sau nu
@@ -319,15 +321,15 @@ function Footer()
 	$x = $pdf->GetX();
 	$y = $pdf->GetY();
 	
-	$pdf->SetFont('Arial','B',10);
-	$pdf->MultiCell(34, 10, 'Taxa de inscriere', 1, 1);
+	$pdf->SetFont('DejaVu','B',9);
+	$pdf->MultiCell(34, 10, 'Taxa de înscriere', 1, 1);
 	$pdf->SetXY($x + 34, $y);
-	$pdf->SetFont('Arial','',10);
-	$pdf->MultiCell(47, 10,'Chitanta nr. '.$nr_chitanta,1,  1);
+	$pdf->SetFont('DejaVu','',9);
+	$pdf->MultiCell(47, 10,'Chitanța nr. '.$nr_chitanta,1,  1);
 	$pdf->SetXY($x + 81, $y);	
 	$pdf->MultiCell(25, 10,'Suma: '.$suma,1,  1);
     $pdf->SetXY($x + 106, $y);	
-	$pdf->MultiCell(19, 10,'Scutit: '.$raspuns,1,  1);
+	$pdf->MultiCell(19, 10,'Scutit:'.$raspuns,1,  1);
     $pdf->SetXY($x + 125, $y);	
 	$pdf->MultiCell(65, 10,'Motivul scutirii: '.$motiv_scutire,1,  1);
      
@@ -335,10 +337,10 @@ function Footer()
 	  $pdf->Line(10, 72, 210-10, 72);
 
 	  $pdf->Ln(8);
-	  $pdf->SetFont('Times','B',11);
+	  $pdf->SetFont('DejaVu','B',10);
 	  $pdf->Cell(10);
 
-	  $pdf->Cell(0,0,'I. INFORMATII GENERALE',0,1);
+	  $pdf->Cell(0,0,'I. INFORMAȚII GENERALE',0,1);
 	  $pdf->SetLineWidth(0);
 	  $pdf->Line(20, 77, 210-20, 77);
 
@@ -347,61 +349,61 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',8);
 
 	  $pdf->Cell(10);
-	  $pdf->MultiCell(90, 10, '1. Numele de familie la nastere (din certificatul de nastere)', 0, 1);
-	  $pdf->SetXY($x + 145, $y);
-	  $pdf->MultiCell(45, 10,'2. Initiala (ele) tatalui',0,  1);
+	  $pdf->MultiCell(95, 10, 'Numele de familie la naștere (din certificatul de naștere)', 0, 1);
+	  $pdf->SetXY($x + 144, $y);
+	  $pdf->MultiCell(45, 10,'Inițiala(ele) tatălui',0,  1);
 
 	  $pdf->Ln(-3);
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
-	  $pdf->MultiCell(120, 6, ''.strtoupper($nume_familie_nastere), 1, 1);
+	  $pdf->MultiCell(130, 6, ''.strtoupper($nume_familie_nastere), 1, 1);
 	  $pdf->SetXY($x + 145, $y);
 	  $pdf->MultiCell(35, 6,''.strtoupper($initialele_tatalui_mamei),1,  1);
 
 	  $pdf->Ln(1);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'3. Numele de familie actual (dupa casatorie, infiere, modificare la cerere conform actului doveditor, daca este cazul)',0,0,'C');
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'Numele de familie actual (după căsătorie, modificare la cerere conform actului doveditor, dacă este cazul)',0,0,'C');
 	  
 	  $pdf->Ln(7);
 	  $pdf->Cell(10);
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(170,6,''.strtoupper($nume_familie_actual),1,0,'L');
 	  
 	  $pdf->Ln(5);
 	  $pdf->Cell(9);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'4. Prenumele candidatului',0,0,'L');
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'Prenumele candidatului',0,0,'L');
 	  
 	  $pdf->Ln(7);
 	  $pdf->Cell(10);
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(170,6,''.strtoupper($prenume_candidat),1,0,'L');
 	  
 	  $pdf->Ln(13);
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(10);
 	  
-	  $pdf->MultiCell(60, 6, '5. Prenumele parintilor (din certificatul de nastere al candidatului)', 1, 1);
+	  $pdf->MultiCell(60, 6, 'Prenumele părinților (din certificatul de naștere al candidatului)', 1, 1);
 	  $pdf->SetXY($x + 70, $y);
 	  $pdf->MultiCell(12, 12,'Mama',1,  1);
 	  $pdf->SetXY($x + 82, $y);
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->MultiCell(43, 12,''.strtoupper($prenume_mama),1,  1);
 	  $pdf->SetXY($x + 125, $y);
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->MultiCell(12, 12,'Tata',1,  1);
 	  $pdf->SetXY($x + 137, $y);
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->MultiCell(43, 12,''.strtoupper($prenume_tata),1,  1);
 
 	  $pdf->Ln(7);
@@ -409,47 +411,47 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',8);
 
 	  $pdf->Cell(10);
-	  $pdf->MultiCell(13, 6, '6. CNP', 1, 1);
+	  $pdf->MultiCell(13, 6, 'CNP', 1, 1);
 	  $pdf->SetXY($x + 23, $y);
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->MultiCell(30, 6,''.$cnp,1,  1);
 	  $pdf->SetXY($x + 68, $y);
-      $pdf->SetFont('Times','BI',10);
-      $pdf->MultiCell(40, 6, '8. Data nasterii (zz/ll/aaa)', 1, 1);
-      $pdf->SetXY($x + 108, $y);
-      $pdf->SetFont('Times','B',8);
-	  $pdf->MultiCell(27, 6,''.$data_nasterii,1,  1);
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->MultiCell(31, 6, 'Data nașterii', 1, 1);
+	  $pdf->SetXY($x + 99, $y);
+	  $pdf->SetFont('DejaVu','B',7);
+	  $pdf->MultiCell(36, 6,''.$data_nasterii,1,  1);
 	  $pdf->SetXY($x + 150, $y);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->MultiCell(15, 6, '7. Sexul', 1, 1);
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->MultiCell(15, 6, 'Sexul', 1, 1);
 	  $pdf->SetXY($x + 165, $y);
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->MultiCell(15, 6,''.$sex,1,  1);
  
 	  $pdf->Ln(3);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'9. Locul nasterii',0,0,'C');
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'Locul nașterii',0,0,'C');
 	  
 	  $pdf->Ln(7);
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',8);
 
 	  $pdf->Cell(10);
-	  $pdf->MultiCell(56, 6, 'Tara', 1, 1);
+	  $pdf->MultiCell(56, 6, 'Țara', 1, 1);
 	  $pdf->SetXY($x + 66, $y);
-	  $pdf->MultiCell(57, 6,'Judetul',1,  1);
+	  $pdf->MultiCell(57, 6,'Județul',1,  1);
 	  $pdf->SetXY($x + 123, $y);
 	  $pdf->MultiCell(57, 6,'Localitatea',1,  1);
 
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(56, 6, ''.$tara_nasterii, 1, 1);
@@ -462,21 +464,21 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',8);
 
 	  $pdf->Cell(10);
-	  $pdf->MultiCell(42, 6, 'Cetatenia (tara)', 1, 1);
+	  $pdf->MultiCell(42, 6, 'Cetățenia', 1, 1);
 	  $pdf->SetXY($x + 52, $y);
-	  $pdf->MultiCell(42, 6,'Nationalitatea',1,  1);
+	  $pdf->MultiCell(42, 6,'Naționalitatea',1,  1);
 	  $pdf->SetXY($x + 94, $y);
 	  $pdf->MultiCell(43, 6,'Etnia',1,  1);
 	  $pdf->SetXY($x + 137, $y);
-	  $pdf->MultiCell(43, 6,'Limba materna',1,  1);
+	  $pdf->MultiCell(43, 6,'Limba maternă',1,  1);
 
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(42, 6, ''.$cetatenia, 1, 1);
@@ -489,22 +491,22 @@ function Footer()
 	  
 	  $pdf->Ln(2);
 	 
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'10. Starea civila',0,0,'C');
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'Starea civilă',0,0,'C');
 	  
 	  $pdf->Ln(7);
 	  $pdf->Cell(69.5);
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(50,6,''.$stare_civila,1,0,'C');
 	  
 	  $pdf->Ln(9);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'11. Actul de identitate/Documentul de calatorie',0,0,'C'); 
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'Actul de identitate/Documentul de călătorie',0,0,'C');  
 	  
 	  $pdf->Ln(7);
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
-	  $pdf->SetFont('Times','BI',11);
+	  $pdf->SetFont('DejaVu','B',8);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(80, 6, 'Tip', 1, 1);
@@ -516,7 +518,7 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(80, 6, ''.$tip_act_ident, 1, 1);
@@ -528,19 +530,19 @@ function Footer()
 	  $pdf->Ln(8);
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',8);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(80, 6, 'Eliberat de', 1, 1);
 	  $pdf->SetXY($x + 90, $y);
-	  $pdf->MultiCell(45, 6,'Data eliberarii',1,  1);
+	  $pdf->MultiCell(45, 6,'Data eliberării',1,  1);
 	  $pdf->SetXY($x + 135, $y);
-	  $pdf->MultiCell(45, 6,'Data expirarii',1,  1);
+	  $pdf->MultiCell(45, 6,'Data expirării',1,  1);
 
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(80, 6, ''.$eliberat_de, 1, 1);
@@ -562,33 +564,33 @@ function Footer()
 	  $pdf->Ln(7);
 	  $pdf->SetLineWidth(0.5);
 	  $pdf->Line(10, 15, 210-10, 15);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'12. Domiciliul stabil',0,0,'C');
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'Domiciliul stabil',0,0,'C');
       
       $pdf->SetLineWidth(0);
       
       $pdf->Ln(7);
 	  $pdf->Cell(70);
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(50,6,''.$raspuns_domiciliu_stabil,1,0,'C');
       
 	  $pdf->Ln(8);
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',8);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(60, 6, 'Strada', 0, 1);
 	  $pdf->SetXY($x + 125, $y);
-	  $pdf->MultiCell(95, 6,'Numarul',0,  1);
+	  $pdf->MultiCell(95, 6,'Numărul',0,  1);
 
 	  $pdf->Ln(-0.5);
 
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 
@@ -601,7 +603,7 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',8);
 
 	  $pdf->Cell(10);
    	  $pdf->MultiCell(50, 6, 'Bloc', 0, 1);
@@ -617,7 +619,7 @@ function Footer()
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','B',8);
+	 $pdf->SetFont('DejaVu','B',7);
 
 	 $pdf->Cell(10);
 
@@ -635,19 +637,19 @@ function Footer()
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(85, 6, 'Localitate', 0, 1);
 	 $pdf->SetXY($x + 90, $y);
-	 $pdf->MultiCell(95, 6,'Judet',0,  1);
+	 $pdf->MultiCell(95, 6,'Județ',0,  1);
 
 	 $pdf->Ln(-0.5);
 
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','B',8);
+	 $pdf->SetFont('DejaVu','B',7);
 
 	 $pdf->Cell(10);
 
@@ -660,19 +662,19 @@ function Footer()
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 
 	 $pdf->Cell(10);
-	 $pdf->MultiCell(85, 6, 'Cod postal', 0, 1);
+	 $pdf->MultiCell(85, 6, 'Cod poștal', 0, 1);
 	 $pdf->SetXY($x + 90, $y);
-	 $pdf->MultiCell(95, 6,'Tara',0,  1);
+	 $pdf->MultiCell(95, 6,'Țara',0,  1);
 
 	 $pdf->Ln(-0.5);
 
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','B',8);
+	 $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 
 	 $pdf->MultiCell(75, 6, ''.$cod_postal, 1, 1);
@@ -684,7 +686,7 @@ function Footer()
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(85, 6, 'Nr. telefon', 0, 1);
 	 $pdf->SetXY($x + 90, $y);
@@ -695,7 +697,7 @@ function Footer()
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','B',8);
+	 $pdf->SetFont('DejaVu','B',7);
 
 	 $pdf->Cell(10);
 
@@ -715,82 +717,82 @@ function Footer()
 	 if($persoana_cu_dizabilitati == 1) $raspuns_dizabilitati = 'DA';
 	 
 	 $raspuns_stare_sociala_speciala = 'NU';
-	 if($stare_sociala_speciala == 2) $raspuns_stare_sociala_speciala = 'Orfan de un parinte';
-	 if($stare_sociala_speciala == 3) $raspuns_stare_sociala_speciala = 'Orfan de ambii parinti';
+	 if($stare_sociala_speciala == 2) $raspuns_stare_sociala_speciala = 'Orfan de un părinte';
+	 if($stare_sociala_speciala == 3) $raspuns_stare_sociala_speciala = 'Orfan de ambii părinți';
 	 if($stare_sociala_speciala == 4) $raspuns_stare_sociala_speciala = 'Provenit din case de copii';
 	 if($stare_sociala_speciala == 5) $raspuns_stare_sociala_speciala = 'Provenit din plasament familial';
-	 if($stare_sociala_speciala == 6) $raspuns_stare_sociala_speciala = 'Provenit din familie monoparentala';
+	 if($stare_sociala_speciala == 6) $raspuns_stare_sociala_speciala = 'Provenit din familie monoparentală';
      
 	 $pdf->Ln(8);
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',7.6);
 	 $pdf->Cell(10);
-     $pdf->MultiCell(54, 6, 'Solicitare cazare pe timpul studiilor', 1, 1);
-     $pdf->SetXY($x + 64, $y);
-	 $pdf->MultiCell(70, 6, 'Candidat incadrat in categ. pers.cu dizabilitati', 1, 1);
-	 $pdf->SetXY($x + 134, $y);
-	 $pdf->MultiCell(46, 6,'Stare sociala speciala',1,  1);
+     $pdf->MultiCell(51, 6, 'Solicit. caz. pe timpul studiilor', 1, 1);
+     $pdf->SetXY($x + 61, $y);
+	 $pdf->MultiCell(67, 6, 'Candidat încadrat în categ. pers.cu dizabil.', 1, 1);
+	 $pdf->SetXY($x + 128, $y);
+	 $pdf->MultiCell(52, 6,'Stare socială specială',1,  1);
 
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','B',8);
+	 $pdf->SetFont('DejaVu','B',7);
 
      $pdf->Cell(10);
-     $pdf->MultiCell(54, 6, ''.$raspuns_cazare_studii, 1, 1);
-     $pdf->SetXY($x + 64, $y);
-	 $pdf->MultiCell(70, 6, ''.$raspuns_dizabilitati, 1, 1);
-	 $pdf->SetXY($x + 134, $y);
-	 $pdf->MultiCell(46, 6,''.$raspuns_stare_sociala_speciala,1,  1);
+     $pdf->MultiCell(51, 6, ''.$raspuns_cazare_studii, 1, 1);
+     $pdf->SetXY($x + 61, $y);
+	 $pdf->MultiCell(67, 6, ''.$raspuns_dizabilitati, 1, 1);
+	 $pdf->SetXY($x + 128, $y);
+	 $pdf->MultiCell(52, 6,''.$raspuns_stare_sociala_speciala,1,  1);
 	 
 	 $pdf->SetLineWidth(0.5);
 	 $pdf->Line(10, 135.5, 210-10, 135.5);
 
 	 $pdf->Ln(23);
-	 $pdf->SetFont('Times','B',11);
+	 $pdf->SetFont('DejaVu','B',10);
 	 $pdf->Cell(10);
 
-	 $pdf->Cell(0,0,'II. DATE PRIVIND PREGATIREA ANTERIOARA A CANDIDATULUI',0,1);
+	 $pdf->Cell(0,0,'II. DATE PRIVIND PREGATIREA ANTERIOARĂ A CANDIDATULUI',0,1);
 	 $pdf->SetLineWidth(0);
 	 $pdf->Line(20, 141.5, 210-20, 141.5); 
 	 
 	 $pdf->Ln(10);
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(0,10,'II.a.Studiile preuniversitare absolvite, nivel liceu',0,0,'C');
 
       $pdf->Ln(7);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'Institutia unde a absolvit',0,0,'C');
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'Instituția unde a absolvit',0,0,'C');
      
 	  $pdf->Ln(7);
       $pdf->Cell(10);
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(170,6,''.$liceul_absolvit,1,0,'L');
 	 
       $pdf->Ln(12); 
       $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',7.6);
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(40, 6,'Localitate',1,  1); 
       $pdf->SetXY($x + 50, $y);
-      $pdf->MultiCell(27, 6,'Tara',1,  1); 
+      $pdf->MultiCell(27, 6,'Țara',1,  1); 
       $pdf->SetXY($x + 77, $y);
-	  $pdf->MultiCell(23, 6,'Judetul',1,  1); 
+	  $pdf->MultiCell(23, 6,'Județul',1,  1); 
       $pdf->SetXY($x + 100, $y);
 	  $pdf->MultiCell(37, 6,'Profil/Domeniu',1,  1);
       $pdf->SetXY($x + 137, $y);
-	  $pdf->MultiCell(22, 6,'Durata studii',1,  1);
+	  $pdf->MultiCell(22, 6,'Durată studii',1,  1);
       $pdf->SetXY($x + 159, $y);
 	  $pdf->MultiCell(21, 6,'An absolvire',1,  1);
       
       $x = $pdf->GetX();
       $y = $pdf->GetY();
 
-      $pdf->SetFont('Times','B',8);
+      $pdf->SetFont('DejaVu','B',6.5);
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(40, 6,''.$localitate_liceu,1,  1); 
       $pdf->SetXY($x + 50, $y);
@@ -809,23 +811,23 @@ function Footer()
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-	 $pdf->MultiCell(40, 6, 'Forma de invatamant', 1, 1);
+	 $pdf->MultiCell(40, 6, 'Forma de învățământ', 1, 1);
 	 $pdf->SetXY($x + 50, $y);
 	 $pdf->MultiCell(30, 6,'Dipl. BAC Seria:',1,  1); 
      $pdf->SetXY($x + 80, $y);
-	 $pdf->MultiCell(35, 6,'Dipl. BAC Numarul:',1,  1); 
+	 $pdf->MultiCell(35, 6,'Dipl. BAC Numărul:',1,  1); 
      $pdf->SetXY($x + 115, $y);
 	 $pdf->MultiCell(30, 6,'Data emiterii',1,  1);
      $pdf->SetXY($x + 145, $y);
-	 $pdf->MultiCell(35, 6,'Numar foie matricola',1,  1);
+	 $pdf->MultiCell(35, 6,'Nr. foie matricolă',1,  1);
       
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(40, 6, ''.$forma_invatamant_liceu, 1, 1);
 	 $pdf->SetXY($x + 50, $y);
@@ -841,25 +843,25 @@ function Footer()
     //Observatii II.a
       
      $pdf->Ln(8);
-	 $pdf->SetFont('Times','BI',10);
-	 $pdf->Cell(0,10,'Alte observatii (pentru cazurile in care candidatul a absolvit studiile anterioare in strainatate) ',0,0,'C');
+	 $pdf->SetFont('DejaVu','B',8);
+	 $pdf->Cell(0,10,'Alte observații (pentru cazurile în care candidatul a absolvit studiile anterioare în străinătate)',0,0,'C');
 
      $pdf->Ln(8.5); 
      $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-	 $pdf->MultiCell(50, 6, 'Act de recunoastere Nr:', 1, 1);
+	 $pdf->MultiCell(50, 6, 'Act de recunoaștere Nr', 1, 1);
 	 $pdf->SetXY($x + 60, $y);
-	 $pdf->MultiCell(60, 6,'Act de recunoastere Serie:',1,  1); 
+	 $pdf->MultiCell(60, 6,'Act de recunoaștere Serie',1,  1); 
      $pdf->SetXY($x + 120, $y);
-	 $pdf->MultiCell(60, 6,'Act de recunoastere Data echivalarii:',1,  1);
+	 $pdf->MultiCell(60, 6,'Act de recunoaștere Data echiv.',1,  1);
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(50, 6, ''.$nr_act_rec_echiv, 1, 1);
 	 $pdf->SetXY($x + 60, $y);
@@ -868,12 +870,12 @@ function Footer()
 	 $pdf->MultiCell(60, 6,''.$data_rec_echiv,1,  1);
       
       $pdf->Ln(4);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'Dipl. BAC Emisa de:',0,0,'C');
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'Dipl. BAC Emisă de:',0,0,'C');
 
 	  $pdf->Ln(7);
       $pdf->Cell(10);
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(170,6,''.$liceul_absolvit,1,0,'L');  
       
       
@@ -892,29 +894,29 @@ function Footer()
 	  $pdf->Ln(7);
 
       //II.b stuff
-      $pdf->SetFont('Times','BI',10);
+      $pdf->SetFont('DejaVu','B',8);
 	  $pdf->Cell(0,10,'II.b.Studiile universitare de licenta absolvite',0,0,'C');
 
      $pdf->Ln(7); 
      $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	$pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',7.6);
 	 $pdf->Cell(10);
-	 $pdf->MultiCell(27, 6,'Tara',1,  1); 
+	 $pdf->MultiCell(27, 6,'Țara',1,  1); 
      $pdf->SetXY($x + 37, $y);
-	 $pdf->MultiCell(35, 6,'Localitatea',1,  1); 
+	 $pdf->MultiCell(35, 6,'Localitate',1,  1); 
      $pdf->SetXY($x + 72, $y);
-	 $pdf->MultiCell(20, 6,'Judetul',1,  1);
+	 $pdf->MultiCell(20, 6,'Județul',1,  1);
      $pdf->SetXY($x + 92, $y);
 	 $pdf->MultiCell(53, 6,'Domeniul',1,  1);
      $pdf->SetXY($x + 145, $y);
-     $pdf->MultiCell(35, 6,'Forma de invatamant',1,  1);  
+     $pdf->MultiCell(35, 6,'Formă de învățământ',1,  1);  
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',6.5);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(27, 6,''.$tara_fac,1,  1); 
      $pdf->SetXY($x + 37, $y);
@@ -930,17 +932,17 @@ function Footer()
      $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
 	 
-	 $pdf->MultiCell(100, 6,'Denumire institutie',1,  1);
+	 $pdf->MultiCell(100, 6,'Denumire instituție',1,  1);
      $pdf->SetXY($x + 110, $y);
 	 $pdf->MultiCell(70, 6,'Facultatea',1,  1);
      
      $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 	 
-	 $pdf->SetFont('Times','B',8);
+	 $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 
 	 $pdf->MultiCell(100, 6,''.strtoupper($denumire_institutie_fac),1,  1);
@@ -952,21 +954,21 @@ function Footer()
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(65, 6,'Program de studii/Specializare',1,  1); 
      $pdf->SetXY($x + 75, $y);
-	 $pdf->MultiCell(35, 6,'Titlul obtinut',1,  1);
+	 $pdf->MultiCell(35, 6,'Titlul obținut',1,  1);
      $pdf->SetXY($x + 110, $y);
-	 $pdf->MultiCell(38, 6,'Numar semestre bugetar',1,  1);
+	 $pdf->MultiCell(38, 6,'Nr. sem. buget',1,  1);
      $pdf->SetXY($x + 148, $y);
-     $pdf->MultiCell(32, 6,'Nr. semestre bursier',1,  1);
+     $pdf->MultiCell(32, 6,'Nr. sem. bursă',1,  1);
       
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(65, 6,''.$specializare,1,  1); 
      $pdf->SetXY($x + 75, $y);
@@ -982,15 +984,15 @@ function Footer()
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-	 $pdf->MultiCell(23, 6,'Durata studii',1,  1); 
+	 $pdf->MultiCell(23, 6,'Durată studii',1,  1); 
      $pdf->SetXY($x + 33, $y);
 	 $pdf->MultiCell(35, 6,'Dipl. master Seria',1,  1);
      $pdf->SetXY($x + 68, $y);
 	 $pdf->MultiCell(32, 6,'Dipl. master Nr',1,  1); 
      $pdf->SetXY($x + 100, $y);
-	 $pdf->MultiCell(40, 6,'Data emitere',1,  1);
+	 $pdf->MultiCell(40, 6,'Dată emitere',1,  1);
      $pdf->SetXY($x + 140, $y);
 	 $pdf->MultiCell(40, 6,'Nr.foaie matr.',1,  1); 
       
@@ -998,7 +1000,7 @@ function Footer()
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(23, 6,''.$durata_studii,1,  1); 
      $pdf->SetXY($x + 33, $y);
@@ -1013,25 +1015,25 @@ function Footer()
      //Alte observatii facult.
      
      $pdf->Ln(1);
-	 $pdf->SetFont('Times','BI',10);
-	 $pdf->Cell(0,10,'Alte observatii (pentru cazurile in care candidatul a absolvit studiile anterioare in strainatate) ',0,0,'C');
+	 $pdf->SetFont('DejaVu','B',8);
+	 $pdf->Cell(0,10,'Alte observații (pentru cazurile în care candidatul a absolvit studiile anterioare în străinătate)',0,0,'C');
 
      $pdf->Ln(7); 
      $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-	 $pdf->MultiCell(50, 6, 'Act de recunoastere Nr:', 1, 1);
+	 $pdf->MultiCell(50, 6, 'Act de recunoaștere Nr', 1, 1);
 	 $pdf->SetXY($x + 60, $y);
-	 $pdf->MultiCell(60, 6,'Act de recunoastere Serie:',1,  1); 
+	 $pdf->MultiCell(60, 6,'Act de recunoaștere Serie',1,  1); 
      $pdf->SetXY($x + 120, $y);
-	 $pdf->MultiCell(60, 6,'Act de recunoastere Data echivalarii:',1,  1);
+	 $pdf->MultiCell(60, 6,'Act de recunoaștere Data echiv.',1,  1);
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(50, 6, ''.$nr_act_rec_licenta, 1, 1);
 	 $pdf->SetXY($x + 60, $y);
@@ -1042,20 +1044,20 @@ function Footer()
      //Emitere dipl. master
 	 
 	  $pdf->Ln(-1);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'Dipl. master Emisa de',0,0,'C');
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'Dipl. master Emisă de',0,0,'C');
 
 	  $pdf->Ln(7);
       $pdf->Cell(10);
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(170,6,''.strtoupper($denumire_institutie_fac),1,0,'L');
      
       
       //II.c stuff
      
       $pdf->Ln(11); 
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'II.c.Studiile universitare de master in curs',0,0,'C');
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'II.c.Studiile universitare de master în curs',0,0,'C');
 
        //Raspuns daca candidatul este student la alta facultate/univ
 	 $raspuns_alta_facultate = 'NU';
@@ -1065,15 +1067,15 @@ function Footer()
      $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-	 $pdf->MultiCell(40, 6, 'Student la alta facult/univ', 1, 1);
+	 $pdf->MultiCell(40, 6, 'Student la altă fac/univ', 1, 1);
 	 $pdf->SetXY($x + 50, $y);
-	 $pdf->MultiCell(27, 6,'Tara',1,  1); 
+	 $pdf->MultiCell(27, 6,'Țara',1,  1); 
      $pdf->SetXY($x + 77, $y);
 	 $pdf->MultiCell(35, 6,'Localitatea',1,  1); 
      $pdf->SetXY($x + 112, $y);
-	 $pdf->MultiCell(20, 6,'Judetul',1,  1);
+	 $pdf->MultiCell(20, 6,'Județul',1,  1);
      $pdf->SetXY($x + 132, $y);
 	 $pdf->MultiCell(48, 6,'Domeniul',1,  1);
       
@@ -1081,7 +1083,7 @@ function Footer()
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(40, 6, ''.$raspuns_alta_facultate, 1, 1);
 	 $pdf->SetXY($x + 50, $y);
@@ -1097,17 +1099,17 @@ function Footer()
      $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
 	 
-	 $pdf->MultiCell(100, 6,'Denumire institutie',1,  1);
+	 $pdf->MultiCell(100, 6,'Denumire instituție',1,  1);
      $pdf->SetXY($x + 110, $y);
 	 $pdf->MultiCell(70, 6,'Facultatea',1,  1);
      
      $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 	 
-	 $pdf->SetFont('Times','B',8);
+	 $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 
 	 $pdf->MultiCell(100, 6,''.strtoupper($in_curs_denum_instit_master),1,  1);
@@ -1119,33 +1121,33 @@ function Footer()
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-	 $pdf->MultiCell(49, 6,'Program de studii/Specializare',1,  1); 
-     $pdf->SetXY($x + 59, $y);
-	 $pdf->MultiCell(35, 6,'Forma de invatamant',1,  1); 
-     $pdf->SetXY($x + 94, $y);
+	 $pdf->MultiCell(54, 6,'Program de studii/Specializare',1,  1); 
+     $pdf->SetXY($x + 64, $y);
+	 $pdf->MultiCell(44, 6,'Forma de învățământ',1,  1); 
+     $pdf->SetXY($x + 108, $y);
 	 $pdf->MultiCell(10, 6,'Anul',1,  1);
-     $pdf->SetXY($x + 104, $y);
-	 $pdf->MultiCell(38, 6,'Numar semestre bugetar',1,  1);
-     $pdf->SetXY($x + 142, $y);
-	 $pdf->MultiCell(38, 6,'Numar semestre bursier',1,  1);
+     $pdf->SetXY($x + 118, $y);
+	 $pdf->MultiCell(31, 6,'Nr. sem. buget',1,  1);
+     $pdf->SetXY($x + 149, $y);
+	 $pdf->MultiCell(31, 6,'Nr. sem. bursă',1,  1);
       
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
-	 $pdf->MultiCell(49, 6,''.$in_curs_specializare_master,1,  1); 
-     $pdf->SetXY($x + 59, $y);
-	 $pdf->MultiCell(35, 6,''.$in_curs_forma_invat_master,1,  1); 
-     $pdf->SetXY($x + 94, $y);
+	 $pdf->MultiCell(54, 6,''.$in_curs_specializare_master,1,  1); 
+     $pdf->SetXY($x + 64, $y);
+	 $pdf->MultiCell(44, 6,''.$in_curs_forma_invat_master,1,  1); 
+     $pdf->SetXY($x + 108, $y);
 	 $pdf->MultiCell(10, 6,''.$in_curs_an_master,1,  1);
-     $pdf->SetXY($x + 104, $y);
-	 $pdf->MultiCell(38, 6,''.$in_curs_nr_sem_buget_master,1,  1);
-     $pdf->SetXY($x + 142, $y);
-	 $pdf->MultiCell(38, 6,''.$in_curs_nr_sem_bursa_master,1,  1);
+     $pdf->SetXY($x + 118, $y);
+	 $pdf->MultiCell(31, 6,''.$in_curs_nr_sem_buget_master,1,  1);
+     $pdf->SetXY($x + 149, $y);
+	 $pdf->MultiCell(31, 6,''.$in_curs_nr_sem_bursa_master,1,  1);
       
      
      
@@ -1153,35 +1155,36 @@ function Footer()
       
      $pdf->Ln(7);
 
-     $pdf->SetFont('Times','BI',10);
+     $pdf->SetFont('DejaVu','B',8);
      $pdf->Cell(0,10,'II.c.Studiile universitare de master absolvite',0,0,'C');
 
      //Raspuns cu/fara diploma de master
 	 
-	 $raspuns_diploma_master = 'FARA DIPLOMA';
+     $raspuns_diploma_master = null;
 	 if($absolvent_cu_diploma == 1) $raspuns_diploma_master = 'CU DIPLOMA';
+     else if($absolvent_cu_diploma == 2) $raspuns_diploma_master = 'FĂRĂ DIPLOMĂ';
      
      $pdf->Ln(7); 
      $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(27, 6, 'Anul absolvirii', 1, 1);
 	 $pdf->SetXY($x + 37, $y);
-	 $pdf->MultiCell(44, 6,'Cu/Fara diploma de master',1,  1); 
+	 $pdf->MultiCell(44, 6,'Cu/Fără dipl. de licență',1,  1); 
      $pdf->SetXY($x + 81, $y);
-	 $pdf->MultiCell(27, 6,'Tara',1,  1); 
+	 $pdf->MultiCell(27, 6,'Țara',1,  1); 
      $pdf->SetXY($x + 108, $y);
 	 $pdf->MultiCell(42, 6,'Localitatea',1,  1); 
      $pdf->SetXY($x + 150, $y);
-	 $pdf->MultiCell(30, 6,'Judetul',1,  1);
+	 $pdf->MultiCell(30, 6,'Județul',1,  1);
       
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(27, 6, ''.$absolvent_an, 1, 1);
 	 $pdf->SetXY($x + 37, $y);
@@ -1197,17 +1200,17 @@ function Footer()
      $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
 	 
-	 $pdf->MultiCell(100, 6,'Denumire institutie',1,  1);
+	 $pdf->MultiCell(100, 6,'Denumire instituție',1,  1);
      $pdf->SetXY($x + 110, $y);
 	 $pdf->MultiCell(70, 6,'Facultatea',1,  1);
      
      $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 	 
-	 $pdf->SetFont('Times','B',8);
+	 $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 
 	 $pdf->MultiCell(100, 6,''.strtoupper($absolvent_denumire_instit),1,  1);
@@ -1219,24 +1222,24 @@ function Footer()
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',7.6);
 	 $pdf->Cell(10);
-     $pdf->MultiCell(38, 6,'Domeniul',1,  1);
-     $pdf->SetXY($x + 48, $y);
+     $pdf->MultiCell(27, 6,'Domeniul',1,  1);
+     $pdf->SetXY($x + 37, $y);
 	 $pdf->MultiCell(45, 6,'Program studii/Specializare',1,  1); 
-     $pdf->SetXY($x + 93, $y);
-	 $pdf->MultiCell(25, 6,'Titlul obtinut',1,  1);
-     $pdf->SetXY($x + 118, $y);
-	 $pdf->MultiCell(35, 6,'Forma de invatamant',1,  1); 
-     $pdf->SetXY($x + 153, $y);
-	 $pdf->MultiCell(27, 6,'Nr. sem. bugetar',1,  1);
+     $pdf->SetXY($x + 82, $y);
+	 $pdf->MultiCell(25, 6,'Titlul obținut',1,  1);
+     $pdf->SetXY($x + 107, $y);
+	 $pdf->MultiCell(35, 6,'Forma de învățământ',1,  1); 
+     $pdf->SetXY($x + 142, $y);
+	 $pdf->MultiCell(38, 6,'Nr. semestre bugetar',1,  1);
   
       
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
      $pdf->MultiCell(38, 6,''.$absolvent_domeniu,1,  1);
      $pdf->SetXY($x + 48, $y);
@@ -1254,63 +1257,63 @@ function Footer()
 	 $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',7.6);
 	 $pdf->Cell(10);
-     $pdf->MultiCell(32, 6,'Nr. semestre bursier',1,  1);
+     $pdf->MultiCell(32, 6,'Nr. semestre bursă',1,  1);
      $pdf->SetXY($x + 42, $y);
-	 $pdf->MultiCell(23, 6,'Durata studii',1,  1); 
+	 $pdf->MultiCell(23, 6,'Durată studii',1,  1); 
      $pdf->SetXY($x + 65, $y);
-	 $pdf->MultiCell(29, 6,'Dipl. master Seria',1,  1);
-     $pdf->SetXY($x + 94, $y);
-	 $pdf->MultiCell(26, 6,'Dipl. master Nr',1,  1); 
-     $pdf->SetXY($x + 120, $y);
-	 $pdf->MultiCell(25, 6,'Data emitere',1,  1);
-     $pdf->SetXY($x + 145, $y);
-	 $pdf->MultiCell(35, 6,'Nr.foaie matr.',1,  1); 
+	 $pdf->MultiCell(32, 6,'Dipl. licență Seria',1,  1);
+     $pdf->SetXY($x + 97, $y);
+	 $pdf->MultiCell(26, 6,'Dipl. licență Nr',1,  1); 
+     $pdf->SetXY($x + 123, $y);
+	 $pdf->MultiCell(30, 6,'Dată emitere',1,  1);
+     $pdf->SetXY($x + 153, $y);
+	 $pdf->MultiCell(27, 6,'Nr.foaie matr.',1,  1); 
       
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
      $pdf->MultiCell(32, 6,''.$absolvent_nr_sem_bursa,1,  1);
      $pdf->SetXY($x + 42, $y);
 	 $pdf->MultiCell(23, 6,''.$absolvent_durata_studiilor,1,  1); 
      $pdf->SetXY($x + 65, $y);
-	 $pdf->MultiCell(29, 6,''.$absolvent_diplo_serie,1,  1);
-     $pdf->SetXY($x + 94, $y);
+	 $pdf->MultiCell(32, 6,''.$absolvent_diplo_serie,1,  1);
+     $pdf->SetXY($x + 97, $y);
 	 $pdf->MultiCell(26, 6,''.$absolvent_diplo_nr,1,  1); 
-     $pdf->SetXY($x + 120, $y);
-	 $pdf->MultiCell(25, 6,''.$absolvent_dipl_data_emitere,1,  1);
-     $pdf->SetXY($x + 145, $y);
-	 $pdf->MultiCell(35, 6,''.$absolvent_nr_foaie_matricola,1,  1); 
+     $pdf->SetXY($x + 123, $y);
+	 $pdf->MultiCell(30, 6,''.$absolvent_dipl_data_emitere,1,  1);
+     $pdf->SetXY($x + 153, $y);
+	 $pdf->MultiCell(27, 6,''.$absolvent_nr_foaie_matricola,1,  1); 
       
       
       
     //Observatii II.c
       
      $pdf->Ln(1);
-	 $pdf->SetFont('Times','BI',10);
-	 $pdf->Cell(0,10,'Alte observatii (pentru cazurile in care candidatul a absolvit studiile anterioare in strainatate) ',0,0,'C');
+	 $pdf->SetFont('DejaVu','B',8);
+	 $pdf->Cell(0,10,'Alte observații (pentru cazurile în care candidatul a absolvit studiile anterioare în străinătate)',0,0,'C');
 
      $pdf->Ln(8.5); 
      $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-	 $pdf->MultiCell(50, 6, 'Act de recunoastere Nr:', 1, 1);
+	 $pdf->MultiCell(50, 6, 'Act de recunoaștere Nr', 1, 1);
 	 $pdf->SetXY($x + 60, $y);
-	 $pdf->MultiCell(60, 6,'Act de recunoastere Serie:',1,  1); 
+	 $pdf->MultiCell(60, 6,'Act de recunoaștere Serie',1,  1); 
      $pdf->SetXY($x + 120, $y);
-	 $pdf->MultiCell(60, 6,'Act de recunoastere Data echivalarii:',1,  1);
+	 $pdf->MultiCell(60, 6,'Act de recunoaștere Data echiv.',1,  1);
       
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(50, 6, ''.$absolvent_act_rec_nr, 1, 1);
 	 $pdf->SetXY($x + 60, $y);
@@ -1321,12 +1324,12 @@ function Footer()
      //Emitere dipl. master
 	 
 	  $pdf->Ln(-1);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'Dipl. master Emisa de',0,0,'C');
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'Dipl. licență Emisă de',0,0,'C');
 
 	  $pdf->Ln(7);
       $pdf->Cell(10);
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(170,6,''.strtoupper($absolvent_denumire_instit),1,0,'L');
      
      //Linie pt footer
@@ -1344,10 +1347,10 @@ function Footer()
 	 $pdf->Line(10, 15, 210-10, 15);
 
 	 $pdf->Ln(8);
-     $pdf->SetFont('Times','B',11);
+     $pdf->SetFont('DejaVu','B',10);
 	 $pdf->Cell(10);
       
-	 $pdf->Cell(0,0,'III. CERINTE SPECIFICE FACULTATII',0,1);
+	 $pdf->Cell(0,0,'III. CERINȚE SPECIFICE FACULTĂȚII',0,1);
 	 $pdf->SetLineWidth(0);
 	 $pdf->Line(21, 20, 210-20, 21); 
 	 
@@ -1356,17 +1359,17 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',8);
 
 	  $pdf->Cell(10);
-	  $pdf->MultiCell(85, 6, 'Media generala la examenul de licenta', 1, 1);
+	  $pdf->MultiCell(85, 6, 'Media generală la examenul de licență', 1, 1);
 	  $pdf->SetXY($x + 95, $y);
 	  $pdf->MultiCell(85, 6,'Media de admitere',1,  1);
 
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(85, 6, ''.$medie_examen_licenta, 1, 1);
@@ -1377,10 +1380,10 @@ function Footer()
 	  $pdf->Line(10, 52, 210-10, 52);
 
 	  $pdf->Ln(14);
-	  $pdf->SetFont('Times','B',11);
+	  $pdf->SetFont('DejaVu','B',10);
 	  $pdf->Cell(10);
 
-	  $pdf->Cell(0,0,'IV. OPTIUNI DE ADMITERE, IN ORDINEA PREFERINTELOR',0,1);
+	  $pdf->Cell(0,0,'IV. OPȚIUNEA DE ADMITERE, ÎN ORDINEA PREFERINȚELOR',0,1);
 	  $pdf->SetLineWidth(0);
 	  $pdf->Line(20, 57.5, 210-20, 57.5); 
 
@@ -1389,17 +1392,17 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',8);
 
 	  $pdf->Cell(10);
-	  $pdf->MultiCell(50, 6, 'Ordine preferinta', 1, 1);
+	  $pdf->MultiCell(50, 6, 'Ordine preferință', 1, 1);
 	  $pdf->SetXY($x + 60, $y);
 	  $pdf->MultiCell(120, 6,'Domeniul/Programul',1,  1);
 
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(50, 6, '1', 1, 1);
@@ -1409,7 +1412,7 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(50, 6, '2', 1, 1);
@@ -1419,7 +1422,7 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(50, 6, '3', 1, 1);
@@ -1429,7 +1432,7 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(50, 6, '4', 1, 1);
@@ -1439,7 +1442,7 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(50, 6, '5', 1, 1);
@@ -1449,7 +1452,7 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(50, 6, '6', 1, 1);
@@ -1459,7 +1462,7 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(50, 6, '7', 1, 1);
@@ -1469,7 +1472,7 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(50, 6, '8', 1, 1);
@@ -1479,7 +1482,7 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(50, 6, '9', 1, 1);
@@ -1489,7 +1492,7 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(50, 6, '10', 1, 1);
@@ -1499,7 +1502,7 @@ function Footer()
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(50, 6, '11', 1, 1);
@@ -1508,17 +1511,17 @@ function Footer()
 	  
 	  $pdf->Ln(4);
 
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(0,10,'Acceptarea inmatricularii in caz ca nu a fost admis pe buget',0,0,'C');
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'Acceptarea înmatriculării în caz că nu a fost admis pe buget',0,0,'C');
 
       $stare_taxa = null;
       if($optiune_admitere_taxa == 1) $stare_taxa = 'Da';
       if($optiune_admitere_taxa == 2) $stare_taxa = 'Nu';
-      if($optiune_admitere_taxa == 3) $stare_taxa = 'Numai cu Taxa';
+      if($optiune_admitere_taxa == 3) $stare_taxa = 'Numai cu Taxă';
           
 	  $pdf->Ln(7);
 	  $pdf->Cell(69.5);
-	  $pdf->SetFont('Times','B',8);
+	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(50,6,''.$stare_taxa,1,0,'C');
 
       $pdf->SetLineWidth(0.5);
@@ -1529,8 +1532,8 @@ function Footer()
       
       //Preferinte
       
-      $pdf->SetFont('Times','B',11);
-	  $pdf->Cell(0,0,'V. INFORMATII PRIVIND DOCUMENTELE DE STUDII DEPUSE LA DOSAR ',0,1);
+      $pdf->SetFont('DejaVu','B',10);
+	  $pdf->Cell(0,0,'V. INFORMAȚII PRIVIND DOCUMENTELE DE STUDII DEPUSE LA DOSAR',0,1);
 	  $pdf->SetLineWidth(0);
 	  $pdf->Line(20, 176.5, 210-20, 176.5);
       
@@ -1564,82 +1567,82 @@ function Footer()
       $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',7.6);
 	  $pdf->Cell(57);
-	  $pdf->MultiCell(64, 6, 'Diploma de BAC (original)', 1, 1);
+	  $pdf->MultiCell(64, 6, 'Diplomă de BAC (original)', 1, 1);
 	  $pdf->SetXY($x + 121, $y);
-      $pdf->SetFont('Times','B',8);
+      $pdf->SetFont('DejaVu','B',7);
 	  $pdf->MultiCell(10, 6,''.$raspuns_diploma_bac_original,1,  1);
       
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',10);
+     $pdf->SetFont('DejaVu','B',7.6);
 	 $pdf->Cell(57);
-     $pdf->MultiCell(64, 6, 'Diploma de BAC (copie legaliz)', 1, 1);
+     $pdf->MultiCell(64, 6, 'Diplomă de BAC (copie legaliz)', 1, 1);
      $pdf->SetXY($x + 121, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
      $pdf->MultiCell(10, 6,''.$raspuns_diploma_bac_copie,1,  1);
      
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',10);
+     $pdf->SetFont('DejaVu','B',7.6);
 	 $pdf->Cell(57);
-     $pdf->MultiCell(64, 6, 'Document echiv. studii preuniv. (original)', 1, 1);
+     $pdf->MultiCell(64, 6, 'Doc. echiv. studii preuniv.(original)', 1, 1);
 	 $pdf->SetXY($x + 121, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(10, 6,''.$raspuns_echiv_studii_original,1,  1);
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',10);
+     $pdf->SetFont('DejaVu','B',7.6);
 	 $pdf->Cell(57);
-     $pdf->MultiCell(64, 6, 'Docum. echiv studii preuniv(copie legaliz)', 1, 1);
+     $pdf->MultiCell(64, 6, 'Doc. echiv. studii preuniv(copie legaliz)', 1, 1);
 	 $pdf->SetXY($x + 121, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(10, 6,''.$raspuns_echiv_studii_copie,1,  1);
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',10);
+     $pdf->SetFont('DejaVu','B',7.6);
 	 $pdf->Cell(57);
-     $pdf->MultiCell(64, 6, 'Diploma de licenta (original)', 1, 1);
+     $pdf->MultiCell(64, 6, 'Diplomă de licență (original)', 1, 1);
 	 $pdf->SetXY($x + 121, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(10, 6,''.$raspuns_diploma_licenta_original,1,  1);
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',10);
+     $pdf->SetFont('DejaVu','B',7.6);
 	 $pdf->Cell(57);
-     $pdf->MultiCell(64, 6, 'Diploma de licenta (copie legaliz)', 1, 1);
+     $pdf->MultiCell(64, 6, 'Diplomă de licență (copie legaliz)', 1, 1);
 	 $pdf->SetXY($x + 121, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(10, 6,''.$raspuns_diploma_licenta_copie,1,  1);
     
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',10);
+     $pdf->SetFont('DejaVu','B',7.6);
 	 $pdf->Cell(57);
-     $pdf->MultiCell(64, 6, 'Docum. echiv studii licenta (original)', 1, 1);
+     $pdf->MultiCell(64, 6, 'Doc. echiv studii licență (original)', 1, 1);
 	 $pdf->SetXY($x + 121, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(10, 6,''.$raspuns_echiv_licenta_original,1,  1);
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',10);
+     $pdf->SetFont('DejaVu','B',7.6);
 	 $pdf->Cell(57);
-     $pdf->MultiCell(64, 6, 'Docum. echiv studii licenta (copie legaliz)', 1, 1);
+     $pdf->MultiCell(64, 6, 'Doc. echiv studii licență (copie legaliz)', 1, 1);
 	 $pdf->SetXY($x + 121, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(10, 6,''.$raspuns_echiv_licenta_copie,1,  1);
       
      //Participa si la alte concursuri de admitere
@@ -1651,11 +1654,11 @@ function Footer()
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',10);
+     $pdf->SetFont('DejaVu','B',7.6);
 	 $pdf->Cell(57);
-     $pdf->MultiCell(64, 6, 'Participati la alt/e concurs/uri de admitere', 1, 1);
+     $pdf->MultiCell(64, 6, 'Particip. la alt/e concurs/uri de admitere', 1, 1);
 	 $pdf->SetXY($x + 121, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(10, 6,''.$raspuns_participa_alt,1,  1); 
       
       
@@ -1673,16 +1676,16 @@ function Footer()
     
      $pdf->SetLineWidth(0);
 	 $pdf->Ln(4);  
-	 $pdf->SetFont('Times','BI',10);
-	 $pdf->Cell(0,10,'La ce alte concursuri de admitere participa',0,0,'C');
+	 $pdf->SetFont('DejaVu','B',8);
+	 $pdf->Cell(0,10,'La ce alte concursuri de admitere participă',0,0,'C');
 
      $pdf->Ln(8.5); 
      $x = $pdf->GetX();
 	 $y = $pdf->GetY();
 
-	 $pdf->SetFont('Times','BI',10);
+	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-     $pdf->MultiCell(95, 6, 'Denumirea institutiei de invatamant superior', 1, 1);
+     $pdf->MultiCell(95, 6, 'Denumirea instituției de învățământ superior', 1, 1);
      $pdf->SetXY($x + 105, $y);
 	 $pdf->MultiCell(75, 6,'Facultatea',1,  1);
       
@@ -1690,7 +1693,7 @@ function Footer()
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
      $pdf->MultiCell(95, 6, ''.strtoupper($universitate1), 1, 1);
 	 $pdf->SetXY($x + 105, $y);
@@ -1718,77 +1721,77 @@ function Footer()
 	 $pdf->Line(10, 53.5, 210-10, 53.5);
       
 	 $pdf->Ln(10);
-	 $pdf->SetFont('Times','B',11);
+	 $pdf->SetFont('DejaVu','B',10);
 	 $pdf->Cell(10);
 
-	 $pdf->Cell(0,0,'VI. CERINTE SPECIFICE FACULTATII',0,1);
+	 $pdf->Cell(0,0,'V. CONDIȚII DE ÎNCHEIERE A CONTRACTULUI',0,1);
 	 $pdf->SetLineWidth(0);
 	 $pdf->Line(20, 59, 210-20, 59);
       
 	  $pdf->Ln(4);
 	  $pdf->Cell(20);
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',8);;
 	  $pdf->Cell(0,10,'Taxe',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
-	  $pdf->SetFont('Times','B',8);
-	  $pdf->Cell(0,10,'-Taxa de inscriere: 300 Ron',0,0,'L');
+	  $pdf->SetFont('DejaVu','B',7);
+	  $pdf->Cell(0,10,'-Taxă de înscriere: 300 Ron',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-Taxa de scolarizare: 3900 Ron',0,0,'L');
+	  $pdf->Cell(0,10,'-Taxă de școlarizare: 3900 Ron',0,0,'L');
 	  
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(20);
-	  $pdf->SetFont('Times','BI',10);
+	  $pdf->SetFont('DejaVu','B',8);
 	  $pdf->Cell(0,10,'Acte necesare',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
-	  $pdf->SetFont('Times','B',8);
-	  $pdf->Cell(0,10,'-fisa de inscriere tip',0,0,'L');
+	  $pdf->SetFont('DejaVu','B',7);
+	  $pdf->Cell(0,10,'-fișă de înscriere tip',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-diploma de bacalaureat si diploma de licenta (sau echivalentul ei), originale sau copii legalizate',0,0,'L');
+	  $pdf->Cell(0,10,'-diplomă de bacalaureat și diplomă de licență (sau echivalentul ei), originale sau copii legalizate',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(35);
-	  $pdf->Cell(0,10,'insotite de dovada ca originalele sunt depuse la alta facultate',0,0,'L');
+	  $pdf->Cell(0,10,'însoțite de dovada ca originalele sunt depuse la altă facultate',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-foaia matricola din facultate - nivel licenta (cu media ECTS)', 0, 0, 'L');
+	  $pdf->Cell(0,10,'-foaia matricolă din facultate - nivel licență (cu media ECTS)', 0, 0, 'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-certificat de nastere, in copie legalizata',0,0,'L');
+	  $pdf->Cell(0,10,'-certificat de naștere, în copie legalizată',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-copie simpla carte de identitate;',0,0,'L');
+	  $pdf->Cell(0,10,'-copie simplă carte de identitate;',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-doua fotografii tip buletin',0,0,'L');
+	  $pdf->Cell(0,10,'-două fotografii tip buletin',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-chitanta ce dovedeste plata taxei de inscriere',0,0,'L');
+	  $pdf->Cell(0,10,'-chitanță ce dovedește plata taxei de înscriere',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-adeverinta medicala tip',0,0,'L');
+	  $pdf->Cell(0,10,'-adeverință medicală tip',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-adeverinta din care sa rezulte calitatea de masterand',0,0,'L');
+	  $pdf->Cell(0,10,'-adeverință din care să rezulte calitatea de masterand',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-certificatul de casatorie sau documentul care atesta schimbarea numelui, in copie legalizata',0,0,'L');
+	  $pdf->Cell(0,10,'-certificatul de căsătorie sau documentul care atestă schimbarea numelui, în copie legalizată',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
@@ -1796,11 +1799,11 @@ function Footer()
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-candidatii absolventi de studii universitare de licenta de la universitatile particulare vor',0,0,'L');
+	  $pdf->Cell(0,10,'-candidații absolvenți de studii universitare de licență de la universitățile particulare vor',0,0,'L');
 	  
 	  $pdf->Ln(4);
 	  $pdf->Cell(35);
-	  $pdf->Cell(0,10,'prezenta, la inscriere, o dovada a acreditarii specializarii absolvite.',0,0,'L');
+	  $pdf->Cell(0,10,'prezenta, la înscriere, o dovadă a acreditării specializării absolvite.',0,0,'L');
 	  
 	  
       //Chestionaaaarrrr
@@ -1810,15 +1813,14 @@ function Footer()
 	  $pdf->Line(10, 146, 210-10, 146);
 
 	  $pdf->Ln(20);
-	  $pdf->SetFont('Times','B',11);
 	  $pdf->Cell(10);
 
       
       
       //Preferinte
       
-      $pdf->SetFont('Times','B',11);
-	  $pdf->Cell(0,0,'VII. CHESTIONAR PRIVIND ALEGEREA DUMNEAVOASTRA',0,1);
+      $pdf->SetFont('DejaVu','B',10);
+	  $pdf->Cell(0,0,'VII. CHESTIONAR PRIVIND ALEGEREA DUMNEAVOASTRĂ',0,1);
 	  $pdf->SetLineWidth(0);
 	  $pdf->Line(20, 151, 210-20, 151);
       
@@ -1826,25 +1828,25 @@ function Footer()
       
       $pdf->Ln(4);
       $pdf->Cell(10);
-	  $pdf->SetFont('Times','BI',10);
-	  $pdf->Cell(20,10,' De unde ati aflat despre admiterea la Universitatea',0,0,'L');
+	  $pdf->SetFont('DejaVu','B',7);
+	  $pdf->Cell(20,10,' De unde ați aflat despre admiterea la Universitatea',0,0,'L');
       
-      $pdf->Cell(155,10,'Cat de importanti au fost urmatorii factorii in alegerea facultatii,',0,0,'R');  
+      $pdf->Cell(155,10,'Cât de importanți au fost următorii factori în alegerea facultății,',0,0,'R');  
       
       $pdf->Ln(4);
       $pdf->Cell(10);
-      $pdf->Cell(20,10,'"Alexandru Ioan Cuza" din Iasi (UAIC)?',0,0,'L');
+      $pdf->Cell(20,10,'"Alexandru Ioan Cuza" din Iași (UAIC)?',0,0,'L');
       
-      $pdf->Cell(148,10,'apreciati cat de mult a contat fiecare in optiunea dv. privind',0,0,'R');
+      $pdf->Cell(149,10,'apreciați cât de mult a contat fiecare în opțiunea dv. privind',0,0,'R');
       
       $pdf->Ln(4);
-      $pdf->Cell(139,10,'alegerea programului de master?',0,0,'R');
+      $pdf->Cell(141.5,10,'alegerea programului de master?',0,0,'R');
       
       $pdf->Ln(10); 
       $x = $pdf->GetX();
 	  $y = $pdf->GetY();
 
-	  $pdf->SetFont('Times','B',10);
+	  $pdf->SetFont('DejaVu','B',8);
 	  $pdf->Cell(10);
 	  $pdf->MultiCell(62, 6, 'Surse de informare', 1, 1);
 	  $pdf->SetXY($x + 72, $y);
@@ -1855,9 +1857,9 @@ function Footer()
       $x = $pdf->GetX();
 
 	  $pdf->SetXY($x + 98, $y);
-	  $pdf->MultiCell(62, 6, 'Factorii care v-au influentat', 1, 1);
+	  $pdf->MultiCell(62, 6, 'Factorii care v-au influențat', 1, 1);
 	  $pdf->SetXY($x + 160, $y);
-	  $pdf->MultiCell(20, 6,'Importanta',1,  1);
+	  $pdf->MultiCell(20, 6,'Importanța',1,  1);
       
       
      $site_admitere_raspuns = '';
@@ -1867,21 +1869,21 @@ function Footer()
      $y = $pdf->GetY();
 
      
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-     $pdf->MultiCell(62, 6, 'Site-ul dedicat admiterii (admitere.uaic.ro) ', 1, 1);
+     $pdf->MultiCell(62, 6, 'Site-ul dedicat admiterii', 1, 1);
      $pdf->SetXY($x + 72, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
      $pdf->MultiCell(15, 6,''.$site_admitere_raspuns,1,  1);
      
      //Chestionar 2 linia 2
       $x = $pdf->GetX();
 
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->SetXY($x + 98, $y);
-	 $pdf->MultiCell(62, 6, 'Prestigiul Universitatii/facultatii', 1, 1);
+	 $pdf->MultiCell(62, 6, 'Prestigiul Universității/facultății', 1, 1);
      $pdf->SetXY($x + 160, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(20, 6,''.$prestigiu,1,  1);
       
      $site_facultate_raspuns = '';
@@ -1890,21 +1892,21 @@ function Footer()
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-     $pdf->MultiCell(62, 6, 'Site-ul facultatii', 1, 1);
+     $pdf->MultiCell(62, 6, 'Site-ul facultății', 1, 1);
 	 $pdf->SetXY($x + 72, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(15, 6,''.$site_facultate_raspuns,1,  1);
       
      //Chestionar 2 linia 3
       $x = $pdf->GetX();
 
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->SetXY($x + 98, $y);
-	 $pdf->MultiCell(62, 6, 'Calitatea educatiei la UAIC ', 1, 1);
+	 $pdf->MultiCell(62, 6, 'Calitatea educației la UAIC ', 1, 1);
      $pdf->SetXY($x + 160, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(20, 6,''.$calitate,1,  1); 
       
      $pagina_facebook_raspuns = '';
@@ -1913,21 +1915,21 @@ function Footer()
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-     $pdf->MultiCell(62, 6, 'Pagina de Facebook a Universitatii', 1, 1);
+     $pdf->MultiCell(62, 6, 'Pagina de Facebook a Universității', 1, 1);
 	 $pdf->SetXY($x + 72, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(15, 6,''.$pagina_facebook_raspuns,1,  1);
 
      //Chestionar 2 linia 4
       $x = $pdf->GetX();
 
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->SetXY($x + 98, $y);
 	 $pdf->MultiCell(62, 6, 'Sfatul persoanelor apropiate ', 1, 1);
      $pdf->SetXY($x + 160, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(20, 6,''.$sfat_persoane,1,  1);  
       
      $prieteni_raspuns = '';
@@ -1936,21 +1938,21 @@ function Footer()
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-     $pdf->MultiCell(62, 6, 'Prieteni, cunostinte, rude', 1, 1);
+     $pdf->MultiCell(62, 6, 'Prieteni, cunoștințe, rude', 1, 1);
 	 $pdf->SetXY($x + 72, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(15, 6,''.$prieteni_raspuns,1,  1);
      
       //Chestionar 2 linia 5
       $x = $pdf->GetX();
 
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->SetXY($x + 98, $y);
-	 $pdf->MultiCell(62, 6, 'Statutul profesiei pentru care optati', 1, 1);
+	 $pdf->MultiCell(62, 6, 'Statutul profesiei pentru care optați', 1, 1);
      $pdf->SetXY($x + 160, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(20, 6,''.$statut_profesie,1,  1);   
       
      $profesori_raspuns = '';
@@ -1959,21 +1961,21 @@ function Footer()
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
      $pdf->MultiCell(62, 6, 'Profesorii din facultate', 1, 1);
 	 $pdf->SetXY($x + 72, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(15, 6,''.$profesori_raspuns,1,  1);
      
       //Chestionar 2 linia 6
       $x = $pdf->GetX();
 
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->SetXY($x + 98, $y);
 	 $pdf->MultiCell(62, 6, 'Colegii', 1, 1);
      $pdf->SetXY($x + 160, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(20, 6,''.$colegii,1,  1);   
       
      $presa_raspuns = '';
@@ -1982,81 +1984,81 @@ function Footer()
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
      $pdf->MultiCell(62, 6, 'Presa', 1, 1);
 	 $pdf->SetXY($x + 72, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(15, 6,''.$presa_raspuns,1,  1);
       
       //Chestionar 2 linia 7
       $x = $pdf->GetX();
 
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->SetXY($x + 98, $y);
-	 $pdf->MultiCell(62, 6, 'Materiile care se studiaza', 1, 1);
+	 $pdf->MultiCell(62, 6, 'Materiile care se studiază', 1, 1);
      $pdf->SetXY($x + 160, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(20, 6,''.$materiile,1,  1);    
       
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-     $pdf->MultiCell(62, 6, 'Alte surse (mentionati care)...', 1, 1);
+     $pdf->MultiCell(62, 6, 'Alte surse (mentionați care)...', 1, 1);
 	 $pdf->SetXY($x + 72, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(15, 6,''.$alte_surse,1,  1);
      
       //Chestionar 2 linia 8
       $x = $pdf->GetX();
 
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->SetXY($x + 98, $y);
-	 $pdf->MultiCell(62, 6, 'Informatiile furnizate de Universitate', 1, 1);
+	 $pdf->MultiCell(62, 6, 'Informațiile furnizate de Universitate', 1, 1);
      $pdf->SetXY($x + 160, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(20, 6,''.$informatiile_universitatii,1,  1);  
      
       //Chestionar 2 linia 9
       $x = $pdf->GetX();
       $y = $pdf->GetY();
       
-     $pdf->SetFont('Times','BI',9);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->SetXY($x + 98, $y);
 	 $pdf->MultiCell(62, 6, 'Apropierea de domiciliu', 1, 1);
      $pdf->SetXY($x + 160, $y);
-     $pdf->SetFont('Times','B',8);
+     $pdf->SetFont('DejaVu','B',7);
 	 $pdf->MultiCell(20, 6,''.$apropierea,1,  1);  
        
      //VIII
       
      $pdf->Ln(5);
      
-     $pdf->SetFont('Times','B',11);
+     $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-	 $pdf->Cell(0,10,'VIII. Declar pe propria raspundere, cunoscand consecintele administrative si juridice ale declaratiilor',0,0,'L');
+	 $pdf->Cell(0,10,'VIII. Declar pe propria răspundere, cunoscând consecințele administrative și juridice ale declarațiilor',0,0,'L');
      $pdf->Ln(5);
      $pdf->Cell(10);
-	 $pdf->Cell(0,10,'inexacte/false, ca datele furnizate in aceasta fisa sunt conforme cu realitatea si ca am luat ',0,0,'L');
+	 $pdf->Cell(0,10,'inexacte/false, ca datele furnizate în această fișă sunt conforme cu realitatea și că am luat la ',0,0,'L');
      $pdf->Ln(5);
      $pdf->Cell(10);
-	 $pdf->Cell(0,10,'cunostinta prevederile metodologiei de admitere.',0,0,'L');
+	 $pdf->Cell(0,10,'cunoștință prevederile metodologiei de admitere.',0,0,'L');
      
       
      //IX
       
-     $pdf->SetFont('Times','B',11);
+     $pdf->SetFont('DejaVu','B',8);
      $pdf->Ln(9);
 	 $pdf->Cell(10);
 	 $pdf->Cell(0,10,'IX. Datele declarate de Dumneavoastra sunt prelucrate de Universitatea "Alexandru Ioan Cuza" din Iasi,',0,0,'L');
      $pdf->Ln(5);
      $pdf->Cell(10);
-	 $pdf->Cell(0,10,'in conformitate cu prevederile Legii 677/2001, privind protectia persoanelor cu privire la prelucrarea',0,0,'L');
+	 $pdf->Cell(0,10,'în conformitate cu prevederile Legii 677/2001, privind protecția persoanelor cu privire la prelucrarea',0,0,'L');
      $pdf->Ln(5);
      $pdf->Cell(10);
-	 $pdf->Cell(0,10,'datelor cu caracter personal si libera circulatie a acestor date, modificata si completata.',0,0,'L');
+	 $pdf->Cell(0,10,'datelor cu caracter personal și libera circulație a acestor date, modificată și completată.',0,0,'L');
       
 	  //Linie footer pag. 5
       
