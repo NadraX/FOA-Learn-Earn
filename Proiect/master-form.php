@@ -71,6 +71,8 @@
 
 		</script>
 
+		
+
 		<style type="text/css" id="form-designer-style">
 			/* Injected CSS Code */
 			/*PREFERENCES STYLE*/
@@ -448,7 +450,41 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('select[name="MedieGeneralaAdmitere0"]').change(function(){
+					var opt = $('select[name="MedieGeneralaAdmitere0"]').find(":selected").text();
+					if (opt == 1) {
+						$('[name="MedieGeneralaAdmitere1"]').attr('disabled', true);
+						$('[name="MedieGeneralaAdmitere2"]').attr('disabled', true);
+						$('[name="MedieGeneralaAdmitere3"]').attr('disabled', true);
 
+					}
+					else {
+						$('[name="MedieGeneralaAdmitere1"]').attr('disabled', false);
+						$('[name="MedieGeneralaAdmitere2"]').attr('disabled', false);
+						$('[name="MedieGeneralaAdmitere3"]').attr('disabled', false);
+
+					}
+				});
+				$('select[name="NotaLicenta0"]').change(function(){
+					var opt = $('select[name="NotaLicenta0"]').find(":selected").text();
+					if (opt == 1) {
+						$('[name="NotaLicenta1"]').attr('disabled', true);
+						$('[name="NotaLicenta2"]').attr('disabled', true);
+						$('[name="NotaLicenta3"]').attr('disabled', true);
+
+					}
+					else {
+						$('[name="NotaLicenta1"]').attr('disabled', false);
+						$('[name="NotaLicenta2"]').attr('disabled', false);
+						$('[name="NotaLicenta3"]').attr('disabled', false);
+
+					}
+				});
+
+			});
+		</script>
 		<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/buttons/form-submit-button-steel.css?3.3.292" />
 
 	</head>
@@ -7421,8 +7457,8 @@
 										<h5 class="form-label  form-label-auto" style="color: gray; font-size:medium; width:100%; display:inline-block; padding-top:1%;">
 											Ordonaţi opţiunile de mai jos în ordinea preferinţelor dumneavoastră!
 										</h5>
-										<label>Preferință 1(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="clasaPreferinte" style="width:40%" name="Optiune1" data-component="country">
+										<label class="form-label" style="color: gray;">Preferință 1(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="clasaPreferinte gen"  style="width:40%" name="Optiune1" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune1=="Selectați")
 																				echo 'selected';
@@ -7507,8 +7543,8 @@
 										</span>
 										
 										<br><br>
-										<label>Preferință 2(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="clasaPreferinte" style="width:40%" name="Optiune2" data-component="country">
+										<label class="form-label" style="color: gray;">Preferință 2(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="clasaPreferinte gen" style="width:40%" name="Optiune2" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune2=="Selectați")
 																				echo 'selected';
@@ -7593,8 +7629,8 @@
 										</span>
 										
 										<br><br>
-										<label>Preferință 3(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="clasaPreferinte" style="width:40%" name="Optiune3" data-component="country">
+										<label class="form-label" style="color: gray;">Preferință 3(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="clasaPreferinte gen" style="width:40%" name="Optiune3" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune3=="Selectați")
 																				echo 'selected';
@@ -7679,8 +7715,8 @@
 										</span>
 										
 										<br><br>
-										<label>Preferință 4(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="clasaPreferinte" style="width:40%" name="Optiune4" data-component="country">
+										<label class="form-label" style="color: gray;">Preferință 4(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="clasaPreferinte gen" style="width:40%" name="Optiune4" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune4=="Selectați")
 																				echo 'selected';
@@ -7765,8 +7801,8 @@
 										</span>
 										
 										<br><br>
-										<label>Preferință 5(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="clasaPreferinte" style="width:40%" name="Optiune5" data-component="country">
+										<label class="form-label" style="color: gray;">Preferință 5(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="clasaPreferinte gen" style="width:40%" name="Optiune5" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune5=="Selectați")
 																				echo 'selected';
@@ -7851,8 +7887,8 @@
 										</span>
 										
 										<br><br>
-										<label>Preferință 6(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="clasaPreferinte" style="width:40%" name="Optiune6" data-component="country">
+										<label class="form-label" style="color: gray;">Preferință 6(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="clasaPreferinte gen" style="width:40%" name="Optiune6" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune6=="Selectați")
 																				echo 'selected';
@@ -7937,8 +7973,8 @@
 										</span>
 										
 										<br><br>
-										<label>Preferință 7(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="clasaPreferinte" style="width:40%" name="Optiune7" data-component="country">
+										<label class="form-label" style="color: gray;">Preferință 7(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="clasaPreferinte gen" style="width:40%" name="Optiune7" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune7=="Selectați")
 																				echo 'selected';
@@ -8023,8 +8059,8 @@
 										</span>
 										
 										<br><br>
-										<label>Preferință 8(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="clasaPreferinte" style="width:40%" name="Optiune8" data-component="country">
+										<label class="form-label" style="color: gray;">Preferință 8(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="clasaPreferinte gen" style="width:40%" name="Optiune8" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune8=="Selectați")
 																				echo 'selected';
@@ -8109,8 +8145,8 @@
 										</span>
 										
 										<br><br>
-										<label>Preferință 9(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-										<select class="clasaPreferinte" style="width:40%" name="Optiune9" data-component="country">
+										<label class="form-label" style="color: gray;">Preferință 9(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+										<select class="clasaPreferinte gen" style="width:40%" name="Optiune9" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune9=="Selectați")
 																				echo 'selected';
@@ -8195,8 +8231,8 @@
 										</span>
 										
 										<br><br>
-										<label>Preferință 10(obligatoriu) &nbsp; &nbsp; &nbsp; </label>
-										<select class="clasaPreferinte" style="width:40%" name="Optiune10" data-component="country">
+										<label class="form-label" style="color: gray;">Preferință 10(obligatoriu) &nbsp; &nbsp; &nbsp; </label>
+										<select class="clasaPreferinte gen" style="width:40%" name="Optiune10" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune10=="Selectați")
 																				echo 'selected';
@@ -8281,8 +8317,8 @@
 										</span>
 										
 										<br><br>
-										<label>Preferință 11(obligatoriu) &nbsp; &nbsp; &nbsp; </label>
-										<select class="clasaPreferinte" style="width:40%" name="Optiune11" data-component="country">
+										<label class="form-label" style="color: gray;">Preferință 11(obligatoriu) &nbsp; &nbsp; &nbsp; </label>
+										<select class="clasaPreferinte gen" style="width:40%" name="Optiune11" data-component="country">
 											<option value="Selectati" <?php
 																			if($vOptiune11=="Selectați")
 																				echo 'selected';
@@ -8775,7 +8811,7 @@
 									<ul>
 										<li>fişa de înscriere tip;</li>
 
-										<li>diploma de bacalaureat şi diploma de licenţă (sau echivalentul ei), originale sau copii legalizate însoţite de dovada că originalele sunt depuse la altă facultate;</li>
+										<li>diploma de bacalaureat şi diploma de licenţă (sau echivalentul ei), originale sau copii legalizate însoţite de dovada că originalele sunt depuse <br> la altă facultate;</li>
 
 										<li>foaia matricolă din facultate - nivel licenţă (cu media ECTS); aceasta nu este necesară în cazul în care media ECTS de nivel licenţă apare în documentele de <br> la punctul anterior</li>
 

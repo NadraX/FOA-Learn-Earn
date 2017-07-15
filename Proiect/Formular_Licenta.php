@@ -108,8 +108,44 @@
 				}
 			}
 		</script>
+		
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('select[name="MedieBac0"]').change(function(){
+					var opt = $('select[name="MedieBac0"]').find(":selected").text();
+					if (opt == 1) {
+						$('[name="MedieBac1"]').attr('disabled', true);
+						$('[name="MedieBac2"]').attr('disabled', true);
+						$('[name="MedieBac3"]').attr('disabled', true);
+
+					}
+					else {
+						$('[name="MedieBac1"]').attr('disabled', false);
+						$('[name="MedieBac2"]').attr('disabled', false);
+						$('[name="MedieBac3"]').attr('disabled', false);
+
+					}
+				});
+				$('select[name="MedieAlegere0"]').change(function(){
+					var opt = $('select[name="MedieAlegere0"]').find(":selected").text();
+					if (opt == 1) {
+						$('[name="MedieAlegere1"]').attr('disabled', true);
+						$('[name="MedieAlegere2"]').attr('disabled', true);
+						$('[name="MedieAlegere3"]').attr('disabled', true);
+
+					}
+					else {
+						$('[name="MedieAlegere1"]').attr('disabled', false);
+						$('[name="MedieAlegere2"]').attr('disabled', false);
+						$('[name="MedieAlegere3"]').attr('disabled', false);
+
+					}
+				});
+
+			});
+		</script>
 		<script>
 			$( function() {
 				$( "ul.droptrue" ).sortable({
@@ -1651,7 +1687,7 @@
 												?>
 											</span>
 										</span>
-										<span  class="form-sub-label-container" style="vertical-align:top; width:8%;padding:0;margin:0;">
+										<span  class="form-sub-label-container" style="vertical-align:top; width:12%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Tip act identitate </label>
 											<!--<input type="text"  name="Licenta_Tip_Buletin" class="form-textbox first_1" size="20" placeholder="CI" data-component="first" value="<?php 
 																																																if($v_Licenta_Tip_Buletin == '') 
@@ -1701,7 +1737,7 @@
 											</span>
 										</span>
 
-										<span  class="form-sub-label-container" style="vertical-align:top; width:9%;padding:0;margin:0;">
+										<span  class="form-sub-label-container" style="vertical-align:top; width:12%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Serie act identitate </label>
 											<input type="text"  name="Licenta_Serie_Buletin" class="form-textbox first_1" size="20" placeholder="ex: IS " data-component="first" value="<?php 
 																																																if($v_Licenta_Serie_Buletin == '') 
@@ -1726,7 +1762,7 @@
 												?>
 											</span>
 										</span>
-										<span  class="form-sub-label-container" style="vertical-align:top; width:9%;padding:0;margin:0;">
+										<span  class="form-sub-label-container" style="vertical-align:top; width:14%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Numar act identitate </label>
 											<input type="number"  name="Licenta_Numar_Buletin" class="form-textbox first_1" size="20" placeholder="ex: 123456" data-component="first" value="<?php 
 																																																if($v_Licenta_Numar_Buletin == '') 
@@ -6719,8 +6755,8 @@
 									<h5 class="form-label  form-label-auto" style="color: gray; font-size:medium; width:100%; display:inline-block; padding-top:1%;">
 										Ordonaţi opţiunile de mai jos în ordinea preferinţelor dumneavoastră!
 									</h5>
-									<label>Preferință 1(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
-									<select class="clasaPreferinte" style="width:18%" name="Optiune1" data-component="country">
+									<label class="form-label" style="color: gray;">Preferință 1(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
+									<select class="clasaPreferinte gen" style="width:30%" name="Optiune1" data-component="country">
 										<option value="Selectati" <?php
 																		if($vOptiune1=="Selectați")
 																			echo 'selected';
@@ -6762,8 +6798,8 @@
 										?>
 									</span>
 									<br><br>
-									<label>Preferință 2(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
-									<select class="clasaPreferinte" style="width:18%" name="Optiune2"  data-component="country">
+									<label class="form-label" style="color: gray;">Preferință 2(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
+									<select class="clasaPreferinte gen" style="width:30%" name="Optiune2"  data-component="country">
 										<option value="Selectati" <?php
 																		if($vOptiune2=="Selectați")
 																			echo 'selected';
@@ -6796,8 +6832,8 @@
 																						?>>Informatică Limba Engleză - Taxă</option>
 									</select>
 									<br><br>
-									<label>Preferință 3(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
-									<select class="clasaPreferinte" style="width:18%" name="Optiune3"  data-component="country">
+									<label class="form-label" style="color: gray;">Preferință 3(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
+									<select class="clasaPreferinte gen" style="width:30%" name="Optiune3"  data-component="country">
 										<option value="Selectati" <?php
 																		if($vOptiune3=="Selectați")
 																			echo 'selected';
@@ -6830,8 +6866,8 @@
 																						?>>Informatică Limba Engleză - Taxă</option>
 									</select>
 									<br><br>
-									<label>Preferință 4(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</label>
-									<select class="clasaPreferinte" style="width:18%" name="Optiune4"  data-component="country">
+									<label class="form-label" style="color: gray;">Preferință 4(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</label>
+									<select class="clasaPreferinte gen" style="width:30%" name="Optiune4"  data-component="country">
 										<option value="Selectati" <?php
 																		if($vOptiune4=="Selectați")
 																			echo 'selected';
@@ -7090,7 +7126,7 @@
 										$v_Document_Echivalare_Studii=$_POST["Document_Echivalare_Studii"];
 										$v_Diploma_Olimpiada=$_POST["Diploma_Olimpiada"];
 									?>
-								   <li><input type="radio" name="Diploma_BAC" class="css-checkbox" value="1" id="Diploma_BAC_Original"  	<?php
+								   <li><input type="checkbox" name="Diploma_BAC" class="css-checkbox" value="1" id="Diploma_BAC_Original"  	<?php
 																																				if($v_Diploma_BAC == '')
 																																					echo '';
 																																				else
@@ -7100,9 +7136,9 @@
 																																						echo '';
 																																			?> />
 				 
-									<label for="Diploma_BAC_Original" class="css-label">Diploma de Bacalaureat în original</label></li>
+									<label for="Diploma_BAC_Original" class="css-label2">Diploma de Bacalaureat în original</label></li>
 				 
-									<li><input type="radio" name="Diploma_BAC" class="css-checkbox" value="2" id="Diploma_BAC_Copie" <?php
+									<li><input type="checkbox" name="Diploma_BAC" class="css-checkbox" value="2" id="Diploma_BAC_Copie" <?php
 																																		if($v_Diploma_BAC == '')
 																																			echo '';
 																																		else
@@ -7112,9 +7148,9 @@
 																																				echo '';
 																																	?> />
 				 
-									<label for="Diploma_BAC_Copie" class="css-label">Diploma de Bacalaureat copie</label></li>
+									<label for="Diploma_BAC_Copie" class="css-label2">Diploma de Bacalaureat copie</label></li>
 				 
-									<li><input type="radio" name="Adeverinta" class="css-checkbox" value="1" id="Adeverinţă_Original" <?php
+									<li><input type="checkbox" name="Adeverinta" class="css-checkbox" value="1" id="Adeverinţă_Original" <?php
 																																		if($v_Adeverinta == '')
 																																			echo '';
 																																		else
@@ -7124,9 +7160,9 @@
 																																				echo '';
 																																	?> />
 				 
-									<label for="Adeverinţă_Original" class="css-label">Adeverinţă în original</label></li>
+									<label for="Adeverinţă_Original" class="css-label2">Adeverinţă în original</label></li>
 				 
-									<li><input type="radio" name="Adeverinta" class="css-checkbox" value="2" id="Adeverinţă_Copie" <?php
+									<li><input type="checkbox" name="Adeverinta" class="css-checkbox" value="2" id="Adeverinţă_Copie" <?php
 																																	if($v_Adeverinta == '')
 																																		echo '';
 																																	else
@@ -7136,9 +7172,9 @@
 																																			echo '';
 																																?> />
 				 
-									<label for="Adeverinţă_Copie" class="css-label">Adeverinţă copie</label></li>
+									<label for="Adeverinţă_Copie" class="css-label2">Adeverinţă copie</label></li>
 				 
-									<li><input type="radio" name="Document_Echivalare_Studii" class="css-checkbox" value="1" id="Document_Echivalare_Studii_Original" <?php
+									<li><input type="checkbox" name="Document_Echivalare_Studii" class="css-checkbox" value="1" id="Document_Echivalare_Studii_Original" <?php
 																																										if($v_Document_Echivalare_Studii == '')
 																																											echo '';
 																																										else
@@ -7148,9 +7184,9 @@
 																																												echo '';
 																																									?> />
 				 
-									<label for="Document_Echivalare_Studii_Original" class="css-label">Document echivalare studii în original</label></li>
+									<label for="Document_Echivalare_Studii_Original" class="css-label2">Document echivalare studii în original</label></li>
 				 
-									<li><input type="radio" name="Document_Echivalare_Studii" class="css-checkbox" value="2" id="Document_Echivalare_Studii_Copie" <?php
+									<li><input type="checkbox" name="Document_Echivalare_Studii" class="css-checkbox" value="2" id="Document_Echivalare_Studii_Copie" <?php
 																																										if($v_Document_Echivalare_Studii == '')
 																																											echo '';
 																																										else
@@ -7160,9 +7196,9 @@
 																																												echo '';
 																																									?> />
 				 
-									<label for="Document_Echivalare_Studii_Copie" class="css-label">Document echivalare studii copie</label></li> 
+									<label for="Document_Echivalare_Studii_Copie" class="css-label2">Document echivalare studii copie</label></li> 
 				 
-									<li><input type="radio" name="Diploma_Olimpiada" class="css-checkbox" value="1" id="Diploma_Olimpiada_Original"   <?php
+									<li><input type="checkbox" name="Diploma_Olimpiada" class="css-checkbox" value="1" id="Diploma_Olimpiada_Original"   <?php
 																																						if($v_Diploma_Olimpiada == '')
 																																							echo '';
 																																						else
@@ -7172,7 +7208,7 @@
 																																								echo '';
 																																					?> />
 
-									<label for="Diploma_Olimpiada_Original" class="css-label">Diploma de Olimpiadă în original</label></li>
+									<label for="Diploma_Olimpiada_Original" class="css-label2">Diploma de Olimpiadă în original</label></li>
 				 
 									<!--    <li><input type="radio" name="Diploma_Olimpiada" class="css-checkbox" value="2" id="Diploma_Olimpiada_Scanata" <?php
 																																						//if($v_Diploma_Olimpiada == '')
