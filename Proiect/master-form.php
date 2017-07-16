@@ -8500,6 +8500,16 @@
 								<br>
 								<ul class="checkbox-grid">
 									<br>
+									<?php 
+										$Master_Diploma_BAC_Original=$_POST["Master_Diploma_BAC_Original"];
+										$Master_Diploma_BAC_Copie=$_POST["Master_Diploma_BAC_Copie"];
+										$Master_Echivalare_Studii_Preuniversitare_Original=$_POST["Master_Echivalare_Studii_Preuniversitare_Original"];
+										$Master_Echivalare_Studii_Preuniversitare_Copie=$_POST["Master_Echivalare_Studii_Preuniversitare_Copie"];
+										$Master_Diploma_Master_Original=$_POST["Master_Diploma_Master_Original"];
+										$Master_Diploma_Master_Copie=$_POST["Master_Diploma_Master_Copie"];
+										$Master_Echivalare_Studii_Master_Original=$_POST["Master_Echivalare_Studii_Master_Original"];
+										$Master_Echivalare_Studii_Master_Copie=$_POST["Master_Echivalare_Studii_Master_Copie"];
+									?>
 									<li><input type="checkbox" name="Master_Diploma_BAC_Original" class="css-checkbox" value="1" id="Master_Diploma_BAC_Original" 	<?php
 																																										if($Master_Diploma_BAC_Original == '')
 																																											echo '';
@@ -8509,7 +8519,23 @@
 																																											else
 																																												echo '';
 																																									?>/>
-										<label for="Master_Diploma_BAC_Original" class="css-label2">Diploma de Bacalaureat - original</label></li>
+										<label for="Master_Diploma_BAC_Original" class="css-label2">Diploma de Bacalaureat - original</label>
+										
+										
+										<span style="color:red">
+											<?php
+												if(isset($_POST['Submit'])) {
+													$Master_Diploma_BAC_Original=$_POST["Master_Diploma_BAC_Original"];
+													$Master_Diploma_BAC_Copie=$_POST["Master_Diploma_BAC_Copie"];
+													if($Master_Diploma_BAC_Original==1 && $Master_Diploma_BAC_Copie==1)
+														echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Selectează doar o opțiune!!";
+													else
+														if($Master_Diploma_BAC_Original=='' && $Master_Diploma_BAC_Copie=='')
+															echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Îți trebuie o diplomă!!";
+												}
+											?>
+										</span>
+									</li>
 									<li><input type="checkbox" name="Master_Diploma_BAC_Copie" class="css-checkbox" value="1" id="Master_Diploma_BAC_Copie" <?php
 																																								if($Master_Diploma_BAC_Copie == '')
 																																									echo '';
@@ -8529,7 +8555,21 @@
 																																																						else
 																																																							echo '';
 																																																				?> />
-										<label for="Master_Echivalare_Studii_Preuniversitare_Original" class="css-label2">Document echivalare studii preuniversitare - original</label></li>
+										<label for="Master_Echivalare_Studii_Preuniversitare_Original" class="css-label2">Document echivalare studii preuniversitare - original</label>
+										
+										<span style="color:red">
+											<?php
+												if(isset($_POST['Submit'])) {
+													$Master_Echivalare_Studii_Preuniversitare_Original=$_POST["Master_Echivalare_Studii_Preuniversitare_Original"];
+													$Master_Echivalare_Studii_Preuniversitare_Copie=$_POST["Master_Echivalare_Studii_Preuniversitare_Copie"];
+													if($Master_Echivalare_Studii_Preuniversitare_Original==1 && $Master_Echivalare_Studii_Preuniversitare_Copie==1)
+														echo "Selectează doar o opțiune!!";
+													
+												}
+											?>
+										</span>
+										
+									</li>
 									<li><input type="checkbox" name="Master_Echivalare_Studii_Preuniversitare_Copie" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Copie" <?php
 																																																			if($Master_Echivalare_Studii_Preuniversitare_Copie == '')
 																																																				echo '';
@@ -8549,7 +8589,23 @@
 																																												else
 																																													echo '';
 																																										?> />
-										<label for="Master_Diploma_Master_Original" class="css-label2">Diplomă de licenţă - original</label></li>
+										<label for="Master_Diploma_Master_Original" class="css-label2">Diplomă de licenţă - original</label>
+										
+										<span style="color:red">
+											<?php
+												if(isset($_POST['Submit'])) {
+													$Master_Diploma_Master_Original=$_POST["Master_Diploma_Master_Original"];
+													$Master_Diploma_Master_Copie=$_POST["Master_Diploma_Master_Copie"];
+													if($Master_Diploma_Master_Original==1 && $Master_Diploma_Master_Copie==1)
+														echo " &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; Selectează doar o opțiune!!";
+													else
+														if($Master_Diploma_Master_Original=='' && $Master_Diploma_Master_Copie=='')
+															echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Îți trebuie o diplomă!!";
+												}
+											?>
+										</span>
+										
+									</li>
 									<li><input type="checkbox" name="Master_Diploma_Master_Copie" class="css-checkbox" value="1" id="Master_Diploma_Master_Copie" 	<?php
 																																										if($Master_Diploma_Master_Copie == '')
 																																											echo '';
@@ -8569,7 +8625,20 @@
 																																																	else
 																																																		echo '';
 																																															?> />
-										<label for="Master_Echivalare_Studii_Master_Original" class="css-label2">Document echivalare studii licenţă - original</label></li>
+										<label for="Master_Echivalare_Studii_Master_Original" class="css-label2">Document echivalare studii licenţă - original</label>
+										
+										<span style="color:red">
+											<?php
+												if(isset($_POST['Submit'])) {
+													$Master_Echivalare_Studii_Master_Original=$_POST["Master_Echivalare_Studii_Master_Original"];
+													$Master_Echivalare_Studii_Master_Copie=$_POST["Master_Echivalare_Studii_Master_Copie"];
+													if($Master_Echivalare_Studii_Master_Original==1 && $Master_Echivalare_Studii_Master_Copie==1)
+														echo " &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Selectează doar o opțiune!!";
+												}
+											?>
+										</span>
+										
+									</li>
 									<li><input type="checkbox" name="Master_Echivalare_Studii_Master_Copie" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Master_Copie"  	<?php
 																																															if($Master_Echivalare_Studii_Master_Copie == '')
 																																																echo '';
