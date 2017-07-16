@@ -1748,16 +1748,18 @@
 											<span style="color:red">
 												<?php 
 													if(isset($_POST['Submit'])) {
-														$v_Licenta_Serie_Buletin = $_POST["Licenta_Serie_Buletin"];  // V
-														$vLicenta_Serie_Buletin = validSerieBuletin($v_Licenta_Serie_Buletin);
-														if($vLicenta_Serie_Buletin==-1)
-															echo "C&#226;mp necompletat!";
-														else
-															if($vLicenta_Serie_Buletin==1)
-																echo "Caractere nepermise!";
+														$v_Licenta_Serie_Buletin = $_POST["Licenta_Serie_Buletin"];
+														if($v_Licenta_Tip_Buletin=="CI") {
+															$vLicenta_Serie_Buletin = validSerieBuletin($v_Licenta_Serie_Buletin);
+															if($vLicenta_Serie_Buletin==-1)
+																echo "C&#226;mp necompletat!";
 															else
-																if($vLicenta_Serie_Buletin==2)
-																	echo "Obligatoriu 2 majuscule";
+																if($vLicenta_Serie_Buletin==1)
+																	echo "Caractere nepermise!";
+																else
+																	if($vLicenta_Serie_Buletin==2)
+																		echo "Obligatoriu 2 majuscule";
+														}
 													}
 												?>
 											</span>
@@ -1773,16 +1775,18 @@
 											<span style="color:red">
 												<?php 
 													if(isset($_POST['Submit'])) {
-														$v_Licenta_Numar_Buletin = $_POST["Licenta_Numar_Buletin"];  // V
-														$vLicenta_Numar_Buletin = validNumarBuletin($v_Licenta_Numar_Buletin);
-														if($vLicenta_Numar_Buletin==-1)
-															echo "C&#226;mp necompletat!";
-														else
-															if($vLicenta_Numar_Buletin==1)
-																echo "Caractere nepermise!";
+														$v_Licenta_Numar_Buletin = $_POST["Licenta_Numar_Buletin"];
+														if($v_Licenta_Tip_Buletin=="CI") {
+															$vLicenta_Numar_Buletin = validNumarBuletin($v_Licenta_Numar_Buletin);
+															if($vLicenta_Numar_Buletin==-1)
+																echo "C&#226;mp necompletat!";
 															else
-																if($vLicenta_Numar_Buletin==2)
-																	echo "Obligatoriu 6 cifre";
+																if($vLicenta_Numar_Buletin==1)
+																	echo "Caractere nepermise!";
+																else
+																	if($vLicenta_Numar_Buletin==2)
+																		echo "Obligatoriu 6 cifre";
+														}
 													}
 												?>
 											</span>
@@ -7121,76 +7125,131 @@
 								<ul class="checkbox-grid">
 									<br>
 									<?php 
-										$v_Diploma_BAC=$_POST["Diploma_BAC"];
-										$v_Adeverinta=$_POST["Adeverinta"];
-										$v_Document_Echivalare_Studii=$_POST["Document_Echivalare_Studii"];
+										$v_Diploma_BAC1=$_POST["Diploma_BAC1"];
+										$v_Diploma_BAC2=$_POST["Diploma_BAC2"];
+										$v_Adeverinta1=$_POST["Adeverinta1"];
+										$v_Adeverinta2=$_POST["Adeverinta2"];
+										$v_Document_Echivalare_Studii1=$_POST["Document_Echivalare_Studii1"];
+										$v_Document_Echivalare_Studii2=$_POST["Document_Echivalare_Studii2"];
 										$v_Diploma_Olimpiada=$_POST["Diploma_Olimpiada"];
 									?>
-								   <li><input type="checkbox" name="Diploma_BAC" class="css-checkbox" value="1" id="Diploma_BAC_Original"  	<?php
-																																				if($v_Diploma_BAC == '')
+								   <li><input type="checkbox" name="Diploma_BAC1" class="css-checkbox" value="1" id="Diploma_BAC_Original"  <?php
+																																				if($v_Diploma_BAC1 == '')
 																																					echo '';
 																																				else
-																																					if($v_Diploma_BAC==1)
+																																					if($v_Diploma_BAC1==1)
 																																						echo 'checked="checked"';
 																																					else
 																																						echo '';
 																																			?> />
 				 
-									<label for="Diploma_BAC_Original" class="css-label2">Diploma de Bacalaureat în original</label></li>
+									<label for="Diploma_BAC_Original" class="css-label2">Diploma de Bacalaureat în original</label>
+									<span style="color:red">
+										<?php
+											if(isset($_POST['Submit'])) {
+												$v_Diploma_BAC1=$_POST["Diploma_BAC1"];
+												$v_Diploma_BAC2=$_POST["Diploma_BAC2"];
+												if($v_Diploma_BAC1==1 && $v_Diploma_BAC2==2)
+													echo " &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Trebuie să selectezi doar o opțiune!!";
+												
+											}
+										?>
+									</span>
+									</li>
 				 
-									<li><input type="checkbox" name="Diploma_BAC" class="css-checkbox" value="2" id="Diploma_BAC_Copie" <?php
-																																		if($v_Diploma_BAC == '')
-																																			echo '';
-																																		else
-																																			if($v_Diploma_BAC==2)
-																																				echo 'checked="checked"';
-																																			else
+									<li><input type="checkbox" name="Diploma_BAC2" class="css-checkbox" value="2" id="Diploma_BAC_Copie" <?php
+																																			if($v_Diploma_BAC2 == '')
 																																				echo '';
-																																	?> />
+																																			else
+																																				if($v_Diploma_BAC2==2)
+																																					echo 'checked="checked"';
+																																				else
+																																					echo '';
+																																		?> />
 				 
 									<label for="Diploma_BAC_Copie" class="css-label2">Diploma de Bacalaureat copie</label></li>
+									
+									
 				 
-									<li><input type="checkbox" name="Adeverinta" class="css-checkbox" value="1" id="Adeverinţă_Original" <?php
-																																		if($v_Adeverinta == '')
-																																			echo '';
-																																		else
-																																			if($v_Adeverinta==1)
-																																				echo 'checked="checked"';
-																																			else
+									<li><input type="checkbox" name="Adeverinta1" class="css-checkbox" value="1" id="Adeverinţă_Original" <?php
+																																			if($v_Adeverinta1 == '')
 																																				echo '';
-																																	?> />
+																																			else
+																																				if($v_Adeverinta1==1)
+																																					echo 'checked="checked"';
+																																				else
+																																					echo '';
+																																		?> />
 				 
-									<label for="Adeverinţă_Original" class="css-label2">Adeverinţă în original</label></li>
+									<label for="Adeverinţă_Original" class="css-label2">Adeverinţă în original</label>
+									
+									<span style="color:red">
+										<?php
+											if(isset($_POST['Submit'])) {
+												$v_Adeverinta1=$_POST["Adeverinta1"];
+												$v_Adeverinta2=$_POST["Adeverinta2"];
+												if($v_Adeverinta1==1 && $v_Adeverinta2==2)
+													echo " &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Trebuie să selectezi doar o opțiune!!";
+											
+											}
+										?>
+									</span>
+									</li>
+									
 				 
-									<li><input type="checkbox" name="Adeverinta" class="css-checkbox" value="2" id="Adeverinţă_Copie" <?php
-																																	if($v_Adeverinta == '')
-																																		echo '';
-																																	else
-																																		if($v_Adeverinta==2)
-																																			echo 'checked="checked"';
-																																		else
-																																			echo '';
-																																?> />
+									<li><input type="checkbox" name="Adeverinta2" class="css-checkbox" value="2" id="Adeverinţă_Copie" 	<?php
+																																			if($v_Adeverinta2 == '')
+																																				echo '';
+																																			else
+																																				if($v_Adeverinta2==2)
+																																					echo 'checked="checked"';
+																																				else
+																																					echo '';
+																																		?> />
 				 
 									<label for="Adeverinţă_Copie" class="css-label2">Adeverinţă copie</label></li>
-				 
-									<li><input type="checkbox" name="Document_Echivalare_Studii" class="css-checkbox" value="1" id="Document_Echivalare_Studii_Original" <?php
-																																										if($v_Document_Echivalare_Studii == '')
+									
+									<div style="color:red">
+										<?php
+											if(isset($_POST['Submit'])) {
+												$v_Adeverinta1=$_POST["Adeverinta1"];
+												$v_Adeverinta2=$_POST["Adeverinta2"];
+												if($v_Diploma_BAC1=='' && $v_Diploma_BAC2=='' && $v_Adeverinta1=='' && $v_Adeverinta2=='')
+													echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Trebuie minim o Diplomă/Adeverință în copie/original!!";}
+										?>
+									</div>
+									
+									<li><input type="checkbox" name="Document_Echivalare_Studii1" class="css-checkbox" value="1" id="Document_Echivalare_Studii_Original" <?php
+																																										if($v_Document_Echivalare_Studii1 == '')
 																																											echo '';
 																																										else
-																																											if($v_Document_Echivalare_Studii==1)
+																																											if($v_Document_Echivalare_Studii1==1)
 																																												echo 'checked="checked"';
 																																											else
 																																												echo '';
 																																									?> />
 				 
-									<label for="Document_Echivalare_Studii_Original" class="css-label2">Document echivalare studii în original</label></li>
+									<label for="Document_Echivalare_Studii_Original" class="css-label2">Document echivalare studii în original</label>
+									
+									<span style="color:red">
+										<?php
+											if(isset($_POST['Submit'])) {
+												$v_Document_Echivalare_Studii1=$_POST["Document_Echivalare_Studii1"];
+												$v_Document_Echivalare_Studii2=$_POST["Document_Echivalare_Studii2"];
+												if($v_Document_Echivalare_Studii1==1 && $v_Document_Echivalare_Studii2==2)
+													echo " &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Trebuie să selectezi doar o opțiune!!";
+											
+											}
+										?>
+									</span>
+									
+									</li>
 				 
-									<li><input type="checkbox" name="Document_Echivalare_Studii" class="css-checkbox" value="2" id="Document_Echivalare_Studii_Copie" <?php
-																																										if($v_Document_Echivalare_Studii == '')
+									<li><input type="checkbox" name="Document_Echivalare_Studii2" class="css-checkbox" value="2" id="Document_Echivalare_Studii_Copie" <?php
+																																										if($v_Document_Echivalare_Studii2 == '')
 																																											echo '';
 																																										else
-																																											if($v_Document_Echivalare_Studii==2)
+																																											if($v_Document_Echivalare_Studii2==2)
 																																												echo 'checked="checked"';
 																																											else
 																																												echo '';
@@ -7276,10 +7335,10 @@
 												<span style="color:red">		
 													<?php		
 														if(isset($_POST['Submit'])) {
-															if($vradio27==1){
+															if($v_Radio27==1){
 																$v_Licenta_AlteConcursuri_Univ1 = $_POST["Licenta_AlteConcursuri_Univ1"];
 																$vLicenta_AlteConcursuri_Univ1 = validNumeInstitutie($v_Licenta_AlteConcursuri_Univ1);
-																	if($vLicenta_AlteConcursuri_Univ1==-1)
+																	if($v_Licenta_AlteConcursuri_Univ1=='')
 																		echo "C&#226;mp necompletat!";
 																	else
 																		if($vLicenta_AlteConcursuri_Univ1==1)
@@ -7304,7 +7363,7 @@
 												<span style="color:red">		
 													<?php		
 														if(isset($_POST['Submit'])) {
-															if($vradio27==1){
+															if($v_Radio27==1){
 																$v_Licenta_AlteConcursuri_Facultate1 = $_POST["Licenta_AlteConcursuri_Facultate1"];			
 																$vLicenta_AlteConcursuri_Facultate1 = validNumeInstitutie($v_Licenta_AlteConcursuri_Facultate1);
 																	if($vLicenta_AlteConcursuri_Facultate1==-1)
@@ -7336,7 +7395,7 @@
 												<span style="color:red">
 													<?php		
 														if(isset($_POST['Submit'])) {
-															if($vradio27==1){
+															if($v_Radio27==1){
 																$v_Licenta_AlteConcursuri_Univ2 = $_POST["Licenta_AlteConcursuri_Univ2"];	
 																$vLicenta_AlteConcursuri_Univ2 = validNumeInstitutie($v_Licenta_AlteConcursuri_Univ2);		
 																if($v_Licenta_AlteConcursuri_Univ2!==''){
@@ -7365,7 +7424,7 @@
 												<span style="color:red">		
 													<?php		
 														if(isset($_POST['Submit'])) {
-															if($vradio27==1){
+															if($v_Radio27==1){
 																$v_Licenta_AlteConcursuri_Facultate2 = $_POST["Licenta_AlteConcursuri_Facultate2"];		
 																$vLicenta_AlteConcursuri_Facultate2 = validNumeInstitutie($v_Licenta_AlteConcursuri_Facultate2);		
 																if($v_Licenta_AlteConcursuri_Facultate2!=='') {
@@ -7398,7 +7457,7 @@
 												<span style="color:red">		
 													<?php		
 														if(isset($_POST['Submit'])) {
-															if($vradio27==1){
+															if($v_Radio27==1){
 																$v_Licenta_AlteConcursuri_Univ3 = $_POST["Licenta_AlteConcursuri_Univ3"];		
 																$vLicenta_AlteConcursuri_Univ3 = validNumeInstitutie($v_Licenta_AlteConcursuri_Univ3);		
 																if($v_Licenta_AlteConcursuri_Univ3!==''){
@@ -7426,7 +7485,7 @@
 												<span style="color:red">		
 													<?php		
 														if(isset($_POST['Submit'])) {
-															if($vradio27==1){
+															if($v_Radio27==1){
 																$v_Licenta_AlteConcursuri_Facultate3 = $_POST["Licenta_AlteConcursuri_Facultate3"];		
 																$vLicenta_AlteConcursuri_Facultate3 = validNumeInstitutie($v_Licenta_AlteConcursuri_Facultate3);		
 																if($v_Licenta_AlteConcursuri_Facultate3!==''){
