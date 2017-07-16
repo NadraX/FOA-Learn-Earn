@@ -787,7 +787,7 @@
 								$vMaster_Nota_Master =  validareMedieBac($v_Master_Nota_Master);
 							$v_Master_AbsolventMaster_Univ = $_POST["Master_AbsolventMaster_Univ"];
 							$v_Master_AbsolventMaster_Facultate = $_POST["Master_AbsolventMaster_Facultate"];
-								$vMaster_AbsolventMaster_Facultate = validNume($v_Master_AbsolventMaster_Facultate);
+								$vMaster_AbsolventMaster_Facultate = validNumeInstitutie($v_Master_AbsolventMaster_Facultate);
 							$v_Master_AbsolventMaster_Domeniu_Master = $_POST["Master_AbsolventMaster_Domeniu_Master"];
 								$vMaster_AbsolventMaster_Domeniu_Master = validNume($v_Master_AbsolventMaster_Domeniu_Master);
 							$v_Master_AbsolventMaster_An_Facultate = $_POST["Master_AbsolventMaster_An_Facultate"];
@@ -821,11 +821,11 @@
 								$vMaster_Serie_ActRecunoastere = validSerieBAC($v_Master_Serie_ActRecunoastere);
 							$v_Master_Nr_ActRecunoastere = $_POST["Master_Nr_ActRecunoastere"];
 							$v_Master_AbsolventMaster_Univ = $_POST["Master_AbsolventMaster_Univ"];
-								$vMaster_AbsolventMaster_Univ = validNume($v_Master_AbsolventMaster_Univ);
+								$vMaster_AbsolventMaster_Univ = validNumeInstitutie($v_Master_AbsolventMaster_Univ);
 							$v_Master_AbsolventMaster_Univ1 = $_POST["Master_AbsolventMaster_Univ1"];
-								$vMaster_AbsolventMaster_Univ1 = validNume($v_Master_AbsolventMaster_Univ1);
+								$vMaster_AbsolventMaster_Univ1 = validNumeInstitutie($v_Master_AbsolventMaster_Univ1);
 							$v_Master_AbsolventMaster_Facultate1 = $_POST["Master_AbsolventMaster_Facultate1"];
-								$vMaster_AbsolventMaster_Facultate1 = validNume($v_Master_AbsolventMaster_Facultate1);
+								$vMaster_AbsolventMaster_Facultate1 = validNumeInstitutie($v_Master_AbsolventMaster_Facultate1);
 							$v_Master_AbsolventMaster_Domeniu_Master1 = $_POST["Master_AbsolventMaster_Domeniu_Master1"];
 								$vMaster_AbsolventMaster_Domeniu_Master1 = validNume($v_Master_AbsolventMaster_Domeniu_Master1);
 							$v_Master_AbsolventMaster_Specializare1 = $_POST["Master_AbsolventMaster_Specializare1"];
@@ -849,9 +849,9 @@
 							$v_Master_AbsolventMaster_Serie_ActRecunoastere = $_POST["Master_AbsolventMaster_Serie_ActRecunoastere"];
 								$vMaster_AbsolventMaster_Serie_ActRecunoastere = validSerieBAC($v_Master_AbsolventMaster_Serie_ActRecunoastere);
 							$v_Master_AltaUniversitate = $_POST["Master_AltaUniversitate"];
-								$vMaster_AltaUniversitate = validNume($v_Master_AltaUniversitate);
+								$vMaster_AltaUniversitate = validNumeInstitutie($v_Master_AltaUniversitate);
 							$v_Master_AltaFacultate = $_POST["Master_AltaFacultate"];
-								$vMaster_AltaFacultate = validNume($v_Master_AltaFacultate);
+								$vMaster_AltaFacultate = validNumeInstitutie($v_Master_AltaFacultate);
 							$v_Master_Domeniu_Master = $_POST["Master_Domeniu_Master"];
 								$vMaster_Domeniu_Master = validNume($v_Master_Domeniu_Master);
 							$v_Master_Specializare = $_POST["Master_Specializare"];
@@ -865,7 +865,7 @@
 							$v_Master_Localitate_AltaFacultate = $_POST["Master_Localitate_AltaFacultate"];
 								$vMaster_Localitate_AltaFacultate = validLocalitate($v_Master_Localitate_AltaFacultate);
 							$v_Master_AbsolventMaster_Univ = $_POST["Master_AbsolventMaster_Univ"];
-								$vMaster_AbsolventMaster_Univ = validNume($v_Master_AbsolventMaster_Univ);
+								$vMaster_AbsolventMaster_Univ = validNumeInstitutie($v_Master_AbsolventMaster_Univ);
 							$v_Master_AbsolventMaster_Specializare = $_POST["Master_AbsolventMaster_Specializare"];
 								$vMaster_AbsolventMaster_Specializare = validNume($v_Master_AbsolventMaster_Specializare);
 							$v_Master_AbsolventMaster_Semestre_Finantate = $_POST["Master_AbsolventMaster_Semestre_Finantate"];
@@ -876,17 +876,17 @@
 								$vMaster_AbsolventMaster_Localitate_AltaFacultate = validLocalitate($v_Master_AbsolventMaster_Localitate_AltaFacultate);
 							$v_Master_DiplomaMaster_Nr_ActRecunoastere=$_POST["Master_DiplomaMaster_Nr_ActRecunoastere"];
 							$v_Master_AlteConcursuri_Facultate3 = $_POST["Master_AlteConcursuri_Facultate3"];
-								$vMaster_AlteConcursuri_Facultate3 = validNume($v_Master_AlteConcursuri_Facultate3);
+								$vMaster_AlteConcursuri_Facultate3 = validNumeInstitutie($v_Master_AlteConcursuri_Facultate3);
 							$v_Master_AlteConcursuri_Univ3 = $_POST["Master_AlteConcursuri_Univ3"];		
-								$vMaster_AlteConcursuri_Univ3 = validNume($v_Master_AlteConcursuri_Univ3);
+								$vMaster_AlteConcursuri_Univ3 = validNumeInstitutie($v_Master_AlteConcursuri_Univ3);
 							$v_Master_AlteConcursuri_Facultate2 = $_POST["Master_AlteConcursuri_Facultate2"];
-								$vMaster_AlteConcursuri_Facultate2 = validNume($v_Master_AlteConcursuri_Facultate2);
+								$vMaster_AlteConcursuri_Facultate2 = validNumeInstitutie($v_Master_AlteConcursuri_Facultate2);
 							$v_Master_AlteConcursuri_Univ2 = $_POST["Master_AlteConcursuri_Univ2"];		
-								$vMaster_AlteConcursuri_Univ2 = validNume($v_Master_AlteConcursuri_Univ2);
+								$vMaster_AlteConcursuri_Univ2 = validNumeInstitutie($v_Master_AlteConcursuri_Univ2);
 							$v_Master_AlteConcursuri_Facultate1 = $_POST["Master_AlteConcursuri_Facultate1"];
-								$vMaster_AlteConcursuri_Facultate1 = validNume($v_Master_AlteConcursuri_Facultate1);
+								$vMaster_AlteConcursuri_Facultate1 = validNumeInstitutie($v_Master_AlteConcursuri_Facultate1);
 							$v_Master_AlteConcursuri_Univ1 = $_POST["Master_AlteConcursuri_Univ1"];		
-								$vMaster_AlteConcursuri_Univ1 = validNume($v_Master_AlteConcursuri_Univ1);
+								$vMaster_AlteConcursuri_Univ1 = validNumeInstitutie($v_Master_AlteConcursuri_Univ1);
 							$v_Master_Domeniu_Studii = $_POST["Master_Domeniu_Studii"];
 								$vMaster_Domeniu_Studii = validNume($v_Master_Domeniu_Studii);
 							$v_Master_DiplomaMaster_Serie_ActRecunoastere=$_POST["Master_DiplomaMaster_Serie_ActRecunoastere"];
@@ -8635,7 +8635,7 @@
 														if(isset($_POST['Submit'])) {
 															if($v_Radio27==1) {
 															$v_Master_AlteConcursuri_Univ1 = $_POST["Master_AlteConcursuri_Univ1"];		
-															$vMaster_AlteConcursuri_Univ1 = validNume($v_Master_AlteConcursuri_Univ1);
+															$vMaster_AlteConcursuri_Univ1 = validNumeInstitutie($v_Master_AlteConcursuri_Univ1);
 															if($vMaster_AlteConcursuri_Univ1>0){
 																echo "C&#226;mp invalid!";
 															}
@@ -8661,7 +8661,7 @@
 														if(isset($_POST['Submit'])) {
 															if($v_Radio27==1) {
 															$v_Master_AlteConcursuri_Facultate1 = $_POST["Master_AlteConcursuri_Facultate1"];		
-															$vMaster_AlteConcursuri_Facultate1 = validNume($v_Master_AlteConcursuri_Facultate1);		
+															$vMaster_AlteConcursuri_Facultate1 = validNumeInstitutie($v_Master_AlteConcursuri_Facultate1);		
 															if($vMaster_AlteConcursuri_Facultate1>0){
 																echo "C&#226;mp invalid!";
 															}
@@ -8693,7 +8693,7 @@
 														if(isset($_POST['Submit'])) {
 															if($v_Radio27==1) {
 																$v_Master_AlteConcursuri_Univ2 = $_POST["Master_AlteConcursuri_Univ2"];		
-																$vMaster_AlteConcursuri_Univ2 = validNume($v_Master_AlteConcursuri_Univ2);
+																$vMaster_AlteConcursuri_Univ2 = validNumeInstitutie($v_Master_AlteConcursuri_Univ2);
 																if($vMaster_AlteConcursuri_Univ2>0){
 																	echo "C&#226;mp invalid!";
 																}
@@ -8719,7 +8719,7 @@
 														if(isset($_POST['Submit'])) {
 															if($v_Radio27==1) {
 																$v_Master_AlteConcursuri_Facultate2 = $_POST["Master_AlteConcursuri_Facultate2"];		
-																$vMaster_AlteConcursuri_Facultate2 = validNume($v_Master_AlteConcursuri_Facultate2);	
+																$vMaster_AlteConcursuri_Facultate2 = validNumeInstitutie($v_Master_AlteConcursuri_Facultate2);	
 																if($vMaster_AlteConcursuri_Facultate2>0){
 																	echo "C&#226;mp invalid!";
 																}
@@ -8750,7 +8750,7 @@
 														if(isset($_POST['Submit'])) {
 															if($v_Radio27==1) {
 															$v_Master_AlteConcursuri_Univ3 = $_POST["Master_AlteConcursuri_Univ3"];		
-															$vMaster_AlteConcursuri_Univ3 = validNume($v_Master_AlteConcursuri_Univ3);
+															$vMaster_AlteConcursuri_Univ3 = validNumeInstitutie($v_Master_AlteConcursuri_Univ3);
 																if($vMaster_AlteConcursuri_Univ3>0){
 																	echo "C&#226;mp invalid!";
 																}
@@ -8776,7 +8776,7 @@
 														if(isset($_POST['Submit'])) {
 															if($v_Radio27==1) {
 																$v_Master_AlteConcursuri_Facultate3 = $_POST["Master_AlteConcursuri_Facultate3"];		
-																$vMaster_AlteConcursuri_Facultate3 = validNume($v_Master_AlteConcursuri_Facultate3);		
+																$vMaster_AlteConcursuri_Facultate3 = validNumeInstitutie($v_Master_AlteConcursuri_Facultate3);		
 																	if($vMaster_AlteConcursuri_Facultate3>0){
 																		echo "C&#226;mp invalid!";
 																	}
@@ -9954,9 +9954,9 @@
             oci_bind_by_name($statement, ':bZi' ,$_POST['Master_Buletin_Ziua']);
             oci_bind_by_name($statement, ':lZi' ,$_POST['Master_Buletin_Luna']);
             oci_bind_by_name($statement, ':aZi' ,$_POST['Master_Buletin_An']);
-            oci_bind_by_name($statement, ':eZi' ,$_POST['Master_Buletin_Ziua_Exp']);
+            oci_bind_by_name($statement, ':eZi' ,$_POST['Master_Buletin_Ziua']);
             oci_bind_by_name($statement, ':elZi' ,$_POST['Master_Buletin_Luna_Exp']);
-            oci_bind_by_name($statement, ':eaZi' ,$_POST['Master_Buletin_An_Exp']);  
+            oci_bind_by_name($statement, ':eaZi' ,$_POST['Master_Buletin_An']);  
 
             oci_bind_by_name($statement, ':mediu_domiciliu', $_POST['group3']);
             oci_bind_by_name($statement, ':tara_domiciliu', $_POST['Master_Tara']);
@@ -10306,7 +10306,7 @@
           error_reporting(E_ALL);
       }
 
-     echo '<script>window.location.href = "Validare_Formular.php";</script>';      
+     //echo '<script>window.location.href = "Validare_Formular.php";</script>';      
     }
   }
 }

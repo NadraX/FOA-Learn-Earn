@@ -2207,13 +2207,8 @@ function validareNrSemCuBursa($nrSem){
 	if($nrSem==0)
 		return 0;
 	
-	if(!$nRSem)
-		return -1;
-	
 	if($nrSem >0 && $nrSem <= 16)
 		return 0; //corect
-	
-	
 	
 	return 1;//prea multe semestre
 }
