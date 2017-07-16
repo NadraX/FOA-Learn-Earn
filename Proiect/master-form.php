@@ -1913,16 +1913,18 @@
 											<span style="color:red">
 												<?php 
 													if(isset($_POST['Submit'])) {
-													$v_Master_Serie_Buletin = $_POST["Master_Serie_Buletin"];  // V
-													$vMaster_Serie_Buletin = validSerieBuletin($v_Master_Serie_Buletin);
-													if($vMaster_Serie_Buletin==-1)
-														echo "C&#226;mp necompletat!";
-													else
-														if($vMaster_Serie_Buletin==1)
-															echo "Caractere nepermise!";
+													$v_Master_Serie_Buletin = $_POST["Master_Serie_Buletin"];
+													if($v_Master_Tip_Buletin=="CI") {
+														$vMaster_Serie_Buletin = validSerieBuletin($v_Master_Serie_Buletin);
+														if($vMaster_Serie_Buletin==-1)
+															echo "C&#226;mp necompletat!";
 														else
-															if($vMaster_Serie_Buletin==2)
-																echo "Obligatoriu 2 majuscule";
+															if($vMaster_Serie_Buletin==1)
+																echo "Caractere nepermise!";
+															else
+																if($vMaster_Serie_Buletin==2)
+																	echo "Obligatoriu 2 majuscule";
+													}
 												}
 												?>
 											</span>
@@ -1941,16 +1943,18 @@
 											<span style="color:red">
 												<?php 
 													if(isset($_POST['Submit'])) {
-													$v_Master_Numar_Buletin = $_POST["Master_Numar_Buletin"];  // V
-													$vMaster_Numar_Buletin = validNumarBuletin($v_Master_Numar_Buletin);
-													if($vMaster_Numar_Buletin==-1)
-														echo "C&#226;mp necompletat!";
-													else
-														if($vMaster_Numar_Buletin==1)
-															echo "Caractere nepermise!";
+													$v_Master_Numar_Buletin = $_POST["Master_Numar_Buletin"];
+													if($v_Master_Tip_Buletin=="CI") {
+														$vMaster_Numar_Buletin = validNumarBuletin($v_Master_Numar_Buletin);
+														if($vMaster_Numar_Buletin==-1)
+															echo "C&#226;mp necompletat!";
 														else
-															if($vMaster_Numar_Buletin==2)
-																echo "Obligatoriu 6 cifre";
+															if($vMaster_Numar_Buletin==1)
+																echo "Caractere nepermise!";
+															else
+																if($vMaster_Numar_Buletin==2)
+																	echo "Obligatoriu 6 cifre";
+													}
 												}
 												?>
 											</span>
