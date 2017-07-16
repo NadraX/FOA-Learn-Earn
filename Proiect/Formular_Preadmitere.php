@@ -796,13 +796,13 @@
 											<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Stare civil&#259;</label>
 											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Preadmitere_Stare_Civila" data-component="country">
 												<option value="Nu doresc să declar">Nu doresc să declar</option>
-												<option  value="Necasatorit(a)" <?php
+												<option  value="Necăsătorit(ă)" <?php
 																					if($v_Stare_civila=="Necasatorit(a)")
 																						echo 'selected';
 																					else
 																						echo '';
 																				?>>Nec&#259;s&#259;torit/&#259;</option>
-												<option  value="Casatorit(a)"   <?php    
+												<option  value="Căsătorit(ă)"   <?php    
 																					if($v_Stare_civila=="Casatorit(a)")
 																						echo 'selected';
 																					else
@@ -1269,13 +1269,13 @@
 																					else
 																						echo '';
 																				?>>CI</option>
-												<option name="Pasaport" value="Pasaport" <?php
+												<option name="Pasaport" value="Pașaport" <?php
 																					if($v_Preadmitere_Tip_Buletin=="Pasaport")
 																						echo 'selected';
 																					else
 																						echo '';
 																				?>>Pașaport</option>
-												<option name="Adeverinta" value="Adeverinta" <?php
+												<option name="Adeverinta" value="Adeverință" <?php
 																							if($v_Preadmitere_Tip_Buletin=="Adeverinta")
 																								echo 'selected';
 																							else
@@ -3183,20 +3183,20 @@
 									<span class="form-sub-label-container gen" style="vertical-align:top;">
 										<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Doresc să dau testul scris la materia:</label>
 										<select class="form-dropdown form-address-country gen" name="Preadmitere_Obiect_Test_Ales"  data-component="country">
-											<option value="Alege optiune">Selectați</option> 
-											<option value="Matematica"<?php
+											<option value="Alege opțiune">Selectați</option> 
+											<option value="Matematică"<?php
 																		if($v_Preadmitere_Obiect=="Matematica")
 																			echo 'selected';
 																		else
 																			echo '';
 																	?>>Matematic&#259;</option>
-											<option value="Informatica C/C++"<?php
+											<option value="Informatică C/C++"<?php
 																				if($v_Preadmitere_Obiect=="Informatica C/C++")
 																					echo 'selected';
 																				else
 																					echo '';
 																			?>>Informatic&#259; C/C++</option>
-											<option value="Informatica Pascal"<?php
+											<option value="Informatică Pascal"<?php
 																					if($v_Preadmitere_Obiect=="Informatica Pascal")
 																						echo 'selected';
 																					else

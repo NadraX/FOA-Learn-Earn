@@ -916,7 +916,7 @@
 																																					echo '';		
 																																		?> />		
 														<label for="checkbox11" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group1" id="checkbox13" class="css-checkbox" value="2" <?php
+														<input type="radio" name="group1" id="checkbox13" class="css-checkbox" value="0" <?php
 																																			if($v_Radio1 == '')
 																																				echo '';
 																																			else
@@ -1238,13 +1238,13 @@
 											<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Stare civil&#259;</label>
 											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Licenta_Stare_Civila" data-component="country">
 												<option value="Nu doresc să declar">Nu doresc să declar</option>
-												<option value="Necasatorit(a)" <?php
+												<option value="Necăsătorit(ă)" <?php
 																					if($v_Stare_civila=="Necasatorit(a)")
 																						echo 'selected';
 																					else
 																						echo '';
 																				?>>Nec&#259;s&#259;torit/&#259;</option>
-												<option value="Casatorit(a)" <?php		
+												<option value="Căsătorit(ă)" <?php		
 																					if($v_Stare_civila=="Casatorit(a)")
 																						echo 'selected';
 																					else
@@ -1708,13 +1708,13 @@
 																					else
 																						echo '';
 																				?>>CI</option>
-												<option name="Pasaport" value="Pasaport" <?php
+												<option name="Pasaport" value="Pașaport" <?php
 																					if($v_Licenta_Tip_Buletin=="Pasaport")
 																						echo 'selected';
 																					else
 																						echo '';
 																				?>>Pașaport</option>
-												<option name="Adeverinta" value="Adeverinta" <?php
+												<option name="Adeverinta" value="Adeverință" <?php
 																							if($v_Licenta_Tip_Buletin=="Adeverinta")
 																								echo 'selected';
 																							else
@@ -2516,7 +2516,7 @@
 																																					echo '';
 																																		?> />
 														<label for="checkbox3" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="2" <?php
+														<input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="0" <?php
 																																			if($v_Radio5 == '')
 																																				echo '';
 																																			else
@@ -2554,7 +2554,7 @@
 																																					echo '';
 																																		?> />
 														<label for="checkbox5" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group6" id="checkbox6" class="css-checkbox" value="2" <?php
+														<input type="radio" name="group6" id="checkbox6" class="css-checkbox" value="0" <?php
 																																			if($v_Radio6 == '')
 																																				echo '';
 																																			else
@@ -2599,7 +2599,7 @@
 																																					echo '';
 																																		?> />   
 														<label for="checkbox7" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="2" <?php
+														<input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="0" <?php
 																																			if($v_Radio4 == '')
 																																				echo '';
 																																			else
@@ -4820,7 +4820,7 @@
 																																								echo '';
 																																					?>/>   
 										<label for="daAltaFacultate" class="css-label" style="margin-right:100px">Da</label>
-										<input type="radio" onClick="AltaUniv()" name="group25" id="nuAltaFacultate" class="css-checkbox" value="2" <?php
+										<input type="radio" onClick="AltaUniv()" name="group25" id="nuAltaFacultate" class="css-checkbox" value="0" <?php
 																																						if($v_Radio25 == '')
 																																							echo '';
 																																						else
@@ -5227,7 +5227,7 @@
 																																											echo '';
 																																								?>/>   
 										<label for="daAbsolventLicenta" class="css-label" style="margin-right:100px">Da</label>
-										<input type="radio" onClick="AbsolventLicenta()" name="group24" id="nuAbsolventLicenta" class="css-checkbox" value="2" <?php
+										<input type="radio" onClick="AbsolventLicenta()" name="group24" id="nuAbsolventLicenta" class="css-checkbox" value="0" <?php
 																																									if($v_Radio24 == '')
 																																										echo '';
 																																									else
@@ -5684,7 +5684,7 @@
 																																											echo '';
 																																								?>/>   
 											<label for="daDiplomaLicenta" class="css-label" style="margin-right:100px">Da</label>
-											<input type="radio" onClick="DiplomaLicenta()" name="group23" id="nuDiplomaLicenta" class="css-checkbox" value="2" <?php
+											<input type="radio" onClick="DiplomaLicenta()" name="group23" id="nuDiplomaLicenta" class="css-checkbox" value="0" <?php
 																																									if($v_Radio23 == '')
 																																										echo '';
 																																									else
@@ -6183,7 +6183,7 @@
 																																		echo '';
 																															?> />		
 										<label for="checkbox10" class="css-label" style="margin-right:100px">Da</label>
-										<input type="radio" name="group2" id="checkbox12" class="css-checkbox" value="2" <?php
+										<input type="radio" name="group2" id="checkbox12" class="css-checkbox" value="0" <?php
 																															if($v_Radio2 == '')
 																																echo '';
 																															else
@@ -6404,20 +6404,20 @@
 										<span class="form-sub-label-container gen" style="vertical-align:top;">
 											<label class="form-sub-label" for="input_3_country"  style="min-height:13px;">Doresc să dau testul scris la materia:</label>
 											<select class="form-dropdown form-address-country gen" name="Licenta_Obiect_Test_Ales"  data-component="country">
-												<option value="Alege optiune"></option> 
-												<option value="Matematica"<?php
+												<option value="Alege opțiune"></option> 
+												<option value="Matematică"<?php
 																			if($v_Licenta_Obiect=="Matematica")
 																				echo 'selected';
 																			else
 																				echo '';
 																			?>>Matematic&#259;</option>
-												<option value="Informatica C/C++"	<?php
+												<option value="Informatică C/C++"	<?php
 																						if($v_Licenta_Obiect=="Informatica C/C++")
 																							echo 'selected';
 																						else
 																							echo '';
 																					?>>Informatic&#259; C/C++</option>
-												<option value="Informatica Pascal"	<?php
+												<option value="Informatică Pascal"	<?php
 																						if($v_Licenta_Obiect=="Informatica Pascal")
 																							echo 'selected';
 																						else
@@ -6478,7 +6478,7 @@
 																																									echo '';
 																																						?>/>   
 										<label for="daPreadmitere" class="css-label" style="margin-right:100px">Da</label>
-										<input type="radio" onClick="Preadmitere()" name="group21" id="nuPreadmitere" class="css-checkbox" value="2" <?php
+										<input type="radio" onClick="Preadmitere()" name="group21" id="nuPreadmitere" class="css-checkbox" value="0" <?php
 																																						if($v_Radio21 == '')
 																																							echo '';
 																																						else
@@ -6539,7 +6539,7 @@
 																																		echo '';
 																															?>/>   
 											<label for="daTest" class="css-label" style="margin-right:100px">Da</label>
-											<input type="radio" name="group20" id="nuTest" class="css-checkbox" value="2" 	<?php
+											<input type="radio" name="group20" id="nuTest" class="css-checkbox" value="0" 	<?php
 																																if($v_Radio20 == '')
 																																	echo '';
 																																else
@@ -6757,7 +6757,7 @@
 									</h5>
 									<label class="form-label" style="color: gray;">Preferință 1(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
 									<select class="clasaPreferinte gen" style="width:30%" name="Optiune1" data-component="country">
-										<option value="Selectati" <?php
+										<option value="Selectați" <?php
 																		if($vOptiune1=="Selectați")
 																			echo 'selected';
 																		else
@@ -6800,7 +6800,7 @@
 									<br><br>
 									<label class="form-label" style="color: gray;">Preferință 2(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
 									<select class="clasaPreferinte gen" style="width:30%" name="Optiune2"  data-component="country">
-										<option value="Selectati" <?php
+										<option value="Selectați" <?php
 																		if($vOptiune2=="Selectați")
 																			echo 'selected';
 																		else
@@ -6834,7 +6834,7 @@
 									<br><br>
 									<label class="form-label" style="color: gray;">Preferință 3(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
 									<select class="clasaPreferinte gen" style="width:30%" name="Optiune3"  data-component="country">
-										<option value="Selectati" <?php
+										<option value="Selectați" <?php
 																		if($vOptiune3=="Selectați")
 																			echo 'selected';
 																		else
@@ -6868,7 +6868,7 @@
 									<br><br>
 									<label class="form-label" style="color: gray;">Preferință 4(opțional) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</label>
 									<select class="clasaPreferinte gen" style="width:30%" name="Optiune4"  data-component="country">
-										<option value="Selectati" <?php
+										<option value="Selectați" <?php
 																		if($vOptiune4=="Selectați")
 																			echo 'selected';
 																		else

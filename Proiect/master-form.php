@@ -1365,19 +1365,19 @@
 											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Master_Stare_Civila" data-component="country">
 												<option value="Nu doresc să declar">Nu doresc să declar</option>
 
-												<option value="Necasatorit(a)" <?php
+												<option value="Necăsătorit(ă)" <?php
 																					if($v_Stare_civila=="Necasatorit(a)")
 																						echo 'selected';
 																					else		
 																						echo '';		
 																				?>>Nec&#259;s&#259;torit/&#259;</option>		
-												<option value="Casatorit(a)" <?php		
+												<option value="Căsătorit(ă)" <?php		
 																					if($v_Stare_civila=="Casatorit(a)")		
 																						echo 'selected';		
 																					else		
 																						echo '';		
 																				?>>C&#259;s&#259;torit/&#259;</option>		
-												<option value="Divortat(a)" <?php		
+												<option value="Divorțat(ă)" <?php		
 																					if($v_Stare_civila=="Divortat(a)")		
 																						echo 'selected';		
 																					else		
@@ -1871,13 +1871,13 @@
 																				else
 																					echo '';
 																			?>>CI</option>
-												<option name="Pasaport" value="Pasaport" <?php
+												<option name="Pasaport" value="Pașaport" <?php
 																							if($v_Master_Tip_Buletin=="Pasaport")
 																								echo 'selected';
 																							else
 																								echo '';
 																						?>>Pașaport</option>
-												<option name="Adeverinta" value="Adeverinta" <?php
+												<option name="Adeverinta" value="Adeverintă" <?php
 																							if($v_Master_Tip_Buletin=="Adeverinta")
 																								echo 'selected';
 																							else
@@ -2715,7 +2715,7 @@
 																																					echo '';
 																																		?> />
 														<label for="checkbox3" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="2" <?php
+														<input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="0" <?php
 																																			if($v_Radio5 == '')
 																																				echo '';
 																																			else
@@ -2761,7 +2761,7 @@
 																																					echo '';
 																																		?> />   
 														<label for="checkbox7" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="2" <?php
+														<input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="0" <?php
 																																			if($v_Radio4 == '')
 																																				echo '';
 																																			else
@@ -6224,7 +6224,7 @@
 																																											echo '';
 																																								?>/>
 										<label for="daAbsolventMaster" class="css-label" style="margin-right:100px">Da</label>
-										<input type="radio" onClick="AbsolventMaster()" name="group24" id="nuAbsolventMaster" class="css-checkbox" value="2" <?php
+										<input type="radio" onClick="AbsolventMaster()" name="group24" id="nuAbsolventMaster" class="css-checkbox" value="0" <?php
 																																								if($v_Radio24 == '')
 																																									echo '';
 																																								else
@@ -6698,7 +6698,7 @@
 																																	echo '';
 																														?>/>   
 											<label for="daDiplomaMaster" class="css-label" style="margin-right:100px">Da</label>
-											<input type="radio" onClick="DiplomaMaster()" name="group23" id="nuDiplomaMaster" class="css-checkbox" value="2" <?php
+											<input type="radio" onClick="DiplomaMaster()" name="group23" id="nuDiplomaMaster" class="css-checkbox" value="0" <?php
 																															if($v_Radio23 == '')
 																																echo '';
 																															else
@@ -7459,7 +7459,7 @@
 										</h5>
 										<label class="form-label" style="color: gray;">Preferință 1(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
 										<select class="clasaPreferinte gen"  style="width:40%" name="Optiune1" data-component="country">
-											<option value="Selectati" <?php
+											<option value="Selectați" <?php
 																			if($vOptiune1=="Selectați")
 																				echo 'selected';
 																			else
@@ -7545,7 +7545,7 @@
 										<br><br>
 										<label class="form-label" style="color: gray;">Preferință 2(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
 										<select class="clasaPreferinte gen" style="width:40%" name="Optiune2" data-component="country">
-											<option value="Selectati" <?php
+											<option value="Selectați" <?php
 																			if($vOptiune2=="Selectați")
 																				echo 'selected';
 																			else
@@ -7631,7 +7631,7 @@
 										<br><br>
 										<label class="form-label" style="color: gray;">Preferință 3(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
 										<select class="clasaPreferinte gen" style="width:40%" name="Optiune3" data-component="country">
-											<option value="Selectati" <?php
+											<option value="Selectați" <?php
 																			if($vOptiune3=="Selectați")
 																				echo 'selected';
 																			else
@@ -7717,7 +7717,7 @@
 										<br><br>
 										<label class="form-label" style="color: gray;">Preferință 4(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
 										<select class="clasaPreferinte gen" style="width:40%" name="Optiune4" data-component="country">
-											<option value="Selectati" <?php
+											<option value="Selectați" <?php
 																			if($vOptiune4=="Selectați")
 																				echo 'selected';
 																			else
@@ -7803,7 +7803,7 @@
 										<br><br>
 										<label class="form-label" style="color: gray;">Preferință 5(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
 										<select class="clasaPreferinte gen" style="width:40%" name="Optiune5" data-component="country">
-											<option value="Selectati" <?php
+											<option value="Selectați" <?php
 																			if($vOptiune5=="Selectați")
 																				echo 'selected';
 																			else
@@ -7889,7 +7889,7 @@
 										<br><br>
 										<label class="form-label" style="color: gray;">Preferință 6(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
 										<select class="clasaPreferinte gen" style="width:40%" name="Optiune6" data-component="country">
-											<option value="Selectati" <?php
+											<option value="Selectați" <?php
 																			if($vOptiune6=="Selectați")
 																				echo 'selected';
 																			else
@@ -7975,7 +7975,7 @@
 										<br><br>
 										<label class="form-label" style="color: gray;">Preferință 7(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
 										<select class="clasaPreferinte gen" style="width:40%" name="Optiune7" data-component="country">
-											<option value="Selectati" <?php
+											<option value="Selectați" <?php
 																			if($vOptiune7=="Selectați")
 																				echo 'selected';
 																			else
@@ -8061,7 +8061,7 @@
 										<br><br>
 										<label class="form-label" style="color: gray;">Preferință 8(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
 										<select class="clasaPreferinte gen" style="width:40%" name="Optiune8" data-component="country">
-											<option value="Selectati" <?php
+											<option value="Selectați" <?php
 																			if($vOptiune8=="Selectați")
 																				echo 'selected';
 																			else
@@ -8147,7 +8147,7 @@
 										<br><br>
 										<label class="form-label" style="color: gray;">Preferință 9(obligatoriu) &nbsp; &nbsp; &nbsp; &nbsp;</label>
 										<select class="clasaPreferinte gen" style="width:40%" name="Optiune9" data-component="country">
-											<option value="Selectati" <?php
+											<option value="Selectați" <?php
 																			if($vOptiune9=="Selectați")
 																				echo 'selected';
 																			else
@@ -8233,7 +8233,7 @@
 										<br><br>
 										<label class="form-label" style="color: gray;">Preferință 10(obligatoriu) &nbsp; &nbsp; &nbsp; </label>
 										<select class="clasaPreferinte gen" style="width:40%" name="Optiune10" data-component="country">
-											<option value="Selectati" <?php
+											<option value="Selectați" <?php
 																			if($vOptiune10=="Selectați")
 																				echo 'selected';
 																			else
@@ -8319,7 +8319,7 @@
 										<br><br>
 										<label class="form-label" style="color: gray;">Preferință 11(obligatoriu) &nbsp; &nbsp; &nbsp; </label>
 										<select class="clasaPreferinte gen" style="width:40%" name="Optiune11" data-component="country">
-											<option value="Selectati" <?php
+											<option value="Selectați" <?php
 																			if($vOptiune11=="Selectați")
 																				echo 'selected';
 																			else
@@ -10307,7 +10307,7 @@
           error_reporting(E_ALL);
       }
 
-     //echo '<script>window.location.href = "Validare_Formular.php";</script>';      
+     echo '<script>window.location.href = "Validare_Formular.php";</script>';      
     }
   }
 }
