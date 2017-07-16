@@ -9900,7 +9900,7 @@
           :etnie,
           :limba_materna,
           :stare_civila,
-          'CL',
+          :tip_act,
           :serie_CL,
           :numar_CL,        
           :eliberat_de,
@@ -9947,6 +9947,7 @@
             oci_bind_by_name($statement, ':limba_materna', $_POST['Master_Limba_Materna']);
 
             oci_bind_by_name($statement, ':stare_civila', $_POST['Master_Stare_Civila']);
+            oci_bind_by_name($statement, ':tip_act', $_POST['Master_Tip_Buletin']);
             oci_bind_by_name($statement, ':serie_CL', $v_Master_Serie_Buletin);
             oci_bind_by_name($statement, ':numar_CL', $v_Master_Numar_Buletin);
             oci_bind_by_name($statement, ':eliberat_de', $v_Master_Buletin_Eliberat_De);
