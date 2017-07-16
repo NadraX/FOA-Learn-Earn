@@ -290,7 +290,7 @@
 
                             <span class="col-md-12 sub-title">
 
-                                Informa&#355;ii Generale
+                                Taxa de înscriere
 
                             </span>
 
@@ -304,9 +304,27 @@
                         error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
                         $id_formular=$_POST['id_formular'];
 
-                       echo ' <label>Numele de familie (din certificatul de naștere)</label><input name="numeDeFamilie" class="form-control" value="'.getNumeNastere($id_formular).'"/>
+                       echo ' <label>Chitanța nr.</label><input name="chitantaNr" class="form-control" value=""/>
                         
-                           <label class="marg-t10">Numele de familie actual (după căsătorie, înfiere, modificare la cerere conform actului doveditor, dacă este cazul)</label><input name="numeDeFamilieActual" class="form-control" value="'.getNumeActual($id_formular).'"/>
+                            <label class="marg-t10">Suma</label><input name="suma" class="form-control" value=""/>
+
+                            <label class="marg-t10">Scutit</label><input name="scutit" class="form-control" value="" />
+                            
+                            <label class="marg-t10">Motiv scutire</label><input name="motivScutire" class="form-control" value="" />
+
+                            <div class="align-center">
+
+                            <span class="col-md-12 sub-title">
+
+                                <br>Date personale ale candidatului cu cetăţenie română/ UE/ SEE
+
+                            </span>
+
+                        </div>
+
+                            <label class="marg-t10">Numele de familie din certificatul de naștere</label><input name="numeDeFamilie" class="form-control" value="'.getNumeNastere($id_formular).'"/>
+                        
+                            <label class="marg-t10">Numele de familie actual (după căsătorie, înfiere, etc.)</label><input name="numeDeFamilieActual" class="form-control" value="'.getNumeActual($id_formular).'"/>
 
                             <label class="marg-t10">Prenume:</label><input name="prenume" class="form-control" value="'.getPrenume($id_formular).'" />
 
@@ -315,12 +333,20 @@
                             <label class="marg-t10">Prenume tată:</label><input name="prenumeTata" class="form-control" value="'.getPrenumeTata($id_formular).'"/>
 
                             <label class="marg-t10">Prenume mamă:</label><input name="prenumeMama" class="form-control" value="'.getPrenumeMama($id_formular).'"/>
-
+                            
+                            <label class="marg-t10">Stare civilă:</label><input name="stareCivila" class="form-control" value="" />
+                            
                             <label class="marg-t10">Sex: </label><input name="sex" class="form-control" value="'.getSex($id_formular).'" />
+                            
+                            <label class="marg-t10">Țara nașterii:</label><input name="taraNastere" class="form-control" value="" />
+                            
+                            <label class="marg-t10">Județul nașterii:</label><input name="judetNastere" class="form-control" value="" />
+                            
+                            <label class="marg-t10">Localitatea nașterii:</label><input name="localitateNastere" class="form-control" value="" />
 
                             <label class="marg-t10">Data nașterii:</label>
-
-                             <div class="col-md-12" style="padding-left:0; padding-right:0;">
+                            
+                            <div class="col-md-12" style="padding-left:0; padding-right:0;">
 
                                 <input name="dataNasteriiDay" class="form-control col-md-4 wid33 marg-r1" value="'.getDataDay($id_formular).'"/>
 
@@ -328,37 +354,37 @@
 
                                 <input name="dataNasteriiYear" class="form-control col-md-4 wid33" value="'.getDataYear($id_formular).'"/>
 
-                            <input type="hidden" name="idFormular" value="'.$id_formular.'"/>
+                                <input type="hidden" name="idFormular" value="'.$id_formular.'"/>
+                            
                             </div>
+                            
                             <br>
-                            <label class="marg-t10">Cetățenie: </label><input name="cetatenie" class="form-control" value="'.getCetatenie($id_formular).'" />
-
+                            
                             <label class="marg-t10">Naționalitate: </label><input name="nationalitate" class="form-control" value="'.getNationalitate($id_formular).'" />
+                            
+                            <label class="marg-t10">Cetățenie: </label><input name="cetatenie" class="form-control" value="'.getCetatenie($id_formular).'" />
 
                             <label class="marg-t10">Etnie: </label><input name="etnie" class="form-control" value="'.getEtnie($id_formular).'" />
 
                             <label class="marg-t10">Limba matern&#259;: </label><input name="limbaMaterna" class="form-control" value="'.getLimbaMaterna($id_formular).'" />
-
-                          
-                            <label class="marg-t10">Num&#259;r de telefon:</label><input name="nrDeTelefon" class="form-control" value="'.getTelefon($id_formular).'"/>
-
-                            <label class="marg-t10">E-mail:</label><input name="email" class="form-control" value="'.getEmail($id_formular).'"/>
-
+                            
                         <div class="align-center">
 
                             <span class="col-md-12 sub-title">
 
-                                Date Card de Identitate
+                                <br>Date carte de identitate
 
                             </span>
 
                         </div>
 
                             <label>CNP:</label><input name="cnp" class="form-control" value="'.getCNP($id_formular).'" />
+                            
+                            <label class="marg-t10">Tipul actului de identitate: </label><input name="tipAct" class="form-control" value="'.getSerieBuletin($id_formular).'" />
 
-                            <label class="marg-t10">Serie Buletin: </label><input name="serieBuletin" class="form-control" value="'.getSerieBuletin($id_formular).'" />
+                            <label class="marg-t10">Seria actului: </label><input name="serieBuletin" class="form-control" value="'.getSerieBuletin($id_formular).'" />
 
-                            <label class="marg-t10">Num&#259;r Buletin: </label><input name="nrBuletin" class="form-control" value="'.getNumarBuletin($id_formular).'" />
+                            <label class="marg-t10">Num&#259;rul actului: </label><input name="nrBuletin" class="form-control" value="'.getNumarBuletin($id_formular).'" />
 
                             <label class="marg-t10">Eliberat de: </label><input name="eliberatDe" class="form-control" value="'.getBuletinEliberatDe($id_formular).'" />
 
@@ -385,24 +411,19 @@
                                 <input name="dataExpirariiYear" class="col-md-4 form-control wid33" value="'.getBuletinExpirareYear($id_formular).'"/>
 
                             </div>
-                             
-
+                            
                         <div class="align-center">
 
                             <span class="col-md-12 sub-title">
 
-                                Adresa studentului
+                                <br>Domiciliul candidatului
 
                             </span>
 
                          </div>
-
-                                <label class="marg-t10">Țară: </label><input name="tara" class="form-control" value="'.getTaraDomiciliu($id_formular).'"/>
-
-                                <label class="marg-t10">Jude&#355;:</label><input name="judet" class="form-control" value="'.getJudetDomiciliu($id_formular).'"/>
-
-                                <label class="marg-t10">Localitate: </label><input name="localitate" class="form-control" value="'.getLocalitateDomiciliu($id_formular).'"/>
-
+                         
+                                <label class="marg-t10">Domiciliu stabil:</label><input name="domiciliuStabil" class="form-control" value=""/>
+                                
                                 <label>Strada:</label><input name="strada" class="form-control" value="'.getStrada($id_formular).'"/>
 
                                 <label>Numarul:</label><input name="numar" class="form-control" value="'.getNrStrada($id_formular).'"/>
@@ -411,12 +432,47 @@
 
                                 <label>Scara:</label><input name="scara" class="form-control" value="'.getScara($id_formular).'"/>
                                 
+                                <label>Etaj:</label><input name="etaj" class="form-control" value=""/>
+                                
                                 <label>Apartament:</label><input name="apartament" class="form-control" value="'.getApartament($id_formular).'"/>
-
+                                
+                                <label class="marg-t10">Localitate: </label><input name="localitate" class="form-control" value="'.getLocalitateDomiciliu($id_formular).'"/>
+                                
+                                <label class="marg-t10">Jude&#355;:</label><input name="judet" class="form-control" value="'.getJudetDomiciliu($id_formular).'"/>
+                                
                                 <label class="marg-t10">Cod Po&#351;tal:</label><input name="codPostal" class="form-control" value="'.getCodPostal($id_formular).'"/>
 
-                               
+                                <label class="marg-t10">Țară: </label><input name="tara" class="form-control" value="'.getTaraDomiciliu($id_formular).'"/> 
+                                
+                        <div class="align-center">
 
+                            <span class="col-md-12 sub-title">
+
+                                <br>Date de contact
+
+                            </span>
+
+                        </div>
+                          
+                            <label class="marg-t10">Num&#259;r de telefon:</label><input name="nrDeTelefon" class="form-control" value="'.getTelefon($id_formular).'"/>
+
+                            <label class="marg-t10">E-mail:</label><input name="email" class="form-control" value="'.getEmail($id_formular).'"/>
+                             
+                        
+                        <div class="align-center">
+
+                            <span class="col-md-12 sub-title">
+
+                                <br>Solicită cazare?
+
+                            </span>
+
+                        </div>
+                        
+                            <label class="marg-t10">Solicită cazare pe timpul studiilor?</label><input name="cazareStudii" class="form-control" value=""/>
+                            
+                            <label class="marg-t10">Solicită cazare pe timpul admiterii?</label><input name="cazareAdmitere" class="form-control" value=""/>
+                        
                         <div class="align-center">
 
                             <span class="col-md-12 sub-title">
@@ -426,23 +482,277 @@
                             </span>
 
                         </div>
+                        
+                            <label class="marg-t10">Candidat care se incadreaza in categoria persoanelor cu dizabilitati </label><input name="persoanaCuDizabilitati" class="form-control" value="'.getPersoanaCuDizabilitati($id_formular).'"/>
 
-                                <label class="marg-t10">Stare socială specială: </label><input name="stare-speciala" class="form-control" value=""/>
+                            <label class="marg-t10">Stare socială specială: </label><input name="stare-speciala" class="form-control" value=""/>
+                            
+                        <div class="align-center">
 
-                                <label class="marg-t10">Candidat care se incadreaza in categoria persoanelor cu dizabilitati </label><input name="persoanaCuDizabilitati" class="form-control" value="'.getPersoanaCuDizabilitati($id_formular).'"/>
+                            <span class="col-md-12 sub-title">
+
+                                <br>Studiile preuniversitare absolvite, nivel liceu
+
+                            </span>
+
+                        </div>
+                        
+                        <label class="marg-t10">Institutia unde a absolvit</label><input name="liceulAbsolvit" class="form-control" value="'.getliceulAbsolvit($id_formular).'" />
+
+                            <label class="marg-t10">Localitate:</label><input name="localitateLiceu" class="form-control" value="'.getlocalitateLiceu($id_formular).'" />
+
+                            <label class="marg-t10">Judet:</label><input name="judetLiceu" class="form-control" value="'.getjudetLiceu($id_formular).'" />
+
+                            <label class="marg-t10">Tara:</label><input name="taraLiceu" class="form-control" value="'.gettaraLiceu($id_formular).'" />
+
+                            <label class="marg-t10">Profil/Domeniul:</label><input name="profilLiceu" class="form-control" value="'.getprofilLiceu($id_formular).'" />
+
+                            <label class="marg-t10">Durata studiilor:</label><input name="durataStudiilorLiceu" class="form-control" value="'.getdurataStudiilorLiceu($id_formular).'" />
+
+                            <label class="marg-t10">Anul absolvirii:</label><input name="anulAbsolviriiLiceu" class="form-control" value="'.getanulAbsolviriiLiceu($id_formular).'" />
+
+                            <label class="marg-t10">Forma de invatamant (Zi/Seral/FR/ID):</label><input name="formaInvatamantLiceu" class="form-control" value="'.getformaInvatamantLiceu($id_formular).'" />
+
+                            <div class="align-center">
+
+                                <label class="marg-t10"> Diploma de bacalaureat</label><br>
+
+                            </div>
+
+                            <label class="marg-t10">Seria:</label><input name="serieDiplomaBac" class="form-control" value="'.getserieDiplomaBac($id_formular).'" />
+
+                            <label class="marg-t10">Numarul:</label><input name="nrDiplomaBac" class="form-control" value="'.getnrDiplomaBac($id_formular).'" />
+
+                            <label class="marg-t10">Emisa de:</label><input name="emisaDeLiceu" class="form-control" value="'.getemisaDeLiceu($id_formular).'" />
+
+                            <label class="marg-t10">Data emitere:</label><input name="dataEmiteriiDiploma" class="form-control" value="'.getdataEmiteriiDiploma($id_formular).'" />
+
+                            <label class="marg-t10">Numarul foii matricole care insoteste actul de studii:</label><input name="nrFoiiMatricole" class="form-control" value="'.getnrFoiiMatricole($id_formular).'" />
+                                
+                        <div class="align-center">
+
+                            <span class="col-md-12 sub-title">
+
+                                <br>Alte observații (pentru cazurile în care candidatul a absolvit studii anterioare în străinătate)
+
+                            </span>
+
+                        </div>
+
+                            <label class="marg-t10"> Act de recunoastere/ echivalare (eliberat de DPIRP/CNRED):</label>
+
+                            <label class="marg-t10">Nr:</label><input name="nrActRecEchiv" class="form-control" value="'.getnrActRecEchiv($id_formular).'" />
+
+                            <label class="marg-t10">Serie:</label><input name="serieActRecEchiv" class="form-control" value="'.getserieActRecEchiv($id_formular).'" />
+                            
+                            <label class="marg-t10">Data echivalării:</label>
+
+                            <div class="col-md-12" style="padding-left:0; padding-right:0;">
+
+                                <input name="dataEchivDay" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+
+                                <input name="dataEchivMonth" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+
+                                <input name="dataEchivYear" class="col-md-4 form-control wid33" value=""/>
+
+                            </div>
+                            
+                        <div class="align-center">
+
+                            <span class="col-md-12 sub-title">
+
+                                <br>Studiile universitare de licență absolvite
+
+                            </span>
+
+                        </div>
+                            
+                            <label class="marg-t10">Institutia unde a absolvit</label><input name="denumireInstitutieFac" class="form-control" value="'.getdenumireInstitutieFac($id_formular).'" />
+
+                            <label class="marg-t10">Facultatea:</label><input name="denumireFac" class="form-control" value="'.getDenumireFacultate($id_formular).'" />
+
+                            <label class="marg-t10">Domeniul de licenta:</label><input name="denumireDomeniuLicenta" class="form-control" value="'.getdenumireDomeniuLicenta($id_formular).'" />
+
+                            <label class="marg-t10">Programul de studii/Specializarea:</label><input name="specializare" class="form-control" value="'.getspecializare($id_formular).'" />
+
+                            <label class="marg-t10">Titlu obtinut:</label><input name="titluObtinut" class="form-control" value="'.gettitluObtinut($id_formular).'" />
+
+                            <label class="marg-t10">Forma de invatamant (Zi/Seral/FR/ID):</label><input name="formaInvatamantFac" class="form-control" value="'.getformaInvatamantFac($id_formular).'" />
+                            
+                            <label class="marg-t10">Durata studiilor:</label><input name="durataStudii" class="form-control" value="'.getdurataStudii($id_formular).'" />
+
+                            <label class="marg-t10">Numarul semestrelor finantate de la bugetul de stat</label><input name="nrSemBuget" class="form-control" value="'.getnrSemBuget($id_formular).'" />
+
+                            <label class="marg-t10">Numarul semestrelor in care ati beneficiat de bursa:</label><input name="nrSemBursa" class="form-control" value="'.getnrSemBursa($id_formular).'" />
+
+                            <label class="marg-t10">Localitate</label><input name="localitateFac" class="form-control" value="'.getlocalitateFac($id_formular).'" />
+
+                            <label class="marg-t10">Judet:</label><input name="judetFac" class="form-control" value="'.getjudetFac($id_formular).'" />
+                            
+                            <label class="marg-t10">Tara:</label><input name="taraFac" class="form-control" value="'.gettaraFac($id_formular).'" />
+                            
+                            <div class="align-center">
+                            
+                                <label class="marg-t10"> Diploma de licenta</label><br>
+                                
+                            </div>
+
+                            <label class="marg-t10">Seria:</label><input name="diploLicentaSerie" class="form-control" value="'.getdiploLicentaSerie($id_formular).'" />
+
+                            <label class="marg-t10">Numarul:</label><input name="diploLicentaNr" class="form-control" value="'.getdiploLicentaNr($id_formular).'" />
+
+                            <label class="marg-t10">Emisa de:</label><input name="diplEmisaDe" class="form-control" value="'.getdiplEmisaDe($id_formular).'" />
+
+                            <label class="marg-t10">Data emitere:</label><input name="diplDataEmitere" class="form-control" value="'.getdiplDataEmitere($id_formular).'" />
+
+                            <label class="marg-t10">Numarul foii matricole care insoteste actul de studii:</label><input name="nrFoaieMatricola" class="form-control" value="'.getnrFoaieMatricola($id_formular).'" />
 
                         <div class="align-center">
 
                             <span class="col-md-12 sub-title">
 
-                                <br>Cerinte specifice facultatii
+                                <br>Alte observații (pentru caurile in care candidatul a absolvit studii anterioare in strainatate)
+
+                            </span>
+                        
+                        </div>
+
+                            <label class="marg-t10">Act de recunoaștere/ echivalare (eliberat de DPIRP/CNRED):</label>
+
+                            <label class="marg-t10">Nr:</label><input name="nrActRecLicenta" class="form-control" value="'.getnrActRecLicenta($id_formular).'" />
+
+                            <label class="marg-t10">Serie:</label><input name="serieActRecLicenta" class="form-control" value="'.getserieActRecLicenta($id_formular).'" />
+
+                            <label class="marg-t10">Data echivalării:</label>
+
+                            <div class="col-md-12" style="padding-left:0; padding-right:0;">
+
+                                <input name="dataLicentaEchivDay" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+
+                                <input name="dataLicentaEchivMonth" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+
+                                <input name="dataLicentaEchivYear" class="col-md-4 form-control wid33" value=""/>
+
+                            </div>
+
+                    </div>
+
+                </div>
+
+                    <div class="col-md-6">
+                     
+                        <div class="align-center">
+
+                            <span class="col-md-12 sub-title">
+
+                                Studiile universitare de master in curs
 
                             </span>
 
                         </div>
-                            <label class="marg-t10">Media generala la examenul de licenta </label><input name="medieExamenLicenta" class="form-control" value="'.getMedieExamenLicenta($id_formular).'"/>
+                        
+                        <div class="col-md-12" style="font-size:17px; margin-bottom:45px;">                    
+                        
+                            <label class="marg-t10">Student la master alta facultate/ universitate:</label><input name="inCursStudentAltaFac" class="form-control" value="'.getinCursStudentAltaFac($id_formular).'" />
 
-                            <label class="marg-t10">Media la admitere </label><input name="medieAdmitere" class="form-control" value="'.getMedieAdmitere($id_formular).'"/>
+                            <label class="marg-t10">Denumirea institutiei de invatamant superior:</label><input name="inCursDenumInstitutieMaster" class="form-control" value="'.getinCursDenumInstitutieMaster($id_formular).'" />
+
+                            <label class="marg-t10">Facultatea:</label><input name="inCursDenumFacultateMaster" class="form-control" value="'.getinCursDenumFacultateMaster($id_formular).'" />
+
+                            <label class="marg-t10">Domeniul de studii:</label><input name="inCursDenumDomeniuMaster" class="form-control" value="'.getinCursDenumDomeniuMaster($id_formular).'" />
+
+                            <label class="marg-t10">Programul de studii/ Specializarea:</label><input name="inCursSpecializareMasterr" class="form-control" value="'.getinCursSpecializareMaster($id_formular).'" />
+                            
+                            <label class="marg-t10">Anul:</label><input name="inCursAnMaster" class="form-control" value="'.getinCursAnMaster($id_formular).'" />
+
+                            <label class="marg-t10">Forma de invatamant:</label><input name="inCursFormaInvatMaster" class="form-control" value="'.getinCursFormaInvatMaster($id_formular).'" />
+
+                            <label class="marg-t10">Numarul semestrelor finantate de la buget de stat:</label><input name="inCursNrSemBugetMaster" class="form-control" value="'.getinCursNrSemBugetMaster($id_formular).'" />
+
+                            <label class="marg-t10">Numarul semestrelor in care ati beneficiat de bursa:</label><input name="inCursNrSemBursaMaster" class="form-control" value="'.getinCursNrSemBursaMaster($id_formular).'" />
+                            
+                            <label class="marg-t10">Localitate:</label><input name="inCursLocalitateMaster" class="form-control" value="'.getinCursLocalitateMaster($id_formular).'" />
+
+                            <label class="marg-t10">Judetul:</label><input name="inCursJudetMaster" class="form-control" value="'.getinCursJudetMaster($id_formular).'" />
+                            
+                            <label class="marg-t10">Tara:</label><input name="inCursTaraMasterr" class="form-control" value="'.getinCursTaraMaster($id_formular).'" />
+                            
+                        <div class="align-center">
+
+                            <span class="col-md-12 sub-title">
+
+                                <br>Absolvent al studiilor de master
+
+                            </span>
+
+                        </div>
+
+                            <label class="marg-t10">Anul absolvirii:</label><input name="absolventAn" class="form-control" value="'.getabsolventAn($id_formular).'" />
+
+                            <label class="marg-t10">Denumirea institutiei de invatamant superior:</label><input name="absolventDenimireInstit" class="form-control" value="'.getabsolventDenimireInstit($id_formular).'" />
+
+                            <label class="marg-t10">Facultatea:</label><input name="absolventDenumireFacult" class="form-control" value="'.getAbsolventDenumireFacult($id_formular).'" />
+
+                            <label class="marg-t10">Domeniul de licenta:</label><input name="absolventDomeniu" class="form-control" value="'.getabsolventDomeniu($id_formular).'" />
+
+                            <label class="marg-t10">Programul de studii/Specializarea</label><input name="absolventSpecializare" class="form-control" value="'.getabsolventSpecializare($id_formular).'" />
+                            
+                            <label class="marg-t10">Titlul obținut:</label><input name="titlulObtinut" class="form-control" value="" />
+
+                            <label class="marg-t10">Forma de invatamant:</label><input name="absolventFormaInvat" class="form-control" value="'.getabsolventFormaInvat($id_formular).'" />
+
+                            <label class="marg-t10">Numarul semestrelor finantate de la buget de stat:</label><input name="absolventNrSemBuget" class="form-control" value="'.getabsolventNrSemBuget($id_formular).'" />
+
+                            <label class="marg-t10">Numarul semestrelor in care ati beneficiat de bursa:</label><input name="absolventNrSemBursa" class="form-control" value="'.getabsolventNrSemBursa($id_formular).'" />
+
+                            <label class="marg-t10">Localitate:</label><input name="absolventLocalitate" class="form-control" value="'.getabsolventLocalitate($id_formular).'" />
+
+                            <label class="marg-t10">Judetul:</label><input name="absolventJudet" class="form-control" value="'.getabsolventJudet($id_formular).'" />
+                            
+                            <label class="marg-t10">Tara:</label><input name="absolventTara" class="form-control" value="'.getabsolventTara($id_formular).'" />
+
+                        <div class="align-center">
+                            
+                                <label class="marg-t10"> Diploma de master</label><br>
+                                
+                        </div>
+                        
+                            <label class="marg-t10">Are diplomă?</label><input name="areDiplomaMaster" class="form-control" value="" />
+
+                            <label class="marg-t10">Seria</label><input name="absolventDiploSerie" class="form-control" value="'.getabsolventDiploSerie($id_formular).'" />
+
+                            <label class="marg-t10">Numar</label><input name="absolventDiploNr" class="form-control" value="'.getabsolventDiploNr($id_formular).'" />
+
+                            <label class="marg-t10">Emisa de</label><input name="absolventDiploEmisaDe" class="form-control" value="'.getabsolventDiploEmisaDe($id_formular).'" />
+
+                            <label class="marg-t10">Data echivalării:</label>
+
+                            <div class="col-md-12" style="padding-left:0; padding-right:0;">
+
+                                <input name="dataMasterEchivDay" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+
+                                <input name="dataMasterEchivMonth" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+
+                                <input name="dataMasterEchivYear" class="col-md-4 form-control wid33" value=""/>
+
+                            </div>
+
+                            <label class="marg-t10">Numarul suplimentului/ foii matricole care insoteste actul de studii</label><input name="absolventNrFoaieMatricola" class="form-control" value="'.getabsolventNrFoaieMatricola($id_formular).'" />
+
+
+                        <div class="align-center">
+
+                            <span class="col-md-12 sub-title">
+
+                                <br>Cerințe specifice facultății
+
+                            </span>
+
+                        </div>
+                        
+                            <label class="marg-t10">Media generala la examenul de licență</label><input name="medieExamenLicenta" class="form-control" value="'.getMedieExamenLicenta($id_formular).'"/>
+
+                            <label class="marg-t10">Media E.C.T.S</label><input name="medieAdmitere" class="form-control" value="'.getMedieAdmitere($id_formular).'"/>
 
                         <div class="align-center">
 
@@ -488,270 +798,42 @@
 
                         </div>
 
-                            <label class="marg-t10">Diploma de bacalaureat (original)</label><input name="diplomaBacOriginal" class="form-control" value="'.getDiplomaBacOriginal($id_formular).'"/>
+                            <label class="marg-t10">Diploma de bacalaureat</label><input name="diplomaBacOriginal" class="form-control" value="'.getDiplomaBacOriginal($id_formular).'"/>
 
-                            <label class="marg-t10">Diploma de bacalaureat (copie legalizata):</label><input name="diplomaBacCopie" class="form-control" value="'.getDiplomaBacCopie($id_formular).'"/>
+                            <label class="marg-t10">Document echivalare studii preuniversitare</label><input name="docEchivPreunivOriginal" class="form-control" value="'.getdocEchivPreunivOriginal($id_formular).'"/>
 
-                            <label class="marg-t10">Document echivalare studii preuniversitare (original)</label><input name="docEchivPreunivOriginal" class="form-control" value="'.getdocEchivPreunivOriginal($id_formular).'"/>
+                            <label class="marg-t10">Diploma licenta</label><input name="diplomaLicentaOriginal" class="form-control" value="'.getdiplomaLicentaOriginal($id_formular).'"/>
 
-                            <label class="marg-t10">Document echivalare studii preuniversitare (copie)</label><input name="docEchivPreunivCopie" class="form-control" value="'.getdocEchivPreunivCopie($id_formular).'"/>
+                            <label class="marg-t10">Participă la alte concursuri de admitere la studii universitare de master?</label><input name="participAltundeva" class="form-control" value="'.getparticipAltundeva($id_formular).'"/>
 
-                            <label class="marg-t10">Diploma licenta (original)</label><input name="diplomaLicentaOriginal" class="form-control" value="'.getdiplomaLicentaOriginal($id_formular).'"/>
-
-                            <label class="marg-t10">Diploma licenta (copie legalizata):</label><input name="diplomaLicentaCopie" class="form-control" value="'.getdiplomaLicentaCopie($id_formular).'"/>
-
-                            <label class="marg-t10">Participati la alt/e concurs/uri de admitere la studii universitare de master?</label><input name="participAltundeva" class="form-control" value="'.getparticipAltundeva($id_formular).'"/>
-
-                            <label class="marg-t10">La ce alte concursuri de admitere participati? (Universitate - Domeniul/Specializarea</label><input name="diploma-bac-copie" class="form-control" value=""/>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-
+                            <label class="marg-t10">Universitate 1</label><input name="universitate1" class="form-control" value=""/>
+                            
+                            <label class="marg-t10">Facultate 1</label><input name="facultate1" class="form-control" value=""/>
+                            
+                            <label class="marg-t10">Universitate 2</label><input name="universitate2" class="form-control" value=""/>
+                            
+                            <label class="marg-t10">Facultate 2</label><input name="facultate2" class="form-control" value=""/>
+                            
+                            <label class="marg-t10">Universitate 3</label><input name="universitate3" class="form-control" value=""/>
+                            
+                            <label class="marg-t10">Facultate 3</label><input name="facultate3" class="form-control" value=""/>
+                            
                         <div class="align-center">
 
                             <span class="col-md-12 sub-title">
 
-                                <br>Studiile preuniversitare absolvite, nivel liceu
+                                <br>Chestionar privind alegerea dumneavoastră
 
                             </span>
 
-                            </div>
-                        <div class="col-md-12" style="font-size:17px; margin-bottom:45px;">
+                        </div>
                         
-                                <label class="marg-t10">Institutia unde a absolvit</label><input name="liceulAbsolvit" class="form-control" value="'.getliceulAbsolvit($id_formular).'" />
-
-                                <label class="marg-t10">Tara:</label><input name="taraLiceu" class="form-control" value="'.gettaraLiceu($id_formular).'" />
-
-                                <label class="marg-t10">Localitate</label><input name="localitateLiceu" class="form-control" value="'.getlocalitateLiceu($id_formular).'" />
-
-                                <label class="marg-t10">Judet:</label><input name="judetLiceu" class="form-control" value="'.getjudetLiceu($id_formular).'" />
-
-                                <label class="marg-t10">Profil/Domeniul:</label><input name="profilLiceu" class="form-control" value="'.getprofilLiceu($id_formular).'" />
-
-                                <label class="marg-t10">Durata studiilor:</label><input name="durataStudiilorLiceu" class="form-control" value="'.getdurataStudiilorLiceu($id_formular).'" />
-
-                                <label class="marg-t10">Anul absolvirii:</label><input name="anulAbsolviriiLiceu" class="form-control" value="'.getanulAbsolviriiLiceu($id_formular).'" />
-
-                                <label class="marg-t10">Forma de invatamant (Zi/Seral/FR/ID):</label><input name="formaInvatamantLiceu" class="form-control" value="'.getformaInvatamantLiceu($id_formular).'" />
-
-                                <label class="marg-t10"> Diploma de bacalaureat</label><br>
-
-                                <label class="marg-t10">Seria:</label><input name="serieDiplomaBac" class="form-control" value="'.getserieDiplomaBac($id_formular).'" />
-
-                                <label class="marg-t10">Numarul:</label><input name="nrDiplomaBac" class="form-control" value="'.getnrDiplomaBac($id_formular).'" />
-
-                                <label class="marg-t10">Emisa de:</label><input name="emisaDeLiceu" class="form-control" value="'.getemisaDeLiceu($id_formular).'" />
-
-                                <label class="marg-t10">Data emitere:</label><input name="dataEmiteriiDiploma" class="form-control" value="'.getdataEmiteriiDiploma($id_formular).'" />
-
-                                <label class="marg-t10">Numarul foii matricole care insoteste actul de studii:</label><input name="nrFoiiMatricole" class="form-control" value="'.getnrFoiiMatricole($id_formular).'" />
-
-                                <div class="align-center">
-
-                            <span class="col-md-12 sub-title">
-
-                                <br>Alte observatii (pentru caurile in care candidatul a absolvit studii anterioare in strainatate)
-
-                            </span>
-
-                            </div>
-
-                                <label class="marg-t10"> Act de recunoastere/ echivalare (eliberat de DPIRP/CNRED):</label>
-
-                                <label class="marg-t10">Nr:</label><input name="nrActRecEchiv" class="form-control" value="'.getnrActRecEchiv($id_formular).'" />
-
-                                <label class="marg-t10">Serie:</label><input name="serieActRecEchiv" class="form-control" value="'.getserieActRecEchiv($id_formular).'" />
-
-                                <label class="marg-t10">Data echivalarii:</label><input name="dataRecEchiv" class="form-control" value="'.getdataRecEchiv($id_formular).'" />
-
-                             </div>
-
-                             <div class="align-center">
-
-                            <span class="col-md-12 sub-title">
-
-                                <br>Studiile universitare de licenta absolvite
-
-                            </span>
-
-                            </div>
-
-                                <label class="marg-t10">Institutia unde a absolvit</label><input name="denumireInstitutieFac" class="form-control" value="'.getdenumireInstitutieFac($id_formular).'" />
-
-                                <label class="marg-t10">Tara:</label><input name="taraFac" class="form-control" value="'.gettaraFac($id_formular).'" />
-
-                                <label class="marg-t10">Localitate</label><input name="localitateFac" class="form-control" value="'.getlocalitateFac($id_formular).'" />
-
-                                <label class="marg-t10">Judet:</label><input name="judetFac" class="form-control" value="'.getjudetFac($id_formular).'" />
-
-                                <label class="marg-t10">Facultatea:</label><input name="denumireFac" class="form-control" value="'.getDenumireFacultate($id_formular).'" />
-
-                                <label class="marg-t10">Domeniul de licenta:</label><input name="denumireDomeniuLicenta" class="form-control" value="'.getdenumireDomeniuLicenta($id_formular).'" />
-
-                                <label class="marg-t10">Programul de studii/Specializarea:</label><input name="specializare" class="form-control" value="'.getspecializare($id_formular).'" />
-
-                                <label class="marg-t10">Titlu obtinut:</label><input name="titluObtinut" class="form-control" value="'.gettitluObtinut($id_formular).'" />
-
-                                <label class="marg-t10">Forma de invatamant (Zi/Seral/FR/ID):</label><input name="formaInvatamantFac" class="form-control" value="'.getformaInvatamantFac($id_formular).'" />
-
-                                <label class="marg-t10">Numarul semestrelor finantate de la bugetul de stat</label><input name="nrSemBuget" class="form-control" value="'.getnrSemBuget($id_formular).'" />
-
-                                <label class="marg-t10">Numarul semestrelor in care ati beneficiat de bursa:</label><input name="nrSemBursa" class="form-control" value="'.getnrSemBursa($id_formular).'" />
-
-                                <label class="marg-t10">Durata studiilor:</label><input name="durataStudii" class="form-control" value="'.getdurataStudii($id_formular).'" />
-
-                                <label class="marg-t10"> Diploma de licenta</label><br>
-
-                                <label class="marg-t10">Seria:</label><input name="diploLicentaSerie" class="form-control" value="'.getdiploLicentaSerie($id_formular).'" />
-
-                                <label class="marg-t10">Numarul:</label><input name="diploLicentaNr" class="form-control" value="'.getdiploLicentaNr($id_formular).'" />
-
-                                <label class="marg-t10">Emisa de:</label><input name="diplEmisaDe" class="form-control" value="'.getdiplEmisaDe($id_formular).'" />
-
-                                <label class="marg-t10">Data emitere:</label><input name="diplDataEmitere" class="form-control" value="'.getdiplDataEmitere($id_formular).'" />
-
-                                <label class="marg-t10">Numarul foii matricole care insoteste actul de studii:</label><input name="nrFoaieMatricola" class="form-control" value="'.getnrFoaieMatricola($id_formular).'" />
-
-                            <div class="align-center">
-
-                                <span class="col-md-12 sub-title">
-
-                                <br>Alte observatii (pentru caurile in care candidatul a absolvit studii anterioare in strainatate)
-
-                            </span>
-                            </div>
-
-                                <label class="marg-t10"> Act de recunoastere/ echivalare (eliberat de DPIRP/CNRED):</label>
-
-                                <label class="marg-t10">Nr:</label><input name="nrActRecLicenta" class="form-control" value="'.getnrActRecLicenta($id_formular).'" />
-
-                                <label class="marg-t10">Serie:</label><input name="serieActRecLicenta" class="form-control" value="'.getserieActRecLicenta($id_formular).'" />
-
-                                <label class="marg-t10">Data echivalarii:</label><input name="dataActRecLicenta" class="form-control" value="'.getdataActRecLicenta($id_formular).'" />
-
-                          
-                             <div class="align-center">
-
-                                <span class="col-md-12 sub-title">
-
-                                    <br>Studiile universitare de master in curs
-
-                                </span>
-
-                            </div>
-
-                                <label class="marg-t10">Student la master alta facultate/ universitate:</label><input name="inCursStudentAltaFac" class="form-control" value="'.getinCursStudentAltaFac($id_formular).'" />
-
-                                <label class="marg-t10">Tara:</label><input name="inCursTaraMasterr" class="form-control" value="'.getinCursTaraMaster($id_formular).'" />
-
-                                <label class="marg-t10">Localitate:</label><input name="inCursLocalitateMaster" class="form-control" value="'.getinCursLocalitateMaster($id_formular).'" />
-
-                                <label class="marg-t10">Judetul:</label><input name="inCursJudetMaster" class="form-control" value="'.getinCursJudetMaster($id_formular).'" />
-
-                                <label class="marg-t10">Denumirea institutiei de invatamant superior:</label><input name="inCursDenumInstitutieMaster" class="form-control" value="'.getinCursDenumInstitutieMaster($id_formular).'" />
-
-                                <label class="marg-t10">Facultatea:</label><input name="inCursDenumFacultateMaster" class="form-control" value="'.getinCursDenumFacultateMaster($id_formular).'" />
-
-                                <label class="marg-t10">Domeniul de studii:</label><input name="inCursDenumDomeniuMaster" class="form-control" value="'.getinCursDenumDomeniuMaster($id_formular).'" />
-
-                                <label class="marg-t10">Programul de studii/ Specializarea:</label><input name="inCursSpecializareMasterr" class="form-control" value="'.getinCursSpecializareMaster($id_formular).'" />
-
-                                <label class="marg-t10">Forma de invatamant:</label><input name="inCursFormaInvatMaster" class="form-control" value="'.getinCursFormaInvatMaster($id_formular).'" />
-
-                                <label class="marg-t10">Anul:</label><input name="inCursAnMaster" class="form-control" value="'.getinCursAnMaster($id_formular).'" />
-
-                                <label class="marg-t10">Numarul semestrelor finantate de la buget de stat:</label><input name="inCursNrSemBugetMaster" class="form-control" value="'.getinCursNrSemBugetMaster($id_formular).'" />
-
-                                <label class="marg-t10">Numarul semestrelor in care ati beneficiat de bursa:</label><input name="inCursNrSemBursaMaster" class="form-control" value="'.getinCursNrSemBursaMaster($id_formular).'" />
-
-                        <div class="align-center">
-
-                                <span class="col-md-12 sub-title">
-
-                                    <br>Absolvent al studiilor de master
-
-                                </span>
-
-                        </div>
-
-
-
-                                <label class="marg-t10">Anul absolvirii:</label><input name="absolventAn" class="form-control" value="'.getabsolventAn($id_formular).'" />
-
-
-
-                                 <label class="marg-t10">Tara:</label><input name="absolventTara" class="form-control" value="'.getabsolventTara($id_formular).'" />
-
-                                <label class="marg-t10">Localitate:</label><input name="absolventLocalitate" class="form-control" value="'.getabsolventLocalitate($id_formular).'" />
-
-                                <label class="marg-t10">Judetul:</label><input name="absolventJudet" class="form-control" value="'.getabsolventJudet($id_formular).'" />
-
-                                <label class="marg-t10">Denumirea institutiei de invatamant superior:</label><input name="absolventDenimireInstit" class="form-control" value="'.getabsolventDenimireInstit($id_formular).'" />
-
-                                <label class="marg-t10">Facultatea:</label><input name="absolventDenumireFacult" class="form-control" value="'.getAbsolventDenumireFacult($id_formular).'" />
-
-                                <label class="marg-t10">Domeniul de licenta:</label><input name="absolventDomeniu" class="form-control" value="'.getabsolventDomeniu($id_formular).'" />
-
-                                <label class="marg-t10">Programul de studii/Specializarea</label><input name="absolventSpecializare" class="form-control" value="'.getabsolventSpecializare($id_formular).'" />
-
-
-                                <label class="marg-t10">Forma de invatamant:</label><input name="absolventFormaInvat" class="form-control" value="'.getabsolventFormaInvat($id_formular).'" />
-
-                                <label class="marg-t10">Numarul semestrelor finantate de la buget de stat:</label><input name="absolventNrSemBuget" class="form-control" value="'.getabsolventNrSemBuget($id_formular).'" />
-
-                                <label class="marg-t10">Numarul semestrelor in care ati beneficiat de bursa:</label><input name="absolventNrSemBursa" class="form-control" value="'.getabsolventNrSemBursa($id_formular).'" />
-
-
-                        <div class="align-center">
-
-                                <span class="col-md-12 sub-title">
-
-                                    <br>Diploma de licenta
-
-                                </span>
-
-                        </div>
-
-                                <label class="marg-t10">Seria</label><input name="absolventDiploSerie" class="form-control" value="'.getabsolventDiploSerie($id_formular).'" />
-
-                                <label class="marg-t10">Numar</label><input name="absolventDiploNr" class="form-control" value="'.getabsolventDiploNr($id_formular).'" />
-
-                                <label class="marg-t10">Emisa de</label><input name="absolventDiploEmisaDe" class="form-control" value="'.getabsolventDiploEmisaDe($id_formular).'" />
-
-                                <label class="marg-t10">Data emiterii</label><input name="absolventDiplDataEmitere" class="form-control" value="'.getabsolventDiplDataEmitere($id_formular).'" />
-
-                                <label class="marg-t10">Numarul suplimentului/ foii matricole care insoteste actul de studii</label><input name="absolventNrFoaieMatricola" class="form-control" value="'.getabsolventNrFoaieMatricola($id_formular).'" />
-
-
+                            <label class="marg-t10">Alte surse:</label><input name="alteSurse" class="form-control" value=""/>
                     </div>
 
                 </div>';
                        ?>
-
-
-                <div class="col-md-12" style="margin-bottom:40px;">
-
-                    <h3 style="font-weight:bold;">Diplome, certificate</h3>
-
-                    <div class="col-md-6">
-
-                    <img class="wid100" src="imagini/exemplu-diploma.jpg" />
-
-                        </div>
-
-                    <div class="col-md-6">
-
-                        <img class="wid100" src="imagini/exemplu-diploma.jpg" />
-
-
-
-                    </div>
-
-                </div>
-
+                            
             </div>
 
         </div>
