@@ -135,7 +135,7 @@ require('PHPExcel/Classes/PHPExcel/IOFactory.php');
 
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
     $objWriter->save('excel_preadmitere.xlsx');
-
+/*
     $objPHPExcel_preadmitere = PHPExcel_IOFactory::load('excel_preadmitere.xlsx');
     $objPHPExcel_master = PHPExcel_IOFactory::load('excel_master.xlsx');
 
@@ -151,5 +151,5 @@ require('PHPExcel/Classes/PHPExcel/IOFactory.php');
     $objPHPExcel_final->addExternalSheet($worksheet);
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel_final, 'Excel2007');
     $objWriter->save('excel_final.xlsx');
-
+*/
 ?>
