@@ -262,12 +262,12 @@ require('PHPExcel/Classes/PHPExcel/IOFactory.php');
 
 //Date personale
 
-    fwrite($myfile, strtoupper($nume_familie_nastere)."\t");
-    fwrite($myfile, strtoupper($initialele_tatalui_mamei)."\t");
-    fwrite($myfile, strtoupper($nume_familie_actual)."\t");
-    fwrite($myfile, strtoupper($prenume_candidat)."\t");
-    fwrite($myfile, strtoupper($prenume_tata)."\t");
-    fwrite($myfile, strtoupper($prenume_mama)."\t");
+    fwrite($myfile, mb_strtoupper($nume_familie_nastere, 'UTF-8')."\t");
+    fwrite($myfile, mb_strtoupper($initialele_tatalui_mamei, 'UTF-8')."\t");
+    fwrite($myfile, mb_strtoupper($nume_familie_actual, 'UTF-8')."\t");
+    fwrite($myfile, mb_strtoupper($prenume_candidat, 'UTF-8')."\t");
+    fwrite($myfile, mb_strtoupper($prenume_tata, 'UTF-8')."\t");
+    fwrite($myfile, mb_strtoupper($prenume_mama, 'UTF-8')."\t");
     fwrite($myfile, $cnp."\t");
     fwrite($myfile, $sex."\t");
     fwrite($myfile, $data_nasterii."\t");
@@ -346,7 +346,7 @@ require('PHPExcel/Classes/PHPExcel/IOFactory.php');
     fwrite($myfile, $tara_fac."\t");
     fwrite($myfile, $localitate_fac."\t");
     fwrite($myfile, $judet_fac."\t");
-    fwrite($myfile, strtoupper($denumire_institutie_fac)."\t");
+    fwrite($myfile, mb_strtoupper($denumire_institutie_fac, 'UTF-8')."\t");
     fwrite($myfile, $denumire_facultate."\t");
     fwrite($myfile, $denumire_domeniu_licenta."\t");
     fwrite($myfile, $specializare."\t");
@@ -374,7 +374,7 @@ require('PHPExcel/Classes/PHPExcel/IOFactory.php');
     fwrite($myfile, $in_curs_localitate_master."\t");
     fwrite($myfile, $in_curs_judet_master."\t");
 
-    fwrite($myfile, strtoupper($in_curs_denum_instit_master)."\t");
+    fwrite($myfile, mb_strtoupper($in_curs_denum_instit_master, 'UTF-8')."\t");
     fwrite($myfile, $in_curs_denum_facultate_master."\t");
     fwrite($myfile, $in_curs_denum_domeniu_master."\t");
     fwrite($myfile, $in_curs_specializare_master."\t");
@@ -387,7 +387,7 @@ require('PHPExcel/Classes/PHPExcel/IOFactory.php');
     fwrite($myfile, $absolvent_tara."\t");
     fwrite($myfile, $absolvent_localitate."\t");
     fwrite($myfile, $absolvent_judet."\t");
-    fwrite($myfile, strtoupper($absolvent_denumire_instit)."\t");
+    fwrite($myfile, mb_strtoupper($absolvent_denumire_instit, 'UTF-8')."\t");
     fwrite($myfile, $absolvent_denumire_facult."\t");
     fwrite($myfile, $absolvent_domeniu."\t");
     fwrite($myfile, $absolvent_specializare."\t");
@@ -483,11 +483,11 @@ require('PHPExcel/Classes/PHPExcel/IOFactory.php');
      if($participa_altundeva == 1) $raspuns_participa_alt = 'DA';
 
     fwrite($myfile, $raspuns_participa_alt."\t");
-    fwrite($myfile, strtoupper($universitate1)."\t");
+    fwrite($myfile, mb_strtoupper($universitate1, 'UTF-8')."\t");
     fwrite($myfile, $facultate1."\t");
-    fwrite($myfile, strtoupper($universitate2)."\t");
+    fwrite($myfile, mb_strtoupper($universitate2, 'UTF-8')."\t");
     fwrite($myfile, $facultate2."\t");
-    fwrite($myfile, strtoupper($universitate3)."\t");
+    fwrite($myfile, mb_strtoupper($universitate3, 'UTF-8')."\t");
     fwrite($myfile, $facultate3."\t");
 
     //Chestionar master

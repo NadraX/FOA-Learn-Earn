@@ -363,9 +363,9 @@ function Footer()
 	  $pdf->SetFont('DejaVu','B',7);
 
 	  $pdf->Cell(10);
-	  $pdf->MultiCell(130, 6, ''.strtoupper($nume_familie_nastere), 1, 1);
+	  $pdf->MultiCell(130, 6, ''.mb_strtoupper($nume_familie_nastere, 'UTF-8'), 1, 1);
 	  $pdf->SetXY($x + 145, $y);
-	  $pdf->MultiCell(35, 6,''.strtoupper($initialele_tatalui_mamei),1,  1);
+	  $pdf->MultiCell(35, 6,''.mb_strtoupper($initialele_tatalui_mamei, 'UTF-8'),1,  1);
 
 	  $pdf->Ln(1);
 	  $pdf->SetFont('DejaVu','B',8);
@@ -374,7 +374,7 @@ function Footer()
 	  $pdf->Ln(7);
 	  $pdf->Cell(10);
 	  $pdf->SetFont('DejaVu','B',7);
-	  $pdf->Cell(170,6,''.strtoupper($nume_familie_actual),1,0,'L');
+	  $pdf->Cell(170,6,''.mb_strtoupper($nume_familie_actual, 'UTF-8'),1,0,'L');
 	  
 	  $pdf->Ln(5);
 	  $pdf->Cell(9);
@@ -384,7 +384,7 @@ function Footer()
 	  $pdf->Ln(7);
 	  $pdf->Cell(10);
 	  $pdf->SetFont('DejaVu','B',7);
-	  $pdf->Cell(170,6,''.strtoupper($prenume_candidat),1,0,'L');
+	  $pdf->Cell(170,6,''.mb_strtoupper($prenume_candidat, 'UTF-8'),1,0,'L');
 	  
 	  $pdf->Ln(13);
 	  $x = $pdf->GetX();
@@ -398,13 +398,13 @@ function Footer()
 	  $pdf->MultiCell(12, 12,'Mama',1,  1);
 	  $pdf->SetXY($x + 82, $y);
 	  $pdf->SetFont('DejaVu','B',7);
-	  $pdf->MultiCell(43, 12,''.strtoupper($prenume_mama),1,  1);
+	  $pdf->MultiCell(43, 12,''.mb_strtoupper($prenume_mama, 'UTF-8'),1,  1);
 	  $pdf->SetXY($x + 125, $y);
 	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->MultiCell(12, 12,'Tata',1,  1);
 	  $pdf->SetXY($x + 137, $y);
 	  $pdf->SetFont('DejaVu','B',7);
-	  $pdf->MultiCell(43, 12,''.strtoupper($prenume_tata),1,  1);
+	  $pdf->MultiCell(43, 12,''.mb_strtoupper($prenume_tata, 'UTF-8'),1,  1);
 
 	  $pdf->Ln(7);
 
@@ -945,7 +945,7 @@ function Footer()
 	 $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 
-	 $pdf->MultiCell(100, 6,''.strtoupper($denumire_institutie_fac),1,  1);
+	 $pdf->MultiCell(100, 6,''.mb_strtoupper($denumire_institutie_fac, 'UTF-8'),1,  1);
      $pdf->SetXY($x + 110, $y);
 	 $pdf->MultiCell(70, 6,''.$denumire_facultate,1,  1);
       
@@ -956,9 +956,9 @@ function Footer()
 
 	 $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
-	 $pdf->MultiCell(65, 6,'Program de studii/Specializare',1,  1); 
-     $pdf->SetXY($x + 75, $y);
-	 $pdf->MultiCell(35, 6,'Titlul obținut',1,  1);
+	 $pdf->MultiCell(55, 6,'Program studii/Specializare',1,  1); 
+     $pdf->SetXY($x + 65, $y);
+	 $pdf->MultiCell(45, 6,'Titlul obținut',1,  1);
      $pdf->SetXY($x + 110, $y);
 	 $pdf->MultiCell(38, 6,'Nr. sem. buget',1,  1);
      $pdf->SetXY($x + 148, $y);
@@ -970,9 +970,9 @@ function Footer()
 
      $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
-	 $pdf->MultiCell(65, 6,''.$specializare,1,  1); 
-     $pdf->SetXY($x + 75, $y);
-	 $pdf->MultiCell(35, 6,''.$titlu_obtinut,1,  1);
+	 $pdf->MultiCell(55, 6,''.$specializare,1,  1); 
+     $pdf->SetXY($x + 65, $y);
+	 $pdf->MultiCell(45, 6,''.$titlu_obtinut,1,  1);
      $pdf->SetXY($x + 110, $y);
 	 $pdf->MultiCell(38, 6,''.$nr_sem_buget,1,  1);
      $pdf->SetXY($x + 148, $y);
@@ -1050,7 +1050,7 @@ function Footer()
 	  $pdf->Ln(7);
       $pdf->Cell(10);
 	  $pdf->SetFont('DejaVu','B',7);
-	  $pdf->Cell(170,6,''.strtoupper($denumire_institutie_fac),1,0,'L');
+	  $pdf->Cell(170,6,''.mb_strtoupper($denumire_institutie_fac, 'UTF-8'),1,0,'L');
      
       
       //II.c stuff
@@ -1083,7 +1083,7 @@ function Footer()
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('DejaVu','B',7);
+     $pdf->SetFont('DejaVu','B',6.5);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(40, 6, ''.$raspuns_alta_facultate, 1, 1);
 	 $pdf->SetXY($x + 50, $y);
@@ -1112,7 +1112,7 @@ function Footer()
 	 $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 
-	 $pdf->MultiCell(100, 6,''.strtoupper($in_curs_denum_instit_master),1,  1);
+	 $pdf->MultiCell(100, 6,''.mb_strtoupper($in_curs_denum_instit_master, 'UTF-8'),1,  1);
      $pdf->SetXY($x + 110, $y);
 	 $pdf->MultiCell(70, 6,''.$in_curs_denum_facultate_master,1,  1);
       
@@ -1184,7 +1184,7 @@ function Footer()
      $x = $pdf->GetX();
      $y = $pdf->GetY();
 
-     $pdf->SetFont('DejaVu','B',7);
+     $pdf->SetFont('DejaVu','B',6.5);
 	 $pdf->Cell(10);
 	 $pdf->MultiCell(27, 6, ''.$absolvent_an, 1, 1);
 	 $pdf->SetXY($x + 37, $y);
@@ -1213,7 +1213,7 @@ function Footer()
 	 $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
 	 
-	 $pdf->MultiCell(100, 6,''.strtoupper($absolvent_denumire_instit),1,  1);
+	 $pdf->MultiCell(100, 6,''.mb_strtoupper($absolvent_denumire_instit, 'UTF-8'),1,  1);
      $pdf->SetXY($x + 110, $y);
 	 $pdf->MultiCell(70, 6,''.$absolvent_denumire_facult,1,  1); 
      
@@ -1228,11 +1228,11 @@ function Footer()
      $pdf->SetXY($x + 37, $y);
 	 $pdf->MultiCell(45, 6,'Program studii/Specializare',1,  1); 
      $pdf->SetXY($x + 82, $y);
-	 $pdf->MultiCell(25, 6,'Titlul obținut',1,  1);
-     $pdf->SetXY($x + 107, $y);
+	 $pdf->MultiCell(33, 6,'Titlul obținut',1,  1);
+     $pdf->SetXY($x + 115, $y);
 	 $pdf->MultiCell(35, 6,'Forma de învățământ',1,  1); 
-     $pdf->SetXY($x + 142, $y);
-	 $pdf->MultiCell(38, 6,'Nr. semestre bugetar',1,  1);
+     $pdf->SetXY($x + 150, $y);
+	 $pdf->MultiCell(30, 6,'Nr.sem buget',1,  1);
   
       
       
@@ -1241,15 +1241,15 @@ function Footer()
 
      $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
-     $pdf->MultiCell(38, 6,''.$absolvent_domeniu,1,  1);
-     $pdf->SetXY($x + 48, $y);
+     $pdf->MultiCell(27, 6,''.$absolvent_domeniu,1,  1);
+     $pdf->SetXY($x + 37, $y);
 	 $pdf->MultiCell(45, 6,''.$absolvent_specializare,1,  1); 
-     $pdf->SetXY($x + 93, $y);
-	 $pdf->MultiCell(25, 6,''.$absolvent_titlu_obtinut,1,  1);
-     $pdf->SetXY($x + 118, $y);
+     $pdf->SetXY($x + 82, $y);
+	 $pdf->MultiCell(33, 6,''.$absolvent_titlu_obtinut,1,  1);
+     $pdf->SetXY($x + 115, $y);
 	 $pdf->MultiCell(35, 6,''.$absolvent_forma_invat,1,  1); 
-     $pdf->SetXY($x + 153, $y);
-	 $pdf->MultiCell(27, 6,''.$absolvent_nr_sem_buget,1,  1);
+     $pdf->SetXY($x + 150, $y);
+	 $pdf->MultiCell(30, 6,''.$absolvent_nr_sem_buget,1,  1);
       
     
      $pdf->Ln(2);
@@ -1330,7 +1330,7 @@ function Footer()
 	  $pdf->Ln(7);
       $pdf->Cell(10);
 	  $pdf->SetFont('DejaVu','B',7);
-	  $pdf->Cell(170,6,''.strtoupper($absolvent_denumire_instit),1,0,'L');
+	  $pdf->Cell(170,6,''.mb_strtoupper($absolvent_denumire_instit, 'UTF-8'),1,0,'L');
      
      //Linie pt footer
       
@@ -1695,7 +1695,7 @@ function Footer()
 
      $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(10);
-     $pdf->MultiCell(95, 6, ''.strtoupper($universitate1), 1, 1);
+     $pdf->MultiCell(95, 6, ''.mb_strtoupper($universitate1, 'UTF-8'), 1, 1);
 	 $pdf->SetXY($x + 105, $y);
 	 $pdf->MultiCell(75, 6,''.$facultate1,1,  1);
       
@@ -1704,7 +1704,7 @@ function Footer()
      $y = $pdf->GetY();
 
 	 $pdf->Cell(10);
-     $pdf->MultiCell(95, 6, ''.strtoupper($universitate2), 1, 1);
+     $pdf->MultiCell(95, 6, ''.mb_strtoupper($universitate2, 'UTF-8'), 1, 1);
 	 $pdf->SetXY($x + 105, $y);
 	 $pdf->MultiCell(75, 6,''.$facultate2,1,  1);
       
@@ -1712,7 +1712,7 @@ function Footer()
      $y = $pdf->GetY();
      
 	 $pdf->Cell(10);
-     $pdf->MultiCell(95, 6, ''.strtoupper($universitate3), 1, 1);
+     $pdf->MultiCell(95, 6, ''.mb_strtoupper($universitate3, 'UTF-8'), 1, 1);
 	 $pdf->SetXY($x + 105, $y);
 	 $pdf->MultiCell(75, 6,''.$facultate3,1,  1);
       
