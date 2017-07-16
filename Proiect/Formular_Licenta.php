@@ -8903,19 +8903,36 @@
           :fac2,
           :uni3,
           :fac3)");
-
+            
+            //$v_Radio27
+            $Licenta_AlteConcursuri_Univ1 = null;
+            $Licenta_AlteConcursuri_Facultate1 = null;
+            $Licenta_AlteConcursuri_Univ2 = null;
+            $Licenta_AlteConcursuri_Facultate2 = null;
+            $Licenta_AlteConcursuri_Univ3 = null;
+            $Licenta_AlteConcursuri_Facultate3 = null;
+            
+            if($v_Radio27 == 1) {
+                $Licenta_AlteConcursuri_Univ1 = $_POST['Licenta_AlteConcursuri_Univ1'];
+                $Licenta_AlteConcursuri_Facultate1 = $_POST['Licenta_AlteConcursuri_Facultate1'];
+                $Licenta_AlteConcursuri_Univ2 = $_POST['Licenta_AlteConcursuri_Univ2'];
+                $Licenta_AlteConcursuri_Facultate2 = $_POST['Licenta_AlteConcursuri_Facultate2'];
+                $Licenta_AlteConcursuri_Univ3 = $_POST['Licenta_AlteConcursuri_Univ3'];
+                $Licenta_AlteConcursuri_Facultate3 = $_POST['Licenta_AlteConcursuri_Facultate3'];
+            }
+            
         oci_bind_by_name($statement, ':id', $numaratoare_licenta);
         oci_bind_by_name($statement, ':diploma_bac_original', $v_Diploma_BAC);
         oci_bind_by_name($statement, ':adeverinta_original', $v_Adeverinta);
         oci_bind_by_name($statement, ':document_echiv_studii_original', $echiv_original);
         oci_bind_by_name($statement, ':diploma_olimpiada', $v_Diploma_Olimpiada);
         oci_bind_by_name($statement, ':participa_altundeva', $v_Radio27);
-        oci_bind_by_name($statement, ':uni1', $_POST['Licenta_AlteConcursuri_Univ1']);
-        oci_bind_by_name($statement, ':fac1', $_POST['Licenta_AlteConcursuri_Facultate1']);
-        oci_bind_by_name($statement, ':uni2', $_POST['Licenta_AlteConcursuri_Univ2']);
-        oci_bind_by_name($statement, ':fac2', $_POST['Licenta_AlteConcursuri_Facultate2']);
-        oci_bind_by_name($statement, ':uni3', $_POST['Licenta_AlteConcursuri_Univ3']);
-        oci_bind_by_name($statement, ':fac3', $_POST['Licenta_AlteConcursuri_Facultate3']);
+        oci_bind_by_name($statement, ':uni1', $Licenta_AlteConcursuri_Univ1);
+        oci_bind_by_name($statement, ':fac1', $Licenta_AlteConcursuri_Facultate1);
+        oci_bind_by_name($statement, ':uni2', $Licenta_AlteConcursuri_Univ2);
+        oci_bind_by_name($statement, ':fac2', $Licenta_AlteConcursuri_Facultate2);
+        oci_bind_by_name($statement, ':uni3', $Licenta_AlteConcursuri_Univ3);
+        oci_bind_by_name($statement, ':fac3', $Licenta_AlteConcursuri_Facultate3);
 
         if (!$statement) {
             ini_set('display_errors', 1);
