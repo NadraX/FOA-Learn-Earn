@@ -1339,11 +1339,11 @@ function Footer()
 	 $raspuns_diploma_olimpiada = 'NU'; 
 	 
 	 if($diploma_bac_original == 1) $raspuns_diploma_bac_original = 'DA';
-     else $raspuns_diploma_bac_copie = 'DA';
+     else if($diploma_bac_original == 2) $raspuns_diploma_bac_copie = 'DA';
 	 if($adeverinta_original == 1) $raspuns_adeverinta_original = 'DA';
-     else $raspuns_adeverinta_copie = 'DA';
+     else if($adeverinta_original == 2) $raspuns_adeverinta_copie = 'DA';
 	 if($document_echiv_studii_original == 1) $raspuns_echiv_studii_original = 'DA';
-	 else $raspuns_echiv_studii_copie = 'DA';
+	 else if($document_echiv_studii_original == 2) $raspuns_echiv_studii_copie = 'DA';
 	 if($diploma_olimpiada == 1) $raspuns_diploma_olimpiada = 'DA';
 	 
       $pdf->Ln(8.5); 
