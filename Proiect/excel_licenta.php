@@ -377,13 +377,7 @@ require('PHPExcel/Classes/PHPExcel/IOFactory.php');
     fwrite($myfile, $preferinta_2."\t");
     fwrite($myfile, $preferinta_3."\t");
     fwrite($myfile, $preferinta_4."\t");
-
-    $rasp_stare_taxa = null;
-    if($stare_taxa == 1) $rasp_stare_taxa = 'Da';
-    if($stare_taxa == 2) $rasp_stare_taxa = 'Nu';
-    if($stare_taxa == 3) $rasp_stare_taxa = 'Numai cu Taxa';
-    
-    fwrite($myfile, $rasp_stare_taxa."\t");
+    fwrite($myfile, $stare_taxa."\t");
 
       //Info doc licenta
  
