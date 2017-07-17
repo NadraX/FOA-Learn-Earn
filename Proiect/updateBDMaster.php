@@ -1,11 +1,56 @@
 <?php
 
+//----------------------------------------------------------------------------------
 
+//TAXA DE INSCRIERE
 
-function updateNumeNastere($id_formular,$nume)
+function updateNrChitantei($id_formular, $nr) 
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, "UPDATE formular_master
+                         set nr_chitanta = '$nr' where id = '$id_formular'");
+    oci_execute($s);
+    oci_close($c);
+}
+
+function updateSuma($id_formular, $nume)
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, "UPDATE formular_master
+                        SET suma='$nume'  where id='$id_formular'");
+    oci_execute($s);
+    oci_close($c);
+}
+
+function updateEsteScutit($id_formular, $nume)
+{
+    if ($nume == "DA" || $nume == "da"  || $nume == "Da" || $nume == "dA" ) $nume = 1;
+    else $nume = 2;
+
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, "UPDATE formular_master
+                        SET scutit='$nume'  where id='$id_formular'");
+    oci_execute($s);
+    oci_close($c);
+}
+
+function updateMotivScutire($id_formular, $nume)
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, "UPDATE formular_master
+                        SET motiv_scutire='$nume'  where id='$id_formular'");
+    oci_execute($s);
+    oci_close($c);
+}
+
+//----------------------------------------------------------------------------------
+
+//DATE PERSONALE
+
+function updateNumeNastere($id_formular, $nume)
 {
 
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into date_personale_master dp
                                 using formular_master f 
                                 on (f.id=dp.formular_id)
@@ -15,10 +60,10 @@ function updateNumeNastere($id_formular,$nume)
     @oci_close($c);
 }
 
-function updateNumeActual($id_formular,$nume)
+function updateNumeActual($id_formular, $nume)
 {
 
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into date_personale_master dp
                                 using formular_master f 
                                 on (f.id=dp.formular_id)
@@ -28,9 +73,9 @@ function updateNumeActual($id_formular,$nume)
     @oci_close($c);
 }
 
-function updatePrenume($id_formular,$prenume)
+function updatePrenume($id_formular, $prenume)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -43,9 +88,9 @@ function updatePrenume($id_formular,$prenume)
 
 }
 
-function updateInitialaTata($id_formular,$initialaTata)
+function updateInitialaTata($id_formular, $initialaTata)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -58,9 +103,9 @@ function updateInitialaTata($id_formular,$initialaTata)
 
 }
 
-function updatePrenumeTata($id_formular,$prenumeTata)
+function updatePrenumeTata($id_formular, $prenumeTata)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -73,9 +118,9 @@ function updatePrenumeTata($id_formular,$prenumeTata)
 
 }
 
-function updatePrenumeMama($id_formular,$prenumeMama)
+function updatePrenumeMama($id_formular, $prenumeMama)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -88,9 +133,9 @@ function updatePrenumeMama($id_formular,$prenumeMama)
 
 }
 
-function updateCetatenie($id_formular,$cetatenie)
+function updateCetatenie($id_formular, $cetatenie)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -103,9 +148,24 @@ function updateCetatenie($id_formular,$cetatenie)
 
 }
 
-function updateSex($id_formular,$sex)
+function updateStareCivila($id_formular, $stareCivila)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8', 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_personale_master dp
+                                                 using formular_master f 
+                                                 on (f.id=dp.formular_id)
+                                                 when matched then
+                                                 update set dp.stare_civila='$stareCivila'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+
+}
+
+function updateSex($id_formular, $sex)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -118,9 +178,9 @@ function updateSex($id_formular,$sex)
 
 }
 
-function updateNationalitate($id_formular,$nationalitate)
+function updateNationalitate($id_formular, $nationalitate)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -133,9 +193,9 @@ function updateNationalitate($id_formular,$nationalitate)
 
 }
 
-function updateEtnie($id_formular,$etnie)
+function updateEtnie($id_formular, $etnie)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -147,9 +207,10 @@ function updateEtnie($id_formular,$etnie)
     @oci_close($c);
 
 }
-function updateLimbaMaterna($id_formular,$limbaMaterna)
+
+function updateLimbaMaterna($id_formular, $limbaMaterna)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -162,9 +223,9 @@ function updateLimbaMaterna($id_formular,$limbaMaterna)
 
 }
 
-function updateTelefon($id_formular,$telefon)
+function updateTelefon($id_formular, $telefon)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -177,9 +238,9 @@ function updateTelefon($id_formular,$telefon)
 
 }
 
-function updateEmail($id_formular,$email)
+function updateEmail($id_formular, $email)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -192,9 +253,9 @@ function updateEmail($id_formular,$email)
 
 }
 
-function updateDataNasterii($id_formular,$dataDay,$dataMonth,$dataYear)
+function updateDataNasterii($id_formular, $dataDay, $dataMonth, $dataYear)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -209,9 +270,9 @@ function updateDataNasterii($id_formular,$dataDay,$dataMonth,$dataYear)
 
 
 
-function updateCNP($id_formular,$cnp)
+function updateCNP($id_formular, $cnp)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -224,30 +285,15 @@ function updateCNP($id_formular,$cnp)
 
 }
 
-/*
-function updateTipBuletin($id_formular,$tipBuletin)
+
+function updateTipAct($id_formular, $tipAct)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
                                                  when matched then
-                                                 update set dp.tip_buletin='$tipBuletin'
-                                                 where f.id='$id_formular' ");
-
-    @oci_execute($s);
-    @oci_close($c);
-
-}
-*/
-function updateSerieBuletin($id_formular,$serieBuletin)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  date_personale_master dp
-                                                 using formular_master f 
-                                                 on (f.id=dp.formular_id)
-                                                 when matched then
-                                                 update set dp.serie_ci='$serieBuletin'
+                                                 update set dp.tip_act_ident='$tipAct'
                                                  where f.id='$id_formular' ");
 
     @oci_execute($s);
@@ -255,14 +301,14 @@ function updateSerieBuletin($id_formular,$serieBuletin)
 
 }
 
-function updateNumarBuletin($id_formular,$numarBuletin)
+function updateSerieBuletin($id_formular, $serieBuletin)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
                                                  when matched then
-                                                 update set dp.numar_ci='$numarBuletin'
+                                                 update set dp.serie_act='$serieBuletin'
                                                  where f.id='$id_formular' ");
 
     @oci_execute($s);
@@ -270,9 +316,24 @@ function updateNumarBuletin($id_formular,$numarBuletin)
 
 }
 
-function updateBuletinEliberatDe($id_formular,$buletinEliberatDe)
+function updateNumarBuletin($id_formular, $numarBuletin)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_personale_master dp
+                                                 using formular_master f 
+                                                 on (f.id=dp.formular_id)
+                                                 when matched then
+                                                 update set dp.numar_act='$numarBuletin'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+
+}
+
+function updateBuletinEliberatDe($id_formular, $buletinEliberatDe)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -285,9 +346,9 @@ function updateBuletinEliberatDe($id_formular,$buletinEliberatDe)
 
 }
 
-function updateDataEliberareBuletin($id_formular,$dataEliberareDay,$dataEliberareMonth,$dataEliberareYear)
+function updateDataEliberareBuletin($id_formular, $dataEliberareDay, $dataEliberareMonth, $dataEliberareYear)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -300,9 +361,9 @@ function updateDataEliberareBuletin($id_formular,$dataEliberareDay,$dataEliberar
 
 }
 
-function updateDataExpirareBuletin($id_formular,$dataExpirareDay,$dataExpirareMonth,$dataExpirareYear)
+function updateDataExpirareBuletin($id_formular, $dataExpirareDay, $dataExpirareMonth, $dataExpirareYear)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -315,10 +376,26 @@ function updateDataExpirareBuletin($id_formular,$dataExpirareDay,$dataExpirareMo
 
 }
 
+//DOMICILIUL CANDIDATULUI
 
-function updateStrada($id_formular,$strada)
+function updateDomiciliu($id_formular, $domiciliu)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_personale_master dp
+                                                 using formular_master f 
+                                                 on (f.id=dp.formular_id)
+                                                 when matched then
+                                                 update set dp.mediu_domiciliu='$domiciliu'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+
+function updateStrada($id_formular, $strada)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -331,9 +408,9 @@ function updateStrada($id_formular,$strada)
 
 }
 
-function updateNrStrada($id_formular,$nrStrada)
+function updateNrStrada($id_formular, $nrStrada)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -346,9 +423,9 @@ function updateNrStrada($id_formular,$nrStrada)
 
 }
 
-function updateNrBloc($id_formular,$nrBloc)
+function updateNrBloc($id_formular, $nrBloc)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -361,9 +438,9 @@ function updateNrBloc($id_formular,$nrBloc)
 
 }
 
-function updateApartament($id_formular,$apartament)
+function updateApartament($id_formular, $apartament)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -376,9 +453,9 @@ function updateApartament($id_formular,$apartament)
 
 }
 
-function updateScara($id_formular,$apartament)
+function updateScara($id_formular, $apartament)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -391,9 +468,23 @@ function updateScara($id_formular,$apartament)
 
 }
 
-function updateMaterieTest($id_formular,$materieTest)
+function updateEtaj($id_formular, $etaj)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_personale_master dp
+                                                 using formular_master f 
+                                                 on (f.id=dp.formular_id)
+                                                 when matched then
+                                                 update set dp.etaj='$etaj'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+function updateMaterieTest($id_formular, $materieTest)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " update formular_master  set optiune_test_scris='$materieTest'
                                                  where id='$id_formular' ");
 
@@ -402,9 +493,51 @@ function updateMaterieTest($id_formular,$materieTest)
 
 }
 
-function updateNumeLiceu($id_formular,$numeLiceu)
+function updateTaraDomiciliu($id_formular, $taraDomiciliu)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_personale_master dp
+                                                 using formular_master f 
+                                                 on (f.id=dp.formular_id)
+                                                 when matched then
+                                                 update set dp.tara_domiciliu='$taraDomiciliu'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+function updateJudetDomiciliu($id_formular, $judetDomiciliu)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_personale_master dp
+                                                 using formular_master f 
+                                                 on (f.id=dp.formular_id)
+                                                 when matched then
+                                                 update set dp.judet_domiciliu='$judetDomiciliu'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+function updateLocalitateDomiciliu($id_formular, $localitateDomiciliu)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_personale_master dp
+                                                 using formular_master f 
+                                                 on (f.id=dp.formular_id)
+                                                 when matched then
+                                                 update set dp.localitate_domiciliu='$localitateDomiciliu'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+function updateNumeLiceu($id_formular, $numeLiceu)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -417,9 +550,9 @@ function updateNumeLiceu($id_formular,$numeLiceu)
 
 }
 
-function updateCodPostal($id_formular,$codPostal)
+function updateCodPostal($id_formular, $codPostal)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -432,9 +565,9 @@ function updateCodPostal($id_formular,$codPostal)
 
 }
 
-function updateLocalitateNastere($id_formular,$localitate)
+function updateLocalitateNastere($id_formular, $localitate)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -447,9 +580,9 @@ function updateLocalitateNastere($id_formular,$localitate)
 
 }
 
-function updateJudetNastere($id_formular,$judet)
+function updateJudetNastere($id_formular, $judet)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -462,9 +595,9 @@ function updateJudetNastere($id_formular,$judet)
 
 }
 
-function updateTaraNastere($id_formular,$tara)
+function updateTaraNastere($id_formular, $tara)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -477,10 +610,38 @@ function updateTaraNastere($id_formular,$tara)
 
 }
 
+//----------------------------------------------------------------------------------------------
 
-function updatePersoanaCuDizabilitati($id_formular,$pcd)
+// CAZARE STUDII
+
+function updateSolicitaCazare($id_formular, $cazareStudii)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    if ($cazareStudii == 'DA' || $cazareStudii == 'da' || $cazareStudii == 'Da' || $cazareStudii == 'dA') $cazareStudii = 1;
+    else $cazareStudii = 2;
+    
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_personale_master dp
+                                                 using formular_master f 
+                                                 on (f.id=dp.formular_id)
+                                                 when matched then
+                                                 update set dp.solicita_cazare_studii='$cazareStudii'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+
+}
+
+//----------------------------------------------------------------------------------------------
+
+// ALTE DATE PERSONALE
+
+function updatePersoanaCuDizabilitati($id_formular, $pcd)
+{
+    if ($pcd == 'DA' || $pcd == 'da' || $pcd == 'Da' || $pcd == 'dA') $pcd = 1;
+    else $pcd = 2;
+    
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_personale_master dp
                                                  using formular_master f 
                                                  on (f.id=dp.formular_id)
@@ -493,33 +654,27 @@ function updatePersoanaCuDizabilitati($id_formular,$pcd)
 
 }
 
-function validare($id_formular)
+function updateStareSpeciala($id_formular, $stareSpeciala)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " update formular_master set stare=1 where id='$id_formular' ");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_personale_master dp
+                                                 using formular_master f 
+                                                 on (f.id=dp.formular_id)
+                                                 when matched then
+                                                 update set dp.stare_sociala_speciala='$stareSpeciala'
+                                                 where f.id='$id_formular' ");
 
     @oci_execute($s);
     @oci_close($c);
-
-}
-
-function respingere($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, "update formular_master set stare=-1 where id='$id_formular'");
-
-    @oci_execute($s);
-    @oci_close($c);
-
 }
 
 //----------------------------------------------------------------------------------------------
-// PANA AICI E OK
 
 // UPDATE CERINTE SPECIFICE FACULTATII
-function updateMedieExamenLicenta($id_formular,$valoareNoua)
+
+function updateMedieExamenLicenta($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  cerinte_master c
                                                  using formular_master f 
                                                  on (f.id=c.formular_id)
@@ -532,9 +687,9 @@ function updateMedieExamenLicenta($id_formular,$valoareNoua)
 
 }
 
-function updateMedieAdmitere($id_formular,$valoareNoua)
+function updateMedieAdmitere($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  cerinte_master c
                                                  using formular_master f 
                                                  on (f.id=c.formular_id)
@@ -547,9 +702,9 @@ function updateMedieAdmitere($id_formular,$valoareNoua)
 
 }
 
-function updatePreferinta1($id_formular,$valoareNoua)
+function updatePreferinta1($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  ordine_preferinte_master op
                                                  using formular_master f 
                                                  on (f.id=op.formular_id)
@@ -562,9 +717,9 @@ function updatePreferinta1($id_formular,$valoareNoua)
 
 }
 
-function updatePreferinta2($id_formular,$valoareNoua)
+function updatePreferinta2($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  ordine_preferinte_master op
                                                  using formular_master f 
                                                  on (f.id=op.formular_id)
@@ -577,9 +732,9 @@ function updatePreferinta2($id_formular,$valoareNoua)
 
 }
 
-function updatePreferinta3($id_formular,$valoareNoua)
+function updatePreferinta3($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  ordine_preferinte_master op
                                                  using formular_master f 
                                                  on (f.id=op.formular_id)
@@ -592,9 +747,9 @@ function updatePreferinta3($id_formular,$valoareNoua)
 
 }
 
-function updatePreferinta4($id_formular,$valoareNoua)
+function updatePreferinta4($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  ordine_preferinte_master op
                                                  using formular_master f 
                                                  on (f.id=op.formular_id)
@@ -607,9 +762,9 @@ function updatePreferinta4($id_formular,$valoareNoua)
 
 }
 
-function updatePreferinta5($id_formular,$valoareNoua)
+function updatePreferinta5($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  ordine_preferinte_master op
                                                  using formular_master f 
                                                  on (f.id=op.formular_id)
@@ -622,9 +777,9 @@ function updatePreferinta5($id_formular,$valoareNoua)
 
 }
 
-function updatePreferinta6($id_formular,$valoareNoua)
+function updatePreferinta6($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  ordine_preferinte_master op
                                                  using formular_master f 
                                                  on (f.id=op.formular_id)
@@ -637,9 +792,9 @@ function updatePreferinta6($id_formular,$valoareNoua)
 
 }
 
-function updatePreferinta7($id_formular,$valoareNoua)
+function updatePreferinta7($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  ordine_preferinte_master op
                                                  using formular_master f 
                                                  on (f.id=op.formular_id)
@@ -652,9 +807,9 @@ function updatePreferinta7($id_formular,$valoareNoua)
 
 }
 
-function updatePreferinta8($id_formular,$valoareNoua)
+function updatePreferinta8($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  ordine_preferinte_master op
                                                  using formular_master f 
                                                  on (f.id=op.formular_id)
@@ -667,9 +822,9 @@ function updatePreferinta8($id_formular,$valoareNoua)
 
 }
 
-function updatePreferinta9($id_formular,$valoareNoua)
+function updatePreferinta9($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  ordine_preferinte_master op
                                                  using formular_master f 
                                                  on (f.id=op.formular_id)
@@ -682,9 +837,9 @@ function updatePreferinta9($id_formular,$valoareNoua)
 
 }
 
-function updatePreferinta10($id_formular,$valoareNoua)
+function updatePreferinta10($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  ordine_preferinte_master op
                                                  using formular_master f 
                                                  on (f.id=op.formular_id)
@@ -697,9 +852,9 @@ function updatePreferinta10($id_formular,$valoareNoua)
 
 }
 
-function updatePreferinta11($id_formular,$valoareNoua)
+function updatePreferinta11($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  ordine_preferinte_master op
                                                  using formular_master f 
                                                  on (f.id=op.formular_id)
@@ -712,9 +867,12 @@ function updatePreferinta11($id_formular,$valoareNoua)
 
 }
 
-function updateOptiuneAdmitereTaxa($id_formular,$valoareNoua)
+function updateOptiuneAdmitereTaxa($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    if ($valoareNoua == 'DA' || $valoareNoua == 'da' || $valoareNoua == 'Da' || $valoareNoua == 'dA') $valoareNoua = 1;
+    else $valoareNoua = 2;
+    
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  ordine_preferinte_master op
                                                  using formular_master f 
                                                  on (f.id=op.formular_id)
@@ -732,54 +890,40 @@ function updateOptiuneAdmitereTaxa($id_formular,$valoareNoua)
 
 //Informatii privind documentele de studii depuse la dosar
 
-function updateDiplomaBacOriginal($id_formular,$valoareNoua)
+function updateDiplomaBacOriginal($v_idFormular, $v_Diploma_Bac_Original)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  informatii_documente_master idm
-                                                 using formular_master f 
-                                                 on (f.id=idm.formular_id)
-                                                 when matched then
-                                                 update set idm.diploma_bac_original='$valoareNoua'
-                                                 where f.id='$id_formular' ");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "update informatii_documente_master set diploma_bac_original = '$v_Diploma_Bac_Original' where formular_id = '$v_idFormular'");
 
     @oci_execute($s);
     @oci_close($c);
 
 }
 
-function updateDiplomaBacCopie($id_formular,$valoareNoua)
+function updateDiplomaBacCopie($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  informatii_documente_master idm
-                                                 using formular_master f 
-                                                 on (f.id=idm.formular_id)
-                                                 when matched then
-                                                 update set idm.diploma_bac_copie='$valoareNoua'
-                                                 where f.id='$id_formular' ");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "update informatii_documente_master set diploma_bac_copie = '$valoareNoua' where formular_id = '$id_formular'");
 
     @oci_execute($s);
     @oci_close($c);
 
 }
 
-function updateDocEchivPreunivOriginal($id_formular,$valoareNoua)
+function updateDocEchivPreunivOriginal($v_idFormular, $v_Doc_Echiv_Preuniv_Original)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  informatii_documente_master idm
-                                                 using formular_master f 
-                                                 on (f.id=idm.formular_id)
-                                                 when matched then
-                                                 update set idm.doc_echiv_preuniv_original='$valoareNoua'
-                                                 where f.id='$id_formular' ");
+    
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "update informatii_documente_master set doc_echiv_preuniv_original = '$v_Doc_Echiv_Preuniv_Original' where formular_id = '$v_idFormular'");
 
     @oci_execute($s);
     @oci_close($c);
 
 }
 
-function updateDocEchivPreunivCopie($id_formular,$valoareNoua)
+function updateDocEchivPreunivCopie($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  informatii_documente_master idm
                                                  using formular_master f 
                                                  on (f.id=idm.formular_id)
@@ -792,44 +936,24 @@ function updateDocEchivPreunivCopie($id_formular,$valoareNoua)
 
 }
 
-function updateDiplomaLicentaOriginal($id_formular,$valoareNoua)
+function updateDiplomaLicentaOriginal($v_idFormular, $v_Diploma_Licenta_Original)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  informatii_documente_master idm
-                                                 using formular_master f 
-                                                 on (f.id=idm.formular_id)
-                                                 when matched then
-                                                 update set idm.diploma_licenta_original='$valoareNoua'
-                                                 where f.id='$id_formular' ");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "UPDATE informatii_documente_master set diploma_licenta_original = '$v_Diploma_Licenta_Original' where formular_id = '$v_idFormular'");
 
     @oci_execute($s);
     @oci_close($c);
 
 }
 
-function updateDiplomaLicentaCopie($id_formular,$valoareNoua)
+function updateDiplomaLicentaCopie($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  informatii_documente_master idm
                                                  using formular_master f 
                                                  on (f.id=idm.formular_id)
                                                  when matched then
                                                  update set idm.diploma_licenta_copie='$valoareNoua'
-                                                 where f.id='$id_formular' ");
-
-    @oci_execute($s);
-    @oci_close($c);
-
-}
-
-function updateParticipAltundeva($id_formular,$valoareNoua)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  informatii_documente_master idm
-                                                 using formular_master f 
-                                                 on (f.id=idm.formular_id)
-                                                 when matched then
-                                                 update set idm.perticip_altundeva='$valoareNoua'
                                                  where f.id='$id_formular' ");
 
     @oci_execute($s);
@@ -843,9 +967,9 @@ function updateParticipAltundeva($id_formular,$valoareNoua)
 
 //  Studiile preuniversitare absolvite, nivel liceu
 
-function updateLiceulAbsolvit($id_formular,$liceu)
+function updateLiceulAbsolvit($id_formular, $liceu)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -859,9 +983,9 @@ function updateLiceulAbsolvit($id_formular,$liceu)
 }
 
 
-function updateLocalitateLiceu($id_formular,$localitate)
+function updateLocalitateLiceu($id_formular, $localitate)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -874,9 +998,9 @@ function updateLocalitateLiceu($id_formular,$localitate)
 
 }
 
-function updateJudetLiceu($id_formular,$judet)
+function updateJudetLiceu($id_formular, $judet)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -889,9 +1013,9 @@ function updateJudetLiceu($id_formular,$judet)
 
 }
 
-function updateTaraLiceu($id_formular,$tara)
+function updateTaraLiceu($id_formular, $tara)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -904,9 +1028,9 @@ function updateTaraLiceu($id_formular,$tara)
 
 }
 
-function updateProfilLiceu($id_formular,$valoareNoua)
+function updateProfilLiceu($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -919,9 +1043,9 @@ function updateProfilLiceu($id_formular,$valoareNoua)
 
 }
 
-function updateDurataStudiilorLiceu($id_formular,$valoareNoua)
+function updateDurataStudiilorLiceu($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -934,9 +1058,9 @@ function updateDurataStudiilorLiceu($id_formular,$valoareNoua)
 
 }
 
-function updateAnulAbsolviriiLiceu($id_formular,$valoareNoua)
+function updateAnulAbsolviriiLiceu($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -949,9 +1073,9 @@ function updateAnulAbsolviriiLiceu($id_formular,$valoareNoua)
 
 }
 
-function updateFormaInvatamantLiceu($id_formular,$valoareNoua)
+function updateFormaInvatamantLiceu($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -964,9 +1088,9 @@ function updateFormaInvatamantLiceu($id_formular,$valoareNoua)
 
 }
 
-function updateSerieDiplomaBac($id_formular,$valoareNoua)
+function updateSerieDiplomaBac($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -979,9 +1103,9 @@ function updateSerieDiplomaBac($id_formular,$valoareNoua)
 
 }
 
-function updateNrDiplomaBac($id_formular,$valoareNoua)
+function updateNrDiplomaBac($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -994,9 +1118,9 @@ function updateNrDiplomaBac($id_formular,$valoareNoua)
 
 }
 
-function updateEmisaDeLiceu($id_formular,$valoareNoua)
+function updateEmisaDeLiceu($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1009,14 +1133,14 @@ function updateEmisaDeLiceu($id_formular,$valoareNoua)
 
 }
 
-function updateDataEmiteriiDiploma($id_formular,$valoareNoua)
+function updateDataEliberareBac($id_formular, $dataEmitereDay, $dataEmitereMonth, $dataEmitereYear)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  Date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
                                                  when matched then
-                                                 update set dpa.data_emiterii_diploma='$valoareNoua'
+                                                 update set dpa.data_emiterii_diploma=date '$dataEmitereYear-$dataEmitereMonth-$dataEmitereDay'
                                                  where f.id='$id_formular' ");
 
     @oci_execute($s);
@@ -1024,9 +1148,9 @@ function updateDataEmiteriiDiploma($id_formular,$valoareNoua)
 
 }
 
-function updateNrFoiiMatricole($id_formular,$valoareNoua)
+function updateNrFoiiMatricole($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1039,9 +1163,9 @@ function updateNrFoiiMatricole($id_formular,$valoareNoua)
 
 }
 
-function updateNrActRecEchiv($id_formular,$valoareNoua)
+function updateNrActRecEchiv($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1051,12 +1175,11 @@ function updateNrActRecEchiv($id_formular,$valoareNoua)
 
     @oci_execute($s);
     @oci_close($c);
-
 }
 
-function updateSerieActRecEchiv($id_formular,$valoareNoua)
+function updateSerieActRecEchiv($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1069,14 +1192,14 @@ function updateSerieActRecEchiv($id_formular,$valoareNoua)
 
 }
 
-function updateDataRecEchiv($id_formular,$valoareNoua)
+function updateDataEchivalareBac($id_formular, $dataEchivBacDay, $dataEchivBacMonth, $dataEchivBacYear)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  Date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
                                                  when matched then
-                                                 update set dpa.data_rec_echiv='$valoareNoua'
+                                                 update set dpa.data_rec_echiv=date '$dataEchivBacYear-$dataEchivBacMonth-$dataEchivBacDay'
                                                  where f.id='$id_formular' ");
 
     @oci_execute($s);
@@ -1089,56 +1212,9 @@ function updateDataRecEchiv($id_formular,$valoareNoua)
 
 //  Studiile universitare de licenta absolvite
 
-
-
-function updateTaraFac($id_formular,$valoareNoua)
+function updateDenumireInstitutieFac($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
-                                                 using formular_master f 
-                                                 on (f.id=dpa.formular_id)
-                                                 when matched then
-                                                 update set dpa.tara_fac='$valoareNoua'
-                                                 where f.id='$id_formular' ");
-
-    @oci_execute($s);
-    @oci_close($c);
-
-}
-
-function updateJudetFac($id_formular,$valoareNoua)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
-                                                 using formular_master f 
-                                                 on (f.id=dpa.formular_id)
-                                                 when matched then
-                                                 update set dpa.judet_fac='$valoareNoua'
-                                                 where f.id='$id_formular' ");
-
-    @oci_execute($s);
-    @oci_close($c);
-
-}
-
-function updateLocalitateFac($id_formular,$valoareNoua)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
-                                                 using formular_master f 
-                                                 on (f.id=dpa.formular_id)
-                                                 when matched then
-                                                 update set dpa.localitate_fac='$valoareNoua'
-                                                 where f.id='$id_formular' ");
-
-    @oci_execute($s);
-    @oci_close($c);
-
-}
-
-function updateDenumireInstitutieFac($id_formular,$valoareNoua)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1151,9 +1227,9 @@ function updateDenumireInstitutieFac($id_formular,$valoareNoua)
 
 }
 
-function updateDurataStudii($id_formular,$valoareNoua)
+function updateDurataStudii($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1166,9 +1242,9 @@ function updateDurataStudii($id_formular,$valoareNoua)
 
 }
 
-function updateDenumireFacultate($id_formular,$valoareNoua)
+function updateDenumireFacultate($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1181,9 +1257,9 @@ function updateDenumireFacultate($id_formular,$valoareNoua)
 
 }
 
-function updateDenumireDomeniuLicenta($id_formular,$valoareNoua)
+function updateDenumireDomeniuLicenta($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1196,9 +1272,9 @@ function updateDenumireDomeniuLicenta($id_formular,$valoareNoua)
 
 }
 
-function updateSpecializare($id_formular,$valoareNoua)
+function updateSpecializare($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1211,56 +1287,9 @@ function updateSpecializare($id_formular,$valoareNoua)
 
 }
 
-function updateFormaInvatamantFac($id_formular,$valoareNoua)
+function updateTitluObtinut($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
-                                                 using formular_master f 
-                                                 on (f.id=dpa.formular_id)
-                                                 when matched then
-                                                 update set dpa.forma_invatamant_fac='$valoareNoua'
-                                                 where f.id='$id_formular' ");
-
-    @oci_execute($s);
-    @oci_close($c);
-
-}
-
-
-
-function updateNrSemBuget($id_formular,$valoareNoua)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
-                                                 using formular_master f 
-                                                 on (f.id=dpa.formular_id)
-                                                 when matched then
-                                                 update set dpa.nr_sem_buget='$valoareNoua'
-                                                 where f.id='$id_formular' ");
-
-    @oci_execute($s);
-    @oci_close($c);
-
-}
-
-function updateNrSemBursa($id_formular,$valoareNoua)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
-                                                 using formular_master f 
-                                                 on (f.id=dpa.formular_id)
-                                                 when matched then
-                                                 update set dpa.nr_sem_bursa='$valoareNoua'
-                                                 where f.id='$id_formular' ");
-
-    @oci_execute($s);
-    @oci_close($c);
-
-}
-
-function updateTitluObtinut($id_formular,$valoareNoua)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1273,10 +1302,99 @@ function updateTitluObtinut($id_formular,$valoareNoua)
 
 }
 
-
-function updateDiploLicentaSerie($id_formular,$valoareNoua)
+function updateFormaInvatamantFac($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
+                                                 using formular_master f 
+                                                 on (f.id=dpa.formular_id)
+                                                 when matched then
+                                                 update set dpa.forma_invatamant_fac='$valoareNoua'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+
+}
+
+function updateNrSemBuget($id_formular, $valoareNoua)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
+                                                 using formular_master f 
+                                                 on (f.id=dpa.formular_id)
+                                                 when matched then
+                                                 update set dpa.nr_sem_buget='$valoareNoua'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+
+}
+
+function updateNrSemBursa($id_formular, $valoareNoua)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
+                                                 using formular_master f 
+                                                 on (f.id=dpa.formular_id)
+                                                 when matched then
+                                                 update set dpa.nr_sem_bursa='$valoareNoua'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+
+}
+
+function updateLocalitateFac($id_formular, $valoareNoua)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
+                                                 using formular_master f 
+                                                 on (f.id=dpa.formular_id)
+                                                 when matched then
+                                                 update set dpa.localitate_fac='$valoareNoua'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+
+}
+
+function updateJudetFac($id_formular, $valoareNoua)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
+                                                 using formular_master f 
+                                                 on (f.id=dpa.formular_id)
+                                                 when matched then
+                                                 update set dpa.judet_fac='$valoareNoua'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+
+}
+
+function updateTaraFac($id_formular, $valoareNoua)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
+                                                 using formular_master f 
+                                                 on (f.id=dpa.formular_id)
+                                                 when matched then
+                                                 update set dpa.tara_fac='$valoareNoua'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+
+}
+
+function updateDiploLicentaSerie($id_formular, $valoareNoua)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1289,9 +1407,9 @@ function updateDiploLicentaSerie($id_formular,$valoareNoua)
 
 }
 
-function updateDiploLicentaNr($id_formular,$valoareNoua)
+function updateDiploLicentaNr($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1304,9 +1422,9 @@ function updateDiploLicentaNr($id_formular,$valoareNoua)
 
 }
 
-function updateDiplEmisaDe($id_formular,$valoareNoua)
+function updateDiplEmisaDe($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1319,14 +1437,14 @@ function updateDiplEmisaDe($id_formular,$valoareNoua)
 
 }
 
-function updateDiplDataEmitere($id_formular,$valoareNoua)
+function updateDiplDataEmitere($id_formular, $dataEmitereLicentaDay, $dataEmitereLicentaMonth, $dataEmitereLicentaYear)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  Date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
                                                  when matched then
-                                                 update set dpa.dipl_data_emitere='$valoareNoua'
+                                                 update set dpa.dipl_data_emitere=date '$dataEmitereLicentaYear-$dataEmitereLicentaMonth-$dataEmitereLicentaDay'
                                                  where f.id='$id_formular' ");
 
     @oci_execute($s);
@@ -1334,9 +1452,9 @@ function updateDiplDataEmitere($id_formular,$valoareNoua)
 
 }
 
-function updateNrFoaieMatricola($id_formular,$valoareNoua)
+function updateNrFoaieMatricola($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1349,9 +1467,9 @@ function updateNrFoaieMatricola($id_formular,$valoareNoua)
 
 }
 
-function updateNrActRecLicenta($id_formular,$valoareNoua)
+function updateNrActRecLicenta($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1364,9 +1482,9 @@ function updateNrActRecLicenta($id_formular,$valoareNoua)
 
 }
 
-function updateSerieActRecLicenta($id_formular,$valoareNoua)
+function updateSerieActRecLicenta($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1379,19 +1497,13 @@ function updateSerieActRecLicenta($id_formular,$valoareNoua)
 
 }
 
-function updateDataActRecLicenta($id_formular,$valoareNoua)
+function updateDataActRecLicenta($id_formular, $dataLicentaEchivDay, $dataLicentaEchivMonth, $dataLicentaEchivYear)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
-                                                 using formular_master f 
-                                                 on (f.id=dpa.formular_id)
-                                                 when matched then
-                                                 update set dpa.data_act_rec_licenta='$valoareNoua'
-                                                 where f.id='$id_formular' ");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "UPDATE date_preg_anterioara_master set data_act_rec_licenta = date '$dataLicentaEchivYear-$dataLicentaEchivMonth-$dataLicentaEchivDay' where formular_id = '$id_formular'");
 
     @oci_execute($s);
     @oci_close($c);
-
 }
 
 
@@ -1401,9 +1513,12 @@ function updateDataActRecLicenta($id_formular,$valoareNoua)
 // Studiile universitare de master in curs
 
 
-function updateInCursStudentAltaFac($id_formular,$valoareNoua)
+function updateInCursStudentAltaFac($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    if ($valoareNoua == 'DA' || $valoareNoua == 'da' || $valoareNoua == 'Da' || $valoareNoua == 'dA') $valoareNoua = 1;
+    else $valoareNoua = 2;
+    
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1417,9 +1532,9 @@ function updateInCursStudentAltaFac($id_formular,$valoareNoua)
 }
 
 
-function updateInCursTaraMaster($id_formular,$valoareNoua)
+function updateInCursTaraMaster($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1432,9 +1547,9 @@ function updateInCursTaraMaster($id_formular,$valoareNoua)
 
 }
 
-function updateInCursJudetMaster($id_formular,$valoareNoua)
+function updateInCursJudetMaster($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1447,9 +1562,9 @@ function updateInCursJudetMaster($id_formular,$valoareNoua)
 
 }
 
-function updateInCursLocalitateMaster($id_formular,$valoareNoua)
+function updateInCursLocalitateMaster($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1462,9 +1577,9 @@ function updateInCursLocalitateMaster($id_formular,$valoareNoua)
 
 }
 
-function updateInCursDenumInstitutieMaster($id_formular,$valoareNoua)
+function updateInCursDenumInstitutieMaster($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1477,9 +1592,9 @@ function updateInCursDenumInstitutieMaster($id_formular,$valoareNoua)
 
 }
 
-function updateInCursDenumFacultateMaster($id_formular,$valoareNoua)
+function updateInCursDenumFacultateMaster($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1492,9 +1607,9 @@ function updateInCursDenumFacultateMaster($id_formular,$valoareNoua)
 
 }
 
-function updateInCursDenumDomeniuMaster($id_formular,$valoareNoua)
+function updateInCursDenumDomeniuMaster($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1507,9 +1622,9 @@ function updateInCursDenumDomeniuMaster($id_formular,$valoareNoua)
 
 }
 
-function updateInCursSpecializareMaster($id_formular,$valoareNoua)
+function updateInCursSpecializareMaster($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1522,9 +1637,9 @@ function updateInCursSpecializareMaster($id_formular,$valoareNoua)
 
 }
 
-function updateInCursFormaInvatMaster($id_formular,$valoareNoua)
+function updateInCursFormaInvatMaster($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1537,9 +1652,9 @@ function updateInCursFormaInvatMaster($id_formular,$valoareNoua)
 
 }
 
-function updateInCursAnMaster($id_formular,$valoareNoua)
+function updateInCursAnMaster($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1552,9 +1667,9 @@ function updateInCursAnMaster($id_formular,$valoareNoua)
 
 }
 
-function updateInCursNrSemBugetMaster($id_formular,$valoareNoua)
+function updateInCursNrSemBugetMaster($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1567,9 +1682,9 @@ function updateInCursNrSemBugetMaster($id_formular,$valoareNoua)
 
 }
 
-function updateInCursNrSemBursaMaster($id_formular,$valoareNoua)
+function updateInCursNrSemBursaMaster($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1590,9 +1705,9 @@ function updateInCursNrSemBursaMaster($id_formular,$valoareNoua)
 
 
 
-function updateAbsolventAn($id_formular,$valoareNoua)
+function updateAbsolventAn($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1606,9 +1721,9 @@ function updateAbsolventAn($id_formular,$valoareNoua)
 }
 
 
-function updateAbsolventTara($id_formular,$valoareNoua)
+function updateAbsolventTara($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1621,9 +1736,9 @@ function updateAbsolventTara($id_formular,$valoareNoua)
 
 }
 
-function updateAbsolventJudet($id_formular,$valoareNoua)
+function updateAbsolventJudet($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1636,9 +1751,9 @@ function updateAbsolventJudet($id_formular,$valoareNoua)
 
 }
 
-function updateAbsolventLocalitate($id_formular,$valoareNoua)
+function updateAbsolventLocalitate($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1651,9 +1766,9 @@ function updateAbsolventLocalitate($id_formular,$valoareNoua)
 
 }
 
-function updateAbsolventDenimireInstit($id_formular,$valoareNoua)
+function updateAbsolventDenimireInstit($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1666,9 +1781,9 @@ function updateAbsolventDenimireInstit($id_formular,$valoareNoua)
 
 }
 
-function updateAbsolventDenumireFacult($id_formular,$valoareNoua)
+function updateAbsolventDenumireFacult($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1681,9 +1796,9 @@ function updateAbsolventDenumireFacult($id_formular,$valoareNoua)
 
 }
 
-function updateAbsolventDomeniu($id_formular,$valoareNoua)
+function updateAbsolventDomeniu($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1696,9 +1811,9 @@ function updateAbsolventDomeniu($id_formular,$valoareNoua)
 
 }
 
-function updateAbsolventSpecializare($id_formular,$valoareNoua)
+function updateAbsolventSpecializare($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1711,9 +1826,23 @@ function updateAbsolventSpecializare($id_formular,$valoareNoua)
 
 }
 
-function updateAbsolventFormaInvat($id_formular,$valoareNoua)
+function updateTitlulObtinut($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
+                                                 using formular_master f 
+                                                 on (f.id=dpa.formular_id)
+                                                 when matched then
+                                                 update set dpa.absolvent_titlu_obtinut='$valoareNoua'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+function updateAbsolventFormaInvat($id_formular, $valoareNoua)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1726,9 +1855,9 @@ function updateAbsolventFormaInvat($id_formular,$valoareNoua)
 
 }
 
-function updateAbsolventNrSemBuget($id_formular,$valoareNoua)
+function updateAbsolventNrSemBuget($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1741,9 +1870,9 @@ function updateAbsolventNrSemBuget($id_formular,$valoareNoua)
 
 }
 
-function updateAbsolventNrSemBursa($id_formular,$valoareNoua)
+function updateAbsolventNrSemBursa($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1756,9 +1885,23 @@ function updateAbsolventNrSemBursa($id_formular,$valoareNoua)
 
 }
 
-function updateAbsolventDiploSerie($id_formular,$valoareNoua)
+function updateAbsolventAreDiploma($v_idFormular, $v_Are_Diploma_Abs)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    if ($v_Are_Diploma_Abs == 'DA' || $v_Are_Diploma_Abs == 'da' || $v_Are_Diploma_Abs == 'Da' || $v_Are_Diploma_Abs == 'dA') $v_Are_Diploma_Abs=1;
+    else $v_Are_Diploma_Abs = 2;
+    
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "UPDATE date_preg_anterioara_master set absolvent_cu_diploma = :abs_diploma where formular_id = '$v_idFormular'");
+
+    oci_bind_by_name($s, ':abs_diploma', $v_Are_Diploma_Abs);
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+function updateAbsolventDiploSerie($id_formular, $valoareNoua)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1771,9 +1914,9 @@ function updateAbsolventDiploSerie($id_formular,$valoareNoua)
 
 }
 
-function updateAbsolventDiploNr($id_formular,$valoareNoua)
+function updateAbsolventDiploNr($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1786,9 +1929,9 @@ function updateAbsolventDiploNr($id_formular,$valoareNoua)
 
 }
 
-function updateAbsolventDiploEmisaDe($id_formular,$valoareNoua)
+function updateAbsolventDiploEmisaDe($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1801,24 +1944,18 @@ function updateAbsolventDiploEmisaDe($id_formular,$valoareNoua)
 
 }
 
-function updateAbsolventDiplDataEmitere($id_formular,$valoareNoua)
+function updateAbsolventDiplDataEmitere($v_idFormular, $v_Abs_Data_Emitere_Day, $v_Abs_Data_Emitere_Month, $v_Abs_Data_Emitere_Year)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
-                                                 using formular_master f 
-                                                 on (f.id=dpa.formular_id)
-                                                 when matched then
-                                                 update set dpa.absolvent_dipl_data_emitere='$valoareNoua'
-                                                 where f.id='$id_formular' ");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " UPDATE date_preg_anterioara_master set absolvent_dipl_data_emitere = date '$v_Abs_Data_Emitere_Year-$v_Abs_Data_Emitere_Month-$v_Abs_Data_Emitere_Day' where formular_id = '$v_idFormular'");
 
     @oci_execute($s);
     @oci_close($c);
-
 }
 
-function updateAbsolventNrFoaieMatricola($id_formular,$valoareNoua)
+function updateAbsolventNrFoaieMatricola($id_formular, $valoareNoua)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
                                                  using formular_master f 
                                                  on (f.id=dpa.formular_id)
@@ -1831,7 +1968,155 @@ function updateAbsolventNrFoaieMatricola($id_formular,$valoareNoua)
 
 }
 
+function updateAbsolventNrEchivalare($id_formular, $valoareNoua)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
+                                                 using formular_master f 
+                                                 on (f.id=dpa.formular_id)
+                                                 when matched then
+                                                 update set dpa.absolvent_act_rec_nr='$valoareNoua'
+                                                 where f.id='$id_formular' ");
 
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+function updateAbsolventSerieEchivalare($id_formular, $valoareNoua)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " merge into  date_preg_anterioara_master dpa
+                                                 using formular_master f 
+                                                 on (f.id=dpa.formular_id)
+                                                 when matched then
+                                                 update set dpa.absolvent_act_rec_serie='$valoareNoua'
+                                                 where f.id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+function updateEchivalareMaster($v_idFormular, $v_Master_Echiv_Day, $v_Master_Echiv_Month, $v_Master_Echiv_Year)
+{
+    $v_Master_Echiv_Day= $_POST["dataMasterEchivDay"];
+    $v_Master_Echiv_Month = $_POST["dataMasterEchivMonth"];
+    $v_Master_Echiv_Year = $_POST["dataMasterEchivYear"];
+    
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "UPDATE date_preg_anterioara_master set absolvent_act_rec_data_echiv = date '$v_MAster_Echiv_Year-$v_Master_Echiv_Month-$v_Master_Echiv_Day ' where formular_id = '$v_idFormular'");
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+// -----------------------------------------------------------------------------------------------
+
+function updateParticipAltundeva($v_idFormular, $v_Particip_Altundeva)
+{
+    if ($v_Particip_Altundeva == 'DA' || $v_Particip_Altundeva == 'da' || $v_Particip_Altundeva == 'Da' || $v_Particip_Altundeva == 'dA') $v_Particip_Altundeva = 1;
+    else $v_Particip_Altundeva = 2;
+    
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "UPDATE informatii_documente_master set particip_altundeva = '$v_Particip_Altundeva' where formular_id = '$v_idFormular'");
+
+    @oci_execute($s);
+    @oci_close($c);
+
+}
+
+function updateUniversitate1($v_idFormular, $v_Universitate_1)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "UPDATE informatii_documente_master set universitate1 = :univ1 where formular_id = '$v_idFormular'");
+
+    oci_bind_by_name($s, ':univ1', $v_Universitate_1);
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+function updateFacultate1($v_idFormular, $v_Facultate_1)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "UPDATE informatii_documente_master set facultate1='$v_Facultate_1'
+                                                 where formular_id='$v_idFormular'");
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+function updateUniversitate2($v_idFormular, $v_Universitate_2)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "UPDATE informatii_documente_master set universitate2='$v_Universitate_2'
+                                                 where formular_id='$v_idFormular'");
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+function updateFacultate2($v_idFormular, $v_Facultate_2)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "UPDATE informatii_documente_master set facultate1='$v_Facultate_2'
+                                                 where formular_id='$v_idFormular'");
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+function updateUniversitate3($v_idFormular, $v_Universitate_3)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "UPDATE informatii_documente_master set universitate3='$v_Universitate_3'
+                                                 where formular_id='$v_idFormular'");
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+function updateFacultate3($v_idFormular, $v_Facultate_3)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "UPDATE informatii_documente_master set facultate1='$v_Facultate_3'
+                                                 where formular_id='$v_idFormular'");
+
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+// ------------------------------------------------------------------------------------------------
+
+function updateAlteSurse($v_idFormular, $v_Alte_Surse)
+{   
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "UPDATE chestionar_master set alte_surse='$v_Alte_Surse'
+                                                 where formular_id='$v_idFormular'");
+    @oci_execute($s);
+    @oci_close($c);
+}
+
+// ------------------------------------------------------------------------------------------------
+
+function validare($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " update formular_master set stare=1 where id='$id_formular' ");
+
+    @oci_execute($s);
+    @oci_close($c);
+
+}
+
+function respingere($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, "update formular_master set stare=-1 where id='$id_formular'");
+
+    @oci_execute($s);
+    @oci_close($c);
+
+}
 
 
 ?>

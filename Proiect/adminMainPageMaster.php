@@ -1,24 +1,22 @@
 <?php
 
-error_reporting(0);
-ini_set('display_errors', 0);
+/*error_reporting(0);
+ini_set('display_errors', 0);*/
 
-// INFORMATII GENERALE + ID CARD + ADRESA STUDENTULUI + ALTE DATE PERSONALE
-
-        function nrFormularePreadmitere()
-        {
-            $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-            $s = @oci_parse($c, " begin  select count(f.id) into :bv from formular_master f ;
-                                       end;");
-            @oci_bind_by_name($s, ":bv", $v, 10);
-            @oci_execute($s);
-            @oci_close($c);
-            return $v;
-        }
+function nrFormularePreadmitere()
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select count(f.id) into :bv from formular_master f ;
+                               end;");
+    @oci_bind_by_name($s, ":bv", $v, 10);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
 
 function nrFormulareLicenta()
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select count(f.id) into :bv from formular_master f ;
                                        end;");
     @oci_bind_by_name($s, ":bv", $v, 10);
@@ -29,7 +27,7 @@ function nrFormulareLicenta()
 
 function nrFormulareMaster()
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select count(f.id) into :bv from formular_master f ;
                                        end;");
     @oci_bind_by_name($s, ":bv", $v, 10);
@@ -38,23 +36,69 @@ function nrFormulareMaster()
     return $v;
 }
 
-      
+// TAXA DE INSCRIERE
 
-        function getNumeNastere($id_formular)
-        {
-            $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-            $s = @oci_parse($c, " begin  select dp.nume_familie_nastere into :bv from date_personale_master dp
-                                                 join formular_master f on f.id=dp.formular_id
-                                                 where f.id='$id_formular'; end; ");
-            @oci_bind_by_name($s, ":bv", $v, 100);
-            @oci_execute($s);
-            @oci_close($c);
-            return $v;
-        }
+function getNumarulChitantei($id_formular)
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " begin  select nr_chitanta into :bv from Formular_master
+                                where id='$id_formular'; end; ");
+    oci_bind_by_name($s, ":bv", $v, 100);
+    oci_execute($s);
+    oci_close($c);
+    return $v;
+}
+
+function getSuma($id_formular)
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " begin  select suma into :bv from Formular_master
+                                where id='$id_formular'; end; ");
+    oci_bind_by_name($s, ":bv", $v, 100);
+    oci_execute($s);
+    oci_close($c);
+    return $v;
+}
+
+function getScutit($id_formular)
+{
+    $c = oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " begin  select REPLACE(REPLACE(scutit, '1', 'DA'), '2', 'NU') into :bv from Formular_master
+                                where id='$id_formular'; end; ");
+    oci_bind_by_name($s, ":bv", $v, 100);
+    oci_execute($s);
+    oci_close($c);
+    return $v;
+}
+
+function getMotivScutire($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = oci_parse($c, " begin  select motiv_scutire into :bv from Formular_master
+                                where id='$id_formular'; end; ");
+    oci_bind_by_name($s, ":bv", $v, 100);
+    oci_execute($s);
+    oci_close($c);
+    return $v;
+}
+
+// Date personale ale candidatului cu cetăţenie română/ UE/ SEE 
+
+function getNumeNastere($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dp.nume_familie_nastere into :bv from date_personale_master dp
+                                         join formular_master f on f.id=dp.formular_id
+                                         where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
 
 function getNumeActual($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.nume_familie_actual into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -63,9 +107,10 @@ function getNumeActual($id_formular)
     @oci_close($c);
     return $v;
 }
+
 function getPrenume($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.prenume_candidat into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -77,7 +122,7 @@ function getPrenume($id_formular)
 
 function getInitialaTata($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.initialele_tatalui_mamei into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -87,11 +132,9 @@ function getInitialaTata($id_formular)
     return $v;
 }
 
-
-
 function getPrenumeTata($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.prenume_tata into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -103,7 +146,7 @@ function getPrenumeTata($id_formular)
 
 function getPrenumeMama($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.prenume_mama into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -115,8 +158,20 @@ function getPrenumeMama($id_formular)
 
 function getCetatenie($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.cetatenia into :bv from date_personale_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getStareCivila($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dp.stare_civila into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -127,7 +182,7 @@ function getCetatenie($id_formular)
 
 function getSex($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.sex into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -137,9 +192,45 @@ function getSex($id_formular)
     return $v;
 }
 
+function getTaraNastere($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dp.tara_nasterii into :bv from date_personale_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getJudetNastere($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dp.judetul_nasterii into :bv from date_personale_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getLocalitateNastere($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dp.localitatea_nasterii into :bv from date_personale_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+    
 function getNationalitate($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.nationalitate into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -151,7 +242,7 @@ function getNationalitate($id_formular)
 
 function getEtnie($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.etnie into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -163,32 +254,8 @@ function getEtnie($id_formular)
 
 function getLimbaMaterna($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.limba_materna into :bv from date_personale_master dp
-                                                 join formular_master f on f.id=dp.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getTelefon($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dp.telefon into :bv from date_personale_master dp
-                                                 join formular_master f on f.id=dp.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getEmail($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dp.email into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -199,7 +266,7 @@ function getEmail($id_formular)
 
 function getDataDay($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select to_char(dp.data_nasterii,'DD') into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -211,7 +278,7 @@ function getDataDay($id_formular)
 
 function getDataMonth($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select to_char(dp.data_nasterii,'MM') into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -223,8 +290,22 @@ function getDataMonth($id_formular)
 
 function getDataYear($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select to_char(dp.data_nasterii,'YYYY') into :bv from date_personale_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+// DATE ACT DE IDENTITATE
+
+function getTipAct($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dp.tip_act_ident into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -235,7 +316,7 @@ function getDataYear($id_formular)
 
 function getCNP($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.cnp into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -245,12 +326,10 @@ function getCNP($id_formular)
     return $v;
 }
 
-
-
 function getSerieBuletin($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dp.serie_ci into :bv from date_personale_master dp
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dp.serie_act into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -261,8 +340,8 @@ function getSerieBuletin($id_formular)
 
 function getNumarBuletin($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dp.numar_ci into :bv from date_personale_master dp
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dp.numar_act into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -273,7 +352,7 @@ function getNumarBuletin($id_formular)
 
 function getBuletinEliberatDe($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.eliberat_de into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -286,7 +365,7 @@ function getBuletinEliberatDe($id_formular)
 
 function getBuletinEliberareDay($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select to_char(dp.data_eliberarii,'DD') into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -298,7 +377,7 @@ function getBuletinEliberareDay($id_formular)
 
 function getBuletinEliberareMonth($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select to_char(dp.data_eliberarii,'MM') into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -310,7 +389,7 @@ function getBuletinEliberareMonth($id_formular)
 
 function getBuletinEliberareYear($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select to_char(dp.data_eliberarii,'YYYY') into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -322,7 +401,7 @@ function getBuletinEliberareYear($id_formular)
 
 function getBuletinExpirareDay($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select to_char(dp.data_expirarii,'DD') into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -334,7 +413,7 @@ function getBuletinExpirareDay($id_formular)
 
 function getBuletinExpirareMonth($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select to_char(dp.data_expirarii,'MM') into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -346,7 +425,7 @@ function getBuletinExpirareMonth($id_formular)
 
 function getBuletinExpirareYear($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select to_char(dp.data_expirarii,'YYYY') into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -356,10 +435,23 @@ function getBuletinExpirareYear($id_formular)
     return $v;
 }
 
+// DOMICILIUL CANDIDATULUI
+
+function getDomiciliulCandidatului($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dp.mediu_domiciliu into :bv from date_personale_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
 
 function getStrada($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.strada into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -371,7 +463,7 @@ function getStrada($id_formular)
 
 function getNrStrada($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.numar into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -383,7 +475,7 @@ function getNrStrada($id_formular)
 
 function getNrBloc($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.bloc into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -393,9 +485,21 @@ function getNrBloc($id_formular)
     return $v;
 }
 
+function getEtaj($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dp.etaj into :bv from date_personale_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+    
 function getApartament($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.apartament into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -407,7 +511,7 @@ function getApartament($id_formular)
 
 function getScara($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.scara into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -417,22 +521,9 @@ function getScara($id_formular)
     return $v;
 }
 
-function getMaterieTest($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select f.optiune_test_scris into :bv from formular_master f 
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-
-
 function getCodPostal($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.cod_postal into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -444,7 +535,7 @@ function getCodPostal($id_formular)
 
 function getLocalitateDomiciliu($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.localitate_domiciliu into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -456,7 +547,7 @@ function getLocalitateDomiciliu($id_formular)
 
 function getJudetDomiciliu($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.judet_domiciliu into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -468,7 +559,7 @@ function getJudetDomiciliu($id_formular)
 
 function getTaraDomiciliu($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dp.tara_domiciliu into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -478,11 +569,323 @@ function getTaraDomiciliu($id_formular)
     return $v;
 }
 
+
+// DATE DE CONTACT
+
+function getTelefon($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dp.telefon into :bv from date_personale_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getEmail($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dp.email into :bv from date_personale_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+/*function getMaterieTest($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select f.optiune_test_scris into :bv from formular_master f 
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}*/
+
+// SOLICITA CAZARE
+
+function getCazareStudii($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(REPLACE(dp.solicita_cazare_studii, '1', 'DA'), '2', 'NU') into :bv from date_personale_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+// ALTE DATE PERSONALE ALE CANDIDATULUI
+
 function getPersoanaCuDizabilitati($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dp.persoana_cu_dizabilitati into :bv from date_personale_master dp
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(REPLACE(dp.persoana_cu_dizabilitati , '1', 'DA'), '2', 'NU') into :bv from date_personale_master dp
                                                  join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getPersoanaCuStareSpeciala($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dp.stare_sociala_speciala into :bv from date_personale_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+//------------------------------------------------------------------------------------------------------------
+// PANA AICI E OK
+
+
+// Studiile preuniversitare absolvite, nivel liceu
+
+function getLocalitateLiceu($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.localitate_liceu into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getJudetLiceu($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.judet_liceu into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getTaraLiceu($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.tara_liceu into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getProfilLiceu($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.profil_liceu into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getLiceulAbsolvit($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(dpa.liceul_absolvit, '\"', '&quot;') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getDurataStudiilorLiceu($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.durata_studiilor_liceu into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getAnulAbsolviriiLiceu($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.anul_absolvirii_liceu into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getFormaInvatamantLiceu($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.forma_invatamant_liceu into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getSerieDiplomaBac($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.serie_diploma_bac into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getNrDiplomaBac($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.nr_diploma_bac into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getEmisaDeLiceu($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(dpa.liceul_absolvit, '\"', '&quot;') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getEliberareBacDay($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dp.data_emiterii_diploma,'DD') into :bv from date_preg_anterioara_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getEliberareBacMonth($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dp.data_emiterii_diploma,'MM') into :bv from date_preg_anterioara_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getEliberareBacYear($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dp.data_emiterii_diploma,'YYYY') into :bv from date_preg_anterioara_master dp
+                                                 join formular_master f on f.id=dp.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getNrFoiiMatricole($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.NR_FOII_MATRICOLE into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getNrActRecEchiv($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.nr_act_rec_echiv into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getSerieActRecEchiv($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.serie_act_rec_echiv into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getDataRecEchivDay($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.data_rec_echiv,'DD') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getDataRecEchivMonth($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.data_rec_echiv,'MM') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getDataRecEchivYear($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.data_rec_echiv,'YYYY') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
     @oci_execute($s);
@@ -498,7 +901,7 @@ function getPersoanaCuDizabilitati($id_formular)
 
 function getMedieExamenLicenta($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select c.medie_examen_licenta into :bv from cerinte_master c
                                                  join formular_master f on f.id=c.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -510,7 +913,7 @@ function getMedieExamenLicenta($id_formular)
 
 function getMedieAdmitere($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select c.medie_admitere into :bv from cerinte_master c
                                                  join formular_master f on f.id=c.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -522,7 +925,7 @@ function getMedieAdmitere($id_formular)
 
 function getPreferinta1($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select op.preferinta_1 into :bv from ordine_preferinte_master op
                                                  join formular_master f on f.id=op.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -534,7 +937,7 @@ function getPreferinta1($id_formular)
 
 function getPreferinta2($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select op.preferinta_2 into :bv from ordine_preferinte_master op
                                                  join formular_master f on f.id=op.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -546,7 +949,7 @@ function getPreferinta2($id_formular)
 
 function getPreferinta3($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select op.preferinta_3 into :bv from ordine_preferinte_master op
                                                  join formular_master f on f.id=op.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -558,7 +961,7 @@ function getPreferinta3($id_formular)
 
 function getPreferinta4($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select op.preferinta_4 into :bv from ordine_preferinte_master op
                                                  join formular_master f on f.id=op.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -570,7 +973,7 @@ function getPreferinta4($id_formular)
 
 function getPreferinta5($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select op.preferinta_5 into :bv from ordine_preferinte_master op
                                                  join formular_master f on f.id=op.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -582,7 +985,7 @@ function getPreferinta5($id_formular)
 
 function getPreferinta6($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select op.preferinta_6 into :bv from ordine_preferinte_master op
                                                  join formular_master f on f.id=op.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -594,7 +997,7 @@ function getPreferinta6($id_formular)
 
 function getPreferinta7($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select op.preferinta_7 into :bv from ordine_preferinte_master op
                                                  join formular_master f on f.id=op.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -606,7 +1009,7 @@ function getPreferinta7($id_formular)
 
 function getPreferinta8($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select op.preferinta_8 into :bv from ordine_preferinte_master op
                                                  join formular_master f on f.id=op.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -618,7 +1021,7 @@ function getPreferinta8($id_formular)
 
 function getPreferinta9($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select op.preferinta_9 into :bv from ordine_preferinte_master op
                                                  join formular_master f on f.id=op.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -630,7 +1033,7 @@ function getPreferinta9($id_formular)
 
 function getPreferinta10($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select op.preferinta_10 into :bv from ordine_preferinte_master op
                                                  join formular_master f on f.id=op.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -642,7 +1045,7 @@ function getPreferinta10($id_formular)
 
 function getPreferinta11($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select op.preferinta_11 into :bv from ordine_preferinte_master op
                                                  join formular_master f on f.id=op.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -654,304 +1057,9 @@ function getPreferinta11($id_formular)
 
 function getOptiuneAdmitereTaxa($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select op.optiune_admitere_taxa into :bv from ordine_preferinte_master op
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(REPLACE(op.optiune_admitere_taxa, '1', 'DA'), '2', 'NU') into :bv from ordine_preferinte_master op
                                                  join formular_master f on f.id=op.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-
-
-//------------------------------------------------------------------------------------------------------------
-// PANA AICI E OK
-
-// Informatii privind documentele de studii depuse la dosar
-
-function getDiplomaBacOriginal($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select idm.diploma_bac_original into :bv from informatii_documente_master idm
-                                                 join formular_master f on f.id=idm.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getDiplomaBacCopie($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select idm.diploma_bac_copie into :bv from informatii_documente_master idm
-                                                 join formular_master f on f.id=idm.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getDocEchivPreunivOriginal($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select idm.doc_echiv_preuniv_original into :bv from informatii_documente_master idm
-                                                 join formular_master f on f.id=idm.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getDocEchivPreunivCopie($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select idm.doc_echiv_preuniv_copie into :bv from informatii_documente_master idm
-                                                 join formular_master f on f.id=idm.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-
-function getDiplomaLicentaOriginal($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select idm.diploma_licenta_original into :bv from informatii_documente_master idm
-                                                 join formular_master f on f.id=idm.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getDiplomaLicentaCopie($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select idm.diploma_licenta_copie into :bv from informatii_documente_master idm
-                                                 join formular_master f on f.id=idm.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getParticipAltundeva($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select idm.particip_altundeva into :bv from informatii_documente_master idm
-                                                 join formular_master f on f.id=idm.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-
-
-//------------------------------------------------------------------------------------------------------------
-// PANA AICI E OK
-
-
-// Studiile preuniversitare absolvite, nivel liceu
-
-
-
-
-function getLocalitateLiceu($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.localitate_liceu into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getJudetLiceu($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.judet_liceu into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getTaraLiceu($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.tara_liceu into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getProfilLiceu($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.profil_liceu into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getLiceulAbsolvit($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.liceul_absolvit into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getDurataStudiilorLiceu($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.durata_studiilor_liceu into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getAnulAbsolviriiLiceu($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.anul_absolvirii_liceu into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getFormaInvatamantLiceu($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.forma_invatamant_liceu into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getSerieDiplomaBac($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.serie_diploma_bac into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getNrDiplomaBac($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.nr_diploma_bac into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getEmisaDeLiceu($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.emisa_de_liceu into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getDataEmiteriiDiploma($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.data_emiterii_diploma into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getNrFoiiMatricole($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.NR_FOII_MATRICOLE into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getNrActRecEchiv($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.nr_act_rec_echiv into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getSerieActRecEchiv($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.serie_act_rec_echiv into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
-                                                 where f.id='$id_formular'; end; ");
-    @oci_bind_by_name($s, ":bv", $v, 100);
-    @oci_execute($s);
-    @oci_close($c);
-    return $v;
-}
-
-function getDataRecEchiv($id_formular)
-{
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.data_rec_echiv into :bv from date_preg_anterioara_master dpa
-                                                 join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
     @oci_execute($s);
@@ -964,11 +1072,9 @@ function getDataRecEchiv($id_formular)
 
 // Studiile universitare de licenta absolvite
 
-
-
 function getTaraFac($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.tara_fac into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -980,7 +1086,7 @@ function getTaraFac($id_formular)
 
 function getJudetFac($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.judet_fac into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -992,7 +1098,7 @@ function getJudetFac($id_formular)
 
 function getLocalitateFac($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.localitate_fac into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1004,8 +1110,8 @@ function getLocalitateFac($id_formular)
 
 function getDenumireInstitutieFac($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.denumire_institutie_fac into :bv from date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(dpa.denumire_institutie_fac, '\"', '&quot;') into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1016,7 +1122,7 @@ function getDenumireInstitutieFac($id_formular)
 
 function getDurataStudii($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.durata_studii into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1028,8 +1134,8 @@ function getDurataStudii($id_formular)
 
 function getDenumireFacultate($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.denumire_facultate into :bv from date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(dpa.denumire_facultate, '\"', '&quot;') into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1040,7 +1146,7 @@ function getDenumireFacultate($id_formular)
 
 function getDenumireDomeniuLicenta($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.denumire_domeniu_licenta into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1052,7 +1158,7 @@ function getDenumireDomeniuLicenta($id_formular)
 
 function getSpecializare($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.specializare into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1064,7 +1170,7 @@ function getSpecializare($id_formular)
 
 function getFormaInvatamantFac($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.forma_invatamant_fac into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1077,7 +1183,7 @@ function getFormaInvatamantFac($id_formular)
 
 function getNrSemBuget($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.nr_sem_buget into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1087,11 +1193,9 @@ function getNrSemBuget($id_formular)
     return $v;
 }
 
-
-
 function getNrSemBursa($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.nr_sem_bursa into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1103,7 +1207,7 @@ function getNrSemBursa($id_formular)
 
 function getTitluObtinut($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.titlu_obtinut into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1115,8 +1219,8 @@ function getTitluObtinut($id_formular)
 
 function getDiploLicentaSerie($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.dipl_licenta_serie into :bv from date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.diplo_licenta_serie into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1127,7 +1231,7 @@ function getDiploLicentaSerie($id_formular)
 
 function getDiploLicentaNr($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.diplo_licenta_nr into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1139,8 +1243,8 @@ function getDiploLicentaNr($id_formular)
 
 function getDiplEmisaDe($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.dipl_emisa_de into :bv from date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(dpa.denumire_facultate, '\"', '&quot;') into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1149,10 +1253,34 @@ function getDiplEmisaDe($id_formular)
     return $v;
 }
 
-function getDiplDataEmitere($id_formular)
+function getEliberareLicentaDay($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.dipl_data_emitere into :bv from date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.dipl_data_emitere, 'DD') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getEliberareLicentaMonth($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.dipl_data_emitere, 'MM') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getEliberareLicentaYear($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.dipl_data_emitere, 'YYYY') into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1163,7 +1291,7 @@ function getDiplDataEmitere($id_formular)
 
 function getNrFoaieMatricola($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.nr_foaie_matricola into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1175,7 +1303,7 @@ function getNrFoaieMatricola($id_formular)
 
 function getNrActRecLicenta($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.nr_act_rec_licenta into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1187,7 +1315,7 @@ function getNrActRecLicenta($id_formular)
 
 function getSerieActRecLicenta($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.serie_act_rec_licenta into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1197,10 +1325,10 @@ function getSerieActRecLicenta($id_formular)
     return $v;
 }
 
-function getDataActRecLicenta($id_formular)
+function getEchivLicentaDay($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.data_act_rec_licenta into :bv from date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.data_act_rec_licenta, 'DD') into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1209,8 +1337,29 @@ function getDataActRecLicenta($id_formular)
     return $v;
 }
 
+function getEchivLicentaMonth($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.data_act_rec_licenta, 'MM') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
 
-
+function getEchivLicentaYear($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.data_act_rec_licenta, 'YYYY') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
 
 //-------------------------------------------------------------------------------------------------------
 // PANA AICI E OK
@@ -1219,8 +1368,8 @@ function getDataActRecLicenta($id_formular)
 
 function getInCursStudentAltaFac($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.in_curs_student_alta_fac into :bv from date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(REPLACE(dpa.in_curs_student_alta_fac, '1', 'DA'), '2', 'NU') into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1231,7 +1380,7 @@ function getInCursStudentAltaFac($id_formular)
 
 function getInCursTaraMaster($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.in_curs_tara_master into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1243,7 +1392,7 @@ function getInCursTaraMaster($id_formular)
 
 function getInCursJudetMaster($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.in_curs_judet_master into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1255,7 +1404,7 @@ function getInCursJudetMaster($id_formular)
 
 function getInCursLocalitateMaster($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.in_curs_localitate_master into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1267,8 +1416,8 @@ function getInCursLocalitateMaster($id_formular)
 
 function getInCursDenumInstitutieMaster($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.in_curs_denum_institutie_master into :bv from date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(dpa.in_curs_denum_instit_master, '\"', '&quot;') into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1280,8 +1429,8 @@ function getInCursDenumInstitutieMaster($id_formular)
 
 function getInCursDenumFacultateMaster($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.in_curs_denum_facultate_master into :bv from date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(dpa.in_curs_denum_facultate_master, '\"', '&quot;') into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1292,7 +1441,7 @@ function getInCursDenumFacultateMaster($id_formular)
 
 function getInCursDenumDomeniuMaster($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.in_curs_denum_domeniu_master into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1304,7 +1453,7 @@ function getInCursDenumDomeniuMaster($id_formular)
 
 function getInCursSpecializareMaster($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.in_curs_specializare_master into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1316,7 +1465,7 @@ function getInCursSpecializareMaster($id_formular)
 
 function getInCursFormaInvatMaster($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.in_curs_forma_invat_master into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1328,7 +1477,7 @@ function getInCursFormaInvatMaster($id_formular)
 
 function getInCursAnMaster($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.in_curs_an_master into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1341,7 +1490,7 @@ function getInCursAnMaster($id_formular)
 
 function getInCursNrSemBugetMaster($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.in_curs_nr_sem_buget_master into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1351,11 +1500,9 @@ function getInCursNrSemBugetMaster($id_formular)
     return $v;
 }
 
-
-
 function getInCursNrSemBursaMaster($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.in_curs_nr_sem_bursa_master into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1365,15 +1512,13 @@ function getInCursNrSemBursaMaster($id_formular)
     return $v;
 }
 
-
-
 //-------------------------------------------------------------------------------------------------------------
 
 //Absolvent al studiilor de master
 
 function getAbsolventAn($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.absolvent_an into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1385,7 +1530,7 @@ function getAbsolventAn($id_formular)
 
 function getAbsolventTara($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.absolvent_tara into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1397,7 +1542,7 @@ function getAbsolventTara($id_formular)
 
 function getAbsolventJudet($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.absolvent_judet into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1409,7 +1554,7 @@ function getAbsolventJudet($id_formular)
 
 function getAbsolventLocalitate($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.absolvent_localitate into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1421,8 +1566,8 @@ function getAbsolventLocalitate($id_formular)
 
 function getAbsolventDenimireInstit($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.absolvent_denumire_instit into :bv from date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(dpa.absolvent_denumire_instit, '\"', '&quot;') into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1435,8 +1580,8 @@ function getAbsolventDenimireInstit($id_formular)
 
 function getAbsolventDenumireFacult($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.absolvent_denumire_facult into :bv from date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(dpa.absolvent_denumire_facult, '\"', '&quot;') into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1447,7 +1592,7 @@ function getAbsolventDenumireFacult($id_formular)
 
 function getAbsolventDomeniu($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.absolvent_domeniu into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1459,8 +1604,20 @@ function getAbsolventDomeniu($id_formular)
 
 function getAbsolventSpecializare($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.absolvent_specializare into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getAbsolventTitluObtinut($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.absolvent_titlu_obtinut into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1471,7 +1628,7 @@ function getAbsolventSpecializare($id_formular)
 
 function getAbsolventFormaInvat($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.absolvent_forma_invat into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1483,7 +1640,7 @@ function getAbsolventFormaInvat($id_formular)
 
 function getAbsolventNrSemBuget($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.absolvent_nr_sem_buget into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1496,7 +1653,7 @@ function getAbsolventNrSemBuget($id_formular)
 
 function getAbsolventNrSemBursa($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.absolvent_nr_sem_bursa into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1506,11 +1663,21 @@ function getAbsolventNrSemBursa($id_formular)
     return $v;
 }
 
-
+function getAreDiplomaMaster($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(REPLACE(dpa.absolvent_cu_diploma, '1', 'DA'), '2', 'NU') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
 
 function getAbsolventDiploSerie($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.absolvent_diplo_serie into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1522,7 +1689,7 @@ function getAbsolventDiploSerie($id_formular)
 
 function getAbsolventDiploNr($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.absolvent_diplo_nr into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1534,8 +1701,8 @@ function getAbsolventDiploNr($id_formular)
 
 function getAbsolventDiploEmisaDe($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.absolvent_diplo_emisa_de into :bv from date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(dpa.absolvent_denumire_facult, '\"', '&quot;') into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1544,10 +1711,10 @@ function getAbsolventDiploEmisaDe($id_formular)
     return $v;
 }
 
-function getAbsolventDiplDataEmitere($id_formular)
+function dataMasterEmitereDay($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
-    $s = @oci_parse($c, " begin  select dpa.absolvent_dipl_data_emitere into :bv from date_preg_anterioara_master dpa
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.absolvent_dipl_data_emitere, 'DD') into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
     @oci_bind_by_name($s, ":bv", $v, 100);
@@ -1556,9 +1723,33 @@ function getAbsolventDiplDataEmitere($id_formular)
     return $v;
 }
 
+function dataMasterEmitereMonth($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.absolvent_dipl_data_emitere, 'MM') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function dataMasterEmitereYear($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.absolvent_dipl_data_emitere, 'YYYY') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+    
 function getAbsolventNrFoaieMatricola($id_formular)
 {
-    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe");
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
     $s = @oci_parse($c, " begin  select dpa.absolvent_nr_foaie_matricola into :bv from date_preg_anterioara_master dpa
                                                  join formular_master f on f.id=dpa.formular_id
                                                  where f.id='$id_formular'; end; ");
@@ -1568,10 +1759,213 @@ function getAbsolventNrFoaieMatricola($id_formular)
     return $v;
 }
 
+function getNrActEchivMaster($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.absolvent_act_rec_nr into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
 
+function getSerieActEchivMaster($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select dpa.absolvent_act_rec_serie into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
 
+function getEchivMasterDay($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.absolvent_act_rec_data_echiv, 'DD') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
 
+function getEchivMasterMonth($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.absolvent_act_rec_data_echiv, 'MM') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getEchivMasterYear($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select to_char(dpa.absolvent_act_rec_data_echiv, 'YYYY') into :bv from date_preg_anterioara_master dpa
+                                                 join formular_master f on f.id=dpa.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+//------------------------------------------------------------------------------------------------------------
+// PANA AICI E OK
+
+// Informatii privind documentele de studii depuse la dosar
+
+function getDiplomaBacOriginal($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(REPLACE(idm.diploma_bac_original, '1', 'DA'), '2', 'NU') into :bv from informatii_documente_master idm
+                                                 join formular_master f on f.id=idm.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getDocEchivPreunivOriginal($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(REPLACE(idm.document_echiv_studii_original, '1', 'DA'), '2', 'NU') into :bv from informatii_documente_master idm
+                                                 join formular_master f on f.id=idm.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getDiplomaLicentaOriginal($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(REPLACE(idm.diploma_licenta_original, '1', 'DA'), '2', 'NU') into :bv from informatii_documente_master idm
+                                                 join formular_master f on f.id=idm.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getEchivalareDiplomaLicenta($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(REPLACE(idm.dipl_echiv_licenta_original, '1', 'DA'), '2', 'NU') into :bv from informatii_documente_master idm
+                                                 join formular_master f on f.id=idm.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getParticipAltundeva($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select REPLACE(REPLACE(idm.particip_altundeva, '1', 'DA'), '2', 'NU') into :bv from informatii_documente_master idm
+                                                 join formular_master f on f.id=idm.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getUniversitate1($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select idm.universitate1 into :bv from informatii_documente_master idm
+                                                 join formular_master f on f.id=idm.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getFacultate1($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select idm.facultate1 into :bv from informatii_documente_master idm
+                                                 join formular_master f on f.id=idm.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getUniversitate2($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select idm.universitate2 into :bv from informatii_documente_master idm
+                                                 join formular_master f on f.id=idm.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getFacultate2($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select idm.facultate2 into :bv from informatii_documente_master idm
+                                                 join formular_master f on f.id=idm.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getUniversitate3($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select idm.universitate3 into :bv from informatii_documente_master idm
+                                                 join formular_master f on f.id=idm.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getFacultate3($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select idm.facultate3 into :bv from informatii_documente_master idm
+                                                 join formular_master f on f.id=idm.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
+
+function getAlteSurse($id_formular)
+{
+    $c = @oci_connect("ADMITERE1", "ADMITERE1", "localhost/xe", 'AL32UTF8');
+    $s = @oci_parse($c, " begin  select cm.alte_surse into :bv from Chestionar_master cm
+                                                 join formular_master f on f.id=cm.formular_id
+                                                 where f.id='$id_formular'; end; ");
+    @oci_bind_by_name($s, ":bv", $v, 100);
+    @oci_execute($s);
+    @oci_close($c);
+    return $v;
+}
 
 ?>
-
-

@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 
-
-
 <html>
 
 <head>
-
-
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
@@ -32,53 +28,49 @@
 
     <script type="text/javascript">
 
+        $(document).ready(function () {
 
+          $("#testimonial-slider").owlCarousel({
 
-    $(document).ready(function () {
+            items: 2,
 
-      $("#testimonial-slider").owlCarousel({
+            itemsDesktop: [1000, 1],
 
-        items: 2,
+            itemsDesktopSmall: [979, 1],
 
-        itemsDesktop: [1000, 1],
+            itemsTablet: [768, 1],
 
-        itemsDesktopSmall: [979, 1],
+            pagination: true,
 
-        itemsTablet: [768, 1],
+            navigation: false,
 
-        pagination: true,
+            navigationText: ["", ""],
 
-        navigation: false,
+            slideSpeed: 9000,
 
-        navigationText: ["", ""],
+            singleItem: false,
 
-        slideSpeed: 9000,
+            autoPlay: false
 
-        singleItem: false,
+          });
 
-        autoPlay: false
+          var $logo = $('#scroll');
 
-      });
+          var $logo2 = $('#no-scroll');
 
-      var $logo = $('#scroll');
+          var $head2 = $('#header');
 
-      var $logo2 = $('#no-scroll');
+          $(document).scroll(function () {
 
-      var $head2 = $('#header');
+            $head2.css({ display: $(this).scrollTop() < 50 ? "block" : "none" });
 
-      $(document).scroll(function () {
+            $logo2.css({ display: $(this).scrollTop() < 50 ? "block" : "none" });
 
-        $head2.css({ display: $(this).scrollTop() < 50 ? "block" : "none" });
+            $logo.css({ display: $(this).scrollTop() > 100 ? "block" : "none" });
 
-        $logo2.css({ display: $(this).scrollTop() < 50 ? "block" : "none" });
+          });
 
-        $logo.css({ display: $(this).scrollTop() > 100 ? "block" : "none" });
-
-      });
-
-    });
-
-
+        });
 
     </script>
 
@@ -92,9 +84,7 @@
 
     <meta name="viewport" content="widt=device-width, initial-scale=1">
 
-    <title>Administrator</title>
-
-
+    <title>Administrare</title>
 
 </head>
 
@@ -108,9 +98,9 @@
 
         <ul class="left-menu">
 
-            <li class="lung"><a href="index.html">Despre FII</a></li>
+            <li class="lung"><a href="DespreFII.html">Despre FII</a></li>
 
-            <li class="scurt"><a href="index.html">FII</a></li>
+            <li class="scurt"><a href="DespreFII.html">FII</a></li>
 
             <li><a href="paginaAdmitere.php">Admitere</a></li>
 
@@ -118,9 +108,9 @@
 
         <ul class="right-menu">
 
-              <li><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
+          <li><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
 
-              <li><a href="contact.html" >Contact</a></li>
+          <li><a href="contact.html">Contact</a></li>
 
         </ul>
 
@@ -146,7 +136,7 @@
 
       <ul class="tog1">
 
-        <li class="tog2"><a href="index.html">Despre FII</a></li>  
+        <li class="tog2"><a href="DespreFII.html">Despre FII</a></li>  
 
         <li class="tog2"><a href="paginaAdmitere.php">Admitere</a></li>
 
@@ -160,9 +150,7 @@
 
   </div>
 
-  </br></br>
-
-  
+  <br/><br/>
 
     <div id="top">
 
@@ -172,7 +160,7 @@
 
                 <img class="icon-admin" src="imagini/admin-logo.png">
 
-                <h1><span aria-hidden=true> Administra&#355;ie</span></h1>
+                <h1><span aria-hidden=true> Administrare</span></h1>
 
             </div>
 
@@ -299,18 +287,18 @@
 
                         <div class="col-md-12" style="font-size:17px;">
                         <?php
-                        error_reporting(E_ERROR);
+                        /*error_reporting(E_ERROR);
                         error_reporting(0);
-                        error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+                        error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);*/
                         $id_formular=$_POST['id_formular'];
 
-                       echo ' <label>Chitanța nr.</label><input name="chitantaNr" class="form-control" value=""/>
+                       echo ' <label>Chitanța nr.</label><input name="chitantaNr" class="form-control" value="'.getNumarulChitantei($id_formular).'"/>
                         
-                            <label class="marg-t10">Suma</label><input name="suma" class="form-control" value=""/>
+                            <label class="marg-t10">Suma</label><input name="suma" class="form-control" value="'.getSuma($id_formular).'"/>
 
-                            <label class="marg-t10">Scutit</label><input name="scutit" class="form-control" value="" />
+                            <label class="marg-t10">Scutit</label><input name="scutit" class="form-control" value="'.getScutit($id_formular).'" />
                             
-                            <label class="marg-t10">Motiv scutire</label><input name="motivScutire" class="form-control" value="" />
+                            <label class="marg-t10">Motiv scutire</label><input name="motivScutire" class="form-control" value="'.getMotivScutire($id_formular).'" />
 
                             <div class="align-center">
 
@@ -334,15 +322,15 @@
 
                             <label class="marg-t10">Prenume mamă:</label><input name="prenumeMama" class="form-control" value="'.getPrenumeMama($id_formular).'"/>
                             
-                            <label class="marg-t10">Stare civilă:</label><input name="stareCivila" class="form-control" value="" />
+                            <label class="marg-t10">Stare civilă:</label><input name="stareCivila" class="form-control" value="'.getStareCivila($id_formular).'" />
                             
                             <label class="marg-t10">Sex: </label><input name="sex" class="form-control" value="'.getSex($id_formular).'" />
                             
-                            <label class="marg-t10">Țara nașterii:</label><input name="taraNastere" class="form-control" value="" />
+                            <label class="marg-t10">Țara nașterii:</label><input name="taraNastere" class="form-control" value="'.getTaraNastere($id_formular).'" />
                             
-                            <label class="marg-t10">Județul nașterii:</label><input name="judetNastere" class="form-control" value="" />
+                            <label class="marg-t10">Județul nașterii:</label><input name="judetNastere" class="form-control" value="'.getJudetNastere($id_formular).'" />
                             
-                            <label class="marg-t10">Localitatea nașterii:</label><input name="localitateNastere" class="form-control" value="" />
+                            <label class="marg-t10">Localitatea nașterii:</label><input name="localitateNastere" class="form-control" value="'.getLocalitateNastere($id_formular).'" />
 
                             <label class="marg-t10">Data nașterii:</label>
                             
@@ -380,7 +368,7 @@
 
                             <label>CNP:</label><input name="cnp" class="form-control" value="'.getCNP($id_formular).'" />
                             
-                            <label class="marg-t10">Tipul actului de identitate: </label><input name="tipAct" class="form-control" value="'.getSerieBuletin($id_formular).'" />
+                            <label class="marg-t10">Tipul actului de identitate: </label><input name="tipAct" class="form-control" value="'.getTipAct($id_formular).'" />
 
                             <label class="marg-t10">Seria actului: </label><input name="serieBuletin" class="form-control" value="'.getSerieBuletin($id_formular).'" />
 
@@ -422,7 +410,7 @@
 
                          </div>
                          
-                                <label class="marg-t10">Domiciliu stabil:</label><input name="domiciliuStabil" class="form-control" value=""/>
+                                <label class="marg-t10">Domiciliu stabil:</label><input name="domiciliuStabil" class="form-control" value="'.getDomiciliulCandidatului($id_formular).'"/>
                                 
                                 <label>Strada:</label><input name="strada" class="form-control" value="'.getStrada($id_formular).'"/>
 
@@ -432,7 +420,7 @@
 
                                 <label>Scara:</label><input name="scara" class="form-control" value="'.getScara($id_formular).'"/>
                                 
-                                <label>Etaj:</label><input name="etaj" class="form-control" value=""/>
+                                <label>Etaj:</label><input name="etaj" class="form-control" value="'.getEtaj($id_formular).'"/>
                                 
                                 <label>Apartament:</label><input name="apartament" class="form-control" value="'.getApartament($id_formular).'"/>
                                 
@@ -469,9 +457,7 @@
 
                         </div>
                         
-                            <label class="marg-t10">Solicită cazare pe timpul studiilor?</label><input name="cazareStudii" class="form-control" value=""/>
-                            
-                            <label class="marg-t10">Solicită cazare pe timpul admiterii?</label><input name="cazareAdmitere" class="form-control" value=""/>
+                            <label class="marg-t10">Solicită cazare pe timpul studiilor?</label><input name="cazareStudii" class="form-control" value="'.getCazareStudii($id_formular).'"/>
                         
                         <div class="align-center">
 
@@ -485,7 +471,7 @@
                         
                             <label class="marg-t10">Candidat care se incadreaza in categoria persoanelor cu dizabilitati </label><input name="persoanaCuDizabilitati" class="form-control" value="'.getPersoanaCuDizabilitati($id_formular).'"/>
 
-                            <label class="marg-t10">Stare socială specială: </label><input name="stare-speciala" class="form-control" value=""/>
+                            <label class="marg-t10">Stare socială specială: </label><input name="stare-speciala" class="form-control" value="'.getPersoanaCuStareSpeciala($id_formular).'"/>
                             
                         <div class="align-center">
 
@@ -525,7 +511,17 @@
 
                             <label class="marg-t10">Emisa de:</label><input name="emisaDeLiceu" class="form-control" value="'.getemisaDeLiceu($id_formular).'" />
 
-                            <label class="marg-t10">Data emitere:</label><input name="dataEmiteriiDiploma" class="form-control" value="'.getdataEmiteriiDiploma($id_formular).'" />
+                            <label class="marg-t10">Data emiterii:</label>
+
+                            <div class="col-md-12" style="padding-left:0; padding-right:0;">
+
+                                <input name="dataEmitereBacDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getEliberareBacDay($id_formular).'"/>
+
+                                <input name="dataEmitereBacMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getEliberareBacMonth($id_formular).'"/>
+
+                                <input name="dataEmitereBacYear" class="col-md-4 form-control wid33" value="'.getEliberareBacYear($id_formular).'"/>
+
+                            </div>
 
                             <label class="marg-t10">Numarul foii matricole care insoteste actul de studii:</label><input name="nrFoiiMatricole" class="form-control" value="'.getnrFoiiMatricole($id_formular).'" />
                                 
@@ -549,11 +545,11 @@
 
                             <div class="col-md-12" style="padding-left:0; padding-right:0;">
 
-                                <input name="dataEchivDay" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+                                <input name="dataEchivDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getDataRecEchivDay($id_formular).'"/>
 
-                                <input name="dataEchivMonth" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+                                <input name="dataEchivMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getDataRecEchivMonth($id_formular).'"/>
 
-                                <input name="dataEchivYear" class="col-md-4 form-control wid33" value=""/>
+                                <input name="dataEchivYear" class="col-md-4 form-control wid33" value="'.getDataRecEchivYear($id_formular).'"/>
 
                             </div>
                             
@@ -603,7 +599,17 @@
 
                             <label class="marg-t10">Emisa de:</label><input name="diplEmisaDe" class="form-control" value="'.getdiplEmisaDe($id_formular).'" />
 
-                            <label class="marg-t10">Data emitere:</label><input name="diplDataEmitere" class="form-control" value="'.getdiplDataEmitere($id_formular).'" />
+                            <label class="marg-t10">Data emiterii:</label>
+
+                            <div class="col-md-12" style="padding-left:0; padding-right:0;">
+
+                                <input name="dataEmitereLicentaDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getEliberareLicentaDay($id_formular).'"/>
+
+                                <input name="dataEmitereLicentaMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getEliberareLicentaMonth($id_formular).'"/>
+
+                                <input name="dataEmitereLicentaYear" class="col-md-4 form-control wid33" value="'.getEliberareLicentaYear($id_formular).'"/>
+
+                            </div>
 
                             <label class="marg-t10">Numarul foii matricole care insoteste actul de studii:</label><input name="nrFoaieMatricola" class="form-control" value="'.getnrFoaieMatricola($id_formular).'" />
 
@@ -627,11 +633,11 @@
 
                             <div class="col-md-12" style="padding-left:0; padding-right:0;">
 
-                                <input name="dataLicentaEchivDay" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+                                <input name="dataLicentaEchivDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getEchivLicentaDay($id_formular).'"/>
 
-                                <input name="dataLicentaEchivMonth" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+                                <input name="dataLicentaEchivMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getEchivLicentaMonth($id_formular).'"/>
 
-                                <input name="dataLicentaEchivYear" class="col-md-4 form-control wid33" value=""/>
+                                <input name="dataLicentaEchivYear" class="col-md-4 form-control wid33" value="'.getEchivLicentaYear($id_formular).'"/>
 
                             </div>
 
@@ -661,7 +667,7 @@
 
                             <label class="marg-t10">Domeniul de studii:</label><input name="inCursDenumDomeniuMaster" class="form-control" value="'.getinCursDenumDomeniuMaster($id_formular).'" />
 
-                            <label class="marg-t10">Programul de studii/ Specializarea:</label><input name="inCursSpecializareMasterr" class="form-control" value="'.getinCursSpecializareMaster($id_formular).'" />
+                            <label class="marg-t10">Programul de studii/ Specializarea:</label><input name="inCursSpecializareMaster" class="form-control" value="'.getinCursSpecializareMaster($id_formular).'" />
                             
                             <label class="marg-t10">Anul:</label><input name="inCursAnMaster" class="form-control" value="'.getinCursAnMaster($id_formular).'" />
 
@@ -675,7 +681,7 @@
 
                             <label class="marg-t10">Judetul:</label><input name="inCursJudetMaster" class="form-control" value="'.getinCursJudetMaster($id_formular).'" />
                             
-                            <label class="marg-t10">Tara:</label><input name="inCursTaraMasterr" class="form-control" value="'.getinCursTaraMaster($id_formular).'" />
+                            <label class="marg-t10">Tara:</label><input name="inCursTaraMaster" class="form-control" value="'.getinCursTaraMaster($id_formular).'" />
                             
                         <div class="align-center">
 
@@ -697,7 +703,7 @@
 
                             <label class="marg-t10">Programul de studii/Specializarea</label><input name="absolventSpecializare" class="form-control" value="'.getabsolventSpecializare($id_formular).'" />
                             
-                            <label class="marg-t10">Titlul obținut:</label><input name="titlulObtinut" class="form-control" value="" />
+                            <label class="marg-t10">Titlul obținut:</label><input name="titlulObtinut" class="form-control" value="'.getAbsolventTitluObtinut($id_formular).'" />
 
                             <label class="marg-t10">Forma de invatamant:</label><input name="absolventFormaInvat" class="form-control" value="'.getabsolventFormaInvat($id_formular).'" />
 
@@ -717,7 +723,7 @@
                                 
                         </div>
                         
-                            <label class="marg-t10">Are diplomă?</label><input name="areDiplomaMaster" class="form-control" value="" />
+                            <label class="marg-t10">Are diplomă?</label><input name="areDiplomaMaster" class="form-control" value="'.getAreDiplomaMaster($id_formular).'" />
 
                             <label class="marg-t10">Seria</label><input name="absolventDiploSerie" class="form-control" value="'.getabsolventDiploSerie($id_formular).'" />
 
@@ -725,20 +731,47 @@
 
                             <label class="marg-t10">Emisa de</label><input name="absolventDiploEmisaDe" class="form-control" value="'.getabsolventDiploEmisaDe($id_formular).'" />
 
-                            <label class="marg-t10">Data echivalării:</label>
+                            <label class="marg-t10">Data emiterii:</label>
 
                             <div class="col-md-12" style="padding-left:0; padding-right:0;">
 
-                                <input name="dataMasterEchivDay" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+                                <input name="dataMasterEmitereDay" class="col-md-4 form-control marg-r1 wid33"  value="'.dataMasterEmitereDay($id_formular).'"/>
 
-                                <input name="dataMasterEchivMonth" class="col-md-4 form-control marg-r1 wid33"  value=""/>
+                                <input name="dataMasterEmitereMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.dataMasterEmitereMonth($id_formular).'"/>
 
-                                <input name="dataMasterEchivYear" class="col-md-4 form-control wid33" value=""/>
+                                <input name="dataMasterEmitereYear" class="col-md-4 form-control wid33" value="'.dataMasterEmitereYear($id_formular).'"/>
 
                             </div>
 
                             <label class="marg-t10">Numarul suplimentului/ foii matricole care insoteste actul de studii</label><input name="absolventNrFoaieMatricola" class="form-control" value="'.getabsolventNrFoaieMatricola($id_formular).'" />
+                            
+                        <div class="align-center">
 
+                            <span class="col-md-12 sub-title">
+
+                                <br>Alte observații (pentru caurile in care candidatul a absolvit studii anterioare in strainatate)
+
+                            </span>
+                        
+                        </div>
+
+                            <label class="marg-t10">Act de recunoaștere/ echivalare (eliberat de DPIRP/CNRED):</label>
+
+                            <label class="marg-t10">Nr:</label><input name="nrActRecMaster" class="form-control" value="'.getNrActEchivMaster($id_formular).'" />
+
+                            <label class="marg-t10">Serie:</label><input name="serieActRecMaster" class="form-control" value="'.getSerieActEchivMaster($id_formular).'" />
+
+                            <label class="marg-t10">Data echivalării:</label>
+
+                            <div class="col-md-12" style="padding-left:0; padding-right:0;">
+
+                                <input name="dataMasterEchivDay" class="col-md-4 form-control marg-r1 wid33"  value="'.getEchivMasterDay($id_formular).'"/>
+
+                                <input name="dataMasterEchivMonth" class="col-md-4 form-control marg-r1 wid33"  value="'.getEchivMasterMonth($id_formular).'"/>
+
+                                <input name="dataMasterEchivYear" class="col-md-4 form-control wid33" value="'.getEchivMasterYear($id_formular).'"/>
+
+                            </div>
 
                         <div class="align-center">
 
@@ -800,23 +833,25 @@
 
                             <label class="marg-t10">Diploma de bacalaureat</label><input name="diplomaBacOriginal" class="form-control" value="'.getDiplomaBacOriginal($id_formular).'"/>
 
-                            <label class="marg-t10">Document echivalare studii preuniversitare</label><input name="docEchivPreunivOriginal" class="form-control" value="'.getdocEchivPreunivOriginal($id_formular).'"/>
+                            <label class="marg-t10">Document echivalare studii preuniversitare</label><input name="docEchivPreunivOriginal" class="form-control" value="'.getDocEchivPreunivOriginal($id_formular).'"/>
 
                             <label class="marg-t10">Diploma licenta</label><input name="diplomaLicentaOriginal" class="form-control" value="'.getdiplomaLicentaOriginal($id_formular).'"/>
+                            
+                            <label class="marg-t10">Diploma echivalare studii licenta</label><input name="echivalareStudiiLicenta" class="form-control" value="'.getEchivalareDiplomaLicenta($id_formular).'"/>
 
                             <label class="marg-t10">Participă la alte concursuri de admitere la studii universitare de master?</label><input name="participAltundeva" class="form-control" value="'.getparticipAltundeva($id_formular).'"/>
 
-                            <label class="marg-t10">Universitate 1</label><input name="universitate1" class="form-control" value=""/>
+                            <label class="marg-t10">Universitate 1</label><input name="universitate1" class="form-control" value="'.getUniversitate1($id_formular).'"/>
                             
-                            <label class="marg-t10">Facultate 1</label><input name="facultate1" class="form-control" value=""/>
+                            <label class="marg-t10">Facultate 1</label><input name="facultate1" class="form-control" value="'.getFacultate1($id_formular).'"/>
                             
-                            <label class="marg-t10">Universitate 2</label><input name="universitate2" class="form-control" value=""/>
+                            <label class="marg-t10">Universitate 2</label><input name="universitate2" class="form-control" value="'.getUniversitate2($id_formular).'"/>
                             
-                            <label class="marg-t10">Facultate 2</label><input name="facultate2" class="form-control" value=""/>
+                            <label class="marg-t10">Facultate 2</label><input name="facultate2" class="form-control" value="'.getFacultate2($id_formular).'"/>
                             
-                            <label class="marg-t10">Universitate 3</label><input name="universitate3" class="form-control" value=""/>
+                            <label class="marg-t10">Universitate 3</label><input name="universitate3" class="form-control" value="'.getUniversitate3($id_formular).'"/>
                             
-                            <label class="marg-t10">Facultate 3</label><input name="facultate3" class="form-control" value=""/>
+                            <label class="marg-t10">Facultate 3</label><input name="facultate3" class="form-control" value="'.getFacultate3($id_formular).'"/>
                             
                         <div class="align-center">
 
@@ -828,7 +863,7 @@
 
                         </div>
                         
-                            <label class="marg-t10">Alte surse:</label><input name="alteSurse" class="form-control" value=""/>
+                            <label class="marg-t10">Alte surse:</label><input name="alteSurse" class="form-control" value="'.getAlteSurse($id_formular).'"/>
                     </div>
 
                 </div>';
@@ -861,7 +896,7 @@
 
                 <p class="footer-links">
 
-                    <a href="index.html">Despre Fii</a>
+                    <a href="DespreFII.html">Despre Fii</a>
 
                     ·
 
