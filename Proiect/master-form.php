@@ -2715,7 +2715,7 @@
 																																					echo '';
 																																		?> />
 														<label for="checkbox3" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="0" <?php
+														<input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="2" <?php
 																																			if($v_Radio5 == '')
 																																				echo '';
 																																			else
@@ -2761,7 +2761,7 @@
 																																					echo '';
 																																		?> />   
 														<label for="checkbox7" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="0" <?php
+														<input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="2" <?php
 																																			if($v_Radio4 == '')
 																																				echo '';
 																																			else
@@ -6224,7 +6224,7 @@
 																																											echo '';
 																																								?>/>
 										<label for="daAbsolventMaster" class="css-label" style="margin-right:100px">Da</label>
-										<input type="radio" onClick="AbsolventMaster()" name="group24" id="nuAbsolventMaster" class="css-checkbox" value="0" <?php
+										<input type="radio" onClick="AbsolventMaster()" name="group24" id="nuAbsolventMaster" class="css-checkbox" value="2" <?php
 																																								if($v_Radio24 == '')
 																																									echo '';
 																																								else
@@ -6698,7 +6698,7 @@
 																																	echo '';
 																														?>/>   
 											<label for="daDiplomaMaster" class="css-label" style="margin-right:100px">Da</label>
-											<input type="radio" onClick="DiplomaMaster()" name="group23" id="nuDiplomaMaster" class="css-checkbox" value="0" <?php
+											<input type="radio" onClick="DiplomaMaster()" name="group23" id="nuDiplomaMaster" class="css-checkbox" value="2" <?php
 																															if($v_Radio23 == '')
 																																echo '';
 																															else
@@ -8958,7 +8958,7 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Prestigiul Universităţii/Facultăţii</label>
 										  
 									<span style="width:70%;">
-										<input type="radio" name="group28" id="1_0" class="css-checkbox" value="0" <?php
+										<input type="radio" name="group28" id="1_0" class="css-checkbox" value="2" <?php
 																																if($v_Radio28 == '')
 																																	echo '';
 																																else
@@ -9026,7 +9026,7 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Calitatea Educaţiei la UAIC</label>
 							  
 									<span style="width:70%">
-										<input type="radio" name="group29" id="2_0" class="css-checkbox" value="0" <?php
+										<input type="radio" name="group29" id="2_0" class="css-checkbox" value="2" <?php
 																																if($v_Radio29 == '')
 																																	echo '';
 																																else
@@ -9094,7 +9094,7 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Sfatul persoanelor apropiate</label>
 									  
 									<span style="width:70%">
-										<input type="radio" name="group30" id="3_0" class="css-checkbox" value="0" <?php
+										<input type="radio" name="group30" id="3_0" class="css-checkbox" value="2" <?php
 																															if($v_Radio30 == '')
 																																echo '';
 																															else
@@ -9162,7 +9162,7 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Statutul profesiei pt care optaţi</label>
 										  
 									<span style="width:70%">
-										<input type="radio" name="group31" id="4_0" class="css-checkbox" value="0" <?php
+										<input type="radio" name="group31" id="4_0" class="css-checkbox" value="2" <?php
 																																if($v_Radio31 == '')
 																																	echo '';
 																																else
@@ -9230,7 +9230,7 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Colegii</label>
 									  
 									<span style="width:70%">
-										<input type="radio" name="group32" id="5_0" class="css-checkbox" value="0" <?php
+										<input type="radio" name="group32" id="5_0" class="css-checkbox" value="2" <?php
 																															if($v_Radio32 == '')
 																																echo '';
 																															else
@@ -9298,7 +9298,7 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Materiile care se studiază</label>
 									  
 									<span style="width:70%">
-										<input type="radio" name="group33" id="6_0" class="css-checkbox" value="0" <?php
+										<input type="radio" name="group33" id="6_0" class="css-checkbox" value="2" <?php
 																															if($v_Radio33 == '')
 																																echo '';
 																															else
@@ -9366,7 +9366,7 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Informaţiile furnizate de Universitate</label>
 									  
 									<span style="width:70%">
-										<input type="radio" name="group34" id="7_0" class="css-checkbox" value="0" <?php
+										<input type="radio" name="group34" id="7_0" class="css-checkbox" value="2" <?php
 																															if($v_Radio34 == '')
 																																echo '';
 																															else
@@ -9434,7 +9434,7 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Apropierea de domiciliu</label>
 									  
 									<span style="width:70%">
-										<input type="radio" name="group35" id="8_0" class="css-checkbox" value="0" <?php
+										<input type="radio" name="group35" id="8_0" class="css-checkbox" value="2" <?php
 																															if($v_Radio35 == '')
 																																echo '';
 																															else
@@ -9712,7 +9712,7 @@
         Aici este conditia pentru a putea fi indeplinit insertul
       --
     */
-
+	  
     if($vChitanta ==0 && $vsuma ==0 && $vradio1 ==1 && $vNumele_De_Familie_La_Nastere ==0 && $vMaster_Numele_De_Familie_Actual == 0 && $vLicenta_Initiala_Tata == 0 && $vMaster_Prenumele == 0 && $vMaster_PrenumeMama == 0 && $vMaster_PrenumeTata == 0 && $vMaster_Tara_Nastere == 0 && $vMaster_Localitate_Nastere == 0 && $vMaster_Cetatenie == 0 && $vMaster_Etnie == 0 && $vMaster_Limba_Materna == 0 && $vMaster_CNP == 0 && $vMaster_Serie_Buletin == 0 && $vMaster_Numar_Buletin == 0 && $vMaster_Buletin_Eliberat_De == 0 && $vradio3 == 1 && $vMaster_Strada == 0 &&  $vMaster_Numar == 0 &&   $vMaster_Bloc == 0 && $vMaster_Scara == 0 && $vMaster_Etaj == 0 && $vMaster_Apartament == 0 && $vMaster_Localitate1 == 0 && $vMaster_Cod_Postal == 0 && $vMaster_Telefon == 0 && $vMaster_Email == 0 && $vradio5 == 1 && $vradio4 == 1 && $vMaster_Localitate_Liceu == 0 && $vMaster_Profil_Liceu == 0 && $vMaster_Durata_Liceu == 0 && $vMaster_An_Liceu == 0 && $vMaster_Serie_DiplomaBAC == 0 && $vMaster_Nr_DiplomaBAC == 0 && $vMaster_AbsolventMaster_Univ1 == 0 && $vMaster_AbsolventMaster_Facultate1 == 0 && $vMaster_AbsolventMaster_Domeniu_Master1 == 0 && $vMaster_AbsolventMaster_Specializare1 == 0 && $vMaster_AbsolventMaster_An_Facultate1 == 0 && $vMaster_AbsolventMaster_Durata_Studii1 == 0 && $vMaster_AbsolventMaster_Semestre_Finantate1 == 0 && $vMaster_AbsolventMaster_Semestre_Bursa1 == 0 && $vMaster_AbsolventMaster_Localitate_AltaFacultate1 == 0 && $vMaster_Serie_DiplomaLicenta == 0  && $vradio26 == 1 && $vradio27 == 1 && $vOptiune1 == 0 && $vOptiune2 == 0 && $vOptiunea3 == 0 && $vOptiunea4 == 0 && $vOptiunea5 == 0 && $vOptiune6==0 && $vOptiune7 == 0 && $vOptiune8 == 0 && $vOptiune9 == 0 && $vOptiune10 == 0 && $vOptiune11 == 0){
 
     $connection = oci_connect($username, $password, $connection_string, 'AL32UTF8');
@@ -9955,14 +9955,14 @@
             oci_bind_by_name($statement, ':bZi' ,$_POST['Master_Buletin_Ziua']);
             oci_bind_by_name($statement, ':lZi' ,$_POST['Master_Buletin_Luna']);
             oci_bind_by_name($statement, ':aZi' ,$_POST['Master_Buletin_An']);
-            oci_bind_by_name($statement, ':eZi' ,$_POST['Master_Buletin_Ziua']);
+            oci_bind_by_name($statement, ':eZi' ,$_POST['Master_Buletin_Ziua_Exp']);
             oci_bind_by_name($statement, ':elZi' ,$_POST['Master_Buletin_Luna_Exp']);
-            oci_bind_by_name($statement, ':eaZi' ,$_POST['Master_Buletin_An']);  
+            oci_bind_by_name($statement, ':eaZi' ,$_POST['Master_Buletin_An_Exp']);  
 
             oci_bind_by_name($statement, ':mediu_domiciliu', $_POST['group3']);
-            oci_bind_by_name($statement, ':tara_domiciliu', $_POST['Master_Tara']);
-            oci_bind_by_name($statement, ':judet_domiciliu', $v_Master_Judet);
-            oci_bind_by_name($statement, ':localitate_domiciliu', $_POST['Master_Localitate_Nastere']);
+            oci_bind_by_name($statement, ':tara_domiciliu', $_POST['Master_Tara1']);
+            oci_bind_by_name($statement, ':judet_domiciliu', $_POST['Master_Judet1']);
+            oci_bind_by_name($statement, ':localitate_domiciliu', $_POST['Master_Localitate1']);
             
             oci_bind_by_name($statement, ':strada', $v_Master_Strada);
             oci_bind_by_name($statement, ':numar', $v_Master_Numar);
@@ -10001,12 +10001,12 @@
           :dipl_echiv_original,
           :dipl_echiv_copie,
           :particip_altundeva,
-          :fac1,
           :univ1,
-          :fac2,
+          :fac1,
           :univ2,
-          :fac3,
-          :univ3)");
+          :fac2,
+          :univ3,
+          :fac3)");
 
         oci_bind_by_name($statement, ':id', $numaratoare4);
         oci_bind_by_name($statement, ':diploma_bac_original', $_POST['Master_Diploma_BAC_Original']);
@@ -10017,13 +10017,33 @@
         oci_bind_by_name($statement, ':diploma_Master_copie', $_POST['Master_Diploma_Master_Copie']);
         oci_bind_by_name($statement, ':dipl_echiv_original', $_POST['Master_Echivalare_Studii_Master_Original']);
         oci_bind_by_name($statement, ':dipl_echiv_copie', $_POST['Master_Echivalare_Studii_Master_Copie']);
-        oci_bind_by_name($statement, ':particip_altundeva', $_POST['group27']);
-        oci_bind_by_name($statement, ':fac1', $_POST['Master_AlteConcursuri_Facultate1']);
-        oci_bind_by_name($statement, ':univ1', $_POST['Master_AlteConcursuri_Univ1']);
-        oci_bind_by_name($statement, ':fac2', $_POST['Master_AlteConcursuri_Facultate2']);
-        oci_bind_by_name($statement, ':univ2', $_POST['Master_AlteConcursuri_Univ2']);
-        oci_bind_by_name($statement, ':fac3', $_POST['Master_AlteConcursuri_Facultate3']);
-        oci_bind_by_name($statement, ':univ3', $_POST['Master_AlteConcursuri_Univ3']);
+		echo 'Poate merge';
+		//Participa altundeva
+		
+		$particip_altundeva = $_POST['group27'];
+		$Master_AlteConcursuri_Univ1 = null;
+		$Master_AlteConcursuri_Facultate1 = null;
+		$Master_AlteConcursuri_Univ2 = null;
+		$Master_AlteConcursuri_Facultate2 = null;
+		$Master_AlteConcursuri_Univ3 = null;
+		$Master_AlteConcursuri_Facultate3 = null;
+		
+		if($particip_altundeva == 1) {
+								$Master_AlteConcursuri_Univ1 = $_POST['Master_AlteConcursuri_Univ1'];
+								$Master_AlteConcursuri_Facultate1 = $_POST['Master_AlteConcursuri_Facultate1'];
+								$Master_AlteConcursuri_Univ2 = $_POST['Master_AlteConcursuri_Univ2'];
+								$Master_AlteConcursuri_Facultate2 = $_POST['Master_AlteConcursuri_Facultate2'];
+								$Master_AlteConcursuri_Univ3 = $_POST['Master_AlteConcursuri_Univ3'];
+								$Master_AlteConcursuri_Facultate3 = $_POST['Master_AlteConcursuri_Facultate3'];
+		}
+		
+        oci_bind_by_name($statement, ':particip_altundeva', $particip_altundeva);
+        oci_bind_by_name($statement, ':univ1', $Master_AlteConcursuri_Univ1);
+        oci_bind_by_name($statement, ':fac1', $Master_AlteConcursuri_Facultate1);
+        oci_bind_by_name($statement, ':univ2', $Master_AlteConcursuri_Univ2);
+        oci_bind_by_name($statement, ':fac2', $Master_AlteConcursuri_Facultate2);
+        oci_bind_by_name($statement, ':univ3', $Master_AlteConcursuri_Univ3);
+        oci_bind_by_name($statement, ':fac3', $Master_AlteConcursuri_Facultate3);
         
         if (!$statement) {
             ini_set('display_errors', 1);
@@ -10036,7 +10056,7 @@
             ini_set('display_errors', 1);
             error_reporting(E_ALL);
         }
-
+echo 'Merge?';
         $v_emisaZi = $_POST['Master_Diploma_Ziua'];
         $v_emisaLuna = $_POST['Master_Diploma_Luna'];
         $v_emisaAn = $_POST['Master_Diploma_An'];
@@ -10057,7 +10077,7 @@
           :nr_foi,
           :act_rec_echiv,
           :serie_act,
-          to_date(:actZi||'-'||:actLuna||'-'||:actAn, 'dd-mm-yyyy'), 
+          to_date(:liceu_echiv, 'dd-mm-yyyy'), 
           :tara_fac, 
           :localitate_fac,  
           :judet_fac,
@@ -10077,7 +10097,7 @@
           :act_rec_master,
           :act_rec_master_nr,
           :act_rec_master_serie,
-          to_date(:strainZi||'-'||:strainLuna||'-'||:strainAn, 'dd-mm-yyyy'),
+          to_date(:licenta_echiv, 'dd-mm-yyyy'),
           :student_alta_fac,
           :tara_altafac,
           :localitate_altafac,
@@ -10106,11 +10126,11 @@
           :abs_cu_dipl,
           :abs_dipl_serie,
           :abs_dipl_nr,
-          to_date(:absZi||'-'||:absLuna||'-'||:absAn, 'dd-mm-yyyy'),
+          to_date(:diploma_master_echiv, 'dd-mm-yyyy'),
           :abs_nr_foi,
           :abs_act_rec_nr,
           :abs_act_rec_serie,
-          to_date(:absRecZi||'-'||:absRecLuna||'-'||:absRecAn, 'dd-mm-yyyy'))");
+          to_date(:echiv_master_straint, 'dd-mm-yyyy'))");
 
         oci_bind_by_name($statement, ':id', $numaratoare5);
         oci_bind_by_name($statement, ':liceu', $_POST['Master_Liceu']);
@@ -10129,13 +10149,24 @@
         oci_bind_by_name($statement, ':dAn', $v_emisaAn);
 
         oci_bind_by_name($statement, ':nr_foi', $_POST['Master_Nr_FoaieMatricola']);
-        oci_bind_by_name($statement, ':act_rec_echiv', $_POST['Master_Nr_ActRecunoastere']);
-        oci_bind_by_name($statement, ':serie_act', $_POST['Master_Serie_ActRecunoastere']);
+		
+		//Act echivalare = liceu
+		$Master_Nr_ActRecunoastere = $_POST['Master_Nr_ActRecunoastere'];
+		$Master_Serie_ActRecunoastere = $_POST['Master_Serie_ActRecunoastere'];
+		
+        oci_bind_by_name($statement, ':act_rec_echiv', $Master_Nr_ActRecunoastere);
+        oci_bind_by_name($statement, ':serie_act', $Master_Serie_ActRecunoastere);
+		
+		$liceu_echiv = null;
+		if($Master_Nr_ActRecunoastere != null && $Master_Serie_ActRecunoastere != null) {
+                             $Licenta_ActEchivalare_Ziua = $_POST['Master_ActEchivalare_Ziua'];
+                             $Licenta_ActEchivalare_Luna = $_POST['Master_ActEchivalare_Luna'];
+                             $Licenta_ActEchivalare_An = $_POST['Master_ActEchivalare_An'];
+                             $liceu_echiv = $Licenta_ActEchivalare_Ziua.'-'.$Licenta_ActEchivalare_Luna.'-'.$Licenta_ActEchivalare_An;
+        }
+        oci_bind_by_name($statement, ':liceu_echiv', $liceu_echiv);       
 
-        oci_bind_by_name($statement, ':actZi', $_POST['Master_ActEchivalare_Ziua']);
-        oci_bind_by_name($statement, ':actLuna', $_POST['Master_ActEchivalare_Luna']);
-        oci_bind_by_name($statement, ':actAn', $_POST['Master_ActEchivalare_An']);        
-
+		
         oci_bind_by_name($statement, ':tara_fac', $_POST['Master_Tara_AltaFacultate1']); 
         oci_bind_by_name($statement, ':localitate_fac', $_POST['Master_AbsolventMaster_Localitate_AltaFacultate1']);  
         oci_bind_by_name($statement, ':judet_fac', $_POST['Master_Judet_AltaFacultate1']);
@@ -10151,59 +10182,183 @@
         oci_bind_by_name($statement, ':diploma_Master_serie', $_POST['Master_Serie_DiplomaLicenta']);
         oci_bind_by_name($statement, ':diploma_Master_nr', $_POST['Master_Nr_DiplomaLicenta']);
 
+		//Diploma_licenta
         oci_bind_by_name($statement, ':diZi', $_POST['Master_DiplomaLicenta_Ziua']);
         oci_bind_by_name($statement, ':diLuna', $_POST['Master_DiplomaLicenta_Luna']);
         oci_bind_by_name($statement, ':diAn', $_POST['Master_DiplomaLicenta_An']);
 
 		oci_bind_by_name($statement, ':nr_foaie_matr', $_POST['Master_AbsolventLicenta_Nr_FoaieMatricola']);
+		
+		//Licenta studii in strainatate
+		
+		$licenta_echiv = null;
+		$act_rec_master_nr = $_POST['Master_AbsolventMaster_Nr_ActRecunoastere'];
+		$act_rec_master_serie = $_POST['Master_AbsolventMaster_Serie_ActRecunoastere'];
+		
 		oci_bind_by_name($statement, ':act_rec_master', $_POST['Master_AbsolventMaster_Nr_ActRecunoastere']);
-        oci_bind_by_name($statement, ':act_rec_master_nr', $_POST['Master_AbsolventMaster_Nr_ActRecunoastere']);
-        oci_bind_by_name($statement, ':act_rec_master_serie', $_POST['Master_AbsolventMaster_Serie_ActRecunoastere']);            
-        oci_bind_by_name($statement, ':strainZi', $_POST['Master_AbsolventMaster_ActEchivalare_Ziua']);
-        oci_bind_by_name($statement, ':strainLuna', $_POST['Master_AbsolventMaster_ActEchivalare_Luna']);  
-        oci_bind_by_name($statement, ':strainAn', $_POST['Master_AbsolventMaster_ActEchivalare_An']); 
+        oci_bind_by_name($statement, ':act_rec_master_nr', $act_rec_master_nr);
+        oci_bind_by_name($statement, ':act_rec_master_serie', $act_rec_master_serie);
+		
+		if($act_rec_master_nr != null && $act_rec_master_serie != null) {
+			$strainZi = $_POST['Master_AbsolventMaster_ActEchivalare_Ziua'];
+			$strainLuna = $_POST['Master_AbsolventMaster_ActEchivalare_Luna'];
+			$strainAn = $_POST['Master_AbsolventMaster_ActEchivalare_An'];
+			
+			$licenta_echiv = $strainZi.'-'.$strainLuna.'-'.$strainAn;
+		}
+		
+        oci_bind_by_name($statement, ':licenta_echiv', $licenta_echiv); 
+		
+		
+		//Student la o univ (in curs)
+		
+		
+		$v_Radio25 = $_POST['group25'];
+		$Master_Tara_AltaFacultate = null;
+		$Master_Localitate_AltaFacultate = null;
+		$Master_Judet_AltaFacultate = null;
+		$Master_AltaUniversitate = null;
+		$Master_AltaFacultate = null;
+		$Master_Domeniu_Studii = null;
+		$Master_Specializare = null;
+		$Master_FormaInvatamant_AltaUniv = null;
+		$Master_An_Facultate = null;
+		$Master_Semestre_Finantate = null;
+		$Master_Semestre_Bursa = null;
+		
+		if($v_Radio25 == 1) {
+			$Master_Tara_AltaFacultate = $_POST['Master_Tara_AltaFacultate'];
+			$Master_Localitate_AltaFacultate = $_POST['Master_Localitate_AltaFacultate'];
+			$Master_Judet_AltaFacultate = $_POST['Master_Judet_AltaFacultate'];
+			$Master_AltaUniversitate = $_POST['Master_AltaUniversitate'];
+			$Master_AltaFacultate = $_POST['Master_AltaFacultate'];
+			$Master_Domeniu_Studii = $_POST['Master_Domeniu_Studii'];
+			$Master_Specializare = $_POST['Master_Specializare'];
+			$Master_FormaInvatamant_AltaUniv = $_POST['Master_FormaInvatamant_AltaUniv'];
+			$Master_An_Facultate = $_POST['Master_An_Facultate'];
+			$Master_Semestre_Finantate = $_POST['Master_Semestre_Finantate'];
+			$Master_Semestre_Bursa = $_POST['Master_Semestre_Bursa'];
+		}
+		
+        oci_bind_by_name($statement, ':student_alta_fac', $v_Radio25);
+        oci_bind_by_name($statement, ':tara_altafac', $Master_Tara_AltaFacultate);
+        oci_bind_by_name($statement, ':localitate_altafac', $Master_Localitate_AltaFacultate);
+        oci_bind_by_name($statement, ':judet_altafac', $Master_Judet_AltaFacultate);
+        oci_bind_by_name($statement, ':den_inst_superior2', $Master_AltaUniversitate);
+        oci_bind_by_name($statement, ':facultate_altafac', $Master_AltaFacultate);
+        oci_bind_by_name($statement, ':dom_studii', $Master_Domeniu_Studii);
+        oci_bind_by_name($statement, ':dom_specializare', $Master_Specializare);
+        oci_bind_by_name($statement, ':dom_forma_invat', $Master_FormaInvatamant_AltaUniv);
+        oci_bind_by_name($statement, ':dom_an', $Master_An_Facultate);
+        oci_bind_by_name($statement, ':dom_sem_fin', $Master_Semestre_Finantate);
+        oci_bind_by_name($statement, ':dom_sem_bursa', $Master_Semestre_Bursa);
+        
+		
+		//vRadio24
+		$v_Radio24 = $_POST['group24'];
+		$v_Radio23 = $_POST['group23'];
+		$Master_AbsolventMaster_Anul_Absolvirii = null;
+		$Master_AbsolventMaster_Tara_AltaFacultate = null;
+		$Master_AbsolventMaster_Localitate_AltaFacultate = null;
+		$Master_AbsolventMaster_Judet_AltaFacultate = null;
+		$Master_AbsolventMaster_Univ = null;
+		$Master_AbsolventMaster_Facultate = null;
+		$Master_AbsolventMaster_Domeniu_Master = null;
+		$Master_AbsolventMaster_Specializare = null;
+		$Master_AbsolventMaster_An_Facultate = null;
+		$Master_AbsolventMaster_FormaInvatamant = null;
+		$Master_AbsolventMaster_Semestre_Finantate = null;
+		$Master_AbsolventMaster_Semestre_Bursa = null;
+		$Master_AbsolventMaster_Durata_Studii = null;
+		
+		//vRadio23
+		$Master_Serie_DiplomaMaster = null;
+		$Master_Nr_DiplomaMaster = null;
+		$Master_DiplomaMaster_Ziua = null;
+		$Master_DiplomaMaster_Luna = null;
+		$Master_DiplomaMaster_An = null;
+		$Master_DiplomaMaster_Nr_FoaieMatricola = null;
+		$Master_DiplomaMaster_Nr_ActRecunoastere = null;
+		$Master_DiplomaMaster_Serie_ActRecunoastere = null;
+		
+		//Dipl master
+		$diploma_master_echiv = null;
+		
+		//Act echiv. master strainat.
+		
+		$echiv_master_straint = null;
+		
+		if($v_Radio24 == 1) {
+			$Master_AbsolventMaster_Anul_Absolvirii = $_POST['Master_AbsolventMaster_Anul_Absolvirii'];
+			$Master_AbsolventMaster_Tara_AltaFacultate = $_POST['Master_AbsolventMaster_Tara_AltaFacultate'];
+			$Master_AbsolventMaster_Localitate_AltaFacultate = $_POST['Master_AbsolventMaster_Localitate_AltaFacultate'];
+			$Master_AbsolventMaster_Judet_AltaFacultate = $_POST['Master_AbsolventMaster_Judet_AltaFacultate'];
+			$Master_AbsolventMaster_Univ = $_POST['Master_AbsolventMaster_Univ'];
+			$Master_AbsolventMaster_Facultate = $_POST['Master_AbsolventMaster_Facultate'];
+			$Master_AbsolventMaster_Domeniu_Master = $_POST['Master_AbsolventMaster_Domeniu_Master'];
+			$Master_AbsolventMaster_Specializare = $_POST['Master_AbsolventMaster_Specializare'];
+			$Master_AbsolventMaster_An_Facultate = $_POST['Master_AbsolventMaster_An_Facultate'];
+			$Master_AbsolventMaster_FormaInvatamant = $_POST['Master_AbsolventMaster_FormaInvatamant'];
+			$Master_AbsolventMaster_Semestre_Finantate = $_POST['Master_AbsolventMaster_Semestre_Finantate'];
+			$Master_AbsolventMaster_Semestre_Bursa = $_POST['Master_AbsolventMaster_Semestre_Bursa'];
+			$Master_AbsolventMaster_Durata_Studii = $_POST['Master_AbsolventMaster_Durata_Studii'];
+			
+			if($v_Radio23 == 1) {
+									$Master_DiplomaMaster_Nr_FoaieMatricola = $_POST['Master_DiplomaMaster_Nr_FoaieMatricola'];
+									$Master_Serie_DiplomaMaster = $_POST['Master_Serie_DiplomaMaster'];
+									$Master_Nr_DiplomaMaster = $_POST['Master_Nr_DiplomaMaster'];
+									$Master_DiplomaMaster_Ziua = $_POST['Master_DiplomaMaster_Ziua'];
+									$Master_DiplomaMaster_Luna = $_POST['Master_DiplomaMaster_Luna'];
+									$Master_DiplomaMaster_An = $_POST['Master_DiplomaMaster_An'];
+									
+									$Master_DiplomaMaster_Nr_ActRecunoastere = $_POST['Master_DiplomaMaster_Nr_ActRecunoastere'];
+									$Master_DiplomaMaster_Serie_ActRecunoastere = $_POST['Master_DiplomaMaster_Serie_ActRecunoastere'];
+							
+									$diploma_master_echiv = $Master_DiplomaMaster_Ziua.'-'.$Master_DiplomaMaster_Luna.'-'.$Master_DiplomaMaster_An;
+				
+									//Echiv straintate
+									
+									if($Master_DiplomaMaster_Nr_ActRecunoastere != null && $Master_DiplomaMaster_Serie_ActRecunoastere != null) {
+										$Master_DiplomaMaster_ActEchivalare_Ziua = $_POST['Master_DiplomaMaster_ActEchivalare_Ziua'];
+										$Master_DiplomaMaster_ActEchivalare_Luna = $_POST['Master_DiplomaMaster_ActEchivalare_Luna'];
+										$Master_DiplomaMaster_ActEchivalare_An = $_POST['Master_DiplomaMaster_ActEchivalare_An']; 
+										
+										$echiv_master_straint = $Master_DiplomaMaster_ActEchivalare_Ziua.'-'.$Master_DiplomaMaster_ActEchivalare_Luna.'-'.$Master_DiplomaMaster_ActEchivalare_An;
+									}
+			}
+		}
+		
+		//vRadio24 - binds
+		
+		oci_bind_by_name($statement, ':anul_absolvirii', $Master_AbsolventMaster_Anul_Absolvirii);
+        oci_bind_by_name($statement, ':abs_tara', $Master_AbsolventMaster_Tara_AltaFacultate);
+        oci_bind_by_name($statement, ':abs_local', $Master_AbsolventMaster_Localitate_AltaFacultate);
+        oci_bind_by_name($statement, ':abs_judet', $Master_AbsolventMaster_Judet_AltaFacultate);
+        oci_bind_by_name($statement, ':abs_den_inst', $Master_AbsolventMaster_Univ);
+        oci_bind_by_name($statement, ':abs_den_fac', $Master_AbsolventMaster_Facultate);
+        oci_bind_by_name($statement, ':abs_dom', $Master_AbsolventMaster_Domeniu_Master);
+        oci_bind_by_name($statement, ':abs_spec', $Master_AbsolventMaster_Specializare);
+        oci_bind_by_name($statement, ':abs_titlu_obt', $Master_AbsolventMaster_An_Facultate);
+        oci_bind_by_name($statement, ':abs_forma', $Master_AbsolventMaster_FormaInvatamant);
+        oci_bind_by_name($statement, ':abs_sem_buget', $Master_AbsolventMaster_Semestre_Finantate);
+        oci_bind_by_name($statement, ':abs_sem_bursa', $Master_AbsolventMaster_Semestre_Bursa);
+        oci_bind_by_name($statement, ':abs_durata_studii', $Master_AbsolventMaster_Durata_Studii);
+		
+		//vRadio23 - binds
+        
+		oci_bind_by_name($statement, ':abs_cu_dipl', $v_Radio23);
+        oci_bind_by_name($statement, ':abs_dipl_serie', $Master_Serie_DiplomaMaster);
+        oci_bind_by_name($statement, ':abs_dipl_nr', $Master_Nr_DiplomaMaster);   
 
-        oci_bind_by_name($statement, ':student_alta_fac', $_POST['group25']);
-        oci_bind_by_name($statement, ':tara_altafac', $_POST['Master_Tara_AltaFacultate']);
-        oci_bind_by_name($statement, ':localitate_altafac', $_POST['Master_Localitate_AltaFacultate']);
-        oci_bind_by_name($statement, ':judet_altafac', $_POST['Master_Judet_AltaFacultate']);
-        oci_bind_by_name($statement, ':den_inst_superior2', $_POST['Master_AltaUniversitate']);
-        oci_bind_by_name($statement, ':facultate_altafac', $_POST['Master_AltaFacultate']);
-        oci_bind_by_name($statement, ':dom_studii', $_POST['Master_Domeniu_Studii']);
-        oci_bind_by_name($statement, ':dom_specializare', $_POST['Master_Specializare']);
-        oci_bind_by_name($statement, ':dom_forma_invat', $_POST['Master_FormaInvatamant_AltaUniv']);
-        oci_bind_by_name($statement, ':dom_an', $_POST['Master_An_Facultate']);
-        oci_bind_by_name($statement, ':dom_sem_fin', $_POST['Master_Semestre_Finantate']);
-        oci_bind_by_name($statement, ':dom_sem_bursa', $_POST['Master_Semestre_Bursa']);
-        oci_bind_by_name($statement, ':anul_absolvirii', $_POST['Master_AbsolventMaster_Anul_Absolvirii']);
+		//Dipl master
+        oci_bind_by_name($statement, ':diploma_master_echiv', $diploma_master_echiv);   
 
-        oci_bind_by_name($statement, ':abs_tara', $_POST['Master_AbsolventMaster_Tara_AltaFacultate']);
-        oci_bind_by_name($statement, ':abs_local', $_POST['Master_AbsolventMaster_Localitate_AltaFacultate']);
-        oci_bind_by_name($statement, ':abs_judet', $_POST['Master_AbsolventMaster_Judet_AltaFacultate']);
-        oci_bind_by_name($statement, ':abs_den_inst', $_POST['Master_AbsolventMaster_Univ']);
-        oci_bind_by_name($statement, ':abs_den_fac', $_POST['Master_AbsolventMaster_Facultate']);
-        oci_bind_by_name($statement, ':abs_dom', $_POST['Master_AbsolventMaster_Domeniu_Master']);
-        oci_bind_by_name($statement, ':abs_spec', $_POST['Master_AbsolventMaster_Specializare']);
-        oci_bind_by_name($statement, ':abs_titlu_obt', $_POST['Master_AbsolventMaster_An_Facultate']);
-        oci_bind_by_name($statement, ':abs_forma', $_POST['Master_AbsolventMaster_FormaInvatamant']);
-        oci_bind_by_name($statement, ':abs_sem_buget', $_POST['Master_AbsolventMaster_Semestre_Finantate']);
-        oci_bind_by_name($statement, ':abs_sem_bursa', $_POST['Master_AbsolventMaster_Semestre_Bursa']);
-        oci_bind_by_name($statement, ':abs_durata_studii', $_POST['Master_AbsolventMaster_Durata_Studii']);
-        oci_bind_by_name($statement, ':abs_cu_dipl', $_POST['group23']);
-        oci_bind_by_name($statement, ':abs_dipl_serie', $_POST['Master_Serie_DiplomaMaster']);
-        oci_bind_by_name($statement, ':abs_dipl_nr', $_POST['Master_Nr_DiplomaMaster']);   
+	    oci_bind_by_name($statement, ':abs_nr_foi', $Master_DiplomaMaster_Nr_FoaieMatricola);
+        oci_bind_by_name($statement, ':abs_act_rec_nr', $Master_DiplomaMaster_Nr_ActRecunoastere);
+        oci_bind_by_name($statement, ':abs_act_rec_serie', $Master_DiplomaMaster_Serie_ActRecunoastere);
 
-        oci_bind_by_name($statement, ':absZi', $_POST['Master_DiplomaMaster_Ziua']);
-        oci_bind_by_name($statement, ':absLuna', $_POST['Master_DiplomaMaster_Luna']);
-        oci_bind_by_name($statement, ':absAn', $_POST['Master_DiplomaMaster_An']);   
-
-	    oci_bind_by_name($statement, ':abs_nr_foi', $_POST['Master_DiplomaMaster_Nr_FoaieMatricola']);
-        oci_bind_by_name($statement, ':abs_act_rec_nr', $_POST['Master_DiplomaMaster_Nr_ActRecunoastere']);
-        oci_bind_by_name($statement, ':abs_act_rec_serie', $_POST['Master_DiplomaMaster_Serie_ActRecunoastere']);
-
-        oci_bind_by_name($statement, ':absRecZi', $_POST['Master_DiplomaMaster_ActEchivalare_Ziua']);
-        oci_bind_by_name($statement, ':absRecLuna', $_POST['Master_DiplomaMaster_ActEchivalare_Luna']);
-        oci_bind_by_name($statement, ':absRecAn', $_POST['Master_DiplomaMaster_ActEchivalare_An']);   
+		//Act echiv straint. licenta
+        oci_bind_by_name($statement, ':echiv_master_straint', $echiv_master_straint);   
       
        if (!$statement) {
           ini_set('display_errors', 1);
@@ -10306,8 +10461,7 @@
           ini_set('display_errors', 1);
           error_reporting(E_ALL);
       }
-
-     echo '<script>window.location.href = "Validare_Formular.php";</script>';      
+   		//echo '<script>window.location.href = "Validare_Formular.php";</script>';      
     }
   }
 }
