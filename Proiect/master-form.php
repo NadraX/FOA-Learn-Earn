@@ -499,9 +499,9 @@
 
 				<ul class="left-menu">
 
-					<li class="lung"><a href="DespreFII.html">Despre FII</a></li>
+					<li class="lung"><a href="index.html">Despre FII</a></li>
 
-					<li class="scurt"><a href="DespreFII.html">FII</a></li>
+					<li class="scurt"><a href="index.html">FII</a></li>
 
 					<li><a href="paginaAdmitere.php">Admitere</a></li>
 
@@ -517,7 +517,7 @@
 
 			</div>      
 
-			<a href="DespreFII.html" >
+			<a href="index.html" >
 
 				<img id="no-scroll" class="sigla" src="imagini/sigla2.png" alt="sigla" />
 
@@ -535,7 +535,7 @@
 
 				<ul class="tog1">
 
-					<li class="tog2"><a href="DespreFII.html">Despre FII</a></li>  
+					<li class="tog2"><a href="index.html">Despre FII</a></li>  
 
 					<li class="tog2"><a href="paginaAdmitere.php">Admitere</a></li>
 
@@ -9702,7 +9702,7 @@
 			<div class="footer-left">
 				<h3 class="headernou2">Admitere <span> FII</span></h3>
 				<p class="footer-links">
-					<a href="DespreFII.html">Despre FII</a>
+					<a href="index.html">Despre FII</a>
 					·
 					<a href="paginaAdmitere.php">Admitere</a>
 					·

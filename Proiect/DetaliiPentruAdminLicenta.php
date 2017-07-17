@@ -108,9 +108,9 @@
 
         <ul class="left-menu">
 
-            <li class="lung"><a href="DespreFII.html">Despre FII</a></li>
+            <li class="lung"><a href="index.html">Despre FII</a></li>
 
-            <li class="scurt"><a href="DespreFII.html">FII</a></li>
+            <li class="scurt"><a href="index.html">FII</a></li>
 
             <li><a href="paginaAdmitere.php">Admitere</a></li>
 
@@ -146,7 +146,7 @@
 
       <ul class="tog1">
 
-        <li class="tog2"><a href="DespreFII.html">Despre FII</a></li>  
+        <li class="tog2"><a href="index.html">Despre FII</a></li>  
 
         <li class="tog2"><a href="paginaAdmitere.php">Admitere</a></li>
 
@@ -817,7 +817,7 @@
 
                 <p class="footer-links">
 
-                    <a href="DespreFII.html">Despre Fii</a>
+                    <a href="index.html">Despre Fii</a>
 
                     ·
 

@@ -29,8 +29,8 @@
       <ul style="widht:100%; height:40px; background-color:#3488CB;"></ul>
         
       <ul class="left-menu">
-        <li class="lung"><a href="DespreFII.html">Despre FII</a></li>
-        <li class="scurt"><a href="DespreFII.html">FII</a></li>
+        <li class="lung"><a href="index.html">Despre FII</a></li>
+        <li class="scurt"><a href="index.html">FII</a></li>
         <li><a href="paginaAdmitere.php">Admitere</a></li>
       </ul>
         
@@ -51,7 +51,7 @@
       
     <div id="menu">
       <ul class="tog1">
-        <li class="tog2"><a href="DespreFII.html">Despre FII</a></li>  
+        <li class="tog2"><a href="index.html">Despre FII</a></li>  
         <li class="tog2"><a href="paginaAdmitere.php">Admitere</a></li>
         <li class="tog2"><a href="IntrebariFrecvente.html">&#206;ntreb&#259;ri</a></li>
         <li class="tog2"><a href="contact.html">Contact</a></li>
@@ -93,7 +93,7 @@
 			<div class="footer-left">
 				<h3 class="headernou2">Admitere <span> FII</span></h3>
 				<p class="footer-links">
-					<a href="DespreFII.html">Despre FII</a>
+					<a href="index.html">Despre FII</a>
 					·
 					<a href="paginaAdmitere.php">Admitere</a>
 					·
