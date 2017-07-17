@@ -10098,24 +10098,37 @@
 
         oci_bind_by_name($statement, ':id', $numaratoare4);
 		
-		$diploma_bac_original = $_POST['Master_Diploma_BAC_Original'];
-		$raspuns_diploma_bac = 2;
+		$Master_Diploma_BAC_Original=$_POST["Master_Diploma_BAC_Original"];
+		$Master_Diploma_BAC_Copie=$_POST["Master_Diploma_BAC_Copie"];
 		
-		$doc_echiv_original = $_POST['Master_Echivalare_Studii_Preuniversitare_Original'];
-		$raspuns_doc_echiv = 2;
+		$Master_Echivalare_Studii_Preuniversitare_Original=$_POST["Master_Echivalare_Studii_Preuniversitare_Original"];
+		$Master_Echivalare_Studii_Preuniversitare_Copie=$_POST["Master_Echivalare_Studii_Preuniversitare_Copie"];
 		
-		$diploma_Master_original = $_POST['Master_Diploma_Master_Original'];
-		$raspuns_diploma_Master = 2;
+		$Master_Diploma_Master_Original=$_POST["Master_Diploma_Master_Original"];
+		$Master_Diploma_Master_Copie=$_POST["Master_Diploma_Master_Copie"];
 		
-		$dipl_echiv_original = $_POST['Master_Echivalare_Studii_Master_Original'];
-		$raspuns_dipl_echiv = 2;
+		$Master_Echivalare_Studii_Master_Original=$_POST["Master_Echivalare_Studii_Master_Original"];
+		$Master_Echivalare_Studii_Master_Copie=$_POST["Master_Echivalare_Studii_Master_Copie"];
+		
+		
+		$raspuns_diploma_bac = null;
+		$raspuns_doc_echiv = null;
+		$raspuns_diploma_Master = null;
+		$raspuns_dipl_echiv = null;
 		
 		//documente
 		
-		if($diploma_bac_original == 1) $raspuns_diploma_bac = 1;
-		if($doc_echiv_original == 1) $raspuns_doc_echiv = 1;
-		if($diploma_Master_original == 1) $raspuns_diploma_Master = 1;
-		if($dipl_echiv_original == 1) $raspuns_dipl_echiv = 1;
+		if($Master_Diploma_BAC_Original == 1) $raspuns_diploma_bac = 1;
+		else if($Master_Diploma_BAC_Copie == 1) $raspuns_diploma_bac = 2;
+		
+		if($Master_Echivalare_Studii_Preuniversitare_Original == 1) $raspuns_doc_echiv = 1;
+		else if($Master_Echivalare_Studii_Preuniversitare_Copie == 1) $raspuns_doc_echiv = 2;
+		
+		if($Master_Diploma_Master_Original == 1) $raspuns_diploma_Master = 1;
+		else if($Master_Diploma_Master_Copie == 1) $raspuns_diploma_Master = 2;
+		
+		if($Master_Echivalare_Studii_Master_Original == 1) $raspuns_dipl_echiv = 1;
+		else if($Master_Echivalare_Studii_Master_Copie == 1) $raspuns_dipl_echiv = 2;
 		
         oci_bind_by_name($statement, ':diploma_bac_original', $raspuns_diploma_bac);
         oci_bind_by_name($statement, ':doc_echiv_original', $raspuns_doc_echiv);

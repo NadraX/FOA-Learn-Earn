@@ -1544,16 +1544,16 @@ function Footer()
 	  $raspuns_echiv_licenta_copie = 'NU';
           
 	  if($diploma_bac_original == 1) $raspuns_diploma_bac_original = 'DA';
-      else $raspuns_diploma_bac_copie = 'DA';
+      else if($diploma_bac_original == 2) $raspuns_diploma_bac_copie = 'DA';
      
 	  if($doc_echiv_preuniv_original == 1) $raspuns_echiv_studii_original = 'DA';
-      else $raspuns_echiv_studii_copie = 'DA';
+      else if($doc_echiv_preuniv_original == 2) $raspuns_echiv_studii_copie = 'DA';
      
 	  if($diploma_licenta_original == 1) $raspuns_diploma_licenta_original = 'DA';
-      else $raspuns_diploma_licenta_copie = 'DA';
+      else if($diploma_licenta_original == 2) $raspuns_diploma_licenta_copie = 'DA';
      
 	  if($dipl_echiv_licenta_original == 1) $raspuns_echiv_licenta_original = 'DA';
-      else $raspuns_echiv_licenta_copie = 'DA';
+      else if($dipl_echiv_licenta_original == 2) $raspuns_echiv_licenta_copie = 'DA';
   
      
       $pdf->Ln(12); 
