@@ -2532,7 +2532,7 @@
 																																					echo '';
 																																		?> />
 														<label for="checkbox3" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="0" <?php
+														<input type="radio" name="group5" id="checkbox4" class="css-checkbox" value="2" <?php
 																																			if($v_Radio5 == '')
 																																				echo '';
 																																			else
@@ -2570,7 +2570,7 @@
 																																					echo '';
 																																		?> />
 														<label for="checkbox5" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group6" id="checkbox6" class="css-checkbox" value="0" <?php
+														<input type="radio" name="group6" id="checkbox6" class="css-checkbox" value="2" <?php
 																																			if($v_Radio6 == '')
 																																				echo '';
 																																			else
@@ -2615,7 +2615,7 @@
 																																					echo '';
 																																		?> />   
 														<label for="checkbox7" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="0" <?php
+														<input type="radio" name="group4" id="checkbox8" class="css-checkbox" value="2" <?php
 																																			if($v_Radio4 == '')
 																																				echo '';
 																																			else
@@ -4836,7 +4836,7 @@
 																																								echo '';
 																																					?>/>   
 										<label for="daAltaFacultate" class="css-label" style="margin-right:100px">Da</label>
-										<input type="radio" onClick="AltaUniv()" name="group25" id="nuAltaFacultate" class="css-checkbox" value="0" <?php
+										<input type="radio" onClick="AltaUniv()" name="group25" id="nuAltaFacultate" class="css-checkbox" value="2" <?php
 																																						if($v_Radio25 == '')
 																																							echo '';
 																																						else
@@ -5243,7 +5243,7 @@
 																																											echo '';
 																																								?>/>   
 										<label for="daAbsolventLicenta" class="css-label" style="margin-right:100px">Da</label>
-										<input type="radio" onClick="AbsolventLicenta()" name="group24" id="nuAbsolventLicenta" class="css-checkbox" value="0" <?php
+										<input type="radio" onClick="AbsolventLicenta()" name="group24" id="nuAbsolventLicenta" class="css-checkbox" value="2" <?php
 																																									if($v_Radio24 == '')
 																																										echo '';
 																																									else
@@ -5700,7 +5700,7 @@
 																																											echo '';
 																																								?>/>   
 											<label for="daDiplomaLicenta" class="css-label" style="margin-right:100px">Da</label>
-											<input type="radio" onClick="DiplomaLicenta()" name="group23" id="nuDiplomaLicenta" class="css-checkbox" value="0" <?php
+											<input type="radio" onClick="DiplomaLicenta()" name="group23" id="nuDiplomaLicenta" class="css-checkbox" value="2" <?php
 																																									if($v_Radio23 == '')
 																																										echo '';
 																																									else
@@ -6199,7 +6199,7 @@
 																																		echo '';
 																															?> />		
 										<label for="checkbox10" class="css-label" style="margin-right:100px">Da</label>
-										<input type="radio" name="group2" id="checkbox12" class="css-checkbox" value="0" <?php
+										<input type="radio" name="group2" id="checkbox12" class="css-checkbox" value="2" <?php
 																															if($v_Radio2 == '')
 																																echo '';
 																															else
@@ -6494,7 +6494,7 @@
 																																									echo '';
 																																						?>/>   
 										<label for="daPreadmitere" class="css-label" style="margin-right:100px">Da</label>
-										<input type="radio" onClick="Preadmitere()" name="group21" id="nuPreadmitere" class="css-checkbox" value="0" <?php
+										<input type="radio" onClick="Preadmitere()" name="group21" id="nuPreadmitere" class="css-checkbox" value="2" <?php
 																																						if($v_Radio21 == '')
 																																							echo '';
 																																						else
@@ -6555,7 +6555,7 @@
 																																		echo '';
 																															?>/>   
 											<label for="daTest" class="css-label" style="margin-right:100px">Da</label>
-											<input type="radio" name="group20" id="nuTest" class="css-checkbox" value="0" 	<?php
+											<input type="radio" name="group20" id="nuTest" class="css-checkbox" value="2" 	<?php
 																																if($v_Radio20 == '')
 																																	echo '';
 																																else
@@ -7747,7 +7747,7 @@
 								<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Prestigiul Universităţii/Facultăţii</label>
 
 								<span style="width:70%;">
-									<input type="radio" name="group28" id="1_0" class="css-checkbox" value="0" <?php
+									<input type="radio" name="group28" id="1_0" class="css-checkbox" value="2" <?php
 																													if($v_Radio28 == '')
 																														echo '';
 																													else
@@ -7815,7 +7815,7 @@
 								<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Calitatea Educaţiei la UAIC</label>
 
 								<span style="width:70%">
-									<input type="radio" name="group29" id="2_0" class="css-checkbox" value="0" <?php
+									<input type="radio" name="group29" id="2_0" class="css-checkbox" value="2" <?php
 																													if($v_Radio29 == '')
 																														echo '';
 																													else
@@ -7882,7 +7882,7 @@
 								<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Sfatul persoanelor apropiate</label>
 									  
 								<span style="width:70%">
-									<input type="radio" name="group30" id="3_0" class="css-checkbox" value="0" <?php
+									<input type="radio" name="group30" id="3_0" class="css-checkbox" value="2" <?php
 																													if($v_Radio30 == '')
 																														echo '';
 																													else
@@ -7949,7 +7949,7 @@
 								<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Statutul profesiei pt care optaţi</label>
 
 								<span style="width:70%">
-									<input type="radio" name="group31" id="4_0" class="css-checkbox" value="0" <?php
+									<input type="radio" name="group31" id="4_0" class="css-checkbox" value="2" <?php
 																													if($v_Radio31 == '')
 																														echo '';
 																													else
@@ -8017,7 +8017,7 @@
 								<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Colegii</label>
 
 								<span style="width:70%">
-									<input type="radio" name="group32" id="5_0" class="css-checkbox" value="0" <?php
+									<input type="radio" name="group32" id="5_0" class="css-checkbox" value="2" <?php
 																													if($v_Radio32 == '')
 																														echo '';
 																													else
@@ -8085,7 +8085,7 @@
 								<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Materiile care se studiază</label>
 									  
 								<span style="width:70%">
-									<input type="radio" name="group33" id="6_0" class="css-checkbox" value="0" <?php
+									<input type="radio" name="group33" id="6_0" class="css-checkbox" value="2" <?php
 																													if($v_Radio33 == '')
 																														echo '';
 																													else
@@ -8152,7 +8152,7 @@
 								<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Informaţiile furnizate de Universitate</label>
 								  
 								<span style="width:70%">
-									<input type="radio" name="group34" id="7_0" class="css-checkbox" value="0" <?php
+									<input type="radio" name="group34" id="7_0" class="css-checkbox" value="2" <?php
 																													if($v_Radio34 == '')
 																														echo '';
 																													else
@@ -8219,7 +8219,7 @@
 								<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Apropierea de domiciliu</label>
 
 								<span style="width:70%">
-									<input type="radio" name="group35" id="8_0" class="css-checkbox" value="0" <?php
+									<input type="radio" name="group35" id="8_0" class="css-checkbox" value="2" <?php
 																													if($v_Radio35 == '')
 																														echo '';
 																													else
@@ -8553,11 +8553,19 @@
 		$vLicenta_Tip_Buletin = validTipBuletin($v_Licenta_Tip_Buletin);
          
         $v_Licenta_Serie_Buletin = $_POST["Licenta_Serie_Buletin"];  // V
-		$vLicenta_Serie_Buletin = validSerieBuletin($v_Licenta_Serie_Buletin);
         
-        $v_Licenta_Numar_Buletin = $_POST["Licenta_Numar_Buletin"];  // V
-		$vLicenta_Numar_Buletin = validNumarBuletin($v_Licenta_Numar_Buletin);
-        
+		$v_Licenta_Numar_Buletin = $_POST["Licenta_Numar_Buletin"];  // V
+		
+		$verificare_buletin = 0;
+	
+		//verif. Tip buletin
+		
+		if($v_Licenta_Tip_Buletin=="CI") {
+			$vLicenta_Serie_Buletin = validSerieBuletin($v_Licenta_Serie_Buletin);
+			$vLicenta_Numar_Buletin = validNumarBuletin($v_Licenta_Numar_Buletin);
+			if($vLicenta_Serie_Buletin == 0 && $vLicenta_Numar_Buletin == 0) $verificare_buletin = 1; 
+		}
+		
         $v_Licenta_Buletin_Eliberat_De = $_POST["Licenta_Buletin_Eliberat_De"];  // V
 		$vLicenta_Buletin_Eliberat_De = validEliberareBuletin($v_Licenta_Buletin_Eliberat_De);
        
@@ -8650,11 +8658,22 @@
 		$vradio24 = validRadio($v_Radio24);
 							
 		//Info doc
+		$verif_diploma_bac_original = $_POST['Diploma_BAC1'];
+		$v_Diploma_BAC = 2;
 		
-		$v_Diploma_BAC=$_POST["Diploma_BAC"];
-		$v_Adeverinta=$_POST["Adeverinta"];
-		$v_Document_Echivalare_Studii=$_POST["Document_Echivalare_Studii"];
-		$v_Diploma_Olimpiada=$_POST["Diploma_Olimpiada"];
+		$verif_v_Adeverinta = $_POST['Adeverinta1'];
+		$v_Adeverinta = 2;
+		
+		$verif_v_Document_Echivalare_Studii = $_POST['Document_Echivalare_Studii1'];
+		$v_Document_Echivalare_Studii = 2;
+		
+		$verif_v_Diploma_Olimpiada = $_POST['Diploma_Olimpiada'];
+		$v_Diploma_Olimpiada = 2;
+		
+		if($verif_diploma_bac_original == 1) $v_Diploma_BAC = 1;
+		if($verif_v_Adeverinta == 1) $v_Adeverinta = 1;
+		if($verif_v_Document_Echivalare_Studii == 1) $v_Document_Echivalare_Studii = 1;
+		if($verif_v_Diploma_Olimpiada == 1) $v_Diploma_Olimpiada = 1;	
 		
 		//Participa altundeva
 		
@@ -8776,7 +8795,7 @@
         $vOptiune3=$_POST["Optiune3"];
         $vOptiune4=$_POST["Optiune4"];
         
-        if ($vChitanta == 0 && $vsuma == 0 && (($v_Radio1 == 1 && $v_verificare_radio_1 == 1)  || $v_Radio1 == 2) && $vNumele_De_Familie_La_Nastere == 0 && $vInitialaTata == 0 && $vNumeleDeFamilieActual == 0 && $vPrenumele == 0 && $vPrenumeTata == 0 && $vPrenumeMama == 0 && $vLicenta_CNP == 0 && $vTaraNastere == 0 && $vLicenta_Localitate_Nastere == 0 && $vLicentaNationalitate == 0 && $vLicenta_Cetatenie == 0 && $vLicenta_Etnie == 0 && $vLicenta_Limba_Materna == 0 && $vLicenta_Tip_Buletin == 0 && $vLicenta_Serie_Buletin == 0 && $vLicenta_Numar_Buletin == 0 && $vLicenta_Buletin_Eliberat_De == 0 && ($v_Radio3 == 1 || $v_Radio3 == 2) && $vLicenta_Strada == 0 && $vLicenta_Numar == 0 && $vLicenta_Bloc == 0 && $vLicenta_Scara == 0 && $vLicenta_Etaj == 0 && $vLicenta_Apartament == 0 && $vLicenta_Localitate == 0 && $vLicenta_Cod_Postal == 0 && $vLicenta_Telefon == 0 && $vLicenta_Email == 0 && ($v_Radio4 == 1 || $v_Radio4 == 2) && ($v_Radio5 == 1 || $v_Radio5 == 2) && ($v_Radio6 == 1 || $v_Radio6 == 2) && $v_Liceul_Absolvit != null && $vLicenta_Localitate_Liceu == 0 && $vLicenta_Profil_Liceu == 0 && $vLicenta_Durata_Liceu == 0 && $vLicenta_An_Liceu == 0 && $vLicenta_Serie_DiplomaBAC == 0 && $vLicenta_Nr_DiplomaBAC == 0 && ctype_digit($v_Licenta_Nr_FoaieMatricola) && $vLicenta_Medie_BAC == 0 && $vLicenta_Nota_MI == 0 && $v_Obiect_Test_Ales != null && ($v_Echivalare_MEN == 1 || $v_Echivalare_MEN == 2) && (($v_Radio25 == 1 && $v_verificare_radio_25 == 1)  || $v_Radio25 == 2) && (($v_Radio24 == 1 && $v_verificare_radio_24 == 1)  || $v_Radio24 == 2) && ($v_Radio26 == 1 || $v_Radio26 == 2 || $v_Radio26 == 3) && ($v_Radio27 == 1 || $v_Radio27 == 2) && ($v_Diploma_BAC == 1 || $v_Diploma_BAC == 2) && ($v_Adeverinta == 1 || $v_Adeverinta == 2) && ($v_Document_Echivalare_Studii == 1 || $v_Document_Echivalare_Studii == 2) && $v_Diploma_Olimpiada == 1 && ($v_Radio35 == 0 || $v_Radio35 == 1 || $v_Radio35 == 2 || $v_Radio35 == 3 || $v_Radio35 == 4 || $v_Radio35 == 5) && ($v_Radio34 == 0 || $v_Radio34 == 1 || $v_Radio34 == 2 || $v_Radio34 == 3 || $v_Radio34 == 4 || $v_Radio34 == 5) && ($v_Radio33 == 0 || $v_Radio33 == 1 || $v_Radio33 == 2 || $v_Radio33 == 3 || $v_Radio33 == 4 || $v_Radio33 == 5) && ($v_Radio32 == 0 || $v_Radio32 == 1 || $v_Radio32 == 2 || $v_Radio32 == 3 || $v_Radio32 == 4 || $v_Radio32 == 5) && ($v_Radio31 == 0 || $v_Radio31 == 1 || $v_Radio31 == 2 || $v_Radio31 == 3 || $v_Radio31 == 4 || $v_Radio31 == 5) && ($v_Radio30 == 0 || $v_Radio30 == 1 || $v_Radio30 == 2 || $v_Radio30 == 3 || $v_Radio30 == 4 || $v_Radio30 == 5) && ($v_Radio29 == 0 || $v_Radio29 == 1 || $v_Radio29 == 2 || $v_Radio29 == 3 || $v_Radio29 == 4 || $v_Radio29 == 5) && ($v_Radio28 == 0 || $v_Radio28 == 1 || $v_Radio28 == 2 || $v_Radio28 == 3 || $v_Radio28 == 4 || $v_Radio28 == 5) && $vOptiune1 != null)
+        if ((($v_Licenta_Tip_Buletin == "CI" && $verificare_buletin == 1) || $v_Licenta_Tip_Buletin != "CI") && $vsuma == 0 && (($v_Radio1 == 1 && $v_verificare_radio_1 == 1)  || $v_Radio1 == 2) && $vNumele_De_Familie_La_Nastere == 0 && $vInitialaTata == 0 && $vNumeleDeFamilieActual == 0 && $vPrenumele == 0 && $vPrenumeTata == 0 && $vPrenumeMama == 0 && $vLicenta_CNP == 0 && $vTaraNastere == 0 && $vLicenta_Localitate_Nastere == 0 && $vLicentaNationalitate == 0 && $vLicenta_Cetatenie == 0 && $vLicenta_Etnie == 0 && $vLicenta_Limba_Materna == 0 && $vLicenta_Buletin_Eliberat_De == 0 && ($v_Radio3 == 1 || $v_Radio3 == 2) && $vLicenta_Strada == 0 && $vLicenta_Numar == 0 && $vLicenta_Bloc == 0 && $vLicenta_Scara == 0 && $vLicenta_Etaj == 0 && $vLicenta_Apartament == 0 && $vLicenta_Localitate == 0 && $vLicenta_Cod_Postal == 0 && $vLicenta_Telefon == 0 && $vLicenta_Email == 0 && ($v_Radio4 == 1 || $v_Radio4 == 2) && ($v_Radio5 == 1 || $v_Radio5 == 2) && ($v_Radio6 == 1 || $v_Radio6 == 2) && $v_Liceul_Absolvit != null && $vLicenta_Localitate_Liceu == 0 && $vLicenta_Profil_Liceu == 0 && $vLicenta_Durata_Liceu == 0 && $vLicenta_An_Liceu == 0 && $vLicenta_Serie_DiplomaBAC == 0 && $vLicenta_Nr_DiplomaBAC == 0 && ctype_digit($v_Licenta_Nr_FoaieMatricola) && $vLicenta_Medie_BAC == 0 && $vLicenta_Nota_MI == 0 && $v_Obiect_Test_Ales != null && ($v_Echivalare_MEN == 1 || $v_Echivalare_MEN == 2) && (($v_Radio25 == 1 && $v_verificare_radio_25 == 1)  || $v_Radio25 == 2) && (($v_Radio24 == 1 && $v_verificare_radio_24 == 1)  || $v_Radio24 == 2) && ($v_Radio26 == 1 || $v_Radio26 == 2 || $v_Radio26 == 3) && ($v_Radio27 == 1 || $v_Radio27 == 2) && ($v_Diploma_BAC == 1 || $v_Diploma_BAC == 2) && ($v_Adeverinta == 1 || $v_Adeverinta == 2) && ($v_Document_Echivalare_Studii == 1 || $v_Document_Echivalare_Studii == 2) && $v_Diploma_Olimpiada == 1 && ($v_Radio35 == 0 || $v_Radio35 == 1 || $v_Radio35 == 2 || $v_Radio35 == 3 || $v_Radio35 == 4 || $v_Radio35 == 5) && ($v_Radio34 == 0 || $v_Radio34 == 1 || $v_Radio34 == 2 || $v_Radio34 == 3 || $v_Radio34 == 4 || $v_Radio34 == 5) && ($v_Radio33 == 0 || $v_Radio33 == 1 || $v_Radio33 == 2 || $v_Radio33 == 3 || $v_Radio33 == 4 || $v_Radio33 == 5) && ($v_Radio32 == 0 || $v_Radio32 == 1 || $v_Radio32 == 2 || $v_Radio32 == 3 || $v_Radio32 == 4 || $v_Radio32 == 5) && ($v_Radio31 == 0 || $v_Radio31 == 1 || $v_Radio31 == 2 || $v_Radio31 == 3 || $v_Radio31 == 4 || $v_Radio31 == 5) && ($v_Radio30 == 0 || $v_Radio30 == 1 || $v_Radio30 == 2 || $v_Radio30 == 3 || $v_Radio30 == 4 || $v_Radio30 == 5) && ($v_Radio29 == 0 || $v_Radio29 == 1 || $v_Radio29 == 2 || $v_Radio29 == 3 || $v_Radio29 == 4 || $v_Radio29 == 5) && ($v_Radio28 == 0 || $v_Radio28 == 1 || $v_Radio28 == 2 || $v_Radio28 == 3 || $v_Radio28 == 4 || $v_Radio28 == 5) && $vOptiune1 != null)
         
 		{
         $statement = oci_parse($connection, "SELECT max(formular_id) AS COUNT FROM DATE_PERSONALE_LICENTA");
@@ -8923,9 +8942,15 @@
             oci_bind_by_name($statement, ':aZi' ,$_POST['Licenta_Eliberat_Buletin_An']);
             oci_bind_by_name($statement, ':eZi' ,$_POST['Licenta_Expirat_Buletin_Ziua']);
             oci_bind_by_name($statement, ':elZi' ,$_POST['Licenta_Expirat_Buletin_Luna']);
-            oci_bind_by_name($statement, ':eaZi' ,$_POST['Licenta_Buletin_An_Expirare']);                           
-
-            oci_bind_by_name($statement, ':mediu_domiciliu', $v_Radio3);
+            oci_bind_by_name($statement, ':eaZi' ,$_POST['Licenta_Buletin_An_Expirare']);
+			
+			//mediu_domiciliu
+			
+			 //Domiciliul stabil
+			 $raspuns_domiciliu_stabil = 'Rural';
+			 if($v_Radio3 == 2) $raspuns_domiciliu_stabil = 'Urban';
+			 oci_bind_by_name($statement, ':mediu_domiciliu', $raspuns_domiciliu_stabil);
+			
             oci_bind_by_name($statement, ':tara_domiciliu', $_POST['Licenta_Tara']);
             oci_bind_by_name($statement, ':judet_domiciliu', $_POST['Licenta_Judet']);
             oci_bind_by_name($statement, ':localitate_domiciliu', $v_Licenta_Localitate);
@@ -8993,6 +9018,7 @@
             }
             
         oci_bind_by_name($statement, ':id', $numaratoare_licenta);
+			
         oci_bind_by_name($statement, ':diploma_bac_original', $v_Diploma_BAC);
         oci_bind_by_name($statement, ':adeverinta_original', $v_Adeverinta);
         oci_bind_by_name($statement, ':document_echiv_studii_original', $echiv_original);
@@ -9346,6 +9372,7 @@
           ini_set('display_errors', 1);
           error_reporting(E_ALL);
       }
+			
 			 echo '<script>window.location.href = "Validare_Formular.php";</script>';
         }
 
