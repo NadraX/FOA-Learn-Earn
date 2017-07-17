@@ -8562,7 +8562,7 @@
 																																									else
 																																										echo '';
 																																							?> />
-										<label for="Master_Diploma_BAC_Copie" class="css-label2">Diploma de Bacalaureat copie</label></li>
+										<label for="Master_Diploma_BAC_Copie" class="css-label2">Diploma de Bacalaureat - copie</label></li>
 									<li><input type="checkbox" name="Master_Echivalare_Studii_Preuniversitare_Original" class="css-checkbox" value="1" id="Master_Echivalare_Studii_Preuniversitare_Original" 	<?php
 																																																					if($Master_Echivalare_Studii_Preuniversitare_Original == '')
 																																																						echo '';
