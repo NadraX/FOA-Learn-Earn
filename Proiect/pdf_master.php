@@ -25,25 +25,25 @@ function Footer()
 
       $c = oci_connect($username, $password, $connection_string, 'AL32UTF8');
       $s = oci_parse($c, " BEGIN  SELECT f.nr_chitanta, f.suma, f.scutit, f.motiv_scutire, dpc.nume_familie_nastere, dpc.initialele_tatalui_mamei, dpc.nume_familie_actual, dpc.prenume_candidat, dpc.prenume_tata,
-                                  dpc.prenume_mama, dpc.cnp, dpc.sex, dpc.data_nasterii, dpc.tara_nasterii, dpc.judetul_nasterii, dpc.localitatea_nasterii,
+                                  dpc.prenume_mama, dpc.cnp, dpc.sex, TO_CHAR(dpc.data_nasterii, 'dd month yyyy', 'NLS_DATE_LANGUAGE=romanian'), dpc.tara_nasterii, dpc.judetul_nasterii, dpc.localitatea_nasterii,
                                   dpc.cetatenia, dpc.nationalitate, dpc.etnie, dpc.limba_materna,
                                   dpc.stare_civila,
                                   dpc.tip_act_ident,
-                                  dpc.serie_act, dpc.numar_act, dpc.eliberat_de, dpc.data_eliberarii,
-                                  dpc.data_expirarii, dpc.mediu_domiciliu, dpc.tara_domiciliu, dpc.judet_domiciliu, dpc.localitate_domiciliu,
+                                  dpc.serie_act, dpc.numar_act, dpc.eliberat_de, TO_CHAR(dpc.data_eliberarii, 'dd month yyyy', 'NLS_DATE_LANGUAGE=romanian'),
+                                  TO_CHAR(dpc.data_expirarii, 'dd month yyyy', 'NLS_DATE_LANGUAGE=romanian'), dpc.mediu_domiciliu, dpc.tara_domiciliu, dpc.judet_domiciliu, dpc.localitate_domiciliu,
                                   dpc.strada, dpc.numar,
                                   dpc.bloc, dpc.scara, dpc.etaj, dpc.apartament, dpc.cod_postal, dpc.telefon, dpc.email, dpc.solicita_cazare_studii,dpc.stare_sociala_speciala, dpc.persoana_cu_dizabilitati,
                                   
                                   dpl.liceul_absolvit, dpl.tara_liceu, dpl.localitate_liceu,
-                                  dpl.judet_liceu, dpl.profil_liceu, dpl.durata_studiilor_liceu, dpl.anul_absolvirii_liceu, dpl.forma_invatamant_liceu, dpl.serie_diploma_bac, dpl.nr_diploma_bac, dpl.data_emiterii_diploma, dpl.nr_foii_matricole, dpl.nr_act_rec_echiv, dpl.serie_act_rec_echiv, dpl.data_rec_echiv, dpl.tara_fac, dpl.localitate_fac, dpl.judet_fac, dpl.denumire_institutie_fac,dpl.denumire_facultate, dpl.denumire_domeniu_licenta, dpl.specializare,
-                                  dpl.titlu_obtinut, dpl.forma_invatamant_fac, dpl.nr_sem_buget, dpl.nr_sem_bursa, dpl.durata_studii, dpl.diplo_licenta_serie, dpl.diplo_licenta_nr, dpl.dipl_data_emitere, dpl.nr_foaie_matricola, dpl.act_rec_licenta, dpl.nr_act_rec_licenta,
-                                  dpl.serie_act_rec_licenta, dpl.data_act_rec_licenta, dpl.in_curs_student_alta_fac, dpl.in_curs_tara_master, dpl.in_curs_localitate_master, dpl.in_curs_judet_master, 
+                                  dpl.judet_liceu, dpl.profil_liceu, dpl.durata_studiilor_liceu, dpl.anul_absolvirii_liceu, dpl.forma_invatamant_liceu, dpl.serie_diploma_bac, dpl.nr_diploma_bac, TO_CHAR(dpl.data_emiterii_diploma, 'dd month yyyy', 'NLS_DATE_LANGUAGE=romanian'), dpl.nr_foii_matricole, dpl.nr_act_rec_echiv, dpl.serie_act_rec_echiv, TO_CHAR(dpl.data_rec_echiv, 'dd month yyyy', 'NLS_DATE_LANGUAGE=romanian'), dpl.tara_fac, dpl.localitate_fac, dpl.judet_fac, dpl.denumire_institutie_fac,dpl.denumire_facultate, dpl.denumire_domeniu_licenta, dpl.specializare,
+                                  dpl.titlu_obtinut, dpl.forma_invatamant_fac, dpl.nr_sem_buget, dpl.nr_sem_bursa, dpl.durata_studii, dpl.diplo_licenta_serie, dpl.diplo_licenta_nr, TO_CHAR(dpl.dipl_data_emitere, 'dd month yyyy', 'NLS_DATE_LANGUAGE=romanian'), dpl.nr_foaie_matricola, dpl.act_rec_licenta, dpl.nr_act_rec_licenta,
+                                  dpl.serie_act_rec_licenta, TO_CHAR(dpl.data_act_rec_licenta, 'dd month yyyy', 'NLS_DATE_LANGUAGE=romanian'), dpl.in_curs_student_alta_fac, dpl.in_curs_tara_master, dpl.in_curs_localitate_master, dpl.in_curs_judet_master, 
                                   dpl.in_curs_denum_instit_master, dpl.in_curs_denum_facultate_master, dpl.in_curs_denum_domeniu_master, dpl.in_curs_specializare_master, dpl.in_curs_forma_invat_master,
                                   
                                   dpl.in_curs_an_master, dpl.in_curs_nr_sem_buget_master, dpl.in_curs_nr_sem_bursa_master, dpl.absolvent_an, dpl.absolvent_tara, dpl.absolvent_localitate,  dpl.absolvent_judet, 
                                   dpl.absolvent_denumire_instit,  dpl.absolvent_denumire_facult,  dpl.absolvent_domeniu,  dpl.absolvent_specializare, dpl.absolvent_titlu_obtinut,  dpl.absolvent_forma_invat, dpl.absolvent_nr_sem_buget, 
-                                  dpl.absolvent_nr_sem_bursa, dpl.absolvent_diplo_serie, dpl.absolvent_diplo_nr, dpl.absolvent_dipl_data_emitere, dpl.absolvent_nr_foaie_matricola, 
-                                  dpl.absolvent_act_rec_nr, dpl.absolvent_act_rec_serie, dpl.absolvent_act_rec_data_echiv, dpl.absolvent_durata_studiilor , dpl.absolvent_cu_diploma ,cl.medie_examen_licenta, cl.medie_admitere,
+                                  dpl.absolvent_nr_sem_bursa, dpl.absolvent_diplo_serie, dpl.absolvent_diplo_nr, TO_CHAR(dpl.absolvent_dipl_data_emitere, 'dd month yyyy', 'NLS_DATE_LANGUAGE=romanian'), dpl.absolvent_nr_foaie_matricola, 
+                                  dpl.absolvent_act_rec_nr, dpl.absolvent_act_rec_serie, TO_CHAR(dpl.absolvent_act_rec_data_echiv, 'dd month yyyy', 'NLS_DATE_LANGUAGE=romanian'), dpl.absolvent_durata_studiilor , dpl.absolvent_cu_diploma ,cl.medie_examen_licenta, cl.medie_admitere,
                                   ol.preferinta_1, ol.preferinta_2, ol.preferinta_3, ol.preferinta_4, ol.preferinta_5, ol.preferinta_6, ol.preferinta_7, ol.preferinta_8, ol.preferinta_9, ol.preferinta_10, ol.preferinta_11, ol.optiune_admitere_taxa, 
                                   il.diploma_bac_original, il.diploma_bac_copie, il.doc_echiv_preuniv_original, il.doc_echiv_preuniv_copie, il.diploma_licenta_original, il.diploma_licenta_copie, il.dipl_echiv_licenta_original, il.dipl_echiv_licenta_copie, il.particip_altundeva, il.universitate1, il.facultate1, il.universitate2, il.facultate2, il.universitate3,  il.facultate3,
                                   ch.site_admitere, ch.site_facultate, ch.pagina_facebook, ch.prieteni, ch.presa, ch.alte_surse, ch.prestigiu, ch.calitate, ch.sfat_persoane, ch.statut_profesie, ch.colegii, ch.materiile, ch.informatiile_universitatii, ch.apropierea, ch.prof_facultate
@@ -886,7 +886,7 @@ function Footer()
      
      //Pagina 3
 
-	 $pdf->AddPage();
+	  $pdf->AddPage();
 	  $pdf->SetLineWidth(0.5);
 	  $pdf->Line(10, 15, 210-10, 15);
 
@@ -1073,11 +1073,11 @@ function Footer()
 	 $pdf->SetXY($x + 50, $y);
 	 $pdf->MultiCell(27, 6,'Țara',1,  1); 
      $pdf->SetXY($x + 77, $y);
-	 $pdf->MultiCell(35, 6,'Localitatea',1,  1); 
-     $pdf->SetXY($x + 112, $y);
-	 $pdf->MultiCell(20, 6,'Județul',1,  1);
-     $pdf->SetXY($x + 132, $y);
-	 $pdf->MultiCell(48, 6,'Domeniul',1,  1);
+	 $pdf->MultiCell(32, 6,'Localitatea',1,  1); 
+     $pdf->SetXY($x + 109, $y);
+	 $pdf->MultiCell(26, 6,'Județul',1,  1);
+     $pdf->SetXY($x + 135, $y);
+	 $pdf->MultiCell(45, 6,'Domeniul',1,  1);
       
       
      $x = $pdf->GetX();
@@ -1089,11 +1089,11 @@ function Footer()
 	 $pdf->SetXY($x + 50, $y);
 	 $pdf->MultiCell(27, 6,''.$in_curs_tara_master,1,  1); 
      $pdf->SetXY($x + 77, $y);
-	 $pdf->MultiCell(35, 6,''.$in_curs_localitate_master,1,  1); 
-     $pdf->SetXY($x + 112, $y);
-	 $pdf->MultiCell(20, 6,''.$in_curs_judet_master,1,  1);
-     $pdf->SetXY($x + 132, $y);
-	 $pdf->MultiCell(48, 6,''.$in_curs_denum_domeniu_master,1,  1);
+	 $pdf->MultiCell(32, 6,''.$in_curs_localitate_master,1,  1); 
+     $pdf->SetXY($x + 109, $y);
+	 $pdf->MultiCell(26, 6,''.$in_curs_judet_master,1,  1);
+     $pdf->SetXY($x + 135, $y);
+	 $pdf->MultiCell(45, 6,''.$in_curs_denum_domeniu_master,1,  1);
      
      $pdf->Ln(2); 
      $x = $pdf->GetX();
@@ -1263,9 +1263,9 @@ function Footer()
      $pdf->SetXY($x + 42, $y);
 	 $pdf->MultiCell(23, 6,'Durată studii',1,  1); 
      $pdf->SetXY($x + 65, $y);
-	 $pdf->MultiCell(32, 6,'Dipl. licență Seria',1,  1);
+	 $pdf->MultiCell(32, 6,'Dipl. master Seria',1,  1);
      $pdf->SetXY($x + 97, $y);
-	 $pdf->MultiCell(26, 6,'Dipl. licență Nr',1,  1); 
+	 $pdf->MultiCell(26, 6,'Dipl. master Nr',1,  1); 
      $pdf->SetXY($x + 123, $y);
 	 $pdf->MultiCell(30, 6,'Dată emitere',1,  1);
      $pdf->SetXY($x + 153, $y);
@@ -1325,7 +1325,7 @@ function Footer()
 	 
 	  $pdf->Ln(-1);
 	  $pdf->SetFont('DejaVu','B',8);
-	  $pdf->Cell(0,10,'Dipl. licență Emisă de',0,0,'C');
+	  $pdf->Cell(0,10,'Dipl. master Emisă de',0,0,'C');
 
 	  $pdf->Ln(7);
       $pdf->Cell(10);
@@ -1362,9 +1362,9 @@ function Footer()
 	  $pdf->SetFont('DejaVu','B',8);
 
 	  $pdf->Cell(10);
-	  $pdf->MultiCell(85, 6, 'Media generală la examenul de licență', 1, 1);
+	  $pdf->MultiCell(85, 6, 'Media E.C.T.S.', 1, 1);
 	  $pdf->SetXY($x + 95, $y);
-	  $pdf->MultiCell(85, 6,'Media de admitere',1,  1);
+	  $pdf->MultiCell(85, 6,'Notă licență',1,  1);
 
 	  $x = $pdf->GetX();
 	  $y = $pdf->GetY();
@@ -1718,101 +1718,128 @@ function Footer()
       
       
 	 $pdf->SetLineWidth(0.5);
-	 $pdf->Line(10, 53.5, 210-10, 53.5);
+	 $pdf->Line(10, 50.5, 210-10, 50.5);
       
-	 $pdf->Ln(10);
+	 $pdf->Ln(7);
 	 $pdf->SetFont('DejaVu','B',10);
 	 $pdf->Cell(10);
 
-	 $pdf->Cell(0,0,'V. CONDIȚII DE ÎNCHEIERE A CONTRACTULUI',0,1);
+	 $pdf->Cell(0,0,'VI. CONDIȚII DE ÎNCHEIERE A CONTRACTULUI',0,1);
 	 $pdf->SetLineWidth(0);
-	 $pdf->Line(20, 59, 210-20, 59);
+	 $pdf->Line(20, 56, 210-20, 56);
       
-	  $pdf->Ln(4);
+	  $pdf->Ln(1.5);
 	  $pdf->Cell(20);
-	  $pdf->SetFont('DejaVu','B',8);;
+	  $pdf->SetFont('DejaVu','B',8);
 	  $pdf->Cell(0,10,'Taxe',0,0,'L');
 	  
-	  $pdf->Ln(4);
-	  $pdf->Cell(30);
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
 	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(0,10,'-Taxă de înscriere: 300 Ron',0,0,'L');
-	  
-	  $pdf->Ln(4);
-	  $pdf->Cell(30);
+	 
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
 	  $pdf->Cell(0,10,'-Taxă de școlarizare: 3900 Ron',0,0,'L');
-	  
-	  
-	  $pdf->Ln(4);
+	 
+	  $pdf->Ln(3.5);
 	  $pdf->Cell(20);
 	  $pdf->SetFont('DejaVu','B',8);
 	  $pdf->Cell(0,10,'Acte necesare',0,0,'L');
 	  
-	  $pdf->Ln(4);
-	  $pdf->Cell(30);
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
 	  $pdf->SetFont('DejaVu','B',7);
-	  $pdf->Cell(0,10,'-fișă de înscriere tip',0,0,'L');
+	  $pdf->Cell(0,10,'-fișă de înscriere tip;',0,0,'L');
 	  
-	  $pdf->Ln(4);
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-diplomă de bacalaureat și diplomă de licență (sau echivalentul ei), în original, sau atestate de echivalare',0,0,'L');
+	  
+	  $pdf->Ln(3.5);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-diplomă de bacalaureat și diplomă de licență (sau echivalentul ei), originale sau copii legalizate',0,0,'L');
+	  $pdf->Cell(0,10,'emise de C.N.R.E.D.;',0,0,'L');
 	  
-	  $pdf->Ln(4);
-	  $pdf->Cell(35);
-	  $pdf->Cell(0,10,'însoțite de dovada ca originalele sunt depuse la altă facultate',0,0,'L');
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-foaia matricolă din facultate - nivel licență (cu media ECTS); aceasta nu este necesară în cazul în care media', 0, 0, 'L');
 	  
-	  $pdf->Ln(4);
+	  $pdf->Ln(3.5);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-foaia matricolă din facultate - nivel licență (cu media ECTS)', 0, 0, 'L');
+	  $pdf->Cell(0,10,'ECTS de nivel licență apare în documentele de la punctul anterior;',0,0,'L');
+	 
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-în cazul candidaților care sunt deja studenți/absolvenți/exmatriculați la studii de master:',0,0,'L');
 	  
-	  $pdf->Ln(4);
+	  $pdf->Ln(3.5);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-certificat de naștere, în copie legalizată',0,0,'L');
+	  $pdf->Cell(0,10,'adeverință din care să rezulte numărul de semestre urmate la buget/taxă, precum și numărul de semestre',0,0,'L');
+	 
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(30);
+	  $pdf->Cell(0,10,'în care a beneficiat de bursă, dacă este cazul;',0,0,'L');
+	 
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-original și copie după cerificatul de naștere;',0,0,'L');
 	  
-	  $pdf->Ln(4);
-	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-copie simplă carte de identitate;',0,0,'L');
-	  
-	  $pdf->Ln(4);
-	  $pdf->Cell(30);
+	  $pdf->Ln(3);
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-original și copie după cartea de identitate;',0,0,'L');
+	 
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-original și copie după certificatul de căsătorie sau documentul care atestă schimbarea numelui;',0,0,'L');
+	 
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
 	  $pdf->Cell(0,10,'-două fotografii tip buletin',0,0,'L');
 	  
-	  $pdf->Ln(4);
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-chitanță ce dovedește plata taxei de înscriere sau actele necesare pentru scutirea de plata taxei',0,0,'L');
+	  
+	  $pdf->Ln(3.5);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-chitanță ce dovedește plata taxei de înscriere',0,0,'L');
+	  $pdf->Cell(0,10,'(strict în condițiile metodologiei universităţii - art. 34-35);',0,0,'L');
+	 
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-adeverință medicală tip;',0,0,'L');
 	  
-	  $pdf->Ln(4);
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-adeverință din care să rezulte calitatea de masterand (pentru masteranzii care urmează o a doua specializare);',0,0,'L');
+	 
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-dosar plic;',0,0,'L');
+	  
+	  $pdf->Ln(3.5);
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-Important: este necesară de asemenea depunerea la dosar a unui abstract a lucrării de licență și a 3 referințe',0,0,'L');
+	  
+	  $pdf->Ln(3.5);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-adeverință medicală tip',0,0,'L');
+	  $pdf->Cell(0,10,'bibliografice din contextul lucrării de licenţă (acestea vor constitui punctul de plecare al discuţiilor',0,0,'L');
+	 
 	  
-	  $pdf->Ln(4);
+	  $pdf->Ln(3.5);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-adeverință din care să rezulte calitatea de masterand',0,0,'L');
+	  $pdf->Cell(0,10,'din cadrul interviului). Dacă lucrarea de licenţă este în alt domeniu decât Informatica, se vor menţiona',0,0,'L');
 	  
-	  $pdf->Ln(4);
+	  $pdf->Ln(3.5);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-certificatul de căsătorie sau documentul care atestă schimbarea numelui, în copie legalizată',0,0,'L');
-	  
-	  $pdf->Ln(4);
-	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-dosar plic',0,0,'L');
-	  
-	  $pdf->Ln(4);
-	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-candidații absolvenți de studii universitare de licență de la universitățile particulare vor',0,0,'L');
-	  
-	  $pdf->Ln(4);
-	  $pdf->Cell(35);
-	  $pdf->Cell(0,10,'prezenta, la înscriere, o dovadă a acreditării specializării absolvite.',0,0,'L');
-	  
+	  $pdf->Cell(0,10,'doar 3 referinţe bibliografice din domeniul Informatică pe care candidatul le-a studiat;',0,0,'L');
 	  
       //Chestionaaaarrrr
       
       
       $pdf->SetLineWidth(0.5);
-	  $pdf->Line(10, 146, 210-10, 146);
+	  $pdf->Line(10, 150.5, 210-10, 150.5);
 
-	  $pdf->Ln(20);
+	  $pdf->Ln(15);
 	  $pdf->Cell(10);
 
       
@@ -1822,11 +1849,11 @@ function Footer()
       $pdf->SetFont('DejaVu','B',10);
 	  $pdf->Cell(0,0,'VII. CHESTIONAR PRIVIND ALEGEREA DUMNEAVOASTRĂ',0,1);
 	  $pdf->SetLineWidth(0);
-	  $pdf->Line(20, 151, 210-20, 151);
+	  $pdf->Line(20, 156, 210-20, 156);
       
       //Prima intrebare
       
-      $pdf->Ln(4);
+      $pdf->Ln(2);
       $pdf->Cell(10);
 	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(20,10,' De unde ați aflat despre admiterea la Universitatea',0,0,'L');
@@ -2034,7 +2061,7 @@ function Footer()
        
      //VIII
       
-     $pdf->Ln(5);
+     $pdf->Ln(1);
      
      $pdf->SetFont('DejaVu','B',8);
 	 $pdf->Cell(10);
@@ -2060,10 +2087,21 @@ function Footer()
      $pdf->Cell(10);
 	 $pdf->Cell(0,10,'datelor cu caracter personal și libera circulație a acestor date, modificată și completată.',0,0,'L');
       
+     $pdf->Ln(13);
+	 $x = $pdf->GetX();
+     $y = $pdf->GetY();
+      
+	 $pdf->Cell(10);
+     $pdf->SetFont('DejaVu','B',8);
+	 $pdf->MultiCell(85, 6, 'Semnatura ................................', 0, 1);
+     $pdf->SetXY($x + 110, $y);
+	 $pdf->MultiCell(70, 6,'Data ......................................', 0,  1);  
+       
+	 
 	  //Linie footer pag. 5
       
      $pdf->SetLineWidth(0.5);
-	 $pdf->Line(10, 276, 210-10, 276);
+	 $pdf->Line(10, 280, 210-10, 280);
       
 	  $pdf->SetLineWidth(0);
 	  $pdf->Output();

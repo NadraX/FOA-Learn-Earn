@@ -370,11 +370,109 @@ function Footer()
 	 $pdf->SetFont('DejaVu','B',7);
 	 $pdf->Cell(50,6,''.$optiune_test_scris,1,0,'C'); 
     
+	 //Footer pag. 1
       
 	  $pdf->SetLineWidth(0.5);
 	  $pdf->Line(10, 280, 210-10, 280);
 	  $pdf->SetLineWidth(0);
 	  
+	 //Pagina 2
+	 
+	  $pdf->AddPage();
+	  $pdf->SetLineWidth(0.5);
+	  $pdf->Line(10, 15, 210-10, 15);
+
+      $pdf->SetLineWidth(0);
+	  $pdf->Ln(8);
+
+      $pdf->SetFont('DejaVu','B',10);
+	  $pdf->Cell(10);
+
+	  $pdf->Cell(0,0,'II. CONDIȚII DE ÎNCHEIERE A CONTRACTULUI',0,1);
+	  $pdf->SetLineWidth(0);
+	  $pdf->Line(20, 21, 210-20, 21);
+	 
+	  $pdf->Ln(5);
+	  $pdf->Cell(20);
+	  $pdf->SetFont('DejaVu','B',9);
+	  $pdf->Cell(0,10,'Taxe',0,0,'L');
+	  
+	  $pdf->Ln(4);
+	  $pdf->Cell(25);
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'-Taxa de înscriere la concursul elevilor: 100 RON',0,0,'L');
+	 
+	  $pdf->Ln(4);
+	  $pdf->Cell(25);
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'-Pentru participanţii care se vor înscrie la o ediţie viitoare a concursului de admitere şi vor face',0,0,'L');
+	 
+	  $pdf->Ln(4);
+	  $pdf->Cell(30);
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'uz de nota obţinută acum, fără a susţine din nou testul scris, suma de mai sus va fi scăzută',0,0,'L');
+	 
+	  $pdf->Ln(4);
+	  $pdf->Cell(30);
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'din taxa de înscriere la concursul de admitere.',0,0,'L');
+	  
+	  $pdf->Ln(5);
+	  $pdf->Cell(20);
+	  $pdf->SetFont('DejaVu','B',9);
+	  $pdf->Cell(0,10,'Acte necesare',0,0,'L'); 
+	 
+	  $pdf->Ln(4);
+	  $pdf->Cell(25);
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'-fișă de înscriere',0,0,'L');
+	 
+	  $pdf->Ln(4);
+	  $pdf->Cell(25);
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'-adeverinţă eliberată de liceu, care atestă calitatea de elev',0,0,'L');
+	 
+	  $pdf->Ln(4);
+	  $pdf->Cell(25);
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'-copie după cartea de identitate, care atestă domiciliul în România',0,0,'L');
+	  
+	  $pdf->Ln(4);
+	  $pdf->Cell(25);
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'-certificatul de căsătorie sau documentul care atestă schimbarea numelui,',0,0,'L');
+	 
+	  $pdf->Ln(4);
+	  $pdf->Cell(30);
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'în copie legalizată (dacă este cazul)',0,0,'L');
+	  
+	  $pdf->Ln(4);
+	  $pdf->Cell(25);
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'-chitanţă care dovedeşte plata taxei de înscriere la concursul elevilor',0,0,'L');
+	 
+	  $pdf->Ln(4);
+	  $pdf->Cell(25);
+	  $pdf->SetFont('DejaVu','B',8);
+	  $pdf->Cell(0,10,'-dosar plic',0,0,'L');
+	  
+      $pdf->Ln(32);
+	  $x = $pdf->GetX();
+      $y = $pdf->GetY();
+      
+	  $pdf->Cell(10);
+      $pdf->SetFont('DejaVu','B',8);
+	  $pdf->MultiCell(85, 6, 'Semnatura ................................', 0, 1);
+      $pdf->SetXY($x + 110, $y);
+	  $pdf->MultiCell(70, 6,'Data ......................................', 0,  1);  
+	 
+	  //Footer pag. 2
+      
+	  $pdf->SetLineWidth(0.5);
+	  $pdf->Line(10, 280, 210-10, 280);
+	  $pdf->SetLineWidth(0);
+	 
 	  $pdf->Output();
      
             }

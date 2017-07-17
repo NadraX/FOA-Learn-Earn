@@ -1482,65 +1482,71 @@ function Footer()
       
       
 	 $pdf->SetLineWidth(0.5);
-	 $pdf->Line(10, 194, 210-10, 194);
+	 $pdf->Line(10, 194.5, 210-10, 194.5);
 
 	 $pdf->Ln(16);
 	 $pdf->SetFont('DejaVu','B',10);
 	 $pdf->Cell(10);
 
-	 $pdf->Cell(0,0,'V. CONDIȚII DE ÎNCHEIERE A CONTRACTULUI',0,1);
+	 $pdf->Cell(0,0,'VI. CONDIȚII DE ÎNCHEIERE A CONTRACTULUI',0,1);
 	 $pdf->SetLineWidth(0);
 	 $pdf->Line(20, 200, 210-20, 200); 
 	  
 	 $pdf->Ln(6);
-	 $pdf->Cell(20);
+	 $pdf->Cell(15);
 	  $pdf->SetFont('DejaVu','B',8);
 	  $pdf->Cell(0,10,'Taxe',0,0,'L');
 	  
 	  $pdf->Ln(6);
-	  $pdf->Cell(30);
+	  $pdf->Cell(25);
 	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(0,10,'-Taxă de înscriere: 300 Ron',0,0,'L');
 	  
-	  $pdf->Ln(5);
+	  $pdf->Ln(4);
 	  $pdf->Cell(30);
+	  $pdf->Cell(0,10,'Pentru participanții la edițiile anterioare ale concursului elevilor de liceu care nu vor susține din nou',0,0,'L');
+	 
+	  $pdf->Ln(4);
+	  $pdf->Cell(30);
+	  $pdf->Cell(0,10,'testul scris, taxa de înscriere de la momentul concursului(100 RON) va fi scăzută din taxa de înscriere',0,0,'L');
+	 
+	  $pdf->Ln(4);
+	  $pdf->Cell(30);
+	  $pdf->Cell(0,10,'la concursul de admitere.',0,0,'L');
+	 
+	  $pdf->Ln(5);
+	  $pdf->Cell(25);
 	  $pdf->Cell(0,10,'-Taxă de școlarizare: 3500 Ron',0,0,'L');
 	  
 	  
 	  $pdf->Ln(6);
-	  $pdf->Cell(20);
+	  $pdf->Cell(15);
 	  $pdf->SetFont('DejaVu','B',8);
 	  $pdf->Cell(0,10,'Acte necesare',0,0,'L');
 	  
 	  $pdf->Ln(6);
-	  $pdf->Cell(30);
+	  $pdf->Cell(25);
 	  $pdf->SetFont('DejaVu','B',7);
 	  $pdf->Cell(0,10,'-fișă de înscriere',0,0,'L');
 	  
 	  $pdf->Ln(5);
-	  $pdf->Cell(30);
+	  $pdf->Cell(25);
 	  $pdf->Cell(0,10,'-trei fotografii tip buletin de identitate',0,0,'L');
 	  
 	  $pdf->Ln(5);
-	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-diplomă de bacalaureat sau echivalentă cu aceasta, recunoscută de M.E.N.',0,0,'L');
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-diplomă de bacalaureat sau echivalentă cu aceasta, recunoscută de M.E.N.C.S.',0,0,'L');
 	  
 	  $pdf->Ln(5);
-	  $pdf->Cell(35);
+	  $pdf->Cell(30);
 	  $pdf->Cell(0,10,'-candidații care au promovat examenul de bacalaureat în sesiunea iunie-iulie 2017 pot prezenta la înscriere', 0, 0, 'L');
       
-	  $pdf->Cell(35);
+	  $pdf->Cell(30);
 	  $pdf->Cell(0,10,'în locul diplomei de bacalaureat, adeverința eliberată de liceu, în care se mentionează atât media generală, cât ',0,0,'L');
+	 
 	  $pdf->Ln(5);
-	  $pdf->Cell(35);
+	  $pdf->Cell(30);
 	  $pdf->Cell(0,10,'și notele obținute la probele susținute și notele la disciplinele care se iau în calcul la stabilirea mediei',0,0,'L');
-	  
-	  $pdf->Ln(5);
-	  $pdf->Cell(35);
-	  $pdf->Cell(0,10,'-dacă un candidat nu depune la o specializare diploma în original, va depune și o adeverință de la',0,0,'L');
-	  $pdf->Ln(5);
-	  $pdf->Cell(38);
-	  $pdf->Cell(0,10,' facultatea unde are actele în original',0,0,'L');
 	 
 	 
        //Linie pt footer
@@ -1558,43 +1564,57 @@ function Footer()
 	 
 	  $pdf->Ln(5);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-certificat de naștere, în copie legalizată',0,0,'L');
-	  
+	  $pdf->Cell(0,10,'-dacă un candidat nu depune la o specializare diploma în original, va depune și o adeverință de la',0,0,'L');
+	 
+	  $pdf->Ln(5);
+	  $pdf->Cell(33);
+	  $pdf->Cell(0,10,' facultatea unde are actele în original',0,0,'L');
+	 
+	  $pdf->Ln(5);
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-original și copie după cartea de identitate (care atestă domiciliul în România) sau pașaport',0,0,'L');
+	 
 	  $pdf->Ln(5);
 	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-certificatul de căsătorie sau documentul care atestă schimbarea numelui, în copie legalizată (dacă este cazul)',0,0,'L');
+	  $pdf->Cell(0,10,'(pentru candidații din țările membre UE, SEE și Elveția)',0,0,'L');
 	  
 	  $pdf->Ln(5);
-	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-copie după cartea de identitate, care atestă domiciliul în Romania',0,0,'L');
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-original și copie după certificatul de naștere',0,0,'L');
 	  
 	  $pdf->Ln(5);
-	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-adeverință medicală tip',0,0,'L');
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-original și copie după cerificatul de căsătorie sau documentul care atestă schimbarea numelui(dacă este cazul)',0,0,'L');
 	  
 	  $pdf->Ln(5);
-	  $pdf->Cell(30);
-	  $pdf->Cell(0,10,'-chitanța care dovedește plata taxei de înscriere sau actele necesare pentru scutirea de plata taxei',0,0,'L');
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-adeverință medicală tip (eliberată de medicul de familie)',0,0,'L');
 	  
 	  $pdf->Ln(5);
-	  $pdf->Cell(30);
+	  $pdf->Cell(25);
+	  $pdf->Cell(0,10,'-chitanță care dovedește plata taxei de înscriere sau actele necesare pentru sctutirea de plata taxei',0,0,'L');
+	  
+	  $pdf->Ln(5);
+	  $pdf->Cell(25);
 	  $pdf->Cell(0,10,'-dosar plic',0,0,'L');
 	  
 	  $pdf->Ln(5);
-	  $pdf->Cell(30);
+	  $pdf->Cell(25);
 	  $pdf->Cell(0,10,'-Candidații cetățeni români cu domiciliul în Romania, dar cu studii efectuate în străinătate',0,0,'L');
+	 
 	  $pdf->Ln(5);
-	  $pdf->Cell(33);
+	  $pdf->Cell(30);
 	  $pdf->Cell(0,10,'(inclusiv Republica Moldova) vor prezenta la înscriere diploma de bacalaureat echivalată ',0,0,'L');
+	 
 	  $pdf->Ln(5);
-	  $pdf->Cell(33);
-	  $pdf->Cell(0,10,'de către Ministerul Educației Naționale (CNRED)',0,0,'L');
+	  $pdf->Cell(30);
+	  $pdf->Cell(0,10,'de către M.E.N.C.S (CNRED)',0,0,'L');
 	  
 	  
       //    Chestionar
       
       $pdf->SetLineWidth(0.5);
-	  $pdf->Line(10, 80, 210-10, 80);
+	  $pdf->Line(10, 94.5, 210-10, 94.5);
 
 	  $pdf->Ln(21);
 	  $pdf->Cell(10);
@@ -1606,7 +1626,7 @@ function Footer()
       $pdf->SetFont('DejaVu','B',10);
 	  $pdf->Cell(0,0,'VII. CHESTIONAR PRIVIND ALEGEREA DUMNEAVOASTRĂ',0,1);
 	  $pdf->SetLineWidth(0);
-	  $pdf->Line(20, 85, 210-20, 85);
+	  $pdf->Line(20, 100.5, 210-20, 100.5);
       
       //Prima intrebare
       
@@ -1879,7 +1899,17 @@ function Footer()
      $pdf->Cell(10);
 	 $pdf->Cell(0,10,'prelucrarea datelor cu caracter personal și libera circulație a acestor date, modificată și completată.',0,0,'L');
       
+     $pdf->Ln(30);
+	 $x = $pdf->GetX();
+     $y = $pdf->GetY();
       
+	 $pdf->Cell(10);
+     $pdf->SetFont('DejaVu','B',8);
+	 $pdf->MultiCell(85, 6, 'Semnatura ................................', 0, 1);
+     $pdf->SetXY($x + 110, $y);
+	 $pdf->MultiCell(70, 6,'Data ......................................', 0,  1); 
+	 
+	 //Footer pagina 5
       
 	  $pdf->SetLineWidth(0.5);
 	  $pdf->Line(10, 270, 210-10, 270);
