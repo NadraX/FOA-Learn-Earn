@@ -1714,13 +1714,13 @@
 																					else
 																						echo '';
 																				?>>CI</option>
-												<option name="Pasaport" value="Pașaport" <?php
+												<option name="Pasaport" value="Pasaport" <?php
 																					if($v_Licenta_Tip_Buletin=="Pasaport")
 																						echo 'selected';
 																					else
 																						echo '';
 																				?>>Pașaport</option>
-												<option name="Adeverinta" value="Adeverință" <?php
+												<option name="Adeverinta" value="Adeverinta" <?php
 																							if($v_Licenta_Tip_Buletin=="Adeverinta")
 																								echo 'selected';
 																							else
@@ -1766,6 +1766,9 @@
 																	if($vLicenta_Serie_Buletin==2)
 																		echo "Obligatoriu 2 majuscule";
 														}
+														else 
+															if($v_Licenta_Serie_Buletin=='')
+																echo "C&#226;mp necompletat!";
 													}
 												?>
 											</span>
@@ -1793,6 +1796,9 @@
 																	if($vLicenta_Numar_Buletin==2)
 																		echo "Obligatoriu 6 cifre";
 														}
+														else 
+															if($v_Licenta_Numar_Buletin=='')
+																echo "C&#226;mp necompletat!";
 													}
 												?>
 											</span>
