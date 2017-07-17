@@ -45,7 +45,7 @@ function Footer()
                                   dpl.absolvent_nr_sem_bursa, dpl.absolvent_diplo_serie, dpl.absolvent_diplo_nr, TO_CHAR(dpl.absolvent_dipl_data_emitere, 'dd month yyyy', 'NLS_DATE_LANGUAGE=romanian'), dpl.absolvent_nr_foaie_matricola, 
                                   dpl.absolvent_act_rec_nr, dpl.absolvent_act_rec_serie, TO_CHAR(dpl.absolvent_act_rec_data_echiv, 'dd month yyyy', 'NLS_DATE_LANGUAGE=romanian'), dpl.absolvent_durata_studiilor , dpl.absolvent_cu_diploma ,cl.medie_examen_licenta, cl.medie_admitere,
                                   ol.preferinta_1, ol.preferinta_2, ol.preferinta_3, ol.preferinta_4, ol.preferinta_5, ol.preferinta_6, ol.preferinta_7, ol.preferinta_8, ol.preferinta_9, ol.preferinta_10, ol.preferinta_11, ol.optiune_admitere_taxa, 
-                                  il.diploma_bac_original, il.diploma_bac_copie, il.doc_echiv_preuniv_original, il.doc_echiv_preuniv_copie, il.diploma_licenta_original, il.diploma_licenta_copie, il.dipl_echiv_licenta_original, il.dipl_echiv_licenta_copie, il.particip_altundeva, il.universitate1, il.facultate1, il.universitate2, il.facultate2, il.universitate3,  il.facultate3,
+                                  il.diploma_bac_original, il.doc_echiv_preuniv_original, il.diploma_licenta_original, il.dipl_echiv_licenta_original, il.particip_altundeva, il.universitate1, il.facultate1, il.universitate2, il.facultate2, il.universitate3,  il.facultate3,
                                   ch.site_admitere, ch.site_facultate, ch.pagina_facebook, ch.prieteni, ch.presa, ch.alte_surse, ch.prestigiu, ch.calitate, ch.sfat_persoane, ch.statut_profesie, ch.colegii, ch.materiile, ch.informatiile_universitatii, ch.apropierea, ch.prof_facultate
                              
                                   
@@ -65,7 +65,7 @@ function Footer()
                                   :absolvent_act_rec_nr , :absolvent_act_rec_serie , :absolvent_act_rec_data_echiv , :absolvent_durata_studiilor,:absolvent_cu_diploma , :medie_examen_licenta , :medie_admitere , 
                                   :preferinta_1 , :preferinta_2 ,:preferinta_3 , :preferinta_4 , :preferinta_5 , :preferinta_6 , :preferinta_7 , :preferinta_8 , :preferinta_9 , :preferinta_10 , :preferinta_11 , :optiune_admitere_taxa ,
                                   
-                                  :diploma_bac_original , :diploma_bac_copie, :doc_echiv_preuniv_original , :doc_echiv_preuniv_copie, :diploma_licenta_original , :diploma_licenta_copie,  :dipl_echiv_licenta_original, :dipl_echiv_licenta_copie, :participa_altundeva , :universitate1, :facultate1, :universitate2, :facultate2, :universitate3, :facultate3, 
+                                  :diploma_bac_original , :doc_echiv_preuniv_original , :diploma_licenta_original , :dipl_echiv_licenta_original, :participa_altundeva , :universitate1, :facultate1, :universitate2, :facultate2, :universitate3, :facultate3, 
                                   :site_admitere , :site_facultate, :pagina_facebook , :prieteni, :presa , :alte_surse , :prestigiu , :calitate , :sfat_persoane , :statut_profesie , :colegii , :materiile , :informatiile_universitatii , :apropierea, :prof_facultate FROM Date_personale_master dpc
                                                  
                                                  JOIN Formular_master f ON f.id=dpc.formular_id
@@ -224,16 +224,12 @@ function Footer()
      //Info doc licenta
      
      oci_bind_by_name($s, ":diploma_bac_original", $diploma_bac_original, 100);
-     oci_bind_by_name($s, ":diploma_bac_copie", $diploma_bac_copie, 100);
      
      oci_bind_by_name($s, ":doc_echiv_preuniv_original", $doc_echiv_preuniv_original, 100);
-     oci_bind_by_name($s, ":doc_echiv_preuniv_copie", $doc_echiv_preuniv_copie, 100);
-     
+	 
      oci_bind_by_name($s, ":diploma_licenta_original", $diploma_licenta_original, 100);
-     oci_bind_by_name($s, ":diploma_licenta_copie", $diploma_licenta_copie, 100);
      
      oci_bind_by_name($s, ":dipl_echiv_licenta_original", $dipl_echiv_licenta_original, 100);
-     oci_bind_by_name($s, ":dipl_echiv_licenta_copie", $dipl_echiv_licenta_copie, 100);
      
      oci_bind_by_name($s, ":participa_altundeva", $participa_altundeva, 100);
      oci_bind_by_name($s, ":universitate1", $universitate1, 100);
@@ -557,9 +553,6 @@ function Footer()
 	  
       //Pagina 2
       
-	  $raspuns_domiciliu_stabil = 'Rural';
-	  if($mediu_domiciliu == 2) $raspuns_domiciliu_stabil = 'Urban';
-      
 	  $pdf->AddPage();
 	  $pdf->Ln(7);
 	  $pdf->SetLineWidth(0.5);
@@ -572,7 +565,7 @@ function Footer()
       $pdf->Ln(7);
 	  $pdf->Cell(70);
 	  $pdf->SetFont('DejaVu','B',7);
-	  $pdf->Cell(50,6,''.$raspuns_domiciliu_stabil,1,0,'C');
+	  $pdf->Cell(50,6,''.$mediu_domiciliu,1,0,'C');
       
 	  $pdf->Ln(8);
 	  $x = $pdf->GetX();
@@ -1551,16 +1544,16 @@ function Footer()
 	  $raspuns_echiv_licenta_copie = 'NU';
           
 	  if($diploma_bac_original == 1) $raspuns_diploma_bac_original = 'DA';
-      if($diploma_bac_copie == 1) $raspuns_diploma_bac_copie = 'DA';
+      else $raspuns_diploma_bac_copie = 'DA';
      
 	  if($doc_echiv_preuniv_original == 1) $raspuns_echiv_studii_original = 'DA';
-      if($doc_echiv_preuniv_copie == 1) $raspuns_echiv_studii_copie = 'DA';
+      else $raspuns_echiv_studii_copie = 'DA';
      
 	  if($diploma_licenta_original == 1) $raspuns_diploma_licenta_original = 'DA';
-      if($diploma_licenta_copie == 1) $raspuns_diploma_licenta_copie = 'DA';
+      else $raspuns_diploma_licenta_copie = 'DA';
      
 	  if($dipl_echiv_licenta_original == 1) $raspuns_echiv_licenta_original = 'DA';
-      if($dipl_echiv_licenta_copie == 1) $raspuns_echiv_licenta_copie = 'DA';
+      else $raspuns_echiv_licenta_copie = 'DA';
   
      
       $pdf->Ln(12); 
@@ -1724,7 +1717,7 @@ function Footer()
 	 $pdf->SetFont('DejaVu','B',10);
 	 $pdf->Cell(10);
 
-	 $pdf->Cell(0,0,'VI. CONDIȚII DE ÎNCHEIERE A CONTRACTULUI',0,1);
+	 $pdf->Cell(0,0,'V. CONDIȚII DE ÎNCHEIERE A CONTRACTULUI',0,1);
 	 $pdf->SetLineWidth(0);
 	 $pdf->Line(20, 56, 210-20, 56);
       

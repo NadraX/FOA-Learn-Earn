@@ -9959,7 +9959,13 @@
             oci_bind_by_name($statement, ':elZi' ,$_POST['Master_Buletin_Luna_Exp']);
             oci_bind_by_name($statement, ':eaZi' ,$_POST['Master_Buletin_An_Exp']);  
 
-            oci_bind_by_name($statement, ':mediu_domiciliu', $_POST['group3']);
+		    //Verificare mediu
+		
+			$mediu_domiciliu = $_POST['group3'];
+			$raspuns_domiciliu_stabil = 'Rural';
+	  		if($mediu_domiciliu == 2) $raspuns_domiciliu_stabil = 'Urban';
+            oci_bind_by_name($statement, ':mediu_domiciliu', $raspuns_domiciliu_stabil);
+		
             oci_bind_by_name($statement, ':tara_domiciliu', $_POST['Master_Tara1']);
             oci_bind_by_name($statement, ':judet_domiciliu', $_POST['Master_Judet1']);
             oci_bind_by_name($statement, ':localitate_domiciliu', $_POST['Master_Localitate1']);
@@ -9993,13 +9999,9 @@
         $statement = oci_parse($connection, "INSERT INTO informatii_documente_master VALUES (
           :id, 
           :diploma_bac_original,
-          :diploma_bac_copie,
           :doc_echiv_original,
-          :doc_echiv_copie,
           :diploma_Master_original,
-          :diploma_Master_copie,
           :dipl_echiv_original,
-          :dipl_echiv_copie,
           :particip_altundeva,
           :univ1,
           :fac1,
@@ -10009,15 +10011,31 @@
           :fac3)");
 
         oci_bind_by_name($statement, ':id', $numaratoare4);
-        oci_bind_by_name($statement, ':diploma_bac_original', $_POST['Master_Diploma_BAC_Original']);
-        oci_bind_by_name($statement, ':diploma_bac_copie', $_POST['Master_Diploma_BAC_Copie']);
-        oci_bind_by_name($statement, ':doc_echiv_original', $_POST['Master_Echivalare_Studii_Preuniversitare_Original']);
-        oci_bind_by_name($statement, ':doc_echiv_copie', $_POST['Master_Echivalare_Studii_Preuniversitare_Copie']);
-        oci_bind_by_name($statement, ':diploma_Master_original', $_POST['Master_Diploma_Master_Original']);
-        oci_bind_by_name($statement, ':diploma_Master_copie', $_POST['Master_Diploma_Master_Copie']);
-        oci_bind_by_name($statement, ':dipl_echiv_original', $_POST['Master_Echivalare_Studii_Master_Original']);
-        oci_bind_by_name($statement, ':dipl_echiv_copie', $_POST['Master_Echivalare_Studii_Master_Copie']);
-		echo 'Poate merge';
+		
+		$diploma_bac_original = $_POST['Master_Diploma_BAC_Original'];
+		$raspuns_diploma_bac = 2;
+		
+		$doc_echiv_original = $_POST['Master_Echivalare_Studii_Preuniversitare_Original'];
+		$raspuns_doc_echiv = 2;
+		
+		$diploma_Master_original = $_POST['Master_Diploma_Master_Original'];
+		$raspuns_diploma_Master = 2;
+		
+		$dipl_echiv_original = $_POST['Master_Echivalare_Studii_Master_Original'];
+		$raspuns_dipl_echiv = 2;
+		
+		//documente
+		
+		if($diploma_bac_original == 1) $raspuns_diploma_bac = 1;
+		if($doc_echiv_original == 1) $raspuns_doc_echiv = 1;
+		if($diploma_Master_original == 1) $raspuns_diploma_Master = 1;
+		if($dipl_echiv_original == 1) $raspuns_dipl_echiv = 1;
+		
+        oci_bind_by_name($statement, ':diploma_bac_original', $raspuns_diploma_bac);
+        oci_bind_by_name($statement, ':doc_echiv_original', $raspuns_doc_echiv);
+        oci_bind_by_name($statement, ':diploma_Master_original', $raspuns_diploma_Master);
+        oci_bind_by_name($statement, ':dipl_echiv_original', $raspuns_dipl_echiv);
+		
 		//Participa altundeva
 		
 		$particip_altundeva = $_POST['group27'];
@@ -10056,7 +10074,7 @@
             ini_set('display_errors', 1);
             error_reporting(E_ALL);
         }
-echo 'Merge?';
+
         $v_emisaZi = $_POST['Master_Diploma_Ziua'];
         $v_emisaLuna = $_POST['Master_Diploma_Luna'];
         $v_emisaAn = $_POST['Master_Diploma_An'];
@@ -10461,7 +10479,7 @@ echo 'Merge?';
           ini_set('display_errors', 1);
           error_reporting(E_ALL);
       }
-   		//echo '<script>window.location.href = "Validare_Formular.php";</script>';      
+   		echo '<script>window.location.href = "Validare_Formular.php";</script>';      
     }
   }
 }
