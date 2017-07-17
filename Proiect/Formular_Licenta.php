@@ -2075,7 +2075,7 @@
 													<select style="height:40px;" name="Licenta_Buletin_An_Expirare"  class="form-dropdown" data-component="birthdate-year">
 														<?php
 															$v_Licenta_an_expirare=$_POST["Licenta_Buletin_An_Expirare"];
-															for($i=2027;$i>=1920;$i--)
+															for($i=2047;$i>=1920;$i--)
 															{
 																echo '<option value="'.$i.'" ';
 																if($v_Licenta_an_expirare==$i)
