@@ -499,6 +499,6 @@ updateParticipAltundeva($v_idFormular, $v_Particip_Altundeva);
 
 validare($v_idFormular);
 
-//header('Location: administrator.php?success=1');
+header('Location: administrator.php?success=1');
 
 ?>
