@@ -1269,13 +1269,13 @@
 																					else
 																						echo '';
 																				?>>CI</option>
-												<option name="Pasaport" value="Pașaport" <?php
+												<option name="Pasaport" value="Pasaport" <?php
 																					if($v_Preadmitere_Tip_Buletin=="Pasaport")
 																						echo 'selected';
 																					else
 																						echo '';
 																				?>>Pașaport</option>
-												<option name="Adeverinta" value="Adeverință" <?php
+												<option name="Adeverinta" value="Adeverinta" <?php
 																							if($v_Preadmitere_Tip_Buletin=="Adeverinta")
 																								echo 'selected';
 																							else
@@ -1311,14 +1311,19 @@
 													if(isset($_POST['Submit'])) {
 														$v_Preadmitere_Serie_Buletin = $_POST["Preadmitere_Serie_Buletin"];
 														$vPreadmitere_Serie_Buletin = validSerieBuletin($v_Preadmitere_Serie_Buletin);
-														if($vPreadmitere_Serie_Buletin==-1)
-																echo "C&#226;mp necompletat!";
-															else
-																if($vPreadmitere_Serie_Buletin==1)
-																	echo "Caractere nepermise!";
+														if($v_Preadmitere_Tip_Buletin=="CI") {
+															if($vPreadmitere_Serie_Buletin==-1)
+																	echo "C&#226;mp necompletat!";
 																else
-																	if($vPreadmitere_Serie_Buletin==2)
-																		echo "Obligatoriu 2 majuscule";
+																	if($vPreadmitere_Serie_Buletin==1)
+																		echo "Caractere nepermise!";
+																	else
+																		if($vPreadmitere_Serie_Buletin==2)
+																			echo "Obligatoriu 2 majuscule";
+														}
+														else 
+															if($v_Preadmitere_Serie_Buletin=='')
+																echo "C&#226;mp necompletat!";
 													}
 												?>
 											</span>
@@ -1336,14 +1341,19 @@
 													if(isset($_POST['Submit'])) {
 														$v_Preadmitere_Numar_Buletin = $_POST["Preadmitere_Numar_Buletin"];
 														$vPreadmitere_Numar_Buletin = validNumarBuletin($v_Preadmitere_Numar_Buletin);
-														if($vPreadmitere_Numar_Buletin==-1)
-																echo "C&#226;mp necompletat!";
-															else
-																if($vPreadmitere_Numar_Buletin==1)
-																	echo "Caractere nepermise!";
+														if($v_Preadmitere_Tip_Buletin=="CI") {
+															if($vPreadmitere_Numar_Buletin==-1)
+																	echo "C&#226;mp necompletat!";
 																else
-																	if($vPreadmitere_Numar_Buletin==2)
-																		echo "Obligatoriu 6 cifre";
+																	if($vPreadmitere_Numar_Buletin==1)
+																		echo "Caractere nepermise!";
+																	else
+																		if($vPreadmitere_Numar_Buletin==2)
+																			echo "Obligatoriu 6 cifre";
+														}
+														else 
+															if($v_Preadmitere_Numar_Buletin=='')
+																echo "C&#226;mp necompletat!";
 													}
 												?>
 											</span>
@@ -3376,7 +3386,7 @@
         $v_Preadmitere_Localitate = $_POST["Preadmitere_Localitate"];
 		$vPreadmitere_Localitate = validLocalitate($v_Preadmitere_Localitate);
         
-        if($vChitanta == 0 && $vsuma == 0 && $vNumele_De_Familie_La_Nastere == 0 && $vNumele_De_Familie_Actual == 0 && $vPreadmitere_Initiala_Tata == 0 && $vPreadmitere_Prenumele == 0 && $vPreadmitere_PrenumeMama == 0 && $vPreadmitere_PrenumeTata == 0 && $vPreadmitere_Tara_Nastere == 0 && $vPreadmitere_Localitate_Nastere == 0 && $vPreadmitere_Nationalitate == 0 && $vPreadmitere_Cetatenie == 0 && $vPreadmitere_Etnie == 0 && $vPreadmitere_Limba_Materna == 0 && $vPreadmitere_CNP == 0 && $vPreadmitere_Tip_Buletin == 0 && $vPreadmitere_Serie_Buletin == 0 && $vPreadmitere_Numar_Buletin == 0 && $vPreadmitere_Buletin_Eliberat_De == 0 && $vPreadmitere_Localitate == 0 && $v_Liceul_Absolvit != null ) {
+        if($vChitanta == 0 && $vsuma == 0 && $vNumele_De_Familie_La_Nastere == 0 && $vNumele_De_Familie_Actual == 0 && $vPreadmitere_Initiala_Tata == 0 && $vPreadmitere_Prenumele == 0 && $vPreadmitere_PrenumeMama == 0 && $vPreadmitere_PrenumeTata == 0 && $vPreadmitere_Tara_Nastere == 0 && $vPreadmitere_Localitate_Nastere == 0 && $vPreadmitere_Nationalitate == 0 && $vPreadmitere_Cetatenie == 0 && $vPreadmitere_Etnie == 0 && $vPreadmitere_Limba_Materna == 0 && $vPreadmitere_CNP == 0 && $vPreadmitere_Tip_Buletin == 0 && $vPreadmitere_Buletin_Eliberat_De == 0 && $vPreadmitere_Localitate == 0 && $v_Liceul_Absolvit != null ) {
         
         $statement = oci_parse($connection, "SELECT max(formular_id) AS COUNT FROM DATE_PERSONALE_PREADMITERE");
         oci_execute($statement);
