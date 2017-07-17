@@ -8658,21 +8658,30 @@
 		$vradio24 = validRadio($v_Radio24);
 							
 		//Info doc
-		$verif_diploma_bac_original = $_POST['Diploma_BAC1'];
-		$v_Diploma_BAC = 2;
+		$Diploma_BAC1 = $_POST['Diploma_BAC1'];
+		$Diploma_BAC2 = $_POST['Diploma_BAC2'];
+		$v_Diploma_BAC = null;
 		
-		$verif_v_Adeverinta = $_POST['Adeverinta1'];
-		$v_Adeverinta = 2;
+		$Adeverinta1 = $_POST['Adeverinta1'];
+		$Adeverinta2 = $_POST['Adeverinta2'];
+		$v_Adeverinta = null;
 		
-		$verif_v_Document_Echivalare_Studii = $_POST['Document_Echivalare_Studii1'];
-		$v_Document_Echivalare_Studii = 2;
+		$Document_Echivalare_Studii1 = $_POST['Document_Echivalare_Studii1'];
+		$Document_Echivalare_Studii2 = $_POST['Document_Echivalare_Studii2'];
+		$v_Document_Echivalare_Studii = null;
 		
 		$verif_v_Diploma_Olimpiada = $_POST['Diploma_Olimpiada'];
 		$v_Diploma_Olimpiada = 2;
 		
-		if($verif_diploma_bac_original == 1) $v_Diploma_BAC = 1;
-		if($verif_v_Adeverinta == 1) $v_Adeverinta = 1;
-		if($verif_v_Document_Echivalare_Studii == 1) $v_Document_Echivalare_Studii = 1;
+		if($Diploma_BAC1 == 1) $v_Diploma_BAC = 1;
+		if($Diploma_BAC2 == 2) $v_Diploma_BAC = 2;
+		
+		if($Adeverinta1 == 1) $v_Adeverinta = 1;
+		if($Adeverinta2 == 2) $v_Adeverinta = 2;
+		
+		if($Document_Echivalare_Studii1 == 1) $v_Document_Echivalare_Studii = 1;
+		if($Document_Echivalare_Studii2 == 2) $v_Document_Echivalare_Studii = 2;
+		
 		if($verif_v_Diploma_Olimpiada == 1) $v_Diploma_Olimpiada = 1;	
 		
 		//Participa altundeva
@@ -8795,7 +8804,7 @@
         $vOptiune3=$_POST["Optiune3"];
         $vOptiune4=$_POST["Optiune4"];
         
-        if ((($v_Licenta_Tip_Buletin == "CI" && $verificare_buletin == 1) || $v_Licenta_Tip_Buletin != "CI") && $vsuma == 0 && (($v_Radio1 == 1 && $v_verificare_radio_1 == 1)  || $v_Radio1 == 2) && $vNumele_De_Familie_La_Nastere == 0 && $vInitialaTata == 0 && $vNumeleDeFamilieActual == 0 && $vPrenumele == 0 && $vPrenumeTata == 0 && $vPrenumeMama == 0 && $vLicenta_CNP == 0 && $vTaraNastere == 0 && $vLicenta_Localitate_Nastere == 0 && $vLicentaNationalitate == 0 && $vLicenta_Cetatenie == 0 && $vLicenta_Etnie == 0 && $vLicenta_Limba_Materna == 0 && $vLicenta_Buletin_Eliberat_De == 0 && ($v_Radio3 == 1 || $v_Radio3 == 2) && $vLicenta_Strada == 0 && $vLicenta_Numar == 0 && $vLicenta_Bloc == 0 && $vLicenta_Scara == 0 && $vLicenta_Etaj == 0 && $vLicenta_Apartament == 0 && $vLicenta_Localitate == 0 && $vLicenta_Cod_Postal == 0 && $vLicenta_Telefon == 0 && $vLicenta_Email == 0 && ($v_Radio4 == 1 || $v_Radio4 == 2) && ($v_Radio5 == 1 || $v_Radio5 == 2) && ($v_Radio6 == 1 || $v_Radio6 == 2) && $v_Liceul_Absolvit != null && $vLicenta_Localitate_Liceu == 0 && $vLicenta_Profil_Liceu == 0 && $vLicenta_Durata_Liceu == 0 && $vLicenta_An_Liceu == 0 && $vLicenta_Serie_DiplomaBAC == 0 && $vLicenta_Nr_DiplomaBAC == 0 && $vLicenta_Medie_BAC == 0 && $vLicenta_Nota_MI == 0 && $v_Obiect_Test_Ales != null && ($v_Echivalare_MEN == 1 || $v_Echivalare_MEN == 2) && (($v_Radio25 == 1 && $v_verificare_radio_25 == 1)  || $v_Radio25 == 2) && (($v_Radio24 == 1 && $v_verificare_radio_24 == 1)  || $v_Radio24 == 2) && ($v_Radio26 == 1 || $v_Radio26 == 2 || $v_Radio26 == 3) && ($v_Radio27 == 1 || $v_Radio27 == 2) && ($v_Diploma_BAC == 1 || $v_Diploma_BAC == 2) && ($v_Adeverinta == 1 || $v_Adeverinta == 2) && ($v_Document_Echivalare_Studii == 1 || $v_Document_Echivalare_Studii == 2) && $v_Diploma_Olimpiada == 1 && ($v_Radio35 == 0 || $v_Radio35 == 1 || $v_Radio35 == 2 || $v_Radio35 == 3 || $v_Radio35 == 4 || $v_Radio35 == 5) && ($v_Radio34 == 0 || $v_Radio34 == 1 || $v_Radio34 == 2 || $v_Radio34 == 3 || $v_Radio34 == 4 || $v_Radio34 == 5) && ($v_Radio33 == 0 || $v_Radio33 == 1 || $v_Radio33 == 2 || $v_Radio33 == 3 || $v_Radio33 == 4 || $v_Radio33 == 5) && ($v_Radio32 == 0 || $v_Radio32 == 1 || $v_Radio32 == 2 || $v_Radio32 == 3 || $v_Radio32 == 4 || $v_Radio32 == 5) && ($v_Radio31 == 0 || $v_Radio31 == 1 || $v_Radio31 == 2 || $v_Radio31 == 3 || $v_Radio31 == 4 || $v_Radio31 == 5) && ($v_Radio30 == 0 || $v_Radio30 == 1 || $v_Radio30 == 2 || $v_Radio30 == 3 || $v_Radio30 == 4 || $v_Radio30 == 5) && ($v_Radio29 == 0 || $v_Radio29 == 1 || $v_Radio29 == 2 || $v_Radio29 == 3 || $v_Radio29 == 4 || $v_Radio29 == 5) && ($v_Radio28 == 0 || $v_Radio28 == 1 || $v_Radio28 == 2 || $v_Radio28 == 3 || $v_Radio28 == 4 || $v_Radio28 == 5) && $vOptiune1 != null)
+        if ((($v_Licenta_Tip_Buletin == "CI" && $verificare_buletin == 1) || $v_Licenta_Tip_Buletin != "CI") && $vsuma == 0 && (($v_Radio1 == 1 && $v_verificare_radio_1 == 1)  || $v_Radio1 == 2) && $vNumele_De_Familie_La_Nastere == 0 && $vInitialaTata == 0 && $vNumeleDeFamilieActual == 0 && $vPrenumele == 0 && $vPrenumeTata == 0 && $vPrenumeMama == 0 && $vLicenta_CNP == 0 && $vTaraNastere == 0 && $vLicenta_Localitate_Nastere == 0 && $vLicentaNationalitate == 0 && $vLicenta_Cetatenie == 0 && $vLicenta_Etnie == 0 && $vLicenta_Limba_Materna == 0 && $vLicenta_Buletin_Eliberat_De == 0 && ($v_Radio3 == 1 || $v_Radio3 == 2) && $vLicenta_Strada == 0 && $vLicenta_Numar == 0 && $vLicenta_Bloc == 0 && $vLicenta_Scara == 0 && $vLicenta_Etaj == 0 && $vLicenta_Apartament == 0 && $vLicenta_Localitate == 0 && $vLicenta_Cod_Postal == 0 && $vLicenta_Telefon == 0 && $vLicenta_Email == 0 && ($v_Radio4 == 1 || $v_Radio4 == 2) && ($v_Radio5 == 1 || $v_Radio5 == 2) && ($v_Radio6 == 1 || $v_Radio6 == 2) && $v_Liceul_Absolvit != null && $vLicenta_Localitate_Liceu == 0 && $vLicenta_Profil_Liceu == 0 && $vLicenta_Durata_Liceu == 0 && $vLicenta_An_Liceu == 0 && $vLicenta_Serie_DiplomaBAC == 0 && $vLicenta_Nr_DiplomaBAC == 0 && $vLicenta_Medie_BAC == 0 && $vLicenta_Nota_MI == 0 && $v_Obiect_Test_Ales != null && ($v_Echivalare_MEN == 1 || $v_Echivalare_MEN == 2) && (($v_Radio25 == 1 && $v_verificare_radio_25 == 1)  || $v_Radio25 == 2) && (($v_Radio24 == 1 && $v_verificare_radio_24 == 1)  || $v_Radio24 == 2) && ($v_Radio26 == 1 || $v_Radio26 == 2 || $v_Radio26 == 3) && ($v_Radio27 == 1 || $v_Radio27 == 2) && ($v_Diploma_BAC == 1 || $v_Diploma_BAC == 2 || $v_Adeverinta == 1 || $v_Adeverinta == 2) && ($v_Radio35 == 0 || $v_Radio35 == 1 || $v_Radio35 == 2 || $v_Radio35 == 3 || $v_Radio35 == 4 || $v_Radio35 == 5) && ($v_Radio34 == 0 || $v_Radio34 == 1 || $v_Radio34 == 2 || $v_Radio34 == 3 || $v_Radio34 == 4 || $v_Radio34 == 5) && ($v_Radio33 == 0 || $v_Radio33 == 1 || $v_Radio33 == 2 || $v_Radio33 == 3 || $v_Radio33 == 4 || $v_Radio33 == 5) && ($v_Radio32 == 0 || $v_Radio32 == 1 || $v_Radio32 == 2 || $v_Radio32 == 3 || $v_Radio32 == 4 || $v_Radio32 == 5) && ($v_Radio31 == 0 || $v_Radio31 == 1 || $v_Radio31 == 2 || $v_Radio31 == 3 || $v_Radio31 == 4 || $v_Radio31 == 5) && ($v_Radio30 == 0 || $v_Radio30 == 1 || $v_Radio30 == 2 || $v_Radio30 == 3 || $v_Radio30 == 4 || $v_Radio30 == 5) && ($v_Radio29 == 0 || $v_Radio29 == 1 || $v_Radio29 == 2 || $v_Radio29 == 3 || $v_Radio29 == 4 || $v_Radio29 == 5) && ($v_Radio28 == 0 || $v_Radio28 == 1 || $v_Radio28 == 2 || $v_Radio28 == 3 || $v_Radio28 == 4 || $v_Radio28 == 5) && $vOptiune1 != null)
         
 		{
         $statement = oci_parse($connection, "SELECT max(formular_id) AS COUNT FROM DATE_PERSONALE_LICENTA");
@@ -8980,11 +8989,6 @@
               error_reporting(E_ALL); 
               }
         
-          //ECHIV_STUDII_ORIGINAL vs ECHIV_STUDII_COPIE
-          $echiv_original = null;
-          $echiv_copie = null;
-          if($v_Document_Echivalare_Studii == 1) $echiv_original = 1;
-          else $echiv_copie = 1;
             
 		  $statement = oci_parse($connection, "INSERT INTO INFORMATII_DOCUMENTE_LICENTA VALUES (
           :id, 
@@ -9021,7 +9025,7 @@
 			
         oci_bind_by_name($statement, ':diploma_bac_original', $v_Diploma_BAC);
         oci_bind_by_name($statement, ':adeverinta_original', $v_Adeverinta);
-        oci_bind_by_name($statement, ':document_echiv_studii_original', $echiv_original);
+        oci_bind_by_name($statement, ':document_echiv_studii_original', $v_Document_Echivalare_Studii);
         oci_bind_by_name($statement, ':diploma_olimpiada', $v_Diploma_Olimpiada);
         oci_bind_by_name($statement, ':participa_altundeva', $v_Radio27);
         oci_bind_by_name($statement, ':uni1', $Licenta_AlteConcursuri_Univ1);
