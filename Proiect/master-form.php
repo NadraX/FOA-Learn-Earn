@@ -1688,7 +1688,7 @@
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Nationalitate </label>
 											
-											<input type="text" name="Master_Nationalitate" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;n&#259;" data-component="middle" value="<?php 
+											<input type="text" name="Master_Nationalitate" class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Română" data-component="middle" value="<?php 
 																																																													if($v_Master_Nationalitate == '') 
 																																																														echo '';
 																																																													else
@@ -1711,7 +1711,7 @@
 
 										<span class="form-sub-label-container" style="vertical-align:top; width:25%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Cetăţenie </label>
-											<input type="text" name="Master_Cetatenie"  class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Rom&#226;na" data-component="middle"  value="<?php 
+											<input type="text" name="Master_Cetatenie"  class="form-textbox middle_1" style="vertical-align:top; width:100%;padding:0;margin:0;" placeholder="ex: Română" data-component="middle"  value="<?php 
 																																																													if($v_Master_Cetatenie == '') 
 																																																														echo '';
 																																																													else
@@ -1736,7 +1736,7 @@
 										<span class="form-sub-label-container" style="vertical-align:top; width:24%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Etnie </label>
 
-											<input  type="text"  name="Master_Etnie"  class="form-textbox first_1" placeholder="ex: Român" size="20"  data-component="first"  value="<?php 
+											<input  type="text"  name="Master_Etnie"  class="form-textbox first_1" placeholder="ex: Română" size="20"  data-component="first"  value="<?php 
 																																														if($v_Master_Etnie == '') 
 																																															echo '';
 																																														else
@@ -1761,7 +1761,7 @@
 										<span class="form-sub-label-container" style="vertical-align:top; width:25%;padding:0;margin:0;">
 											<label class="form-sub-label sublabel_first"  style="min-height:13px;"> Limba maternă </label>
 
-											<input type="text"  name="Master_Limba_Materna" placeholder="ex: Rom&#226;n&#259;" class="form-textbox first_1" size="20" data-component="first"   value="<?php 
+											<input type="text"  name="Master_Limba_Materna" placeholder="ex: Română" class="form-textbox first_1" size="20" data-component="first"   value="<?php 
 																																																if($v_Master_Limba_Materna == '') 
 																																																	echo '';
 																																																else
@@ -1877,13 +1877,13 @@
 																				else
 																					echo '';
 																			?>>CI</option>
-												<option name="Pasaport" value="Pașaport" <?php
+												<option name="Pasaport" value="Pasaport" <?php
 																							if($v_Master_Tip_Buletin=="Pasaport")
 																								echo 'selected';
 																							else
 																								echo '';
 																						?>>Pașaport</option>
-												<option name="Adeverinta" value="Adeverintă" <?php
+												<option name="Adeverinta" value="Adeverinta" <?php
 																							if($v_Master_Tip_Buletin=="Adeverinta")
 																								echo 'selected';
 																							else
@@ -1931,6 +1931,10 @@
 																if($vMaster_Serie_Buletin==2)
 																	echo "Obligatoriu 2 majuscule";
 													}
+													else
+														if($v_Master_Serie_Buletin == '')
+															echo "C&#226;mp necompletat!";
+															
 												}
 												?>
 											</span>
@@ -1961,6 +1965,9 @@
 																if($vMaster_Numar_Buletin==2)
 																	echo "Obligatoriu 6 cifre";
 													}
+													else
+														if($v_Master_Numar_Buletin == '')
+															echo "C&#226;mp necompletat!";
 												}
 												?>
 											</span>
@@ -5017,7 +5024,7 @@
 												<td>
 													<span class="form-sub-label-container" style="vertical-align:top; width:28%; display:inline-block" >
 														<label class="form-sub-label" style="min-height:13px;"> Domeniul de Licenţă </label>
-														<input type="text"  name="Master_AbsolventMaster_Domeniu_Master1" class="form-textbox form-address-city first_1" size="21" placeholder="ex: Securitae" data-component="city"  value="<?php
+														<input type="text"  name="Master_AbsolventMaster_Domeniu_Master1" class="form-textbox form-address-city first_1" size="21" placeholder="ex: Securitate" data-component="city"  value="<?php
 																																																												if($v_Master_AbsolventMaster_Domeniu_Master1 == '')
 																																																													echo '';
 																																																												else
@@ -9037,11 +9044,11 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Prestigiul Universităţii/Facultăţii</label>
 										  
 									<span style="width:70%;">
-										<input type="radio" name="group28" id="1_0" class="css-checkbox" value="2" <?php
+										<input type="radio" name="group28" id="1_0" class="css-checkbox" value="0" <?php
 																																if($v_Radio28 == '')
 																																	echo '';
 																																else
-																																	if($v_Radio28!==0)
+																																	if($v_Radio28==0)
 																																		echo 'checked="checked"';
 																																	else
 																																		echo '';
@@ -9105,11 +9112,11 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Calitatea Educaţiei la UAIC</label>
 							  
 									<span style="width:70%">
-										<input type="radio" name="group29" id="2_0" class="css-checkbox" value="2" <?php
+										<input type="radio" name="group29" id="2_0" class="css-checkbox" value="0" <?php
 																																if($v_Radio29 == '')
 																																	echo '';
 																																else
-																																	if($v_Radio29!==0)
+																																	if($v_Radio29==0)
 																																		echo 'checked="checked"';
 																																	else
 																																		echo '';
@@ -9173,11 +9180,11 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Sfatul persoanelor apropiate</label>
 									  
 									<span style="width:70%">
-										<input type="radio" name="group30" id="3_0" class="css-checkbox" value="2" <?php
+										<input type="radio" name="group30" id="3_0" class="css-checkbox" value="0" <?php
 																															if($v_Radio30 == '')
 																																echo '';
 																															else
-																																if($v_Radio30!==0)
+																																if($v_Radio30==0)
 																																	echo 'checked="checked"';
 																																else
 																																	echo '';
@@ -9241,11 +9248,11 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Statutul profesiei pt care optaţi</label>
 										  
 									<span style="width:70%">
-										<input type="radio" name="group31" id="4_0" class="css-checkbox" value="2" <?php
+										<input type="radio" name="group31" id="4_0" class="css-checkbox" value="0" <?php
 																																if($v_Radio31 == '')
 																																	echo '';
 																																else
-																																	if($v_Radio31!==0)
+																																	if($v_Radio31==0)
 																																		echo 'checked="checked"';
 																																	else
 																																		echo '';
@@ -9309,11 +9316,11 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Colegii</label>
 									  
 									<span style="width:70%">
-										<input type="radio" name="group32" id="5_0" class="css-checkbox" value="2" <?php
+										<input type="radio" name="group32" id="5_0" class="css-checkbox" value="0" <?php
 																															if($v_Radio32 == '')
 																																echo '';
 																															else
-																																if($v_Radio32!==0)
+																																if($v_Radio32==0)
 																																	echo 'checked="checked"';
 																																else
 																																	echo '';
@@ -9377,11 +9384,11 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Materiile care se studiază</label>
 									  
 									<span style="width:70%">
-										<input type="radio" name="group33" id="6_0" class="css-checkbox" value="2" <?php
+										<input type="radio" name="group33" id="6_0" class="css-checkbox" value="0" <?php
 																															if($v_Radio33 == '')
 																																echo '';
 																															else
-																																if($v_Radio33!==0)
+																																if($v_Radio33==0)
 																																	echo 'checked="checked"';
 																																else
 																																	echo '';
@@ -9445,11 +9452,11 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Informaţiile furnizate de Universitate</label>
 									  
 									<span style="width:70%">
-										<input type="radio" name="group34" id="7_0" class="css-checkbox" value="2" <?php
+										<input type="radio" name="group34" id="7_0" class="css-checkbox" value="0" <?php
 																															if($v_Radio34 == '')
 																																echo '';
 																															else
-																																if($v_Radio34!==0)
+																																if($v_Radio34==0)
 																																	echo 'checked="checked"';
 																																else
 																																	echo '';
@@ -9513,11 +9520,11 @@
 									<label class="form-label  form-label-auto" style="color: gray; font-size:medium; width:30%; display:inline-block; padding-top:1%;">Apropierea de domiciliu</label>
 									  
 									<span style="width:70%">
-										<input type="radio" name="group35" id="8_0" class="css-checkbox" value="2" <?php
+										<input type="radio" name="group35" id="8_0" class="css-checkbox" value="0" <?php
 																															if($v_Radio35 == '')
 																																echo '';
 																															else
-																																if($v_Radio35!==0)
+																																if($v_Radio35==0)
 																																	echo 'checked="checked"';
 																																else
 																																	echo '';
@@ -9792,7 +9799,7 @@
       --
     */
 	  
-    if($vChitanta ==0 && $vsuma ==0 && $vradio1 ==1 && $vNumele_De_Familie_La_Nastere ==0 && $vMaster_Numele_De_Familie_Actual == 0 && $vLicenta_Initiala_Tata == 0 && $vMaster_Prenumele == 0 && $vMaster_PrenumeMama == 0 && $vMaster_PrenumeTata == 0 && $vMaster_Tara_Nastere == 0 && $vMaster_Localitate_Nastere == 0 && $vMaster_Cetatenie == 0 && $vMaster_Etnie == 0 && $vMaster_Limba_Materna == 0 && $vMaster_CNP == 0 && $vMaster_Serie_Buletin == 0 && $vMaster_Numar_Buletin == 0 && $vMaster_Buletin_Eliberat_De == 0 && $vradio3 == 1 && $vMaster_Strada == 0 &&  $vMaster_Numar == 0 &&   $vMaster_Bloc == 0 && $vMaster_Scara == 0 && $vMaster_Etaj == 0 && $vMaster_Apartament == 0 && $vMaster_Localitate1 == 0 && $vMaster_Cod_Postal == 0 && $vMaster_Telefon == 0 && $vMaster_Email == 0 && $vradio5 == 1 && $vradio4 == 1 && $vMaster_Localitate_Liceu == 0 && $vMaster_Profil_Liceu == 0 && $vMaster_Durata_Liceu == 0 && $vMaster_An_Liceu == 0 && $vMaster_Serie_DiplomaBAC == 0 && $vMaster_Nr_DiplomaBAC == 0 && $vMaster_AbsolventMaster_Univ1 == 0 && $vMaster_AbsolventMaster_Facultate1 == 0 && $vMaster_AbsolventMaster_Domeniu_Master1 == 0 && $vMaster_AbsolventMaster_Specializare1 == 0 && $vMaster_AbsolventMaster_An_Facultate1 == 0 && $vMaster_AbsolventMaster_Durata_Studii1 == 0 && $vMaster_AbsolventMaster_Semestre_Finantate1 == 0 && $vMaster_AbsolventMaster_Semestre_Bursa1 == 0 && $vMaster_AbsolventMaster_Localitate_AltaFacultate1 == 0 && $vMaster_Serie_DiplomaLicenta == 0  && $vradio26 == 1 && $vradio27 == 1 && $vOptiune1 == 0 && $vOptiune2 == 0 && $vOptiunea3 == 0 && $vOptiunea4 == 0 && $vOptiunea5 == 0 && $vOptiune6==0 && $vOptiune7 == 0 && $vOptiune8 == 0 && $vOptiune9 == 0 && $vOptiune10 == 0 && $vOptiune11 == 0){
+    if( $vsuma ==0 && $vradio1 ==1 && $vNumele_De_Familie_La_Nastere ==0 && $vMaster_Numele_De_Familie_Actual == 0 && $vLicenta_Initiala_Tata == 0 && $vMaster_Prenumele == 0 && $vMaster_PrenumeMama == 0 && $vMaster_PrenumeTata == 0 && $vMaster_Tara_Nastere == 0 && $vMaster_Localitate_Nastere == 0 && $vMaster_Cetatenie == 0 && $vMaster_Etnie == 0 && $vMaster_Limba_Materna == 0 && $vMaster_CNP == 0 && $vMaster_Buletin_Eliberat_De == 0 && $vradio3 == 1 && $vMaster_Strada == 0 &&  $vMaster_Numar == 0 &&   $vMaster_Bloc == 0 && $vMaster_Scara == 0 && $vMaster_Etaj == 0 && $vMaster_Apartament == 0 && $vMaster_Localitate1 == 0 && $vMaster_Cod_Postal == 0 && $vMaster_Telefon == 0 && $vMaster_Email == 0 && $vradio5 == 1 && $vradio4 == 1 && $vMaster_Localitate_Liceu == 0 && $vMaster_Profil_Liceu == 0 && $vMaster_Durata_Liceu == 0 && $vMaster_An_Liceu == 0 && $vMaster_Serie_DiplomaBAC == 0 && $vMaster_Nr_DiplomaBAC == 0 && $vMaster_AbsolventMaster_Univ1 == 0 && $vMaster_AbsolventMaster_Facultate1 == 0 && $vMaster_AbsolventMaster_Domeniu_Master1 == 0 && $vMaster_AbsolventMaster_Specializare1 == 0 && $vMaster_AbsolventMaster_An_Facultate1 == 0 && $vMaster_AbsolventMaster_Durata_Studii1 == 0 && $vMaster_AbsolventMaster_Semestre_Finantate1 == 0 && $vMaster_AbsolventMaster_Semestre_Bursa1 == 0 && $vMaster_AbsolventMaster_Localitate_AltaFacultate1 == 0 && $vMaster_Serie_DiplomaLicenta == 0  && $vradio26 == 1 && $vradio27 == 1 && $vOptiune1 == 0 && $vOptiune2 == 0 && $vOptiunea3 == 0 && $vOptiunea4 == 0 && $vOptiunea5 == 0 && $vOptiune6==0 && $vOptiune7 == 0 && $vOptiune8 == 0 && $vOptiune9 == 0 && $vOptiune10 == 0 && $vOptiune11 == 0){
 
     $connection = oci_connect($username, $password, $connection_string, 'AL32UTF8');
 
