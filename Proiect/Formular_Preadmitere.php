@@ -538,7 +538,7 @@
 														if(isset($_POST['Submit'])) {   
 															$v_Suma_Taxa = $_POST["Preadmitere_Suma_Taxa"];   
 															$vsuma = validSuma($v_Suma_Taxa);   
-															if($vsuma==-1)
+															if($v_Suma_Taxa=='')
 																	echo "C&#226;mp necompletat!";
 																else
 																if($vsuma==1)

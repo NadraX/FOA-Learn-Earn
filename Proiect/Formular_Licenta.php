@@ -858,13 +858,16 @@
 													<span style="color:red">		
 														<?php		
 															if(isset($_POST['Submit'])) {		
-															$v_Chitanta = $_POST["Licenta_Chitanta_nr"];		
-															$vChitanta = validChitanta($v_Chitanta);		
-															if($vChitanta==-1)
-																echo "C&#226;mp necompletat!";
-															else
-																if($vChitanta==1)
-																	echo "Câmpul conține caractere non-alfanumerice!";
+																$v_Chitanta = $_POST["Licenta_Chitanta_nr"];
+																$v_Radio1 = $_POST["group1"];	
+																if($v_Radio1==2 || $v_Radio1==''){
+																	$vChitanta = validChitanta($v_Chitanta);		
+																	if($vChitanta==-1)
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vChitanta==1)
+																			echo "Câmpul conține caractere non-alfanumerice!";
+																}
 															}		
 														?>		
 													</span>	
@@ -880,14 +883,17 @@
 						
 													<span style="color:red">		
 														<?php		
-															if(isset($_POST['Submit'])) {		
-															$v_Suma_Taxa = $_POST["Licenta_Suma_Taxa"];		
-															$vsuma = validSuma($v_Suma_Taxa);
-															if($vsuma==-1)
-																echo "C&#226;mp necompletat!";
-															else
-																if($vsuma==1)
-																	echo "Sumă negativă ?!";   	
+															if(isset($_POST['Submit'])) {															
+																$v_Suma_Taxa = $_POST["Licenta_Suma_Taxa"];		
+																$v_Radio1 = $_POST["group1"];	
+																if($v_Radio1==2 || $v_Radio1==''){
+																	$vsuma = validSuma($v_Suma_Taxa);
+																	if($v_Suma_Taxa=='')
+																		echo "C&#226;mp necompletat!";
+																	else
+																		if($vsuma==1)
+																			echo "Sumă negativă ?!";   
+																}																	
 															}		
 														?>		
 													</span>	
@@ -916,7 +922,7 @@
 																																					echo '';		
 																																		?> />		
 														<label for="checkbox11" class="css-label" style="margin-right:100px">Da</label>
-														<input type="radio" name="group1" id="checkbox13" class="css-checkbox" value="0" <?php
+														<input type="radio" name="group1" id="checkbox13" class="css-checkbox" value="2" <?php
 																																			if($v_Radio1 == '')
 																																				echo '';
 																																			else

@@ -944,15 +944,19 @@
 									
 															<span style="color:red">		
 																<?php		
-																	if(isset($_POST['Submit'])) {   
-																		$v_Chitanta = $_POST["Master_Chitanta_nr"];    
-																		$vChitanta = validChitanta($v_Chitanta);    
-																		if($v_Chitanta=='')
-																			echo "C&#226;mp necompletat!";
-																		else
-																			if($vChitanta==1)
-																				echo "Câmpul conține caractere non-alfanumerice!";
-																	}		  
+																	if(isset($_POST['Submit'])) {
+																		$v_Chitanta = $_POST["Master_Chitanta_nr"];   
+																		$v_Radio1 = $_POST["group1"];	
+																		if($v_Radio1==2 || $v_Radio1=='') {
+																			$vChitanta = validChitanta($v_Chitanta);    
+																			if($v_Chitanta=='')
+																				echo "C&#226;mp necompletat!";
+																			else
+																				if($vChitanta==1)
+																					echo "Câmpul conține caractere non-alfanumerice!";
+																		}
+																	}
+																	
 																?>		
 															</span>	
 													
@@ -970,14 +974,17 @@
 													<span style="color:red">		
 															<?php   
 																if(isset($_POST['Submit'])) {   
-																	$v_Suma_Taxa = $_POST["Master_Suma_Taxa"];   
-																	$vsuma = validSuma($v_Suma_Taxa);   
-																	if($vsuma==-1)
-																			echo "C&#226;mp necompletat!";
-																		else
-																		if($vsuma==1)
-																			echo "Sumă negativă ?!";    
-																	}   
+																	$v_Suma_Taxa = $_POST["Master_Suma_Taxa"];
+																	$v_Radio1 = $_POST["group1"];	
+																	if($v_Radio1==2 || $v_Radio1=='') {
+																		$vsuma = validSuma($v_Suma_Taxa);   
+																		if($v_Suma_Taxa=='')
+																				echo "C&#226;mp necompletat!";
+																			else
+																			if($vsuma==1)
+																				echo "Sumă negativă ?!";
+																	}
+																}   
 															?>    
 													</span>
 													
@@ -1393,19 +1400,18 @@
 
 											<select class="form-dropdown form-address-country" style="width:100%; height:40px" name="Master_Sex" >
 
-												<option name="sexFeminin" value="F" <?php
-																						if($v_Master_Sex=="F")		
-																							echo 'selected';		
-																						else		
-																							echo '';		
-																					?>>Feminin</option>		
 												<option name="sexMasculin" value="M" <?php
 																						if($v_Master_Sex=="M")		
 																							echo 'selected';		
 																						else		
 																							echo '';		
 																					?>>Masculin</option>
-
+												<option name="sexFeminin" value="F" <?php
+																						if($v_Master_Sex=="F")		
+																							echo 'selected';		
+																						else		
+																							echo '';		
+																					?>>Feminin</option>		
 											</select>
 
 										</span>
