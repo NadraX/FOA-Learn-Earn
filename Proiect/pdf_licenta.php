@@ -514,10 +514,6 @@ function Footer()
       
       //Pagina 2
       
-	  //Domiciliul stabil
-	  $raspuns_domiciliu_stabil = 'Rural';
-	  if($mediu_domiciliu == 2) $raspuns_domiciliu_stabil = 'Urban';
-      
 	  $pdf->AddPage();
 	  $pdf->Ln(7);
 	  $pdf->SetLineWidth(0.5);
@@ -530,7 +526,7 @@ function Footer()
       $pdf->Ln(7);
 	  $pdf->Cell(70);
 	  $pdf->SetFont('DejaVu','B',7);
-	  $pdf->Cell(50,6,''.$raspuns_domiciliu_stabil,1,0,'C');
+	  $pdf->Cell(50,6,''.$mediu_domiciliu,1,0,'C');
       
 	  $pdf->Ln(8);
 	  $x = $pdf->GetX();
